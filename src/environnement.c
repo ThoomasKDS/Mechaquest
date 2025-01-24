@@ -1,4 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <environnement.h>
+#include "initSDL.h"
+#include "environnement.h"
