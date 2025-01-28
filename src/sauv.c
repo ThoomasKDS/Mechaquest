@@ -1,2 +1,1 @@
-#include "sauv.h"
-#include "initSDL.h"
+#include "../lib/sauv.h"
