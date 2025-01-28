@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../lib/initSDL.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_image.h>
+#include "initSDL.h"
 
-#define H 768
-#define L 1280
 
-int initGame(game_t* game) {
+int initGame(Game* game) {
 
     SDL_Rect display_bounds; //struture contenant dimensions de l'ecran
     int display_index = 0; //choix de l'ecran 0 pour le principal etc
@@ -48,18 +49,14 @@ int initGame(game_t* game) {
             "Mechaquest",
             display_bounds.x,
             display_bounds.y,
-            L,
-            H,
+            display_bounds.w,
+            display_bounds.h,
             SDL_WINDOW_SHOWN
     );
     if (!game->window) {
         printf("Erreur de création de la fenêtre : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
-    }
-
-    if (SDL_SetWindowFullscreen(game->window, SDL_WINDOW_FULLSCREEN_DESKTOP) != 0) {     //pleine ecran
-        printf("Erreur lors du passage en plein écran : %s\n", SDL_GetError());
     }
 
     // Création du renderer
@@ -71,23 +68,11 @@ int initGame(game_t* game) {
         return 0;
     }
 
-    //charger fond
-
-    SDL_Surface* imageSurface = IMG_Load("../img/background/backgroundtest1.png");
-    if (!imageSurface) {
-        printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
-        SDL_DestroyRenderer(game->renderer);
-        SDL_DestroyWindow(game->window);
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-
     // Convertir la surface en texture
-    //Laisser en commentaire tant que aucune image
-    
-    game->backgroundTexture = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
-    SDL_FreeSurface(imageSurface);
+    //utile pour les jeu 2d avec animation d'image...
+    /*   Laisser en commentaire tant que aucun background 
+    game->backgroundTexture = SDL_CreateTextureFromSurface(game->renderer, backgroundSurface);
+    SDL_FreeSurface(backgroundSurface);
     if (!game->backgroundTexture) {
         printf("Erreur de création de la texture : %s\n", SDL_GetError());
         SDL_DestroyRenderer(game->renderer);
@@ -95,13 +80,13 @@ int initGame(game_t* game) {
         SDL_Quit();
         return 0;
     }
-    
+    */
 
     return 1;
 }
 
 // Libération des ressources et fermeture SDL
-void cleanUp(game_t* game) {
+void cleanUp(Game* game) {
     SDL_DestroyTexture(game->backgroundTexture);
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyWindow(game->window);
