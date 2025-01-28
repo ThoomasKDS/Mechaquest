@@ -1,7 +1,7 @@
 //CONSTANTES
-const int ERREUR_OUVERTURE = -1;
-const int OK = 1;
-const int ERR = 0;
+#define ERREUR_OUVERTURE -1
+#define OK 1
+#define ERR 0
 
 
 //STRUCTURE DE DONNEES//

@@ -77,6 +77,7 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
 
 
 //TEST
+/*
  int main(void){
     Joueur joueur;
     Attaque attaques[50];
@@ -88,4 +89,4 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
     for(int i = 0;i<nb;i++){
         printf("nom: %s   type: %s   niveau: %d\n",attaques[i].nom,attaques[i].type, attaques[i].niveau);
     }
-}
+}*/

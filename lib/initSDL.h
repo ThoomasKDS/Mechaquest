@@ -1,13 +1,22 @@
+#ifndef INIT_SDL_H
+#define INIT_SDL_H
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
 
+#define H 768
+#define L 1280
+
 // Structure qui contient les initialisation de rendu du jeu 
-typedef struct Game {
+typedef struct games {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture;
-} Game;
+} game_t;
 
-int initGame(Game* game); //initialiser SDL
-void cleanUp(Game* game); //quitter proprement SDL
+int initGame(game_t* game); //initialiser SDL
+void cleanUp(game_t* game); //quitter proprement SDL
+
+
+#endif // INIT_SDL_H
