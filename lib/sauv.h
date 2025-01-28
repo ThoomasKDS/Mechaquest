@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //CONSTANTES
 #define ERREUR_OUVERTURE -1
 #define OK 1

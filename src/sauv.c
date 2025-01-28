@@ -1,7 +1,5 @@
 #include "../lib/sauv.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 
 int RecuperationJoueur(Joueur *joueur, char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure Joueur
     FILE *file = fopen("../save/joueur.csv", "r");          //Ouverture du fichier

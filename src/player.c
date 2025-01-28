@@ -3,8 +3,8 @@
 #include <string.h>
 #include "../lib/player.h"
 
-#define W 32
-#define H 32
+#define W_HITBOX 32
+#define H_HITBOX 32
 
 SDL_Rect init_player(player_t * p, float scale) {
 
@@ -12,8 +12,8 @@ SDL_Rect init_player(player_t * p, float scale) {
     p->pos.y = 0; //attribution manuel de position pour l'instant
 
     SDL_Rect player;
-    player.w = W * scale;
-    player.h = H * scale;
+    player.w = W_HITBOX * scale;
+    player.h = H_HITBOX * scale;
     player.x = p->pos.x;
     player.y = p->pos.y;
     return player;

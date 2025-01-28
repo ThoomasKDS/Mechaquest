@@ -7,7 +7,7 @@
 #include <SDL2/SDL_image.h>
 
 
-#include "../lib/initSDL.h"
+#include "../lib/initGame.h"
 
 
 

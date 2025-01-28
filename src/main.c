@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../lib/combat.h"
 #include "../lib/player.h"
-#include "../lib/initSDL.h"
+#include "../lib/initGame.h"
 #include "../lib/sauv.h"
 
 
