@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "combat.h"
-#include "environnement.h"
-#include "initSDL.h"
-#include "sauv.h"
+#include "../lib/combat.h"
+#include "../lib/environnement.h"
+#include "../lib/initSDL.h"
+#include "../lib/sauv.h"
 
 
 int main() {
