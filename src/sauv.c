@@ -1,5 +1,6 @@
 #include "../lib/sauv.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int RecuperationJoueur(Joueur *joueur, char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure Joueur
@@ -15,6 +16,8 @@ int RecuperationJoueur(Joueur *joueur, char pseudo[50]) {   //Recuperation de la
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){
             sscanf(ligne, "%49[^,],%c,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
+            joueur->inventaire = malloc(1 * sizeof(Inventaire));    //alloue la memoire de la structure inventaire
+            RecuperationInventaire(joueur->inventaire,joueur->pseudo);      //Appel la fonction de récupération de l'inventaire
             fclose(file);
             return OK;
         }
@@ -36,8 +39,8 @@ int RecuperationInventaire(Inventaire *inventaire, char pseudo[50]) { //Recupera
     while(fgets(ligne, sizeof(ligne), file) != NULL){       //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){
-            sscanf(ligne, "%49[^,],%d,%d,%d,%d\n",inventaire->pseudo,&inventaire->mechaball,
-                                                  &inventaire->carburant,&inventaire->repousse,&inventaire->rappel);
+            sscanf(ligne, "%49[^,],%d,%d,%d,%d\n",nom,&inventaire->mechaball,&inventaire->carburant,
+                                                    &inventaire->repousse,&inventaire->rappel);
             fclose(file);
             return OK;
         }
@@ -74,17 +77,15 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
 
 
 //TEST
- /*int main(void){
+ int main(void){
     Joueur joueur;
-    Inventaire inventaire;
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
     char pseudo[50] = "noaha";
     RecuperationJoueur(&joueur,pseudo);
-    RecuperationInventaire(&inventaire,pseudo);
     printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
-    printf("pseudo: %s   mechaball: %d   carburant: %d\n",inventaire.pseudo,inventaire.mechaball,inventaire.carburant);
+    printf("pseudo: %s   mechaball: %d   carburant: %d\n",joueur.pseudo,joueur.inventaire->mechaball,joueur.inventaire->carburant);
     for(int i = 0;i<nb;i++){
         printf("nom: %s   type: %s   niveau: %d\n",attaques[i].nom,attaques[i].type, attaques[i].niveau);
     }
-}*/
+}
