@@ -8,9 +8,5 @@ typedef struct {
     int y;
 }position_t;
 
-typedef struct {
-    position_t pos; 
-}player_t;
-
-SDL_Rect init_player(player_t * p, float scale);
-void draw_player(game_t game, SDL_Rect player);
+void draw_obj(game_t game, SDL_Rect obj);
+SDL_Rect create_obj(game_t game, int taille_w, int taille_h, int x, int y);

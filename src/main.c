@@ -10,44 +10,20 @@
 int main() {
     game_t game;
 
-    if (!initGame(&game)) {            //initialisation sdl
+    if (!init_game(&game)) {            //initialisation sdl
         printf("Échec de l'initialisation du jeu.\n");
         return -1;
     }
+    char background[100] = "../img/background/backgroundtest1.png";
+    init_background(background, &game);
 
-    //pour que le fond s'adapte à l'ecran
-    //ici
-    SDL_Rect dms_win;
-    SDL_GetRendererOutputSize(game.renderer, &dms_win.w, &dms_win.h);       //dimensions ecran
-
-    int img_w, img_h;
-    SDL_QueryTexture(game.backgroundTexture, NULL, NULL, &img_w, &img_h);       //dimensions img
-
-    float img_ratio = (float)img_w / (float)img_h;
-    float win_ratio = (float)dms_win.w / (float)dms_win.h;
-
-    if (win_ratio > img_ratio) {
-        // L'écran est plus large que l'image
-        int new_w = dms_win.h * img_ratio;
-        dms_win.x = (dms_win.w - new_w) / 2; // centrage horizontal
-        dms_win.w = new_w;
-        dms_win.y = 0;
-    } else {
-        // L'écran est plus haut que l'image
-        int new_h = dms_win.w / img_ratio;
-        dms_win.y = (dms_win.h - new_h) / 2; // centrage vertical
-        dms_win.h = new_h;
-        dms_win.x = 0;
+    int ** mat = NULL;
+    if(!init_mat(game, &mat)) {
+        printf("Echec init mat\n");
+        return -1;
     }
-    //a ici
 
-
-    player_t player;
-    float scale_x = (float)dms_win.w/img_w; 
-    float scale_y = (float)dms_win.h/img_h; 
-
-    float scale = (scale_x < scale_y) ? scale_x : scale_y; //prend l'echelle la plus petite
-    SDL_Rect hitbox_player = init_player(&player, scale);   //dessinne le joueur propor à l'image et l'ecran
+    SDL_Rect hitbox_player = create_obj(game, 32, 32, 0, 0);
     int running = 1;
     SDL_Event event;
 
@@ -60,12 +36,16 @@ int main() {
         }
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
-        SDL_RenderCopy(game.renderer,game.backgroundTexture , NULL, &dms_win);                 // Dessiner le background
-        draw_player(game, hitbox_player);           //dessine le joueur
+        draw_background(game);
+        draw_obj(game, hitbox_player);           //dessine le joueur
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
     }
     cleanUp(&game);
+    for (int i = 0; i < game.img_h / 32; i++) {
+        free(mat[i]); 
+    }
+    free(mat); 
 
     return 0;
 
