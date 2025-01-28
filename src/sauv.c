@@ -78,7 +78,9 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
 
 
 //TEST
-/*int main(void){
+
+/*
+ int main(void){
     Joueur joueur;
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
