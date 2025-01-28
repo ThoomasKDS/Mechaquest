@@ -62,7 +62,8 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
     int count = 0;
 
     while (fgets(ligne, sizeof(ligne), file) != NULL){      //Prends chaque ligne et l'enregistre
-        sscanf(ligne, "%49[^,],%19[^,],%d,%d,%d,%d\n",
+        sscanf(ligne, "%d,%49[^,],%19[^,],%d,%d,%d,%d\n",
+                                 &attaques[count].id_attaques,
                                  attaques[count].nom,
                                  attaques[count].type,
                                  &attaques[count].niveau,
@@ -77,7 +78,7 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
 
 
 //TEST
- int main(void){
+/*int main(void){
     Joueur joueur;
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
@@ -86,6 +87,6 @@ int RecuperationAttaques(Attaque *attaques) {           //Recuperation des attaq
     printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
     printf("pseudo: %s   mechaball: %d   carburant: %d\n",joueur.pseudo,joueur.inventaire->mechaball,joueur.inventaire->carburant);
     for(int i = 0;i<nb;i++){
-        printf("nom: %s   type: %s   niveau: %d\n",attaques[i].nom,attaques[i].type, attaques[i].niveau);
+        printf("id: %d    nom: %s   type: %s   niveau: %d\n",attaques[i].id_attaques,attaques[i].nom,attaques[i].type, attaques[i].niveau);
     }
-}
+}*/

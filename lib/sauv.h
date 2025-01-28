@@ -7,6 +7,7 @@ const int ERR = 0;
 //STRUCTURE DE DONNEES//
 
 typedef struct {
+    int id_attaques;
     char nom[50];
     char type[20];
     int niveau;
