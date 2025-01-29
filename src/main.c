@@ -13,9 +13,12 @@ int main() {
     if (!init_game(&game)) {            //initialisation sdl
         printf("Échec de l'initialisation du jeu.\n");
         return -1;
+    }        
+
+    char background[100] = "img/background/backgroundtest1.png";
+    if(!init_background(background, &game)) {
+        return -1;
     }
-    char background[100] = "../img/background/backgroundtest1.png";
-    init_background(background, &game);
 
     int ** mat = NULL;
     if(!init_mat(game, &mat)) {
@@ -46,6 +49,8 @@ int main() {
         free(mat[i]); 
     }
     free(mat); 
+
+    combat_init();
 
     return 0;
 
