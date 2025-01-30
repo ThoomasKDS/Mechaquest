@@ -82,7 +82,7 @@ int main() {
     }
     free(mat); 
 
-    combat_init();
+    //combat_init();
 
     return 0;
 
