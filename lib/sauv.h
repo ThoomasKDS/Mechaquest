@@ -1,3 +1,6 @@
+#ifndef SAUV_H
+#define SAUV_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,3 +48,6 @@ int RecuperationJoueur(Joueur *joueur, char pseudo[50]);
 int RecuperationInventaire(Inventaire *inventaire, char pseudo[50]);
 
 int RecuperationAttaques(Attaque *attaques);
+
+
+#endif
