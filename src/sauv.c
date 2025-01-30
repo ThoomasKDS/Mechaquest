@@ -175,9 +175,9 @@ int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperati
 
 //TEST
 
-
+/*
  int main(void){
-    /*
+    
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
     char pseudo[50] = "noaha";
@@ -209,11 +209,11 @@ int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperati
     printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
     for(int i = 0;i<joueur.nb_mechas;i++){
         printf("num: %d    id: %d   niveau: %d   xp: %d\n",joueur.mechas_joueur[i].numero,joueur.mechas_joueur[i].id_mechas,joueur.mechas_joueur[i].niveau, joueur.mechas_joueur[i].xp);
-    }*/
+    }
     Joueur j1;
     char nom[50] = "noaha";
     int  n = RecuperationJoueur(&j1,nom);
     printf("%d",n);
     j1.inventaire->rappel = 2;
     SauvegardeInventaire(j1.inventaire,nom);
-}
+}*/
