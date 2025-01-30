@@ -3,26 +3,52 @@
 #include <string.h>
 #include "../lib/player.h"
 
+Uint32 lastMoveTime = 0;
+const Uint32 moveDelay = 100; // 200 ms entre les déplacements
 
-void draw_obj(game_t game, SDL_Rect obj) {
-    SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255); // Rouge
-    SDL_RenderFillRect(game.renderer, &obj); // Dessiner le rectangle du joueur
-    SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
+void deplacement(game_t game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, Joueur * j) {
 
-}
+    Uint32 now = SDL_GetTicks();
+    if (now - lastMoveTime < moveDelay) return;  // Empêche le déplacement trop rapide
 
-SDL_Rect create_obj(game_t game, int taille_w, int taille_h, int x, int y) {
-    SDL_Rect obj;
+    lastMoveTime = now; // Met à jour le dernier déplacement
 
-    float scale_x = (float)game.dms_win.w/game.img_w; 
-    float scale_y = (float)game.dms_win.h/game.img_h;
+    if(keys[SDL_SCANCODE_LEFT]) {
+        if (j->x-1 >= 0 && mat[j->y][j->x - 1].obj == RIEN) {
+                mat[j->y][j->x].obj = RIEN;
+                mat[j->y][--j->x].obj = JOUEUR;
+                hitbox_player->x -= PX * game.scale;
+        }
 
-    float scale = (scale_x < scale_y) ? scale_x : scale_y; //prend l'echelle la plus petite
+    }
+    else if(keys[SDL_SCANCODE_RIGHT]) {
+        if (j->x+1 < taille_x && mat[j->y][j->x + 1].obj == RIEN) { 
+                mat[j->y][j->x].obj = RIEN;
+                mat[j->y][++j->x].obj = JOUEUR;
+                hitbox_player->x += PX * game.scale;
 
-    obj.w = taille_w * scale;
-    obj.h = taille_h * scale;
-    obj.x = x;
-    obj.y = y;
+        }
 
-    return obj;
+    }
+    else if(keys[SDL_SCANCODE_UP]) {
+        if (j->y-1 >= 0 && mat[j->y - 1][j->x].obj == RIEN) { 
+                mat[j->y][j->x].obj = RIEN;
+                mat[--j->y][j->x].obj = JOUEUR;
+                hitbox_player->y -= PX * game.scale;
+
+        }
+
+    }
+    else if(keys[SDL_SCANCODE_DOWN]) {
+        if (j->y+1 < taille_y && mat[j->y + 1][j->x].obj == RIEN) { 
+                mat[j->y][j->x].obj = RIEN;
+                mat[++j->y][j->x].obj = JOUEUR;
+                hitbox_player->y += PX * game.scale;
+        
+        }
+
+
+    }
+
+
 }

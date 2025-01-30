@@ -16,6 +16,7 @@ typedef struct games {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture;
+    float scale; //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
     SDL_Rect dms_win;
     int img_w;
     int img_h;
@@ -24,8 +25,6 @@ typedef struct games {
 
 int init_game(game_t* game); //initialiser SDL
 void cleanUp(game_t* game); //quitter proprement SDL
-int init_background(char * img, game_t * game);// initialise le background
-void draw_background(game_t game);
-int init_mat(game_t game, int *** mat);
 
-#endif // INIT_SDL_H
+
+#endif

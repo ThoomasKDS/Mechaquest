@@ -1,12 +1,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "../lib/initGame.h"
+#include "../lib/affichage.h"
+#include "../lib/sauv.h"
 
 
-typedef struct {
-    int x;
-    int y;
-}position_t;
 
-void draw_obj(game_t game, SDL_Rect obj);
-SDL_Rect create_obj(game_t game, int taille_w, int taille_h, int x, int y);
+void deplacement(game_t game, case_t ** mat, SDL_Rect * hitbox_player,int taille_x, int taille_y, const Uint8 *keys, Joueur * j);
