@@ -16,11 +16,12 @@ int main() {
     if (!init_game(&game)) {            //initialisation sdl
         printf("Échec de l'initialisation du jeu.\n");
         return -1;
-    }
-
+    }        
 
     char background[100] = "img/background/backgroundtest1.png";
-    init_background(background, &game);
+    if(!init_background(background, &game)) {
+        return -1;
+    }
 
     case_t ** mat = NULL;
     int taille_x_mat = game.img_w/PX;
@@ -80,6 +81,8 @@ int main() {
         free(mat[i]); 
     }
     free(mat); 
+
+    combat_init();
 
     return 0;
 

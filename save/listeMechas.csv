@@ -1,3 +1,3 @@
-id_mechas,Nom,Type,ZoneApparition,NiveauMoyenApparition,ListeAttaque,Evolution,Description
-0,Tournicoton,Renouvellable,1,10,
-1,Toutourne,Renouvellable,NULL,NULL
+id_mechas,Nom,Type,Evolution,Description,ListeAttaque
+1,Tournicoton,Renouvellable,2,tourne en coton,1;2;3;6;9
+2,Toutourne,Renouvellable,0,Tourne tout,12;8;9
