@@ -159,14 +159,67 @@ int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperati
     while(fgets(ligne, sizeof(ligne), file) != NULL){       //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){
-            sscanf(ligne, "%49[^,],%d,%d,%d,%d\n",nom,&inventaire->mechaball,&inventaire->carburant,
-                                                    &inventaire->repousse,&inventaire->rappel);
-            fclose(file);
-            return OK;
+            fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
+                                            inventaire->repousse,inventaire->rappel);
+            trouver = OK;
+        }
+        else{
+            fprintf(temp,"%s",ligne);
         }
     }
-    fclose(file);   //Aucune correspondance
-    return ERR;
+    if(!trouver){
+        fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
+                                            inventaire->repousse,inventaire->rappel);
+    }
+    fclose(file);   
+    fclose(temp);
+
+    remove("../save/inventaire.csv");
+    rename("../save/temporaire.csv", "../save/inventaire.csv");
+    return OK;
+}
+int SauvegardeMechasJoueur(Mechas_Joueur * mechas_joueur,char pseudo[50],int nb_mechas) { //Recuperation de l'inventaire dans la structure inventaire avec le pseudo associer
+    int indice = 0;
+    FILE *file = fopen("../save/infomechas.csv", "r");      //Ouverture du fichier
+    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du fichier
+    if (file == NULL || temp == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    char nom[50];
+    int num;
+    char ligne[256];
+    fgets(ligne, sizeof(ligne), file); // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);
+    while(fgets(ligne, sizeof(ligne), file) != NULL){       //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
+        sscanf(ligne, "%[^,],%d", nom,&num);
+        if(!strcmp(nom,pseudo) && num == mechas_joueur[indice].numero){
+            fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+                nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
+                mechas_joueur[indice].niveau,mechas_joueur[indice].xp,mechas_joueur[indice].pv,
+                mechas_joueur[indice].pv_max,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
+                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
+            indice++;
+        }
+        else{
+            fprintf(temp,"%s",ligne);
+        }
+        
+    }
+    while(indice < nb_mechas){
+            fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+                nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
+                mechas_joueur[indice].niveau,mechas_joueur[indice].xp,mechas_joueur[indice].pv,
+                mechas_joueur[indice].pv_max,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
+                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
+            indice++;
+        }
+    fclose(file);   
+    fclose(temp);
+
+    remove("../save/infomechas.csv");
+    rename("../save/temporaire.csv", "../save/infomechas.csv");
+    return OK;
 }
 
 int SauvegardePartie(Joueur *joueur, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire avec le pseudo associer
@@ -243,4 +296,18 @@ int SauvegardePartie(Joueur *joueur, char pseudo[50]) { //Recuperation de l'inve
     for(int i = 0;i<joueur.nb_mechas;i++){
         printf("num: %d    id: %d   niveau: %d   xp: %d\n",joueur.mechas_joueur[i].numero,joueur.mechas_joueur[i].id_mechas,joueur.mechas_joueur[i].niveau, joueur.mechas_joueur[i].xp);
     }
+    Joueur j1;
+    char nom[50] = "noaha";
+    int  n = RecuperationJoueur(&j1,nom);
+    Mechas_Joueur mechas5 ={5,12,12,14,54,54,5,6,2,1,2};
+    printf("%d",n);
+    j1.mechas_joueur[4] = mechas5;
+    j1.nb_mechas++;
+    for(int i = 0; i< j1.nb_mechas;i++){
+        j1.mechas_joueur[i].pv = 0;
+    }
+    j1.inventaire->mechaball = 0;
+    j1.x = 0;
+    j1.y = 1;
+    SauvegardePartie(&j1,nom);
 }*/
