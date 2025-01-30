@@ -13,9 +13,16 @@ int RecuperationJoueur(Joueur *joueur, char pseudo[50]) {   //Recuperation de la
     while(fgets(ligne, sizeof(ligne), file) != NULL){         //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){
-            sscanf(ligne, "%49[^,],%c,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
-            joueur->inventaire = malloc(1 * sizeof(Inventaire));    //alloue la memoire de la structure inventaire
-            RecuperationInventaire(joueur->inventaire,joueur->pseudo);      //Appel la fonction de récupération de l'inventaire
+            sscanf(ligne, "%49[^,], %c,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
+            joueur->inventaire = (Inventaire *)malloc(sizeof(Inventaire));
+            if (!joueur->inventaire) {
+                perror("Erreur d'allocation mémoire");
+                fclose(file);
+                return ERREUR_OUVERTURE;
+            }
+
+            // Récupération de l'inventaire
+            RecuperationInventaire(joueur->inventaire, joueur->pseudo);
             joueur->nb_mechas = RecuperationMechasJoueur(joueur->mechas_joueur,joueur->pseudo);
             fclose(file);
             return OK;
@@ -139,33 +146,38 @@ int RecuperationMechas(Mechas *mechas_l) {           //Recuperation des attaques
 }
 int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire avec le pseudo associer
     FILE *file = fopen("../save/inventaire.csv", "r");      //Ouverture du fichier
-    FILE *file = fopen("../save/inventaire.csv", "r");      //Ouverture du fichier
-    if (file == NULL) {
+    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du fichier
+    if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-
     char nom[50];
     char ligne[256];
     fgets(ligne, sizeof(ligne), file); // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);
     while(fgets(ligne, sizeof(ligne), file) != NULL){       //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){
-            sscanf(ligne, "%49[^,],%d,%d,%d,%d\n",nom,&inventaire->mechaball,&inventaire->carburant,
-                                                    &inventaire->repousse,&inventaire->rappel);
-            fclose(file);
-            return OK;
+            fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
+                                            inventaire->repousse,inventaire->rappel);
+        }
+        else{
+            fprintf(temp,"%s",ligne);
         }
     }
-    fclose(file);   //Aucune correspondance
-    return ERR;
+    fclose(file);   
+    fclose(temp);
+
+    remove("../save/inventaire.csv");
+    rename("../save/temporaire.csv", "../save/inventaire.csv");
+    return OK;
 }
 
 //TEST
 
-/*
+
  int main(void){
-    
+    /*
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
     char pseudo[50] = "noaha";
@@ -197,5 +209,11 @@ int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperati
     printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
     for(int i = 0;i<joueur.nb_mechas;i++){
         printf("num: %d    id: %d   niveau: %d   xp: %d\n",joueur.mechas_joueur[i].numero,joueur.mechas_joueur[i].id_mechas,joueur.mechas_joueur[i].niveau, joueur.mechas_joueur[i].xp);
-    }
-}*/
+    }*/
+    Joueur j1;
+    char nom[50] = "noaha";
+    int  n = RecuperationJoueur(&j1,nom);
+    printf("%d",n);
+    j1.inventaire->rappel = 2;
+    SauvegardeInventaire(j1.inventaire,nom);
+}

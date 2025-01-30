@@ -41,6 +41,7 @@ int choix_mecha(){
         break;
     }
 }
+
 int tour_jeu(int i, int j, mecha_t tab_mecha[]){
     int tour = 1;
     int att, pv1, pv2;
