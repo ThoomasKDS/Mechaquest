@@ -16,6 +16,7 @@ int RecuperationJoueur(Joueur *joueur, char pseudo[50]) {   //Recuperation de la
             sscanf(ligne, "%49[^,],%c,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
             joueur->inventaire = malloc(1 * sizeof(Inventaire));    //alloue la memoire de la structure inventaire
             RecuperationInventaire(joueur->inventaire,joueur->pseudo);      //Appel la fonction de récupération de l'inventaire
+            joueur->nb_mechas = RecuperationMechasJoueur(joueur->mechas_joueur,joueur->pseudo);
             fclose(file);
             return OK;
         }
@@ -136,19 +137,39 @@ int RecuperationMechas(Mechas *mechas_l) {           //Recuperation des attaques
     fclose(file);
     return count;       //renvoies le nombre d'attqaues
 }
+int SauvegardeInventaire(Inventaire *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire avec le pseudo associer
+    FILE *file = fopen("../save/inventaire.csv", "r");      //Ouverture du fichier
+    FILE *file = fopen("../save/inventaire.csv", "r");      //Ouverture du fichier
+    if (file == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
 
+    char nom[50];
+    char ligne[256];
+    fgets(ligne, sizeof(ligne), file); // Lire la ligne d'en-tête
+    while(fgets(ligne, sizeof(ligne), file) != NULL){       //Prendre chaque ligne, verifie que le pseudo corresponds et copie les données si correspondance
+        sscanf(ligne, "%[^,]", nom);
+        if(!strcmp(nom,pseudo)){
+            sscanf(ligne, "%49[^,],%d,%d,%d,%d\n",nom,&inventaire->mechaball,&inventaire->carburant,
+                                                    &inventaire->repousse,&inventaire->rappel);
+            fclose(file);
+            return OK;
+        }
+    }
+    fclose(file);   //Aucune correspondance
+    return ERR;
+}
 
 //TEST
 
 /*
  int main(void){
- 
-    Joueur joueur;
-
+    
     Attaque attaques[50];
     int nb = RecuperationAttaques(attaques);
     char pseudo[50] = "noaha";
-    RecuperationJoueur(&joueur,pseudo);
+    
     printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
     printf("pseudo: %s   mechaball: %d   carburant: %d\n",joueur.pseudo,joueur.inventaire->mechaball,joueur.inventaire->carburant);
     for(int i = 0;i<nb;i++){
@@ -170,13 +191,11 @@ int RecuperationMechas(Mechas *mechas_l) {           //Recuperation des attaques
         printf("\n");
 
     }
-    
-    Mechas_Joueur mechas_joueur[50];
-    char pseudo[50] = "Noahb";
-    int nb = RecuperationMechasJoueur(mechas_joueur,pseudo);
-    printf("%d\n",nb);
-    for(int i = 0;i<nb;i++){
-        printf("num: %d    id: %d   niveau: %d   xp: %d\n",mechas_joueur[i].numero,mechas_joueur[i].id_mechas,mechas_joueur[i].niveau, mechas_joueur[i].xp);
+    Joueur joueur;
+    char pseudo[50] = "Noah";
+    RecuperationJoueur(&joueur,pseudo);
+    printf("pseudo: %s   sexe: %c\n",joueur.pseudo,joueur.sexe);
+    for(int i = 0;i<joueur.nb_mechas;i++){
+        printf("num: %d    id: %d   niveau: %d   xp: %d\n",joueur.mechas_joueur[i].numero,joueur.mechas_joueur[i].id_mechas,joueur.mechas_joueur[i].niveau, joueur.mechas_joueur[i].xp);
     }
-}
-*/
+}*/

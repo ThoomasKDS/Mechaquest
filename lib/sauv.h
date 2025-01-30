@@ -57,9 +57,10 @@ typedef struct {
     int x;
     int y;
     int pointSauvegarde;
+    int nb_mechas;
     Inventaire *inventaire;
+    Mechas_Joueur mechas_joueur [50];
 } Joueur;
-
 
 
 //FONCTIONS
@@ -69,3 +70,7 @@ int RecuperationJoueur(Joueur *joueur, char pseudo[50]);
 int RecuperationInventaire(Inventaire *inventaire, char pseudo[50]);
 
 int RecuperationAttaques(Attaque *attaques);
+
+int RecuperationMechasJoueur(Mechas_Joueur * mechas_joueur,char pseudo[50]);
+
+int RecuperationMechas(Mechas *mechas_l);
