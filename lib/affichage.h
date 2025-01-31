@@ -17,7 +17,7 @@ typedef struct {
 
 void draw_obj(game_t * game, SDL_Rect * obj);
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj);
-int init_background(char img[100], game_t * game);
+int init_background(const char *img, game_t * game);
 void draw_background(game_t * game);
 int init_mat(case_t *** mat, int taille_x, int taille_y);
 void remplir_mat(case_t ** mat, int taille_x, int taille_y) ;
