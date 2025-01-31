@@ -1,10 +1,9 @@
 #include "../lib/affichage.h"
 
-void draw_obj(game_t * game, SDL_Rect * obj) {
-    SDL_SetRenderDrawColor(game->renderer, 255, 0, 0, 255); // Rouge
-    SDL_RenderFillRect(game->renderer, obj); // Dessiner le rectangle du joueur
-    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
+void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture *imageTexture) {
+    SDL_RenderCopy(game->renderer, imageTexture, NULL, obj);
 }
+
 
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
     SDL_Rect obj;
@@ -19,16 +18,27 @@ SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, cas
     return obj;
 }
 
+SDL_Rect create_player(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
+    SDL_Rect obj;
+    mat[y/PX][x/PX].obj = type_obj;
+
+    obj.w = taille_w * game->scale;
+    obj.h = taille_h * game->scale;
+    
+    obj.x = game->dms_win.x + (x * game->scale);
+    obj.y = (game->dms_win.y + (y * game->scale));
+
+    return obj;
+}
+
 int init_background(const char * img, game_t * game) {
 
     //charger fond
-    SDL_Surface* imageSurface = IMG_Load(img);
+    SDL_Surface * imageSurface = IMG_Load(img);
     if (!imageSurface) {
         printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
-        SDL_DestroyRenderer(game->renderer);
-        SDL_DestroyWindow(game->window);
         IMG_Quit();
-        SDL_Quit();
+
         return 0;
     }
 
@@ -37,9 +47,6 @@ int init_background(const char * img, game_t * game) {
     SDL_FreeSurface(imageSurface);
     if (!game->backgroundTexture) {
         printf("Erreur de création de la texture : %s\n", SDL_GetError());
-        SDL_DestroyRenderer(game->renderer);
-        SDL_DestroyWindow(game->window);
-        SDL_Quit();
         return 0;
     }
 
@@ -124,4 +131,100 @@ void aff_mat(case_t ** mat, int taille_x, int taille_y)  {
 
     printf("\n\n\n"); 
 
+}
+
+int init_player_h(game_t * game, img_player_t * sprite_playerH) {
+    char c;
+    char img_bas[40] = "img/skin/skin_player_homme/bas";
+    char img_haut[40] = "img/skin/skin_player_homme/haut";
+    char img_gauche[40] = "img/skin/skin_player_homme/gauche";
+    char img_droite[40] = "img/skin/skin_player_homme/droite";
+    char ext[5] = ".png";
+    SDL_Surface * imageSprite[16];
+
+    for(int i = 1, j = 0; i < 5; i++) {
+        c = '0' + i;
+        //BAS
+        img_bas[30] = c;
+        img_bas[31] = '\0';
+        strcat(img_bas, ext);
+        printf("%s\n", img_bas);
+        //HAUT
+        img_haut[31] = c;
+        img_haut[32] = '\0';
+        strcat(img_haut, ext);              
+        printf("%s\n", img_haut);
+        //GAUCHE
+        img_gauche[33] = c;
+        img_gauche[34] = '\0';
+        strcat(img_gauche, ext);
+        printf("%s\n", img_gauche);
+        //DROITE
+        img_droite[33] = c;
+        img_droite[34] = '\0';
+        strcat(img_droite, ext);
+         printf("%s\n", img_droite);
+
+        //charger image
+        imageSprite[j++] = IMG_Load(img_bas);
+        imageSprite[j++] = IMG_Load(img_haut);
+        imageSprite[j++] = IMG_Load(img_gauche);
+        imageSprite[j++] = IMG_Load(img_droite);
+        j -= 4;
+
+        for(int h = 0; h < 4; h++) {
+
+            if (!imageSprite[j]) {
+                
+                printf("Erreur de chargement de l'image dans init player: %s\n", IMG_GetError());
+                IMG_Quit();
+                return 0;
+            }
+
+            // Convertir l'image en texture en fonction de sa direction
+            switch(h) {
+                case 0 :
+                    sprite_playerH->bas[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
+                    if (!sprite_playerH->bas[i-1]) {
+                        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+                        SDL_Quit();
+                        return 0;
+                    }
+                    break;
+                case 1 :
+                    sprite_playerH->haut[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
+                    if (!sprite_playerH->haut[i-1]) {
+                        printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
+                        SDL_Quit();
+                        return 0;
+                    }
+                    break;
+                case 2 :
+                    sprite_playerH->gauche[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
+                    if (!sprite_playerH->gauche[i-1]) {
+                        printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
+                        SDL_Quit();
+                        return 0;
+                    }
+                    break;
+                case 4 :
+                    sprite_playerH->droite[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
+                    if (!sprite_playerH->droite[i-1]) {
+                        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+                        SDL_Quit();
+                        return 0;
+                    }
+                    break;
+            }
+
+            SDL_FreeSurface(imageSprite[j++]);
+
+            
+
+        }
+
+
+    }
+
+    return 1;
 }

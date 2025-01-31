@@ -3,7 +3,9 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <string.h>
 #include "../lib/initGame.h"
+
 
 #define PX 32
 #define RIEN 0
@@ -15,12 +17,22 @@ typedef struct {
     int obj;
 } case_t;
 
-void draw_obj(game_t * game, SDL_Rect * obj);
+typedef struct{
+    SDL_Texture * gauche[4];
+    SDL_Texture * droite[4];
+    SDL_Texture * haut[4];
+    SDL_Texture * bas[4];
+
+}img_player_t;
+
+void draw_obj(game_t * game, SDL_Rect * obj, SDL_Texture * imageTexture);
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj);
 int init_background(const char *img, game_t * game);
 void draw_background(game_t * game);
 int init_mat(case_t *** mat, int taille_x, int taille_y);
-void remplir_mat(case_t ** mat, int taille_x, int taille_y) ;
-void aff_mat(case_t ** mat, int taille_x, int taille_y) ;
+void remplir_mat(case_t ** mat, int taille_x, int taille_y);
+void aff_mat(case_t ** mat, int taille_x, int taille_y);
+int init_player_h(game_t * game, img_player_t * sprite_playerH);
+SDL_Rect create_player(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj);
 
 #endif
