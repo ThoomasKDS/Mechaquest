@@ -17,6 +17,7 @@ int main() {
     //VARIABLES UTILES AU PROGRAMME
     game_t game;
     case_t ** mat = NULL;
+    img_player_t sprite_playerH;
     Joueur j;
     int running = 1;
     SDL_Event event;
@@ -55,9 +56,12 @@ int main() {
     j.moving = 0;
     j.screen_x = (float)(game.dms_win.x + (mat[j.y][j.x].x * game.scale));      //position du joueur en px
     j.screen_y = (float)(game.dms_win.y + (mat[j.y][j.x].y * game.scale));
+    if(!init_player_h(&game, &sprite_playerH)){
+        return -1;
+    }
 
     //CREER L'OBJET JOUEUR
-    SDL_Rect hitbox_player = create_obj(&game, PX, PX, mat[j.y][j.x].x, mat[j.y][j.x].y, mat, JOUEUR);
+    SDL_Rect hitbox_player = create_player(&game, PX, 48, mat[j.y][j.x].x, mat[j.y][j.x].y, mat, JOUEUR);
 
     
     while (running) {
@@ -85,7 +89,7 @@ int main() {
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
         draw_background(&game);
-        draw_obj(&game, &hitbox_player);           //dessine le joueur
+        draw_obj(&game, &hitbox_player, sprite_playerH.bas[0]);           //dessine le joueur
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
