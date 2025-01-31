@@ -68,16 +68,24 @@ typedef struct{
 } joueur_t;
 
 
-//FONCTIONS
+//FONCTIONS DE RECUPERATION :
 
-int RecuperationJoueur(joueur_t *joueur, char pseudo[50]);
+int recuperation_joueur(joueur_t *joueur, char pseudo[50]);
 
-int RecuperationInventaire(inventaire_t *inventaire, char pseudo[50]);
+int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]);
 
-int RecuperationAttaques(attaque_t *attaques);
+int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]);
 
-int RecuperationMechasJoueur(mechas_joueur_t * mechas_joueur,char pseudo[50]);
+int recuperation_attaques(attaque_t *attaques);
 
-int RecuperationMechas(mechas_t *mechas_l);
+int recuperation_mechas(mechas_t *mechas_l);
+
+//FONCTIONS DE SAUVEGARDE :
+
+int sauvegarde_partie(joueur_t *joueur, char pseudo[50])
+
+int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
+
+int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
 
 #endif
