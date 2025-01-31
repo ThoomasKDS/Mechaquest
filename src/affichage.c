@@ -1,25 +1,25 @@
 #include "../lib/affichage.h"
 
-void draw_obj(game_t game, SDL_Rect obj) {
-    SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255); // Rouge
-    SDL_RenderFillRect(game.renderer, &obj); // Dessiner le rectangle du joueur
-    SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
+void draw_obj(game_t * game, SDL_Rect * obj) {
+    SDL_SetRenderDrawColor(game->renderer, 255, 0, 0, 255); // Rouge
+    SDL_RenderFillRect(game->renderer, obj); // Dessiner le rectangle du joueur
+    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
 }
 
-SDL_Rect create_obj(game_t game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
+SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
     SDL_Rect obj;
     mat[y/PX][x/PX].obj = type_obj;
 
-    obj.w = taille_w * game.scale;
-    obj.h = taille_h * game.scale;
+    obj.w = taille_w * game->scale;
+    obj.h = taille_h * game->scale;
     
-    obj.x = game.dms_win.x + (x * game.scale);
-    obj.y = game.dms_win.y + (y * game.scale);
+    obj.x = game->dms_win.x + (x * game->scale);
+    obj.y = game->dms_win.y + (y * game->scale);
 
     return obj;
 }
 
-int init_background(char * img, game_t * game) {
+int init_background(const char * img, game_t * game) {
 
     //charger fond
     SDL_Surface* imageSurface = IMG_Load(img);
@@ -76,8 +76,8 @@ int init_background(char * img, game_t * game) {
     return 1;
 }
 
-void draw_background(game_t game) {
-    SDL_RenderCopy(game.renderer,game.backgroundTexture , NULL, &game.dms_win);                 // Dessiner le background
+void draw_background(game_t * game) {
+    SDL_RenderCopy(game->renderer,game->backgroundTexture , NULL, &game->dms_win);                 // Dessiner le background
 }
 
 int init_mat(case_t *** mat, int taille_x, int taille_y) {

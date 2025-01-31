@@ -12,7 +12,7 @@
 #define L 1280
 
 // Structure qui contient les initialisation de rendu du jeu 
-typedef struct games {
+typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture;

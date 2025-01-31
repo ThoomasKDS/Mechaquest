@@ -3,9 +3,9 @@
 #include <string.h>
 #include "../lib/player.h"
 
-const int FRAME = 16 ;
+const int FRAME = 10 ;
 
-void deplacement(game_t game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, Joueur * j) {
+void deplacement(game_t * game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, Joueur * j) {
 
 
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
@@ -33,8 +33,8 @@ void deplacement(game_t game, case_t ** mat, SDL_Rect * hitbox_player, int taill
         // initialise l'animation
         j->x = new_x;
         j->y = new_y;
-        j->move_dx = dx * (PX * game.scale) / FRAME;  // divise le déplacement en 10 étapes
-        j->move_dy = dy * (PX * game.scale) / FRAME;
+        j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 10 étapes
+        j->move_dy = dy * (PX * game->scale) / FRAME;
         j->moving = FRAME;  // animation sur 16 frames
 
     }
