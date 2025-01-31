@@ -61,6 +61,7 @@ typedef struct{
     float screen_x, screen_y;       // Position réelle à l'écran 
     int moving;                     // Indique si un déplacement est en cours
     float move_dx, move_dy;           // Direction du mouvement en pixels
+    int derniere_touche;
     int pointSauvegarde;
     int nb_mechas;
     inventaire_t *inventaire;

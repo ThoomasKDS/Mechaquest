@@ -51,17 +51,20 @@ int main() {
     remplir_mat(mat, taille_x_mat, taille_y_mat);
 
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
+    j.derniere_touche = 1;
     j.x = 0;
-    j.y = 0;
+    j.y = 1;
     j.moving = 0;
+    j.derniere_touche = 3;
+    mat[1][0].obj = JOUEUR;
     j.screen_x = (float)(game.dms_win.x + (mat[j.y][j.x].x * game.scale));      //position du joueur en px
     j.screen_y = (float)(game.dms_win.y + (mat[j.y][j.x].y * game.scale));
     if(!init_player_h(&game, &sprite_playerH)){
         return -1;
     }
 
-    //CREER L'OBJET JOUEUR
-    SDL_Rect hitbox_player = create_player(&game, PX, 48, mat[j.y][j.x].x, mat[j.y][j.x].y, mat, JOUEUR);
+    //SPRITE JOUEUR
+    SDL_Rect sprite_p = create_player(&game, PX, 48, mat[j.y][j.x].x, mat[j.y][j.x].y - 24, mat);
 
     
     while (running) {
@@ -83,13 +86,14 @@ int main() {
         }
 
         //deplacement du joueur 
-        deplacement(&game, mat, &hitbox_player,taille_x_mat, taille_y_mat, keys, &j);
-        animation(&j, &hitbox_player);
+        deplacement(&game, mat,taille_x_mat, taille_y_mat, keys, &j);
+        animation(&j, &sprite_p);
 
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
         draw_background(&game);
-        draw_obj(&game, &hitbox_player, sprite_playerH.bas[0]);           //dessine le joueur
+        draw_player(&game, &sprite_p, &sprite_playerH, &j);           //dessine le joueur
+    
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
