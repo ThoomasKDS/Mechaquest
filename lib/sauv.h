@@ -63,8 +63,8 @@ typedef struct{
     float move_dx, move_dy;           // Direction du mouvement en pixels
     int pointSauvegarde;
     int nb_mechas;
-    Inventaire *inventaire;
-    Mechas_Joueur mechas_joueur [50];
+    inventaire_t *inventaire;
+    mechas_joueur_t mechas_joueur [50];
 } joueur_t;
 
 
