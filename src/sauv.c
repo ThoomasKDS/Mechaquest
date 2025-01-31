@@ -280,8 +280,8 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     remove("../save/joueur.csv");
     rename("../save/temporaire.csv", "../save/joueur.csv");
 
-    Sauvegarde_inventaire(joueur->inventaire,nom);                           //appel la sauvegarde de l'inventaire
-    Sauvegarde_mechasJoueur(joueur->mechas_joueur,nom,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    sauvegarde_inventaire(joueur->inventaire,nom);                           //appel la sauvegarde de l'inventaire
+    sauvegarde_mechasJoueur(joueur->mechas_joueur,nom,joueur->nb_mechas);    //appel la sauvegarde des mechas
     return OK;
 }
 
