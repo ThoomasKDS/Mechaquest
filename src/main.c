@@ -30,10 +30,18 @@ int main() {
         printf("Echec init mat\n");
         return -1;
     }
+
+    remplir_mat(mat, taille_x_mat, taille_y_mat);
+
+    //init joueur 
     Joueur j;
     j.x = 0;
     j.y = 0;
-    remplir_mat(mat, taille_x_mat, taille_y_mat);
+    j.moving = 0;
+    j.screen_x = (float)(game.dms_win.x + (mat[j.y][j.x].x * game.scale));
+    j.screen_y = (float)(game.dms_win.y + (mat[j.y][j.x].y * game.scale));
+
+    
     SDL_Rect hitbox_player = create_obj(game, PX, PX, mat[j.y][j.x].x, mat[j.y][j.x].y, mat, JOUEUR); //position initialisé manuellement pour l'instant
     aff_mat(mat, taille_x_mat, taille_y_mat);
     int running = 1;
@@ -60,8 +68,9 @@ int main() {
             
 
         }
-
         deplacement(game, mat, &hitbox_player,taille_x_mat, taille_y_mat, keys, &j);
+        animation(&j, &hitbox_player);
+
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
         draw_background(game);

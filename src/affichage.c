@@ -117,7 +117,7 @@ void aff_mat(case_t ** mat, int taille_x, int taille_y)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
             //printf("x = %d, y = %d", mat[i][j].x, mat[i][j].y);
-            printf("%d \t", mat[i][j].obj);
+            printf("%d ", mat[i][j].obj);
         }
         printf("\n"); 
     }
