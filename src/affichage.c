@@ -1,9 +1,45 @@
 #include "../lib/affichage.h"
 
-void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture *imageTexture) {
-    SDL_RenderCopy(game->renderer, imageTexture, NULL, obj);
+void draw_obj(game_t *game, SDL_Rect *obj) {
+    SDL_SetRenderDrawColor(game->renderer, 255, 0, 0, 255); // Rouge
+    SDL_RenderFillRect(game->renderer, obj); // Dessiner le rectangle du joueur
+    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
+
 }
 
+void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j) {
+    int n_img = j->moving/3;
+
+    if(j->move_dx<0) {
+        SDL_RenderCopy(game->renderer, sprite_playerH->gauche[n_img], NULL, obj);
+    }
+    else if(j->move_dx>0){
+        SDL_RenderCopy(game->renderer, sprite_playerH->droite[n_img], NULL, obj);
+    }
+    else if(j->move_dy>0){
+        SDL_RenderCopy(game->renderer, sprite_playerH->bas[n_img], NULL, obj);
+    }
+    else if(j->move_dy<0){
+        SDL_RenderCopy(game->renderer, sprite_playerH->haut[n_img], NULL, obj);
+    }
+    else {
+        switch(j->derniere_touche){
+            case 1 :
+                SDL_RenderCopy(game->renderer, sprite_playerH->gauche[0], NULL, obj);
+                break;
+            case 2 : 
+                SDL_RenderCopy(game->renderer, sprite_playerH->droite[0], NULL, obj);
+                break;
+            case 3 :
+                SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
+                break;
+            case 4 :
+                SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
+                break;
+        }
+    }
+    
+}
 
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
     SDL_Rect obj;
@@ -18,9 +54,8 @@ SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, cas
     return obj;
 }
 
-SDL_Rect create_player(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
+SDL_Rect create_player(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat) {
     SDL_Rect obj;
-    mat[y/PX][x/PX].obj = type_obj;
 
     obj.w = taille_w * game->scale;
     obj.h = taille_h * game->scale;
@@ -207,7 +242,7 @@ int init_player_h(game_t * game, img_player_t * sprite_playerH) {
                         return 0;
                     }
                     break;
-                case 4 :
+                case 3 :
                     sprite_playerH->droite[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
                     if (!sprite_playerH->droite[i-1]) {
                         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());

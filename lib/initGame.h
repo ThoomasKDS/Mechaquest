@@ -23,6 +23,12 @@ typedef struct {
 
 } game_t;
 
+typedef struct {
+    int x;
+    int y;
+    int obj;
+} case_t;
+
 int init_game(game_t* game); //initialiser SDL
 void cleanUp(game_t* game); //quitter proprement SDL
 
