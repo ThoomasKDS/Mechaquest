@@ -18,7 +18,7 @@ int main() {
     game_t game;
     case_t ** mat = NULL;
     img_player_t sprite_playerH;
-    Joueur j;
+    joueur_t j;
     int running = 1;
     SDL_Event event;
     Uint32 frameStart;  
