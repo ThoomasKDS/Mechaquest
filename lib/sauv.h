@@ -13,7 +13,7 @@
 
 //STRUCTURE DE DONNEES//
 
-typedef struct {
+typedef struct{
     int id_attaques;
     char nom[50];
     char type[20];
@@ -21,9 +21,9 @@ typedef struct {
     int degats;
     int precision;
     int utilisations;
-} Attaque;
+} attaque_t;
 
-typedef struct {
+typedef struct{
     int id_mechas;
     char nom[50];
     char type[20];
@@ -31,16 +31,16 @@ typedef struct {
     char description[200];
     int liste_attaque[10];
     int nb_attaques;
-} Mechas;
+} mechas_t;
 
-typedef struct {
+typedef struct{
     int mechaball;
     int carburant;
     int repousse;
     int rappel;
-} Inventaire;
+} inventaire_t;
 
-typedef struct {
+typedef struct{
     int numero;
     int id_mechas;
     int niveau;
@@ -52,9 +52,9 @@ typedef struct {
     int vitesse;
     int attaque_1;
     int attaque_2;
-} Mechas_Joueur;
+} mechas_joueur_t;
 
-typedef struct {
+typedef struct{
     char pseudo[50];
     char sexe;
     int x, y;
@@ -65,19 +65,19 @@ typedef struct {
     int nb_mechas;
     Inventaire *inventaire;
     Mechas_Joueur mechas_joueur [50];
-} Joueur;
+} joueur_t;
 
 
 //FONCTIONS
 
-int RecuperationJoueur(Joueur *joueur, char pseudo[50]);
+int RecuperationJoueur(joueur_t *joueur, char pseudo[50]);
 
-int RecuperationInventaire(Inventaire *inventaire, char pseudo[50]);
+int RecuperationInventaire(inventaire_t *inventaire, char pseudo[50]);
 
-int RecuperationAttaques(Attaque *attaques);
+int RecuperationAttaques(attaque_t *attaques);
 
-int RecuperationMechasJoueur(Mechas_Joueur * mechas_joueur,char pseudo[50]);
+int RecuperationMechasJoueur(mechas_joueur_t * mechas_joueur,char pseudo[50]);
 
-int RecuperationMechas(Mechas *mechas_l);
+int RecuperationMechas(mechas_t *mechas_l);
 
 #endif
