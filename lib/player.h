@@ -7,5 +7,5 @@
 
 
 
-void deplacement(game_t *game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, Joueur * j);
-void animation(Joueur *j, SDL_Rect *hitbox_player);
+void deplacement(game_t *game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j);
+void animation(joueur_t *j, SDL_Rect *hitbox_player);

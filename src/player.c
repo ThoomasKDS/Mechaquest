@@ -5,7 +5,7 @@
 
 const int FRAME = 10 ;
 
-void deplacement(game_t * game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, Joueur * j) {
+void deplacement(game_t * game, case_t ** mat, SDL_Rect * hitbox_player, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j) {
 
 
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
@@ -43,7 +43,7 @@ void deplacement(game_t * game, case_t ** mat, SDL_Rect * hitbox_player, int tai
 }
 
 
-void animation(Joueur *j, SDL_Rect *hitbox_player) {
+void animation(joueur_t *j, SDL_Rect *hitbox_player) {
     if (j->moving > 0) {
         j->screen_x += j->move_dx;
         j->screen_y += j->move_dy;
