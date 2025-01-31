@@ -82,7 +82,7 @@ int recuperation_mechas(mechas_t *mechas_l);
 
 //FONCTIONS DE SAUVEGARDE :
 
-int sauvegarde_partie(joueur_t *joueur, char pseudo[50])
+int sauvegarde_partie(joueur_t *joueur, char pseudo[50]);
 
 int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
 
