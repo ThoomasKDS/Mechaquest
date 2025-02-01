@@ -1,15 +1,12 @@
 #include "../lib/affichage.h"
 
-void draw_obj(game_t *game, SDL_Rect *obj) {
-    SDL_SetRenderDrawColor(game->renderer, 255, 0, 0, 255); // Rouge
-    SDL_RenderFillRect(game->renderer, obj); // Dessiner le rectangle du joueur
-    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255); // remet la couleur en noir pour le fond
-
+void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
+    SDL_RenderCopy(game->renderer, img, NULL, obj);
 }
 
 void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j) {
-    int n_img = j->moving/3;
-
+    int n_img = j->moving/4;
+    
     if(j->move_dx<0) {
         SDL_RenderCopy(game->renderer, sprite_playerH->gauche[n_img], NULL, obj);
     }
@@ -23,6 +20,7 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
         SDL_RenderCopy(game->renderer, sprite_playerH->haut[n_img], NULL, obj);
     }
     else {
+        
         switch(j->derniere_touche){
             case 1 :
                 SDL_RenderCopy(game->renderer, sprite_playerH->gauche[0], NULL, obj);
@@ -31,7 +29,7 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
                 SDL_RenderCopy(game->renderer, sprite_playerH->droite[0], NULL, obj);
                 break;
             case 3 :
-                SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
+                SDL_RenderCopy(game->renderer, sprite_playerH->haut[0], NULL, obj);
                 break;
             case 4 :
                 SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
@@ -41,10 +39,15 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
     
 }
 
-SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat, int type_obj) {
+SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int ** mat, int type_obj) {
+    if(type_obj == JOUEUR || type_obj == PNG) {
+        mat[(y+24)/PX][x/PX] = type_obj;
+    }
+    else {
+        mat[y/PX][x/PX] = type_obj;
+    }
     SDL_Rect obj;
-    mat[y/PX][x/PX].obj = type_obj;
-
+    
     obj.w = taille_w * game->scale;
     obj.h = taille_h * game->scale;
     
@@ -54,17 +57,7 @@ SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, cas
     return obj;
 }
 
-SDL_Rect create_player(game_t * game, int taille_w, int taille_h, int x, int y, case_t ** mat) {
-    SDL_Rect obj;
 
-    obj.w = taille_w * game->scale;
-    obj.h = taille_h * game->scale;
-    
-    obj.x = game->dms_win.x + (x * game->scale);
-    obj.y = (game->dms_win.y + (y * game->scale));
-
-    return obj;
-}
 
 int init_background(const char * img, game_t * game) {
 
@@ -122,14 +115,14 @@ void draw_background(game_t * game) {
     SDL_RenderCopy(game->renderer,game->backgroundTexture , NULL, &game->dms_win);                 // Dessiner le background
 }
 
-int init_mat(case_t *** mat, int taille_x, int taille_y) {
-    *mat = malloc(taille_y * sizeof(case_t *));
+int init_mat(int *** mat, int taille_x, int taille_y) {
+    *mat = malloc(taille_y * sizeof(int *));
     if(*mat == NULL) {
         printf("Echec de l'allocation memoire (1)\n");
         return 0;
     }
     for(int i = 0; i < taille_y; i++) {
-        (*mat)[i] = malloc(taille_x * sizeof(case_t));
+        (*mat)[i] = malloc(taille_x * sizeof(int));
         if ((*mat)[i] == NULL) {
             printf("Échec de l'allocation de mémoire (2)\n");
             for (int j = 0; j < i; j++) {
@@ -144,22 +137,19 @@ int init_mat(case_t *** mat, int taille_x, int taille_y) {
 
 }
 
-void remplir_mat(case_t ** mat, int taille_x, int taille_y) {
+void remplir_mat(int ** mat, int taille_x, int taille_y) {
     //printf("%d  %d\n", game.dms_win.x, game.dms_win.y);
     for (int i = 0; i < taille_y; i++) {
         for (int j = 0; j < taille_x; j++) {
-            mat[i][j].x = (j * PX);       
-            mat[i][j].y = (i * PX);
-            mat[i][j].obj = 0;
+            mat[i][j] = 0;
         }
     }
 }
 
-void aff_mat(case_t ** mat, int taille_x, int taille_y)  {
+void aff_mat(int ** mat, int taille_x, int taille_y)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
-            //printf("x = %d, y = %d", mat[i][j].x, mat[i][j].y);
-            printf("%d ", mat[i][j].obj);
+            printf("%d ", mat[i][j]);
         }
         printf("\n"); 
     }
