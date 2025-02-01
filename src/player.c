@@ -3,9 +3,9 @@
 #include <string.h>
 #include "../lib/player.h"
 
-const int FRAME = 12 ;
+const int FRAME = 15 ;
 
-void deplacement(game_t * game, case_t ** mat, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j) {
+void deplacement(game_t * game, int ** mat, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j) {
 
 
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
@@ -37,10 +37,10 @@ void deplacement(game_t * game, case_t ** mat, int taille_x, int taille_y, const
     int new_y = j->y + dy;
 
     //verifie qu'on peut se deplacer
-    if (new_x >= 0 && new_x < taille_x && new_y >= 0 && new_y < taille_y && mat[new_y][new_x].obj == RIEN) {   
+    if (new_x >= 0 && new_x < taille_x && new_y >= 0 && new_y < taille_y && mat[new_y][new_x] == RIEN) {   
         // met à jour la mat
-        mat[j->y][j->x].obj = RIEN;
-        mat[new_y][new_x].obj = JOUEUR;
+        mat[j->y][j->x] = RIEN;
+        mat[new_y][new_x] = JOUEUR;
 
         // initialise l'animation
         j->x = new_x;
@@ -62,7 +62,12 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
         j->screen_y += j->move_dy;
         sprite_p->x = (int)j->screen_x;
         sprite_p->y = (int)j->screen_y - 38;
-        j->moving--; // Réduit le compteur
+        j->moving--;
+    }
+
+    if (j->moving == 0) {
+        j->move_dx = 0;
+        j->move_dy = 0;
     }
 
     

@@ -16,8 +16,8 @@ const char background[100] = "img/background/backgroundtest1.png";
 int main() {
     //VARIABLES UTILES AU PROGRAMME
     game_t game;
-    case_t ** mat = NULL;
     img_player_t sprite_playerH;
+    int ** mat = NULL;
     joueur_t j;
     int running = 1;
     SDL_Event event;
@@ -55,18 +55,18 @@ int main() {
     j.x = 0;
     j.y = 1;
     j.moving = 0;
-    j.derniere_touche = 3;
-    mat[1][0].obj = JOUEUR;
-    j.screen_x = (float)(game.dms_win.x + (mat[j.y][j.x].x * game.scale));      //position du joueur en px
-    j.screen_y = (float)(game.dms_win.y + (mat[j.y][j.x].y * game.scale));
+    j.derniere_touche = 4;
+    j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
+    j.screen_y = (float)(game.dms_win.y + (j.y * PX * game.scale));
     if(!init_player_h(&game, &sprite_playerH)){
         return -1;
     }
 
-    //SPRITE JOUEUR
-    SDL_Rect sprite_p = create_player(&game, PX, 48, mat[j.y][j.x].x, mat[j.y][j.x].y - 24, mat);
+    //printf("%d %d", mat[j.y][j.x].x, mat[j.y][j.x].y );
+        //SPRITE JOUEUR
+    SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, mat, JOUEUR);
 
-    
+   // aff_mat(mat, taille_x_mat, taille_y_mat);
     while (running) {
         frameStart = SDL_GetTicks();    //obtien heure
 
