@@ -36,6 +36,41 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
     return ERR;
 }
 
+int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
+    //Ouverture du fichier
+    FILE *file = fopen("../save/pnj.csv", "r");          
+    if (file == NULL) {                                     
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    int nb_serie;
+    char ligne[256];
+    //traitement du csv
+    fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
+    while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
+        sscanf(ligne, "%d", &nb_serie);
+        if(nb_serie == id_pnj){                             //verification du pseudo
+            sscanf(ligne, "%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj->id_pnj,pnj->pseudo,&pnj->etat,pnj->dialogueDebut,pnj->dialogueFin,&pnj->x,&pnj->y,&pnj->orientation);
+            //création du pointeur sur la structure inventaire
+            pnj->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
+            if (!pnj->inventaire) {
+                perror("Erreur d'allocation mémoire");
+                fclose(file);
+                return ERREUR_OUVERTURE;
+            }
+
+            // Récupération de l'inventaire
+            recuperation_inventaire(pnj->inventaire, pnj->pseudo);
+            //Récupérer les mechas du joueur
+            pnj->nb_mechas = recuperation_mechas_joueur(pnj->mechas_joueur,pnj->pseudo);
+            fclose(file);
+            return OK;
+        }
+    }
+    fclose(file);       //Aucune correspondance
+    return ERR;
+}
+
 int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire_t 
     //Ouverture du fichier
     FILE *file = fopen("../save/inventaire.csv", "r");      
@@ -282,6 +317,48 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
 
     sauvegarde_inventaire(joueur->inventaire,nom);                           //appel la sauvegarde de l'inventaire
     sauvegarde_mechas_joueur(joueur->mechas_joueur,nom,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    return OK;
+}
+
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
+    int trouver = 0;
+    FILE *file = fopen("../save/pnj.csv", "r");          //Ouverture du joueur
+    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du futur fichier
+    if (file == NULL || temp == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    int nb_serie;
+    char ligne[256];
+    //traitement du csv - recopie chaque ligne dans le nouveau fichier
+    fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);
+    while(fgets(ligne, sizeof(ligne), file) != NULL){       
+        sscanf(ligne, "%d", &nb_serie);
+        //verifie si la ligne est a modifié 
+        if(nb_serie == id_pnj){
+            fprintf(temp,"%d,%s,%d,%s,%s,%d,%d,%d\n",id_pnj,pnj->pseudo,pnj->etat,pnj->dialogueDebut,
+                                            pnj->dialogueFin,pnj->x,pnj->y,pnj->orientation);
+            trouver = OK;       //indique que la ligne existe et a été modifié
+        }
+        else{
+            fprintf(temp,"%s",ligne);       //recopie simplement
+        }
+    }
+    if(!trouver){       //si pas trouver alors créé une nouvelle ligne de sauvegarde
+        fprintf(temp,"%d,%s,%d,%s,%s,%d,%d,%d\n",id_pnj,pnj->pseudo,pnj->etat,pnj->dialogueDebut,
+                                            pnj->dialogueFin,pnj->x,pnj->y,pnj->orientation);
+    }
+
+    //fermeture des fichiers
+    fclose(file);   
+    fclose(temp);
+    //suppression de l'ancien fichier et renomme le nouveau
+    remove("../save/pnj.csv");
+    rename("../save/temporaire.csv", "../save/pnj.csv");
+
+    sauvegarde_inventaire(pnj->inventaire,pnj->pseudo);                           //appel la sauvegarde de l'inventaire
+    sauvegarde_mechas_joueur(pnj->mechas_joueur,pnj->pseudo,pnj->nb_mechas);    //appel la sauvegarde des mechas
     return OK;
 }
 

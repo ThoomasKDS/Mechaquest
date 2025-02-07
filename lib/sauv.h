@@ -68,6 +68,19 @@ typedef struct{
     mechas_joueur_t mechas_joueur [50];
 } joueur_t;
 
+typedef struct{
+    int id_pnj;
+    char pseudo[50];
+    int etat;
+    char dialogueDebut[500];
+    char dialogueFin[500];
+    int x, y;
+    int orientation;
+    int nb_mechas;
+    inventaire_t *inventaire;
+    mechas_joueur_t mechas_joueur [50];
+} pnj_t;
+
 
 //FONCTIONS DE RECUPERATION :
 
@@ -81,6 +94,10 @@ int recuperation_attaques(attaque_t *attaques);
 
 int recuperation_mechas(mechas_t *mechas_l);
 
+int recuperation_pnj(pnj_t *pnj, int id_pnj);
+
+
+
 //FONCTIONS DE SAUVEGARDE :
 
 int sauvegarde_partie(joueur_t *joueur, char pseudo[50]);
@@ -88,5 +105,7 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]);
 int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
 
 int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
+
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj);
 
 #endif
