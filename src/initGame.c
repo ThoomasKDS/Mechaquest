@@ -6,6 +6,9 @@
 #include "../lib/initGame.h"
 
 
+//Initialisation de sdl 
+//Initialisation de sdl mixer
+//Initialisation de sdl image
 
 int init_game(game_t* game) {
 
@@ -79,6 +82,7 @@ int init_game(game_t* game) {
 
     return 1;
 }
+
 
 // Libération des ressources et fermeture SDL
 void cleanUp(game_t* game) {

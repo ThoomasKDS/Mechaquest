@@ -9,6 +9,7 @@
 #include "../lib/sauv.h"
 
 
+//TAILLE D'UNE CASE
 #define PX 32
 
 //COLLISION
@@ -23,7 +24,7 @@
 #define PC 7
 #define PORTE 4
 
-//CHAGEMENT MAP
+//CHANGEMENT MAP
 
 #define TPMAP1 -11
 #define TPMAP2 -12
@@ -46,7 +47,7 @@
 
 
 
-
+//Structure qui contient les images animés du joueur
 typedef struct{
     SDL_Texture * gauche[4];
     SDL_Texture * droite[4];
@@ -55,15 +56,22 @@ typedef struct{
 
 }img_player_t;
 
-void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img );
-void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j);
-SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);
-int init_background(game_t * game);
-void draw_background(game_t * game);
-int init_mat(game_t *game, int taille_x, int taille_y);
-int remplir_mat(game_t * game, int taille_x, int taille_y);
-void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat);
-void free_mat(game_t *game, int taille_x, int taille_y);
-int init_player_h(game_t * game, img_player_t * sprite_playerH);
+
+//FONCTION BACKGROUND
+int init_background(game_t * game);     //initalise la background
+void draw_background(game_t * game);    //dessine le background
+
+//FONCTION MAT
+int init_mat(game_t *game, int taille_x, int taille_y);               //initialise la matrice
+int remplir_mat(game_t * game, int taille_x, int taille_y);           //rempli les matrices avec les txt
+void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat);   //affiche la matrice dans le terminal
+void free_mat(game_t *game, int taille_x, int taille_y);              //libere la matrice
+
+//FONCTION GESTION OBJETS
+int init_player_h(game_t * game, img_player_t * sprite_playerH);                                            //initialise le joueur 
+SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
+void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j);                 //dessine le joueur
+void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
+
 
 #endif

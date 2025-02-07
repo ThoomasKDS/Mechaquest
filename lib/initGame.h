@@ -17,21 +17,20 @@ typedef struct {
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture[6];
     int *** mat ;
-    float scale; //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
+    float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
     SDL_Rect dms_win;
     int img_w;
     int img_h;
     int mat_active;
 } game_t;
 
-typedef struct {
-    int x;
-    int y;
-    int obj;
-} case_t;
 
-int init_game(game_t* game); //initialiser SDL
-void cleanUp(game_t* game); //quitter proprement SDL
+//Initialisation de sdl 
+//Initialisation de sdl mixer
+//Initialisation de sdl image
+int init_game(game_t* game);
+// Libération des ressources et fermeture SDL
+void cleanUp(game_t* game); 
 
 
 #endif

@@ -30,7 +30,7 @@ int main() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     int last_case = RIEN;
 
-    game.mat_active = 5;
+    game.mat_active = 4;
 
 
     //INITIALISATION SDL    
@@ -59,8 +59,8 @@ int main() {
     aff_mat(&game, taille_x_mat, taille_y_mat, 5);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
     j.derniere_touche = 1;
-    j.x = 17;
-    j.y = 2;
+    j.x = 13;
+    j.y = 15;
     j.moving = 0;
     j.derniere_touche = 4;
     j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
