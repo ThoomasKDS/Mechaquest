@@ -3,11 +3,12 @@
 #include <string.h>
 #include "../lib/player.h"
 
-const int FRAME = 15 ;
 
+const int FRAME = 15 ;      //Nombre d'image dans l'animation
+
+
+//Gestion de deplacement du joueur et du tp entre les maps
 void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
-
-
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
 
     int dx = 0, dy = 0;
@@ -46,7 +47,7 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
 
              //place au bonne endroit le joueur en fonction de ou le tp se trouve
             if(new_y == 0) j->y = taille_y - 2;
-            else if(new_y == taille_y - 1) j->y = 1;
+            else if(new_y == taille_y-1) j->y = 1;
             if(new_x == taille_x - 1) j->x = 1;
             else if(new_x == 0) j->x = taille_x - 2;
 
@@ -54,8 +55,9 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
 
             j->screen_x = game->dms_win.x + (PX * j->x * game->scale);
             j->screen_y = game->dms_win.y + (PX * j->y * game->scale);
+            sprite_p->x = j->screen_x;
+            sprite_p->y = j->screen_y;
             game->mat[game->mat_active][j->y][j->x] = JOUEUR;
-            aff_mat(game, taille_x, taille_y, game->mat_active);
             
         }
 
@@ -68,21 +70,20 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
             // initialise l'animation
             j->x = new_x;
             j->y = new_y;
-            j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 12 étapes
+            j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 15 étapes
             j->move_dy = dy * (PX * game->scale) / FRAME;
             j->moving = FRAME;  // animation sur 16 frames
         }
 
 
     }
-    //printf("Sprite mis à jour : x=%d, y=%d,     mat_x = %d,     mat_y = %d\n", sprite_p->x, sprite_p->y, j->x, j->y);
-
     
 
 
 }
 
 
+//animation du joueur en switchant entre les sprites
 void animation(joueur_t *j, SDL_Rect *sprite_p) {
     if (j->moving > 0) {
         j->screen_x += j->move_dx;
