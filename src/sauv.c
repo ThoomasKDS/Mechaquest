@@ -191,6 +191,47 @@ int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous l
     fclose(file);
     return count;                                                   //renvoies le nombre de mechas
 }
+
+int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mechas
+    int taille;
+    //Ouverture du fichier
+    FILE *file = fopen("../save/zone.csv", "r");       
+    if (file == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+
+   
+    int count = 0;
+    char MechasZone[30];
+    char ligne[256];
+    //traitement du csv
+    fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
+
+    while (fgets(ligne, sizeof(ligne), file) != NULL){      //Lecture de chaque ligne
+        sscanf(ligne, "%d,%d,%d,%d,%d,%[^\n]",
+                                 &zone_l[count].id_zone,
+                                 &zone_l[count].NiveauMoyenApparition,
+                                 &zone_l[count].VitesseMoyenne,
+                                 &zone_l[count].Attaque,
+                                 &zone_l[count].Defense,
+                                 MechasZone);                         //recupere les numero des attaques mais en chaines de caractere
+
+        taille = 0;                                                 // Initialisation du compteur
+        char *token = strtok(MechasZone, ";");                        // Découpe la première partie des attaques
+
+        while (token != NULL) {
+            zone_l[count].listeMechasZone[taille] = atoi(token);    // Convertit en entier et stocke
+            taille++;                                               // Incrémente le compteur
+            token = strtok(NULL, ";");                              // Passe au nombre suivant
+        }
+        zone_l[count].nb_zone = taille;                       
+        count++;
+    }
+        
+    fclose(file);
+    return count;                                                   //renvoies le nombre de mechas
+}
 //--------FONCTIONS DE SAUVEGARDE-----------
 
 int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
@@ -365,6 +406,6 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
 //TEST
 
 /*
- int main(void){
-    
+int main(void){
+   
 }*/
