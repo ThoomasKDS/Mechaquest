@@ -89,7 +89,7 @@ typedef struct{
     int Attaque;
     int Defense;
     int listeMechasZone[10];
-    int nb_zone;
+    int nb_mechas;
 }zone_t;
 
 // FONCTIONS DE RECUPERATION : 
