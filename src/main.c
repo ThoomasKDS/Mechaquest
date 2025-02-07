@@ -29,7 +29,7 @@ int main() {
     int frameTime;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     int last_case = RIEN;
-
+    zone_t zone[10];
     game.mat_active = 4;
 
 
@@ -72,6 +72,16 @@ int main() {
 
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
+
+    //INIT ZONE
+
+   /* recuperation_zone(zone);
+
+    for(int i=0; i <10;i++) {
+        printf("%d\n", zone[i].id_zone);
+    }*/
+
+   
 
     while (running) {
         frameStart = SDL_GetTicks();    //obtien heure

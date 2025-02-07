@@ -15,7 +15,7 @@
 */
 int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
-    FILE *file = fopen("../save/joueur.csv", "r");          
+    FILE *file = fopen("save/joueur.csv", "r");          
     if (file == NULL) {                                     
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -50,7 +50,7 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
 
 int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
-    FILE *file = fopen("../save/pnj.csv", "r");          
+    FILE *file = fopen("save/pnj.csv", "r");          
     if (file == NULL) {                                     
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -85,7 +85,7 @@ int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde
 
 int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire_t 
     //Ouverture du fichier
-    FILE *file = fopen("../save/inventaire.csv", "r");      
+    FILE *file = fopen("save/inventaire.csv", "r");      
     if (file == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -111,7 +111,7 @@ int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recup
 int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) { //Recuperation desmechas du joueur
     int nb_mechas = 0;  
     //Ouverture du fichier
-    FILE *file = fopen("../save/infomechas.csv", "r");      
+    FILE *file = fopen("save/infomechas.csv", "r");      
     if (file == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -138,7 +138,7 @@ int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) 
 
 int recuperation_attaques(attaque_t *attaques) {           //Recuperation des attaques
     //Ouverture du fichier
-    FILE *file = fopen("../save/attaques.csv", "r");        
+    FILE *file = fopen("save/attaques.csv", "r");        
     if (file == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -167,7 +167,7 @@ int recuperation_attaques(attaque_t *attaques) {           //Recuperation des at
 int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous les mechas
     int taille;
     //Ouverture du fichier
-    FILE *file = fopen("../save/listeMechas.csv", "r");       
+    FILE *file = fopen("save/listeMechas.csv", "r");       
     if (file == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -207,9 +207,9 @@ int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous l
 int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mechas
     int taille;
     //Ouverture du fichier
-    FILE *file = fopen("../save/zone.csv", "r");       
+    FILE *file = fopen("save/zone.csv", "r");       
     if (file == NULL) {
-        perror("Erreur d'ouverture du fichier");
+        perror("Erreur d'ouverture du fichier ");
         return ERREUR_OUVERTURE;
     }
 
@@ -248,8 +248,8 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
 
 int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
     int trouver = 0;
-    FILE *file = fopen("../save/inventaire.csv", "r");      //Ouverture du fichier inventaire
-    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du futur fichier
+    FILE *file = fopen("save/inventaire.csv", "r");      //Ouverture du fichier inventaire
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -280,14 +280,14 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
     fclose(temp);
 
     //supprime et renomme le nouveau fichier
-    remove("../save/inventaire.csv");
-    rename("../save/temporaire.csv", "../save/inventaire.csv");
+    remove("save/inventaire.csv");
+    rename("save/temporaire.csv", "save/inventaire.csv");
     return OK;
 }
 int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas) { //Sauvegarde les mechas du joueur
     int indice = 0;
-    FILE *file = fopen("../save/infomechas.csv", "r");      //Ouverture du fichier infomechas
-    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du futur fichier
+    FILE *file = fopen("save/infomechas.csv", "r");      //Ouverture du fichier infomechas
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -326,15 +326,15 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
     fclose(file);   
     fclose(temp);
     //suppression de l'ancien et renomme le nouveau
-    remove("../save/infomechas.csv");
-    rename("../save/temporaire.csv", "../save/infomechas.csv");
+    remove("save/infomechas.csv");
+    rename("save/temporaire.csv", "save/infomechas.csv");
     return OK;
 }
 
 int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la partie globale
     int trouver = 0;
-    FILE *file = fopen("../save/joueur.csv", "r");          //Ouverture du joueur
-    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du futur fichier
+    FILE *file = fopen("save/joueur.csv", "r");          //Ouverture du joueur
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -365,8 +365,8 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     fclose(file);   
     fclose(temp);
     //suppression de l'ancien fichier et renomme le nouveau
-    remove("../save/joueur.csv");
-    rename("../save/temporaire.csv", "../save/joueur.csv");
+    remove("save/joueur.csv");
+    rename("save/temporaire.csv", "save/joueur.csv");
 
     sauvegarde_inventaire(joueur->inventaire,nom);                           //appel la sauvegarde de l'inventaire
     sauvegarde_mechas_joueur(joueur->mechas_joueur,nom,joueur->nb_mechas);    //appel la sauvegarde des mechas
@@ -375,8 +375,8 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
 
 int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
     int trouver = 0;
-    FILE *file = fopen("../save/pnj.csv", "r");          //Ouverture du joueur
-    FILE *temp = fopen("../save/temporaire.csv", "w");      //Ouverture du futur fichier
+    FILE *file = fopen("save/pnj.csv", "r");          //Ouverture du joueur
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -407,8 +407,8 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
     fclose(file);   
     fclose(temp);
     //suppression de l'ancien fichier et renomme le nouveau
-    remove("../save/pnj.csv");
-    rename("../save/temporaire.csv", "../save/pnj.csv");
+    remove("save/pnj.csv");
+    rename("save/temporaire.csv", "save/pnj.csv");
 
     sauvegarde_inventaire(pnj->inventaire,pnj->pseudo);                           //appel la sauvegarde de l'inventaire
     sauvegarde_mechas_joueur(pnj->mechas_joueur,pnj->pseudo,pnj->nb_mechas);    //appel la sauvegarde des mechas

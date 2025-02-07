@@ -115,7 +115,7 @@ void spawn_mecha(joueur_t * j, int obj_case) {
         //printf("n : %d |p:  %d\n", n, j->proba_combat);
         if(n < j->proba_combat) {
             j->proba_combat = 0;
-            printf("toudoudoudoud tintintitn\n");
+            
         }
     }
 }
