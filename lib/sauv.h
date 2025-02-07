@@ -82,8 +82,17 @@ typedef struct{
     mechas_joueur_t mechas_joueur [50];
 } pnj_t;
 
+typedef struct{
+    int id_zone;
+    int NiveauMoyenApparition;
+    int VitesseMoyenne;
+    int Attaque;
+    int Defense;
+    int listeMechasZone[10];
+    int nb_zone;
+}zone_t;
 
-//FONCTIONS DE RECUPERATION :
+// FONCTIONS DE RECUPERATION : 
 
 int recuperation_joueur(joueur_t *joueur, char pseudo[50]);
 
@@ -96,6 +105,8 @@ int recuperation_attaques(attaque_t *attaques);
 int recuperation_mechas(mechas_t *mechas_l);
 
 int recuperation_pnj(pnj_t *pnj, int id_pnj);
+
+int recuperation_zone(zone_t *zone);
 
 
 

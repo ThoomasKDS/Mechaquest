@@ -1,3 +1,8 @@
+/**
+ * \file player.c
+ * \brief fichier contenant les fonctions de déplacement
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

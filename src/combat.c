@@ -1,3 +1,8 @@
+/**
+ * \file combat.c
+ * \brief fichier contenant la fonctions de comba
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
