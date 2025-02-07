@@ -5,7 +5,7 @@
 
 const int FRAME = 15 ;
 
-void deplacement(game_t * game, int ** mat, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j) {
+void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
 
 
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
@@ -37,19 +37,46 @@ void deplacement(game_t * game, int ** mat, int taille_x, int taille_y, const Ui
     int new_y = j->y + dy;
 
     //verifie qu'on peut se deplacer
-    if (new_x >= 0 && new_x < taille_x && new_y >= 0 && new_y < taille_y && mat[new_y][new_x] == RIEN) {   
-        // met à jour la mat
-        mat[j->y][j->x] = RIEN;
-        mat[new_y][new_x] = JOUEUR;
+    if (new_x >= 0 && new_x <= taille_x && new_y >= 0 && new_y <= taille_y && game->mat[game->mat_active][new_y][new_x] <= RIEN) {   
+        
+        if(game->mat[game->mat_active][new_y][new_x] <= TPMAP1) { //si on change de map
+            game->mat[game->mat_active][j->y][j->x] = RIEN;
+            game->mat_active = -(game->mat[game->mat_active][new_y][new_x] + 11); //converti avec le bonne indice de la map
+            
 
-        // initialise l'animation
-        j->x = new_x;
-        j->y = new_y;
-        j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 12 étapes
-        j->move_dy = dy * (PX * game->scale) / FRAME;
-        j->moving = FRAME;  // animation sur 16 frames
+             //place au bonne endroit le joueur en fonction de ou le tp se trouve
+            if(new_y == 0) j->y = taille_y - 2;
+            else if(new_y == taille_y - 1) j->y = 1;
+            if(new_x == taille_x - 1) j->x = 1;
+            else if(new_x == 0) j->x = taille_x - 2;
+
+
+
+            j->screen_x = game->dms_win.x + (PX * j->x * game->scale);
+            j->screen_y = game->dms_win.y + (PX * j->y * game->scale);
+            game->mat[game->mat_active][j->y][j->x] = JOUEUR;
+            aff_mat(game, taille_x, taille_y, game->mat_active);
+            
+        }
+
+        else {
+            // met à jour la mat
+            game->mat[game->mat_active][j->y][j->x] = *last_case;
+            *last_case = game->mat[game->mat_active][new_y][new_x];
+            game->mat[game->mat_active][new_y][new_x] = JOUEUR;
+
+            // initialise l'animation
+            j->x = new_x;
+            j->y = new_y;
+            j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 12 étapes
+            j->move_dy = dy * (PX * game->scale) / FRAME;
+            j->moving = FRAME;  // animation sur 16 frames
+        }
+
 
     }
+    //printf("Sprite mis à jour : x=%d, y=%d,     mat_x = %d,     mat_y = %d\n", sprite_p->x, sprite_p->y, j->x, j->y);
+
     
 
 

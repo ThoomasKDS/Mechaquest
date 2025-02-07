@@ -15,12 +15,13 @@
 typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
-    SDL_Texture* backgroundTexture;
+    SDL_Texture* backgroundTexture[6];
+    int *** mat ;
     float scale; //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
     SDL_Rect dms_win;
     int img_w;
     int img_h;
-
+    int mat_active;
 } game_t;
 
 typedef struct {

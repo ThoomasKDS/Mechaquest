@@ -1,5 +1,7 @@
 #include "../lib/affichage.h"
 
+
+
 void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
     SDL_RenderCopy(game->renderer, img, NULL, obj);
 }
@@ -39,12 +41,12 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
     
 }
 
-SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int ** mat, int type_obj) {
-    if(type_obj == JOUEUR || type_obj == PNG) {
-        mat[(y+24)/PX][x/PX] = type_obj;
+SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
+    if(type_obj == JOUEUR || type_obj == PNJ) {
+        game->mat[n_mat][(y+24)/PX][x/PX] = type_obj;
     }
     else {
-        mat[y/PX][x/PX] = type_obj;
+        game->mat[n_mat][y/PX][x/PX] = type_obj;
     }
     SDL_Rect obj;
     
@@ -59,30 +61,141 @@ SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int
 
 
 
-int init_background(const char * img, game_t * game) {
+void draw_background(game_t * game) {
+    SDL_RenderCopy(game->renderer,game->backgroundTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
+}
 
-    //charger fond
-    SDL_Surface * imageSurface = IMG_Load(img);
-    if (!imageSurface) {
-        printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
-        IMG_Quit();
-
+int init_mat(game_t *game, int taille_x, int taille_y) {
+    game->mat = malloc(6 * sizeof(int **));
+    if (game->mat == NULL) {
+        printf("Échec de l'allocation mémoire principale\n");
         return 0;
     }
 
-    // Convertir la fond en texture
-    game->backgroundTexture = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
-    SDL_FreeSurface(imageSurface);
-    if (!game->backgroundTexture) {
-        printf("Erreur de création de la texture : %s\n", SDL_GetError());
-        return 0;
+    for (int i = 0; i < 6; i++) {
+        game->mat[i] = malloc(taille_y * sizeof(int *));
+        if (game->mat[i] == NULL) {
+            printf("Échec de l'allocation mémoire (1) pour mat[%d]\n", i);
+            // Libération de la mémoire déjà allouée
+            for (int k = 0; k < i; k++) {
+                free(game->mat[k]);
+            }
+            free(game->mat);
+            return 0;
+        }
+
+        for (int j = 0; j < taille_y; j++) {
+            game->mat[i][j] = malloc(taille_x * sizeof(int));
+            if (game->mat[i][j] == NULL) {
+                printf("Échec de l'allocation mémoire (2) pour mat[%d][%d]\n", i, j);
+                // Libération de la mémoire déjà allouée dans mat[i]
+                for (int h = 0; h < j; h++) {
+                    free(game->mat[i][h]);
+                }
+                free(game->mat[i]);
+
+                // Libération des matrices précédentes
+                for (int k = 0; k < i; k++) {
+                    for (int l = 0; l < taille_y; l++) {
+                        free(game->mat[k][l]);
+                    }
+                    free(game->mat[k]);
+                }
+                free(game->mat);
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+}
+
+void free_mat(game_t *game, int taille_x, int taille_y) {
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < taille_y; j++) {
+            free(game->mat[i][j]);
+        }
+        free(game->mat[i]);
+    }
+    free(game->mat);
+}
+
+int remplir_mat(game_t * game, int taille_x, int taille_y) {
+    char chemin[100] = "save/map";
+    char ext[5] = ".txt";
+    for(int i = 0; i < 6; i++) {
+        chemin[8] = '0' + i + 1;
+        chemin[9] = '\0';
+        strcat(chemin, ext);
+        FILE *file = fopen(chemin, "r");   
+        int n;       
+        if (file == NULL) {                                     
+            printf("Erreur d'ouverture du fichier matrice");
+            return 0;
+        }
+        for(int j = 0; j < taille_y; j++) {
+            for(int h = 0; h < taille_x; h++) {
+                fscanf(file, "%d", &n);
+                game->mat[i][j][h] = n;
+            }
+            
+        }
+
+        fclose(file);
+    }
+    
+    return 1;
+}
+
+void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
+    for(int i = 0; i < taille_y; i++) {
+        for(int j = 0;j < taille_x; j++){
+            printf("%d", game->mat[n_mat][i][j]);
+        }
+        printf("\n"); 
+    }
+
+    printf("\n\n\n"); 
+
+}
+
+
+int init_background(game_t * game) {
+
+    char ext[5] = ".png";
+    char chemin[100] = "img/background/fond";
+
+    for(int i = 0; i < 6; i++) {
+        chemin[19] = '0' + (i + 1);
+        chemin[20] = '\0';
+        strcat(chemin, ext);
+        printf("%s\n", chemin);
+
+        //charger fond
+        SDL_Surface * imageSurface = IMG_Load(chemin);
+        if (!imageSurface) {
+            printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
+            IMG_Quit();
+
+            return 0;
+        }
+
+        // Convertir la fond en texture
+        game->backgroundTexture[i] = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
+        SDL_FreeSurface(imageSurface);
+        if (!game->backgroundTexture[i]) {
+            printf("Erreur de création de la texture : %s\n", SDL_GetError());
+            return 0;
+        }
     }
 
     //pour que le fond s'adapte à l'ecran
     //ici
+    //chaque fond etant de meme dimension on ne prend que le premier
+
     SDL_GetRendererOutputSize(game->renderer, &game->dms_win.w, &game->dms_win.h);       //dimensions ecran
 
-    SDL_QueryTexture(game->backgroundTexture, NULL, NULL, &game->img_w, &game->img_h);       //dimensions img
+    SDL_QueryTexture(game->backgroundTexture[0], NULL, NULL, &game->img_w, &game->img_h);       //dimensions img
 
     float img_ratio = (float)game->img_w / (float)game->img_h;
     float win_ratio = (float)game->dms_win.w / (float)game->dms_win.h;
@@ -107,55 +220,10 @@ int init_background(const char * img, game_t * game) {
     float scale_y = (float)game->dms_win.h/game->img_h;
 
     game->scale = (scale_x < scale_y) ? scale_x : scale_y; //prend l'echelle la plus petite
+    
+
 
     return 1;
-}
-
-void draw_background(game_t * game) {
-    SDL_RenderCopy(game->renderer,game->backgroundTexture , NULL, &game->dms_win);                 // Dessiner le background
-}
-
-int init_mat(int *** mat, int taille_x, int taille_y) {
-    *mat = malloc(taille_y * sizeof(int *));
-    if(*mat == NULL) {
-        printf("Echec de l'allocation memoire (1)\n");
-        return 0;
-    }
-    for(int i = 0; i < taille_y; i++) {
-        (*mat)[i] = malloc(taille_x * sizeof(int));
-        if ((*mat)[i] == NULL) {
-            printf("Échec de l'allocation de mémoire (2)\n");
-            for (int j = 0; j < i; j++) {
-                free((*mat)[j]);                   //en cas d'echec libere la memoire deja alloué
-            }
-            free(*mat);                          //de meme
-            return 0;
-        }
-    }
-
-    return 1;
-
-}
-
-void remplir_mat(int ** mat, int taille_x, int taille_y) {
-    //printf("%d  %d\n", game.dms_win.x, game.dms_win.y);
-    for (int i = 0; i < taille_y; i++) {
-        for (int j = 0; j < taille_x; j++) {
-            mat[i][j] = 0;
-        }
-    }
-}
-
-void aff_mat(int ** mat, int taille_x, int taille_y)  {
-    for(int i = 0; i < taille_y; i++) {
-        for(int j = 0;j < taille_x; j++){
-            printf("%d ", mat[i][j]);
-        }
-        printf("\n"); 
-    }
-
-    printf("\n\n\n"); 
-
 }
 
 int init_player_h(game_t * game, img_player_t * sprite_playerH) {

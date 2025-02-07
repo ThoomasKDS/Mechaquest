@@ -77,7 +77,9 @@ int init_game(game_t* game) {
 
 // Libération des ressources et fermeture SDL
 void cleanUp(game_t* game) {
-    SDL_DestroyTexture(game->backgroundTexture);
+    for(int i = 0; i < 6; i++) {
+        SDL_DestroyTexture(game->backgroundTexture[i]);
+    }
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyWindow(game->window);
     IMG_Quit();

@@ -11,20 +11,22 @@
 //CONSTANTE
 const int FPS_LIMIT = 60;
 const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
-const char background[100] = "img/background/backgroundtest1.png";
+
 
 int main() {
     //VARIABLES UTILES AU PROGRAMME
     game_t game;
     img_player_t sprite_playerH;
-    int ** mat = NULL;
     joueur_t j;
     int running = 1;
     SDL_Event event;
     Uint32 frameStart;  
     int frameTime;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    
+    int last_case = RIEN;
+
+    game.mat_active = 5;
+
 
     //INITIALISATION SDL    
     if (!init_game(&game)) {            
@@ -33,7 +35,7 @@ int main() {
     }        
 
     //INITIALISATION BACKGROUND
-    if(!init_background(background, &game)) {
+    if(!init_background(&game)) {
         return -1;
     }
 
@@ -42,18 +44,18 @@ int main() {
     int taille_y_mat = game.img_h/PX;
 
     //ALLOUE MEMOIRE POUR MATRICE
-    if(!init_mat(&mat, taille_x_mat, taille_y_mat)) {
+    if(!init_mat(&game, taille_x_mat, taille_y_mat)) {
         printf("Echec init mat\n");
         return -1;
     }
 
     //REMPLI LA MATRICE DE 0
-    remplir_mat(mat, taille_x_mat, taille_y_mat);
-
+    remplir_mat(&game, taille_x_mat, taille_y_mat);
+    aff_mat(&game, taille_x_mat, taille_y_mat, 5);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
     j.derniere_touche = 1;
-    j.x = 0;
-    j.y = 1;
+    j.x = 17;
+    j.y = 2;
     j.moving = 0;
     j.derniere_touche = 4;
     j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
@@ -62,11 +64,9 @@ int main() {
         return -1;
     }
 
-    //printf("%d %d", mat[j.y][j.x].x, mat[j.y][j.x].y );
-        //SPRITE JOUEUR
-    SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, mat, JOUEUR);
+    //SPRITE JOUEUR
+    SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
 
-   // aff_mat(mat, taille_x_mat, taille_y_mat);
     while (running) {
         frameStart = SDL_GetTicks();    //obtien heure
 
@@ -86,7 +86,7 @@ int main() {
         }
 
         //deplacement du joueur 
-        deplacement(&game, mat,taille_x_mat, taille_y_mat, keys, &j);
+        deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
         animation(&j, &sprite_p);
 
         SDL_RenderClear(game.renderer);     //efface l'ecran
@@ -105,12 +105,8 @@ int main() {
 
 
     cleanUp(&game);
-    for (int i = 0; i < game.img_h / PX; i++) {
-        free(mat[i]); 
-    }
-    free(mat); 
+    free_mat(&game,taille_x_mat, taille_y_mat);
 
-    //combat_init();
 
     return 0;
 

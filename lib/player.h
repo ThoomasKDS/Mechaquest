@@ -8,5 +8,5 @@
 
 
 
-void deplacement(game_t *game, int** mat, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j);
+void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p);
 void animation(joueur_t *j, SDL_Rect *sprite_p);
