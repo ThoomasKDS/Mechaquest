@@ -113,21 +113,12 @@ int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[]){
     char type_mecha[50];
     while(choix < 1 || choix > 3){
         printf("Quel Mecha échanger ?\n");
-        for(i = 1; i < joueur->nb_mechas && i < 4; i++){
-            //Boucle pour récupérer le nom du Mecha plus facilement
-            for(j = 0; j < joueur->nb_mechas; j++){
-                if(joueur->mechas_joueur[i].id_mechas == mecha[j].id_mechas){
-                    printf("ID Mecha : %d\n", joueur->mechas_joueur[i].id_mechas);
-                    strcpy(nom_mecha, mecha[j].nom);
-                    strcpy(type_mecha, mecha[j].type);
-                }
-            }
-
-
-            printf("Mecha test : %s", mecha[joueur_t->mechas_joueur[i].id_mechas-1].nom););
+        for(j = 0; j < 4; j++){
+            printf("%d\n", joueur->mechas_joueur[j].id_mechas);
+        }
+        for(i = 0; i < joueur->nb_mechas && i < 4; i++){
+            printf("Nom : %s\n", mecha[joueur->mechas_joueur[i].id_mechas-1].nom);
             printf("Mecha %d : \n", i);
-            printf("Nom  : %s\n", nom_mecha);
-            printf("Type : %s\n", type_mecha);
             printf("Niveau : %d\n", joueur->mechas_joueur[i].niveau);
             printf("PV : %d\n", joueur->mechas_joueur[i].pv);
             printf("PV Max: %d\n", joueur->mechas_joueur[i].pv_max);
@@ -138,6 +129,7 @@ int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[]){
             printf("Défense : %d\n", joueur->mechas_joueur[i].defense);
             printf("\n");
         }
+
         printf("Choix : ");
         scanf("%d", &choix);
         //A terminer
@@ -291,11 +283,11 @@ void combat_init(){
     level_mechas(gagnant-1, perdant-1, tab_mecha, mecha);
 
 }
-
+/*
 int main(){
     //combat_init();
     joueur_t joueur;
     int i = 1;
 
     choix_action(i, nom);
-}
+}*/
