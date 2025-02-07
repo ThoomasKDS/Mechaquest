@@ -1,3 +1,7 @@
+/**
+ * \file affichage.c
+ * \brief fichier contenant la fonctions d'affichage utilisant la librérie de SDL
+*/
 #include "../lib/affichage.h"
 
 

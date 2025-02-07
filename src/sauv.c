@@ -1,6 +1,18 @@
+/**
+ * \file sauv.c
+ * \brief fichier contenant les fonctions de sauvegarde et récupération
+*/
+
 #include "../lib/sauv.h"
 
 //--------FONCTIONS DE RECUPERATION-----------
+
+/**
+ * \fn int recuperation_joueur
+ * \brief fonction qui permet de récupérer tous les informations du joueur dans une structure du type joueur_t à partir de son pseudo. 
+ * Si le pseudo n'existe pas dans le fichier joueur.csv, on en créra une nouvelle
+ * \return retourne OK si tous marche, ERREUR_OUVERTURE si le fichier joueur.csv n'est pas trouver et ERR pour un autre problème.
+*/
 int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
     FILE *file = fopen("../save/joueur.csv", "r");          

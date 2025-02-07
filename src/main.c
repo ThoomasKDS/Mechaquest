@@ -1,3 +1,8 @@
+/**
+ * \file main.c
+ * \brief fichier contenant la fonctions principale
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

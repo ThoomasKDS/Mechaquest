@@ -1,3 +1,8 @@
+/**
+ * \file initGame.c
+ * \brief fichier contenant la fonctions d'initialisation du Jeux
+*/
+
 #include "../lib/initGame.h"
 
 
