@@ -1,1 +1,2 @@
-id_zone,Nom,ZoneApparition,NiveauMoyenApparition,VitesseMoyenne,Attaque,Defense,listeMechasZone
+id_zone,NiveauMoyenApparition,VitesseMoyenne,Attaque,Defense,listeMechasZone
+1,5,20,40,60,1;2;3;4;5
