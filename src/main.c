@@ -58,6 +58,7 @@ int main() {
     j.y = 15;
     j.moving = 0;
     j.derniere_touche = 4;
+    j.proba_combat = 0;
     j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
     j.screen_y = (float)(game.dms_win.y + (j.y * PX * game.scale));
     if(!init_player_h(&game, &sprite_playerH)){

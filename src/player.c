@@ -63,6 +63,7 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
 
         else {
             // met à jour la mat
+            spawn_mecha(j,  game->mat[game->mat_active][new_y][new_x]);
             game->mat[game->mat_active][j->y][j->x] = *last_case;
             *last_case = game->mat[game->mat_active][new_y][new_x];
             game->mat[game->mat_active][new_y][new_x] = JOUEUR;
@@ -99,4 +100,17 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
     }
 
     
+}
+
+//gere l'apparition des mechas 
+void spawn_mecha(joueur_t * j, int obj_case) {
+    if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
+        j->proba_combat += 5;
+        int n = rand() % 100;
+        //printf("n : %d |p:  %d\n", n, j->proba_combat);
+        if(n < j->proba_combat) {
+            j->proba_combat = 0;
+            printf("toudoudoudoud tintintitn\n");
+        }
+    }
 }

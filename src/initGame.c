@@ -6,7 +6,8 @@
 //Initialisation de sdl image
 
 int init_game(game_t* game) {
-
+    srand(time(NULL)); //initialise de la lib rand
+    
     SDL_Rect display_bounds; //struture contenant dimensions de l'ecran
     int display_index = 0; //choix de l'ecran 0 pour le principal etc
 
