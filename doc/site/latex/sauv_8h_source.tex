@@ -1,0 +1,129 @@
+\doxysection{sauv.\+h}
+\hypertarget{sauv_8h_source}{}\label{sauv_8h_source}\index{/info/etu/l2info/s2304022/projet/lib/sauv.h@{/info/etu/l2info/s2304022/projet/lib/sauv.h}}
+\mbox{\hyperlink{sauv_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SAUV\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SAUV\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//CONSTANTES}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ERREUR\_OUVERTURE\ -\/1}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ OK\ 1}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ERR\ 0}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//STRUCTURE\ DE\ DONNEES//}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_attaques;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{char}\ nom[50];}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ type[20];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ niveau;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ degats;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ precision;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ utilisations;}
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{structattaque__t}{attaque\_t}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_mechas;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{char}\ nom[50];}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{char}\ type[20];}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ evolution;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ description[200];}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ liste\_attaque[10];}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_attaques;}
+\DoxyCodeLine{00038\ \}\ \mbox{\hyperlink{structmechas__t}{mechas\_t}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ mechaball;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ carburant;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ repousse;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ rappel;}
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ numero;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_mechas;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ niveau;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ xp;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ pv;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ pv\_max;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ defense;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ vitesse;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque\_1;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque\_2;}
+\DoxyCodeLine{00059\ \}\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{char}\ pseudo[50];}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{char}\ sexe;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ screen\_x,\ screen\_y;\ \ \ \ \ \ \ \textcolor{comment}{//\ Position\ réelle\ à\ l'écran\ }}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ moving;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ un\ déplacement\ est\ en\ cours}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ move\_dx,\ move\_dy;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Direction\ du\ mouvement\ en\ pixels}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ derniere\_touche;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ pointSauvegarde;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_mechas;}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ mechas\_joueur\ [50];}
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{structjoueur__t}{joueur\_t}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_pnj;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{char}\ pseudo[50];}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ etat;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{char}\ dialogueDebut[500];}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{char}\ dialogueFin[500];}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ orientation;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_mechas;}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire;}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ mechas\_joueur\ [50];}
+\DoxyCodeLine{00086\ \}\ \mbox{\hyperlink{structpnj__t}{pnj\_t}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_zone;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ NiveauMoyenApparition;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ VitesseMoyenne;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ Attaque;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ Defense;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ listeMechasZone[10];}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_zone;}
+\DoxyCodeLine{00096\ \}\mbox{\hyperlink{structzone__t}{zone\_t}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ FONCTIONS\ DE\ RECUPERATION\ :\ }}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{int}\ recuperation\_joueur(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[50]);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{int}\ recuperation\_inventaire(\mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire,\ \textcolor{keywordtype}{char}\ pseudo[50]);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{int}\ recuperation\_mechas\_joueur(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mechas\_joueur,\textcolor{keywordtype}{char}\ pseudo[50]);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{int}\ recuperation\_attaques(\mbox{\hyperlink{structattaque__t}{attaque\_t}}\ *attaques);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{int}\ recuperation\_mechas(\mbox{\hyperlink{structmechas__t}{mechas\_t}}\ *mechas\_l);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{int}\ recuperation\_pnj(\mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj,\ \textcolor{keywordtype}{int}\ id\_pnj);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{int}\ recuperation\_zone(\mbox{\hyperlink{structzone__t}{zone\_t}}\ *zone);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{//FONCTIONS\ DE\ SAUVEGARDE\ :}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{int}\ sauvegarde\_partie(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[50]);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{int}\ sauvegarde\_inventaire(\mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire,\ \textcolor{keywordtype}{char}\ pseudo[50]);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keywordtype}{int}\ sauvegarde\_mechas\_joueur(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mechas\_joueur,\textcolor{keywordtype}{char}\ pseudo[50],\textcolor{keywordtype}{int}\ nb\_mechas);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{int}\ sauvegarde\_pnj(\mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj,\ \textcolor{keywordtype}{int}\ id\_pnj);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

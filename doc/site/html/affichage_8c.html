@@ -81,40 +81,40 @@ $(function() {
 
 <p>fichier contenant la fonctions d'affichage utilisant la librérie de SDL  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../lib/affichage.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="affichage_8h_source.html">../lib/affichage.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a7aafc9bc741a8c059a3b699196247b0a"><td class="memItemLeft" align="right" valign="top"><a id="a7aafc9bc741a8c059a3b699196247b0a" name="a7aafc9bc741a8c059a3b699196247b0a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_obj</b> (game_t *game, SDL_Rect *obj, SDL_Texture *img)</td></tr>
-<tr class="separator:a7aafc9bc741a8c059a3b699196247b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75f89eac96819c346d7d298696de2d4d"><td class="memItemLeft" align="right" valign="top"><a id="a75f89eac96819c346d7d298696de2d4d" name="a75f89eac96819c346d7d298696de2d4d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_player</b> (game_t *game, SDL_Rect *obj, img_player_t *sprite_playerH, joueur_t *j)</td></tr>
-<tr class="separator:a75f89eac96819c346d7d298696de2d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1fc5bf7a854af1ab36f81a20da02543"><td class="memItemLeft" align="right" valign="top"><a id="aa1fc5bf7a854af1ab36f81a20da02543" name="aa1fc5bf7a854af1ab36f81a20da02543"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>create_obj</b> (game_t *game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat)</td></tr>
-<tr class="separator:aa1fc5bf7a854af1ab36f81a20da02543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1069c77ded54dd8107dbe616d88cc13e"><td class="memItemLeft" align="right" valign="top"><a id="a1069c77ded54dd8107dbe616d88cc13e" name="a1069c77ded54dd8107dbe616d88cc13e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>init_background</b> (<a class="el" href="structgame__t.html">game_t</a> *game)</td></tr>
+<tr class="separator:a1069c77ded54dd8107dbe616d88cc13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fa16b973087f3d32c998246a61bc632"><td class="memItemLeft" align="right" valign="top"><a id="a8fa16b973087f3d32c998246a61bc632" name="a8fa16b973087f3d32c998246a61bc632"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_background</b> (game_t *game)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_background</b> (<a class="el" href="structgame__t.html">game_t</a> *game)</td></tr>
 <tr class="separator:a8fa16b973087f3d32c998246a61bc632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af863c31b9ec779f02f55dc81ec6d2eff"><td class="memItemLeft" align="right" valign="top"><a id="af863c31b9ec779f02f55dc81ec6d2eff" name="af863c31b9ec779f02f55dc81ec6d2eff"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>init_mat</b> (game_t *game, int taille_x, int taille_y)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>init_mat</b> (<a class="el" href="structgame__t.html">game_t</a> *game, int taille_x, int taille_y)</td></tr>
 <tr class="separator:af863c31b9ec779f02f55dc81ec6d2eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfb5f33d61e2ae09db81dd3934118632"><td class="memItemLeft" align="right" valign="top"><a id="acfb5f33d61e2ae09db81dd3934118632" name="acfb5f33d61e2ae09db81dd3934118632"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>free_mat</b> (game_t *game, int taille_x, int taille_y)</td></tr>
-<tr class="separator:acfb5f33d61e2ae09db81dd3934118632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f2ab3e3680977aff54c5b90107c90c5"><td class="memItemLeft" align="right" valign="top"><a id="a7f2ab3e3680977aff54c5b90107c90c5" name="a7f2ab3e3680977aff54c5b90107c90c5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>remplir_mat</b> (game_t *game, int taille_x, int taille_y)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>remplir_mat</b> (<a class="el" href="structgame__t.html">game_t</a> *game, int taille_x, int taille_y)</td></tr>
 <tr class="separator:a7f2ab3e3680977aff54c5b90107c90c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa3a414e8e963111f06242177056570f"><td class="memItemLeft" align="right" valign="top"><a id="aaa3a414e8e963111f06242177056570f" name="aaa3a414e8e963111f06242177056570f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>aff_mat</b> (game_t *game, int taille_x, int taille_y, int n_mat)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>aff_mat</b> (<a class="el" href="structgame__t.html">game_t</a> *game, int taille_x, int taille_y, int n_mat)</td></tr>
 <tr class="separator:aaa3a414e8e963111f06242177056570f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1069c77ded54dd8107dbe616d88cc13e"><td class="memItemLeft" align="right" valign="top"><a id="a1069c77ded54dd8107dbe616d88cc13e" name="a1069c77ded54dd8107dbe616d88cc13e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>init_background</b> (game_t *game)</td></tr>
-<tr class="separator:a1069c77ded54dd8107dbe616d88cc13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb5f33d61e2ae09db81dd3934118632"><td class="memItemLeft" align="right" valign="top"><a id="acfb5f33d61e2ae09db81dd3934118632" name="acfb5f33d61e2ae09db81dd3934118632"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free_mat</b> (<a class="el" href="structgame__t.html">game_t</a> *game, int taille_x, int taille_y)</td></tr>
+<tr class="separator:acfb5f33d61e2ae09db81dd3934118632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67a6055dd2754de8813d188e4379aab3"><td class="memItemLeft" align="right" valign="top"><a id="a67a6055dd2754de8813d188e4379aab3" name="a67a6055dd2754de8813d188e4379aab3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>init_player_h</b> (game_t *game, img_player_t *sprite_playerH)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>init_player_h</b> (<a class="el" href="structgame__t.html">game_t</a> *game, <a class="el" href="structimg__player__t.html">img_player_t</a> *sprite_playerH)</td></tr>
 <tr class="separator:a67a6055dd2754de8813d188e4379aab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1fc5bf7a854af1ab36f81a20da02543"><td class="memItemLeft" align="right" valign="top"><a id="aa1fc5bf7a854af1ab36f81a20da02543" name="aa1fc5bf7a854af1ab36f81a20da02543"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>create_obj</b> (<a class="el" href="structgame__t.html">game_t</a> *game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat)</td></tr>
+<tr class="separator:aa1fc5bf7a854af1ab36f81a20da02543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f89eac96819c346d7d298696de2d4d"><td class="memItemLeft" align="right" valign="top"><a id="a75f89eac96819c346d7d298696de2d4d" name="a75f89eac96819c346d7d298696de2d4d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_player</b> (<a class="el" href="structgame__t.html">game_t</a> *game, SDL_Rect *obj, <a class="el" href="structimg__player__t.html">img_player_t</a> *sprite_playerH, <a class="el" href="structjoueur__t.html">joueur_t</a> *j)</td></tr>
+<tr class="separator:a75f89eac96819c346d7d298696de2d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aafc9bc741a8c059a3b699196247b0a"><td class="memItemLeft" align="right" valign="top"><a id="a7aafc9bc741a8c059a3b699196247b0a" name="a7aafc9bc741a8c059a3b699196247b0a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_obj</b> (<a class="el" href="structgame__t.html">game_t</a> *game, SDL_Rect *obj, SDL_Texture *img)</td></tr>
+<tr class="separator:a7aafc9bc741a8c059a3b699196247b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>fichier contenant la fonctions d'affichage utilisant la librérie de SDL </p>

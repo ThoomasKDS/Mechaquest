@@ -9,35 +9,35 @@ fichier contenant la fonctions d\textquotesingle{}affichage utilisant la librér
 \doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{affichage_8c_a7aafc9bc741a8c059a3b699196247b0a}\label{affichage_8c_a7aafc9bc741a8c059a3b699196247b0a} 
-void {\bfseries draw\+\_\+obj} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}img)
-\item 
-\Hypertarget{affichage_8c_a75f89eac96819c346d7d298696de2d4d}\label{affichage_8c_a75f89eac96819c346d7d298696de2d4d} 
-void {\bfseries draw\+\_\+player} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, img\+\_\+player\+\_\+t \texorpdfstring{$\ast$}{*}sprite\+\_\+playerH, joueur\+\_\+t \texorpdfstring{$\ast$}{*}j)
-\item 
-\Hypertarget{affichage_8c_aa1fc5bf7a854af1ab36f81a20da02543}\label{affichage_8c_aa1fc5bf7a854af1ab36f81a20da02543} 
-SDL\+\_\+\+Rect {\bfseries create\+\_\+obj} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, int taille\+\_\+w, int taille\+\_\+h, int x, int y, int type\+\_\+obj, int n\+\_\+mat)
+\Hypertarget{affichage_8c_a1069c77ded54dd8107dbe616d88cc13e}\label{affichage_8c_a1069c77ded54dd8107dbe616d88cc13e} 
+int {\bfseries init\+\_\+background} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game)
 \item 
 \Hypertarget{affichage_8c_a8fa16b973087f3d32c998246a61bc632}\label{affichage_8c_a8fa16b973087f3d32c998246a61bc632} 
-void {\bfseries draw\+\_\+background} (game\+\_\+t \texorpdfstring{$\ast$}{*}game)
+void {\bfseries draw\+\_\+background} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game)
 \item 
 \Hypertarget{affichage_8c_af863c31b9ec779f02f55dc81ec6d2eff}\label{affichage_8c_af863c31b9ec779f02f55dc81ec6d2eff} 
-int {\bfseries init\+\_\+mat} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
-\item 
-\Hypertarget{affichage_8c_acfb5f33d61e2ae09db81dd3934118632}\label{affichage_8c_acfb5f33d61e2ae09db81dd3934118632} 
-void {\bfseries free\+\_\+mat} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
+int {\bfseries init\+\_\+mat} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
 \item 
 \Hypertarget{affichage_8c_a7f2ab3e3680977aff54c5b90107c90c5}\label{affichage_8c_a7f2ab3e3680977aff54c5b90107c90c5} 
-int {\bfseries remplir\+\_\+mat} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
+int {\bfseries remplir\+\_\+mat} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
 \item 
 \Hypertarget{affichage_8c_aaa3a414e8e963111f06242177056570f}\label{affichage_8c_aaa3a414e8e963111f06242177056570f} 
-void {\bfseries aff\+\_\+mat} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y, int n\+\_\+mat)
+void {\bfseries aff\+\_\+mat} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y, int n\+\_\+mat)
 \item 
-\Hypertarget{affichage_8c_a1069c77ded54dd8107dbe616d88cc13e}\label{affichage_8c_a1069c77ded54dd8107dbe616d88cc13e} 
-int {\bfseries init\+\_\+background} (game\+\_\+t \texorpdfstring{$\ast$}{*}game)
+\Hypertarget{affichage_8c_acfb5f33d61e2ae09db81dd3934118632}\label{affichage_8c_acfb5f33d61e2ae09db81dd3934118632} 
+void {\bfseries free\+\_\+mat} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int taille\+\_\+x, int taille\+\_\+y)
 \item 
 \Hypertarget{affichage_8c_a67a6055dd2754de8813d188e4379aab3}\label{affichage_8c_a67a6055dd2754de8813d188e4379aab3} 
-int {\bfseries init\+\_\+player\+\_\+h} (game\+\_\+t \texorpdfstring{$\ast$}{*}game, img\+\_\+player\+\_\+t \texorpdfstring{$\ast$}{*}sprite\+\_\+playerH)
+int {\bfseries init\+\_\+player\+\_\+h} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{structimg__player__t}{img\+\_\+player\+\_\+t}} \texorpdfstring{$\ast$}{*}sprite\+\_\+playerH)
+\item 
+\Hypertarget{affichage_8c_aa1fc5bf7a854af1ab36f81a20da02543}\label{affichage_8c_aa1fc5bf7a854af1ab36f81a20da02543} 
+SDL\+\_\+\+Rect {\bfseries create\+\_\+obj} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int taille\+\_\+w, int taille\+\_\+h, int x, int y, int type\+\_\+obj, int n\+\_\+mat)
+\item 
+\Hypertarget{affichage_8c_a75f89eac96819c346d7d298696de2d4d}\label{affichage_8c_a75f89eac96819c346d7d298696de2d4d} 
+void {\bfseries draw\+\_\+player} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structimg__player__t}{img\+\_\+player\+\_\+t}} \texorpdfstring{$\ast$}{*}sprite\+\_\+playerH, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j)
+\item 
+\Hypertarget{affichage_8c_a7aafc9bc741a8c059a3b699196247b0a}\label{affichage_8c_a7aafc9bc741a8c059a3b699196247b0a} 
+void {\bfseries draw\+\_\+obj} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}img)
 \end{DoxyCompactItemize}
 
 

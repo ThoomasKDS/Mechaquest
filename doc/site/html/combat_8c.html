@@ -74,10 +74,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier combat.c</div></div>
 </div><!--header-->
 <div class="contents">
@@ -88,14 +85,9 @@ $(function() {
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
-<code>#include &quot;../lib/combat.h&quot;</code><br />
-<code>#include &quot;../lib/sauv.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="combat_8h_source.html">../lib/combat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sauv_8h_source.html">../lib/sauv.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmecha__equipe__t.html">mecha_equipe_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0240ac851181b84ac374872dc5434ee4"><td class="memItemLeft" align="right" valign="top"><a id="a0240ac851181b84ac374872dc5434ee4" name="a0240ac851181b84ac374872dc5434ee4"></a>
@@ -113,39 +105,6 @@ Macros</h2></td></tr>
 <tr class="memitem:a2c6bea95fdf312d1001189a6e67eeaea"><td class="memItemLeft" align="right" valign="top"><a id="a2c6bea95fdf312d1001189a6e67eeaea" name="a2c6bea95fdf312d1001189a6e67eeaea"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>Nucl</b>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:a2c6bea95fdf312d1001189a6e67eeaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ae3cfa6b866bc035e84752f19b455dcca"><td class="memItemLeft" align="right" valign="top"><a id="ae3cfa6b866bc035e84752f19b455dcca" name="ae3cfa6b866bc035e84752f19b455dcca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_mecha</b> (mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[])</td></tr>
-<tr class="separator:ae3cfa6b866bc035e84752f19b455dcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6f286f4f900a0e2a2d526a30b7c5444"><td class="memItemLeft" align="right" valign="top"><a id="af6f286f4f900a0e2a2d526a30b7c5444" name="af6f286f4f900a0e2a2d526a30b7c5444"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>util_objet</b> (joueur_t *joueur, int i)</td></tr>
-<tr class="separator:af6f286f4f900a0e2a2d526a30b7c5444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6015e5e290413163f1a7215add5632c3"><td class="memItemLeft" align="right" valign="top"><a id="a6015e5e290413163f1a7215add5632c3" name="a6015e5e290413163f1a7215add5632c3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>changer_mecha</b> (joueur_t *joueur, mechas_t mecha[], char nom[], int etat)</td></tr>
-<tr class="separator:a6015e5e290413163f1a7215add5632c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c4f498fb0d842d4539e79c933648df4"><td class="memItemLeft" align="right" valign="top"><a id="a9c4f498fb0d842d4539e79c933648df4" name="a9c4f498fb0d842d4539e79c933648df4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>choix_action</b> (int i, char nom[])</td></tr>
-<tr class="separator:a9c4f498fb0d842d4539e79c933648df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1306f75f75519c08fc5016ced4cf8a11"><td class="memItemLeft" align="right" valign="top"><a id="a1306f75f75519c08fc5016ced4cf8a11" name="a1306f75f75519c08fc5016ced4cf8a11"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tour_jeu</b> (int i, int j, mechas_joueur_t tab_mecha[], mechas_t mecha[])</td></tr>
-<tr class="separator:a1306f75f75519c08fc5016ced4cf8a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae261bd43fff13e908d9f4d9426d42a91"><td class="memItemLeft" align="right" valign="top"><a id="ae261bd43fff13e908d9f4d9426d42a91" name="ae261bd43fff13e908d9f4d9426d42a91"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>level_mechas</b> (int gagnant, int perdant, mechas_joueur_t tab_mecha[], mechas_t mecha[])</td></tr>
-<tr class="separator:ae261bd43fff13e908d9f4d9426d42a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5971d2c288124f176963cd5f2f6dd00f"><td class="memItemLeft" align="right" valign="top"><a id="a5971d2c288124f176963cd5f2f6dd00f" name="a5971d2c288124f176963cd5f2f6dd00f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_init</b> ()</td></tr>
-<tr class="separator:a5971d2c288124f176963cd5f2f6dd00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aee34926ea76003bbcc975fe153d8f236"><td class="memItemLeft" align="right" valign="top"><a id="aee34926ea76003bbcc975fe153d8f236" name="aee34926ea76003bbcc975fe153d8f236"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>nom</b> [50] = &quot;noaha&quot;</td></tr>
-<tr class="separator:aee34926ea76003bbcc975fe153d8f236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>fichier contenant la fonctions de comba </p>
