@@ -105,18 +105,24 @@ int util_objet(joueur_t *joueur, int i){
 
 }
 
-int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[]){
+int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[], int etat){
     
     int choix = 0;
-    int i, j;
+    int i;
+    int max;
+    if(etat){
+        i = 1;
+        max = 4;
+    }
+    else{
+        i = 0;
+        max = joueur->nb_mechas;
+    }
     char nom_mecha[50];
     char type_mecha[50];
     while(choix < 1 || choix > 3){
         printf("Quel Mecha échanger ?\n");
-        for(j = 0; j < 4; j++){
-            printf("%d\n", joueur->mechas_joueur[j].id_mechas);
-        }
-        for(i = 0; i < joueur->nb_mechas && i < 4; i++){
+        for(i = 0; i < joueur->nb_mechas && i < max; i++){
             printf("Nom : %s\n", mecha[joueur->mechas_joueur[i].id_mechas-1].nom);
             printf("Mecha %d : \n", i);
             printf("Niveau : %d\n", joueur->mechas_joueur[i].niveau);
@@ -283,11 +289,11 @@ void combat_init(){
     level_mechas(gagnant-1, perdant-1, tab_mecha, mecha);
 
 }
-/*
+
 int main(){
     //combat_init();
     joueur_t joueur;
     int i = 1;
 
     choix_action(i, nom);
-}*/
+}

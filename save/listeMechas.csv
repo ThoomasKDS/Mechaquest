@@ -1,3 +1,8 @@
 id_mechas,Nom,Type,Evolution,Description,ListeAttaque
 1,Tournicoton,Renouvellable,2,tourne en coton,1;2;3;6;9
 2,Toutourne,Renouvellable,0,Tourne tout,12;8;9
+3,RaseTout,Electrique,4,rase tout,1;2
+4,CroqueTout,Electrique,0,croque tout,5;6
+5,Tikart,Carburant,6,petit kart,4;5
+6,Handiboost,Carburant,0,fauteuil roulant,8;9
+

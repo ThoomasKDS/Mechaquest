@@ -1,12 +1,12 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
-#include "mecha.h"
+#include "sauv.h"
 
-void liste_mecha(mecha_t tab_mecha[]);
+void affiche_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[]);
 int choix_mecha();
-int tour_jeu(int i, int j, mecha_t tab_mecha[]);
-void level_mechas(int gagnant, int perdant, mecha_t tab_mecha[]);
+int tour_jeu(int i, int j, mechas_joueur_t tab_mecha[], mechas_t mecha[]);
+void level_mechas(int gagnant, int perdant, mechas_joueur_t tab_mecha[], mechas_t mecha[]);
 void combat_init();
 
 #endif
