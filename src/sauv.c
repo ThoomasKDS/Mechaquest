@@ -79,8 +79,8 @@ int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) 
         if(!strcmp(nom,pseudo)){
             sscanf(ligne, "%49[^,],%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",     //récupère les bonnes ligne et les rangent au bon endroit du tableau de mechas
                 nom,&mechas_joueur[num-1].numero,&mechas_joueur[num-1].id_mechas,
-                &mechas_joueur[num-1].niveau,&mechas_joueur[num-1].xp,&mechas_joueur[num-1].pv,
-                &mechas_joueur[num-1].pv_max,&mechas_joueur[num-1].attaque,&mechas_joueur[num-1].defense,
+                &mechas_joueur[num-1].niveau,&mechas_joueur[num-1].pv,&mechas_joueur[num-1].pv_max,
+                &mechas_joueur[num-1].xp,&mechas_joueur[num-1].attaque,&mechas_joueur[num-1].defense,
                 &mechas_joueur[num-1].vitesse,&mechas_joueur[num-1].attaque_1,&mechas_joueur[num-1].attaque_2);
             nb_mechas++;
         }
