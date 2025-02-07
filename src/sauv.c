@@ -192,7 +192,6 @@ int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous l
     return count;                                                   //renvoies le nombre de mechas
 }
 
-/*
 int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mechas
     int taille;
     //Ouverture du fichier
@@ -233,7 +232,6 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
     fclose(file);
     return count;                                                   //renvoies le nombre de mechas
 }
-    */
 //--------FONCTIONS DE SAUVEGARDE-----------
 
 int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
