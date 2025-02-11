@@ -30,7 +30,9 @@ int main() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     int last_case = RIEN;
     zone_t zone[10];
-    game.mat_active = 4;
+    mechas_t mecha[6];
+    game.mat_active = 1;
+    mechas_joueur_t mecha_sauvage;
 
 
     //INITIALISATION SDL    
@@ -74,12 +76,10 @@ int main() {
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
 
     //INIT ZONE
+    recuperation_zone(zone);
+    //INIT MECHA
+    recuperation_mechas(mecha);
 
-   /* recuperation_zone(zone);
-
-    for(int i=0; i <10;i++) {
-        printf("%d\n", zone[i].id_zone);
-    }*/
 
    
 
@@ -102,9 +102,9 @@ int main() {
         }
 
         //deplacement du joueur 
-        deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
+        deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, zone, mecha, &mecha_sauvage);
         animation(&j, &sprite_p);
-
+        printf("attaque : %d\n defense : %d\n, vitesse : %d\n", mecha_sauvage.attaque, mecha_sauvage.defense, mecha_sauvage.vitesse);
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
         draw_background(&game);

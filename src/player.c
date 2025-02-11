@@ -13,7 +13,7 @@ const int FRAME = 15 ;      //Nombre d'image dans l'animation
 
 
 //Gestion de deplacement du joueur et du tp entre les maps
-void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
+void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
     if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
 
     int dx = 0, dy = 0;
@@ -68,7 +68,7 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
 
         else {
             // met à jour la mat
-            spawn_mecha(j,  game->mat[game->mat_active][new_y][new_x]);
+            spawn_mecha(j,  game->mat[game->mat_active][new_y][new_x], zone, mechas, mecha_sauvage);
             game->mat[game->mat_active][j->y][j->x] = *last_case;
             *last_case = game->mat[game->mat_active][new_y][new_x];
             game->mat[game->mat_active][new_y][new_x] = JOUEUR;
@@ -108,14 +108,26 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
 }
 
 //gere l'apparition des mechas 
-void spawn_mecha(joueur_t * j, int obj_case) {
+void spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
     if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
         j->proba_combat += 5;
         int n = rand() % 100;
         //printf("n : %d |p:  %d\n", n, j->proba_combat);
         if(n < j->proba_combat) {
             j->proba_combat = 0;
-            
+            obj_case = -obj_case - 1;
+            int indice_liste = rand() % zone[obj_case].nb_mechas;
+            int indice_mechas =  zone[obj_case].listeMechasZone[indice_liste];
+            mecha_sauvage->niveau = (rand() % 5) + (zone[obj_case].NiveauMoyenApparition - 2);
+            mecha_sauvage->id_mechas = indice_mechas;
+            mecha_sauvage->attaque = (rand() % 10) + (zone[obj_case].Attaque - 4);
+            mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
+            mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
+
+
+
+
         }
     }
 }
+

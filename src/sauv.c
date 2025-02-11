@@ -237,7 +237,7 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
             taille++;                                               // Incrémente le compteur
             token = strtok(NULL, ";");                              // Passe au nombre suivant
         }
-        zone_l[count].nb_zone = taille;                       
+        zone_l[count].nb_mechas = taille;                       
         count++;
     }
         
