@@ -57,6 +57,7 @@ typedef struct{
 typedef struct{
     char pseudo[50];
     char sexe;
+    int numMap;
     int x, y;
     float screen_x, screen_y;       // Position réelle à l'écran 
     int moving;                     // Indique si un déplacement est en cours

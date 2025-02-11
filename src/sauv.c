@@ -27,7 +27,7 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
         sscanf(ligne, "%[^,]", nom);
         if(!strcmp(nom,pseudo)){                             //verification du pseudo
-            sscanf(ligne, "%49[^,], %c,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
+            sscanf(ligne, "%49[^,], %c,%d,%d,%d,%d\n",joueur->pseudo,&joueur->sexe,&joueur->numMap,&joueur->x,&joueur->y,&joueur->pointSauvegarde);
             //création du pointeur sur la structure inventaire
             joueur->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
             if (!joueur->inventaire) {
@@ -348,7 +348,7 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
         sscanf(ligne, "%[^,]", nom);
         //verifie si la ligne est a modifié 
         if(!strcmp(nom,pseudo)){
-            fprintf(temp,"%s,%c,%d,%d,%d\n",nom,joueur->sexe,joueur->x,
+            fprintf(temp,"%s,%c,%d,%d,%d,%d\n",nom,joueur->sexe,joueur->numMap,joueur->x,
                                             joueur->y,joueur->pointSauvegarde);
             trouver = OK;       //indique que la ligne existe et a été modifié
         }
@@ -357,7 +357,7 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
         }
     }
     if(!trouver){       //si pas trouver alors créé une nouvelle ligne de sauvegarde
-        fprintf(temp,"%s,%c,%d,%d,%d\n",nom,joueur->sexe,joueur->x,
+        fprintf(temp,"%s,%c,%d,%d,%d,%d\n",nom,joueur->sexe,joueur->numMap,joueur->x,
                                             joueur->y,joueur->pointSauvegarde);
     }
 
@@ -427,4 +427,3 @@ int destruction_pnj(pnj_t *pnj){
     pnj->inventaire = NULL;
     return OK;
 }
-

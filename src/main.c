@@ -31,7 +31,8 @@ int main() {
     int last_case = RIEN;
     zone_t zone[10];
     mechas_t mecha[6];
-    game.mat_active = 1;
+    recuperation_joueur(&j,"noaha");
+    game.mat_active = j.numMap;
     mechas_joueur_t mecha_sauvage;
     int spawn_mecha = 0;
 
@@ -62,8 +63,6 @@ int main() {
     aff_mat(&game, taille_x_mat, taille_y_mat, 5);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
     j.derniere_touche = 1;
-    j.x = 13;
-    j.y = 15;
     j.moving = 0;
     j.derniere_touche = 4;
     j.proba_combat = 0;
@@ -123,7 +122,7 @@ int main() {
         }
     }
 
-
+    sauvegarde_partie(&j,"noaha");
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);
     destruction_joueur(&j);

@@ -1,6 +1,6 @@
-Pseudo,Sexe,X,Y,PDP
-noah,M,5,9,0
-Noah,M,5,9,0
-noahb,M,5,9,0
-noahc,M,5,9,0
-noaha,M,0,1,0
+Pseudo,Sexe,NumMap,X,Y,PDP
+noah,M,0,5,9,0
+Noah,M,0,5,9,0
+noahb,M,0,5,9,0
+noahc,M,0,5,9,0
+noaha,M,1,16,15,0

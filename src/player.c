@@ -64,6 +64,7 @@ int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, jo
             sprite_p->x = j->screen_x;
             sprite_p->y = j->screen_y;
             game->mat[game->mat_active][j->y][j->x] = JOUEUR;
+            j->numMap = game->mat_active;
             
         }
 
