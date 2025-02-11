@@ -1,8 +1,25 @@
 id_mechas,Nom,Type,Evolution,Description,ListeAttaque
-1,Tournicoton,Renouvellable,2,tourne en coton,1;2;3;6;9
-2,Toutourne,Renouvellable,0,Tourne tout,12;8;9
-3,RaseTout,Electrique,4,rase tout,1;2
-4,CroqueTout,Electrique,0,croque tout,5;6
-5,Tikart,Carburant,6,petit kart,4;5
-6,Handiboost,Carburant,0,fauteuil roulant,8;9
-
+1,Tournicoton,Renouvellable,2,Un petit tourniquet,1;2;3
+2,Toutourne,Renouvellable,0,Une grosse éolienne,1;2;3
+3,RaseTout,Electrique,4,Un petit rasoir,1;2;3
+4,CroqueTout,Electrique,0,Une tondeuse à gazon,1;2;3
+5,Tikart,Carburant,6,Un petit kart,1;2;3
+6,Handiboost,Carburant,0,Un fauteuil roulant,1;2;3
+7,Nokito,Electrique,8,Un nokia 3310,1;2;3
+8,Phonito,Electrique,0,Un IPhone costaud,1;2;3
+9,Front’al,Electrique,10,Une lampe frontale,1;2;3
+10,Lamp’air,Electrique,0,Un lampadaire,1;2;3
+11,Peufair,Electrique,12,Une peuf mignonne,1;2;3
+12,Vapotu,Electrique,0,Une cigarette électrique,1;2;3
+13,Winamac,Electrique,0,Un ordinateur polivalent,1;2;3
+14,Bagrille,Electrique,0,Un grille baguette,1;2;3
+15,Paseaua,Renouvelable,16,Une écluse folle,1;2;3
+16,Baraton,Renouvelable,0,Un barrage fou,1;2;3
+17,Chargeosol,Renouvelable,18,Une voiture solaire,1;2;3
+18,Chargenvol,Renouvelable,0,Un avion solaire,1;2;3
+19,Tractoun,Carburant,20,Un tracteur mignon,1;2;3
+20,Détract,Carburant,0,Un tracteur à la cool,1;2;3
+21,Zeaudiac,Carburant,22,Un petit bateau,1;2;3
+22,Paquebeau,Carburant,0,Un beau et grand bateau,1;2;3
+23,Aéroshima,Nucléaire,0,Une fusée atomique,1;2;3
+24,Uranoïde,Nucléaire,0,Un robot d'uranium,1;2;3

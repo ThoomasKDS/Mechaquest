@@ -31,7 +31,7 @@ int main() {
     int last_case = RIEN;
     zone_t zone[10];
     mechas_t mecha[6];
-    recuperation_joueur(&j,"noaha");
+    recuperation_joueur(&j,"player1");
     game.mat_active = j.numMap;
     mechas_joueur_t mecha_sauvage;
     int spawn_mecha = 0;
