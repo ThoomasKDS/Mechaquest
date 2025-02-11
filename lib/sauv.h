@@ -85,6 +85,7 @@ typedef struct{
 typedef struct{
     int id_zone;
     int NiveauMoyenApparition;
+    int PvMoyen
     int VitesseMoyenne;
     int Attaque;
     int Defense;

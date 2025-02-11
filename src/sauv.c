@@ -415,9 +415,16 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
     return OK;
 }
 
-//TEST
+//DESTRUCTION ALLOCATION DYNAMIQUE
 
-/*
-int main(void){
-   
-}*/
+int destruction_joueur(joueur_t *joueur){
+    free(joueur->inventaire);
+    joueur->inventaire = NULL;
+    return OK;
+}
+int destruction_pnj(pnj_t *pnj){
+    free(pnj->inventaire);
+    pnj->inventaire = NULL;
+    return OK;
+}
+
