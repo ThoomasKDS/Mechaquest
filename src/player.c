@@ -13,8 +13,9 @@ const int FRAME = 15 ;      //Nombre d'image dans l'animation
 
 
 //Gestion de deplacement du joueur et du tp entre les maps
-void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
-    if (j->moving) return;  // si joueur deja entrain de se deplacer on ne fait rien
+int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
+    int verif_mechas = 0;
+    if (j->moving) return -1;  // si joueur deja entrain de se deplacer on ne fait rien
 
     int dx = 0, dy = 0;
 
@@ -36,7 +37,7 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
         j->derniere_touche = 4;
         dy = 1;
     }  
-    if (dx != 0 && dy != 0) return; //empeche deplacement en diagonal
+    if (dx != 0 && dy != 0) return -1; //empeche deplacement en diagonal
     
     //stocke la nouvelle case 
     int new_x = j->x + dx;
@@ -68,7 +69,8 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
 
         else {
             // met à jour la mat
-            spawn_mecha(j,  game->mat[game->mat_active][new_y][new_x], zone, mechas, mecha_sauvage);
+            verif_mechas = spawn_mecha(j,  game->mat[game->mat_active][new_y][new_x], zone, mechas, mecha_sauvage);
+            
             game->mat[game->mat_active][j->y][j->x] = *last_case;
             *last_case = game->mat[game->mat_active][new_y][new_x];
             game->mat[game->mat_active][new_y][new_x] = JOUEUR;
@@ -79,13 +81,14 @@ void deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, j
             j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 15 étapes
             j->move_dy = dy * (PX * game->scale) / FRAME;
             j->moving = FRAME;  // animation sur 16 frames
+            //vérification sapwn mechas
+            
         }
-
-
     }
-    
-
-
+    if(verif_mechas){
+        return 1;
+    }
+    return 0;
 }
 
 
@@ -108,7 +111,7 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
 }
 
 //gere l'apparition des mechas 
-void spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
+int spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
     if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
         j->proba_combat += 5;
         int n = rand() % 100;
@@ -123,11 +126,9 @@ void spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, m
             mecha_sauvage->attaque = (rand() % 10) + (zone[obj_case].Attaque - 4);
             mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
             mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
-
-
-
-
+            return 1;
         }
     }
+    return 0;
 }
 

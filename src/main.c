@@ -33,6 +33,7 @@ int main() {
     mechas_t mecha[6];
     game.mat_active = 1;
     mechas_joueur_t mecha_sauvage;
+    int spawn_mecha = 0;
 
 
     //INITIALISATION SDL    
@@ -102,9 +103,12 @@ int main() {
         }
 
         //deplacement du joueur 
-        deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, zone, mecha, &mecha_sauvage);
+        spawn_mecha = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, zone, mecha, &mecha_sauvage);
         animation(&j, &sprite_p);
-        printf("attaque : %d\n defense : %d\n, vitesse : %d\n", mecha_sauvage.attaque, mecha_sauvage.defense, mecha_sauvage.vitesse);
+        if(spawn_mecha == 1){
+            //lancement d'un combat
+            printf("attaque : %d\n defense : %d\n, vitesse : %d\n", mecha_sauvage.attaque, mecha_sauvage.defense, mecha_sauvage.vitesse);
+        }
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
         draw_background(&game);
@@ -122,7 +126,7 @@ int main() {
 
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);
-
+    destruction_joueur(&j);
 
     return 0;
 

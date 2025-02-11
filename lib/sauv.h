@@ -85,7 +85,7 @@ typedef struct{
 typedef struct{
     int id_zone;
     int NiveauMoyenApparition;
-    int PvMoyen
+    int PvMoyen;
     int VitesseMoyenne;
     int Attaque;
     int Defense;
@@ -120,5 +120,11 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
 int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
 
 int sauvegarde_pnj(pnj_t *pnj, int id_pnj);
+
+//FONCTIONS DE DESTRUCTION ALLOCATION DYNAMIQUE
+
+int destruction_joueur(joueur_t *joueur);
+
+int destruction_pnj(pnj_t *pnj);
 
 #endif
