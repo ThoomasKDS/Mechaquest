@@ -181,11 +181,12 @@ int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous l
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
     while (fgets(ligne, sizeof(ligne), file) != NULL){      //Lecture de chaque ligne
-        sscanf(ligne, "%d,%49[^,],%19[^,],%d,%199[^,],%[^\n]",
+        sscanf(ligne, "%d,%49[^,],%19[^,],%d,%d,%199[^,],%[^\n]",
                                  &mechas_l[count].id_mechas,
                                  mechas_l[count].nom,
                                  mechas_l[count].type,
                                  &mechas_l[count].evolution,
+                                 &mechas_l[count].niveau_evolution,
                                  mechas_l[count].description,
                                  attaques);                         //recupere les numero des attaques mais en chaines de caractere
         taille = 0;                                                 // Initialisation du compteur
@@ -263,6 +264,7 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
         sscanf(ligne, "%[^,]", nom);
         //verifie si la ligne doit etre modifier
         if(!strcmp(nom,pseudo)){
+            printf("\n1\n");
             fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
                                             inventaire->repousse,inventaire->rappel);
             trouver = OK;           //Détermine si la sauvegarde existe
@@ -304,8 +306,8 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
         if(!strcmp(nom,pseudo) && num == mechas_joueur[indice].numero){
             fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
                 nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
-                mechas_joueur[indice].niveau,mechas_joueur[indice].xp,mechas_joueur[indice].pv,
-                mechas_joueur[indice].pv_max,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
+                mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
+                mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
                 mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
             indice++;
         }
@@ -317,9 +319,9 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
     while(indice < nb_mechas){  //si les mechas sont pas trouvé créé la ligne de sauvegarde
         fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
             nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
-            mechas_joueur[indice].niveau,mechas_joueur[indice].xp,mechas_joueur[indice].pv,
-            mechas_joueur[indice].pv_max,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
-            mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
+                mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
+                mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
+                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
         indice++;
     }
     //fermeture des fichiers
@@ -368,8 +370,8 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     remove("save/joueur.csv");
     rename("save/temporaire.csv", "save/joueur.csv");
 
-    sauvegarde_inventaire(joueur->inventaire,nom);                           //appel la sauvegarde de l'inventaire
-    sauvegarde_mechas_joueur(joueur->mechas_joueur,nom,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    sauvegarde_inventaire(joueur->inventaire,pseudo);                           //appel la sauvegarde de l'inventaire
+    sauvegarde_mechas_joueur(joueur->mechas_joueur,pseudo,joueur->nb_mechas);    //appel la sauvegarde des mechas
     return OK;
 }
 

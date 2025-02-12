@@ -30,8 +30,9 @@ int main() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     int last_case = RIEN;
     zone_t zone[10];
-    mechas_t mecha[6];
-    recuperation_joueur(&j,"player1");
+    mechas_t mecha[24];
+    char pseudo[50] = "player2";
+    recuperation_joueur(&j,pseudo);
     game.mat_active = j.numMap;
     mechas_joueur_t mecha_sauvage;
     int spawn_mecha = 0;
@@ -57,12 +58,11 @@ int main() {
         printf("Echec init mat\n");
         return -1;
     }
-
+  
     //REMPLI LA MATRICE DE 0
     remplir_mat(&game, taille_x_mat, taille_y_mat);
     aff_mat(&game, taille_x_mat, taille_y_mat, 5);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
-    j.derniere_touche = 1;
     j.moving = 0;
     j.derniere_touche = 4;
     j.proba_combat = 0;
@@ -71,7 +71,6 @@ int main() {
     if(!init_player_h(&game, &sprite_playerH)){
         return -1;
     }
-
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
 
@@ -79,9 +78,7 @@ int main() {
     recuperation_zone(zone);
     //INIT MECHA
     recuperation_mechas(mecha);
-
-
-   
+    j.inventaire->mechaball = 1;
 
     while (running) {
         frameStart = SDL_GetTicks();    //obtien heure
@@ -122,7 +119,7 @@ int main() {
         }
     }
 
-    sauvegarde_partie(&j,"noaha");
+    sauvegarde_partie(&j,pseudo);
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);
     destruction_joueur(&j);

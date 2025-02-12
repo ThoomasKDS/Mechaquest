@@ -28,6 +28,7 @@ typedef struct{
     char nom[50];
     char type[20];
     int evolution;
+    int niveau_evolution;
     char description[200];
     int liste_attaque[10];
     int nb_attaques;
