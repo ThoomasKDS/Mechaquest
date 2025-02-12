@@ -15,7 +15,7 @@
 char nom[50] = "noaha";
 
 joueur_t joueur;
-mechas_t mecha[20];
+mechas_t mecha[24];
 attaque_t attaque[10];
 
 
@@ -266,17 +266,34 @@ int choix_action(char nom[], int i){
     return 0;
 
 }
+int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
+    
+}
 
-void montee_niveau(joueur_t *mecha, int xp_partage, int lvlup){
+int evolution_mechas(mechas_joueur_t *mecha_joueur){
+    if(mecha_joueur->niveau >= mecha[mecha_joueur->id_mechas -1].niveau_evolution && mecha[mecha_joueur->id_mechas -1].evolution > 0){
+        mecha_joueur->id_mechas++;
+        printf("%s a évoluer en %s",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );
+    }
+    return OK;
+}
+
+void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup){
     int nouv_level, k, i;
 
-    nouv_level = mecha->mechas_joueur->xp + xp_partage;
-    while(nouv_level >= lvlup){
-        mecha->mechas_joueur->niveau++;
-        nouv_level -= lvlup;
-        mecha->mechas_joueur->xp = 0;
-        mecha->mechas_joueur->xp += nouv_level;
-        lvlup = (int)(15 * exp(0.05 * mecha->mechas_joueur->niveau));   //Calculer le nouveau nombre d'XP necessaire
+    nouv_level = mecha->xp + xp_partage;
+    if(nouv_level >= lvlup){
+        while(nouv_level >= lvlup){
+            mecha->niveau++;
+            nouv_level -= lvlup;
+            mecha->xp = 0;
+            mecha->xp += nouv_level;
+            lvlup = (int)(15 * exp(0.05 * mecha->niveau));   //Calculer le nouveau nombre d'XP necessaire
+            evolution_mechas(&mechas_presents->mechas_joueur[i]);
+        }
+    }
+    else{
+        mecha->xp += xp_partage;
     }
 }
 
@@ -297,7 +314,6 @@ void distribuer_xp(joueur_t *mechas_presents, int xp_gagne) {
     else{
         nb = mechas_presents->nb_mechas;
     }
-
     for (int i = 0; i < nb; i++) {
         int lvlup = (int)(15 * exp(0.05 * mechas_presents->mechas_joueur[i].niveau));
         int xp_partage = (int)(xp_gagne * coef_repartition[nb-1][i]); // Conversion propre en int
@@ -323,11 +339,12 @@ void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue){
     }
 
     for(i = 0; i < nb; i++){
+       
         printf("LVL : %d\n", mechas_presents->mechas_joueur[i].niveau);
     }
-
     
 }
+
 
 /*
 void combat_init(){
@@ -382,17 +399,23 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
     level_mechas(mecha_joueur, mecha_ordi);
 
 }
-/*
+
 
 int main(){
+    /*
     //combat_init();
     int i = 1;
     //choix_action(nom, i);
 
-    recuperation_joueur(&joueur, nom);
+    
+    tour_jeu(&joueur, &joueur, &joueur);
+    */
+
+    recuperation_joueur(&joueur,"player2");
     recuperation_mechas(mecha);
     recuperation_attaques(attaque);
 
-    
-    tour_jeu(&joueur, &joueur, &joueur);
-}*/
+    montee_niveau(&joueur.mechas_joueur[1],10,20);
+    evolution_mechas(&joueur.mechas_joueur[1]);
+    sauvegarde_partie(&joueur,"player2");
+}

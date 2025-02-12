@@ -1,6 +1,6 @@
 id_mechas,Nom,Type,Evolution,Description,ListeAttaque
-1,Tournicoton,Renouvellable,2,Un petit tourniquet,1;2;3
-2,Toutourne,Renouvellable,0,Une grosse éolienne,1;2;3
+1,Tournicoton,Renouvelable,2,Un petit tourniquet,1;2;3
+2,Toutourne,Renouvelable,0,Une grosse éolienne,1;2;3
 3,RaseTout,Electrique,4,Un petit rasoir,1;2;3
 4,CroqueTout,Electrique,0,Une tondeuse à gazon,1;2;3
 5,Tikart,Carburant,6,Un petit kart,1;2;3
