@@ -53,6 +53,8 @@ typedef struct{
     int vitesse;
     int attaque_1;
     int attaque_2;
+    int utilisation1;
+    int utilisation2;
 } mechas_joueur_t;
 
 typedef struct{
@@ -122,6 +124,14 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
 int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
 
 int sauvegarde_pnj(pnj_t *pnj, int id_pnj);
+
+//FONCTION DE SUPPRESSION DE SAUVEGARDES
+
+int suppression_partie(joueur_t *joueur, char pseudo[50]);
+
+int suppression_inventaire(inventaire_t *inventaire, char pseudo[50]);
+
+int suppression_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
 
 //FONCTIONS DE DESTRUCTION ALLOCATION DYNAMIQUE
 

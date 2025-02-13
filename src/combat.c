@@ -266,9 +266,9 @@ int choix_action(char nom[], int i){
     return 0;
 
 }
-int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
+/*int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
     
-}
+}*/
 
 int evolution_mechas(mechas_joueur_t *mecha_joueur){
     if(mecha_joueur->niveau >= mecha[mecha_joueur->id_mechas -1].niveau_evolution && mecha[mecha_joueur->id_mechas -1].evolution > 0){
@@ -289,7 +289,7 @@ void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup){
             mecha->xp = 0;
             mecha->xp += nouv_level;
             lvlup = (int)(15 * exp(0.05 * mecha->niveau));   //Calculer le nouveau nombre d'XP necessaire
-            evolution_mechas(&mechas_presents->mechas_joueur[i]);
+            evolution_mechas(mecha);
         }
     }
     else{
@@ -401,15 +401,15 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
 }
 
 
-int main(){
-    /*
+/*int main(){
+    
     //combat_init();
     int i = 1;
     //choix_action(nom, i);
 
     
     tour_jeu(&joueur, &joueur, &joueur);
-    */
+    
 
     recuperation_joueur(&joueur,"player2");
     recuperation_mechas(mecha);
@@ -418,4 +418,4 @@ int main(){
     montee_niveau(&joueur.mechas_joueur[1],10,20);
     evolution_mechas(&joueur.mechas_joueur[1]);
     sauvegarde_partie(&joueur,"player2");
-}
+}*/

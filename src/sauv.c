@@ -124,11 +124,12 @@ int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) 
     while(fgets(ligne, sizeof(ligne), file) != NULL){       // lecture de chaque ligne
         sscanf(ligne, "%[^,],%d", nom,&num);
         if(!strcmp(nom,pseudo)){
-            sscanf(ligne, "%49[^,],%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",     //récupère les bonnes ligne et les rangent au bon endroit du tableau de mechas
+            sscanf(ligne, "%49[^,],%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",     //récupère les bonnes ligne et les rangent au bon endroit du tableau de mechas
                 nom,&mechas_joueur[num-1].numero,&mechas_joueur[num-1].id_mechas,
                 &mechas_joueur[num-1].niveau,&mechas_joueur[num-1].pv,&mechas_joueur[num-1].pv_max,
                 &mechas_joueur[num-1].xp,&mechas_joueur[num-1].attaque,&mechas_joueur[num-1].defense,
-                &mechas_joueur[num-1].vitesse,&mechas_joueur[num-1].attaque_1,&mechas_joueur[num-1].attaque_2);
+                &mechas_joueur[num-1].vitesse,&mechas_joueur[num-1].attaque_1,&mechas_joueur[num-1].attaque_2,
+                &mechas_joueur[num-1].utilisation1,&mechas_joueur[num-1].utilisation2);
             nb_mechas++;
         }
     }
@@ -304,11 +305,13 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
         sscanf(ligne, "%[^,],%d", nom,&num);
         //regarde si la ligne et a changer et la change
         if(!strcmp(nom,pseudo) && num == mechas_joueur[indice].numero){
-            fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+            fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
                 nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
                 mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
                 mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
-                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
+                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2,
+                mechas_joueur[indice].utilisation1,mechas_joueur[indice].utilisation2);
+
             indice++;
         }
         else{
@@ -317,11 +320,12 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
         
     }
     while(indice < nb_mechas){  //si les mechas sont pas trouvé créé la ligne de sauvegarde
-        fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+        fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
             nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
                 mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
                 mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
-                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2);
+                mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2,
+                mechas_joueur[indice].utilisation1,mechas_joueur[indice].utilisation2);
         indice++;
     }
     //fermeture des fichiers
@@ -416,6 +420,95 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
     sauvegarde_mechas_joueur(pnj->mechas_joueur,pnj->pseudo,pnj->nb_mechas);    //appel la sauvegarde des mechas
     return OK;
 }
+
+//FONCTIONS DE SUPPRESSION DE SAUVEGARDES
+
+int suppression_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
+    FILE *file = fopen("save/inventaire.csv", "r");      //Ouverture du fichier inventaire
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
+    if (file == NULL || temp == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    char nom[50];
+    char ligne[256];
+    //traitement du csv / recopie chaque ligne dans le nouveau fichier
+    fgets(ligne, sizeof(ligne), file);          // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);                   //mettre la ligne dans le nouveau fichier
+    while(fgets(ligne, sizeof(ligne), file) != NULL){ 
+        sscanf(ligne, "%[^,]", nom);
+        //verifie si la ligne doit etre modifier
+        if(strcmp(nom,pseudo)){
+            fprintf(temp,"%s",ligne);       //recopie simplement la ligne
+        }
+    }
+    //fermeture des fichiers
+    fclose(file);   
+    fclose(temp);
+
+    //supprime et renomme le nouveau fichier
+    remove("save/inventaire.csv");
+    rename("save/temporaire.csv", "save/inventaire.csv");
+    return OK;
+}
+int suppression_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas) { //Sauvegarde les mechas du joueur
+    FILE *file = fopen("save/infomechas.csv", "r");      //Ouverture du fichier infomechas
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
+    if (file == NULL || temp == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    char nom[50];
+    char ligne[256];
+    //traitement du csv - recopie ligne par ligne du csv
+    fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);
+    while(fgets(ligne, sizeof(ligne), file) != NULL){       
+        sscanf(ligne, "%[^,]", nom);
+        //regarde si la ligne et a changer et la change
+        if(strcmp(nom,pseudo)){
+            fprintf(temp,"%s",ligne);       //sinon recopie simplement 
+         } 
+    }
+    //fermeture des fichiers
+    fclose(file);   
+    fclose(temp);
+    //suppression de l'ancien et renomme le nouveau
+    remove("save/infomechas.csv");
+    rename("save/temporaire.csv", "save/infomechas.csv");
+    return OK;
+}
+
+int suppression_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la partie globale
+    FILE *file = fopen("save/joueur.csv", "r");          //Ouverture du joueur
+    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
+    if (file == NULL || temp == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+    char nom[50];
+    char ligne[256];
+    //traitement du csv - recopie chaque ligne dans le nouveau fichier
+    fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
+    fprintf(temp,"%s",ligne);
+    while(fgets(ligne, sizeof(ligne), file) != NULL){       
+        sscanf(ligne, "%[^,]", nom);
+        if(strcmp(nom,pseudo)){
+            fprintf(temp,"%s",ligne);       //recopie simplement
+        }
+    }
+    //fermeture des fichiers
+    fclose(file);   
+    fclose(temp);
+    //suppression de l'ancien fichier et renomme le nouveau
+    remove("save/joueur.csv");
+    rename("save/temporaire.csv", "save/joueur.csv");
+
+    suppression_inventaire(joueur->inventaire,pseudo);                           //appel la sauvegarde de l'inventaire
+    suppression_mechas_joueur(joueur->mechas_joueur,pseudo,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    return OK;
+}
+
 
 //DESTRUCTION ALLOCATION DYNAMIQUE
 
