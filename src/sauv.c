@@ -129,7 +129,7 @@ int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) 
                 &mechas_joueur[num-1].niveau,&mechas_joueur[num-1].pv,&mechas_joueur[num-1].pv_max,
                 &mechas_joueur[num-1].xp,&mechas_joueur[num-1].attaque,&mechas_joueur[num-1].defense,
                 &mechas_joueur[num-1].vitesse,&mechas_joueur[num-1].attaque_1,&mechas_joueur[num-1].attaque_2,
-                &mechas_joueur[num-1].utilisation1,&mechas_joueur[num-1].utilisation2);
+                &mechas_joueur[num-1].utilisation_1,&mechas_joueur[num-1].utilisation_2);
             nb_mechas++;
         }
     }
@@ -265,7 +265,6 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
         sscanf(ligne, "%[^,]", nom);
         //verifie si la ligne doit etre modifier
         if(!strcmp(nom,pseudo)){
-            printf("\n1\n");
             fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
                                             inventaire->repousse,inventaire->rappel);
             trouver = OK;           //Détermine si la sauvegarde existe
@@ -310,7 +309,7 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
                 mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
                 mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
                 mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2,
-                mechas_joueur[indice].utilisation1,mechas_joueur[indice].utilisation2);
+                mechas_joueur[indice].utilisation_1,mechas_joueur[indice].utilisation_2);
 
             indice++;
         }
@@ -325,7 +324,7 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
                 mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
                 mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
                 mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2,
-                mechas_joueur[indice].utilisation1,mechas_joueur[indice].utilisation2);
+                mechas_joueur[indice].utilisation_1,mechas_joueur[indice].utilisation_2);
         indice++;
     }
     //fermeture des fichiers

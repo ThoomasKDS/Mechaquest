@@ -1,25 +1,25 @@
 id_mechas,Nom,Type,Evolution,Description,ListeAttaque
-1,Tournicoton,Renouvelable,2,Un petit tourniquet,25;26;27;28;29
-2,Toutourne,Renouvelable,0,Une grosse éolienne,25;26;27;28;29
-3,RaseTout,Electrique,4,Un petit rasoir,1;2;3;4;5
-4,CroqueTout,Electrique,0,Une tondeuse à gazon,1;2;3;4;5
-5,Tikart,Carburant,6,Un petit kart,40;41;42;43;44
-6,Handiboost,Carburant,0,Un fauteuil roulant,40;41;42;43;44
-7,Nokito,Electrique,8,Un nokia 3310,6;2;7;4;8
-8,Phonito,Electrique,0,Un IPhone costaud,6;2;7;4;8
-9,Front’al,Electrique,10,Une lampe frontale,9;2;10;4;11
-10,Lamp’air,Electrique,0,Un lampadaire,9;2;10;4;11
-11,Peufair,Electrique,12,Une peuf mignonne,17;2;18;4;19
-12,Vapotu,Electrique,0,Une cigarette électrique,17;2;18;4;19
-13,Winamac,Electrique,0,Un ordinateur polivalent,12;13;14;15;16
-14,Bagrille,Electrique,0,Un grille baguette,20;21;22;23;24
-15,Paseaua,Renouvelable,16,Une écluse folle,30;31;32;33;34
-16,Baraton,Renouvelable,0,Un barrage fou,30;31;32;33;34
-17,Chargeosol,Renouvelable,18,Une voiture solaire,35;36;37;38;39
-18,Chargenvol,Renouvelable,0,Un avion solaire,35;36;37;38;39
-19,Tractoun,Carburant,20,Un tracteur mignon,45;46;47;48;49
-20,Détract,Carburant,0,Un tracteur à la cool,45;46;47;48;49
-21,Zeaudiac,Carburant,22,Un petit bateau,50;51;52;53;54
-22,Paquebeau,Carburant,0,Un beau et grand bateau,50;51;52;53;54
-23,Aéroshima,Nucléaire,0,Une fusée atomique,55;56;57;58;59
-24,Uranoïde,Nucléaire,0,Un robot d'uranium,60;61;62;63;64
+1,Tournicoton,Renouvelable,2,15,Un petit tourniquet,;25;26;27;28;29
+2,Toutourne,Renouvelable,0,0,Une grosse éolienne,25;26;27;28;29
+3,RaseTout,Electrique,4,15,Un petit rasoir,1;2;3;4;5
+4,CroqueTout,Electrique,0,0,Une tondeuse à gazon,1;2;3;4;5
+5,Tikart,Carburant,6,15,Un petit kart,40;41;42;43;44
+6,Handiboost,Carburant,0,0,Un fauteuil roulant,40;41;42;43;44
+7,Nokito,Electrique,8,15,Un nokia 3310,6;2;7;4;8
+8,Phonito,Electrique,0,0,Un IPhone costaud,6;2;7;4;8
+9,Front’al,Electrique,10,15,Une lampe frontale,9;2;10;4;11
+10,Lamp’air,Electrique,0,0,Un lampadaire,9;2;10;4;11
+11,Peufair,Electrique,12,15,Une peuf mignonne,17;2;18;4;19
+12,Vapotu,Electrique,0,0,Une cigarette électrique,17;2;18;4;19
+13,Winamac,Electrique,0,0,Un ordinateur polivalent,12;13;14;15;16
+14,Bagrille,Electrique,0,0,Un grille baguette,20;21;22;23;24
+15,Paseaua,Renouvelable,16,15,Une écluse folle,30;31;32;33;34
+16,Baraton,Renouvelable,0,0,Un barrage fou,30;31;32;33;34
+17,Chargeosol,Renouvelable,18,15,Une voiture solaire,35;36;37;38;39
+18,Chargenvol,Renouvelable,0,0,Un avion solaire,35;36;37;38;39
+19,Tractoun,Carburant,20,15,Un tracteur mignon,45;46;47;48;49
+20,Détract,Carburant,0,0,Un tracteur à la cool,45;46;47;48;49
+21,Zeaudiac,Carburant,22,15,Un petit bateau,50;51;52;53;54
+22,Paquebeau,Carburant,0,0,Un beau et grand bateau,50;51;52;53;54
+23,Aéroshima,Nucléaire,0,0,Une fusée atomique,55;56;57;58;59
+24,Uranoïde,Nucléaire,0,0,Un robot d'uranium,60;61;62;63;64

@@ -12,11 +12,11 @@
 
 #define N 2
 
-char nom[50] = "noaha";
+char nom[50] = "player1";
 
 joueur_t joueur;
 mechas_t mecha[24];
-attaque_t attaque[10];
+attaque_t attaque[64];
 
 
 
@@ -228,6 +228,7 @@ int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, a
         }
     }
     printf("PV : %d --> %d\n", ancien_pv, mecha_ordi->pv);
+    return OK;
 }
 
 
@@ -266,14 +267,48 @@ int choix_action(char nom[], int i){
     return 0;
 
 }
-/*int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
-    
-}*/
+int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
+    int i;
+    int choix = -1;
+    printf("FONCTION ATTAQUE :\n");
+    for(i = 0;attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau != mecha_joueur->niveau && i<5 ;i++){
+        printf("%d\n",i);
+    }
+    if(attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau == mecha_joueur->niveau){
+        printf("Votre mechas souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
+        printf("choisiseez l'attaques à remplacer ou appuyer sur 0 pour pas l'apprendre\n");
+        printf("attaque 1:%s\nDégats:%d\nPrecision:%d\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
+        printf("attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
+        do{
+            scanf("%d",&choix);
+            if(choix < 0 || choix > 2)
+                printf("Veuillez choisir entre 0 et 2\n");
+        } while(choix < 0 || choix > 2);
+        switch(choix){
+            case 1:
+                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
+                mecha_joueur->attaque_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
+                mecha_joueur->utilisation_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
+                break;
+            case 2:
+                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
+                mecha_joueur->attaque_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
+                mecha_joueur->utilisation_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
+                break;
+            default:
+                printf("Vous gardez vos attaques actuelle\n");
+        }
+           
+    }
+    printf("attaque 1:%d\nUtilisation:%d\n",mecha_joueur->attaque_1,mecha_joueur->utilisation_1);
+    printf("attaque 2:%d\nUtilisation:%d\n",mecha_joueur->attaque_2,mecha_joueur->utilisation_2);
+    return OK;
+}
 
 int evolution_mechas(mechas_joueur_t *mecha_joueur){
     if(mecha_joueur->niveau >= mecha[mecha_joueur->id_mechas -1].niveau_evolution && mecha[mecha_joueur->id_mechas -1].evolution > 0){
         mecha_joueur->id_mechas++;
-        printf("%s a évoluer en %s",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );
+        printf("%s a évoluer en %s\n",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );
     }
     return OK;
 }
@@ -290,6 +325,7 @@ void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup){
             mecha->xp += nouv_level;
             lvlup = (int)(15 * exp(0.05 * mecha->niveau));   //Calculer le nouveau nombre d'XP necessaire
             evolution_mechas(mecha);
+            apprentissage_attaque(mecha);
         }
     }
     else{
@@ -397,7 +433,7 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
         }
     }
     level_mechas(mecha_joueur, mecha_ordi);
-
+    return OK;
 }
 
 
@@ -411,11 +447,10 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
     tour_jeu(&joueur, &joueur, &joueur);
     
 
-    recuperation_joueur(&joueur,"player2");
+    recuperation_joueur(&joueur,"player1");
     recuperation_mechas(mecha);
     recuperation_attaques(attaque);
-
-    montee_niveau(&joueur.mechas_joueur[1],10,20);
-    evolution_mechas(&joueur.mechas_joueur[1]);
-    sauvegarde_partie(&joueur,"player2");
+    
+    montee_niveau(&joueur.mechas_joueur[0],10,20);
+    sauvegarde_partie(&joueur,"player1");
 }*/

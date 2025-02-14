@@ -30,7 +30,7 @@ typedef struct{
     int evolution;
     int niveau_evolution;
     char description[200];
-    int liste_attaque[10];
+    int liste_attaque[5];
     int nb_attaques;
 } mechas_t;
 
@@ -53,8 +53,8 @@ typedef struct{
     int vitesse;
     int attaque_1;
     int attaque_2;
-    int utilisation1;
-    int utilisation2;
+    int utilisation_1;
+    int utilisation_2;
 } mechas_joueur_t;
 
 typedef struct{
