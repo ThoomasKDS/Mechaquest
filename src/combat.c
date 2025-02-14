@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include "../lib/combat.h"
 #include "../lib/sauv.h"
 
@@ -177,17 +178,26 @@ int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, a
     int choix_attaque = -1;
     int att1, att2;
     int ancien_pv;
+    int nbr_rand;
 
     //Lister les 2 attaques
     printf("%s : %d dégats\n", attaque[mecha_joueur->attaque_1].nom, attaque[mecha_joueur->attaque_1].degats);
     printf("%s : %d dégats\n", attaque[mecha_joueur->attaque_2].nom, attaque[mecha_joueur->attaque_2].degats);
 
-
+    
     while(choix_attaque < 1 || choix_attaque > 2){
         printf("Choisir l'attaque : ");
         scanf("%d", &choix_attaque);
         if(choix_attaque < 1 || choix_attaque > 2){
             printf("Attaque indisponible");
+        }
+        if((choix_attaque == 1) && (attaque[mecha_joueur->attaque_1].utilisations <= 0)){
+            printf("Vous ne pouvez pas choisir cette attaque (utilisation = 0)\n");
+            choix_attaque = 0;
+        }
+        else if((choix_attaque == 2) && (attaque[mecha_joueur->attaque_2].utilisations <= 0)){
+            printf("Vous ne pouvez pas choisir cette attaque (utilisation = 0)\n");
+            choix_attaque = 0;
         }
     }
 
@@ -195,36 +205,46 @@ int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, a
     att1 = attaque[mecha_joueur->attaque_1].degats;
     att2 = attaque[mecha_joueur->attaque_2].degats;
 
-    printf("type attaque : %s, type mecha : %s\n", attaque[mecha_joueur->attaque_1].type, mecha[mecha_ordi->id_mechas-1].type);
+    srand(time(NULL));
+    nbr_rand = (rand() % 100) + 1;
 
     if(choix_attaque == 1){
-        // Test en fonction des types (+ de degats ou non)
-        if(((strcmp(attaque[mecha_joueur->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Electrique") == 0))
-        || ((strcmp(attaque[mecha_joueur->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Renouvelable") == 0))
-        || ((strcmp(attaque[mecha_joueur->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Carburant") == 0))){
-            att1 *= 1.5;
-        }
-        else if((strcmp(attaque[mecha_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_ordi->id_mechas-1].type, "Nucleaire")){
-            att1 *= 1.2;
-        }
+        if(nbr_rand <= attaque[mecha_joueur->attaque_1].precision){  //Test si l'attaque touche (precision)
 
-        if(mecha_joueur->attaque + att1 > mecha_ordi->defense){
-            mecha_ordi->pv -= (mecha_joueur->attaque + att1 - mecha_ordi->defense);
+            // Test en fonction des types (+ de degats ou non)
+            if(((strcmp(attaque[mecha_joueur->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Electrique") == 0))
+            || ((strcmp(attaque[mecha_joueur->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Renouvelable") == 0))
+            || ((strcmp(attaque[mecha_joueur->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Carburant") == 0))){
+                att1 *= 1.5;
+            }
+            else if((strcmp(attaque[mecha_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_ordi->id_mechas-1].type, "Nucleaire")){
+                att1 *= 1.2;
+            }
+
+            if(mecha_joueur->attaque + att1 > mecha_ordi->defense){
+                mecha_ordi->pv -= (mecha_joueur->attaque + att1 - mecha_ordi->defense);
+            }
+
+            attaque[mecha_joueur->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
         }
     }
     else{
-        // Test en fonction des types (+ de degats ou non)
-        if(((strcmp(attaque[mecha_joueur->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Electrique") == 0))
-        || ((strcmp(attaque[mecha_joueur->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Renouvelable") == 0))
-        || ((strcmp(attaque[mecha_joueur->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Carburant") == 0))){
-            att2 *= 1.5;
-        }
-        else if((strcmp(attaque[mecha_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_ordi->id_mechas-1].type, "Nucleaire")){
-            att2 *= 1.2;
-        }
+        if(nbr_rand <= attaque[mecha_joueur->attaque_2].precision){ //Test si l'attaque touche (precision)
+            // Test en fonction des types (+ de degats ou non)
+            if(((strcmp(attaque[mecha_joueur->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Electrique") == 0))
+            || ((strcmp(attaque[mecha_joueur->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Renouvelable") == 0))
+            || ((strcmp(attaque[mecha_joueur->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_ordi->id_mechas-1].type, "Carburant") == 0))){
+                att2 *= 1.5;
+            }
+            else if((strcmp(attaque[mecha_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_ordi->id_mechas-1].type, "Nucleaire")){
+                att2 *= 1.2;
+            }
 
-        if(mecha_joueur->attaque + att2 > mecha_ordi->defense){
-            mecha_ordi->pv -= (mecha_joueur->attaque + att2 - mecha_ordi->defense);
+            if(mecha_joueur->attaque + att2 > mecha_ordi->defense){
+                mecha_ordi->pv -= (mecha_joueur->attaque + att2 - mecha_ordi->defense);
+            }
+
+            attaque[mecha_joueur->attaque_2].utilisations--;    //Decrementer le nombre d'utilisations restantes
         }
     }
     printf("PV : %d --> %d\n", ancien_pv, mecha_ordi->pv);
@@ -275,40 +295,40 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
         printf("%d\n",i);
     }
     if(attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau == mecha_joueur->niveau){
-        printf("Votre mechas souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
-        printf("choisiseez l'attaques à remplacer ou appuyer sur 0 pour pas l'apprendre\n");
-        printf("attaque 1:%s\nDégats:%d\nPrecision:%d\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
-        printf("attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
+        printf("Votre mechas souhaite apprendre une nouvelle attaque : %s\nDégats:%d\nPrecision:%d\n",attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
+        printf("Choisissez l'attaque à remplacer ou appuyer sur 0 pour ne rien faire : \n");
+        printf("Attaque 1:%s\nDégats:%d\nPrecision:%d\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
+        printf("Attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
         do{
             scanf("%d",&choix);
             if(choix < 0 || choix > 2)
-                printf("Veuillez choisir entre 0 et 2\n");
+                printf("Veuillez choisir entre 0 et 2 : \n");
         } while(choix < 0 || choix > 2);
         switch(choix){
             case 1:
-                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
+                printf("Vous avez remplacé votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
                 mecha_joueur->attaque_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
                 break;
             case 2:
-                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
+                printf("Vous avez remplacé votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
                 mecha_joueur->attaque_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
                 break;
             default:
-                printf("Vous gardez vos attaques actuelle\n");
+                printf("Vous gardez votre attaque actuelle\n");
         }
            
     }
-    printf("attaque 1:%d\nUtilisation:%d\n",mecha_joueur->attaque_1,mecha_joueur->utilisation_1);
-    printf("attaque 2:%d\nUtilisation:%d\n",mecha_joueur->attaque_2,mecha_joueur->utilisation_2);
+    printf("Attaque 1 : %d\nUtilisations : %d\n",mecha_joueur->attaque_1,mecha_joueur->utilisation_1);
+    printf("Attaque 2 : %d\nUtilisations : %d\n",mecha_joueur->attaque_2,mecha_joueur->utilisation_2);
     return OK;
 }
 
 int evolution_mechas(mechas_joueur_t *mecha_joueur){
     if(mecha_joueur->niveau >= mecha[mecha_joueur->id_mechas -1].niveau_evolution && mecha[mecha_joueur->id_mechas -1].evolution > 0){
         mecha_joueur->id_mechas++;
-        printf("%s a évoluer en %s\n",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );
+        printf("%s à évolué en %s\n",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );
     }
     return OK;
 }
@@ -437,20 +457,22 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
 }
 
 
-/*int main(){
+int main(){
     
     //combat_init();
     int i = 1;
-    //choix_action(nom, i);
+    
 
     
     tour_jeu(&joueur, &joueur, &joueur);
     
 
-    recuperation_joueur(&joueur,"player1");
+    recuperation_joueur(&joueur, "player1");
     recuperation_mechas(mecha);
     recuperation_attaques(attaque);
+
+    choix_action(nom, i);
     
     montee_niveau(&joueur.mechas_joueur[0],10,20);
-    sauvegarde_partie(&joueur,"player1");
-}*/
+    sauvegarde_partie(&joueur, "player1");
+}
