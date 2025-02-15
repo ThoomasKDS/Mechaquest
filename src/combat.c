@@ -275,10 +275,14 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
         printf("%d\n",i);
     }
     if(attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau == mecha_joueur->niveau){
-        printf("Votre mechas souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
+        printf("Votre mechas souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",
+        attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,
+        attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
         printf("choisiseez l'attaques à remplacer ou appuyer sur 0 pour pas l'apprendre\n");
-        printf("attaque 1:%s\nDégats:%d\nPrecision:%d\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
-        printf("attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
+        printf("attaque 1:%s\nDégats:%d\nPrecision:%d\n",
+        attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
+        printf("attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",
+        attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
         do{
             scanf("%d",&choix);
             if(choix < 0 || choix > 2)
@@ -286,12 +290,14 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
         } while(choix < 0 || choix > 2);
         switch(choix){
             case 1:
-                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
+                printf("Vous avez remplacer votre attaque %s par %s\n",
+                attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
                 mecha_joueur->attaque_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
                 break;
             case 2:
-                printf("Vous avez remplacer votre attaque %s par %s\n",attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
+                printf("Vous avez remplacer votre attaque %s par %s\n",
+                attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
                 mecha_joueur->attaque_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
                 break;
