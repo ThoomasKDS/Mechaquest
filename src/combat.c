@@ -462,7 +462,7 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
     return OK;
 }
 
-
+/*
 int main(){
     
     //combat_init();
@@ -481,4 +481,4 @@ int main(){
     
     montee_niveau(&joueur.mechas_joueur[0],10,20);
     sauvegarde_partie(&joueur, "player1");
-}
+}*/
