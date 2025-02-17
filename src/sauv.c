@@ -55,14 +55,14 @@ int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    int nb_serie;
-    char ligne[256];
+    int num_pnj;
+    char ligne[1070];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
-        sscanf(ligne, "%d", &nb_serie);
-        if(nb_serie == id_pnj){                             //verification du pseudo
-            sscanf(ligne, "%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj->id_pnj,pnj->pseudo,&pnj->etat,pnj->dialogueDebut,pnj->dialogueFin,&pnj->x,&pnj->y,&pnj->orientation);
+        sscanf(ligne, "%d", &num_pnj);
+        if(num_pnj == id_pnj){                             //verification du pseudo
+            sscanf(ligne, "%d,%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj->id_pnj,&pnj->id_map,pnj->pseudo,&pnj->etat,pnj->dialogueDebut,pnj->dialogueFin,&pnj->x,&pnj->y,&pnj->orientation);
             //création du pointeur sur la structure inventaire
             pnj->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
             if (!pnj->inventaire) {
@@ -320,7 +320,7 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
     }
     while(indice < nb_mechas){  //si les mechas sont pas trouvé créé la ligne de sauvegarde
         fprintf(temp, "%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
-            nom,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
+            pseudo,mechas_joueur[indice].numero,mechas_joueur[indice].id_mechas,
                 mechas_joueur[indice].niveau,mechas_joueur[indice].pv,mechas_joueur[indice].pv_max,
                 mechas_joueur[indice].xp,mechas_joueur[indice].attaque,mechas_joueur[indice].defense,
                 mechas_joueur[indice].vitesse,mechas_joueur[indice].attaque_1,mechas_joueur[indice].attaque_2,
@@ -378,47 +378,58 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     return OK;
 }
 
-int sauvegarde_pnj(pnj_t *pnj, int id_pnj) { //Sauvegarde de la partie globale
-    int trouver = 0;
-    FILE *file = fopen("save/pnj.csv", "r");          //Ouverture du joueur
-    FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj) {
+    int trouver = 0;  // Indique si la ligne a été trouvée et modifiée
+    FILE *file = fopen("save/pnj.csv", "r");
+    FILE *temp = fopen("save/temporaire.csv", "w");
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    int nb_serie;
-    char ligne[256];
-    //traitement du csv - recopie chaque ligne dans le nouveau fichier
-    fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
-    fprintf(temp,"%s",ligne);
-    while(fgets(ligne, sizeof(ligne), file) != NULL){       
-        sscanf(ligne, "%d", &nb_serie);
-        //verifie si la ligne est a modifié 
-        if(nb_serie == id_pnj){
-            fprintf(temp,"%d,%s,%d,%s,%s,%d,%d,%d\n",id_pnj,pnj->pseudo,pnj->etat,pnj->dialogueDebut,
-                                            pnj->dialogueFin,pnj->x,pnj->y,pnj->orientation);
-            trouver = OK;       //indique que la ligne existe et a été modifié
-        }
-        else{
-            fprintf(temp,"%s",ligne);       //recopie simplement
-        }
-    }
-    if(!trouver){       //si pas trouver alors créé une nouvelle ligne de sauvegarde
-        fprintf(temp,"%d,%s,%d,%s,%s,%d,%d,%d\n",id_pnj,pnj->pseudo,pnj->etat,pnj->dialogueDebut,
-                                            pnj->dialogueFin,pnj->x,pnj->y,pnj->orientation);
+
+    char ligne[1070];
+    int num_pnj;
+
+    // Copie l'en-tête
+    if (fgets(ligne, sizeof(ligne), file)) {
+        fprintf(temp, "%s", ligne);
     }
 
-    //fermeture des fichiers
-    fclose(file);   
+    // Parcourt le fichier ligne par ligne
+    while (fgets(ligne, sizeof(ligne), file)) {
+        if (sscanf(ligne, "%d", &num_pnj) == 1) {
+            if (num_pnj == id_pnj) {
+                // Modifie la ligne
+                fprintf(temp, "%d,%d,%s,%d,%s,%s,%d,%d,%d\n",
+                        id_pnj, pnj->id_map, pnj->pseudo, pnj->etat,
+                        pnj->dialogueDebut, pnj->dialogueFin, pnj->x, pnj->y, pnj->orientation);
+                trouver = 1;
+            } else {
+                // Recopie les autres lignes
+                fprintf(temp, "%s", ligne);
+            }
+        } else {
+            fprintf(temp, "%s", ligne);  // Ligne mal formée, recopiée telle quelle
+        }
+    }
+
+    // Ajoute une nouvelle ligne si non trouvée
+    if (!trouver) {
+        fprintf(temp, "%d,%d,%s,%d,%s,%s,%d,%d,%d\n",
+                id_pnj, pnj->id_map, pnj->pseudo, pnj->etat,
+                pnj->dialogueDebut, pnj->dialogueFin, pnj->x, pnj->y, pnj->orientation);
+    }
+
+    fclose(file);
     fclose(temp);
-    //suppression de l'ancien fichier et renomme le nouveau
+
+    // Remplace l'ancien fichier par le nouveau
     remove("save/pnj.csv");
     rename("save/temporaire.csv", "save/pnj.csv");
 
-    sauvegarde_inventaire(pnj->inventaire,pnj->pseudo);                           //appel la sauvegarde de l'inventaire
-    sauvegarde_mechas_joueur(pnj->mechas_joueur,pnj->pseudo,pnj->nb_mechas);    //appel la sauvegarde des mechas
     return OK;
 }
+
 
 //FONCTIONS DE SUPPRESSION DE SAUVEGARDES
 

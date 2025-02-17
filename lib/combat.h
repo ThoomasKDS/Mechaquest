@@ -1,6 +1,5 @@
 #ifndef COMBAT_H
 #define COMBAT_H
-
 #include "sauv.h"
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]);

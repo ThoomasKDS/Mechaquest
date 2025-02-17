@@ -1,6 +1,7 @@
 pseudo,Mechaball,Carburant,Repousse,Rappel
 player1,0,0,0,0
 player2,1,0,0,0
+Vin Gazole,5,5,5,5
 ZYX B-99,0,1,1,0
 AEL X-07,1,1,0,0
 QTR C-42,1,0,0,0
@@ -18,3 +19,4 @@ WQS N-30,2,2,0,0
 FGA O-17,0,3,0,1
 ZLM P-19,1,1,1,1
 XON Q-08,2,3,0,2
+

@@ -11,32 +11,28 @@
 #include "../lib/initGame.h"
 #include "../lib/sauv.h"
 #include "../lib/affichage.h"
+#include "../lib/pointDePassage.h"
 
-
-//CONSTANTE
-const int FPS_LIMIT = 60;
-const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
+mechas_t mecha[24];
+attaque_t attaque[64];
+zone_t zone[10];
+pnj_t pnj;
 
 
 int main() {
     //VARIABLES UTILES AU PROGRAMME
+
     game_t game;
     img_player_t sprite_playerH;
     joueur_t j;
-    int running = 1;
-    SDL_Event event;
-    Uint32 frameStart;  
-    int frameTime;
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    int last_case = RIEN;
-    zone_t zone[10];
-    mechas_t mecha[24];
-    char pseudo[50] = "player2";
+    char pseudo[50] = "player1";
     recuperation_joueur(&j,pseudo);
     game.mat_active = j.numMap;
-    mechas_joueur_t mecha_sauvage;
-    int spawn_mecha = 0;
 
+    recuperation_mechas(mecha);
+    recuperation_attaques(attaque);
+    recuperation_zone(zone);
+    
 
     //INITIALISATION SDL    
     if (!init_game(&game)) {            
@@ -73,52 +69,16 @@ int main() {
     }
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
-
-    //INIT ZONE
-    recuperation_zone(zone);
-    //INIT MECHA
-    recuperation_mechas(mecha);
-    j.inventaire->mechaball = 1;
-
-    while (running) {
-        frameStart = SDL_GetTicks();    //obtien heure
-
-        SDL_PumpEvents();  // Met à jour l'état des événements (telles que les touches pressées)
-        keys = SDL_GetKeyboardState(NULL);  // Met à jour l'état des touches
-
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
-                running = 0;
-            }
-            if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     running = 0;
-            }
-            
-
-        }
-
-        //deplacement du joueur 
-        spawn_mecha = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, zone, mecha, &mecha_sauvage);
-        animation(&j, &sprite_p);
-        if(spawn_mecha == 1){
-            //lancement d'un combat
-            printf("attaque : %d\n defense : %d\n, vitesse : %d\n", mecha_sauvage.attaque, mecha_sauvage.defense, mecha_sauvage.vitesse);
-        }
-        SDL_RenderClear(game.renderer);     //efface l'ecran
-
-        draw_background(&game);
-        draw_player(&game, &sprite_p, &sprite_playerH, &j);           //dessine le joueur
-    
-
-        SDL_RenderPresent(game.renderer);      //affiche rendu
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
-        }
-    }
-
+    if(j.pointSauvegarde == 0)
+        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+    if(j.pointSauvegarde == 1)
+        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p);
+    if(j.pointSauvegarde == 2)
+        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+    if(j.pointSauvegarde == 3)
+        combat_final(&game,&sprite_playerH,&j,&sprite_p);
+    if(j.pointSauvegarde == 4)
+        jeu_libre(&game,&sprite_playerH,&j,&sprite_p);
     sauvegarde_partie(&j,pseudo);
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);

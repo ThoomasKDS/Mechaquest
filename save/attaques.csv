@@ -62,4 +62,4 @@ id_attaques,Nom,Type,Niveau,Degats,Precision,Utilisation,Description
 61,Coup irradié,Uranium,25,48,70,15,Un coup direct rempli de radiations dangereuses.
 62,Laser kryptonien,Uranium,35,60,100,10,Un laser concentré chargé en énergie nucléaire.
 63,All in Uranus,Uranium,45,72,90,7,Une explosion nucléaire causée par une surcharge.
-64,Pulvérisation nucléaire,Uranium,55,100,80,2,Réduit tout à néant grâce à une onde radioactive.
+64,Pulvérisation nucléaire,Uranium,55,100,80,4,Réduit tout à néant grâce à une onde radioactive.

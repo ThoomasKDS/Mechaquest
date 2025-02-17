@@ -75,6 +75,7 @@ typedef struct{
 
 typedef struct{
     int id_pnj;
+    int id_map;
     char pseudo[50];
     int etat;
     char dialogueDebut[500];
