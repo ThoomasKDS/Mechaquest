@@ -7,12 +7,12 @@ CC = gcc
 # Drapeaux de compilation
 CFLAGS = -std=c99 -Wall -Ilib \
          $(shell sdl2-config --cflags) \
-         $(shell pkg-config --cflags SDL2_image SDL2_mixer)
+         $(shell pkg-config --cflags SDL2_image SDL2_mixer SDL2_ttf)
 
 # Drapeaux de l'éditeur de liens
 LFLAGS = -lm \
          $(shell sdl2-config --libs) \
-         $(shell pkg-config --libs SDL2_image SDL2_mixer)
+         $(shell pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf)
 
 # Répertoires
 SRCDIR = src
