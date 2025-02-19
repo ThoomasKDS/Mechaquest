@@ -14,18 +14,13 @@
 #define N 2
 
 char nom[50] = "player1";
-
 joueur_t joueur;
-mechas_t mecha[24];
-attaque_t attaque[64];
-
-
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]){
 
     //char type[20];
     recuperation_mechas(mecha);
-    joueur_t joueur;
+    
     recuperation_joueur(&joueur, nom);
     int i, j;
     for(i = 0; i < N; i++){
