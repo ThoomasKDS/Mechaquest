@@ -1,11 +1,8 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 #include "sauv.h"
+#include "pointDePassage.h"
 
-extern mechas_t mecha[24];
-extern attaque_t attaque[64];
-extern zone_t zone[10];
-extern pnj_t pnj;
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]);
 
