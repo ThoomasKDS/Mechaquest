@@ -296,7 +296,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    TTF_Font* font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24);
+    TTF_Font* font = TTF_OpenFont("img/police_temporaire.ttf", 24);
     if (!font) {
         printf("Erreur de chargement de la police: %s\n", TTF_GetError());
         SDL_DestroyRenderer(renderer);
