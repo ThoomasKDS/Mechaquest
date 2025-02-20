@@ -19,7 +19,7 @@ typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture[7];
-    TTF_Font* font;
+    TTF_Font* police;
     int *** mat ;
     float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
     SDL_Rect dms_win;
