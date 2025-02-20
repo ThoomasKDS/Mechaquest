@@ -370,7 +370,7 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, int x, int y, int r, i
 void draw_text(game_t *game,rectangle_t* rectangle) {
     
     SDL_Color textColor = {0, 0, 0, 255}; // Noire
-    SDL_Surface* surface = TTF_RenderText_Solid(game->font, rectangle->text, textColor);
+    SDL_Surface* surface = TTF_RenderText_Solid(game->police, rectangle->text, textColor);
     
     SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
     
