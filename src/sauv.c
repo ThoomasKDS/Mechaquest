@@ -223,9 +223,10 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
     while (fgets(ligne, sizeof(ligne), file) != NULL){      //Lecture de chaque ligne
-        sscanf(ligne, "%d,%d,%d,%d,%d,%[^\n]",
+        sscanf(ligne, "%d,%d,%d,%d,%d,%d,%[^\n]",
                                  &zone_l[count].id_zone,
                                  &zone_l[count].NiveauMoyenApparition,
+                                 &zone_l[count].PvMoyen,
                                  &zone_l[count].VitesseMoyenne,
                                  &zone_l[count].Attaque,
                                  &zone_l[count].Defense,

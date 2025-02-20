@@ -31,4 +31,6 @@ void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup);
 
 void distribuer_xp(joueur_t *mechas_presents, int xp_gagne);
 
+void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game);
+
 #endif

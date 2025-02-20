@@ -22,6 +22,16 @@ int init_game(game_t* game) {
         return 0;
     }
 
+    //initialise sdl ttf (texte)
+    TTF_Init();
+
+    // Charger la police
+    game->font = TTF_OpenFont("police/arima.ttf", 24);
+    if (!game->font) {
+        printf("Erreur chargement police : %s\n", TTF_GetError());
+        return 0;
+    }
+
     // Initialiser SDL_image pour charger des images
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
         printf("Erreur d'initialisation de SDL_image.\n");

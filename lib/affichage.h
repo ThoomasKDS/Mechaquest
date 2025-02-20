@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include <string.h>
 #include "../lib/player.h"
 #include "../lib/initGame.h"
@@ -56,6 +57,11 @@ typedef struct{
 
 }img_player_t;
 
+typedef struct {
+    SDL_Rect rect;
+    SDL_Color couleur;
+    char* text;
+} rectangle_t;
 
 //FONCTION BACKGROUND
 int init_background(game_t * game);     //initalise la background
@@ -72,6 +78,9 @@ int init_player_h(game_t * game, img_player_t * sprite_playerH);                
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
 void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j);                 //dessine le joueur
 void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
-
+//w : largeur, h, hauteur, x, coord x, y : coord y, "r,g,b" :  systeme de couleur, a : oppacité
+void creer_rectangle(rectangle_t *rectangle,int w, int h, int x, int y, int r, int g, int b, int a, char *text); //creer un rectangle avec du texte
+void draw_text(game_t *game, rectangle_t* rectangle);
+void draw_rect(game_t *game, rectangle_t *rectangle);
 
 #endif

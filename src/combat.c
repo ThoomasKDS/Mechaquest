@@ -13,6 +13,9 @@
 
 #define N 2
 
+const int FPS_LIMITS = 60;
+const int FRAME_DELAYS = 1000 / FPS_LIMITS; // Temps entre chaque frame (16 ms)
+
 char nom[50] = "player1";
 joueur_t joueur;
 
@@ -455,6 +458,49 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
     }
     level_mechas(mecha_joueur, mecha_ordi);
     return OK;
+}
+
+void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {
+    SDL_Event event;
+    Uint32 frameStart;  
+    int frameTime;
+    const Uint8 *keys = SDL_GetKeyboardState(NULL);
+    int running =1;
+    int save_map_active = game->mat_active;
+    game->mat_active = 6;
+    rectangle_t test;
+    char texte[50]= "test";
+    creer_rectangle(&test, 50, 50, 50, 50, 255, 255, 255, 150, texte);
+    while(running) {
+        frameStart = SDL_GetTicks();    //obtien heure
+
+        SDL_PumpEvents();  // Met à jour l'état des événements (telles que les touches pressées)
+        keys = SDL_GetKeyboardState(NULL);  // Met à jour l'état des touches
+
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
+                running = 0;
+            }
+            if(event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    running = 0;
+                }
+            }
+
+        }
+
+        SDL_RenderClear(game->renderer);     //efface l'ecran
+
+        draw_background(game);
+        draw_rect(game, &test);
+        SDL_RenderPresent(game->renderer);      //affiche rendu
+        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+
+        if (FRAME_DELAYS > frameTime) {
+            SDL_Delay(FRAME_DELAYS - frameTime); // Attend le temps restant
+        }
+    }
+    game->mat_active = save_map_active;
 }
 
 /*

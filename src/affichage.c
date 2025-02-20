@@ -13,7 +13,7 @@ int init_background(game_t * game) {
     char ext[5] = ".png";
     char chemin[100] = "img/background/fond";
 
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 7; i++) {
         chemin[19] = '0' + (i + 1);
         chemin[20] = '\0';
         strcat(chemin, ext);
@@ -73,6 +73,8 @@ int init_background(game_t * game) {
 
     return 1;
 }
+
+
 
 //dessine le background
 void draw_background(game_t * game) {
@@ -171,7 +173,7 @@ int remplir_mat(game_t * game, int taille_x, int taille_y) {
 void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
-            printf("%d", game->mat[n_mat][i][j]);
+            printf("%d\t", game->mat[n_mat][i][j]);
         }
         printf("\n"); 
     }
@@ -352,12 +354,52 @@ void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
     SDL_RenderCopy(game->renderer, img, NULL, obj);
 }
 
+//creer un rectangle avec du texte
+void creer_rectangle(rectangle_t *rectangle,int w, int h, int x, int y, int r, int g, int b, int a, char *text) { //creer un rectangle avec tt les parametres
+    rectangle->rect.x = x;
+    rectangle->rect.y = y;
+    rectangle->rect.w = w;
+    rectangle->rect.h = h;
+    rectangle->couleur.r = r;
+    rectangle->couleur.g = g;
+    rectangle->couleur.b = b;
+    rectangle->couleur.a = a;       //oppacité
+    strcpy(rectangle->text, text);
+}
 
+void draw_text(game_t *game,rectangle_t* rectangle) {
+    
+    SDL_Color textColor = {0, 0, 0, 255}; // Noire
+    SDL_Surface* surface = TTF_RenderText_Solid(game->font, rectangle->text, textColor);
+    
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    
+
+    // Récupérer la taille du texte
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect textRect = {
+        rectangle->rect.x + (rectangle->rect.w - text_width) / 2,
+        rectangle->rect.y + (rectangle->rect.h - text_height) / 2,
+        text_width,
+        text_height
+    };
+
+    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_DestroyTexture(texture);
+}
+
+void draw_rect(game_t *game, rectangle_t *rectangle) {
+        SDL_SetRenderDrawColor(game->renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
+        SDL_RenderFillRect(game->renderer, &rectangle->rect);
+        // Dessiner le texte
+        draw_text(game, rectangle);
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+
+}
 /*=================================================*/
-
-
-
-
 
 
 

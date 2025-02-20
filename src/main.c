@@ -57,7 +57,7 @@ int main() {
   
     //REMPLI LA MATRICE DE 0
     remplir_mat(&game, taille_x_mat, taille_y_mat);
-    aff_mat(&game, taille_x_mat, taille_y_mat, 5);
+    aff_mat(&game, taille_x_mat, taille_y_mat, 1);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
     j.moving = 0;
     j.derniere_touche = 4;
@@ -70,15 +70,15 @@ int main() {
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
     if(j.pointSauvegarde == 0)
-        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
     if(j.pointSauvegarde == 1)
-        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p);
+        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
     if(j.pointSauvegarde == 2)
-        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
     if(j.pointSauvegarde == 3)
-        combat_final(&game,&sprite_playerH,&j,&sprite_p);
+        combat_final(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
     if(j.pointSauvegarde == 4)
-        jeu_libre(&game,&sprite_playerH,&j,&sprite_p);
+        jeu_libre(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
     sauvegarde_partie(&j,pseudo);
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);

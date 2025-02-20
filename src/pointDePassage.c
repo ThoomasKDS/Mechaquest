@@ -1,4 +1,6 @@
 #include "../lib/pointDePassage.h"
+#include "../lib/combat.h"
+
 const int FPS_LIMIT = 60;
 const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
 
@@ -73,7 +75,8 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
 }
 
 
-int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+    int obj_case;
     game->mat[0][0][15] = 2;
     game->mat[0][0][16] = 2;
     game->mat[0][0][17] = 2;
@@ -121,8 +124,10 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
             }
         }
         //deplacement du joueur 
-        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
-
+        obj_case = deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p);
+        if(spawn_mecha(j, obj_case, zone, mecha, &mecha_sauvage)) {
+            combat_sauvage(j, &mecha_sauvage, game);
+        }
         animation(j, sprite_p);
 
         SDL_RenderClear(game->renderer);     //efface l'ecran
@@ -142,7 +147,7 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
     printf("\nDEBUT PARTIE 2\n");
     SDL_Event event;
     Uint32 frameStart;  
@@ -164,6 +169,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     }
 
     int soin = 0;
+    int obj_case;
 
     game->mat[2][0][4] = 2;
     game->mat[2][0][5] = 2;
@@ -230,20 +236,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
                         if(!init_player_h(game, sprite_playerH)){
                             return -1;
                         }
-                        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
-                        animation(j, sprite_p);
-                        SDL_RenderClear(game->renderer);     //efface l'ecran
-
-                        draw_background(game);
-                        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
-                    
-
-                        SDL_RenderPresent(game->renderer);      //affiche rendu
-                        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-                        if (FRAME_DELAY > frameTime) {
-                            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
-                        }
+                        
                     }
                 }
                 if(event.key.keysym.sym == SDLK_UP){
@@ -254,7 +247,10 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
             }
         }
         //deplacement du joueur 
-        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
+        obj_case = deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p);
+        if(spawn_mecha(j, obj_case, zone, mecha, &mecha_sauvage)) {
+            combat_sauvage(j, &mecha_sauvage, game);
+        }
 
         animation(j, sprite_p);
 
@@ -279,12 +275,12 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
     printf("\nDEBUT PARTIE 3\n");
     game->mat[0][0][15] = 2;
     game->mat[0][0][16] = 2;
     game->mat[0][0][17] = 2;
-
+    int obj_case;
     pnj_t vinGazole;
     recuperation_pnj(&vinGazole,21);
 
@@ -331,7 +327,10 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
             }
         }
         //deplacement du joueur 
-        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
+        obj_case = deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p);
+        if(spawn_mecha(j, obj_case, zone, mecha, &mecha_sauvage)) {
+            combat_sauvage(j, &mecha_sauvage, game);
+        }
 
         animation(j, sprite_p);
 
@@ -352,7 +351,7 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
     return OK;
 }
 
-int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
     printf("\nDEBUT PARTIE 4\n");
     SDL_Event event;
     Uint32 frameStart;  
@@ -361,7 +360,7 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
     int last_case = RIEN;
     int taille_x_mat = game->img_w/PX;
     int taille_y_mat = game->img_h/PX;
-
+    int obj_case;
     pnj_t vinGazole;
     recuperation_pnj(&vinGazole,22);
 
@@ -427,8 +426,11 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
             }
         }
         //deplacement du joueur 
-        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
-
+        obj_case = deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p);
+        if(spawn_mecha(j, obj_case, zone, mecha, &mecha_sauvage)) {
+            printf("oui");
+            combat_sauvage(j, &mecha_sauvage, game);
+        }
         animation(j, sprite_p);
 
         SDL_RenderClear(game->renderer);     //efface l'ecran
@@ -452,7 +454,8 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
     return OK;
 }
 
-int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+    int obj_case;
     pnj_t vinGazole;
     recuperation_pnj(&vinGazole,24);
     pnj_t pnj[18];
@@ -515,7 +518,10 @@ int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *
             }
         }
         //deplacement du joueur 
-        deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p, zone, mecha, &mecha_sauvage);
+        obj_case = deplacement(game,taille_x_mat, taille_y_mat, keys, j, &last_case, sprite_p);
+        if(spawn_mecha(j, obj_case, zone, mecha, &mecha_sauvage)) {
+            combat_sauvage(j, &mecha_sauvage, game);
+        }
 
         animation(j, sprite_p);
 

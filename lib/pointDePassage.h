@@ -14,15 +14,15 @@ int copie_mechas(joueur_t *j,mechas_joueur_t *mecha);
 
 int choix_starter(joueur_t *j,pnj_t *vinGazole);
 
-int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j, SDL_Rect *sprite_p);
+int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone);
 
-int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j, SDL_Rect *sprite_p);
+int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone);
 
-int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p);
+int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone);
 
-int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p);
+int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone);
 
-int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p);
+int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone);
 
 #endif
 
