@@ -49,6 +49,7 @@ int main() {
 
     //Affichage du menu
     afficherMenu(&game,&parametres,pseudo);
+    SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
     if(strlen(pseudo) < 1){
         return -1;
     }
