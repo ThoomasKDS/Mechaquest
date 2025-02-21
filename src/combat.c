@@ -468,9 +468,9 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
     int running =1;
     int save_map_active = game->mat_active;
     game->mat_active = 6;
-    rectangle_t test;
-    char texte[50]= "test";
-    creer_rectangle(&test, 50, 50, 50, 50, 255, 255, 255, 150, texte);
+    rectangle_t rect_bas;
+    char texte_vide[50]= "  ";
+    creer_rectangle(&rect_bas, game->dms_win.w, game->dms_win.h/4, (game->dms_win.w - game->img_w)/2, game->dms_win.h/4*3, 0, 0, 0, 100, texte_vide);
     while(running) {
         frameStart = SDL_GetTicks();    //obtien heure
 
@@ -492,7 +492,7 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
         SDL_RenderClear(game->renderer);     //efface l'ecran
 
         draw_background(game);
-        draw_rect(game, &test);
+        draw_rect(game, &rect_bas);
         SDL_RenderPresent(game->renderer);      //affiche rendu
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
