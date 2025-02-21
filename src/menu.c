@@ -7,6 +7,7 @@
 
 SDL_Color rouge = {200, 0, 0, 255};
 SDL_Color vert = {0, 200, 0, 255};
+SDL_Color bleu = {0, 0, 200, 255};
 SDL_Color noir = {0, 0, 0, 255};
 
 // On garde !!!
@@ -89,6 +90,7 @@ int afficherSaisiePseudo(game_t* game, char* pseudo) {
                 }
             }
 
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
             SDL_RenderClear(game->renderer);
             afficherBouton(game, boutonRetour);
             afficherBouton(game, boutonCommencer);
@@ -165,6 +167,7 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
         }
 
         // Affichage
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
         afficherBouton(game, boutonRetour);
         afficherBouton(game, boutonMoinsVolume);
@@ -194,7 +197,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, char* pseudo) {
 
     // INITIALISATION DES BOUTONS
     Bouton boutonJouer = creerBouton((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran - HAUTEUR_BOUTON * 2) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, vert, "Jouer");
-    Bouton boutonParametres = creerBouton((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, noir, "Paramètres");
+    Bouton boutonParametres = creerBouton((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, bleu, "Paramètres");
     Bouton boutonQuitter = creerBouton((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Quitter");
 
     int enCours = 1, action;
@@ -227,6 +230,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, char* pseudo) {
         }
 
         //AFFICHAGE
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
 
         afficherBouton(game, boutonJouer);
