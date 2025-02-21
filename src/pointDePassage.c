@@ -75,7 +75,7 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
 }
 
 
-int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
     int obj_case;
     game->mat[0][0][15] = 2;
     game->mat[0][0][16] = 2;
@@ -147,7 +147,7 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
     printf("\nDEBUT PARTIE 2\n");
     SDL_Event event;
     Uint32 frameStart;  
@@ -275,7 +275,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
     printf("\nDEBUT PARTIE 3\n");
     game->mat[0][0][15] = 2;
     game->mat[0][0][16] = 2;
@@ -351,7 +351,7 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
     return OK;
 }
 
-int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
     printf("\nDEBUT PARTIE 4\n");
     SDL_Event event;
     Uint32 frameStart;  
@@ -454,7 +454,7 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
     return OK;
 }
 
-int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, mechas_t *mecha, zone_t *zone){
+int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
     int obj_case;
     pnj_t vinGazole;
     recuperation_pnj(&vinGazole,24);

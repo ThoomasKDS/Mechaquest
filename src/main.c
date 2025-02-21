@@ -12,6 +12,7 @@
 #include "../lib/sauv.h"
 #include "../lib/affichage.h"
 #include "../lib/pointDePassage.h"
+#include "../lib/menu.h"
 
 mechas_t mecha[24];
 attaque_t attaque[64];
@@ -25,7 +26,8 @@ int main() {
     game_t game;
     img_player_t sprite_playerH;
     joueur_t j;
-    char pseudo[50] = "player1";
+    parametre_t parametres;
+    char pseudo[50] = "";
     recuperation_joueur(&j,pseudo);
     game.mat_active = j.numMap;
 
@@ -45,6 +47,14 @@ int main() {
         return -1;
     }
 
+    //Affichage du menu
+    afficherMenu(&game,&parametres,pseudo);
+    if(strlen(pseudo) < 1){
+        return -1;
+    }
+    if(!recuperation_joueur(&j,pseudo))
+        return -1;
+
     //TAILLE DE LA MATRICE
     int taille_x_mat = game.img_w/PX;
     int taille_y_mat = game.img_h/PX;
@@ -57,7 +67,7 @@ int main() {
   
     //REMPLI LA MATRICE DE 0
     remplir_mat(&game, taille_x_mat, taille_y_mat);
-    aff_mat(&game, taille_x_mat, taille_y_mat, 1);
+    aff_mat(&game, taille_x_mat, taille_y_mat, 5);
     //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
     j.moving = 0;
     j.derniere_touche = 4;
@@ -70,15 +80,15 @@ int main() {
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
     if(j.pointSauvegarde == 0)
-        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
+        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
     if(j.pointSauvegarde == 1)
-        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
+        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p);
     if(j.pointSauvegarde == 2)
-        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
+        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
     if(j.pointSauvegarde == 3)
-        combat_final(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
+        combat_final(&game,&sprite_playerH,&j,&sprite_p);
     if(j.pointSauvegarde == 4)
-        jeu_libre(&game,&sprite_playerH,&j,&sprite_p, mecha, zone);
+        jeu_libre(&game,&sprite_playerH,&j,&sprite_p);
     sauvegarde_partie(&j,pseudo);
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);

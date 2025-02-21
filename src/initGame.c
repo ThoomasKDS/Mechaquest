@@ -22,14 +22,11 @@ int init_game(game_t* game) {
         return 0;
     }
 
-    //initialise sdl ttf (texte)
-    TTF_Init();
-
-    // Charger la police
-    game->font = TTF_OpenFont("police/arima.ttf", 24);
-    if (!game->font) {
-        printf("Erreur chargement police : %s\n", TTF_GetError());
-        return 0;
+    // Initialisation de l'affichage de l'écriture avec TTF
+    if (TTF_Init() == -1) {
+        printf("Erreur d'initialisation de SDL_ttf: %s\n", TTF_GetError());
+        SDL_Quit();
+        return 1;
     }
 
     // Initialiser SDL_image pour charger des images
@@ -86,6 +83,16 @@ int init_game(game_t* game) {
         return 0;
     }
 
+    // Création de la police
+    game->police = TTF_OpenFont("img/police_temporaire.ttf", 24);
+    if (!game->police) {
+        printf("Erreur de chargement de la police: %s\n", TTF_GetError());
+        SDL_DestroyRenderer(game->renderer);
+        SDL_DestroyWindow(game->window);
+        TTF_Quit();
+        SDL_Quit();
+        return 0;
+    }
     
 
  
@@ -102,6 +109,8 @@ void cleanUp(game_t* game) {
     }
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyWindow(game->window);
+    TTF_CloseFont(game->police);
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 }

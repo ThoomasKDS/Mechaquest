@@ -2,6 +2,8 @@
 #define MENU_H
 
 #include "sauv.h"
+#include "../lib/initGame.h"
+#include "../lib/affichage.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdio.h>
@@ -13,7 +15,6 @@
 
 typedef struct {
     int volume;
-    int difficulte;
 } parametre_t;
 
 typedef struct {
@@ -22,12 +23,18 @@ typedef struct {
     const char* texte;
 } Bouton;
 
-void afficherBouton(SDL_Renderer* renderer, TTF_Font* police, Bouton bouton);
+extern SDL_Color rouge;
+extern SDL_Color vert;
+extern SDL_Color noir;
 
-int afficherSaisiePseudo(SDL_Renderer* renderer, TTF_Font* police, char* pseudo);
+Bouton creerBouton(int x, int y, int largeur, int hauteur, SDL_Color couleur, const char* texte);
 
-void afficherParametres(SDL_Renderer* renderer, TTF_Font* police, parametre_t* parametres);
+void afficherBouton(game_t* game, Bouton bouton);
 
-void afficherMenu(SDL_Renderer* renderer, TTF_Font* police, parametre_t* parametres, char* pseudo);
+int afficherSaisiePseudo(game_t* game, char* pseudo);
+
+void afficherParametres(game_t* game, parametre_t* parametres);
+
+void afficherMenu(game_t* game, parametre_t* parametres, char* pseudo);
 
 #endif
