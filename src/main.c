@@ -27,6 +27,7 @@ int main() {
     img_player_t sprite_playerH;
     joueur_t j;
     parametre_t parametres;
+    parametres.volume = 50;
     char pseudo[50] = "";
     recuperation_joueur(&j,pseudo);
     game.mat_active = j.numMap;
