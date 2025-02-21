@@ -25,6 +25,7 @@ typedef struct {
 
 extern SDL_Color rouge;
 extern SDL_Color vert;
+extern SDL_Color bleu;
 extern SDL_Color noir;
 
 Bouton creerBouton(int x, int y, int largeur, int hauteur, SDL_Color couleur, const char* texte);
