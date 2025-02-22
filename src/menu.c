@@ -94,7 +94,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
                     y >= Homme.rect.y && y <= Homme.rect.y + Homme.rect.h) {
                     action = 1;
                     enCours = 0;
-                    j->sexe = 'H';
+                    j->sexe = 'M';
                 }
                 else if (x >= Femme.rect.x && x <= Femme.rect.x + Femme.rect.w &&
                     y >= Femme.rect.y && y <= Femme.rect.y + Femme.rect.h) {
@@ -162,8 +162,8 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
     
     // Boutons de réglage du volume
-    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 350, hauteurEcran / 2 - 60, 100, 100, vert, "OUI");
-    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 + 250, hauteurEcran / 2 - 60, 100, 100, rouge, "NON");
+    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 350, hauteurEcran / 2 - 60, 200, 100, vert, "Continuer");
+    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 + 200, hauteurEcran / 2 - 60, 200, 100, rouge, "Recommencer");
 
     int enCours = 1;
     SDL_Event evenement;
@@ -270,7 +270,7 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                         init_partie(j,pseudo,j->sexe);
                     }
                     //si on a appuié sur le bouton retour
-                    if(pseudo[0] == '\0')
+                    else if(pseudo[0] == '\0')
                         enCours = 1;
                     //si on l'a retrouvé
                     else{
