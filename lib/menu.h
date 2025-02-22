@@ -44,6 +44,8 @@ void afficherBoutonTexte(game_t* game, BoutonTexte bouton);
 
 int afficherChoixSexe(game_t* game, joueur_t* j, char* pseudo);
 
+int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo);
+
 int afficherSaisiePseudo(game_t* game, joueur_t* joueur, char* pseudo);
 
 void afficherParametres(game_t* game, parametre_t* parametres);
