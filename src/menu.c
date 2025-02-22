@@ -149,6 +149,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
         SDL_DestroyTexture(textureVolume);
 
         SDL_RenderPresent(game->renderer);
+        SDL_Delay(60);
      }    
     SDL_DestroyTexture(Homme.image);
     SDL_DestroyTexture(Femme.image);
@@ -216,6 +217,7 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
         SDL_DestroyTexture(textureVolume);
 
         SDL_RenderPresent(game->renderer);
+        SDL_Delay(60);
      }    
     return action;
 }
@@ -318,7 +320,7 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                 }
             }      
             SDL_RenderPresent(game->renderer);
-            SDL_Delay(2);
+            SDL_Delay(60);
         }
     }
     if (strlen(pseudo) >= 0 && !action)
@@ -387,6 +389,7 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
         SDL_DestroyTexture(textureVolume);
         
         SDL_RenderPresent(game->renderer);
+        SDL_Delay(60);
     }
 }
 
@@ -438,6 +441,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
         afficherBoutonTexte(game, boutonParametres);
         afficherBoutonTexte(game, boutonQuitter);
         SDL_RenderPresent(game->renderer);
+        SDL_Delay(60);
     }
 
 }
