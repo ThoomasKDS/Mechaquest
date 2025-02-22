@@ -52,8 +52,6 @@ int main() {
     if(strlen(pseudo) < 1){
         return -1;
     }
-    if(!recuperation_joueur(&j,pseudo))
-        return -1;
     game.mat_active = j.numMap;
     //TAILLE DE LA MATRICE
     int taille_x_mat = game.img_w/PX;
