@@ -203,6 +203,9 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                         afficherChoixSexe(game, j, pseudo);
                     if(pseudo[0] == '\0')
                         enCours = 1;
+                    else{
+                        init_partie(j, pseudo,j->sexe);
+                    }
                 }
             }
 
