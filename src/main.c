@@ -77,6 +77,7 @@ int main() {
     }
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
+    /*
     if(j.pointSauvegarde == 0)
         parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
     if(j.pointSauvegarde == 1)
@@ -91,7 +92,7 @@ int main() {
     cleanUp(&game);
     free_mat(&game,taille_x_mat, taille_y_mat);
     destruction_joueur(&j);
-
+*/
     return 0;
 
 }

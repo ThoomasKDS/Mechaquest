@@ -3,7 +3,7 @@
 
 const int FPS_LIMIT = 60;
 const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
-
+/*
 int soigner(joueur_t *j){
     j->inventaire->mechaball = 5;
     j->inventaire->carburant = 5;
@@ -212,7 +212,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
                         printf("%s\n",ironMusk.dialogueDebut);
                         /*
                         combat(j,&ironMUsk);
-                        */
+                        
                         printf("%s\n",ironMusk.dialogueFin);
                         ironMusk.etat = 1;
                         sauvegarde_pnj(&ironMusk,20);
@@ -409,9 +409,9 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
                     }
                     if(j->numMap == 4 && j->x == ironMusk.x && j->y-1 == ironMusk.y && j->derniere_touche == 3 && ironMusk.etat == 0){
                         printf("%s\n",ironMusk.dialogueDebut);
-                        /*
+                        
                         combat avec iron musk
-                        */
+                        
                         printf("%s\n",ironMusk.dialogueFin);
                         copie_mechas(j,&ironMusk.mechas_joueur[0]);
                         sauvegarde_partie(j,j->pseudo);
@@ -543,4 +543,4 @@ int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *
         destruction_pnj(&pnj[i]);
     }
     return OK;
-}
+}*/

@@ -579,6 +579,11 @@ int suppression_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la p
 
     suppression_inventaire(joueur->inventaire,pseudo);                           //appel la sauvegarde de l'inventaire
     suppression_mechas_joueur(joueur->mechas_joueur,pseudo,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    remove(nom_fichier);
     return OK;
 }
 
