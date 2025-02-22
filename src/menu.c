@@ -155,9 +155,74 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
     return action;
 }
 
+int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
+    int largeurEcran, hauteurEcran,action = 0;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    
+    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
+    
+    // Boutons de réglage du volume
+    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 350, hauteurEcran / 2 - 60, 100, 100, vert, "OUI");
+    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 + 250, hauteurEcran / 2 - 60, 100, 100, rouge, "NON");
+
+    int enCours = 1;
+    SDL_Event evenement;
+    
+    while (enCours) {
+        while (SDL_PollEvent(&evenement)) {
+            if (evenement.type == SDL_QUIT) {
+                enCours = 0;
+            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
+                int x = evenement.button.x, y = evenement.button.y;
+
+                // Bouton Retour
+                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
+                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
+                    pseudo[0] = '\0';
+                    return 0;
+                }
+
+                // Bouton Oui
+                if (x >= boutonOUI.rect.x && x <= boutonOUI.rect.x + boutonOUI.rect.w &&
+                    y >= boutonOUI.rect.y && y <= boutonOUI.rect.y + boutonOUI.rect.h) {
+                    return 1;
+                }
+                // Bouton Non
+                if (x >= boutonNON.rect.x && x <= boutonNON.rect.x + boutonNON.rect.w &&
+                    y >= boutonNON.rect.y && y <= boutonNON.rect.y + boutonNON.rect.h) {
+                    return 0;
+                }
+            }
+        }
+
+        // Affichage
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+        SDL_RenderClear(game->renderer);
+        afficherBoutonTexte(game, boutonRetour);
+        afficherBoutonTexte(game, boutonOUI);
+        afficherBoutonTexte(game, boutonNON);
+
+        // Affichage des valeurs
+        char buffer[50];
+        SDL_Color couleurTexte = {255, 255, 255, 255};
+
+        // Affichage du texte : Voulez vous supprimer votre ensaigne sauvegarde
+        sprintf(buffer, "Voulez vous supprimer votre ensaigne sauvegarde ?");
+        SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
+        SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
+        SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 150, surfaceVolume->w, surfaceVolume->h};
+        SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
+        SDL_FreeSurface(surfaceVolume);
+        SDL_DestroyTexture(textureVolume);
+
+        SDL_RenderPresent(game->renderer);
+     }    
+    return action;
+}
+
 //on modifie
 int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
-    int largeurEcran, hauteurEcran;
+    int largeurEcran, hauteurEcran,resultatFonction;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
 
     BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
@@ -199,12 +264,27 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                     strlen(pseudo) > 0){
                     enCours = 0;
                     action = 1;
-                    if(!recuperation_joueur(j,pseudo))
+                    //si elle n'as pas été retrouvé
+                    if(!recuperation_joueur(j,pseudo)){
                         afficherChoixSexe(game, j, pseudo);
+                        init_partie(j,pseudo,j->sexe);
+                    }
+                    //si on a appuié sur le bouton retour
                     if(pseudo[0] == '\0')
                         enCours = 1;
+                    //si on l'a retrouvé
                     else{
-                        init_partie(j, pseudo,j->sexe);
+                        resultatFonction = afficherChoixSuppression(game,j,pseudo);
+                        //bouton retour
+                        if(!resultatFonction && pseudo[0] == '\0')
+                            enCours = 1;
+                        //bouton non
+                        else if(resultatFonction);
+                        //bouton oui
+                        else{
+                            suppression_partie(j,pseudo);
+                            init_partie(j,pseudo,j->sexe);
+                        }
                     }
                 }
             }
