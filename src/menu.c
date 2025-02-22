@@ -71,14 +71,14 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
 
-    BoutonImage Homme = creerBoutonImage(largeurEcran / 2 - 350, hauteurEcran / 2 , 200, 100,"img/skin/skin_player_homme/bas1.png",game);
-    BoutonImage Femme = creerBoutonImage(largeurEcran / 2 + 150, hauteurEcran / 2 , 200, 100,"img/skin/skin_player_homme/haut1.png",game);
+    BoutonImage Homme = creerBoutonImage(largeurEcran / 2 - 350, hauteurEcran / 2 , 200, 250,"img/skin/skin_player_homme/bas1.png",game);
+    BoutonImage Femme = creerBoutonImage(largeurEcran / 2 + 150, hauteurEcran / 2 , 200, 250,"img/skin/skin_player_homme/haut1.png",game);
      
     if (!Homme.image || !Femme.image) {
         return -1;
     }
 
-    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
+    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 50, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
     int enCours = 1, action;
 
     SDL_Event evenement;
@@ -140,7 +140,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
         SDL_Color couleurTexte = {255, 255, 255, 255};
 
         // Affichage du texte : Choisir son sexe
-        sprintf(buffer, "Choisir son sexe:");
+        sprintf(buffer, "Choisir son sexe");
         SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
         SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
         SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 100, surfaceVolume->w, surfaceVolume->h};
@@ -149,7 +149,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
         SDL_DestroyTexture(textureVolume);
 
         SDL_RenderPresent(game->renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
      }    
     SDL_DestroyTexture(Homme.image);
     SDL_DestroyTexture(Femme.image);
@@ -160,11 +160,11 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran,action = 0;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     
-    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
+    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 300, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
     
     // Boutons de réglage du volume
-    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 350, hauteurEcran / 2 - 60, 200, 100, vert, "Continuer");
-    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 + 200, hauteurEcran / 2 - 60, 200, 100, rouge, "Recommencer");
+    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 - 50, 200, 100, vert, "Continuer");
+    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 + 100, 200, 100, rouge, "Recommencer");
 
     int enCours = 1;
     SDL_Event evenement;
@@ -207,8 +207,8 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
         char buffer[50];
         SDL_Color couleurTexte = {255, 255, 255, 255};
 
-        // Affichage du texte : Voulez vous supprimer votre ensaigne sauvegarde
-        sprintf(buffer, "Voulez vous supprimer votre ensaigne sauvegarde ?");
+        // Affichage du texte : Voulez vous supprimer votre ancienne sauvegarde
+        sprintf(buffer, "Voulez vous supprimer votre ancienne sauvegarde ?");
         SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
         SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
         SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 150, surfaceVolume->w, surfaceVolume->h};
@@ -217,7 +217,7 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
         SDL_DestroyTexture(textureVolume);
 
         SDL_RenderPresent(game->renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
      }    
     return action;
 }
@@ -320,7 +320,7 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                 }
             }      
             SDL_RenderPresent(game->renderer);
-            SDL_Delay(60);
+            SDL_Delay(30);
         }
     }
     if (strlen(pseudo) >= 0 && !action)
@@ -389,7 +389,7 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
         SDL_DestroyTexture(textureVolume);
         
         SDL_RenderPresent(game->renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 }
 
@@ -400,7 +400,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
 
     // INITIALISATION DES BOUTONS
     BoutonTexte boutonJouer = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran - HAUTEUR_BOUTON * 2) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, vert, "Jouer");
-    BoutonTexte boutonParametres = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, bleu, "Paramètres");
+    BoutonTexte boutonParametres = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, bleu, "Parametres");
     BoutonTexte boutonQuitter = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Quitter");
 
     int enCours = 1, action;
@@ -441,7 +441,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
         afficherBoutonTexte(game, boutonParametres);
         afficherBoutonTexte(game, boutonQuitter);
         SDL_RenderPresent(game->renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
 }
