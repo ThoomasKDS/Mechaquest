@@ -5,6 +5,58 @@
 
 #include "../lib/sauv.h"
 
+//--------FONCTIONS D'INITIALISAION-----------
+
+int init_partie(joueur_t *joueur, char pseudo[50],char sexe){
+    strcpy(joueur->pseudo,pseudo);
+    joueur->x = 23;
+    joueur->y = 8;
+    joueur->sexe = sexe;
+    joueur->numMap = 0;
+    joueur->pointSauvegarde = 0;
+    joueur->nb_mechas = 0;
+    joueur->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
+    if (!joueur->inventaire) {
+        perror("Erreur d'allocation mémoire");
+        return ERREUR_OUVERTURE;
+    }
+    joueur->inventaire->mechaball = 0;
+    joueur->inventaire->carburant = 0;
+    joueur->inventaire->repousse = 0;
+    joueur->inventaire->rappel = 0;
+    nouveau_fichier_pnj(pseudo);
+    sauvegarde_partie(joueur,pseudo);
+    return OK;
+}
+
+int nouveau_fichier_pnj(char pseudo[50]){
+    
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen("save/pnj.csv", "r");
+    FILE *nouv = fopen(nom_fichier, "w");
+    if (file == NULL || nouv == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+
+    char ligne[1070];
+
+    while (fgets(ligne, sizeof(ligne), file)) {
+        fprintf(nouv, "%s", ligne);
+    }
+
+    fclose(file);
+    fclose(nouv);
+
+    // Remplace l'ancien fichier par le nouveau
+
+    return OK;
+}
+
+
 //--------FONCTIONS DE RECUPERATION-----------
 
 /**
@@ -48,9 +100,14 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
     return ERR;
 }
 
-int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
+int recuperation_pnj(pnj_t *pnj, int id_pnj,char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
-    FILE *file = fopen("save/pnj.csv", "r");          
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen(nom_fichier, "r");
+        
     if (file == NULL) {                                     
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -275,7 +332,7 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
         }
     }
     if(!trouver){       //si pas trouver alors écrire une nouvelle ligne
-        fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
+        fprintf(temp,"%s,%d,%d,%d,%d\n",pseudo,inventaire->mechaball,inventaire->carburant,
                                             inventaire->repousse,inventaire->rappel);
     }
     //fermeture des fichiers
@@ -363,7 +420,7 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
         }
     }
     if(!trouver){       //si pas trouver alors créé une nouvelle ligne de sauvegarde
-        fprintf(temp,"%s,%c,%d,%d,%d,%d\n",nom,joueur->sexe,joueur->numMap,joueur->x,
+        fprintf(temp,"%s,%c,%d,%d,%d,%d\n",pseudo,joueur->sexe,joueur->numMap,joueur->x,
                                             joueur->y,joueur->pointSauvegarde);
     }
 
@@ -379,10 +436,15 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     return OK;
 }
 
-int sauvegarde_pnj(pnj_t *pnj, int id_pnj) {
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[50]) {
     int trouver = 0;  // Indique si la ligne a été trouvée et modifiée
-    FILE *file = fopen("save/pnj.csv", "r");
-    FILE *temp = fopen("save/temporaire.csv", "w");
+    
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen(nom_fichier, "r");
+    FILE *temp = fopen("save/temp.csv", "w");
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -425,8 +487,8 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) {
     fclose(temp);
 
     // Remplace l'ancien fichier par le nouveau
-    remove("save/pnj.csv");
-    rename("save/temporaire.csv", "save/pnj.csv");
+    remove(nom_fichier);
+    rename("save/temp.csv", nom_fichier);
 
     return OK;
 }

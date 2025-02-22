@@ -29,8 +29,6 @@ int main() {
     parametre_t parametres;
     parametres.volume = 50;
     char pseudo[50] = "";
-    recuperation_joueur(&j,pseudo);
-    game.mat_active = j.numMap;
 
     recuperation_mechas(mecha);
     recuperation_attaques(attaque);
@@ -56,7 +54,7 @@ int main() {
     }
     if(!recuperation_joueur(&j,pseudo))
         return -1;
-
+    game.mat_active = j.numMap;
     //TAILLE DE LA MATRICE
     int taille_x_mat = game.img_w/PX;
     int taille_y_mat = game.img_h/PX;
