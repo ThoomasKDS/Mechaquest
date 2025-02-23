@@ -100,7 +100,7 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
     return ERR;
 }
 
-int recuperation_pnj(pnj_t *pnj, int id_pnj,char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
+int recuperation_pnj(pnj_t *pnj,char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
     char nom_fichier[60] = "save/pnj_";
     char ext[5] = ".csv";
@@ -112,32 +112,28 @@ int recuperation_pnj(pnj_t *pnj, int id_pnj,char pseudo[50]) {   //Recuperation 
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    int num_pnj;
+    int count = 0;
     char ligne[1070];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
-        sscanf(ligne, "%d", &num_pnj);
-        if(num_pnj == id_pnj){                             //verification du pseudo
-            sscanf(ligne, "%d,%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj->id_pnj,&pnj->id_map,pnj->pseudo,&pnj->etat,pnj->dialogueDebut,pnj->dialogueFin,&pnj->x,&pnj->y,&pnj->orientation);
+            sscanf(ligne, "%d,%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj[count].id_pnj,&pnj[count].id_map,
+            pnj[count].pseudo,&pnj[count].etat,pnj[count].dialogueDebut,pnj[count].dialogueFin,&pnj[count].x,&pnj[count].y,&pnj[count].orientation);
             //création du pointeur sur la structure inventaire
-            pnj->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
-            if (!pnj->inventaire) {
+            pnj[count].inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
+            if (!pnj[count].inventaire) {
                 perror("Erreur d'allocation mémoire");
-                fclose(file);
                 return ERREUR_OUVERTURE;
             }
 
             // Récupération de l'inventaire
-            recuperation_inventaire(pnj->inventaire, pnj->pseudo);
+            recuperation_inventaire(pnj[count].inventaire, pnj[count].pseudo);
             //Récupérer les mechas du joueur
-            pnj->nb_mechas = recuperation_mechas_joueur(pnj->mechas_joueur,pnj->pseudo);
-            fclose(file);
-            return OK;
-        }
+            pnj[count].nb_mechas = recuperation_mechas_joueur(pnj[count].mechas_joueur,pnj[count].pseudo);
+            count++;
     }
     fclose(file);       //Aucune correspondance
-    return ERR;
+    return OK;
 }
 
 int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire_t 

@@ -6,7 +6,7 @@
 extern mechas_t mecha[24];
 extern attaque_t attaque[64];
 extern zone_t zone[10];
-extern pnj_t pnj;
+extern pnj_t pnj[24];
 
 int soigner(joueur_t *j);
 

@@ -116,7 +116,7 @@ int recuperation_attaques(attaque_t *attaques);
 
 int recuperation_mechas(mechas_t *mechas_l);
 
-int recuperation_pnj(pnj_t *pnj, int id_pnj,char pseudo[50]);
+int recuperation_pnj(pnj_t *pnj,char pseudo[50]);
 
 int recuperation_zone(zone_t *zone);
 
