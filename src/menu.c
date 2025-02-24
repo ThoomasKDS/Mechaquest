@@ -5,9 +5,9 @@
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
 
-SDL_Color rouge = {200, 0, 0, 255};
-SDL_Color vert = {0, 200, 0, 255};
-SDL_Color bleu = {0, 0, 200, 255};
+SDL_Color rouge = {98, 23, 8, 255};
+SDL_Color vert = {58, 90, 64, 255};
+SDL_Color bleu = {77, 144, 142, 255};
 SDL_Color noir = {0, 0, 0, 255};
 
 SDL_Texture* chargerTexture(const char *chemin, game_t *game){
@@ -160,11 +160,11 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran,action = 0;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     
-    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, 200, 50, rouge, "Retour");
+    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2, 200, 50, rouge, "Retour");
     
     // Boutons de réglage du volume
-    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 - 150, 200, 100, vert, "Continuer");
-    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 , 200, 100, bleu, "Recommencer");
+    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 100, (hauteurEcran - HAUTEUR_BOUTON * 2) / 2, 200, 50, vert, "Continuer");
+    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 - 100, (hauteurEcran + HAUTEUR_BOUTON) / 2 , 200, 50, bleu, "Recommencer");
 
     int enCours = 1;
     SDL_Event evenement;
