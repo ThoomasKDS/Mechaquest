@@ -160,11 +160,11 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran,action = 0;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     
-    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 300, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Retour");
+    BoutonTexte boutonRetour = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 150, 200, 50, rouge, "Retour");
     
     // Boutons de réglage du volume
-    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 - 50, 200, 100, vert, "Continuer");
-    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 + 100, 200, 100, rouge, "Recommencer");
+    BoutonTexte boutonOUI = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 - 150, 200, 100, vert, "Continuer");
+    BoutonTexte boutonNON = creerBoutonTexte(largeurEcran / 2 - 100, hauteurEcran / 2 , 200, 100, bleu, "Recommencer");
 
     int enCours = 1;
     SDL_Event evenement;
@@ -202,19 +202,6 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
         afficherBoutonTexte(game, boutonRetour);
         afficherBoutonTexte(game, boutonOUI);
         afficherBoutonTexte(game, boutonNON);
-
-        // Affichage des valeurs
-        char buffer[50];
-        SDL_Color couleurTexte = {255, 255, 255, 255};
-
-        // Affichage du texte : Voulez vous supprimer votre ancienne sauvegarde
-        sprintf(buffer, "Voulez vous supprimer votre ancienne sauvegarde ?");
-        SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
-        SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
-        SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 150, surfaceVolume->w, surfaceVolume->h};
-        SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
-        SDL_FreeSurface(surfaceVolume);
-        SDL_DestroyTexture(textureVolume);
 
         SDL_RenderPresent(game->renderer);
         SDL_Delay(30);
