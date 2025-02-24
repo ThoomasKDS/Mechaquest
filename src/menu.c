@@ -112,6 +112,8 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
         }
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
+
+        draw_background(game);
         afficherBoutonTexte(game,boutonRetour);
 
         SDL_SetRenderDrawColor(game->renderer, 0, 255, 0, 255);
@@ -199,6 +201,8 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
         // Affichage
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
+
+        draw_background(game);
         afficherBoutonTexte(game, boutonRetour);
         afficherBoutonTexte(game, boutonOUI);
         afficherBoutonTexte(game, boutonNON);
@@ -230,9 +234,6 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
             else if (evenement.type == SDL_KEYDOWN) {
                 if (evenement.key.keysym.sym == SDLK_BACKSPACE && longueurPseudo > 0) {
                     pseudo[--longueurPseudo] = '\0';
-                }
-                else if (evenement.key.keysym.sym == SDLK_RETURN) {
-                    enCours = 0;
                 }
             }
             else if (evenement.type == SDL_TEXTINPUT) {
@@ -267,11 +268,12 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                         //bouton retour
                         if(!resultatFonction && pseudo[0] == '\0')
                             enCours = 1;
-                        //bouton non
+                        //bouton continuer
                         else if(resultatFonction);
-                        //bouton oui
+                        //bouton recommencer
                         else{
                             suppression_partie(j,pseudo);
+                            afficherChoixSexe(game, j, pseudo);
                             init_partie(j,pseudo,j->sexe);
                         }
                     }
@@ -280,6 +282,8 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
 
             SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
             SDL_RenderClear(game->renderer);
+
+            draw_background(game);
             afficherBoutonTexte(game, boutonRetour);
             afficherBoutonTexte(game, boutonCommencer);
 
@@ -358,6 +362,8 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
         // Affichage
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
+
+        draw_background(game);
         afficherBoutonTexte(game, boutonRetour);
         afficherBoutonTexte(game, boutonMoinsVolume);
         afficherBoutonTexte(game, boutonPlusVolume);
@@ -424,6 +430,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
 
+        draw_background(game);
         afficherBoutonTexte(game, boutonJouer);
         afficherBoutonTexte(game, boutonParametres);
         afficherBoutonTexte(game, boutonQuitter);
