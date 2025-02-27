@@ -303,7 +303,9 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     char img_bas[40] = "img/skin/skin_pnj/pnj_3.png";
     char img_gauche[40] = "img/skin/skin_pnj/pnj_4.png";
     char img_vin_gazole[40] = "img/skin/skin_pnj/vin_gazole.png";
-    SDL_Surface * imageSprite[5];
+    char img_iron_musk_bas[40] = "img/skin/skin_pnj/iron_musk_bas.png";
+    char img_iron_musk_gauche[40] = "img/skin/skin_pnj/iron_musk_gauche.png";
+    SDL_Surface * imageSprite[7];
 
     //charger image
     imageSprite[0] = IMG_Load(img_haut);
@@ -311,6 +313,8 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     imageSprite[2] = IMG_Load(img_bas);
     imageSprite[3] = IMG_Load(img_gauche);
     imageSprite[4] = IMG_Load(img_vin_gazole);
+    imageSprite[5] = IMG_Load(img_iron_musk_bas);
+    imageSprite[6] = IMG_Load(img_iron_musk_gauche);
     sprite_pnj->haut = SDL_CreateTextureFromSurface(game->renderer, imageSprite[0]);
     if (!sprite_pnj->haut) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
@@ -341,11 +345,25 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
         SDL_Quit();
         return 0;
     }
+    sprite_pnj->iron_musk_bas = SDL_CreateTextureFromSurface(game->renderer, imageSprite[5]);
+    if (!sprite_pnj->iron_musk_bas) {
+        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    sprite_pnj->iron_musk_droite = SDL_CreateTextureFromSurface(game->renderer, imageSprite[6]);
+    if (!sprite_pnj->iron_musk_droite) {
+        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
     SDL_FreeSurface(imageSprite[0]);
     SDL_FreeSurface(imageSprite[1]);
     SDL_FreeSurface(imageSprite[2]);
     SDL_FreeSurface(imageSprite[3]);
     SDL_FreeSurface(imageSprite[4]);
+    SDL_FreeSurface(imageSprite[5]);
+    SDL_FreeSurface(imageSprite[6]);
     return 1;
 }
 
@@ -408,7 +426,7 @@ void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, 
         if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i]);
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
                 }
              }
             draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
@@ -417,17 +435,23 @@ void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, 
             draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur 
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i]);
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
                 }
             }
         }
 }
 
-void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj) { 
-    if(!strcmp(pnj->pseudo,"Vin Gazole")){
+void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj, joueur_t *j) { 
+    if(!strcmp(pnj->pseudo,"Vin Gazole"))
         SDL_RenderCopy(game->renderer,sprite_pnj->vin_gazole , NULL, obj);
-    }
-    else{
+
+    else if(pnj->id_pnj == 20 && j->pointSauvegarde <= 1)
+        SDL_RenderCopy(game->renderer,sprite_pnj->iron_musk_droite , NULL, obj);
+
+    else if(pnj->id_pnj == 23)
+        SDL_RenderCopy(game->renderer,sprite_pnj->iron_musk_bas , NULL, obj);
+
+    else if(pnj->id_pnj != 20){
         switch(pnj->orientation){
         case 1 :
             SDL_RenderCopy(game->renderer, sprite_pnj->haut, NULL, obj);

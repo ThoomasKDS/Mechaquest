@@ -95,12 +95,7 @@ int main() {
         
         return -1;
     }
-    if(j.pointSauvegarde > 1){
-            game.mat[2][8][0] = -16;
-            game.mat[2][9][0] = -16;
-            game.mat[2][10][0] = -16;
-            game.mat[2][9][19] = 0;
-    }
+    
     recuperation_pnj(pnj,j.pseudo);
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
@@ -109,8 +104,12 @@ int main() {
         pnj_sprite[i] = create_obj(&game, PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
 
     }
-    
-    
+    if(j.pointSauvegarde > 1){
+            game.mat[2][8][0] = -16;
+            game.mat[2][9][0] = -16;
+            game.mat[2][10][0] = -16;
+            game.mat[2][9][19] = 0;
+    }
     while(running){
         
         frameStart = SDL_GetTicks(); 
@@ -166,7 +165,6 @@ int main() {
 
         draw_all(&game,&j,&sprite_p,pnj_sprite,&sprite_pnj,&sprite_playerH);
 
-    
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
