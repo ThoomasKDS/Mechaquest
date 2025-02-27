@@ -98,6 +98,12 @@ typedef struct{
     int nb_mechas;
 }zone_t;
 
+// FONCTIONS D'INITIALISATION : 
+
+int nouveau_fichier_pnj(char pseudo[50]);
+
+int init_partie(joueur_t *joueur, char pseudo[50],char sexe);
+
 // FONCTIONS DE RECUPERATION : 
 
 int recuperation_joueur(joueur_t *joueur, char pseudo[50]);
@@ -110,7 +116,7 @@ int recuperation_attaques(attaque_t *attaques);
 
 int recuperation_mechas(mechas_t *mechas_l);
 
-int recuperation_pnj(pnj_t *pnj, int id_pnj);
+int recuperation_pnj(pnj_t *pnj,char pseudo[50]);
 
 int recuperation_zone(zone_t *zone);
 
@@ -124,7 +130,7 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]);
 
 int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas);
 
-int sauvegarde_pnj(pnj_t *pnj, int id_pnj);
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj,char pseudo[50]);
 
 //FONCTION DE SUPPRESSION DE SAUVEGARDES
 

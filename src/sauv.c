@@ -5,6 +5,58 @@
 
 #include "../lib/sauv.h"
 
+//--------FONCTIONS D'INITIALISAION-----------
+
+int init_partie(joueur_t *joueur, char pseudo[50],char sexe){
+    strcpy(joueur->pseudo,pseudo);
+    joueur->x = 23;
+    joueur->y = 8;
+    joueur->sexe = sexe;
+    joueur->numMap = 0;
+    joueur->pointSauvegarde = 0;
+    joueur->nb_mechas = 0;
+    joueur->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
+    if (!joueur->inventaire) {
+        perror("Erreur d'allocation mémoire");
+        return ERREUR_OUVERTURE;
+    }
+    joueur->inventaire->mechaball = 0;
+    joueur->inventaire->carburant = 0;
+    joueur->inventaire->repousse = 0;
+    joueur->inventaire->rappel = 0;
+    nouveau_fichier_pnj(pseudo);
+    sauvegarde_partie(joueur,pseudo);
+    return OK;
+}
+
+int nouveau_fichier_pnj(char pseudo[50]){
+    
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen("save/pnj.csv", "r");
+    FILE *nouv = fopen(nom_fichier, "w");
+    if (file == NULL || nouv == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return ERREUR_OUVERTURE;
+    }
+
+    char ligne[1070];
+
+    while (fgets(ligne, sizeof(ligne), file)) {
+        fprintf(nouv, "%s", ligne);
+    }
+
+    fclose(file);
+    fclose(nouv);
+
+    // Remplace l'ancien fichier par le nouveau
+
+    return OK;
+}
+
+
 //--------FONCTIONS DE RECUPERATION-----------
 
 /**
@@ -48,39 +100,40 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
     return ERR;
 }
 
-int recuperation_pnj(pnj_t *pnj, int id_pnj) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
+int recuperation_pnj(pnj_t *pnj,char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
-    FILE *file = fopen("save/pnj.csv", "r");          
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen(nom_fichier, "r");
+        
     if (file == NULL) {                                     
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    int num_pnj;
+    int count = 0;
     char ligne[1070];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
-        sscanf(ligne, "%d", &num_pnj);
-        if(num_pnj == id_pnj){                             //verification du pseudo
-            sscanf(ligne, "%d,%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj->id_pnj,&pnj->id_map,pnj->pseudo,&pnj->etat,pnj->dialogueDebut,pnj->dialogueFin,&pnj->x,&pnj->y,&pnj->orientation);
+            sscanf(ligne, "%d,%d,%49[^,],%d,%499[^,],%499[^,],%d,%d,%d\n",&pnj[count].id_pnj,&pnj[count].id_map,
+            pnj[count].pseudo,&pnj[count].etat,pnj[count].dialogueDebut,pnj[count].dialogueFin,&pnj[count].x,&pnj[count].y,&pnj[count].orientation);
             //création du pointeur sur la structure inventaire
-            pnj->inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
-            if (!pnj->inventaire) {
+            pnj[count].inventaire = (inventaire_t *)malloc(sizeof(inventaire_t));
+            if (!pnj[count].inventaire) {
                 perror("Erreur d'allocation mémoire");
-                fclose(file);
                 return ERREUR_OUVERTURE;
             }
 
             // Récupération de l'inventaire
-            recuperation_inventaire(pnj->inventaire, pnj->pseudo);
+            recuperation_inventaire(pnj[count].inventaire, pnj[count].pseudo);
             //Récupérer les mechas du joueur
-            pnj->nb_mechas = recuperation_mechas_joueur(pnj->mechas_joueur,pnj->pseudo);
-            fclose(file);
-            return OK;
-        }
+            pnj[count].nb_mechas = recuperation_mechas_joueur(pnj[count].mechas_joueur,pnj[count].pseudo);
+            count++;
     }
     fclose(file);       //Aucune correspondance
-    return ERR;
+    return OK;
 }
 
 int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire_t 
@@ -275,7 +328,7 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
         }
     }
     if(!trouver){       //si pas trouver alors écrire une nouvelle ligne
-        fprintf(temp,"%s,%d,%d,%d,%d\n",nom,inventaire->mechaball,inventaire->carburant,
+        fprintf(temp,"%s,%d,%d,%d,%d\n",pseudo,inventaire->mechaball,inventaire->carburant,
                                             inventaire->repousse,inventaire->rappel);
     }
     //fermeture des fichiers
@@ -363,7 +416,7 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
         }
     }
     if(!trouver){       //si pas trouver alors créé une nouvelle ligne de sauvegarde
-        fprintf(temp,"%s,%c,%d,%d,%d,%d\n",nom,joueur->sexe,joueur->numMap,joueur->x,
+        fprintf(temp,"%s,%c,%d,%d,%d,%d\n",pseudo,joueur->sexe,joueur->numMap,joueur->x,
                                             joueur->y,joueur->pointSauvegarde);
     }
 
@@ -379,10 +432,15 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     return OK;
 }
 
-int sauvegarde_pnj(pnj_t *pnj, int id_pnj) {
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[50]) {
     int trouver = 0;  // Indique si la ligne a été trouvée et modifiée
-    FILE *file = fopen("save/pnj.csv", "r");
-    FILE *temp = fopen("save/temporaire.csv", "w");
+    
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    FILE *file = fopen(nom_fichier, "r");
+    FILE *temp = fopen("save/temp.csv", "w");
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
@@ -425,8 +483,8 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj) {
     fclose(temp);
 
     // Remplace l'ancien fichier par le nouveau
-    remove("save/pnj.csv");
-    rename("save/temporaire.csv", "save/pnj.csv");
+    remove(nom_fichier);
+    rename("save/temp.csv", nom_fichier);
 
     return OK;
 }
@@ -517,6 +575,11 @@ int suppression_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la p
 
     suppression_inventaire(joueur->inventaire,pseudo);                           //appel la sauvegarde de l'inventaire
     suppression_mechas_joueur(joueur->mechas_joueur,pseudo,joueur->nb_mechas);    //appel la sauvegarde des mechas
+    char nom_fichier[60] = "save/pnj_";
+    char ext[5] = ".csv";
+    strcat(nom_fichier,pseudo);
+    strcat(nom_fichier,ext);
+    remove(nom_fichier);
     return OK;
 }
 
