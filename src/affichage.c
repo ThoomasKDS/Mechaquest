@@ -3,7 +3,10 @@
  * \brief fichier contenant la fonctions d'affichage utilisant la librérie de SDL
 */
 #include "../lib/affichage.h"
-
+mechas_t mecha[24];
+attaque_t attaque[64];
+zone_t zone[10];
+pnj_t pnj[24];
 //FONCTION BACKGROUND
 /*=================================================*/
 
@@ -294,6 +297,58 @@ int init_player_h(game_t * game, img_player_t * sprite_playerH) {
 
 }
 
+int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
+    char img_haut[40] = "img/skin/skin_pnj/pnj_1.png";
+    char img_droite[40] = "img/skin/skin_pnj/pnj_2.png";
+    char img_bas[40] = "img/skin/skin_pnj/pnj_3.png";
+    char img_gauche[40] = "img/skin/skin_pnj/pnj_4.png";
+    char img_vin_gazole[40] = "img/skin/skin_pnj/vin_gazole.png";
+    SDL_Surface * imageSprite[5];
+
+    //charger image
+    imageSprite[0] = IMG_Load(img_haut);
+    imageSprite[1] = IMG_Load(img_droite);
+    imageSprite[2] = IMG_Load(img_bas);
+    imageSprite[3] = IMG_Load(img_gauche);
+    imageSprite[4] = IMG_Load(img_vin_gazole);
+    sprite_pnj->haut = SDL_CreateTextureFromSurface(game->renderer, imageSprite[0]);
+    if (!sprite_pnj->haut) {
+        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    sprite_pnj->droite = SDL_CreateTextureFromSurface(game->renderer, imageSprite[1]);
+    if (!sprite_pnj->droite) {
+        printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    sprite_pnj->bas = SDL_CreateTextureFromSurface(game->renderer, imageSprite[2]);
+    if (!sprite_pnj->bas) {
+        printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    sprite_pnj->gauche = SDL_CreateTextureFromSurface(game->renderer, imageSprite[3]);
+    if (!sprite_pnj->gauche) {
+        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    sprite_pnj->vin_gazole = SDL_CreateTextureFromSurface(game->renderer, imageSprite[4]);
+    if (!sprite_pnj->vin_gazole) {
+        printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 0;
+    }
+    SDL_FreeSurface(imageSprite[0]);
+    SDL_FreeSurface(imageSprite[1]);
+    SDL_FreeSurface(imageSprite[2]);
+    SDL_FreeSurface(imageSprite[3]);
+    SDL_FreeSurface(imageSprite[4]);
+    return 1;
+}
+
 //creé un objet
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
     if(type_obj == JOUEUR || type_obj == PNJ) {
@@ -345,6 +400,48 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
                 SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
                 break;
         }
+    }
+    
+}
+void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH){
+    draw_background(game);
+        if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i]);
+                }
+             }
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        }
+        else{
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur 
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i]);
+                }
+            }
+        }
+}
+
+void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj) { 
+    if(!strcmp(pnj->pseudo,"Vin Gazole")){
+        SDL_RenderCopy(game->renderer,sprite_pnj->vin_gazole , NULL, obj);
+    }
+    else{
+        switch(pnj->orientation){
+        case 1 :
+            SDL_RenderCopy(game->renderer, sprite_pnj->haut, NULL, obj);
+            break;
+        case 2 : 
+            SDL_RenderCopy(game->renderer, sprite_pnj->droite, NULL, obj);
+            break;
+        case 3 :
+            SDL_RenderCopy(game->renderer, sprite_pnj->bas, NULL, obj);
+            break;
+        case 4 :
+            SDL_RenderCopy(game->renderer, sprite_pnj->gauche, NULL, obj);
+            break;
+        } 
     }
     
 }

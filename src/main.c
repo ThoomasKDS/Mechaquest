@@ -28,6 +28,7 @@ int main() {
 
     game_t game;
     img_player_t sprite_playerH;
+    img_pnj_t sprite_pnj;
     joueur_t j;
     parametre_t parametres;
     mechas_joueur_t mecha_sauvage;
@@ -90,6 +91,10 @@ int main() {
     if(!init_player_h(&game, &sprite_playerH)){
         return -1;
     }
+    if(!init_pnj(&game, &sprite_pnj)){
+        
+        return -1;
+    }
     if(j.pointSauvegarde > 1){
             game.mat[2][8][0] = -16;
             game.mat[2][9][0] = -16;
@@ -99,7 +104,15 @@ int main() {
     recuperation_pnj(pnj,j.pseudo);
     //SPRITE JOUEUR
     SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
+    SDL_Rect pnj_sprite[24];
+    for(int i =0; i < 24;i++){
+        pnj_sprite[i] = create_obj(&game, PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
+
+    }
+    
+    
     while(running){
+        
         frameStart = SDL_GetTicks(); 
         if(j.pointSauvegarde == 0){
             if(premier_tour == 0){
@@ -151,8 +164,8 @@ int main() {
 
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
-        draw_background(&game);
-        draw_player(&game, &sprite_p, &sprite_playerH, &j);           //dessine le joueur
+        draw_all(&game,&j,&sprite_p,pnj_sprite,&sprite_pnj,&sprite_playerH);
+
     
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
