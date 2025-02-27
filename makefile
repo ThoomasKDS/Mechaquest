@@ -10,9 +10,7 @@ CFLAGS = -std=c99 -Wall -Ilib \
          $(shell pkg-config --cflags SDL2_image SDL2_mixer SDL2_ttf)
 
 # Drapeaux de l'éditeur de liens
-LFLAGS = -lm \
-         $(shell sdl2-config --libs) \
-         $(shell pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf)
+LFLAGS = -lm $(shell pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf)
 
 # Répertoires
 SRCDIR = src
@@ -30,14 +28,12 @@ all: $(BINDIR)/$(TARGET)
 # Création de l'exécutable
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(BINDIR)
-	$(CC) $^ $(LFLAGS) -o $@
-	@echo "Linking complete: $@"
+	@$(CC) $^ $(LFLAGS) -o $@
 
 # Compilation des fichiers .c en fichiers .o
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled: $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyage des fichiers objets
 .PHONY: clean

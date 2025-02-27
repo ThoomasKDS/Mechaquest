@@ -285,6 +285,7 @@ int choix_action(char nom[], int i){
     return 0;
 
 }
+
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
     int i;
     int choix = -1;
@@ -462,46 +463,111 @@ int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
 
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {
     SDL_Event event;
-    Uint32 frameStart;  
+    Uint32 frameStart;
     int frameTime;
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    int running =1;
+    int running = 1;
     int save_map_active = game->mat_active;
     game->mat_active = 6;
-    rectangle_t rect_bas;
-    char texte_vide[50]= "  ";
-    creer_rectangle(&rect_bas, game->dms_win.w, game->dms_win.h/4, (game->dms_win.w - game->img_w)/2, game->dms_win.h/4*3, 0, 0, 0, 100, texte_vide);
-    while(running) {
-        frameStart = SDL_GetTicks();    //obtien heure
+    int win_w, win_h;
+    SDL_GetRendererOutputSize(game->renderer, &win_w, &win_h);       //dimensions ecran
+    SDL_Color couleur_bordure =  {94, 99, 102, 250};
+    SDL_Color couleur_bordure_attaque = {210, 145, 132, 150};
+    SDL_Color couleur_bordure_objet = {229, 185, 135, 150};
+    SDL_Color couleur_bordure_mecha = {162, 202, 154, 150};
+    int fleche = 0;
+    int choix = 1;
 
-        SDL_PumpEvents();  // Met à jour l'état des événements (telles que les touches pressées)
-        keys = SDL_GetKeyboardState(NULL);  // Met à jour l'état des touches
 
+    // Définition de rect_bas (fond des boutons)
+    int rect_bas_w = win_w;
+    int rect_bas_h = win_h / 4;
+    int rect_bas_x = 0; // Centrer horizontalement
+    int rect_bas_y = win_h - rect_bas_h;
+    
+    // Définition des tailles des boutons
+    int btn_w = rect_bas_w / 5; // Largeur des boutons (1/5 de l'écran)
+    int btn_h = rect_bas_h / 2; // Hauteur des boutons (1/2 du rect_bas)
+    int btn_margin = btn_w / 2; // Marge entre les boutons
+    int border_size = 5 * game->scale; // Épaisseur des bords
+    
+    // Positionnement des boutons
+    int btn_center_x = (rect_bas_w - btn_w) / 2;
+    int btn_center_y = rect_bas_y + (rect_bas_h - btn_h) / 2;
+    int btn_left_x = btn_center_x - btn_w - btn_margin;
+    int btn_right_x = btn_center_x + btn_w + btn_margin;
+    int btn_fuite_y = btn_center_y + btn_h + btn_margin;
+    
+    // Création des rectangles
+    rectangle_t rect_bas, rect_attaque, rect_objet, rect_changer_mecha, rect_fuite;
+    rectangle_t border_attaque, border_objet, border_mecha, border_fuite;
+    
+    creer_rectangle(game, &rect_bas, rect_bas_w, rect_bas_h, rect_bas_x, rect_bas_y, 0, 0, 0, 150, NULL);
+    creer_rectangle(game, &rect_attaque, btn_w, btn_h, btn_center_x, btn_center_y, 165, 36, 8, 250, "Attaquer");
+    creer_rectangle(game, &rect_objet, btn_w, btn_h, btn_left_x, btn_center_y, 204, 116, 16, 250, "Objet");
+    creer_rectangle(game, &rect_changer_mecha, btn_w, btn_h, btn_right_x, btn_center_y, 69, 150, 54, 250, "Mechas");
+    creer_rectangle(game, &rect_fuite, btn_w, btn_h / 1.5, btn_center_x, btn_fuite_y, 7, 103, 160, 250, "Fuite");
+    
+    // Création des bordures
+    creer_rectangle(game, &border_attaque, btn_w + 2 * border_size, btn_h + 2 * border_size, btn_center_x - border_size, btn_center_y - border_size, 210, 145, 132, 255, NULL);
+    creer_rectangle(game, &border_objet, btn_w + 2 * border_size, btn_h + 2 * border_size, btn_left_x - border_size, btn_center_y - border_size, 94, 99, 102, 255, NULL);
+    creer_rectangle(game, &border_mecha, btn_w + 2 * border_size, btn_h + 2 * border_size, btn_right_x - border_size, btn_center_y - border_size, 94, 99, 102, 255, NULL);
+    creer_rectangle(game, &border_fuite, btn_w + 2 * border_size, (btn_h / 1.5) + 2 * border_size, btn_center_x - border_size, btn_fuite_y - border_size, 94, 99, 102, 255, NULL);
+    
+    while (running) {
+        frameStart = SDL_GetTicks();
+        
+        
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
+            if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)) {
                 running = 0;
             }
             if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) {
-                    running = 0;
+                if(event.key.keysym.sym == SDLK_LEFT){
+                    choix = (choix - 1 + 3) % 3;
                 }
+                if(event.key.keysym.sym == SDLK_RIGHT){
+                    choix = (choix + 1) % 3;
+                }
+                SDL_Event e;
+                while (SDL_WaitEvent(&e) && e.type != SDL_KEYUP);
             }
-
+            
         }
+       
 
-        SDL_RenderClear(game->renderer);     //efface l'ecran
-
+        switch(choix){
+            case 0 : border_objet.couleur = couleur_bordure_objet;
+                border_attaque.couleur = couleur_bordure; 
+                border_mecha.couleur = couleur_bordure; break;
+            case 1 : border_objet.couleur = couleur_bordure; 
+                border_attaque.couleur = couleur_bordure_attaque; 
+                border_mecha.couleur = couleur_bordure; break;
+            case 2 : border_objet.couleur = couleur_bordure; 
+                border_attaque.couleur = couleur_bordure; 
+                border_mecha.couleur = couleur_bordure_mecha; break;
+        }
+        
+        SDL_RenderClear(game->renderer);
         draw_background(game);
         draw_rect(game, &rect_bas);
-        SDL_RenderPresent(game->renderer);      //affiche rendu
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
+        draw_rect(game, &border_attaque);
+        draw_rect(game, &border_objet);
+        draw_rect(game, &border_mecha);
+        draw_rect(game, &border_fuite);
+        draw_rect(game, &rect_attaque);
+        draw_rect(game, &rect_objet);
+        draw_rect(game, &rect_changer_mecha);
+        draw_rect(game, &rect_fuite);
+        SDL_RenderPresent(game->renderer);
+        
+        frameTime = SDL_GetTicks() - frameStart;
         if (FRAME_DELAYS > frameTime) {
-            SDL_Delay(FRAME_DELAYS - frameTime); // Attend le temps restant
+            SDL_Delay(FRAME_DELAYS - frameTime);
         }
     }
     game->mat_active = save_map_active;
 }
+
 
 /*
 int main(){
