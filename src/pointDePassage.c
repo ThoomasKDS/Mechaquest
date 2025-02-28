@@ -34,8 +34,8 @@ int copie_mechas(joueur_t *j,mechas_joueur_t *mecha){
     return OK;
 }
 
-int choix_starter(joueur_t *j,pnj_t *vinGazole){
-    int choix = 0;
+int choix_starter(joueur_t *j,pnj_t *vinGazole,game_t *game,parametre_t *parametres){
+    int choix = 0,running;
     SDL_Event event;
     printf("Choisissez Le mechas que vous souhaité: \n");
     printf("1: Tournicoton \n");
@@ -44,8 +44,11 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
     while(!choix){
         while (SDL_PollEvent(&event)) {
             if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return 0;   
+                if (event.key.keysym.sym == SDLK_ESCAPE){
+                    running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;    
+                }    
                 if (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_KP_1){
                     choix = copie_mechas(j,&vinGazole->mechas_joueur[0]);
                     printf("Vous avez choisit Tournicoton\n");
@@ -74,18 +77,22 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
 
 
 int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
+        int running;
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
                 return 0;
             }
             if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return afficherMenuPause(game,parametres);    
+                if (event.key.keysym.sym == SDLK_ESCAPE){
+                    running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;    
+                }    
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->numMap == 0 && j->x+1 == pnj[17].x && j->y == pnj[17].y && j->derniere_touche == 2 && pnj[17].etat == 0){
                         printf("%s\n",pnj[17].dialogueDebut);
-                        choix_starter(j,&pnj[17]);
+                        choix_starter(j,&pnj[17],game,parametres);
                         printf("%s\n",pnj[17].dialogueFin);
                         pnj[17].etat = 1;
                         sauvegarde_pnj(&pnj[17],18,j->pseudo);
@@ -106,6 +113,7 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
 }
 
 int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, parametre_t* parametres){
+    int running;
     SDL_Event event;
     int soin = 0;
         while (SDL_PollEvent(&event)) {
@@ -113,8 +121,11 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
                 return 0;
             }
             if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return afficherMenuPause(game,parametres);   
+                if (event.key.keysym.sym == SDLK_ESCAPE){
+                    running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;     
+                }   
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->numMap == 0 && j->x+1 == pnj[18].x && j->y == pnj[18].y && j->derniere_touche == 2){
                         if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
@@ -175,14 +186,18 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
 }
 
 int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, parametre_t *parametres){
+    int running;
     SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
                 return 0;
             }
             if(event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return afficherMenuPause(game,parametres);    
+                if (event.key.keysym.sym == SDLK_ESCAPE){
+                    running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;    
+                }    
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->x+1 == pnj[20].x && j->y == pnj[20].y && j->derniere_touche == 2 && pnj[20].etat == 0){
                         printf("%s\n",pnj[20].dialogueDebut);
@@ -208,14 +223,17 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
 
 int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
     SDL_Event event;
-    int soin = 0;
+    int soin = 0,running;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
             return 0;
         }
         if(event.type == SDL_KEYDOWN) {
-            if (event.key.keysym.sym == SDLK_ESCAPE) 
-                    return afficherMenuPause(game,parametres);    
+            if (event.key.keysym.sym == SDLK_ESCAPE){
+                running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;    
+            }           
             if (event.key.keysym.sym == SDLK_p){
                 if(j->numMap == 0 && j->x+1 == pnj[21].x && j->y == pnj[21].y && j->derniere_touche == 2){
                     if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
@@ -256,15 +274,18 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
 }
 
 int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
-    int soin = 0;
+    int soin = 0,running;
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
             return 0;
         }
         if(event.type == SDL_KEYDOWN) {
-            if (event.key.keysym.sym == SDLK_ESCAPE) 
-                return afficherMenuPause(game,parametres); 
+            if (event.key.keysym.sym == SDLK_ESCAPE) {
+                running = afficherMenuPause(game,parametres);
+                    SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+                    return running;     
+            }
             if (event.key.keysym.sym == SDLK_p){
                 if(j->numMap == 0 && j->x+1 == pnj[23].x && j->y == pnj[23].y && j->derniere_touche == 2){
                     if(pnj[23].etat == 0){
