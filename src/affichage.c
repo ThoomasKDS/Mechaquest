@@ -3,10 +3,7 @@
  * \brief fichier contenant la fonctions d'affichage utilisant la librérie de SDL
 */
 #include "../lib/affichage.h"
-mechas_t mecha[24];
-attaque_t attaque[64];
-zone_t zone[10];
-pnj_t pnj[24];
+#include "../lib/pointDePassage.h"
 //FONCTION BACKGROUND
 /*=================================================*/
 
