@@ -1,57 +1,29 @@
-#ifndef MENU_H
-#define MENU_H
-
+#ifndef POINT_DE_PASSAGE_H
+#define POINT_DE_PASSAGE_H
+#include "affichage.h"
+#include "menu.h"
 #include "sauv.h"
-#include "../lib/initGame.h"
-#include "../lib/affichage.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
-#include <stdio.h>
-#include <string.h>
 
-#define LARGEUR_BOUTON 200
-#define HAUTEUR_BOUTON 50
-#define LONGUEUR_MAX_PSEUDO 50
+extern mechas_t mecha[24];
+extern attaque_t attaque[64];
+extern zone_t zone[10];
+extern pnj_t pnj[24];
 
-typedef struct {
-    int volume;
-} parametre_t;
+int soigner(joueur_t *j);
 
-typedef struct {
-    SDL_Rect rect;
-    SDL_Color couleur;
-    const char* texte;
-} BoutonTexte;
+int copie_mechas(joueur_t *j,mechas_joueur_t *mecha);
 
-typedef struct {
-    SDL_Rect rect;
-    SDL_Texture *image;
-} BoutonImage;
+int choix_starter(joueur_t *j,pnj_t *vinGazole,game_t *game,parametre_t *parametres);
 
-extern SDL_Color rouge;
-extern SDL_Color vert;
-extern SDL_Color bleu;
-extern SDL_Color noir;
+int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
-SDL_Texture* chargerTexture(const char *chemin, game_t *game);
+int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
-BoutonTexte creerBoutonTexte(int x, int y, int largeur, int hauteur, SDL_Color couleur, const char* texte);
+int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
-BoutonImage creerBoutonImage(int x, int y, int largeur, int hauteur, char *cheminImage, game_t* game);
+int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
-void afficherBoutonTexte(game_t* game, BoutonTexte bouton);
-
-int afficherChoixSexe(game_t* game, joueur_t* j, char* pseudo);
-
-int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo);
-
-int afficherSaisiePseudo(game_t* game, joueur_t* joueur, char* pseudo);
-
-void afficherParametres(game_t* game, parametre_t* parametres);
-
-void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
-
-int afficherMenuPause(game_t* game, parametre_t* parametres);
+int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
 #endif
+
