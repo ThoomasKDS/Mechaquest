@@ -13,7 +13,7 @@ int soigner(joueur_t *j);
 
 int copie_mechas(joueur_t *j,mechas_joueur_t *mecha);
 
-int choix_starter(joueur_t *j,pnj_t *vinGazole);
+int choix_starter(joueur_t *j,pnj_t *vinGazole,game_t *game,parametre_t *parametres);
 
 int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres);
 
