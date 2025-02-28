@@ -493,7 +493,7 @@ void creer_rectangle(game_t *game,rectangle_t *rectangle,int w, int h, float x, 
 }
 
 void draw_text(game_t *game, rectangle_t* rectangle) {
-    if (!rectangle->text || rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
+    if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
     if (!game->police) {
         printf("Erreur : Police non chargée\n");
         return;
@@ -535,7 +535,7 @@ void draw_rect(game_t *game, rectangle_t *rectangle) {
         SDL_SetRenderDrawColor(game->renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
         SDL_RenderFillRect(game->renderer, &rectangle->rect);
         // Dessiner le texte
-        if(rectangle->text || rectangle->text[0] != '\0') draw_text(game, rectangle);
+        if(rectangle->text[0] != '\0') draw_text(game, rectangle);
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
 
 }

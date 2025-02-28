@@ -474,7 +474,6 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
     SDL_Color couleur_bordure_attaque = {210, 145, 132, 150};
     SDL_Color couleur_bordure_objet = {229, 185, 135, 150};
     SDL_Color couleur_bordure_mecha = {162, 202, 154, 150};
-    int fleche = 0;
     int choix = 1;
 
 
