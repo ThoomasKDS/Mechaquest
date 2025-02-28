@@ -52,4 +52,6 @@ void afficherParametres(game_t* game, parametre_t* parametres);
 
 void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
 
+int afficherMenuPause(game_t* game, parametre_t* parametres);
+
 #endif
