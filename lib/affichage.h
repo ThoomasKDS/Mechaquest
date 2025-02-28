@@ -84,7 +84,7 @@ void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat);   //affiche 
 void free_mat(game_t *game, int taille_x, int taille_y);              //libere la matrice
 
 //FONCTION GESTION OBJETS
-int init_player_h(game_t * game, img_player_t * sprite_playerH);                                            //initialise le joueur 
+int init_player(game_t * game, img_player_t * sprite_player,char sexe);                                            //initialise le joueur 
 int init_pnj(game_t * game, img_pnj_t * sprite_pnj) ;                                                         //initialise un pnj
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
 void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j);                 //dessine le joueur
