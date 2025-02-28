@@ -139,7 +139,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
             sauvegarde_partie(j,j->pseudo);
             j->screen_x = (float)(game->dms_win.x + (j->x * PX * game->scale));      //position du joueur en px
             j->screen_y = (float)(game->dms_win.y + (j->y * PX * game->scale));
-            if(!init_player_h(game, sprite_playerH)){
+            if(!init_player(game, sprite_playerH,j->sexe)){
                 return -1;
             }   
         }

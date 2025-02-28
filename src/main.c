@@ -27,7 +27,7 @@ int main() {
     //VARIABLES UTILES AU PROGRAMME
 
     game_t game;
-    img_player_t sprite_playerH;
+    img_player_t sprite_player;
     img_pnj_t sprite_pnj;
     joueur_t j;
     parametre_t parametres;
@@ -88,7 +88,7 @@ int main() {
     j.proba_combat = 0;
     j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
     j.screen_y = (float)(game.dms_win.y + (j.y * PX * game.scale));
-    if(!init_player_h(&game, &sprite_playerH)){
+    if(!init_player(&game, &sprite_player,j.sexe)){
         return -1;
     }
     if(!init_pnj(&game, &sprite_pnj)){
@@ -134,7 +134,7 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+            parler_a_vin_gazole(&game,&sprite_player,&j,&sprite_p, keys);
             if(j.pointSauvegarde == 1){
                 premier_tour = 0;
             }
@@ -146,7 +146,7 @@ int main() {
                 game.mat[2][0][6] = 2;
                 premier_tour++;
             }
-            premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
+            premier_combat_musk(&game,&sprite_player,&j,&sprite_p, keys);
             if(j.pointSauvegarde == 2){
                 premier_tour = 0;
                 running = 0;
@@ -160,13 +160,13 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+            retourner_parler_a_vin_gazole(&game,&sprite_player,&j,&sprite_p, keys);
         }         
         if(j.pointSauvegarde == 3){
-            combat_final(&game,&sprite_playerH,&j,&sprite_p,keys);
+            combat_final(&game,&sprite_player,&j,&sprite_p,keys);
         }
         if(j.pointSauvegarde == 4)
-            jeu_libre(&game,&sprite_playerH,&j,&sprite_p,keys);
+            jeu_libre(&game,&sprite_player,&j,&sprite_p,keys);
         
         obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
         if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
@@ -177,7 +177,7 @@ int main() {
 
         SDL_RenderClear(game.renderer);     //efface l'ecran
 
-        draw_all(&game,&j,&sprite_p,pnj_sprite,&sprite_pnj,&sprite_playerH);
+        draw_all(&game,&j,&sprite_p,pnj_sprite,&sprite_pnj,&sprite_player);
 
 
         SDL_RenderPresent(game.renderer);      //affiche rendu

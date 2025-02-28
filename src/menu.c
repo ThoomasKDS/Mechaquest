@@ -401,6 +401,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
     SDL_Event event;
 
     while (running) {
+        frameStart = SDL_GetTicks(); //obtien l'heure
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
