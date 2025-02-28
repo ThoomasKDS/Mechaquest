@@ -120,7 +120,7 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            running = parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+            running = parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p,&parametres);
             if(j.pointSauvegarde == 1){
                 premier_tour = 0;
             }
@@ -132,7 +132,7 @@ int main() {
                 game.mat[2][0][6] = 2;
                 premier_tour++;
             }
-            running = premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p);
+            running = premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p,&parametres);
             if(j.pointSauvegarde == 2){
                 premier_tour = 0;
                 running = 0;
@@ -146,13 +146,13 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            running = retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p);
+            running = retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p,&parametres);
         }         
         if(j.pointSauvegarde == 3){
-            running = combat_final(&game,&sprite_playerH,&j,&sprite_p);
+            running = combat_final(&game,&sprite_playerH,&j,&sprite_p,&parametres);
         }
         if(j.pointSauvegarde == 4)
-            running = jeu_libre(&game,&sprite_playerH,&j,&sprite_p);
+            running = jeu_libre(&game,&sprite_playerH,&j,&sprite_p,&parametres);
 
         obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
         /*if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
