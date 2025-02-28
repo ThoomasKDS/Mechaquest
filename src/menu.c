@@ -386,7 +386,54 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
     }
 }
 
-//on modifie
+int afficherMenuPause(game_t* game, parametre_t* parametres) {
+    int largeurEcran, hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+
+    // INITIALISATION DES BOUTONS
+    BoutonTexte boutonReprendre = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran - HAUTEUR_BOUTON * 2) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, vert, "Reprendre");
+    BoutonTexte boutonParametres = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, bleu, "Parametres");
+    BoutonTexte boutonQuitter = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Quitter");
+
+    int enCours = 1,
+    SDL_Event evenement;
+
+    while (enCours) {
+        while (SDL_PollEvent(&evenement)) {
+            if (evenement.type == SDL_QUIT) {
+                enCours = 0;
+            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
+                int x = evenement.button.x, y = evenement.button.y;
+                if (x >= boutonReprendre.rect.x && x <= boutonReprendre.rect.x + boutonReprendre.rect.w &&
+                    y >= boutonReprendre.rect.y && y <= boutonReprendre.rect.y + boutonReprendre.rect.h) {
+                    return 1;
+                }
+                if (x >= boutonParametres.rect.x && x <= boutonParametres.rect.x + boutonParametres.rect.w &&
+                    y >= boutonParametres.rect.y && y <= boutonParametres.rect.y + boutonParametres.rect.h) {
+                    afficherParametres(game, parametres);
+                }
+
+                if (x >= boutonQuitter.rect.x && x <= boutonQuitter.rect.x + boutonQuitter.rect.w &&
+                    y >= boutonQuitter.rect.y && y <= boutonQuitter.rect.y + boutonQuitter.rect.h) {
+                    return 0;
+                }
+            }
+        }
+
+        //AFFICHAGE
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+        SDL_RenderClear(game->renderer);
+
+        draw_background(game);
+        afficherBoutonTexte(game, boutonReprendre);
+        afficherBoutonTexte(game, boutonParametres);
+        afficherBoutonTexte(game, boutonQuitter);
+        SDL_RenderPresent(game->renderer);
+        SDL_Delay(30);
+    }
+
+}
+
 void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo) {
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
