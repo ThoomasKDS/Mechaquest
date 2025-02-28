@@ -38,7 +38,7 @@ int main() {
     int obj_case;
     int running = 1;
     int last_case = 0;
-
+    SDL_Event event;
     Uint32 frameStart;  
     int frameTime;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
@@ -57,7 +57,7 @@ int main() {
     if(!init_background(&game)) {
         return -1;
     }
-
+    game.mat_active = 0;
     //Affichage du menu
     afficherMenu(&game,&parametres,&j,pseudo);
     SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
@@ -70,19 +70,19 @@ int main() {
     int taille_y_mat = game.img_h/PX;
     frameStart = SDL_GetTicks();    //obtien heure
 
-    SDL_PumpEvents();  // Met à jour l'état des événements (telles que les touches pressées)
-    keys = SDL_GetKeyboardState(NULL);  // Met à jour l'état des touches
+    
 
     //ALLOUE MEMOIRE POUR MATRICE
     if(!init_mat(&game, taille_x_mat, taille_y_mat)) {
         printf("Echec init mat\n");
         return -1;
     }
+
   
-    //REMPLI LA MATRICE DE 0
+    //REMPLI LA MATRICE DE 0 DU JOUEUR ET COORS
     remplir_mat(&game, taille_x_mat, taille_y_mat);
-    aff_mat(&game, taille_x_mat, taille_y_mat, 5);
-    //INITIALISE LES MOUVEMENTS DU JOUEUR ET COORS
+
+    //INITIALISE LES MOUVEMENT DU JOUEUR 
     j.moving = 0;
     j.derniere_touche = 4;
     j.proba_combat = 0;
@@ -110,9 +110,23 @@ int main() {
             game.mat[2][10][0] = -16;
             game.mat[2][9][19] = 0;
     }
+    aff_mat(&game, taille_x_mat, taille_y_mat, game.mat_active);
     while(running){
+        frameStart = SDL_GetTicks(); //obtien l'heure
+
+
+        SDL_PumpEvents();  // Met à jour l'état des événements (telles que les touches pressées)
+        keys = SDL_GetKeyboardState(NULL);  // Met à jour l'état des touches
+
+      
+        while (SDL_PollEvent(&event)) {
+            if(event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_ESCAPE){
+                    if(!afficherMenuPause(&game,&parametres)) running = 0;
+                } 
+            }
+        }
         
-        frameStart = SDL_GetTicks(); 
         if(j.pointSauvegarde == 0){
             if(premier_tour == 0){
                 game.mat[0][0][15] = 2;
@@ -120,7 +134,7 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            running = parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p,&parametres);
+            parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
             if(j.pointSauvegarde == 1){
                 premier_tour = 0;
             }
@@ -132,7 +146,7 @@ int main() {
                 game.mat[2][0][6] = 2;
                 premier_tour++;
             }
-            running = premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p,&parametres);
+            premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
             if(j.pointSauvegarde == 2){
                 premier_tour = 0;
                 running = 0;
@@ -146,19 +160,19 @@ int main() {
                 game.mat[0][0][17] = 2;
                 premier_tour++;
             }
-            running = retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p,&parametres);
+            retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
         }         
         if(j.pointSauvegarde == 3){
-            running = combat_final(&game,&sprite_playerH,&j,&sprite_p,&parametres);
+            combat_final(&game,&sprite_playerH,&j,&sprite_p,keys);
         }
         if(j.pointSauvegarde == 4)
-            running = jeu_libre(&game,&sprite_playerH,&j,&sprite_p,&parametres);
-
+            jeu_libre(&game,&sprite_playerH,&j,&sprite_p,keys);
+        
         obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
-        /*if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
+        if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
             printf("oui");
             combat_sauvage(&j, &mecha_sauvage, &game);
-        }*/
+        }
         animation(&j, &sprite_p);
 
         SDL_RenderClear(game.renderer);     //efface l'ecran
@@ -167,11 +181,14 @@ int main() {
 
 
         SDL_RenderPresent(game.renderer);      //affiche rendu
+
+
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
         if (FRAME_DELAY > frameTime) {
             SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
         }
+            
     }
     sauvegarde_partie(&j,pseudo);
     cleanUp(&game);

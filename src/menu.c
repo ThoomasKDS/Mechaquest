@@ -389,26 +389,28 @@ void afficherParametres(game_t* game, parametre_t* parametres) {
 void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo) {
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    int frameTime;
 
     // INITIALISATION DES BOUTONS
     BoutonTexte boutonJouer = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran - HAUTEUR_BOUTON * 2) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, vert, "Jouer");
     BoutonTexte boutonParametres = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, bleu, "Parametres");
     BoutonTexte boutonQuitter = creerBoutonTexte((largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2, LARGEUR_BOUTON, HAUTEUR_BOUTON, rouge, "Quitter");
 
-    int enCours = 1, action;
-    SDL_Event evenement;
+    int running = 1, action;
+    SDL_Event event;
 
-    while (enCours) {
-        while (SDL_PollEvent(&evenement)) {
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
-            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
-                int x = evenement.button.x, y = evenement.button.y;
+    while (running) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                int x = event.button.x, y = event.button.y;
                 if (x >= boutonJouer.rect.x && x <= boutonJouer.rect.x + boutonJouer.rect.w &&
                     y >= boutonJouer.rect.y && y <= boutonJouer.rect.y + boutonJouer.rect.h) {
                     action = afficherSaisiePseudo(game, j, pseudo);
                     if ((strlen(pseudo) > 0) && action) {
-                        enCours = 0;
+                        running = 0;
                         printf("Pseudo saisi : %s\n", pseudo);
                     }
                 }
@@ -419,14 +421,12 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
 
                 if (x >= boutonQuitter.rect.x && x <= boutonQuitter.rect.x + boutonQuitter.rect.w &&
                     y >= boutonQuitter.rect.y && y <= boutonQuitter.rect.y + boutonQuitter.rect.h) {
-                    enCours = 0;
-                    return;
+                        running = 0;
                 }
             }
         }
 
         //AFFICHAGE
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
 
         draw_background(game);
@@ -434,7 +434,12 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
         afficherBoutonTexte(game, boutonParametres);
         afficherBoutonTexte(game, boutonQuitter);
         SDL_RenderPresent(game->renderer);
-        SDL_Delay(30);
+
+        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+
+        if (FRAME_DELAY > frameTime) {
+            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+        }
     }
 }
 

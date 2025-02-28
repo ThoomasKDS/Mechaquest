@@ -310,6 +310,13 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     imageSprite[4] = IMG_Load(img_vin_gazole);
     imageSprite[5] = IMG_Load(img_iron_musk_bas);
     imageSprite[6] = IMG_Load(img_iron_musk_gauche);
+    for(int i = 0; i < 7; i++) {
+        if (!imageSprite[i]) {
+            printf("Erreur de chargement de l'image numero %d dans init pnj: %s\n",i+1, IMG_GetError());
+            IMG_Quit();
+            return 0;
+        }
+    }
     sprite_pnj->haut = SDL_CreateTextureFromSurface(game->renderer, imageSprite[0]);
     if (!sprite_pnj->haut) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
@@ -417,7 +424,7 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
     
 }
 void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH){
-    draw_background(game);
+        draw_background(game);
         if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){

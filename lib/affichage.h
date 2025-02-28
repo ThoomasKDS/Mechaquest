@@ -46,7 +46,7 @@
 #define Z9 -9
 #define Z10 -10 
 
-
+extern const int FRAME_DELAY;
 
 //Structure qui contient les images animés du joueur
 typedef struct{
