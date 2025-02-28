@@ -69,7 +69,8 @@ typedef struct{
 typedef struct {
     SDL_Rect rect;
     SDL_Color couleur;
-    char* text;
+    char text[50];
+    SDL_Color couleur_text;
 } rectangle_t;
 
 //FONCTION BACKGROUND
@@ -91,7 +92,7 @@ void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t * pnj, 
 void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
 void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH);
 //w : largeur, h, hauteur, x, coord x, y : coord y, "r,g,b" :  systeme de couleur, a : oppacité
-void creer_rectangle(rectangle_t *rectangle,int w, int h, int x, int y, int r, int g, int b, int a, char *text); //creer un rectangle avec du texte
+void creer_rectangle(game_t *game,rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[50]); //creer un rectangle avec du texte
 void draw_text(game_t *game, rectangle_t* rectangle);
 void draw_rect(game_t *game, rectangle_t *rectangle);
 
