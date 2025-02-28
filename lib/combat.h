@@ -6,11 +6,15 @@
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]);
 
-int utilisation_objet(joueur_t *joueur, int i);
+int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int i);
 
-int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[], int etat);
+int changer_mecha(joueur_t *joueur, char nom[], int etat);
 
-int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, attaque_t *attaque, mechas_t *mecha);
+int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi);
+
+int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
+
+int attaque_ordi_pnj(joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
 
 int choix_action(char nom[], int i);
 

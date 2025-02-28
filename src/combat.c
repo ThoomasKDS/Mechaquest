@@ -49,16 +49,17 @@ void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]){
     }
 }
 
-int utilisation_objet(joueur_t *joueur, int i){
+int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int i){
     int choix = 0;
-    while(choix < 1 || choix > 3){
+    while(choix < 1 || choix > 4){
         printf("Que voulez-vous utiliser ?\n");
         printf("1 : Carburant (reste %d)\n", joueur->inventaire->carburant);
         printf("2 : Rappel (reste %d)\n", joueur->inventaire->rappel);
-        printf("3 : Retour\n");
+        printf("3 : Mechaball (reste %d)\n", joueur->inventaire->mechaball);
+        printf("4 : Retour\n");
         scanf("%d", &choix);
         if(choix == 1){
-            if(joueur->inventaire->carburant == 0){
+            if(joueur->inventaire->carburant <= 0){
                 printf("Vous n'avez pas de carburant\n");
                 choix = 0;
             }
@@ -84,11 +85,11 @@ int utilisation_objet(joueur_t *joueur, int i){
             }
         }
         else if(choix == 2){
-            if(joueur->inventaire->rappel == 0){
+            if(joueur->inventaire->rappel <= 0){
                 printf("Vous n'avez pas de rappel\n");
                 choix = 0;
             }
-            else if(joueur->mechas_joueur[i].pv < 0){
+            else if(joueur->mechas_joueur[i].pv <= 0){
                 joueur->inventaire->rappel--;
                 printf("Ancien PV : %d\n", joueur->mechas_joueur[i].pv);
                 joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max / 2;  //Remplacer les PV actuels par les PV Max
@@ -100,6 +101,30 @@ int utilisation_objet(joueur_t *joueur, int i){
             }
         }
         else if(choix == 3){
+            if(joueur->inventaire->mechaball <= 0){
+                printf("Vous n'avez pas de mechaball\n");
+                choix = 0;
+            }
+            else{
+                int taux_capture;   //Un taux de capture different en fonction du type de mecha (nucleaire + difficile a attraper)
+                if((strcmp(mecha[ordi->id_mechas-1].type, "Nucleaire") == 0)){
+                    taux_capture = 0.3;
+                }
+                else{
+                    taux_capture = 0.8;
+                }
+                int proba_capture = (1 - ordi->pv / ordi->pv_max) * taux_capture;   //Calcul les chances d'attraper le mecha
+
+                srand(time(NULL));
+                int nbr_rand_capture = (rand() % 100) + 1;
+
+                if(proba_capture <= nbr_rand_capture){  //Si le mecha est attrapé
+                    copie_mechas(joueur, ordi);
+                }
+                joueur->inventaire->mechaball--;
+            }
+        }
+        else if(choix == 4){
             return 3;
         }
         else{
@@ -111,7 +136,8 @@ int utilisation_objet(joueur_t *joueur, int i){
 }
 
 
-int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[], int etat){
+
+int changer_mecha(joueur_t *joueur, char nom[], int etat){
     
     int choix = -1;
     int choix2 = -1;
@@ -171,7 +197,7 @@ int changer_mecha(joueur_t *joueur, mechas_t mecha[], char nom[], int etat){
 }
 
 
-int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, attaque_t *attaque, mechas_t *mecha){
+int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi){
 
     int choix_attaque = -1;
     int att1, att2;
@@ -249,6 +275,187 @@ int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, a
     return OK;
 }
 
+int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){  //Retourne 0 si ne peut pas attaquer
+
+    int ok = -1;
+    int cpt = 0;
+    int att1, att2;
+    int ancien_pv;
+    int nbr_rand_att, nbr_rand_preci;
+
+    
+    ancien_pv = mecha_joueur->pv;
+    att1 = attaque[mecha_ordi->attaque_1].degats;
+    att2 = attaque[mecha_ordi->attaque_2].degats;
+
+    srand(time(NULL));
+    nbr_rand_att = (rand() % 2) + 1;
+
+    while(ok != 0){ //Test si les attaques ont encore des utilisations
+        if((nbr_rand_att == 1) && (attaque[mecha_ordi->attaque_1].utilisations > 0)){
+            ok = 0;
+        }
+        else{
+            nbr_rand_att = 2;   //Si l'utilisation est a 0, on test directement l'autre attaque
+        }
+        if((nbr_rand_att == 2) && (attaque[mecha_ordi->attaque_2].utilisations > 0)){
+            ok = 0;
+        }
+        else{
+            nbr_rand_att = 1;   //Si l'utilisation est a 0, on test directement l'autre attaque
+        }
+        cpt++;
+        if(cpt > 2){    //Si aucune attaque n'a d'utilisation
+            return 0;
+        }
+    }
+
+    nbr_rand_preci = (rand() % 100) + 1;
+
+    if(nbr_rand_att == 1){
+        if(nbr_rand_preci <= attaque[mecha_joueur->attaque_1].precision){  //Test si l'attaque touche (precision)
+
+            // Test en fonction des types (+ de degats ou non)
+            if(((strcmp(attaque[mecha_ordi->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
+            || ((strcmp(attaque[mecha_ordi->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
+            || ((strcmp(attaque[mecha_ordi->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
+                att1 *= 1.5;
+            }
+            else if((strcmp(attaque[mecha_ordi->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
+                att1 *= 1.2;
+            }
+
+            if(mecha_ordi->attaque + att1 > mecha_joueur->defense){
+                mecha_joueur->pv -= (mecha_ordi->attaque + att1 - mecha_joueur->defense);
+            }
+
+            attaque[mecha_ordi->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
+        }
+    }
+    else{
+        if(nbr_rand_preci <= attaque[mecha_joueur->attaque_2].precision){ //Test si l'attaque touche (precision)
+            // Test en fonction des types (+ de degats ou non)
+            if(((strcmp(attaque[mecha_ordi->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
+            || ((strcmp(attaque[mecha_ordi->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
+            || ((strcmp(attaque[mecha_ordi->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
+                att2 *= 1.5;
+            }
+            else if((strcmp(attaque[mecha_ordi->attaque_2].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
+                att2 *= 1.2;
+            }
+
+            if(mecha_ordi->attaque + att2 > mecha_joueur->defense){
+                mecha_joueur->pv -= (mecha_ordi->attaque + att2 - mecha_joueur->defense);
+            }
+
+            attaque[mecha_ordi->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
+        }
+    }
+    printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
+    return OK;
+}
+
+
+int attaque_ordi_pnj(pnj_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
+
+    int ok = -1;
+    int cpt = 0;
+    int att1, att2;
+    int ancien_pv;
+    int nbr_rand_att, nbr_rand_preci;
+    int nbr_rand_choix = 0;
+
+    srand(time(NULL));
+
+    if(mecha_ordi->mechas_joueur->pv <= mecha_ordi->mechas_joueur->pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max
+        nbr_rand_choix = (rand() % 2) + 1;
+    }
+
+    if(nbr_rand_choix == 1){    //Utilisation d'un carburant
+        if(mecha_ordi->inventaire->carburant <= 0){
+            nbr_rand_choix = 2;
+        }
+        else if(mecha_ordi->mechas_joueur->pv + 20 > mecha_ordi->mechas_joueur->pv_max){ //Si les PV + 20 sont sup aux PV Max, les PV deviennent les PV Max
+            mecha_ordi->mechas_joueur->pv = mecha_ordi->mechas_joueur->pv_max;
+            mecha_ordi->inventaire->carburant--;
+        }
+        else{
+            mecha_ordi->mechas_joueur->pv += 20;
+            mecha_ordi->inventaire->carburant--;
+        }
+    }
+    else{   //Attaque
+        ancien_pv = mecha_joueur->pv;
+        att1 = attaque[mecha_ordi->mechas_joueur->attaque_1].degats;
+        att2 = attaque[mecha_ordi->mechas_joueur->attaque_2].degats;
+
+        nbr_rand_att = (rand() % 2) + 1;
+
+        while(ok != 0){ //Test si les attaques ont encore des utilisations
+            if((nbr_rand_att == 1) && (attaque[mecha_ordi->mechas_joueur->attaque_1].utilisations > 0)){
+                ok = 0;
+            }
+            else{
+                nbr_rand_att = 2;   //Si l'utilisation est a 0, on test directement l'autre attaque
+            }
+            if((nbr_rand_att == 2) && (attaque[mecha_ordi->mechas_joueur->attaque_2].utilisations > 0)){
+                ok = 0;
+            }
+            else{
+                nbr_rand_att = 1;   //Si l'utilisation est a 0, on test directement l'autre attaque
+            }
+            cpt++;
+            if(cpt > 2){    //Si aucune attaque n'a d'utilisation
+                return 0;
+            }
+        }
+
+        nbr_rand_preci = (rand() % 100) + 1;
+
+        if(nbr_rand_att == 1){
+            if(nbr_rand_preci <= attaque[mecha_joueur->attaque_1].precision){  //Test si l'attaque touche (precision)
+
+                // Test en fonction des types (+ de degats ou non)
+                if(((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
+                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
+                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
+                    att1 *= 1.5;
+                }
+                else if((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
+                    att1 *= 1.2;
+                }
+
+                if(mecha_ordi->mechas_joueur->attaque + att1 > mecha_joueur->defense){
+                    mecha_joueur->pv -= (mecha_ordi->mechas_joueur->attaque + att1 - mecha_joueur->defense);
+                }
+
+                attaque[mecha_ordi->mechas_joueur->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
+            }
+        }
+        else{
+            if(nbr_rand_preci <= attaque[mecha_joueur->attaque_2].precision){ //Test si l'attaque touche (precision)
+                // Test en fonction des types (+ de degats ou non)
+                if(((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
+                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
+                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
+                    att2 *= 1.5;
+                }
+                else if((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
+                    att2 *= 1.2;
+                }
+
+                if(mecha_ordi->mechas_joueur->attaque + att2 > mecha_joueur->defense){
+                    mecha_joueur->pv -= (mecha_ordi->mechas_joueur->attaque + att2 - mecha_joueur->defense);
+                }
+
+                attaque[mecha_ordi->mechas_joueur->attaque_2].utilisations--;    //Decrementer le nombre d'utilisations restantes
+            }
+        }
+        printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
+    }
+    return OK;
+}
+
 
 int choix_action(char nom[], int i){
 
@@ -270,13 +477,13 @@ int choix_action(char nom[], int i){
     }
 
     switch(choix){
-        case 1 : attaque_joueur(&joueur.mechas_joueur[0], &joueur.mechas_joueur[1], attaque, mecha);
+        case 1 : attaque_joueur(&joueur.mechas_joueur[0], &joueur.mechas_joueur[1]);
         return 1;
         break;
-        case 2 : utilisation_objet(&joueur, i);
+        case 2 : utilisation_objet(&joueur, &ordi, i);
         return 2;
         break;
-        case 3 : changer_mecha(&joueur, mecha, nom, etat);
+        case 3 : changer_mecha(&joueur, nom, etat);
         return 3;
         break;
         case 4 : return 0;
@@ -286,6 +493,7 @@ int choix_action(char nom[], int i){
 
 }
 
+
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
     int i;
     int choix = -1;
@@ -294,13 +502,13 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
         printf("%d\n",i);
     }
     if(attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau == mecha_joueur->niveau){
-        printf("Votre mechas souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",
+        printf("Votre mecha souhaite apprendre une nouvelle attaque: %s\nDégats:%d\nPrecision:%d\n",
         attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].degats,
         attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].precision);
-        printf("choisiseez l'attaques à remplacer ou appuyer sur 0 pour pas l'apprendre\n");
-        printf("attaque 1:%s\nDégats:%d\nPrecision:%d\n",
+        printf("Choisissez l'attaque à remplacer ou appuyer sur 0 pour ne rien faire\n");
+        printf("Attaque 1:%s\nDégats:%d\nPrecision:%d\n",
         attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha_joueur->attaque_1 -1].degats,attaque[mecha_joueur->attaque_1 -1].precision);
-        printf("attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",
+        printf("Attaque 2:%s\nDégats:%d\nPrecision:%d\nAttaque à remplacer :",
         attaque[mecha_joueur->attaque_2 -1].nom,attaque[mecha_joueur->attaque_2 -1].degats,attaque[mecha_joueur->attaque_2 -1].precision);
         do{
             scanf("%d",&choix);
@@ -309,13 +517,13 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
         } while(choix < 0 || choix > 2);
         switch(choix){
             case 1:
-                printf("Vous avez remplacer votre attaque %s par %s\n",
+                printf("Vous avez remplacé votre attaque %s par %s\n",
                 attaque[mecha_joueur->attaque_1-1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i]-1].nom);
                 mecha_joueur->attaque_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_1 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
                 break;
             case 2:
-                printf("Vous avez remplacer votre attaque %s par %s\n",
+                printf("Vous avez remplacé votre attaque %s par %s\n",
                 attaque[mecha_joueur->attaque_1 -1].nom,attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].nom);
                 mecha_joueur->attaque_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].id_attaques;
                 mecha_joueur->utilisation_2 = attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1].utilisations;
@@ -407,58 +615,37 @@ void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue){
 }
 
 
-/*
-void combat_init(){
+int tour_jeu(joueur_t *joueur, pnj_t *ordi, int pnj){
+    int tour = 0;
+    int i;
+    int som_pv = 0;
 
-    int choix1, choix2;
-
-    mechas_joueur_t tab_mecha[N];
-    mechas_t mecha[N];
-    
-    affichage_mecha(tab_mecha, mecha, nom);
-    //choix1 = choix_mecha();
-    //choix2 = choix_mecha();
-    
-    int gagnant = tour_jeu(choix1, choix2, tab_mecha, mecha);
-    int perdant;
-    
-    
-    if(gagnant == 1){
-        printf("%s a gagné !\n", mecha[choix1].nom);
-        perdant = 2;
-    }
-    else{
-        printf("%s a gagné !\n", mecha[choix2].nom);
-        perdant = 1;
-    }
-
-    level_mechas(gagnant-1, perdant-1, tab_mecha, mecha);
-
-}
-*/
-
-int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi){
-    int tour = 1;
-    int i = 0;
-
-   /* if(mecha_joueur->vitesse >= mecha_ordi->vitesse){
+    if(joueur->mechas_joueur[0].vitesse >= ordi->mechas_joueur[0].vitesse){
         tour = 1;
     }
-    else{
-        tour = 0;
-    }*/
 
-    while(mecha_joueur->mechas_joueur[i].pv > 0 && mecha_ordi->mechas_joueur[i].pv > 0){
+    while(joueur->mechas_joueur[0].pv >= 0 && ordi->mechas_joueur[0].pv >= 0){
         if(tour){
-            choix_action(nom, i);
-            //tour--;
+            for(i = 0; i < 3 || i < joueur->nb_mechas; i++){
+                som_pv += joueur->mechas_joueur[i].pv;
+            }
+            if(joueur->mechas_joueur[0].pv >= 0 && som_pv > 0){ //Si le mecha n'a plus de PV mais que les autres en ont, changer mecha
+                changer_mecha(&joueur, nom, 1);
+            }
+            else{
+                choix_action(nom, i);
+            }
+            tour--;
+        }
+        else if(pnj){
+            attaque_ordi_pnj(ordi, joueur->mechas_joueur[0]);
+            tour++;
         }
         else{
-
+            attaque_ordi_sauvage(ordi->mechas_joueur[0], joueur->mechas_joueur[0]);
+            tour++;
         }
     }
-    level_mechas(mecha_joueur, mecha_ordi);
-    return OK;
 }
 
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {
