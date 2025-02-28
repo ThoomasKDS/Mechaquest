@@ -73,7 +73,7 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
 }
 
 
-int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
@@ -81,7 +81,7 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
             }
             if(event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return 0;    
+                     return afficherMenuPause(game,parametres);    
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->numMap == 0 && j->x+1 == pnj[17].x && j->y == pnj[17].y && j->derniere_touche == 2 && pnj[17].etat == 0){
                         printf("%s\n",pnj[17].dialogueDebut);
@@ -105,7 +105,7 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, parametre_t* parametres){
     SDL_Event event;
     int soin = 0;
         while (SDL_PollEvent(&event)) {
@@ -114,7 +114,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
             }
             if(event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return 0;    
+                     return afficherMenuPause(game,parametres);   
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->numMap == 0 && j->x+1 == pnj[18].x && j->y == pnj[18].y && j->derniere_touche == 2){
                         if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
@@ -174,7 +174,7 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
     return OK;
 }
 
-int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, parametre_t *parametres){
     SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {       //si on appuie sur fermer la fenetre running = 0
@@ -182,7 +182,7 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
             }
             if(event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_ESCAPE) 
-                     return 0;    
+                     return afficherMenuPause(game,parametres);    
                 if (event.key.keysym.sym == SDLK_p){
                     if(j->x+1 == pnj[20].x && j->y == pnj[20].y && j->derniere_touche == 2 && pnj[20].etat == 0){
                         printf("%s\n",pnj[20].dialogueDebut);
@@ -206,7 +206,7 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
     return OK;
 }
 
-int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
     SDL_Event event;
     int soin = 0;
     while (SDL_PollEvent(&event)) {
@@ -215,7 +215,7 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
         }
         if(event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_ESCAPE) 
-                    return 0;    
+                    return afficherMenuPause(game,parametres);    
             if (event.key.keysym.sym == SDLK_p){
                 if(j->numMap == 0 && j->x+1 == pnj[21].x && j->y == pnj[21].y && j->derniere_touche == 2){
                     if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
@@ -255,7 +255,7 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
     return OK;
 }
 
-int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p){
+int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,parametre_t *parametres){
     int soin = 0;
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -264,7 +264,7 @@ int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *
         }
         if(event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_ESCAPE) 
-                    return 0;    
+                return afficherMenuPause(game,parametres); 
             if (event.key.keysym.sym == SDLK_p){
                 if(j->numMap == 0 && j->x+1 == pnj[23].x && j->y == pnj[23].y && j->derniere_touche == 2){
                     if(pnj[23].etat == 0){
