@@ -134,7 +134,7 @@ int spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, me
 int detection_combat_pnj(game_t game,joueur_t j){
     for(int i = 0;i<24;i++){
         if(pnj[i].id_map == j->numMap){
-            for(int j = 1;j<=4 && game->;j++){
+            for(int j = 1;j<=4 ;j++){
                 switch(pnj[i].orientation){
                 case 0:
                     if
