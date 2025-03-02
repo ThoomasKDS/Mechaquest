@@ -13,7 +13,7 @@ int init_background(game_t * game) {
     char ext[5] = ".png";
     char chemin[100] = "img/background/fond";
 
-    for(int i = 0; i < 7; i++) {
+    for(int i = 0; i < 8; i++) {
         chemin[19] = '0' + (i + 1);
         chemin[20] = '\0';
         strcat(chemin, ext);
