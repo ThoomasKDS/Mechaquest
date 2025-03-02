@@ -17,6 +17,7 @@ const int FPS_LIMITS = 60;
 const int FRAME_DELAYS = 1000 / FPS_LIMITS; // Temps entre chaque frame (16 ms)
 
 char nom[50] = "player1";
+mechas_joueur_t ordi;
 joueur_t joueur;
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]){
@@ -547,7 +548,7 @@ int evolution_mechas(mechas_joueur_t *mecha_joueur){
 }
 
 void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup){
-    int nouv_level, k, i;
+    int nouv_level;
 
     nouv_level = mecha->xp + xp_partage;
     if(nouv_level >= lvlup){
@@ -593,7 +594,7 @@ void distribuer_xp(joueur_t *mechas_presents, int xp_gagne) {
 void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue){
     
     int i, nb;
-    int lvlup, xp_gagne, nouv_level;
+    int xp_gagne;
 
    
     xp_gagne = (int)(20 * exp(0.02 * mecha_tue->mechas_joueur->niveau));   //Calculer l'XP recu en tuant l'adversaire
@@ -638,14 +639,15 @@ int tour_jeu(joueur_t *joueur, pnj_t *ordi, int pnj){
             tour--;
         }
         else if(pnj){
-            attaque_ordi_pnj(ordi, joueur->mechas_joueur[0]);
+            attaque_ordi_pnj(ordi, &joueur->mechas_joueur[0]);
             tour++;
         }
         else{
-            attaque_ordi_sauvage(ordi->mechas_joueur[0], joueur->mechas_joueur[0]);
+            attaque_ordi_sauvage(&ordi->mechas_joueur[0], &joueur->mechas_joueur[0]);
             tour++;
         }
     }
+    return 1;
 }
 
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {

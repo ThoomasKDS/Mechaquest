@@ -14,3 +14,5 @@ int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, jo
 void animation(joueur_t *j, SDL_Rect *sprite_p);   
 //gere l'apparition des mechas 
 int spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage);
+//Detecte quand on passe devant un pnj pour lancer un combat
+int detection_combat_pnj(game_t game, joueur_t joueur);

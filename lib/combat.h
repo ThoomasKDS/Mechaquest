@@ -14,7 +14,7 @@ int attaque_joueur(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi);
 
 int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
 
-int attaque_ordi_pnj(joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
+int attaque_ordi_pnj(pnj_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
 
 int choix_action(char nom[], int i);
 
@@ -26,7 +26,7 @@ void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue);
 
 //void combat_init();
 
-int tour_jeu(joueur_t *joueur, joueur_t *mecha_joueur, joueur_t *mecha_ordi);
+int tour_jeu(joueur_t *joueur, pnj_t *ordi, int pnj);
 
 
 int evolution_mechas(mechas_joueur_t *mecha_joueur);
