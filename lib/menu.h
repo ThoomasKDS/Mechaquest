@@ -33,10 +33,14 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo);
 
 int afficherSaisiePseudo(game_t* game, joueur_t* joueur, char* pseudo);
 
-void afficherParametres(game_t* game, parametre_t* parametres);
+void afficherReglage(game_t* game, parametre_t* parametres);
 
 void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
 
 int afficherMenuPause(game_t* game, parametre_t* parametres);
+
+void afficherInformations(game_t* game);
+
+void afficherReglage(game_t* game, parametre_t* parametres) ;
 
 #endif
