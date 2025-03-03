@@ -16,8 +16,6 @@ SDL_Texture* chargerTexture(const char *chemin, game_t *game){
     return texture;
 }
 
-// On garde !!!
-
 BoutonImage creerBoutonImage(int x, int y, int largeur, int hauteur, char *cheminImage, game_t* game){
     BoutonImage bouton;
     bouton.rect.x = x;
@@ -47,6 +45,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
     int enCours = 1, action;
 
     SDL_Event evenement;
+    frameStart = SDL_GetTicks();
     while(enCours){
         while(SDL_PollEvent(&evenement)){
             if (evenement.type == SDL_QUIT) {
@@ -142,6 +141,7 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     SDL_Event evenement;
     
     while (enCours) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&evenement)) {
             if (evenement.type == SDL_QUIT) {
                 enCours = 0;
@@ -317,6 +317,7 @@ void afficherReglage(game_t* game, parametre_t* parametres) {
     SDL_Event evenement;
     
     while (enCours) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&evenement)) {
             if (evenement.type == SDL_QUIT) {
                 enCours = 0;
@@ -391,6 +392,7 @@ void afficherInformations(game_t* game){
     SDL_Event event;
 
     while (running) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
@@ -439,6 +441,7 @@ void afficherParametre(game_t* game, parametre_t* parametres){
     SDL_Event event;
 
     while (running) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
@@ -493,6 +496,7 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
     SDL_Event event;
 
     while (running) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
@@ -551,6 +555,7 @@ int afficherMenuPause(game_t* game, parametre_t* parametres) {
     SDL_Event evenement;
 
     while (enCours) {
+        frameStart = SDL_GetTicks();
         while (SDL_PollEvent(&evenement)) {
             if (evenement.type == SDL_QUIT) {
                 enCours = 0;
@@ -574,7 +579,7 @@ int afficherMenuPause(game_t* game, parametre_t* parametres) {
         }
 
         //AFFICHAGE
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+        //SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         if(!Pause){
             SDL_RenderClear(game->renderer);
             SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);

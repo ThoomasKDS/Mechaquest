@@ -5,6 +5,7 @@
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
 #include "../lib/sauv.h"
+#include "../lib/global.h"
 
 
 

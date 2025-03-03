@@ -631,7 +631,7 @@ int tour_jeu(joueur_t *joueur, pnj_t *ordi, int pnj){
                 som_pv += joueur->mechas_joueur[i].pv;
             }
             if(joueur->mechas_joueur[0].pv >= 0 && som_pv > 0){ //Si le mecha n'a plus de PV mais que les autres en ont, changer mecha
-                changer_mecha(&joueur, nom, 1);
+                changer_mecha(joueur, nom, 1);
             }
             else{
                 choix_action(nom, i);

@@ -1,13 +1,9 @@
 #ifndef POINT_DE_PASSAGE_H
 #define POINT_DE_PASSAGE_H
-#include "affichage.h"
-#include "menu.h"
-#include "sauv.h"
 
-extern mechas_t mecha[24];
-extern attaque_t attaque[64];
-extern zone_t zone[10];
-//extern pnj_t pnj[24];
+#include "../lib/menu.h"
+#include "../lib/sauv.h"
+#include "../lib/global.h"
 
 int soigner(joueur_t *j);
 

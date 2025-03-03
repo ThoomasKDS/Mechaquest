@@ -4,24 +4,15 @@
 #include "sauv.h"
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
+#include "../lib/global.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string.h>
 
-#define LARGEUR_BOUTON 200
-#define HAUTEUR_BOUTON 50
-#define LONGUEUR_MAX_PSEUDO 50
 
-typedef struct {
-    int volume;
-} parametre_t;
-
-typedef struct {
-    SDL_Rect rect;
-    SDL_Texture *image;
-} BoutonImage;
 
 SDL_Texture* chargerTexture(const char *chemin, game_t *game);
 

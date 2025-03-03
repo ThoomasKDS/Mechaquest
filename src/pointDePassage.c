@@ -3,11 +3,11 @@
 
 
 int soigner(joueur_t *j){
-    j->inventaire->mechaball = 5;
-    j->inventaire->carburant = 5;
-    j->inventaire->rappel = 5;
-    j->inventaire->repousse = 5;
-    for(int i = 0;i < j->nb_mechas && i < 4;i++){
+    j->inventaire->mechaball = NB_OBJET;
+    j->inventaire->carburant = NB_OBJET;
+    j->inventaire->rappel = NB_OBJET;
+    j->inventaire->repousse = NB_OBJET;
+    for(int i = 0;i < j->nb_mechas && i < NB_MECHAS_INVENTAIRE;i++){
         j->mechas_joueur[i].pv = j->mechas_joueur[i].pv_max;
         j->mechas_joueur[i].utilisation_1 = attaque[j->mechas_joueur[i].attaque_1-1].utilisations;
         j->mechas_joueur[i].utilisation_2 = attaque[j->mechas_joueur[i].attaque_2-1].utilisations;
@@ -73,15 +73,15 @@ int choix_starter(joueur_t *j,pnj_t *vinGazole){
 
 int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, const Uint8 *keys){
                 if (keys[SDL_SCANCODE_P]){
-                    if(j->numMap == 0 && j->x+1 == pnj[17].x && j->y == pnj[17].y && j->derniere_touche == 2 && pnj[17].etat == 0){
-                        printf("%s\n",pnj[17].dialogueDebut);
-                        choix_starter(j,&pnj[17]);
-                        printf("%s\n",pnj[17].dialogueFin);
-                        pnj[17].etat = 1;
-                        sauvegarde_pnj(&pnj[17],18,j->pseudo);
-                        game->mat[0][0][15] = -12;
-                        game->mat[0][0][16] = -12;
-                        game->mat[0][0][17] = -12;
+                    if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_1].x && j->y == pnj[VIN_GAZOLE_1].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_1].etat == 0){
+                        printf("%s\n",pnj[VIN_GAZOLE_1].dialogueDebut);
+                        choix_starter(j,&pnj[VIN_GAZOLE_1]);
+                        printf("%s\n",pnj[VIN_GAZOLE_1].dialogueFin);
+                        pnj[VIN_GAZOLE_1].etat = 1;
+                        sauvegarde_pnj(&pnj[VIN_GAZOLE_1],pnj[VIN_GAZOLE_1].id_pnj,j->pseudo);
+                        game->mat[0][0][15] = TPMAP2;
+                        game->mat[0][0][16] = TPMAP2;
+                        game->mat[0][0][17] = TPMAP2;
                         j->pointSauvegarde = 1;
                     }
                 }
@@ -96,39 +96,39 @@ int parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
 int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, const Uint8 *keys){
     int soin = 0;
     if (keys[SDL_SCANCODE_P]){
-        if(j->numMap == 0 && j->x+1 == pnj[18].x && j->y == pnj[18].y && j->derniere_touche == 2){
-            if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
+        if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_2].x && j->y == pnj[VIN_GAZOLE_2].y && j->derniere_touche == 2){
+            if(j->inventaire->mechaball < NB_OBJET || j->inventaire->carburant < NB_OBJET|| j->inventaire->repousse < NB_OBJET || j->inventaire->rappel< NB_OBJET)
                 soin = 1;
-            for(int i = 0;i < 4 && soin == 0;i++){
+            for(int i = 0;i < NB_MECHAS_INVENTAIRE && soin == 0;i++){
                 if(j->mechas_joueur[0].pv < j->mechas_joueur[0].pv_max)
                     soin = 1;       
             }
             if(soin){
-                printf("%s\n",pnj[18].dialogueFin);
+                printf("%s\n",pnj[VIN_GAZOLE_2].dialogueFin);
                 soigner(j);
                 soin = 0;
             }
             else{
-                printf("%s\n",pnj[18].dialogueDebut);
+                printf("%s\n",pnj[VIN_GAZOLE_2].dialogueDebut);
             }
             
         }
-        if(j->numMap == 2 && j->x+1 == pnj[19].x && j->y == pnj[19].y && j->derniere_touche == 2){
-            printf("%s\n",pnj[19].dialogueDebut);
+        if(j->numMap == 2 && j->x+1 == pnj[IRON_MUSK_DEB].x && j->y == pnj[IRON_MUSK_DEB].y && j->derniere_touche == 2){
+            printf("%s\n",pnj[IRON_MUSK_DEB].dialogueDebut);
             
-            //combat(j,&pnj[19]);
+            //combat(j,&pnj[IRON_MUSK_DEB]);
         
-            printf("%s\n",pnj[19].dialogueFin);
-            pnj[19].etat = 1;
-            sauvegarde_pnj(&pnj[19],20,j->pseudo);
-            game->mat[2][0][4] = -14;
-            game->mat[2][0][5] = -14;
-            game->mat[2][0][6] = -14;
+            printf("%s\n",pnj[IRON_MUSK_DEB].dialogueFin);
+            pnj[IRON_MUSK_DEB].etat = 1;
+            sauvegarde_pnj(&pnj[IRON_MUSK_DEB],pnj[IRON_MUSK_DEB].id_pnj,j->pseudo);
+            game->mat[2][0][4] = TPMAP4;
+            game->mat[2][0][5] = TPMAP4;
+            game->mat[2][0][6] = TPMAP4;
             game->mat[2][9][19] = 0;
 
-            game->mat[2][8][0] = -16;
-            game->mat[2][9][0] = -16;
-            game->mat[2][10][0] = -16;
+            game->mat[2][8][0] = TPMAP6;
+            game->mat[2][9][0] = TPMAP6;
+            game->mat[2][10][0] = TPMAP6;
 
             j->x = 23;
             j->y = 8;
@@ -154,15 +154,15 @@ int premier_combat_musk(game_t *game, img_player_t *sprite_playerH, joueur_t *j,
 
 int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p, const Uint8 *keys){
     if (keys[SDL_SCANCODE_P]){
-        if(j->x+1 == pnj[20].x && j->y == pnj[20].y && j->derniere_touche == 2 && pnj[20].etat == 0){
-            printf("%s\n",pnj[20].dialogueDebut);
-            printf("%s\n",pnj[20].dialogueFin);
+        if(j->x+1 == pnj[VIN_GAZOLE_3].x && j->y == pnj[VIN_GAZOLE_3].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_3].etat == 0){
+            printf("%s\n",pnj[VIN_GAZOLE_3].dialogueDebut);
+            printf("%s\n",pnj[VIN_GAZOLE_3].dialogueFin);
             soigner(j);
-            pnj[20].etat = 1;
-            sauvegarde_pnj(&pnj[20],21,j->pseudo);
-            game->mat[0][0][15] = -12;
-            game->mat[0][0][16] = -12;
-            game->mat[0][0][17] = -12;
+            pnj[VIN_GAZOLE_3].etat = 1;
+            sauvegarde_pnj(&pnj[VIN_GAZOLE_3],pnj[VIN_GAZOLE_3].id_pnj,j->pseudo);
+            game->mat[0][0][15] = TPMAP2;
+            game->mat[0][0][16] = TPMAP2;
+            game->mat[0][0][17] = TPMAP2;
             j->pointSauvegarde = 3;
         }
     }
@@ -177,33 +177,33 @@ int retourner_parler_a_vin_gazole(game_t *game, img_player_t *sprite_playerH, jo
 int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,const Uint8 *keys){
     int soin = 0;
     if (keys[SDL_SCANCODE_P]){
-        if(j->numMap == 0 && j->x+1 == pnj[21].x && j->y == pnj[21].y && j->derniere_touche == 2){
-            if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
+        if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_4].x && j->y == pnj[VIN_GAZOLE_4].y && j->derniere_touche == 2){
+            if(j->inventaire->mechaball < NB_OBJET || j->inventaire->carburant < NB_OBJET|| j->inventaire->repousse <NB_OBJET || j->inventaire->rappel< NB_OBJET)
                 soin = 1;
-            for(int i = 0;i < 4 && soin == 0;i++){
+            for(int i = 0;i < NB_MECHAS_INVENTAIRE && soin == 0;i++){
                 if(j->mechas_joueur[0].pv < j->mechas_joueur[0].pv_max)
                     soin = 1;       
             }
             if(soin){
-                printf("%s\n",pnj[21].dialogueFin);
+                printf("%s\n",pnj[VIN_GAZOLE_4].dialogueFin);
                 soigner(j);
                 soin = 0;
             }
             else{
-                printf("%s\n",pnj[21].dialogueDebut);
+                printf("%s\n",pnj[VIN_GAZOLE_4].dialogueDebut);
             }
             
         }
-        if(j->numMap == 4 && j->x == pnj[22].x && j->y-1 == pnj[22].y && j->derniere_touche == 3 && pnj[22].etat == 0){
-            printf("%s\n",pnj[22].dialogueDebut);
+        if(j->numMap == 4 && j->x == pnj[IRON_MUSK_FIN].x && j->y-1 == pnj[IRON_MUSK_FIN].y && j->derniere_touche == 3 && pnj[IRON_MUSK_FIN].etat == 0){
+            printf("%s\n",pnj[IRON_MUSK_FIN].dialogueDebut);
             
             //combat avec iron musk
             
-            printf("%s\n",pnj[22].dialogueFin);
-            copie_mechas(j,&pnj[22].mechas_joueur[0]);
+            printf("%s\n",pnj[IRON_MUSK_FIN].dialogueFin);
+            copie_mechas(j,&pnj[IRON_MUSK_FIN].mechas_joueur[0]);
             sauvegarde_partie(j,j->pseudo);
-            pnj[22].etat = 1;
-            sauvegarde_pnj(&pnj[22],23,j->pseudo);
+            pnj[IRON_MUSK_FIN].etat = 1;
+            sauvegarde_pnj(&pnj[IRON_MUSK_FIN],pnj[IRON_MUSK_FIN].id_pnj,j->pseudo);
 
             j->pointSauvegarde = 4;
 
@@ -215,28 +215,28 @@ int combat_final(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rec
 int jeu_libre(game_t *game, img_player_t *sprite_playerH, joueur_t *j,SDL_Rect *sprite_p,const Uint8 *keys){
     int soin = 0;
     if (keys[SDL_SCANCODE_P]){
-        if(j->numMap == 0 && j->x+1 == pnj[23].x && j->y == pnj[23].y && j->derniere_touche == 2){
-            if(pnj[23].etat == 0){
-                printf("%s\n",pnj[23].dialogueDebut);
-                printf("%s\n",pnj[23].dialogueFin);
+        if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_5].x && j->y == pnj[VIN_GAZOLE_5].y && j->derniere_touche == 2){
+            if(pnj[VIN_GAZOLE_5].etat == 0){
+                printf("%s\n",pnj[VIN_GAZOLE_5].dialogueDebut);
+                printf("%s\n",pnj[VIN_GAZOLE_5].dialogueFin);
                 soigner(j);
-                pnj[23].etat = 1;
-                sauvegarde_pnj(&pnj[23],24,j->pseudo);
+                pnj[VIN_GAZOLE_5].etat = 1;
+                sauvegarde_pnj(&pnj[VIN_GAZOLE_5],pnj[VIN_GAZOLE_5].id_pnj,j->pseudo);
             }
-            else if(pnj[23].etat == 1){
-                if(j->inventaire->mechaball < 5 || j->inventaire->carburant < 5|| j->inventaire->repousse <5 || j->inventaire->rappel< 5)
+            else if(pnj[VIN_GAZOLE_5].etat == 1){
+                if(j->inventaire->mechaball < NB_OBJET || j->inventaire->carburant < NB_OBJET|| j->inventaire->repousse < NB_OBJET || j->inventaire->rappel< NB_OBJET)
                     soin = 1;
-                for(int i = 0;i < 4 && soin == 0;i++){
+                for(int i = 0;i < NB_MECHAS_INVENTAIRE && soin == 0;i++){
                     if(j->mechas_joueur[0].pv < j->mechas_joueur[0].pv_max)
                         soin = 1;       
                 }
                 if(soin){
-                    printf("%s\n",pnj[21].dialogueFin);
+                    printf("%s\n",pnj[VIN_GAZOLE_4].dialogueFin);
                     soigner(j);
                     soin = 0;
                 }
                 else{
-                    printf("%s\n",pnj[21].dialogueDebut);
+                    printf("%s\n",pnj[VIN_GAZOLE_4].dialogueDebut);
                 }
             }
             

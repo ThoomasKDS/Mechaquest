@@ -13,11 +13,12 @@
 #include "../lib/affichage.h"
 #include "../lib/pointDePassage.h"
 #include "../lib/menu.h"
+#include "../lib/global.h"
 
-mechas_t mecha[24];
-attaque_t attaque[64];
-zone_t zone[10];
-pnj_t pnj[24];
+mechas_t mecha[NB_PNJ];
+attaque_t attaque[NB_ATTAQUES];
+zone_t zone[NB_ZONES];
+pnj_t pnj[NB_PNJ];
 
 const int FPS_LIMIT = 60;
 const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
@@ -33,7 +34,7 @@ int main() {
     parametre_t parametres;
     mechas_joueur_t mecha_sauvage;
     parametres.volume = 50;
-    char pseudo[50] = "";
+    char pseudo[LONGUEUR_MAX_PSEUDO] = "";
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;
@@ -57,10 +58,11 @@ int main() {
     while(jeux){
         pseudo[0] = '\0';
         running = 1;
+        
         recuperation_mechas(mecha);
         recuperation_attaques(attaque);
         recuperation_zone(zone);
-    
+        
         game.mat_active = 0;
         //Affichage du menu
         afficherMenu(&game,&parametres,&j,pseudo);
@@ -79,8 +81,6 @@ int main() {
             int taille_y_mat = game.img_h/PX;
             frameStart = SDL_GetTicks();    //obtien heure
 
-            
-
             //ALLOUE MEMOIRE POUR MATRICE
             if(!init_mat(&game, taille_x_mat, taille_y_mat)) {
                 printf("Echec init mat\n");
@@ -97,7 +97,7 @@ int main() {
             j.proba_combat = 0;
             j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
             j.screen_y = (float)(game.dms_win.y + (j.y * PX * game.scale));
-            if(!init_player_h(&game, &sprite_playerH)){
+            if(!init_player(&game, &sprite_playerH,j.sexe)){
                 return -1;
             }
             if(!init_pnj(&game, &sprite_pnj)){
@@ -108,15 +108,15 @@ int main() {
             recuperation_pnj(pnj,j.pseudo);
             //SPRITE JOUEUR
             SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
-            SDL_Rect pnj_sprite[24];
-            for(int i =0; i < 24;i++){
+            SDL_Rect pnj_sprite[NB_PNJ];
+            for(int i =0; i < NB_PNJ;i++){
                 pnj_sprite[i] = create_obj(&game, PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
 
             }
             if(j.pointSauvegarde > 1){
-                    game.mat[2][8][0] = -16;
-                    game.mat[2][9][0] = -16;
-                    game.mat[2][10][0] = -16;
+                    game.mat[2][8][0] = TPMAP6;
+                    game.mat[2][9][0] = TPMAP6;
+                    game.mat[2][10][0] = TPMAP6;
                     game.mat[2][9][19] = 0;
             }
             aff_mat(&game, taille_x_mat, taille_y_mat, game.mat_active);
@@ -138,9 +138,9 @@ int main() {
                 if(running){
                     if(j.pointSauvegarde == 0){
                         if(premier_tour == 0){
-                            game.mat[0][0][15] = 2;
-                            game.mat[0][0][16] = 2;
-                            game.mat[0][0][17] = 2;
+                            game.mat[0][0][15] = BARRIERE;
+                            game.mat[0][0][16] = BARRIERE;
+                            game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
                         parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
@@ -150,9 +150,9 @@ int main() {
                     }        
                     if(j.pointSauvegarde == 1){
                         if(premier_tour == 0){
-                            game.mat[2][0][4] = 2;
-                            game.mat[2][0][5] = 2;
-                            game.mat[2][0][6] = 2;
+                            game.mat[2][0][4] = BARRIERE;
+                            game.mat[2][0][5] = BARRIERE;
+                            game.mat[2][0][6] = BARRIERE;
                             premier_tour++;
                         }
                         premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
@@ -164,9 +164,9 @@ int main() {
                     
                     if(j.pointSauvegarde == 2){
                         if(premier_tour == 0){
-                            game.mat[0][0][15] = 2;
-                            game.mat[0][0][16] = 2;
-                            game.mat[0][0][17] = 2;
+                            game.mat[0][0][15] = BARRIERE;
+                            game.mat[0][0][16] = BARRIERE;
+                            game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
                         retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
@@ -202,7 +202,7 @@ int main() {
             sauvegarde_partie(&j,pseudo);
             free_mat(&game,taille_x_mat, taille_y_mat);
             destruction_joueur(&j);
-            for(int i = 0;i<24;i++){
+            for(int i = 0;i<NB_PNJ;i++){
                 destruction_pnj(&pnj[i]);
             }
         }

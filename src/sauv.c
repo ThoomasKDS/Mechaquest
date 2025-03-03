@@ -7,7 +7,7 @@
 
 //--------FONCTIONS D'INITIALISAION-----------
 
-int init_partie(joueur_t *joueur, char pseudo[50],char sexe){
+int init_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO],char sexe){
     strcpy(joueur->pseudo,pseudo);
     joueur->x = 23;
     joueur->y = 8;
@@ -29,9 +29,9 @@ int init_partie(joueur_t *joueur, char pseudo[50],char sexe){
     return OK;
 }
 
-int nouveau_fichier_pnj(char pseudo[50]){
+int nouveau_fichier_pnj(char pseudo[LONGUEUR_MAX_PSEUDO]){
     
-    char nom_fichier[60] = "save/pnj_";
+    char nom_fichier[LONGUEUR_MAX_PSEUDO+10] = "save/pnj_";
     char ext[5] = ".csv";
     strcat(nom_fichier,pseudo);
     strcat(nom_fichier,ext);
@@ -42,7 +42,7 @@ int nouveau_fichier_pnj(char pseudo[50]){
         return ERREUR_OUVERTURE;
     }
 
-    char ligne[1070];
+    char ligne[LONGUEUR_LIGNE_DESC];
 
     while (fgets(ligne, sizeof(ligne), file)) {
         fprintf(nouv, "%s", ligne);
@@ -65,15 +65,15 @@ int nouveau_fichier_pnj(char pseudo[50]){
  * Si le pseudo n'existe pas dans le fichier joueur.csv, on en créra une nouvelle
  * \return retourne OK si tous marche, ERREUR_OUVERTURE si le fichier joueur.csv n'est pas trouver et ERR pour un autre problème.
 */
-int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
+int recuperation_joueur(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
     FILE *file = fopen("save/joueur.csv", "r");          
     if (file == NULL) {                                     
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
@@ -102,7 +102,7 @@ int recuperation_joueur(joueur_t *joueur, char pseudo[50]) {   //Recuperation de
 
 int recuperation_pnj(pnj_t *pnj,char pseudo[50]) {   //Recuperation de la sauvegarde joueur dans la structure joueur_t
     //Ouverture du fichier
-    char nom_fichier[60] = "save/pnj_";
+    char nom_fichier[LONGUEUR_MAX_PSEUDO+10] = "save/pnj_";
     char ext[5] = ".csv";
     strcat(nom_fichier,pseudo);
     strcat(nom_fichier,ext);
@@ -113,7 +113,7 @@ int recuperation_pnj(pnj_t *pnj,char pseudo[50]) {   //Recuperation de la sauveg
         return ERREUR_OUVERTURE;
     }
     int count = 0;
-    char ligne[1070];
+    char ligne[LONGUEUR_LIGNE_DESC];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                       // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){        //lecture de chaque ligne
@@ -136,7 +136,7 @@ int recuperation_pnj(pnj_t *pnj,char pseudo[50]) {   //Recuperation de la sauveg
     return OK;
 }
 
-int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recuperation de l'inventaire dans la structure inventaire_t 
+int recuperation_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO]) { //Recuperation de l'inventaire dans la structure inventaire_t 
     //Ouverture du fichier
     FILE *file = fopen("save/inventaire.csv", "r");      
     if (file == NULL) {
@@ -144,8 +144,8 @@ int recuperation_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Recup
         return ERREUR_OUVERTURE;
     }
 
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){       //Lecture de chaque ligne
@@ -170,8 +170,8 @@ int recuperation_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50]) 
         return ERREUR_OUVERTURE;
     }
     int num;
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     while(fgets(ligne, sizeof(ligne), file) != NULL){       // lecture de chaque ligne
@@ -199,7 +199,7 @@ int recuperation_attaques(attaque_t *attaques) {           //Recuperation des at
     }
 
     int count = 0;
-    char ligne[256];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
@@ -229,8 +229,8 @@ int recuperation_mechas(mechas_t *mechas_l) {           //Recuperation de tous l
 
    
     int count = 0;
-    char attaques[30];
-    char ligne[256];
+    char attaques[20];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
@@ -270,8 +270,8 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
 
    
     int count = 0;
-    char MechasZone[30];
-    char ligne[256];
+    char MechasZone[20];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
@@ -302,7 +302,7 @@ int recuperation_zone(zone_t *zone_l){           //Recuperation de tous les mech
 }
 //--------FONCTIONS DE SAUVEGARDE-----------
 
-int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
+int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO]) { //Sauvegarde de l'inventaire
     int trouver = 0;
     FILE *file = fopen("save/inventaire.csv", "r");      //Ouverture du fichier inventaire
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
@@ -310,8 +310,8 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv / recopie chaque ligne dans le nouveau fichier
     fgets(ligne, sizeof(ligne), file);          // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);                   //mettre la ligne dans le nouveau fichier
@@ -340,7 +340,7 @@ int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvega
     rename("save/temporaire.csv", "save/inventaire.csv");
     return OK;
 }
-int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas) { //Sauvegarde les mechas du joueur
+int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[LONGUEUR_MAX_PSEUDO],int nb_mechas) { //Sauvegarde les mechas du joueur
     int indice = 0;
     FILE *file = fopen("save/infomechas.csv", "r");      //Ouverture du fichier infomechas
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
@@ -348,9 +348,9 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
+    char nom[LONGUEUR_MAX_PSEUDO];
     int num;
-    char ligne[256];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv - recopie ligne par ligne du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);
@@ -390,7 +390,7 @@ int sauvegarde_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int
     return OK;
 }
 
-int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la partie globale
+int sauvegarde_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO]) { //Sauvegarde de la partie globale
     int trouver = 0;
     FILE *file = fopen("save/joueur.csv", "r");          //Ouverture du joueur
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
@@ -398,8 +398,8 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv - recopie chaque ligne dans le nouveau fichier
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);
@@ -432,10 +432,10 @@ int sauvegarde_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la pa
     return OK;
 }
 
-int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[50]) {
+int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[LONGUEUR_MAX_PSEUDO]) {
     int trouver = 0;  // Indique si la ligne a été trouvée et modifiée
     
-    char nom_fichier[60] = "save/pnj_";
+    char nom_fichier[LONGUEUR_MAX_PSEUDO+10] = "save/pnj_";
     char ext[5] = ".csv";
     strcat(nom_fichier,pseudo);
     strcat(nom_fichier,ext);
@@ -446,7 +446,7 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[50]) {
         return ERREUR_OUVERTURE;
     }
 
-    char ligne[1070];
+    char ligne[LONGUEUR_LIGNE_DESC];
     int num_pnj;
 
     // Copie l'en-tête
@@ -492,15 +492,15 @@ int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[50]) {
 
 //FONCTIONS DE SUPPRESSION DE SAUVEGARDES
 
-int suppression_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauvegarde de l'inventaire
+int suppression_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO]) { //Sauvegarde de l'inventaire
     FILE *file = fopen("save/inventaire.csv", "r");      //Ouverture du fichier inventaire
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv / recopie chaque ligne dans le nouveau fichier
     fgets(ligne, sizeof(ligne), file);          // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);                   //mettre la ligne dans le nouveau fichier
@@ -520,15 +520,15 @@ int suppression_inventaire(inventaire_t *inventaire, char pseudo[50]) { //Sauveg
     rename("save/temporaire.csv", "save/inventaire.csv");
     return OK;
 }
-int suppression_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],int nb_mechas) { //Sauvegarde les mechas du joueur
+int suppression_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[LONGUEUR_MAX_PSEUDO],int nb_mechas) { //Sauvegarde les mechas du joueur
     FILE *file = fopen("save/infomechas.csv", "r");      //Ouverture du fichier infomechas
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv - recopie ligne par ligne du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);
@@ -548,15 +548,15 @@ int suppression_mechas_joueur(mechas_joueur_t * mechas_joueur,char pseudo[50],in
     return OK;
 }
 
-int suppression_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la partie globale
+int suppression_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO]) { //Sauvegarde de la partie globale
     FILE *file = fopen("save/joueur.csv", "r");          //Ouverture du joueur
     FILE *temp = fopen("save/temporaire.csv", "w");      //Ouverture du futur fichier
     if (file == NULL || temp == NULL) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-    char nom[50];
-    char ligne[256];
+    char nom[LONGUEUR_MAX_PSEUDO];
+    char ligne[LONGUEUR_LIGNE];
     //traitement du csv - recopie chaque ligne dans le nouveau fichier
     fgets(ligne, sizeof(ligne), file);                      // Lire la ligne d'en-tête
     fprintf(temp,"%s",ligne);
@@ -575,7 +575,7 @@ int suppression_partie(joueur_t *joueur, char pseudo[50]) { //Sauvegarde de la p
 
     suppression_inventaire(joueur->inventaire,pseudo);                           //appel la sauvegarde de l'inventaire
     suppression_mechas_joueur(joueur->mechas_joueur,pseudo,joueur->nb_mechas);    //appel la sauvegarde des mechas
-    char nom_fichier[60] = "save/pnj_";
+    char nom_fichier[LONGUEUR_MAX_PSEUDO+10] = "save/pnj_";
     char ext[5] = ".csv";
     strcat(nom_fichier,pseudo);
     strcat(nom_fichier,ext);

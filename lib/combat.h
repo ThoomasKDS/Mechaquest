@@ -2,6 +2,7 @@
 #define COMBAT_H
 #include "sauv.h"
 #include "pointDePassage.h"
+#include "../lib/global.h"
 
 
 void affichage_mecha(mechas_joueur_t tab_mecha[], mechas_t mecha[], char nom[]);
