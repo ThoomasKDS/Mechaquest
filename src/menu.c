@@ -41,7 +41,7 @@ int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
         return -1;
     }
     rectangle_t boutonRetour;
-    creer_rectangle(game,&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     int enCours = 1, action;
 
     SDL_Event evenement;
@@ -133,9 +133,9 @@ int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
 
     rectangle_t boutonRetour,boutonOUI,boutonNON;
-    creer_rectangle(game,&boutonOUI,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
-    creer_rectangle(game,&boutonNON,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Recommencer");
-    creer_rectangle(game,&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&boutonOUI,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
+    creer_rectangle(&boutonNON,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Recommencer");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     
     int enCours = 1;
     SDL_Event evenement;
@@ -195,8 +195,8 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
 
     rectangle_t boutonRetour,boutonCommencer;
-    creer_rectangle(game,&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
-    creer_rectangle(game,&boutonCommencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,58, 90, 64, 255,"Commencer");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&boutonCommencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,58, 90, 64, 255,"Commencer");
     int enCours = 1, action;
     SDL_Event evenement;
     int longueurPseudo = strlen(pseudo);
@@ -309,9 +309,9 @@ void afficherReglage(game_t* game, parametre_t* parametres) {
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
     rectangle_t boutonRetour,boutonMoinsVolume,boutonPlusVolume;
 
-    creer_rectangle(game, &boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
-    creer_rectangle(game, &boutonMoinsVolume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
-    creer_rectangle(game, &boutonPlusVolume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
+    creer_rectangle(&boutonMoinsVolume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
+    creer_rectangle(&boutonPlusVolume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
     
     int enCours = 1;
     SDL_Event evenement;
@@ -380,13 +380,13 @@ void afficherInformations(game_t* game){
     int frameTime;
 
     rectangle_t Info_1,Info_2,Info_3,Info_4,Info_5,Info_6,boutonRetour;
-    creer_rectangle(game,&Info_1,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 100 ,255, 255, 255, 100,"Pour aller en haut : fleche du haut");
-    creer_rectangle(game,&Info_2,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 150 ,255, 255, 255, 100,"Pour aller en bas : fleche du bas");
-    creer_rectangle(game,&Info_3,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 200 ,255, 255, 255, 100,"Pour aller a droite : fleche de droite");
-    creer_rectangle(game,&Info_4,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 250 ,255, 255, 255, 100,"Pour aller a gauche : fleche de gauche");
-    creer_rectangle(game,&Info_5,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 300 ,255, 255, 255, 100,"Pour faire pause : echap");
-    creer_rectangle(game,&Info_6,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 350,255, 255, 255, 100,"Pour interagire : I");
-    creer_rectangle(game,&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 400 ,98, 23, 8, 255,"Retour");
+    creer_rectangle(&Info_1,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 100 ,255, 255, 255, 100,"Pour aller en haut : fleche du haut");
+    creer_rectangle(&Info_2,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 150 ,255, 255, 255, 100,"Pour aller en bas : fleche du bas");
+    creer_rectangle(&Info_3,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 200 ,255, 255, 255, 100,"Pour aller a droite : fleche de droite");
+    creer_rectangle(&Info_4,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 250 ,255, 255, 255, 100,"Pour aller a gauche : fleche de gauche");
+    creer_rectangle(&Info_5,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 300 ,255, 255, 255, 100,"Pour faire pause : echap");
+    creer_rectangle(&Info_6,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 350,255, 255, 255, 100,"Pour interagire : I");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 400 ,98, 23, 8, 255,"Retour");
 
     int running = 1, action;
     SDL_Event event;
@@ -432,9 +432,9 @@ void afficherParametre(game_t* game, parametre_t* parametres){
     int frameTime;
 
     rectangle_t boutonInformations,boutonReglage,boutonRetour;
-    creer_rectangle(game,&boutonInformations,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Informations");
-    creer_rectangle(game,&boutonReglage,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Reglage");
-    creer_rectangle(game,&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&boutonInformations,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Informations");
+    creer_rectangle(&boutonReglage,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Reglage");
+    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     // INITIALISATION DES BOUTONS
     
     int running = 1;
@@ -487,9 +487,9 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
     int frameTime;
 
     rectangle_t boutonJouer,boutonParametres,boutonQuitter;
-    creer_rectangle(game,&boutonJouer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Jouer");
-    creer_rectangle(game,&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
-    creer_rectangle(game,&boutonQuitter,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Quitter");
+    creer_rectangle(&boutonJouer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Jouer");
+    creer_rectangle(&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
+    creer_rectangle(&boutonQuitter,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Quitter");
     // INITIALISATION DES BOUTONS
     
     int running = 1, action;
@@ -547,9 +547,9 @@ int afficherMenuPause(game_t* game, parametre_t* parametres) {
 
     // INITIALISATION DES BOUTONS
     rectangle_t boutonAcceuil,boutonReprendre,boutonParametres;
-    creer_rectangle(game,&boutonReprendre,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
-    creer_rectangle(game,&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
-    creer_rectangle(game,&boutonAcceuil,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Menu d'acceuil");
+    creer_rectangle(&boutonReprendre,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
+    creer_rectangle(&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
+    creer_rectangle(&boutonAcceuil,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Menu d'acceuil");
     
     int enCours = 1, Pause = 1;
     SDL_Event evenement;
