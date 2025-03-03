@@ -17,6 +17,7 @@ const int FPS_LIMITS = 60;
 const int FRAME_DELAYS = 1000 / FPS_LIMITS; // Temps entre chaque frame (16 ms)
 
 char nom[50] = "player1";
+mechas_joueur_t ordi;
 joueur_t joueur;
 
 static void concat(char *dest, int nb) { //concatene un entier a une chaine de caractere
@@ -853,7 +854,7 @@ int evolution_mechas(mechas_joueur_t *mecha_joueur){
 }
 
 void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup){
-    int nouv_level, k, i;
+    int nouv_level;
 
     nouv_level = mecha->xp + xp_partage;
     if(nouv_level >= lvlup){
@@ -899,7 +900,7 @@ void distribuer_xp(joueur_t *mechas_presents, int xp_gagne) {
 void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue){
     
     int i, nb;
-    int lvlup, xp_gagne, nouv_level;
+    int xp_gagne;
 
    
     xp_gagne = (int)(20 * exp(0.02 * mecha_tue->mechas_joueur->niveau));   //Calculer l'XP recu en tuant l'adversaire
