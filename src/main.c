@@ -170,7 +170,6 @@ int main() {
         
         obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
         if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
-            printf("oui");
             combat_sauvage(&j, &mecha_sauvage, &game);
         }
         animation(&j, &sprite_p);

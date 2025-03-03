@@ -69,7 +69,7 @@ typedef struct{
     int pointSauvegarde;
     int nb_mechas;
     inventaire_t *inventaire;
-    mechas_joueur_t mechas_joueur [50];
+    mechas_joueur_t mechas_joueur[50];
     int proba_combat;
 } joueur_t;
 

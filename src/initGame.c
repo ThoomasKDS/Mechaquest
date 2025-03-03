@@ -84,7 +84,7 @@ int init_game(game_t* game) {
     }
 
     // Création de la police
-    game->police = TTF_OpenFont("img/police_temporaire.ttf", 24);
+    game->police = TTF_OpenFont("img/police_temporaire.ttf", 19);
     if (!game->police) {
         printf("Erreur de chargement de la police: %s\n", TTF_GetError());
         SDL_DestroyRenderer(game->renderer);
