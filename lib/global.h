@@ -136,12 +136,6 @@ typedef struct {
     int volume;
 } parametre_t;
 
-typedef struct {
-    SDL_Rect rect;
-    SDL_Texture *image;
-} BoutonImage;
-
-
 //STRUCTURES DE DONNEES
 typedef struct{
     int id_attaques;
