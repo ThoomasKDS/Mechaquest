@@ -436,11 +436,6 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
     char *mecha_def_type = mecha[mecha_def->id_mechas-1].type;
     char att_type[4][20] = {"Carburant", "Electrique", "Renouvelable", "Carburant"};
     int nbr_rand = (rand() % 100) + 1;
-    printf("%f\n", att_degat[choix]);
-    printf("%f\n", stat_att_mecha);
-    printf("%d\n", mecha_def->defense);
-    printf("%s\n%s\n", mecha_att_type[choix], mecha_def_type);
-
     if(nbr_rand <= attaque[mecha_att->attaque_1].precision){  //Test si l'attaque touche (precision)
         
         if((strcmp(mecha_att_type[choix], "Uranium"))){
@@ -453,7 +448,6 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         else if(!strcmp(mecha_att_type[choix], "Uranium") && strcmp(mecha_def_type, "Uranium")){    //Test si l'attaque est du type uranium sur un autre type
             att_degat[choix] *= 1.2;
         }
-        printf("%.2f\n%d\n", stat_att_mecha + att_degat[choix], mecha_def->defense);
         if(stat_att_mecha + att_degat[choix] > mecha_def->defense){
             mecha_def->pv -= (stat_att_mecha + att_degat[choix] - mecha_def->defense);
             if (mecha_def->pv < 0) mecha_def->pv = 0;

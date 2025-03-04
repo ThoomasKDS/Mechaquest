@@ -65,7 +65,7 @@ int main() {
         
         game.mat_active = 0;
         //Affichage du menu
-        afficherMenu(&game,&parametres,&j,pseudo);
+        afficher_menu(&game,&parametres,&j,pseudo);
         if(pseudo[0] == '\0'){
             jeux = 0;
             running = 0;
@@ -131,7 +131,7 @@ int main() {
                 while (SDL_PollEvent(&event)) {
                     if(event.type == SDL_KEYDOWN) {
                         if (event.key.keysym.sym == SDLK_ESCAPE){
-                            if(!afficherMenuPause(&game,&parametres)) running = 0;
+                            if(!afficher_menu_pause(&game,&parametres)) running = 0;
                         } 
                     }
                 }
