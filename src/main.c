@@ -34,7 +34,7 @@ int main() {
     parametre_t parametres;
     mechas_joueur_t mecha_sauvage;
     parametres.volume = 50;
-    char pseudo[LONGUEUR_MAX_PSEUDO] = "";
+    char pseudo[LONGUEUR_MAX_PSEUDO] ="";
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;

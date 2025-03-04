@@ -955,7 +955,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
 
     
     rectangle_t rect_bas, rect_attaque, rect_objet, rect_changer_mecha, rect_fuite;
-    rectangle_t border_attaque, border_objet, border_mecha, border_fuite;
+    rectangle_t border_attaque, border_objet, border_mecha;
     
     // Création des rectangles
     creer_rectangle(&rect_bas, rect_bas_w, rect_bas_h, rect_bas_x, rect_bas_y, 0, 0, 0, 150, NULL);
@@ -987,8 +987,12 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
                 }
                 if(event.key.keysym.sym == SDLK_a) {
                     switch(choix) {
-                        case 0 : if(!utilisation_objet(game, joueur, mecha_sauvage)) return 0;
-                                else running  = 0; break;
+                        case 0 : 
+                                if(!utilisation_objet(game, joueur, mecha_sauvage)) return 0;
+                                else {
+                                    running = 0;
+                                }
+                                    break;
                         case 1 : attaque_joueur(game, joueur, mecha_sauvage, actif);running = 0; break;
                         case 2 : changer_mecha(game, joueur, actif);running = 0; break;
                     }

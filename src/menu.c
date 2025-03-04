@@ -149,7 +149,7 @@ int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
             SDL_RenderClear(game->renderer);
             
             draw_background(game);
-            draw_all_rect(game, 3, btn_retour, btn_reprendre, btn_recommencer);
+            draw_all_rect(game, 3, &btn_retour, &btn_reprendre, &btn_recommencer);
             SDL_RenderPresent(game->renderer);
             
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
@@ -164,14 +164,14 @@ int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
 
 //affiche quand le joueur tape son pseudo
 int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
-    int largeurEcran, hauteurEcran,resultatFonction,frameTime;
+    int largeurEcran, hauteurEcran,frameTime;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart;
 
     rectangle_t btn_retour,btn_commencer;
     creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     creer_rectangle(&btn_commencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,58, 90, 64, 255,"Commencer");
-    int running = 1, action = 0;
+    int running = 1;
     SDL_Event event;
     int longueurPseudo = 0;
     SDL_Color couleurTexte = {255, 255, 255, 255};
@@ -217,46 +217,47 @@ int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
                     }
                 }
             }
-
-            if(running){
-                SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-                SDL_RenderClear(game->renderer);
-
-                draw_background(game);
-                draw_all_rect(game, 2, btn_retour, btn_commencer);
-
-                
-                if (strlen(pseudo) >= 0) {  
-                    
-                    sprintf(texteComplet, "Pseudo : %s", pseudo);  
-
-                    SDL_Surface* surfaceTexte = TTF_RenderUTF8_Solid(game->police, texteComplet, couleurTexte);
-                    if (!surfaceTexte) {
-                        printf("Erreur de rendu texte : %s\n", TTF_GetError());
-                    } else {
-                        SDL_Texture* textureTexte = SDL_CreateTextureFromSurface(game->renderer, surfaceTexte);
-                        if (textureTexte) {
-                            SDL_Rect rectTexte = {
-                                (largeurEcran - surfaceTexte->w) / 2,
-                                hauteurEcran / 2 - 50,
-                                surfaceTexte->w,
-                                surfaceTexte->h
-                            };
-                            SDL_RenderCopy(game->renderer, textureTexte, NULL, &rectTexte);
-                            SDL_DestroyTexture(textureTexte);
-                        }
-                        SDL_FreeSurface(surfaceTexte);
-                    }
-                }      
-                SDL_RenderPresent(game->renderer);
-                frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-                if (FRAME_DELAY > frameTime) {
-                    SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
-                }
-            }
-            
         }
+
+        if(running){
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+            SDL_RenderClear(game->renderer);
+
+            draw_background(game);
+            draw_all_rect(game, 2, &btn_retour, &btn_commencer);
+
+            
+            if (strlen(pseudo) >= 0) {  
+                
+                sprintf(texteComplet, "Pseudo : %s", pseudo);  
+
+                SDL_Surface* surfaceTexte = TTF_RenderUTF8_Solid(game->police, texteComplet, couleurTexte);
+                if (!surfaceTexte) {
+                    printf("Erreur de rendu texte : %s\n", TTF_GetError());
+                } else {
+                    SDL_Texture* textureTexte = SDL_CreateTextureFromSurface(game->renderer, surfaceTexte);
+                    if (textureTexte) {
+                        SDL_Rect rectTexte = {
+                            (largeurEcran - surfaceTexte->w) / 2,
+                            hauteurEcran / 2 - 50,
+                            surfaceTexte->w,
+                            surfaceTexte->h
+                        };
+                        SDL_RenderCopy(game->renderer, textureTexte, NULL, &rectTexte);
+                        SDL_DestroyTexture(textureTexte);
+                    }
+                    SDL_FreeSurface(surfaceTexte);
+                }
+            }      
+            SDL_RenderPresent(game->renderer);
+            frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+
+            if (FRAME_DELAY > frameTime) {
+                SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            }
+        }
+            
+        
     }
     SDL_StopTextInput();  
     return 0;
@@ -448,7 +449,7 @@ void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pse
     creer_rectangle(&btn_quitter,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Quitter");
     // INITIALISATION DES BOUTONS
     
-    int running = 1, action;
+    int running = 1;
     SDL_Event event;
 
     while (running) {
