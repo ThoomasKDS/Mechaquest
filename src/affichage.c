@@ -499,7 +499,7 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
  
 }
 
-void draw_text(game_t *game, rectangle_t* rectangle) {
+void draw_text_left_middle(game_t *game, rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
     if (!game->police) {
         printf("Erreur : Police non chargée\n");
@@ -507,68 +507,79 @@ void draw_text(game_t *game, rectangle_t* rectangle) {
     }
 
     SDL_Color textColor = {0, 0, 0, 255}; 
-    SDL_Surface* surface;
-    SDL_Texture* texture;
-    SDL_Rect textRect;
-    char ligne[256];
-    char *debut = rectangle->text;
-    
-    int num_lignes = 1;  
-    for (int j = 0; rectangle->text[j] != '\0'; j++) {
-        if (rectangle->text[j] == '\n') num_lignes++; // Compter le nombre de lignes
+    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
+    if (!surface) {
+        printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+        return;
     }
 
-    int y_offset = rectangle->rect.h / (num_lignes + 1); // Centrer verticalement les lignes
-
-    int cmp = 0; // Compteur de lignes
-    
-    while (*debut) {
-        int i = 0;
-        while (debut[i] != '\0' && debut[i] != '\n') {
-            ligne[i] = debut[i]; 
-            i++;
-        }
-        ligne[i] = '\0'; // Terminer la ligne
-
-        // Créer la texture pour la ligne actuelle
-        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
-        if (!surface) {
-            printf("Erreur SDL_ttf : %s\n", TTF_GetError());
-            return;
-        }
-        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
-
-        int text_width = surface->w;
-        int text_height = surface->h;
-
-        // Calcul de la position centrée
-        textRect.x = rectangle->rect.x + (rectangle->rect.w - text_width) / 2;
-        textRect.y = rectangle->rect.y + (cmp + 1) * y_offset - text_height / 2;
-        textRect.w = text_width;
-        textRect.h = text_height;
-
-        // Afficher le texte
-        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
-
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    if (!texture) {
+        printf("Erreur SDL : %s\n", SDL_GetError());
         SDL_FreeSurface(surface);
-        SDL_DestroyTexture(texture);
-
-        // Passer à la ligne suivante
-        if (debut[i] == '\n') i++; // Sauter le '\n'
-        debut += i; // Déplacer le pointeur
-        cmp++;
+        return;
     }
+
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect textRect = {
+        rectangle->rect.x, // Aligné à gauche
+        rectangle->rect.y + (rectangle->rect.h - text_height) / 2, // Centré verticalement
+        text_width,
+        text_height
+    };
+    
+
+    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_DestroyTexture(texture);
+}
+
+void draw_text_center(game_t *game, rectangle_t* rectangle) {
+    if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
+    if (!game->police) {
+        printf("Erreur : Police non chargée\n");
+        return;
+    }
+
+    SDL_Color textColor = {0, 0, 0, 255}; 
+    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
+    if (!surface) {
+        printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+        return;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    if (!texture) {
+        printf("Erreur SDL : %s\n", SDL_GetError());
+        SDL_FreeSurface(surface);
+        return;
+    }
+
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect textRect = {
+        rectangle->rect.x + (rectangle->rect.w - text_width) / 2, // Centré horizontalement
+        rectangle->rect.y + (rectangle->rect.h - text_height) / 2, // Centré verticalement
+        text_width,
+        text_height
+    };
+
+    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_DestroyTexture(texture);
 }
 
 
-
 //dessine un rectangle
-void draw_rect(game_t *game, rectangle_t *rectangle) {
+void draw_rect(game_t *game, rectangle_t *rectangle,void (*draw_func)(game_t *, rectangle_t *)) {
         SDL_SetRenderDrawBlendMode(game->renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(game->renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
         SDL_RenderFillRect(game->renderer, &rectangle->rect);
         // Dessiner le texte
-        if(rectangle->text[0] != '\0') draw_text(game, rectangle);
+        if(rectangle->text[0] != '\0') draw_func(game, rectangle);
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
 
 }
@@ -579,7 +590,7 @@ void draw_all_rect(game_t *game, int n, ...) {
     va_start(args, n);
     for (int i = 0; i < n; i++) {
         rectangle_t *rect = va_arg(args, rectangle_t *);
-        draw_rect(game, rect);
+        draw_rect(game, rect,draw_text_center);
     }  
     va_end(args);
 
