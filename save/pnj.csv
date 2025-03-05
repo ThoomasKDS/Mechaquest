@@ -1,26 +1,26 @@
 id_pnj,id_map,pseudo,etat,dialogueDébut,dialogueFin,x,y,orientation
-1,2,ZYX B-99,0,Bah alors tu t’es perdu morveux !,Pfff toute facon tu battras pas papa !,19,12,3
-2,2,AEL X-07,0,Tu ne me vaincras jamais...,Argh j’ai mentis...,13,9,3
-3,2,QTR C-42,0,Je te réserve un mecha surprise !,Il est nul en fait ce mecha,9,1,3
-4,2,JKM D-77,0,Je ferais tout pour rendre fier papa !,Je suis degouté je vais être renié de la famille,9,9,3
-5,2,TOX E-11,0,Imagine que tu es fort ? Arrête de rêver !,Mais quel cauchemar !!,9,12,3
-6,2,MAV F-21,0,J’ai toujours été le meilleur !,Quelle honte de perdre contre toi...,20,10,1
-7,2,RND G-33,0,Tu veux ma photo ?,Oublie cette idée...,17,1,3
-8,2,BAE H-55,0,Tu ne passeras PAS !,Ah bah si en fait ! Mais fais bien attention à toi papa n’aura pas de pitié!,1,9,2
-9,4,KYO I-88,0,J’ai été entraîné par les meilleurs !,J’aurais dû mieux m’entraîner...,8,1,3
-10,4,DSQ J-66,0,Ton aventure s’arrête ici !,Comment ça tu continues ?!,10,6,1
-11,4,AEZ K-44,0,Papa m’a dit que j’étais imbattable !,Papa m’a menti...,25,7,4
-12,4,PXT L-13,0,Même pas peur de toi !,Ok j’avoue un peu quand même...,17,9,4
-13,4,YNR M-25,0,Tu crois avoir une chance ?,Faut croire que oui...,7,11,1
-14,4,WQS N-30,0,J’écraserai tous ceux qui se dressent devant moi !,J’aurais dû regarder où je mettais les pieds...,20,13,3
-15,4,FGA O-17,0,Personne ne m’égale !,Sauf toi apparemment...,1,14,2
-16,4,ZLM P-19,0,C’est moi qui vais gagner !,Bon… peut-être pas cette fois...,10,16,1
-17,4,XON Q-08,0,Je suis le dernier rempart avant papa donc fait gaffe !,Merde papa sera déçut … Mais jamais tu le battras !!,20,1,3
-18,1,Vin Gazole,0,Merci d’avoir fait vite ! Je te confie la mission d’arrêter musk et de me ramener tous les types de machines que tu vois. Pour t’aider dans cette aventure j’ai réussi a te récupérer 3 machines choisis en 1 parmis les 3.,Soit prudent et bon courage ! … A j’oubliais tient quelques objets  pouvant t’aider quand tu n’en auras plus revient me voir.,12,5,4
-19,1,Vin Gazole,0,Va jusqu’à la prochaine ville mais fait gaffe sur le route !,Tu t’es bien battu laissse moi t’aider,12,5,4
-20,3,Iron Musk,0,Bonsoir ! j’ai cru comprendre que tu te faisais remarquer auprès de mes enfants ! Personne ne m’arretera sache le. D’ailleurs tu vas gouter a la défaite !,Rentre chez toi petit je t’avais prévenus ! Ne te mets plus en travers de mon chemin !,19,9,4
-21,1,Vin Gazole,0,Oh non ! Tu es tombé fasse à Iron Musk j’aurais du te mettre plus en garde …,Laisse moi m’occuper de toi mais fait vraiment gaffe à toi c’est un homme redoutable. On raconte que à coté de Junk Dépot il y aurait une zone désaffecté avec un mechas puissant avec lui entraine toi dur et tu arrivera a vaincre Iron Musk je crois en toi ! Si tu as besoin je serais toujours a mon atelier.,12,5,4
-22,1,Vin Gazole,0,J'ai plein de travail et toi aussi reviens me voir qund tu as besoin,Tu t’es bien battu laissse moi t’aider,12,5,4
-23,5,Iron Musk,0,Arhh encore toi ! Je tavais prévenu ma colère va s’abbattre sur toi et je serais le plus puissant de tous ! Battons nous !,Me faire battre par un gamin comme toi … Je ne suis pas digne d’être qui je suis …Je te confie Uranoide c'est ma création. Je vais m’en aller et ne jamais revenir… J’ai tout gaché,13,4,3
-24,1,Vin Gazole,0,Bravo tu as réussi à nous libérer de l'emprise d'Iron Musk !,Pour te remercier tu as gagné un abonnement à vie dans mon garage !,12,5,4
+1,2,ZYX B-99,0, Bah alors tu t’es perdu morveux !, Pfff toute facon tu battras pas papa !,19,12,3
+2,2,AEL X-07,0, Tu ne me vaincras jamais!, Argh j’ai mentis!,13,9,3
+3,2,QTR C-42,0, Je te réserve un mecha surprise !, Il est nul en fait ce mecha.,9,1,3
+4,2,JKM D-77,0, Je ferais tout pour rendre fier papa !, Je suis degouté je vais être renié de la famille.,9,9,3
+5,2,TOX E-11,0, Imagine que tu es fort ? Arrête de rêver !, Mais quel cauchemar !,9,12,3
+6,2,MAV F-21,0, J’ai toujours été le meilleur !, Quelle honte de perdre contre toi.,20,10,1
+7,2,RND G-33,0, Tu veux ma photo ?, Oublie cette idée.,17,1,3
+8,2,BAE H-55,0, Tu ne passeras PAS !, Ah bah si en fait ! Mais fais bien attention à toi papa n’aura pas de pitié!,1,9,2
+9,4,KYO I-88,0, J’ai été entraîné par les meilleurs !, J’aurais dû mieux m’entraîner.,8,1,3
+10,4,DSQ J-66,0, Ton aventure s’arrête ici !, Comment ça tu continues ?,10,6,1
+11,4,AEZ K-44,0, Papa m’a dit que j’étais imbattable !, Papa m’a menti.,25,7,4
+12,4,PXT L-13,0, Même pas peur de toi !, Ok j’avoue un peu quand même.,17,9,4
+13,4,YNR M-25,0, Tu crois avoir une chance ?, Faut croire que oui.,7,11,1
+14,4,WQS N-30,0, J’écraserai tous ceux qui se dressent devant moi !, J’aurais dû regarder où je mettais les pieds.,20,13,3
+15,4,FGA O-17,0, Personne ne m’égale !, Sauf toi apparemment.,1,14,2
+16,4,ZLM P-19,0, C’est moi qui vais gagner !, Bon peut-être pas cette fois.,10,16,1
+17,4,XON Q-08,0, Je suis le dernier rempart avant papa donc fait gaffe !, Merde papa sera déçut. Mais jamais tu le battras !,20,1,3
+18,1,Vin Gazole,0, Merci d’avoir fait vite ! Je te confie la mission d’arrêter musk et de me ramener tous les types de machines que tu vois. Pour t’aider dans cette aventure j’ai réussi a te récupérer 3 machines choisis en 1 parmis les 3., Soit prudent et bon courage ! A j’oubliais ! Tient quelques objets pouvant t’aider. Quand tu n’en auras plus revient me voir.,12,5,4
+19,1,Vin Gazole,0, Va jusqu’à la prochaine ville mais fait gaffe sur le route !, Tu t’es bien battu laissse moi t’aider,12,5,4
+20,3,Iron Musk,0, Bonsoir ! j’ai cru comprendre que tu te faisais remarquer auprès de mes enfants ! Personne ne m’arretera sache le. D’ailleurs tu vas gouter a la défaite !, Rentre chez toi petit je t’avais prévenus ! Ne te mets plus en travers de mon chemin !,19,9,4
+21,1,Vin Gazole,0, Oh non ! Tu es tombé fasse à Iron Musk j’aurais du te mettre plus en garde , Laisse moi m’occuper de toi mais fait vraiment gaffe à toi c’est un homme redoutable. On raconte que à coté de Junk Dépot il y aurait une zone désaffecté avec un mechas puissant avec lui entraine toi dur et tu arrivera a vaincre Iron Musk je crois en toi ! Si tu as besoin je serais toujours a mon atelier.,12,5,4
+22,1,Vin Gazole,0, J'ai plein de travail et toi aussi reviens me voir qund tu as besoin, Tu t’es bien battu laissse moi t’aider,12,5,4
+23,5,Iron Musk,0, Arhh encore toi ! Je tavais prévenu ma colère va s’abbattre sur toi et je serais le plus puissant de tous ! Battons nous !, Me faire battre par un gamin comme toi. Je ne suis pas digne d’être qui je suis. je te confie Uranoide c'est ma création. Je vais m’en aller et ne jamais revenir. J’ai tout gaché.,13,4,3
+24,1,Vin Gazole,0, Bravo tu as réussi à nous libérer de l'emprise d'Iron Musk !, Pour te remercier tu as gagné un abonnement à vie dans mon garage !,12,5,4
 
