@@ -152,31 +152,35 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     return 0;
 }
 
-int detection_combat_pnj(game_t game, joueur_t joueur){
+int detection_combat_pnj(game_t *game, joueur_t *joueur){
     for(int i = 0; i < 24; i++){
-        if(pnj[i].id_map == joueur.numMap){
+        if(pnj[i].id_map == joueur->numMap){
             for(int j = 1; j <= 4; j++){
+                int test_x = pnj[i].x;
+                int test_y = pnj[i].y;
+
+                int taille_x_mat = game->img_w / PX;    //taille de la matrice
+                int taille_y_mat = game->img_h / PX;
+
                 switch(pnj[i].orientation){
-                    case 0:
-                        if(game.mat[game.mat_active][pnj[i].x][pnj[i].y + j] == 1){
-                            return 1;
-                        }
+                    case 1: //Vers le haut
+                        test_y -= j;
                     break;
-                    case 1:
-                        if(game.mat[game.mat_active][pnj[i].x - j][pnj[i].y] == 1){
-                            return 1;
-                        }
+                    case 2: //Vers la droite
+                        test_x += j;
                     break;
-                    case 2:
-                        if(game.mat[game.mat_active][pnj[i].x][pnj[i].y - j] == 1){
-                            return 1;
-                        }
+                    case 3: //Vers le bas
+                        test_y += j;
                     break;
-                    case 3:
-                        if(game.mat[game.mat_active][pnj[i].x + j][pnj[i].y] == 1){
-                            return 1;
-                        }
+                    case 4: //Vers la gauche
+                        test_x -= j;
                     break;
+                }
+
+                if(test_x >= 0 && test_x < taille_x_mat && test_y >= 0 && test_y < taille_y_mat){   //Test si les calculs ne sortent pas de la matrice
+                    if(game->mat[game->mat_active][test_x][test_y] == 1){
+                        return 1;
+                    }
                 }
             }
             

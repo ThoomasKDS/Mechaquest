@@ -184,6 +184,12 @@ int main() {
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         combat_sauvage(&j, &mecha_sauvage, &game);
                     }
+
+                    if(detection_combat_pnj(&game, &j)){
+                        printf("detection\n");
+                        attaque_ordi_pnj(pnj, &mecha_sauvage);
+                    }
+
                     animation(&j, &sprite_p);
 
                     SDL_RenderClear(game.renderer);     //efface l'ecran
