@@ -547,3 +547,98 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
     }
     return 0;
 }
+
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix) {
+    if (!game || !pseudo || !dialogue) return ERR;
+    int largeurEcran,hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
+
+    // Création du fond de dialogue (1/3 de l'écran, en bas)
+    creer_rectangle(game, &fondDialogue,largeurEcran - 400, hauteurEcran / 3, (largeurEcran / 2) - 750, hauteurEcran * 2 / 3, 0, 0, 0, 180, "");
+
+    // Rectangle pour le pseudo (haut gauche)
+    creer_rectangle(game, &pseudoRect,200, 40, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 10, 255, 255, 255, 255, pseudo);
+
+    // Rectangle pour le texte (centré dans la boîte)
+    creer_rectangle(game, &textRect, largeurEcran - 440, hauteurEcran / 6, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 60, 255, 255, 255, 255, "");
+
+    // Rectangle pour afficher "Appuyez sur P"
+    creer_rectangle(game, &infoRect, 300, 30, (largeurEcran / 2) + 450, hauteurEcran - 40, 255, 255, 255, 255, "A pour continuer");
+
+    int len = strlen(dialogue);
+    char displayedText[256] = "";
+    int index = 0;
+    int textIndex = 0;
+    bool waitingForKey = false;
+    SDL_Event event;
+
+    while (index < len) {
+        displayedText[textIndex] = dialogue[index];
+        displayedText[textIndex + 1] = '\0';
+
+        // Mettre à jour le texte affiché
+        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
+        textRect.text[sizeof(textRect.text) - 1] = '\0';
+
+        // Affichage du dialogue
+        
+        draw_all(game,j,sprite_p,pnj_sprite,sprite_pnj,sprite_playerH); // fond de la map avec les pnj
+        draw_rect(game, &fondDialogue, draw_text_center);       // Fond de dialogue
+        draw_rect(game, &pseudoRect, draw_text_center);           // Nom du PNJ
+        draw_rect(game, &textRect, draw_text_left_middle);      // Texte dynamique
+        draw_rect(game, &infoRect, draw_text_center);     // Indication "A pour continuer"
+        SDL_RenderPresent(game->renderer);
+
+        // affichage dynamique avec un delai entre les caractère
+        SDL_Delay(dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?' ? 500 : 10);
+
+        // Vérifier si on doit attendre la touche "A"
+        if (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') {
+            waitingForKey = true;
+        }
+
+        index++;
+        textIndex++;
+
+        // Attendre "A" avant de continuer à afficher la suite
+        while (waitingForKey) {
+            while (SDL_PollEvent(&event)) {
+                if (event.type == SDL_QUIT) return OK;
+                //si on est sur un dialogue
+                else if(!choix){
+                    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_a) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                    }
+                }
+                //si on a un choix à faire (3 suffit pour la fonction choix-starter)
+                else{
+                    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_1) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 1;
+                    }
+                    else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_2) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 2;
+                    }
+                    else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_3) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 3;
+                    }
+                }
+            }
+        }
+    }
+
+    // Si on a attaint la fin du dialogue on ferme le dialogue
+    if(choix) return choix;
+    if(!(index < len)) return OK;
+}
