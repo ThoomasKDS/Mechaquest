@@ -14,7 +14,11 @@
 
 //FONCTION BACKGROUND
 int init_background(game_t * game);     //initalise la background
+int init_calque(game_t * game) ;
+
 void draw_background(game_t * game);    //dessine le background
+void draw_calque(game_t * game) ;
+
 
 //FONCTION MAT
 int init_mat(game_t *game, int taille_x, int taille_y);               //initialise la matrice

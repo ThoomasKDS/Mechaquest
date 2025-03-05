@@ -11,13 +11,12 @@
 int init_background(game_t * game) {
 
     char ext[5] = ".png";
-    char chemin[100] = "img/background/fond";
+    char chemin[30] = "img/background/fond";
 
     for(int i = 0; i < 8; i++) {
         chemin[19] = '0' + (i + 1);
         chemin[20] = '\0';
         strcat(chemin, ext);
-        printf("%s\n", chemin);
 
         //charger fond
         SDL_Surface * imageSurface = IMG_Load(chemin);
@@ -74,13 +73,43 @@ int init_background(game_t * game) {
     return 1;
 }
 
+int init_calque(game_t * game) {
 
+    char ext[5] = ".png";
+    char chemin[30] = "img/calque/calque";
+
+    for(int i = 0; i < 2; i++) {
+        chemin[17] = '0' + (i + 1);
+        chemin[18] = '\0';
+        strcat(chemin, ext);
+
+        //charger fond
+        SDL_Surface * imageSurface = IMG_Load(chemin);
+        if (!imageSurface) {
+            printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
+            IMG_Quit();
+
+            return 0;
+        }
+
+        // Convertir la fond en texture
+        game->calqueTexture[i] = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
+        SDL_FreeSurface(imageSurface);
+        if (!game->calqueTexture[i]) {
+            printf("Erreur de création de la texture : %s\n", SDL_GetError());
+            return 0;
+        }
+    }
+}
 
 //dessine le background
 void draw_background(game_t * game) {
     SDL_RenderCopy(game->renderer,game->backgroundTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
 }
 
+void draw_calque(game_t * game) {
+    SDL_RenderCopy(game->renderer,game->calqueTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
+}
 
 /*=================================================*/
 
@@ -428,23 +457,49 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
     
 }
 void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH){
-        draw_background(game);
+    draw_background(game);      
+    if(game->mat[game->mat_active][j->y+1][j->x] == BARRIERE || game->mat[game->mat_active][j->y+1][j->x] == BAT){
         if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
-            for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
-                }
-             }
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
-        }
-        else{
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur 
+            draw_calque(game);
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
                     draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
                 }
             }
+        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
         }
+        else{
+            
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+            draw_calque(game);
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+        }         
+    }
+    else{
+        if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
+            draw_calque(game);
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        }
+        else{
+            
+        draw_calque(game);
+        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+        } 
+    }
 }
 
 void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj, joueur_t *j) { 

@@ -54,6 +54,9 @@ int main() {
     if(!init_background(&game)) {
         return -1;
     }
+    if(!init_calque(&game)) {
+        return -1;
+    }
 
     while(jeux){
         pseudo[0] = '\0';

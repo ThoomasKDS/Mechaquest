@@ -1,8 +1,8 @@
 id_pnj,id_map,pseudo,etat,dialogueDébut,dialogueFin,x,y,orientation
 1,2,ZYX B-99,0,Bah alors tu t’es perdu morveux !,Pfff toute facon tu battras pas papa !,19,12,3
-2,2,AEL X-07,0,Tu ne me vaincras jamais...,Argh j’ai mentis...,13,9,3
+2,2,AEL X-07,0,Tu ne me vaincras jamais...,Argh j’ai mentis...,14,9,3
 3,2,QTR C-42,0,Je te réserve un mecha surprise !,Il est nul en fait ce mecha,9,1,3
-4,2,JKM D-77,0,Je ferais tout pour rendre fier papa !,Je suis degouté je vais être renié de la famille,9,9,3
+4,2,JKM D-77,0,Je ferais tout pour rendre fier papa !,Je suis degouté je vais être renié de la famille,10,9,3
 5,2,TOX E-11,0,Imagine que tu es fort ? Arrête de rêver !,Mais quel cauchemar !!,9,12,3
 6,2,MAV F-21,0,J’ai toujours été le meilleur !,Quelle honte de perdre contre toi...,20,10,1
 7,2,RND G-33,0,Tu veux ma photo ?,Oublie cette idée...,17,1,3
