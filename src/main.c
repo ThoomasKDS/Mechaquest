@@ -143,7 +143,7 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        parler_a_vin_gazole(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 1){
                             premier_tour = 0;
                         }
@@ -155,7 +155,7 @@ int main() {
                             game.mat[2][0][6] = BARRIERE;
                             premier_tour++;
                         }
-                        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        premier_combat_musk(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 2){
                             premier_tour = 0;
                             running = 0;
@@ -169,13 +169,13 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        retourner_parler_a_vin_gazole(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     }         
                     if(j.pointSauvegarde == 3){
-                        combat_final(&game,&sprite_playerH,&j,&sprite_p,keys);
+                        combat_final(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     }
                     if(j.pointSauvegarde == 4)
-                        jeu_libre(&game,&sprite_playerH,&j,&sprite_p,keys);
+                        jeu_libre(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     
                     obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
