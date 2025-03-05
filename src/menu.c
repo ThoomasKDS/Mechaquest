@@ -555,16 +555,16 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
     rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
 
     // Création du fond de dialogue (1/3 de l'écran, en bas)
-    creer_rectangle(game, &fondDialogue,largeurEcran - 400, hauteurEcran / 3, (largeurEcran / 2) - 750, hauteurEcran * 2 / 3, 0, 0, 0, 180, "");
+    creer_rectangle(&fondDialogue,largeurEcran - 400, hauteurEcran / 3, (largeurEcran / 2) - 750, hauteurEcran * 2 / 3, 0, 0, 0, 180, "");
 
     // Rectangle pour le pseudo (haut gauche)
-    creer_rectangle(game, &pseudoRect,200, 40, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 10, 255, 255, 255, 255, pseudo);
+    creer_rectangle(&pseudoRect,200, 40, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 10, 255, 255, 255, 255, pseudo);
 
     // Rectangle pour le texte (centré dans la boîte)
-    creer_rectangle(game, &textRect, largeurEcran - 440, hauteurEcran / 6, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 60, 255, 255, 255, 255, "");
+    creer_rectangle(&textRect, largeurEcran - 440, hauteurEcran / 6, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 60, 255, 255, 255, 255, "");
 
     // Rectangle pour afficher "Appuyez sur P"
-    creer_rectangle(game, &infoRect, 300, 30, (largeurEcran / 2) + 450, hauteurEcran - 40, 255, 255, 255, 255, "A pour continuer");
+    creer_rectangle(&infoRect, 300, 30, (largeurEcran / 2) + 450, hauteurEcran - 40, 255, 255, 255, 255, "A pour continuer");
 
     int len = strlen(dialogue);
     char displayedText[256] = "";
