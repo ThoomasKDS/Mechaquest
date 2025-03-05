@@ -5,7 +5,7 @@
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
 
-SDL_Texture* chargerTexture(const char *chemin, game_t *game){
+SDL_Texture* charger_texture(const char *chemin, game_t *game){
     SDL_Surface *surfaceChargee = IMG_Load(chemin);
     if (!surfaceChargee) {
         printf("Erreur chargement image: %s\n", IMG_GetError());
@@ -16,256 +16,219 @@ SDL_Texture* chargerTexture(const char *chemin, game_t *game){
     return texture;
 }
 
-BoutonImage creerBoutonImage(int x, int y, int largeur, int hauteur, char *cheminImage, game_t* game){
-    BoutonImage bouton;
-    bouton.rect.x = x;
-    bouton.rect.y = y;
-    bouton.rect.w = largeur;
-    bouton.rect.h = hauteur;
-    bouton.image = chargerTexture(cheminImage,game);  // Attention : texte doit être une chaîne statique ou allouée dynamiquement
-    if (!bouton.image) {
-        printf("Erreur lors du chargement de l'image du bouton.\n");
-    }
-    return bouton;
-}
-
-int afficherChoixSexe(game_t* game, joueur_t* j,char* pseudo){
+int afficher_choix_sexe(game_t* game, joueur_t* j,char* pseudo){
+    rectangle_t rect_h, rect_f;
     int largeurEcran, hauteurEcran, frameTime;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    Uint32 frameStart; //obtien l'heure    
+    rectangle_t btn_retour;
 
-    BoutonImage Homme = creerBoutonImage(largeurEcran / 2 - 350, hauteurEcran / 2 , 200, 250,"img/skin/skin_player_homme/bas1.png",game);
-    BoutonImage Femme = creerBoutonImage(largeurEcran / 2 + 150, hauteurEcran / 2 , 200, 250,"img/skin/skin_player_homme/haut1.png",game);
-     
-    if (!Homme.image || !Femme.image) {
-        return -1;
-    }
-    rectangle_t boutonRetour;
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
-    int enCours = 1, action;
+    SDL_Texture* sprite_h = charger_texture("img/skin/skin_player_homme/bas1.png", game);
+    SDL_Texture* sprite_f = charger_texture("img/skin/skin_player_femme/bas1.png", game);
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&rect_h, 200, 250, largeurEcran / 2 - 350, hauteurEcran / 2, 255, 255, 255, 150, NULL);
+    creer_rectangle(&rect_f, 200, 250, largeurEcran / 2 + 150, hauteurEcran / 2, 255, 255, 255, 150, NULL);
+    int running = 1, res;
 
-    SDL_Event evenement;
-    frameStart = SDL_GetTicks();
-    while(enCours){
-        while(SDL_PollEvent(&evenement)){
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
+    SDL_Event event;
+    while(running){
+        frameStart = SDL_GetTicks();
+        while(SDL_PollEvent(&event)){
+            if (event.type == SDL_QUIT) {
+                running = 0;
+                res = 0;
             }
-            else if(evenement.type == SDL_MOUSEBUTTONDOWN){
-                int x = evenement.button.x, y = evenement.button.y;
+            else if(event.type == SDL_MOUSEBUTTONDOWN){
+                int x = event.button.x, y = event.button.y;
                 
-                if (x >= Homme.rect.x && x <= Homme.rect.x + Homme.rect.w &&
-                    y >= Homme.rect.y && y <= Homme.rect.y + Homme.rect.h) {
-                    action = 1;
-                    enCours = 0;
+                if (x >= rect_h.rect.x && x <= rect_h.rect.x + rect_h.rect.w &&
+                    y >= rect_h.rect.y && y <= rect_h.rect.y + rect_h.rect.h) {
+                    running = 0;
                     j->sexe = 'M';
+                    res = 1;
                 }
-                else if (x >= Femme.rect.x && x <= Femme.rect.x + Femme.rect.w &&
-                    y >= Femme.rect.y && y <= Femme.rect.y + Femme.rect.h) {
-                    action = 2;
-                    enCours = 0;
+                else if (x >= rect_f.rect.x && x <= rect_f.rect.x + rect_f.rect.w &&
+                    y >= rect_f.rect.y && y <= rect_f.rect.y + rect_f.rect.h) {
+                    running = 0;
                     j->sexe = 'F';
+                    res = 1;
                 }
-                else if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
-                    action = 0;
-                    enCours = 0;
+                else if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w &&
+                    y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
+                    running = 0;
                     pseudo[0] = '\0';
+                    res = 0;
                 }
             }
         }
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-        SDL_RenderClear(game->renderer);
+        if(running) {
+            SDL_RenderClear(game->renderer);
+            draw_background(game);
+            draw_all_rect(game, 3, &btn_retour, &rect_h, &rect_f);
+            SDL_RenderCopy(game->renderer, sprite_h, NULL, &rect_h.rect);
+            SDL_RenderCopy(game->renderer, sprite_f, NULL, &rect_f.rect);
 
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &boutonRetour);
+            // Affichage des valeurs
+            char buffer[50];
+            SDL_Color couleurTexte = {255, 255, 255, 255};
 
-        SDL_SetRenderDrawColor(game->renderer, 0, 255, 0, 255);
-        SDL_RenderFillRect(game->renderer, &Homme.rect);
-        SDL_RenderFillRect(game->renderer, &Femme.rect);
+            // Affichage du texte : Choisir son sexe
+            sprintf(buffer, "Choisir son sexe");
+            SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
+            SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
+            SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 100, surfaceVolume->w, surfaceVolume->h};
+            SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
+            SDL_FreeSurface(surfaceVolume);
+            SDL_DestroyTexture(textureVolume);
 
-        // Définir la zone pour afficher l'image centrée dans le bouton
-        SDL_Rect zoneImage1 = {
-            .x = Homme.rect.x + (Homme.rect.w - Homme.rect.w * 0.8) / 2,
-            .y = Homme.rect.y + (Homme.rect.h - Homme.rect.h * 0.8) / 2,
-            .w = Homme.rect.w * 0.8,
-            .h = Homme.rect.h * 0.8
-        };
-        SDL_Rect zoneImage2 = {
-            .x = Femme.rect.x + (Femme.rect.w - Femme.rect.w * 0.8) / 2,
-            .y = Femme.rect.y + (Femme.rect.h - Femme.rect.h * 0.8) / 2,
-            .w = Femme.rect.w * 0.8,
-            .h = Femme.rect.h * 0.8
-        };
+            SDL_RenderPresent(game->renderer);
+            
+            frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
-        SDL_RenderCopy(game->renderer, Homme.image, NULL, &zoneImage1);
-        SDL_RenderCopy(game->renderer, Femme.image, NULL, &zoneImage2);
-
-        // Affichage des valeurs
-        char buffer[50];
-        SDL_Color couleurTexte = {255, 255, 255, 255};
-
-        // Affichage du texte : Choisir son sexe
-        sprintf(buffer, "Choisir son sexe");
-        SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
-        SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
-        SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 100, surfaceVolume->w, surfaceVolume->h};
-        SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
-        SDL_FreeSurface(surfaceVolume);
-        SDL_DestroyTexture(textureVolume);
-
-        SDL_RenderPresent(game->renderer);
-        
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            if (FRAME_DELAY > frameTime) {
+                SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            }
         }
      }    
-    SDL_DestroyTexture(Homme.image);
-    SDL_DestroyTexture(Femme.image);
-    return action;
+    
+    SDL_DestroyTexture(sprite_h);
+    SDL_DestroyTexture(sprite_f);
+    return res;
 }
 
-int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo){
-    int largeurEcran, hauteurEcran,action = 0,frameTime;
+int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
+    int largeurEcran, hauteurEcran,frameTime;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    Uint32 frameStart; //obtien l'heure
 
-    rectangle_t boutonRetour,boutonOUI,boutonNON;
-    creer_rectangle(&boutonOUI,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
-    creer_rectangle(&boutonNON,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Recommencer");
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    rectangle_t btn_retour,btn_reprendre,btn_recommencer;
+    creer_rectangle(&btn_reprendre,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
+    creer_rectangle(&btn_recommencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Recommencer");
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     
-    int enCours = 1;
-    SDL_Event evenement;
+    int x, y;
+    int running = 1;
+    SDL_Event event;
     
-    while (enCours) {
+    while (running) {
         frameStart = SDL_GetTicks();
-        while (SDL_PollEvent(&evenement)) {
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
-            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
-                int x = evenement.button.x, y = evenement.button.y;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                x = event.button.x; 
+                y = event.button.y;
 
                 // Bouton Retour
-                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
+                if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w && y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
                     pseudo[0] = '\0';
                     return 0;
                 }
 
                 // Bouton Oui
-                if (x >= boutonOUI.rect.x && x <= boutonOUI.rect.x + boutonOUI.rect.w &&
-                    y >= boutonOUI.rect.y && y <= boutonOUI.rect.y + boutonOUI.rect.h) {
+                if (x >= btn_reprendre.rect.x && x <= btn_reprendre.rect.x + btn_reprendre.rect.w && y >= btn_reprendre.rect.y && y <= btn_reprendre.rect.y + btn_reprendre.rect.h) {
                     return 1;
                 }
                 // Bouton Non
-                if (x >= boutonNON.rect.x && x <= boutonNON.rect.x + boutonNON.rect.w &&
-                    y >= boutonNON.rect.y && y <= boutonNON.rect.y + boutonNON.rect.h) {
-                    return 0;
+                if (x >= btn_recommencer.rect.x && x <= btn_recommencer.rect.x + btn_recommencer.rect.w && y >= btn_recommencer.rect.y && y <= btn_recommencer.rect.y + btn_recommencer.rect.h) {
+                    if(afficher_choix_sexe(game, j, pseudo)) {
+                        suppression_partie(j,pseudo);
+                        init_partie(j,pseudo,j->sexe);
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
                 }
             }
         }
 
-        // Affichage
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-        SDL_RenderClear(game->renderer);
+        if(running) {
+            // Affichage
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+            SDL_RenderClear(game->renderer);
+            
+            draw_background(game);
+            draw_all_rect(game, 3, &btn_retour, &btn_reprendre, &btn_recommencer);
+            SDL_RenderPresent(game->renderer);
+            
+            frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &boutonRetour);
-        draw_rect(game, &boutonOUI);
-        draw_rect(game, &boutonNON);
-
-        SDL_RenderPresent(game->renderer);
-        
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            if (FRAME_DELAY > frameTime) {
+                SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            }
         }
      }    
-    return action;
+    return 0;
 }
 
-//on modifie
-int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
-    int largeurEcran, hauteurEcran,resultatFonction,frameTime;
+//affiche quand le joueur tape son pseudo
+int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
+    int largeurEcran, hauteurEcran,frameTime;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    Uint32 frameStart;
 
-    rectangle_t boutonRetour,boutonCommencer;
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
-    creer_rectangle(&boutonCommencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,58, 90, 64, 255,"Commencer");
-    int enCours = 1, action;
-    SDL_Event evenement;
-    int longueurPseudo = strlen(pseudo);
+    rectangle_t btn_retour,btn_commencer;
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    creer_rectangle(&btn_commencer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,58, 90, 64, 255,"Commencer");
+    int running = 1;
+    SDL_Event event;
+    int longueurPseudo = 0;
+    SDL_Color couleurTexte = {255, 255, 255, 255};
+    char texteComplet[LONGUEUR_MAX_PSEUDO + 10]; 
 
     SDL_StartTextInput();  
-    while (enCours) {
-        while (SDL_PollEvent(&evenement)) {
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
+    while (running) {
+        frameStart = SDL_GetTicks();
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
             }
-            else if (evenement.type == SDL_KEYDOWN) {
-                if (evenement.key.keysym.sym == SDLK_BACKSPACE && longueurPseudo > 0) {
+            else if (event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_BACKSPACE && longueurPseudo > 0) {
                     pseudo[--longueurPseudo] = '\0';
                 }
             }
-            else if (evenement.type == SDL_TEXTINPUT) {
-                if ((longueurPseudo < LONGUEUR_MAX_PSEUDO - 1) && evenement.text.text[0]) {
-                    strncat(pseudo, evenement.text.text, 1);
+            else if (event.type == SDL_TEXTINPUT) {
+                if ((longueurPseudo < LONGUEUR_MAX_PSEUDO - 1) && event.text.text[0]) {
+                    strncat(pseudo, event.text.text, 1);
                     longueurPseudo++;
                 }
             }
-            else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
-                int x = evenement.button.x, y = evenement.button.y;
-                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
-                    enCours = 0;
-                    action = 0;
+            else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                int x = event.button.x, y = event.button.y;
+                if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w && y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
+                    pseudo[0] = '\0';
+                    running = 0;
                 }
-                if (x >= boutonCommencer.rect.x && x <= boutonCommencer.rect.x + boutonCommencer.rect.w &&
-                    y >= boutonCommencer.rect.y && y <= boutonCommencer.rect.y + boutonCommencer.rect.h && 
-                    strlen(pseudo) > 0){
-                    enCours = 0;
-                    action = 1;
-                    //si elle n'as pas été retrouvé
+                if (x >= btn_commencer.rect.x && x <= btn_commencer.rect.x + btn_commencer.rect.w && y >= btn_commencer.rect.y && y <= btn_commencer.rect.y + btn_commencer.rect.h && strlen(pseudo) > 0){
+                    //si la sauv n'existe pas
                     if(!recuperation_joueur(j,pseudo)){
-                        afficherChoixSexe(game, j, pseudo);
-                        init_partie(j,pseudo,j->sexe);
-                    }
-                    //si on a appuié sur le bouton retour
-                    else if(pseudo[0] == '\0')
-                        enCours = 1;
-                    //si on l'a retrouvé
-                    else{
-                        resultatFonction = afficherChoixSuppression(game,j,pseudo);
-                        //bouton retour
-                        if(!resultatFonction && pseudo[0] == '\0')
-                            enCours = 1;
-                        //bouton continuer
-                        else if(resultatFonction);
-                        //bouton recommencer
-                        else{
-                            suppression_partie(j,pseudo);
-                            afficherChoixSexe(game, j, pseudo);
+                        if(afficher_choix_sexe(game, j, pseudo)) {
                             init_partie(j,pseudo,j->sexe);
+                            return 1;
+                        }
+                        
+                    }
+                    else{
+                        if(afficher_choix_suppression(game,j,pseudo)){       //retoune 1 si le joueur veut commence le jeu 0 et donc quitte le menu
+                            return 1;
                         }
                     }
                 }
             }
+        }
 
+        if(running){
             SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
             SDL_RenderClear(game->renderer);
 
-            SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-            draw_rect(game, &boutonRetour);
-            draw_rect(game, &boutonCommencer);
+            draw_background(game);
+            draw_all_rect(game, 2, &btn_retour, &btn_commencer);
 
-            SDL_Color couleurTexte = {255, 255, 255, 255};
+            
             if (strlen(pseudo) >= 0) {  
-                char texteComplet[LONGUEUR_MAX_PSEUDO + 10];  
+                
                 sprintf(texteComplet, "Pseudo : %s", pseudo);  
 
                 SDL_Surface* surfaceTexte = TTF_RenderUTF8_Solid(game->police, texteComplet, couleurTexte);
@@ -287,78 +250,72 @@ int afficherSaisiePseudo(game_t* game, joueur_t* j, char* pseudo) {
                 }
             }      
             SDL_RenderPresent(game->renderer);
-            
-
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
             if (FRAME_DELAY > frameTime) {
                 SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
             }
         }
+            
+        
     }
-    if (strlen(pseudo) >= 0 && !action)
-                pseudo[0] = '\0';
     SDL_StopTextInput();  
-    return action;
+    return 0;
 }
 
 //on modifie
-void afficherReglage(game_t* game, parametre_t* parametres) {
+void afficher_reglage(game_t* game, parametre_t* parametres) {
     int largeurEcran, hauteurEcran,frameTime;;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
-    rectangle_t boutonRetour,boutonMoinsVolume,boutonPlusVolume;
+    Uint32 frameStart; //obtien l'heure
+    rectangle_t btn_retour,btn_moins_volume,btn_plus_volume;
+    char buffer[50];
+    SDL_Color couleurTexte = {255, 255, 255, 255};
+   
 
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
-    creer_rectangle(&boutonMoinsVolume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
-    creer_rectangle(&boutonPlusVolume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
+    creer_rectangle(&btn_moins_volume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
+    creer_rectangle(&btn_plus_volume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
     
-    int enCours = 1;
-    SDL_Event evenement;
+    int running = 1;
+    SDL_Event event;
     
-    while (enCours) {
+    while (running) {
         frameStart = SDL_GetTicks();
-        while (SDL_PollEvent(&evenement)) {
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
-            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
-                int x = evenement.button.x, y = evenement.button.y;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                int x = event.button.x, y = event.button.y;
 
                 // Bouton Retour
-                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
-                    return;
+                if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w &&
+                    y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
+                    running = 0;
                 }
 
                 // Ajuster le volume
-                if (x >= boutonMoinsVolume.rect.x && x <= boutonMoinsVolume.rect.x + boutonMoinsVolume.rect.w &&
-                    y >= boutonMoinsVolume.rect.y && y <= boutonMoinsVolume.rect.y + boutonMoinsVolume.rect.h) {
+                if (x >= btn_moins_volume.rect.x && x <= btn_moins_volume.rect.x + btn_moins_volume.rect.w &&
+                    y >= btn_moins_volume.rect.y && y <= btn_moins_volume.rect.y + btn_moins_volume.rect.h) {
                     if (parametres->volume > 0) parametres->volume -= 10;
                 }
-                if (x >= boutonPlusVolume.rect.x && x <= boutonPlusVolume.rect.x + boutonPlusVolume.rect.w &&
-                    y >= boutonPlusVolume.rect.y && y <= boutonPlusVolume.rect.y + boutonPlusVolume.rect.h) {
+                if (x >= btn_plus_volume.rect.x && x <= btn_plus_volume.rect.x + btn_plus_volume.rect.w &&
+                    y >= btn_plus_volume.rect.y && y <= btn_plus_volume.rect.y + btn_plus_volume.rect.h) {
                     if (parametres->volume < 100) parametres->volume += 10;
                 }
             }
         }
-
-        // Affichage
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+        if(running) {
         SDL_RenderClear(game->renderer);
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &boutonRetour);
-        draw_rect(game, &boutonMoinsVolume);
-        draw_rect(game, &boutonPlusVolume);
+        draw_background(game);
+        draw_all_rect(game, 3, &btn_retour, &btn_moins_volume, &btn_plus_volume);
         
-        // Affichage des valeurs
-        char buffer[50];
-        SDL_Color couleurTexte = {255, 255, 255, 255};
         
         // Volume
         sprintf(buffer, "Volume: %d", parametres->volume);
         SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
         SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
-        SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 50, surfaceVolume->w, surfaceVolume->h};
+        SDL_Rect rectVolume ={(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 50, surfaceVolume->w, surfaceVolume->h};
         SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
         SDL_FreeSurface(surfaceVolume);
         SDL_DestroyTexture(textureVolume);
@@ -370,25 +327,27 @@ void afficherReglage(game_t* game, parametre_t* parametres) {
         if (FRAME_DELAY > frameTime) {
             SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
         }
+        }
+        
     }
 }
 
-void afficherInformations(game_t* game){
+void afficher_informations(game_t* game){
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
     int frameTime;
 
-    rectangle_t Info_1,Info_2,Info_3,Info_4,Info_5,Info_6,boutonRetour;
+    rectangle_t Info_1,Info_2,Info_3,Info_4,Info_5,Info_6,btn_retour;
     creer_rectangle(&Info_1,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 100 ,255, 255, 255, 100,"Pour aller en haut : fleche du haut");
     creer_rectangle(&Info_2,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 150 ,255, 255, 255, 100,"Pour aller en bas : fleche du bas");
     creer_rectangle(&Info_3,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 200 ,255, 255, 255, 100,"Pour aller a droite : fleche de droite");
     creer_rectangle(&Info_4,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 250 ,255, 255, 255, 100,"Pour aller a gauche : fleche de gauche");
     creer_rectangle(&Info_5,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 300 ,255, 255, 255, 100,"Pour faire pause : echap");
-    creer_rectangle(&Info_6,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 350,255, 255, 255, 100,"Pour interagire : I");
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 400 ,98, 23, 8, 255,"Retour");
+    creer_rectangle(&Info_6,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 350,255, 255, 255, 100,"Pour interagire : A");
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 400 ,98, 23, 8, 255,"Retour");
 
-    int running = 1, action;
+    int running = 1;
     SDL_Event event;
 
     while (running) {
@@ -398,22 +357,16 @@ void afficherInformations(game_t* game){
                 running = 0;
             } else if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x, y = event.button.y;
-                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
+                if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w &&
+                    y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
                     running = 0;
                 } 
             }
         }
-        SDL_RenderClear(game->renderer);
-
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &Info_1);
-        draw_rect(game, &Info_2);
-        draw_rect(game, &Info_3);
-        draw_rect(game, &Info_4);
-        draw_rect(game, &Info_5);
-        draw_rect(game, &Info_6);
-        draw_rect(game, &boutonRetour);
+        if(running) {
+            SDL_RenderClear(game->renderer);
+        draw_background(game);
+        draw_all_rect(game, 7, &Info_1, &Info_2, &Info_3, &Info_4, &Info_5, &Info_6, &btn_retour);
         SDL_RenderPresent(game->renderer);
 
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
@@ -421,20 +374,21 @@ void afficherInformations(game_t* game){
         if (FRAME_DELAY > frameTime) {
             SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
         }
+        }
+        
     }
-    // INITIALISATION DES BOUTONS
 }
 
-void afficherParametre(game_t* game, parametre_t* parametres){
+void aff_parametre(game_t* game, parametre_t* parametres){
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    Uint32 frameStart; //obtien l'heure
     int frameTime;
 
-    rectangle_t boutonInformations,boutonReglage,boutonRetour;
-    creer_rectangle(&boutonInformations,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Informations");
-    creer_rectangle(&boutonReglage,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Reglage");
-    creer_rectangle(&boutonRetour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
+    rectangle_t btn_informations,btn_reglage,btn_retour;
+    creer_rectangle(&btn_informations,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Informations");
+    creer_rectangle(&btn_reglage,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Reglage");
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     // INITIALISATION DES BOUTONS
     
     int running = 1;
@@ -447,52 +401,112 @@ void afficherParametre(game_t* game, parametre_t* parametres){
                 running = 0;
             } else if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x, y = event.button.y;
-                if (x >= boutonInformations.rect.x && x <= boutonInformations.rect.x + boutonInformations.rect.w &&
-                    y >= boutonInformations.rect.y && y <= boutonInformations.rect.y + boutonInformations.rect.h) {
-                    afficherInformations(game);
+                if (x >= btn_informations.rect.x && x <= btn_informations.rect.x + btn_informations.rect.w &&
+                    y >= btn_informations.rect.y && y <= btn_informations.rect.y + btn_informations.rect.h) {
+                    afficher_informations(game);
                 }
-                if (x >= boutonReglage.rect.x && x <= boutonReglage.rect.x + boutonReglage.rect.w &&
-                    y >= boutonReglage.rect.y && y <= boutonReglage.rect.y + boutonReglage.rect.h) {
-                    afficherReglage(game, parametres);
+                if (x >= btn_reglage.rect.x && x <= btn_reglage.rect.x + btn_reglage.rect.w &&
+                    y >= btn_reglage.rect.y && y <= btn_reglage.rect.y + btn_reglage.rect.h) {
+                    afficher_reglage(game, parametres);
                 }
 
-                if (x >= boutonRetour.rect.x && x <= boutonRetour.rect.x + boutonRetour.rect.w &&
-                    y >= boutonRetour.rect.y && y <= boutonRetour.rect.y + boutonRetour.rect.h) {
+                if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w &&
+                    y >= btn_retour.rect.y && y <= btn_retour.rect.y + btn_retour.rect.h) {
+                        running = 0;
+                }
+            }
+        }
+        if(running) {
+            //AFFICHAGE
+            SDL_RenderClear(game->renderer);
+
+            draw_background(game);
+            draw_all_rect(game, 3, &btn_informations, &btn_reglage, &btn_retour);
+            SDL_RenderPresent(game->renderer);
+
+            frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+
+            if (FRAME_DELAY > frameTime) {
+                SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            }
+        }
+
+        
+    }
+}
+
+void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo) {
+    game->mat_active = 7;
+    int largeurEcran, hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    Uint32 frameStart; //obtien l'heure
+    int frameTime;
+    int x, y;
+
+    rectangle_t btn_jouer,btn_parametres,btn_quitter;
+    creer_rectangle(&btn_jouer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Jouer");
+    creer_rectangle(&btn_parametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
+    creer_rectangle(&btn_quitter,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Quitter");
+    // INITIALISATION DES BOUTONS
+    
+    int running = 1;
+    SDL_Event event;
+
+    while (running) {
+        frameStart = SDL_GetTicks();
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                x = event.button.x; 
+                y = event.button.y;
+                if (x >= btn_jouer.rect.x && x <= btn_jouer.rect.x + btn_jouer.rect.w && y >= btn_jouer.rect.y && y <= btn_jouer.rect.y + btn_jouer.rect.h) {
+                    if(aff_saisie_pseudo(game, j, pseudo)){    //si la partie s'est lancé
+                        running = 0;
+                    }
+                }
+                if (x >= btn_parametres.rect.x && x <= btn_parametres.rect.x + btn_parametres.rect.w &&
+                    y >= btn_parametres.rect.y && y <= btn_parametres.rect.y + btn_parametres.rect.h) {
+                    aff_parametre(game, parametres);
+                }
+
+                if (x >= btn_quitter.rect.x && x <= btn_quitter.rect.x + btn_quitter.rect.w &&
+                    y >= btn_quitter.rect.y && y <= btn_quitter.rect.y + btn_quitter.rect.h) {
                         running = 0;
                 }
             }
         }
 
-        //AFFICHAGE
-        SDL_RenderClear(game->renderer);
+        if(running) {
 
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &boutonInformations);
-        draw_rect(game, &boutonReglage);
-        draw_rect(game, &boutonRetour);
-        SDL_RenderPresent(game->renderer);
+            //AFFICHAGE
+            SDL_RenderClear(game->renderer);
 
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+            SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
+            draw_all_rect(game, 3, &btn_jouer, &btn_parametres, &btn_quitter);
+            SDL_RenderPresent(game->renderer);
 
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
+            if (FRAME_DELAY > frameTime) {
+                SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
+            }
         }
     }
 }
 
-void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo) {
+int afficher_menu_pause(game_t* game, parametre_t* parametres) {
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
+    Uint32 frameStart; //obtien l'heure
     int frameTime;
 
-    rectangle_t boutonJouer,boutonParametres,boutonQuitter;
-    creer_rectangle(&boutonJouer,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Jouer");
-    creer_rectangle(&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
-    creer_rectangle(&boutonQuitter,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Quitter");
     // INITIALISATION DES BOUTONS
+    rectangle_t btn_accueil,btn_reprendre,btn_parametres;
+    creer_rectangle(&btn_reprendre,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
+    creer_rectangle(&btn_parametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
+    creer_rectangle(&btn_accueil,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Menu d'acceuil");
     
-    int running = 1, action;
+    int running = 1;
     SDL_Event event;
 
     while (running) {
@@ -502,77 +516,17 @@ void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseu
                 running = 0;
             } else if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x, y = event.button.y;
-                if (x >= boutonJouer.rect.x && x <= boutonJouer.rect.x + boutonJouer.rect.w &&
-                    y >= boutonJouer.rect.y && y <= boutonJouer.rect.y + boutonJouer.rect.h) {
-                    action = afficherSaisiePseudo(game, j, pseudo);
-                    if ((strlen(pseudo) > 0) && action) {
-                        running = 0;
-                        printf("Pseudo saisi : %s\n", pseudo);
-                    }
-                }
-                if (x >= boutonParametres.rect.x && x <= boutonParametres.rect.x + boutonParametres.rect.w &&
-                    y >= boutonParametres.rect.y && y <= boutonParametres.rect.y + boutonParametres.rect.h) {
-                    afficherParametre(game, parametres);
-                }
-
-                if (x >= boutonQuitter.rect.x && x <= boutonQuitter.rect.x + boutonQuitter.rect.w &&
-                    y >= boutonQuitter.rect.y && y <= boutonQuitter.rect.y + boutonQuitter.rect.h) {
-                        running = 0;
-                }
-            }
-        }
-
-        //AFFICHAGE
-        SDL_RenderClear(game->renderer);
-
-        SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        draw_rect(game, &boutonJouer);
-        draw_rect(game, &boutonParametres);
-        draw_rect(game, &boutonQuitter);
-        SDL_RenderPresent(game->renderer);
-
-        frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
-
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
-        }
-    }
-}
-
-int afficherMenuPause(game_t* game, parametre_t* parametres) {
-    int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
-    int frameTime;
-
-    // INITIALISATION DES BOUTONS
-    rectangle_t boutonAcceuil,boutonReprendre,boutonParametres;
-    creer_rectangle(&boutonReprendre,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran - HAUTEUR_BOUTON * 2) / 2,58, 90, 64, 255,"Reprendre");
-    creer_rectangle(&boutonParametres,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2,(hauteurEcran + HAUTEUR_BOUTON) / 2,77, 144, 142, 255,"Parametres");
-    creer_rectangle(&boutonAcceuil,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Menu d'acceuil");
-    
-    int enCours = 1, Pause = 1;
-    SDL_Event evenement;
-
-    while (enCours) {
-        frameStart = SDL_GetTicks();
-        while (SDL_PollEvent(&evenement)) {
-            if (evenement.type == SDL_QUIT) {
-                enCours = 0;
-            } else if (evenement.type == SDL_MOUSEBUTTONDOWN) {
-                int x = evenement.button.x, y = evenement.button.y;
-                if (x >= boutonReprendre.rect.x && x <= boutonReprendre.rect.x + boutonReprendre.rect.w &&
-                    y >= boutonReprendre.rect.y && y <= boutonReprendre.rect.y + boutonReprendre.rect.h) {
+                if (x >= btn_reprendre.rect.x && x <= btn_reprendre.rect.x + btn_reprendre.rect.w &&
+                    y >= btn_reprendre.rect.y && y <= btn_reprendre.rect.y + btn_reprendre.rect.h) {
                     return 1;
                 }
-                if (x >= boutonParametres.rect.x && x <= boutonParametres.rect.x + boutonParametres.rect.w &&
-                    y >= boutonParametres.rect.y && y <= boutonParametres.rect.y + boutonParametres.rect.h) {
-                    afficherParametre(game, parametres);
-                    Pause = 0;
+                if (x >= btn_parametres.rect.x && x <= btn_parametres.rect.x + btn_parametres.rect.w &&
+                    y >= btn_parametres.rect.y && y <= btn_parametres.rect.y + btn_parametres.rect.h) {
+                    aff_parametre(game, parametres);
                 }
 
-                if (x >= boutonAcceuil.rect.x && x <= boutonAcceuil.rect.x + boutonAcceuil.rect.w &&
-                    y >= boutonAcceuil.rect.y && y <= boutonAcceuil.rect.y + boutonAcceuil.rect.h) {
+                if (x >= btn_accueil.rect.x && x <= btn_accueil.rect.x + btn_accueil.rect.w &&
+                    y >= btn_accueil.rect.y && y <= btn_accueil.rect.y + btn_accueil.rect.h) {
                     return 0;
                 }
             }
@@ -580,13 +534,9 @@ int afficherMenuPause(game_t* game, parametre_t* parametres) {
 
         //AFFICHAGE
         //SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-        if(!Pause){
-            SDL_RenderClear(game->renderer);
-            SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-        }
-        draw_rect(game, &boutonReprendre);
-        draw_rect(game, &boutonParametres);
-        draw_rect(game, &boutonAcceuil);
+        SDL_RenderClear(game->renderer);
+        draw_background(game);        
+        draw_all_rect(game, 3, &btn_reprendre, &btn_parametres, &btn_accueil);
         SDL_RenderPresent(game->renderer);
         
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
@@ -596,4 +546,99 @@ int afficherMenuPause(game_t* game, parametre_t* parametres) {
         }
     }
     return 0;
+}
+
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix) {
+    if (!game || !pseudo || !dialogue) return ERR;
+    int largeurEcran,hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
+
+    // Création du fond de dialogue (1/3 de l'écran, en bas)
+    creer_rectangle(&fondDialogue,largeurEcran - 400, hauteurEcran / 3, (largeurEcran / 2) - 750, hauteurEcran * 2 / 3, 0, 0, 0, 180, "");
+
+    // Rectangle pour le pseudo (haut gauche)
+    creer_rectangle(&pseudoRect,200, 40, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 10, 255, 255, 255, 255, pseudo);
+
+    // Rectangle pour le texte (centré dans la boîte)
+    creer_rectangle(&textRect, largeurEcran - 440, hauteurEcran / 6, (largeurEcran / 2) - 730, hauteurEcran * 2 / 3 + 60, 255, 255, 255, 255, "");
+
+    // Rectangle pour afficher "Appuyez sur P"
+    creer_rectangle(&infoRect, 300, 30, (largeurEcran / 2) + 450, hauteurEcran - 40, 255, 255, 255, 255, "A pour continuer");
+
+    int len = strlen(dialogue);
+    char displayedText[256] = "";
+    int index = 0;
+    int textIndex = 0;
+    bool waitingForKey = false;
+    SDL_Event event;
+
+    while (index < len) {
+        displayedText[textIndex] = dialogue[index];
+        displayedText[textIndex + 1] = '\0';
+
+        // Mettre à jour le texte affiché
+        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
+        textRect.text[sizeof(textRect.text) - 1] = '\0';
+
+        // Affichage du dialogue
+        
+        draw_all(game,j,sprite_p,pnj_sprite,sprite_pnj,sprite_playerH); // fond de la map avec les pnj
+        draw_rect(game, &fondDialogue, draw_text_center);       // Fond de dialogue
+        draw_rect(game, &pseudoRect, draw_text_center);           // Nom du PNJ
+        draw_rect(game, &textRect, draw_text_left_middle);      // Texte dynamique
+        draw_rect(game, &infoRect, draw_text_center);     // Indication "A pour continuer"
+        SDL_RenderPresent(game->renderer);
+
+        // affichage dynamique avec un delai entre les caractère
+        SDL_Delay(dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?' ? 500 : 10);
+
+        // Vérifier si on doit attendre la touche "A"
+        if (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') {
+            waitingForKey = true;
+        }
+
+        index++;
+        textIndex++;
+
+        // Attendre "A" avant de continuer à afficher la suite
+        while (waitingForKey) {
+            while (SDL_PollEvent(&event)) {
+                if (event.type == SDL_QUIT) return OK;
+                //si on est sur un dialogue
+                else if(!choix){
+                    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_a) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                    }
+                }
+                //si on a un choix à faire (3 suffit pour la fonction choix-starter)
+                else{
+                    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_1) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 1;
+                    }
+                    else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_2) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 2;
+                    }
+                    else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_3) {
+                        waitingForKey = false;
+                        textIndex = 0;  // Réinitialiser l'affichage pour la phrase suivante
+                        memset(displayedText, 0, sizeof(displayedText));  // Vider la zone texte
+                        choix = 3;
+                    }
+                }
+            }
+        }
+    }
+
+    // Si on a attaint la fin du dialogue on ferme le dialogue
+    if(choix) return choix;
+    if(!(index < len)) return OK;
 }

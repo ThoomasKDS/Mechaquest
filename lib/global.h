@@ -129,19 +129,13 @@ typedef struct{
 typedef struct {
     SDL_Rect rect;
     SDL_Color couleur;
-    char text[50];
+    char text[500];
     SDL_Color couleur_text;
 } rectangle_t;
 
 typedef struct {
     int volume;
 } parametre_t;
-
-typedef struct {
-    SDL_Rect rect;
-    SDL_Texture *image;
-} BoutonImage;
-
 
 //STRUCTURES DE DONNEES
 typedef struct{

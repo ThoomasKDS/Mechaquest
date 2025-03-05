@@ -11,27 +11,28 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 
-SDL_Texture* chargerTexture(const char *chemin, game_t *game);
+SDL_Texture* charger_texture(const char *chemin, game_t *game);
 
-BoutonImage creerBoutonImage(int x, int y, int largeur, int hauteur, char *cheminImage, game_t* game);
+int afficher_choix_sexe(game_t* game, joueur_t* j, char* pseudo);
 
-int afficherChoixSexe(game_t* game, joueur_t* j, char* pseudo);
+int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo);
 
-int afficherChoixSuppression(game_t* game, joueur_t* j,char* pseudo);
+int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo);
 
-int afficherSaisiePseudo(game_t* game, joueur_t* joueur, char* pseudo);
+void afficher_reglage(game_t* game, parametre_t* parametres);
 
-void afficherReglage(game_t* game, parametre_t* parametres);
+void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
 
-void afficherMenu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
+int afficher_menu_pause(game_t* game, parametre_t* parametres);
 
-int afficherMenuPause(game_t* game, parametre_t* parametres);
+void afficher_informations(game_t* game);
 
-void afficherInformations(game_t* game);
+void aff_parametre(game_t* game, parametre_t* parametres);
 
-void afficherReglage(game_t* game, parametre_t* parametres) ;
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix);
 
 #endif

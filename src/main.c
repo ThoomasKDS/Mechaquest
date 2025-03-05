@@ -34,7 +34,7 @@ int main() {
     parametre_t parametres;
     mechas_joueur_t mecha_sauvage;
     parametres.volume = 50;
-    char pseudo[LONGUEUR_MAX_PSEUDO] = "";
+    char pseudo[LONGUEUR_MAX_PSEUDO] ="";
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;
@@ -68,7 +68,7 @@ int main() {
         
         game.mat_active = 0;
         //Affichage du menu
-        afficherMenu(&game,&parametres,&j,pseudo);
+        afficher_menu(&game,&parametres,&j,pseudo);
         if(pseudo[0] == '\0'){
             jeux = 0;
             running = 0;
@@ -134,7 +134,7 @@ int main() {
                 while (SDL_PollEvent(&event)) {
                     if(event.type == SDL_KEYDOWN) {
                         if (event.key.keysym.sym == SDLK_ESCAPE){
-                            if(!afficherMenuPause(&game,&parametres)) running = 0;
+                            if(!afficher_menu_pause(&game,&parametres)) running = 0;
                         } 
                     }
                 }
@@ -146,7 +146,7 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        parler_a_vin_gazole(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 1){
                             premier_tour = 0;
                         }
@@ -158,7 +158,7 @@ int main() {
                             game.mat[2][0][6] = BARRIERE;
                             premier_tour++;
                         }
-                        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        premier_combat_musk(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 2){
                             premier_tour = 0;
                             running = 0;
@@ -172,17 +172,16 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        retourner_parler_a_vin_gazole(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     }         
                     if(j.pointSauvegarde == 3){
-                        combat_final(&game,&sprite_playerH,&j,&sprite_p,keys);
+                        combat_final(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     }
                     if(j.pointSauvegarde == 4)
-                        jeu_libre(&game,&sprite_playerH,&j,&sprite_p,keys);
+                        jeu_libre(&game,&j, &sprite_p, &pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     
                     obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
-                    if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
-                        printf("oui");
+                    if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         combat_sauvage(&j, &mecha_sauvage, &game);
                     }
                     animation(&j, &sprite_p);
