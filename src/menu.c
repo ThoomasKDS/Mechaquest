@@ -548,79 +548,82 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
     return 0;
 }
 
-int afficher_dialogue(game_t *jeu, joueur_t *joueur, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t *sprite_pnj, img_player_t *sprite_joueurH, char *pseudo, char *dialogue, int choix) {
-    if (!jeu || !pseudo || !dialogue) return ERR;
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t *sprite_pnj, img_player_t *sprite_playerH, char *pseudo, char *dialogue, int choix) {
+    if (!game || !pseudo || !dialogue) return ERR;
     
-    // Récupération des dimensions de l'écran
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(jeu->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     
-    // Définition des dimensions et de la position de la boîte de dialogue
-    int largeurDialogue = largeurEcran * 3 / 4;
-    int hauteurDialogue = hauteurEcran / 4;
-    int positionXDialogue = (largeurEcran - largeurDialogue) / 2;
-    int positionYDialogue = hauteurEcran - hauteurDialogue - 20;
+    int dialogueWidth = largeurEcran * 3 / 4;
+    int dialogueHeight = hauteurEcran / 4;
+    int dialogueX = (largeurEcran - dialogueWidth) / 2;
+    int dialogueY = hauteurEcran - dialogueHeight - 20;
     
-    // Déclaration des rectangles d'affichage
-    rectangle_t fondDialogue, rectangleTexte, rectanglePseudo, rectangleInfo1, rectangleInfo2;
+    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
     
-    // Création des différents éléments de la boîte de dialogue
-    creer_rectangle(&fondDialogue, largeurDialogue, hauteurDialogue, positionXDialogue, positionYDialogue, 0, 0, 0, 180, "");
-    creer_rectangle(&rectanglePseudo, 200, 40, positionXDialogue + 20, positionYDialogue + 10, 255, 255, 255, 255, pseudo);
-    creer_rectangle(&rectangleTexte, largeurDialogue - 40, hauteurDialogue - 80, positionXDialogue + 20, positionYDialogue + 60, 255, 255, 255, 255, "");
-    creer_rectangle(&rectangleInfo1, 300, 30, positionXDialogue + (largeurDialogue / 2) - 150, positionYDialogue + hauteurDialogue - 35, 255, 255, 255, 255, "A pour continuer");
-    creer_rectangle(&rectangleInfo2, 300, 30, positionXDialogue + (largeurDialogue / 2) - 150, positionYDialogue + hauteurDialogue - 35, 255, 255, 255, 255, "choisir entre 1 et 3");
+    creer_rectangle(&fondDialogue, dialogueWidth, dialogueHeight, dialogueX, dialogueY, 0, 0, 0, 180, "");
+    creer_rectangle(&pseudoRect, 200, 40, dialogueX + 20, dialogueY + 10, 255, 255, 255, 255, pseudo);
+    creer_rectangle(&textRect, dialogueWidth - 40, dialogueHeight - 80, dialogueX + 20, dialogueY + 60, 255, 255, 255, 255, "");
     
-    // Gestion de l'affichage progressif du texte
-    int longueur = strlen(dialogue);
-    char texteAffiche[256] = "";
-    int index = 0, indexTexte = 0;
-    bool attenteTouche = false;
-    SDL_Event evenement;
-    Uint32 debutImage, tempsImage;
+    if (!choix)
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
+    else
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "Choisir entre 1 et 3");
+
+    int len = strlen(dialogue);
+    char displayedText[256] = "";
+    int index = 0, textIndex = 0;
+    bool waitingForKey = false;
+    SDL_Event event;
+    Uint32 frameStart, frameTime;
     
-    while (index < longueur) {
-        debutImage = SDL_GetTicks();
-        texteAffiche[indexTexte] = dialogue[index];
-        texteAffiche[indexTexte + 1] = '\0';
-        strncpy(rectangleTexte.text, texteAffiche, sizeof(rectangleTexte.text) - 1);
+    SDL_FlushEvent(SDL_KEYDOWN);  // Vider les touches avant d'afficher
+    
+    while (index < len) {
+        frameStart = SDL_GetTicks();
+        displayedText[textIndex] = dialogue[index];
+        displayedText[textIndex + 1] = '\0';
+        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
         
-        // Affichage des éléments de la boîte de dialogue
-        draw_all(jeu, joueur, sprite_p, pnj_sprite, sprite_pnj, sprite_joueurH);
-        draw_rect(jeu, &fondDialogue, draw_text_center);
-        draw_rect(jeu, &rectanglePseudo, draw_text_center);
-        draw_rect(jeu, &rectangleTexte, draw_text_left_middle);
-        if (!choix) draw_rect(jeu, &rectangleInfo1, draw_text_center);
-        else draw_rect(jeu, &rectangleInfo2, draw_text_center);
-        SDL_RenderPresent(jeu->renderer);
+        draw_all(game, j, sprite_p, pnj_sprite, sprite_pnj, sprite_playerH);
+        draw_rect(game, &fondDialogue, draw_text_center);
+        draw_rect(game, &pseudoRect, draw_text_center);
+        draw_rect(game, &textRect, draw_text_left_middle);
+        draw_rect(game, &infoRect, draw_text_center);
+        SDL_RenderPresent(game->renderer);
         
-        // Gestion du délai d'affichage en fonction de la ponctuation
-        int delai = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
-        attenteTouche = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
+        int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
+        waitingForKey = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
         index++;
-        indexTexte++;
-        
-        // Gestion de l'attente d'une touche pour continuer
-        while (attenteTouche) {
-            while (SDL_PollEvent(&evenement)) {
-                if (evenement.type == SDL_QUIT) return OK;
-                if (!choix && evenement.type == SDL_KEYDOWN && evenement.key.keysym.sym == SDLK_a) {
-                    attenteTouche = false;
-                    indexTexte = 0;
-                    memset(texteAffiche, 0, sizeof(texteAffiche));
-                } else if (choix && evenement.type == SDL_KEYDOWN) {
-                    if (evenement.key.keysym.sym == SDLK_1) return 1;
-                    if (evenement.key.keysym.sym == SDLK_2) return 2;
-                    if (evenement.key.keysym.sym == SDLK_3) return 3;
+        textIndex++;
+
+        if (waitingForKey) {
+            SDL_FlushEvent(SDL_KEYDOWN);  // Éviter la répétition du dernier appui
+            
+            while (waitingForKey) {
+                if (SDL_WaitEvent(&event)) {
+                    if (event.type == SDL_QUIT) return OK;
+                    if (!choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_a) {
+                            waitingForKey = false;
+                            textIndex = 0;
+                            memset(displayedText, 0, sizeof(displayedText));
+                        }
+                    } else if (choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_KP_1) return 1;
+                        if (event.key.keysym.sym == SDLK_2 || event.key.keysym.sym == SDLK_KP_2) return 2;
+                        if (event.key.keysym.sym == SDLK_3 || event.key.keysym.sym == SDLK_KP_3) return 3;
+                    }
                 }
             }
         }
         
-        // Gestion du temps d'affichage
-        tempsImage = SDL_GetTicks() - debutImage;
-        if (delai > tempsImage) SDL_Delay(delai - tempsImage);
+        frameTime = SDL_GetTicks() - frameStart;
+        if (delay > frameTime) SDL_Delay(delay - frameTime);
     }
     
     return choix ? choix : OK;
 }
+
+
 
