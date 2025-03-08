@@ -100,6 +100,7 @@ int init_calque(game_t * game) {
             return 0;
         }
     }
+    return OK;
 }
 
 //dessine le background
@@ -200,7 +201,7 @@ int remplir_mat(game_t * game, int taille_x, int taille_y) {
 void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
-            printf("%d\t", game->mat[n_mat][i][j]);
+            printf("%d ", game->mat[n_mat][i][j]);
         }
         printf("\n"); 
     }
@@ -537,7 +538,7 @@ void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
 }
 
 //creer un rectangle avec du texte
-void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[50]) { //creer un rectangle avec tt les parametres
+void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[500]) { //creer un rectangle avec tt les parametres
     rectangle->rect.x = x ;
     rectangle->rect.y = y ;
     rectangle->rect.w = w ;

@@ -121,12 +121,10 @@ int premier_combat_musk(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect 
         }
         if(j->numMap == 2 && j->x+1 == pnj[IRON_MUSK_DEB].x && j->y == pnj[IRON_MUSK_DEB].y && j->derniere_touche == 2){
             afficher_dialogue(game, j, sprite_p, pnj_sprite, sprite_pnj,sprite_playerH, pnj[IRON_MUSK_DEB].pseudo, pnj[IRON_MUSK_DEB].dialogueDebut,false);
-            printf("%s\n",pnj[IRON_MUSK_DEB].dialogueDebut);
             
             //combat(j,&pnj[IRON_MUSK_DEB]);
 
             afficher_dialogue(game, j, sprite_p, pnj_sprite, sprite_pnj,sprite_playerH, pnj[IRON_MUSK_DEB].pseudo, pnj[IRON_MUSK_DEB].dialogueFin,false);
-            printf("%s\n",pnj[IRON_MUSK_DEB].dialogueFin);
             pnj[IRON_MUSK_DEB].etat = 1;
             sauvegarde_pnj(&pnj[IRON_MUSK_DEB],pnj[IRON_MUSK_DEB].id_pnj,j->pseudo);
             game->mat[2][0][4] = TPMAP4;
@@ -147,14 +145,11 @@ int premier_combat_musk(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect 
             sauvegarde_partie(j,j->pseudo);
             j->screen_x = (float)(game->dms_win.x + (j->x * PX * game->scale));      //position du joueur en px
             j->screen_y = (float)(game->dms_win.y + (j->y * PX * game->scale));
-            if(!init_player(game, sprite_playerH,j->sexe)){
-                return -1;
-            }   
         }
     }
     if(keys[SDL_SCANCODE_UP]){
         if(j->numMap == 2 && (j->x == 4 || j->x == 5 ||j->x == 6) && j->y == 1){
-            afficher_dialogue(game, j, sprite_p, pnj_sprite, sprite_pnj,sprite_playerH, "indice", " Allez combattre Iron Musk avant\n",false);
+            afficher_dialogue(game, j, sprite_p, pnj_sprite, sprite_pnj,sprite_playerH, "indice", " Allez combattre Iron Musk avant.\n",false);
             printf("Allez combattre Iron Musk avant\n");
         }
     }

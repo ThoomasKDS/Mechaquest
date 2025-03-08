@@ -584,7 +584,7 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
         displayedText[textIndex] = dialogue[index];
         displayedText[textIndex + 1] = '\0';
         strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
-        
+        SDL_RenderClear(game->renderer);
         draw_all(game, j, sprite_p, pnj_sprite, sprite_pnj, sprite_playerH);
         draw_rect(game, &fondDialogue, draw_text_center);
         draw_rect(game, &pseudoRect, draw_text_center);
@@ -597,10 +597,10 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
         index++;
         textIndex++;
 
-        if (waitingForKey) {
+        if (waitingForKey == true) {
             SDL_FlushEvent(SDL_KEYDOWN);  // Éviter la répétition du dernier appui
             
-            while (waitingForKey) {
+            while (waitingForKey == true) {
                 if (SDL_WaitEvent(&event)) {
                     if (event.type == SDL_QUIT) return OK;
                     if (!choix && event.type == SDL_KEYDOWN && !event.key.repeat) {

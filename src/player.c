@@ -153,33 +153,33 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
 }
 
 int detection_combat_pnj(game_t *game, joueur_t *joueur){
-    for(int i = 0; i < 24; i++){
-        if(pnj[i].id_map == joueur->numMap){
-            for(int j = 1; j <= 4; j++){
-                int test_x = pnj[i].x;
-                int test_y = pnj[i].y;
-
-                int taille_x_mat = game->img_w / PX;    //taille de la matrice
-                int taille_y_mat = game->img_h / PX;
-
+    int test_x , test_y;
+    int taille_x_mat = game->img_w / PX;    //taille de la matrice
+    int taille_y_mat = game->img_h / PX;
+    for(int i = 0; i < VIN_GAZOLE_1; i++){
+        if((pnj[i].id_map ) == (game->mat_active+1) && pnj[i].etat == 0){
+                test_x = pnj[i].x;
+                test_y = pnj[i].y;
+            for(int j = 0; j < 3 && (game->mat[game->mat_active][test_y][test_x] <= JOUEUR || game->mat[game->mat_active][test_y][test_x] ==PNJ); j++){
+                
                 switch(pnj[i].orientation){
                     case 1: //Vers le haut
-                        test_y -= j;
+                        test_y -= 1;
                     break;
                     case 2: //Vers la droite
-                        test_x += j;
+                        test_x += 1;
                     break;
                     case 3: //Vers le bas
-                        test_y += j;
+                        test_y += 1;
                     break;
                     case 4: //Vers la gauche
-                        test_x -= j;
+                        test_x -= 1;
                     break;
                 }
 
                 if(test_x >= 0 && test_x < taille_x_mat && test_y >= 0 && test_y < taille_y_mat){   //Test si les calculs ne sortent pas de la matrice
-                    if(game->mat[game->mat_active][test_x][test_y] == 1){
-                        return 1;
+                    if(test_x == joueur->x && test_y == joueur->y){
+                        return i;
                     }
                 }
             }
