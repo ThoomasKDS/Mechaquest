@@ -11,6 +11,7 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 
@@ -31,5 +32,7 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres);
 void afficher_informations(game_t* game);
 
 void aff_parametre(game_t* game, parametre_t* parametres);
+
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix);
 
 #endif

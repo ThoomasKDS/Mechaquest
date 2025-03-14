@@ -110,53 +110,77 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
 }
 
 //gere l'apparition des mechas 
-int spawn_mecha(joueur_t * j, int obj_case, zone_t * zone, mechas_t * mechas, mechas_joueur_t * mecha_sauvage) {
+int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
+        int i;
         j->proba_combat += 100;
         int n = rand() % 100;
         if(n < j->proba_combat) {
             j->proba_combat = 0;
-            obj_case = -obj_case - 1;               //donne l'indice de la zone
-            int indice_liste = rand() % zone[obj_case].nb_mechas;
+            obj_case *= -1;
+            obj_case--;               //donne l'indice de la zone
+            int indice_liste = (rand() % zone[obj_case].nb_mechas );
             int indice_mechas =  zone[obj_case].listeMechasZone[indice_liste];      
             mecha_sauvage->niveau = (rand() % 5) + (zone[obj_case].NiveauMoyenApparition - 2);
             mecha_sauvage->pv_max = (rand() % 5) + (zone[obj_case].PvMoyen - 2);
             mecha_sauvage->pv = mecha_sauvage->pv_max;
             mecha_sauvage->id_mechas = indice_mechas;
+            printf("indice : %d\n", indice_mechas);
             mecha_sauvage->attaque = (rand() % 10) + (zone[obj_case].Attaque - 4);
             mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
             mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
+            for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
+            printf("i : %d\n", i);
+            mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].id_attaques;
+            mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].id_attaques;
+            mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].utilisations;
+            mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].utilisations;
+            printf("Mecha Sauvage:\n");
+    printf(" Niveau: %d\n", mecha_sauvage->niveau);
+    printf(" PV: %d/%d\n", mecha_sauvage->pv, mecha_sauvage->pv_max);
+    printf(" ID: %d\n", mecha_sauvage->id_mechas);
+    printf(" Attaque: %d\n", mecha_sauvage->attaque);
+    printf(" Défense: %d\n", mecha_sauvage->defense);
+    printf(" Vitesse: %d\n", mecha_sauvage->vitesse);
+    printf(" Attaque 1: %d, Utilisations %d\n", mecha_sauvage->attaque_1, mecha_sauvage->utilisation_1);
+    printf(" Attaque 2: %d, Utilisations %d\n", mecha_sauvage->attaque_2, mecha_sauvage->utilisation_2);
+
+
             return 1;
         }
     }
     return 0;
 }
 
-int detection_combat_pnj(game_t game, joueur_t joueur){
-    for(int i = 0; i < 24; i++){
-        if(pnj[i].id_map == joueur.numMap){
-            for(int j = 1; j <= 4; j++){
+int detection_combat_pnj(game_t *game, joueur_t *joueur){
+    int test_x , test_y;
+    int taille_x_mat = game->img_w / PX;    //taille de la matrice
+    int taille_y_mat = game->img_h / PX;
+    for(int i = 0; i < VIN_GAZOLE_1; i++){
+        if((pnj[i].id_map ) == (game->mat_active+1) && pnj[i].etat == 0){
+                test_x = pnj[i].x;
+                test_y = pnj[i].y;
+            for(int j = 0; j < 3 && (game->mat[game->mat_active][test_y][test_x] <= JOUEUR || game->mat[game->mat_active][test_y][test_x] ==PNJ); j++){
+                
                 switch(pnj[i].orientation){
-                    case 0:
-                        if(game.mat[game.mat_active][pnj[i].x][pnj[i].y + j] == 1){
-                            return 1;
-                        }
+                    case 1: //Vers le haut
+                        test_y -= 1;
                     break;
-                    case 1:
-                        if(game.mat[game.mat_active][pnj[i].x - j][pnj[i].y] == 1){
-                            return 1;
-                        }
+                    case 2: //Vers la droite
+                        test_x += 1;
                     break;
-                    case 2:
-                        if(game.mat[game.mat_active][pnj[i].x][pnj[i].y - j] == 1){
-                            return 1;
-                        }
+                    case 3: //Vers le bas
+                        test_y += 1;
                     break;
-                    case 3:
-                        if(game.mat[game.mat_active][pnj[i].x + j][pnj[i].y] == 1){
-                            return 1;
-                        }
+                    case 4: //Vers la gauche
+                        test_x -= 1;
                     break;
+                }
+
+                if(test_x >= 0 && test_x < taille_x_mat && test_y >= 0 && test_y < taille_y_mat){   //Test si les calculs ne sortent pas de la matrice
+                    if(test_x == joueur->x && test_y == joueur->y){
+                        return i;
+                    }
                 }
             }
             

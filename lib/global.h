@@ -96,6 +96,7 @@ typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture[8];
+    SDL_Texture* calqueTexture[6];
     TTF_Font* police;
     int *** mat ;
     float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
@@ -128,19 +129,13 @@ typedef struct{
 typedef struct {
     SDL_Rect rect;
     SDL_Color couleur;
-    char text[50];
+    char text[500];
     SDL_Color couleur_text;
 } rectangle_t;
 
 typedef struct {
     int volume;
 } parametre_t;
-
-typedef struct {
-    SDL_Rect rect;
-    SDL_Texture *image;
-} BoutonImage;
-
 
 //STRUCTURES DE DONNEES
 typedef struct{

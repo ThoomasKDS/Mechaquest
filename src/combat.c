@@ -596,99 +596,21 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
     return OK;
 }
 
-/*
-===========================================
-*/
-
-//premet de changer de meca dans le combat
-int changer_mecha(game_t *game, joueur_t *joueur, int *actif){
-    int choix = aff_mechas_combat(game, joueur);
-    if(choix == *actif) {
-        printf("Ce mecha est déjà actif\n");
-        return 0;
-    }
-    if(choix == 4) return 0;
-    *actif = choix;
-    return 1;
-}
-
 int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){  //Retourne 0 si ne peut pas attaquer
-
-    int ok = -1;
-    int cpt = 0;
-    int att1, att2;
-    int ancien_pv;
-    int nbr_rand_att, nbr_rand_preci;
-
-    
-    ancien_pv = mecha_joueur->pv;
-    att1 = attaque[mecha_ordi->attaque_1].degats;
-    att2 = attaque[mecha_ordi->attaque_2].degats;
-
-    srand(time(NULL));
-    nbr_rand_att = (rand() % 2) + 1;
-
-    while(ok != 0){ //Test si les attaques ont encore des utilisations
-        if((nbr_rand_att == 1) && (attaque[mecha_ordi->attaque_1].utilisations > 0)){
-            ok = 0;
-        }
-        else{
-            nbr_rand_att = 2;   //Si l'utilisation est a 0, on test directement l'autre attaque
-        }
-        if((nbr_rand_att == 2) && (attaque[mecha_ordi->attaque_2].utilisations > 0)){
-            ok = 0;
-        }
-        else{
-            nbr_rand_att = 1;   //Si l'utilisation est a 0, on test directement l'autre attaque
-        }
-        cpt++;
-        if(cpt > 2){    //Si aucune attaque n'a d'utilisation
+    int numero_attaque;
+    int utilisation[2] = {mecha_ordi->utilisation_1, mecha_ordi->utilisation_2};
+    printf("uti %d\nuti %d\n", utilisation[0], utilisation[1]);
+    numero_attaque = rand() % 2;
+    if(!utilisation[numero_attaque]){
+        numero_attaque = 1 - numero_attaque;
+        if(!utilisation[numero_attaque]) {
+            printf("Le mechas sauvage ne peut plus attaquer\n");
             return 0;
         }
+        algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
+        printf("ok\n");
     }
-
-    nbr_rand_preci = (rand() % 100) + 1;
-
-    if(nbr_rand_att == 1){
-        if(nbr_rand_preci <= attaque[mecha_joueur->attaque_1].precision){  //Test si l'attaque touche (precision)
-
-            // Test en fonction des types (+ de degats ou non)
-            if(((strcmp(attaque[mecha_ordi->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
-            || ((strcmp(attaque[mecha_ordi->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
-            || ((strcmp(attaque[mecha_ordi->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
-                att1 *= 1.5;
-            }
-            else if((strcmp(attaque[mecha_ordi->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
-                att1 *= 1.2;
-            }
-
-            if(mecha_ordi->attaque + att1 > mecha_joueur->defense){
-                mecha_joueur->pv -= (mecha_ordi->attaque + att1 - mecha_joueur->defense);
-            }
-
-            attaque[mecha_ordi->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
-        }
-    }
-    else{
-        if(nbr_rand_preci <= attaque[mecha_joueur->attaque_2].precision){ //Test si l'attaque touche (precision)
-            // Test en fonction des types (+ de degats ou non)
-            if(((strcmp(attaque[mecha_ordi->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
-            || ((strcmp(attaque[mecha_ordi->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
-            || ((strcmp(attaque[mecha_ordi->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
-                att2 *= 1.5;
-            }
-            else if((strcmp(attaque[mecha_ordi->attaque_2].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
-                att2 *= 1.2;
-            }
-
-            if(mecha_ordi->attaque + att2 > mecha_joueur->defense){
-                mecha_joueur->pv -= (mecha_ordi->attaque + att2 - mecha_joueur->defense);
-            }
-
-            attaque[mecha_ordi->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
-        }
-    }
-    printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
+    
     return OK;
 }
 
@@ -792,6 +714,24 @@ int attaque_ordi_pnj(pnj_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
     }
     return OK;
 }
+
+/*
+===========================================
+*/
+
+//premet de changer de meca dans le combat
+int changer_mecha(game_t *game, joueur_t *joueur, int *actif){
+    int choix = aff_mechas_combat(game, joueur);
+    if(choix == *actif) {
+        printf("Ce mecha est déjà actif\n");
+        return 0;
+    }
+    if(choix == 4) return 0;
+    *actif = choix;
+    return 1;
+}
+
+
 
 
 
@@ -1029,17 +969,24 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
     return 1;
 }
 
+
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {
     int save_map_active = game->mat_active;
     game->mat_active = 6;
     int actif = 0;
+    printf("\nvitesse %d\ndef : %d\n", mecha_sauvage->vitesse, mecha_sauvage->defense);
     while(mecha_sauvage->pv > 0 && joueur->mechas_joueur[actif].pv > 0) {
-        if(!tour_joueur(joueur, mecha_sauvage, game, &actif)) break;
-        
+        if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
+            if(!tour_joueur(joueur, mecha_sauvage, game, &actif)) break;
+            attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
+        }
+        else {
+            attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
+            if(!tour_joueur(joueur, mecha_sauvage, game, &actif)) break;
+        }
     }
-    
-    
+    if(mecha_sauvage->pv == 0) printf("gagné\n");
+    else printf("perdu\n");
     
     game->mat_active = save_map_active;
 }
-

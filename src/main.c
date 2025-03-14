@@ -54,6 +54,9 @@ int main() {
     if(!init_background(&game)) {
         return -1;
     }
+    if(!init_calque(&game)) {
+        return -1;
+    }
 
     while(jeux){
         pseudo[0] = '\0';
@@ -118,8 +121,9 @@ int main() {
                     game.mat[2][9][0] = TPMAP6;
                     game.mat[2][10][0] = TPMAP6;
                     game.mat[2][9][19] = 0;
+                    
             }
-            aff_mat(&game, taille_x_mat, taille_y_mat, game.mat_active);
+            aff_mat(&game, taille_x_mat, taille_y_mat, 1);
             while(running){
                 frameStart = SDL_GetTicks(); //obtien l'heure
 
@@ -143,7 +147,7 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        parler_a_vin_gazole(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 1){
                             premier_tour = 0;
                         }
@@ -155,10 +159,9 @@ int main() {
                             game.mat[2][0][6] = BARRIERE;
                             premier_tour++;
                         }
-                        premier_combat_musk(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        premier_combat_musk(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                         if(j.pointSauvegarde == 2){
                             premier_tour = 0;
-                            running = 0;
                         }
                     }
                     
@@ -169,19 +172,24 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        retourner_parler_a_vin_gazole(&game,&sprite_playerH,&j,&sprite_p, keys);
+                        retourner_parler_a_vin_gazole(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
+                        
                     }         
                     if(j.pointSauvegarde == 3){
-                        combat_final(&game,&sprite_playerH,&j,&sprite_p,keys);
+                        combat_final(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     }
                     if(j.pointSauvegarde == 4)
-                        jeu_libre(&game,&sprite_playerH,&j,&sprite_p,keys);
-                    
+                        jeu_libre(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
                     obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
-                    if(spawn_mecha(&j, obj_case, zone, mecha, &mecha_sauvage)) {
-                        printf("oui");
+
+                    if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         combat_sauvage(&j, &mecha_sauvage, &game);
                     }
+
+                    if(detection_combat_pnj(&game, &j)){
+                        //attaque_ordi_pnj(pnj, &mecha_sauvage);
+                    }
+
                     animation(&j, &sprite_p);
 
                     SDL_RenderClear(game.renderer);     //efface l'ecran

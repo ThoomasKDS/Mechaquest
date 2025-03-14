@@ -11,13 +11,12 @@
 int init_background(game_t * game) {
 
     char ext[5] = ".png";
-    char chemin[100] = "img/background/fond";
+    char chemin[30] = "img/background/fond";
 
     for(int i = 0; i < 8; i++) {
         chemin[19] = '0' + (i + 1);
         chemin[20] = '\0';
         strcat(chemin, ext);
-        printf("%s\n", chemin);
 
         //charger fond
         SDL_Surface * imageSurface = IMG_Load(chemin);
@@ -74,13 +73,44 @@ int init_background(game_t * game) {
     return 1;
 }
 
+int init_calque(game_t * game) {
 
+    char ext[5] = ".png";
+    char chemin[30] = "img/calque/calque";
+
+    for(int i = 0; i < 2; i++) {
+        chemin[17] = '0' + (i + 1);
+        chemin[18] = '\0';
+        strcat(chemin, ext);
+
+        //charger fond
+        SDL_Surface * imageSurface = IMG_Load(chemin);
+        if (!imageSurface) {
+            printf("Erreur de chargement de l'image : %s\n", IMG_GetError());
+            IMG_Quit();
+
+            return 0;
+        }
+
+        // Convertir la fond en texture
+        game->calqueTexture[i] = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
+        SDL_FreeSurface(imageSurface);
+        if (!game->calqueTexture[i]) {
+            printf("Erreur de création de la texture : %s\n", SDL_GetError());
+            return 0;
+        }
+    }
+    return OK;
+}
 
 //dessine le background
 void draw_background(game_t * game) {
     SDL_RenderCopy(game->renderer,game->backgroundTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
 }
 
+void draw_calque(game_t * game) {
+    SDL_RenderCopy(game->renderer,game->calqueTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
+}
 
 /*=================================================*/
 
@@ -171,7 +201,7 @@ int remplir_mat(game_t * game, int taille_x, int taille_y) {
 void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
-            printf("%d\t", game->mat[n_mat][i][j]);
+            printf("%d ", game->mat[n_mat][i][j]);
         }
         printf("\n"); 
     }
@@ -428,23 +458,49 @@ void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, jou
     
 }
 void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH){
-        draw_background(game);
+    draw_background(game);      
+    if(game->mat[game->mat_active][j->y+1][j->x] == BARRIERE || game->mat[game->mat_active][j->y+1][j->x] == BAT){
         if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
-            for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
-                }
-             }
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
-        }
-        else{
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur 
+            draw_calque(game);
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
                     draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
                 }
             }
+        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
         }
+        else{
+            
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+            draw_calque(game);
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+        }         
+    }
+    else{
+        if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
+            draw_calque(game);
+            for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        }
+        else{
+            
+        draw_calque(game);
+        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        for(int i = 0; i < 24;i++){
+                if((pnj[i].id_map -1) == j->numMap){
+                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                }
+            }
+        } 
+    }
 }
 
 void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj, joueur_t *j) { 
@@ -482,7 +538,7 @@ void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
 }
 
 //creer un rectangle avec du texte
-void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[50]) { //creer un rectangle avec tt les parametres
+void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[500]) { //creer un rectangle avec tt les parametres
     rectangle->rect.x = x ;
     rectangle->rect.y = y ;
     rectangle->rect.w = w ;
@@ -499,7 +555,7 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
  
 }
 
-void draw_text(game_t *game, rectangle_t* rectangle) {
+void draw_text_left_middle(game_t *game, rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
     if (!game->police) {
         printf("Erreur : Police non chargée\n");
@@ -507,68 +563,79 @@ void draw_text(game_t *game, rectangle_t* rectangle) {
     }
 
     SDL_Color textColor = {0, 0, 0, 255}; 
-    SDL_Surface* surface;
-    SDL_Texture* texture;
-    SDL_Rect textRect;
-    char ligne[256];
-    char *debut = rectangle->text;
-    
-    int num_lignes = 1;  
-    for (int j = 0; rectangle->text[j] != '\0'; j++) {
-        if (rectangle->text[j] == '\n') num_lignes++; // Compter le nombre de lignes
+    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
+    if (!surface) {
+        printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+        return;
     }
 
-    int y_offset = rectangle->rect.h / (num_lignes + 1); // Centrer verticalement les lignes
-
-    int cmp = 0; // Compteur de lignes
-    
-    while (*debut) {
-        int i = 0;
-        while (debut[i] != '\0' && debut[i] != '\n') {
-            ligne[i] = debut[i]; 
-            i++;
-        }
-        ligne[i] = '\0'; // Terminer la ligne
-
-        // Créer la texture pour la ligne actuelle
-        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
-        if (!surface) {
-            printf("Erreur SDL_ttf : %s\n", TTF_GetError());
-            return;
-        }
-        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
-
-        int text_width = surface->w;
-        int text_height = surface->h;
-
-        // Calcul de la position centrée
-        textRect.x = rectangle->rect.x + (rectangle->rect.w - text_width) / 2;
-        textRect.y = rectangle->rect.y + (cmp + 1) * y_offset - text_height / 2;
-        textRect.w = text_width;
-        textRect.h = text_height;
-
-        // Afficher le texte
-        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
-
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    if (!texture) {
+        printf("Erreur SDL : %s\n", SDL_GetError());
         SDL_FreeSurface(surface);
-        SDL_DestroyTexture(texture);
-
-        // Passer à la ligne suivante
-        if (debut[i] == '\n') i++; // Sauter le '\n'
-        debut += i; // Déplacer le pointeur
-        cmp++;
+        return;
     }
+
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect textRect = {
+        rectangle->rect.x, // Aligné à gauche
+        rectangle->rect.y + (rectangle->rect.h - text_height) / 2, // Centré verticalement
+        text_width,
+        text_height
+    };
+    
+
+    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_DestroyTexture(texture);
+}
+
+void draw_text_center(game_t *game, rectangle_t* rectangle) {
+    if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
+    if (!game->police) {
+        printf("Erreur : Police non chargée\n");
+        return;
+    }
+
+    SDL_Color textColor = {0, 0, 0, 255}; 
+    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
+    if (!surface) {
+        printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+        return;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    if (!texture) {
+        printf("Erreur SDL : %s\n", SDL_GetError());
+        SDL_FreeSurface(surface);
+        return;
+    }
+
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect textRect = {
+        rectangle->rect.x + (rectangle->rect.w - text_width) / 2, // Centré horizontalement
+        rectangle->rect.y + (rectangle->rect.h - text_height) / 2, // Centré verticalement
+        text_width,
+        text_height
+    };
+
+    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_DestroyTexture(texture);
 }
 
 
-
 //dessine un rectangle
-void draw_rect(game_t *game, rectangle_t *rectangle) {
+void draw_rect(game_t *game, rectangle_t *rectangle,void (*draw_func)(game_t *, rectangle_t *)) {
         SDL_SetRenderDrawBlendMode(game->renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(game->renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
         SDL_RenderFillRect(game->renderer, &rectangle->rect);
         // Dessiner le texte
-        if(rectangle->text[0] != '\0') draw_text(game, rectangle);
+        if(rectangle->text[0] != '\0') draw_func(game, rectangle);
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
 
 }
@@ -579,7 +646,7 @@ void draw_all_rect(game_t *game, int n, ...) {
     va_start(args, n);
     for (int i = 0; i < n; i++) {
         rectangle_t *rect = va_arg(args, rectangle_t *);
-        draw_rect(game, rect);
+        draw_rect(game, rect,draw_text_center);
     }  
     va_end(args);
 
