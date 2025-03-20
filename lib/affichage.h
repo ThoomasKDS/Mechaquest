@@ -45,6 +45,6 @@ void draw_text_pos(char *text, int x, int y);
 void draw_all_rect(int n, ...);
 
 int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue,int choix);
-
+void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue);
 
 #endif

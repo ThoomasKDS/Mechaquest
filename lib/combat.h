@@ -14,13 +14,13 @@ void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t * me
 
 int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
-int utilisation_rappel(joueur_t *joueur);
+int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
-int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi);
+int utilisation_mechaball(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
 int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
-int changer_mecha(joueur_t *joueur, int *actif);
+int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi);
 
 int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def,int mecha_choix);
 

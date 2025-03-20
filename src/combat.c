@@ -426,7 +426,7 @@ int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
 
 int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->carburant <= 0){
-        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de carburant.");
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de carburant.");
         return (KO);
     }
     else {
@@ -435,11 +435,11 @@ int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv == joueur->mechas_joueur[i].pv_max){    //Si les PV sont au Max, on ne peut pas utiliser de carburant
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Les PV sont déjà au maximun !");
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Les PV sont déjà au maximun !");
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv < 0){  //Si les PV sont a 0, impossible d'utiliser du carburant
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de carburant (PV à 0).");
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de carburant (PV à 0).");
             return (RETOUR);
         }
         else{
@@ -451,7 +451,7 @@ int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
             char message[200] = "Utilisation carburant, nouveau PV : ";
             concat(message, joueur->mechas_joueur[i].pv);
             strcat(message, ".");
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         }
     }
 
@@ -461,7 +461,7 @@ int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
 
 int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->rappel <= 0){
-        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de rappel.");
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de rappel.");
         return (KO);
     }
     else {
@@ -470,7 +470,7 @@ int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv != 0){  //Si les PV sont pas a 0, impossible d'utiliser du rappel
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de rappel sur un mechas encore en vie.");
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de rappel sur un mechas encore en vie.");
             return (RETOUR);
         }
         else{
@@ -478,7 +478,7 @@ int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
             char message[200] = "";
             strcat(message, mecha[joueur->mechas_joueur[i].id_mechas - 1].nom);
             strcat(message, "est de retour !");
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
             joueur->inventaire->rappel--;
             
         }
@@ -489,7 +489,7 @@ int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
 
 int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) {
     if(joueur->inventaire->mechaball <= 0){
-        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de mechaball.");
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de mechaball.");
         return (KO);
     }
     else{
@@ -509,7 +509,7 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             char message[200] = "Vous avez attrapé ";
             strcat(message,  mecha[ordi->id_mechas-1].nom);
             strcat(message, ".");
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         
             copie_mechas(joueur, ordi);
             return (CAPTURE);
@@ -518,7 +518,7 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             char message[200] = "Vous n'avez pas reussi a attrape ";
             strcat(message,  mecha[ordi->id_mechas-1].nom);
             strcat(message, ".");
-            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
+            afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         }
     }
     return (FAUX);
@@ -539,11 +539,11 @@ FONCTIONS ATTAQUE
 int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def, int mecha_choix) {
     if(choix == 2) return 0;
     if(choix == 0 && mecha_att->utilisation_1 == 0) {
-        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
+        afficher_dialogue_combat(  mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
         return KO;
     }
     if(choix == 1 && mecha_att->utilisation_2 == 0) {
-        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
+        afficher_dialogue_combat(  mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
         return KO;
     }
     int ancien_pv = mecha_def->pv;
@@ -562,9 +562,9 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
     strcat(msg, ".");
 
     if(mecha_choix) 
-        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", msg);
+        afficher_dialogue_combat(  mecha_att, mecha_def, "Systeme", msg);
     else 
-        afficher_dialogue_combat(game, mecha_def, mecha_att, "Systeme", msg);
+        afficher_dialogue_combat(  mecha_def, mecha_att, "Systeme", msg);
 
     if(nbr_rand <= precision[choix]){  //Test si l'attaque touche (precision)
         
@@ -593,7 +593,7 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         
     }
     else {
-        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "L'attaque echoue.");
+        afficher_dialogue_combat(  mecha_att, mecha_def, "Systeme", "L'attaque echoue.");
     }
     return OK;
 }
@@ -737,7 +737,7 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
     if(!utilisation[numero_attaque]){
         numero_attaque = 1 - numero_attaque;
         if(!utilisation[numero_attaque]) {
-            afficher_dialogue_combat(game, mecha_joueur, mecha_ordi, "Systeme", "Le mecha sauvage ne peut plus attaquer.");            
+            afficher_dialogue_combat(  mecha_joueur, mecha_ordi, "Systeme", "Le mecha sauvage ne peut plus attaquer.");            
             return 0;
         }
         algo_attaque(numero_attaque, mecha_ordi, mecha_joueur, 0);
@@ -801,11 +801,11 @@ int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
     int choix ;
     choix = aff_mechas_combat(joueur);
     if (joueur->mechas_joueur[choix].pv == 0) {
-        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est mort."); 
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est mort."); 
         return KO;
     }
     if(choix == *actif) {
-        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est déjà actif.");
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est déjà actif.");
         return KO;
     }
     if(choix == 4) return RETOUR;
@@ -1096,9 +1096,9 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
             }
         }
     }while(verif && mecha_sauvage->pv > 0 && res == OK);
-    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez perdu !");
-    else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0)afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez gagne !");
-    else if(res == FUITE)afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous prennez la fuite!");
+    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez perdu !");
+    else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0)afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez gagne !");
+    else if(res == FUITE)afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous prennez la fuite!");
     
     game.mat_active = save_map_active;
 }

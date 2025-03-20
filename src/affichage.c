@@ -875,11 +875,11 @@ void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * 
         displayedText[textIndex + 1] = '\0';
         strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
         SDL_RenderClear( game.renderer);
-        draw_combat(game, mecha_joueur, mecha_ordi);
-        draw_rect(game, &fondDialogue, draw_text_center);
-        draw_rect(game, &pseudoRect, draw_text_center);
-        draw_rect(game, &textRect, draw_text_left_middle);
-        draw_rect(game, &infoRect, draw_text_center);
+        draw_combat(mecha_joueur, mecha_ordi);
+        draw_rect(&fondDialogue, draw_text_center);
+        draw_rect(&pseudoRect, draw_text_center);
+        draw_rect(&textRect, draw_text_left_middle);
+        draw_rect(&infoRect, draw_text_center);
         SDL_RenderPresent( game.renderer);
         
         int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
