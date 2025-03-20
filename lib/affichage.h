@@ -14,7 +14,11 @@
 
 //FONCTION BACKGROUND
 int init_background(game_t * game);     //initalise la background
+int init_calque(game_t * game) ;
+
 void draw_background(game_t * game);    //dessine le background
+void draw_calque(game_t * game) ;
+
 
 //FONCTION MAT
 int init_mat(game_t *game, int taille_x, int taille_y);               //initialise la matrice
@@ -32,10 +36,11 @@ void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t * pnj, 
 void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
 void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH);
 //w : largeur, h, hauteur, x, coord x, y : coord y, "r,g,b" :  systeme de couleur, a : oppacité
-void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[50]); //creer un rectangle avec du texte
-void draw_text(game_t *game, rectangle_t* rectangle);
+void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[500]); //creer un rectangle avec du texte
+void draw_text_left_middle(game_t *game, rectangle_t* rectangle);
+void draw_text_center(game_t *game, rectangle_t* rectangle);
+void draw_rect(game_t *game, rectangle_t *rectangle,void (*draw_func)(game_t *, rectangle_t *));
 void draw_text_pos(game_t  *game, char *text, int x, int y);
-void draw_rect(game_t *game, rectangle_t *rectangle);
 void draw_all_rect(game_t *game, int n, ...);
 
 #endif
