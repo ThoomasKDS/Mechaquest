@@ -95,7 +95,7 @@ void draw_combat(game_t * game, mechas_joueur_t * mecha_joueur, mechas_joueur_t 
     creer_rectangle(&border_pv_joueur, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_joueur - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     creer_rectangle(&border_pv_ordi, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_ordi - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     draw_background(game);
-    draw_all_rect(game, 11, rect_bas,&rect_bordure_joueur,&rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
+    draw_all_rect(game, 11,&rect_bas, &rect_bordure_joueur, &rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
     draw_text_pos(game, texte_joueur, x_pv_joueur, y);
     draw_text_pos(game, texte_ordi, x_pv_ordi, y);
     
@@ -263,7 +263,7 @@ int aff_mechas_combat(game_t * game, joueur_t * joueur) {
         }
         SDL_RenderClear(game->renderer);
         draw_background(game);
-        draw_all_rect(game, 10,rect_bodure1, rect_bordure2, rect_bordure3, rect_bordure4, rect_bordure_retour, rect1, rect2, rect3, rect4, rect_retour);
+        draw_all_rect(game, 10, &rect_bodure1, &rect_bordure2, &rect_bordure3, &rect_bordure4, &rect_bordure_retour, &rect1, &rect2, &rect3, &rect4, &rect_retour);
     
         
         SDL_RenderPresent(game->renderer);
@@ -1013,6 +1013,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
                 border_mecha.couleur = couleur_bordure_mecha; break;
         }
         
+       
         SDL_RenderClear(game->renderer);
         draw_combat(game, &(joueur->mechas_joueur[*actif]), mecha_sauvage);
         draw_all_rect(game, 6, &border_attaque, &border_objet, &border_mecha, &rect_attaque, &rect_objet, &rect_changer_mecha, &rect_fuite);
@@ -1038,8 +1039,8 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
     init_rect_bas(&rect_bas, game);
     game->mat_active = 6;
     int actif = 0;
-    int res;
-    int verif = 0;
+    int res = OK;
+    int verif;
     int existe[4] = {0,0,0,0};
     for(int i = 0; i < 4; i++) {
         if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
@@ -1053,7 +1054,7 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
             if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
                 res = tour_joueur(joueur, mecha_sauvage, game, &actif);
                 
-                if(mecha_sauvage->pv != 0 && res == OK) 
+                if(mecha_sauvage->pv != 0 && res == OK)
                     attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]), game);
             }
             else {
