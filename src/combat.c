@@ -1038,8 +1038,8 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
     init_rect_bas();
     game.mat_active = 6;
     int actif = 0;
-    int res;
-    int verif = 0;
+    int res = OK;
+    int verif;
     int existe[4] = {0,0,0,0};
     for(int i = 0; i < 4; i++) {
         if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
