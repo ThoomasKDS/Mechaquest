@@ -535,7 +535,8 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
         //AFFICHAGE
         //SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
-        draw_background(game);        
+        draw_background(game);      
+        draw_calque(game);  
         draw_all_rect(game, 3, &btn_reprendre, &btn_parametres, &btn_accueil);
         SDL_RenderPresent(game->renderer);
         

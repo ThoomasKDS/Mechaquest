@@ -78,7 +78,7 @@ int init_calque(game_t * game) {
     char ext[5] = ".png";
     char chemin[30] = "img/calque/calque";
 
-    for(int i = 0; i < 2; i++) {
+    for(int i = 0; i < 6; i++) {
         chemin[17] = '0' + (i + 1);
         chemin[18] = '\0';
         strcat(chemin, ext);
