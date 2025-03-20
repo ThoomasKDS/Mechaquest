@@ -43,4 +43,7 @@ void draw_rect(game_t *game, rectangle_t *rectangle,void (*draw_func)(game_t *, 
 void draw_text_pos(game_t  *game, char *text, int x, int y);
 void draw_all_rect(game_t *game, int n, ...);
 
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix);
+
+
 #endif
