@@ -8,7 +8,7 @@
 /*=================================================*/
 
 //initalise la background
-int init_background(game_t * game) {
+int init_background() {
 
     char ext[5] = ".png";
     char chemin[30] = "img/background/fond";
@@ -28,9 +28,9 @@ int init_background(game_t * game) {
         }
 
         // Convertir la fond en texture
-        game->backgroundTexture[i] = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
+        game.backgroundTexture[i] = SDL_CreateTextureFromSurface(game.renderer, imageSurface);
         SDL_FreeSurface(imageSurface);
-        if (!game->backgroundTexture[i]) {
+        if (!game.backgroundTexture[i]) {
             printf("Erreur de création de la texture : %s\n", SDL_GetError());
             return 0;
         }
@@ -40,40 +40,40 @@ int init_background(game_t * game) {
     //ici
     //chaque fond etant de meme dimension on ne prend que le premier
 
-    SDL_GetRendererOutputSize(game->renderer, &game->dms_win.w, &game->dms_win.h);       //dimensions ecran
+    SDL_GetRendererOutputSize(game.renderer, &game.dms_win.w, &game.dms_win.h);       //dimensions ecran
 
-    SDL_QueryTexture(game->backgroundTexture[0], NULL, NULL, &game->img_w, &game->img_h);       //dimensions img
+    SDL_QueryTexture(game.backgroundTexture[0], NULL, NULL, &game.img_w, &game.img_h);       //dimensions img
 
-    float img_ratio = (float)game->img_w / (float)game->img_h;
-    float win_ratio = (float)game->dms_win.w / (float)game->dms_win.h;
+    float img_ratio = (float)game.img_w / (float)game.img_h;
+    float win_ratio = (float)game.dms_win.w / (float)game.dms_win.h;
 
     if (win_ratio > img_ratio) {
         // L'écran est plus large que l'image
-        int new_w = game->dms_win.h * img_ratio;
-        game->dms_win.x = (game->dms_win.w - new_w) / 2; // centrage horizontal
-        game->dms_win.w = new_w;
-        game->dms_win.y = 0;
+        int new_w = game.dms_win.h * img_ratio;
+        game.dms_win.x = (game.dms_win.w - new_w) / 2; // centrage horizontal
+        game.dms_win.w = new_w;
+        game.dms_win.y = 0;
     } else {
         // L'écran est plus haut que l'image
-        int new_h = game->dms_win.w / img_ratio;
-        game->dms_win.y = (game->dms_win.h - new_h) / 2; // centrage vertical
-        game->dms_win.h = new_h;
-        game->dms_win.x = 0;
+        int new_h = game.dms_win.w / img_ratio;
+        game.dms_win.y = (game.dms_win.h - new_h) / 2; // centrage vertical
+        game.dms_win.h = new_h;
+        game.dms_win.x = 0;
     }
     //a ici
 
     //calcule l'echelle pour dessiner les futurs objets
-    float scale_x = (float)game->dms_win.w/game->img_w; 
-    float scale_y = (float)game->dms_win.h/game->img_h;
+    float scale_x = (float)game.dms_win.w/game.img_w; 
+    float scale_y = (float)game.dms_win.h/game.img_h;
 
-    game->scale = (scale_x < scale_y) ? scale_x : scale_y; //prend l'echelle la plus petite
+    game.scale = (scale_x < scale_y) ? scale_x : scale_y; //prend l'echelle la plus petite
     
 
 
     return 1;
 }
 
-int init_calque(game_t * game) {
+int init_calque() {
 
     char ext[5] = ".png";
     char chemin[30] = "img/calque/calque";
@@ -93,9 +93,9 @@ int init_calque(game_t * game) {
         }
 
         // Convertir la fond en texture
-        game->calqueTexture[i] = SDL_CreateTextureFromSurface(game->renderer, imageSurface);
+        game.calqueTexture[i] = SDL_CreateTextureFromSurface(game.renderer, imageSurface);
         SDL_FreeSurface(imageSurface);
-        if (!game->calqueTexture[i]) {
+        if (!game.calqueTexture[i]) {
             printf("Erreur de création de la texture : %s\n", SDL_GetError());
             return 0;
         }
@@ -104,12 +104,12 @@ int init_calque(game_t * game) {
 }
 
 //dessine le background
-void draw_background(game_t * game) {
-    SDL_RenderCopy(game->renderer,game->backgroundTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
+void draw_background() {
+    SDL_RenderCopy(game.renderer,game.backgroundTexture[game.mat_active] , NULL, &game.dms_win);                 // Dessiner le background
 }
 
-void draw_calque(game_t * game) {
-    SDL_RenderCopy(game->renderer,game->calqueTexture[game->mat_active] , NULL, &game->dms_win);                 // Dessiner le background
+void draw_calque() {
+    SDL_RenderCopy(game.renderer,game.calqueTexture[game.mat_active] , NULL, &game.dms_win);                 // Dessiner le background
 }
 
 /*=================================================*/
@@ -123,43 +123,43 @@ void draw_calque(game_t * game) {
 /*=================================================*/
 
 //initialise la matrice
-int init_mat(game_t *game, int taille_x, int taille_y) {
-    game->mat = malloc(6 * sizeof(int **));
-    if (game->mat == NULL) {
+int init_mat(int taille_x, int taille_y) {
+    game.mat = malloc(6 * sizeof(int **));
+    if (game.mat == NULL) {
         printf("Échec de l'allocation mémoire principale\n");
         return 0;
     }
 
     for (int i = 0; i < 6; i++) {
-        game->mat[i] = malloc(taille_y * sizeof(int *));
-        if (game->mat[i] == NULL) {
+        game.mat[i] = malloc(taille_y * sizeof(int *));
+        if (game.mat[i] == NULL) {
             printf("Échec de l'allocation mémoire (1) pour mat[%d]\n", i);
             // Libération de la mémoire déjà allouée
             for (int k = 0; k < i; k++) {
-                free(game->mat[k]);
+                free(game.mat[k]);
             }
-            free(game->mat);
+            free(game.mat);
             return 0;
         }
 
         for (int j = 0; j < taille_y; j++) {
-            game->mat[i][j] = malloc(taille_x * sizeof(int));
-            if (game->mat[i][j] == NULL) {
+            game.mat[i][j] = malloc(taille_x * sizeof(int));
+            if (game.mat[i][j] == NULL) {
                 printf("Échec de l'allocation mémoire (2) pour mat[%d][%d]\n", i, j);
                 // Libération de la mémoire déjà allouée dans mat[i]
                 for (int h = 0; h < j; h++) {
-                    free(game->mat[i][h]);
+                    free(game.mat[i][h]);
                 }
-                free(game->mat[i]);
+                free(game.mat[i]);
 
                 // Libération des matrices précédentes
                 for (int k = 0; k < i; k++) {
                     for (int l = 0; l < taille_y; l++) {
-                        free(game->mat[k][l]);
+                        free(game.mat[k][l]);
                     }
-                    free(game->mat[k]);
+                    free(game.mat[k]);
                 }
-                free(game->mat);
+                free(game.mat);
                 return 0;
             }
         }
@@ -170,7 +170,7 @@ int init_mat(game_t *game, int taille_x, int taille_y) {
 
 
 //rempli les matrices avec les txt
-int remplir_mat(game_t * game, int taille_x, int taille_y) {
+int remplir_mat(int taille_x, int taille_y) {
     char chemin[100] = "save/map";
     char ext[5] = ".txt";
     for(int i = 0; i < 6; i++) {
@@ -186,7 +186,7 @@ int remplir_mat(game_t * game, int taille_x, int taille_y) {
         for(int j = 0; j < taille_y; j++) {
             for(int h = 0; h < taille_x; h++) {
                 fscanf(file, "%d", &n);
-                game->mat[i][j][h] = n;
+                game.mat[i][j][h] = n;
             }
             
         }
@@ -198,10 +198,10 @@ int remplir_mat(game_t * game, int taille_x, int taille_y) {
 }
 
 //affiche la matrice dans le terminal
-void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
+void aff_mat(int taille_x, int taille_y, int n_mat)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
-            printf("%d ", game->mat[n_mat][i][j]);
+            printf("%d ", game.mat[n_mat][i][j]);
         }
         printf("\n"); 
     }
@@ -211,14 +211,14 @@ void aff_mat(game_t * game, int taille_x, int taille_y, int n_mat)  {
 }
 
 //libere la matrice
-void free_mat(game_t *game, int taille_x, int taille_y) {
+void free_mat(int taille_x, int taille_y) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < taille_y; j++) {
-            free(game->mat[i][j]);
+            free(game.mat[i][j]);
         }
-        free(game->mat[i]);
+        free(game.mat[i]);
     }
-    free(game->mat);
+    free(game.mat);
 }
 /*=================================================*/
 
@@ -228,7 +228,7 @@ void free_mat(game_t *game, int taille_x, int taille_y) {
 //FONCTION GESTION OBJET
 /*=================================================*/
 //initialise le joueur 
-int init_player(game_t * game, img_player_t * sprite_player,char sexe) {
+int init_player(char sexe) {
     char c;
     char img_bas[40];
     char img_haut[40];
@@ -288,32 +288,32 @@ int init_player(game_t * game, img_player_t * sprite_player,char sexe) {
             // Convertir l'image en texture en fonction de sa direction
             switch(h) {
                 case 0 :
-                    sprite_player->bas[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
-                    if (!sprite_player->bas[i-1]) {
+                    game.sprite_joueur.bas[i-1] = SDL_CreateTextureFromSurface(game.renderer, imageSprite[j]);
+                    if (!game.sprite_joueur.bas[i-1]) {
                         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
                         SDL_Quit();
                         return 0;
                     }
                     break;
                 case 1 :
-                    sprite_player->haut[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
-                    if (!sprite_player->haut[i-1]) {
+                    game.sprite_joueur.haut[i-1] = SDL_CreateTextureFromSurface(game.renderer, imageSprite[j]);
+                    if (!game.sprite_joueur.haut[i-1]) {
                         printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
                         SDL_Quit();
                         return 0;
                     }
                     break;
                 case 2 :
-                    sprite_player->gauche[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
-                    if (!sprite_player->gauche[i-1]) {
+                    game.sprite_joueur.gauche[i-1] = SDL_CreateTextureFromSurface(game.renderer, imageSprite[j]);
+                    if (!game.sprite_joueur.gauche[i-1]) {
                         printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
                         SDL_Quit();
                         return 0;
                     }
                     break;
                 case 3 :
-                    sprite_player->droite[i-1] = SDL_CreateTextureFromSurface(game->renderer, imageSprite[j]);
-                    if (!sprite_player->droite[i-1]) {
+                    game.sprite_joueur.droite[i-1] = SDL_CreateTextureFromSurface(game.renderer, imageSprite[j]);
+                    if (!game.sprite_joueur.droite[i-1]) {
                         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
                         SDL_Quit();
                         return 0;
@@ -326,7 +326,7 @@ int init_player(game_t * game, img_player_t * sprite_player,char sexe) {
     return 1;
 }
 
-int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
+int init_pnj() {
     char img_haut[40] = "img/skin/skin_pnj/pnj_1.png";
     char img_droite[40] = "img/skin/skin_pnj/pnj_2.png";
     char img_bas[40] = "img/skin/skin_pnj/pnj_3.png";
@@ -351,44 +351,44 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
             return 0;
         }
     }
-    sprite_pnj->haut = SDL_CreateTextureFromSurface(game->renderer, imageSprite[0]);
-    if (!sprite_pnj->haut) {
+    game.sprite_pnj.haut = SDL_CreateTextureFromSurface(game.renderer, imageSprite[0]);
+    if (!game.sprite_pnj.haut) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->droite = SDL_CreateTextureFromSurface(game->renderer, imageSprite[1]);
-    if (!sprite_pnj->droite) {
+    game.sprite_pnj.droite = SDL_CreateTextureFromSurface(game.renderer, imageSprite[1]);
+    if (!game.sprite_pnj.droite) {
         printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->bas = SDL_CreateTextureFromSurface(game->renderer, imageSprite[2]);
-    if (!sprite_pnj->bas) {
+    game.sprite_pnj.bas = SDL_CreateTextureFromSurface(game.renderer, imageSprite[2]);
+    if (!game.sprite_pnj.bas) {
         printf("Erreur de création de la texture dans init player: %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->gauche = SDL_CreateTextureFromSurface(game->renderer, imageSprite[3]);
-    if (!sprite_pnj->gauche) {
+    game.sprite_pnj.gauche = SDL_CreateTextureFromSurface(game.renderer, imageSprite[3]);
+    if (!game.sprite_pnj.gauche) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->vin_gazole = SDL_CreateTextureFromSurface(game->renderer, imageSprite[4]);
-    if (!sprite_pnj->vin_gazole) {
+    game.sprite_pnj.vin_gazole = SDL_CreateTextureFromSurface(game.renderer, imageSprite[4]);
+    if (!game.sprite_pnj.vin_gazole) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->iron_musk_bas = SDL_CreateTextureFromSurface(game->renderer, imageSprite[5]);
-    if (!sprite_pnj->iron_musk_bas) {
+    game.sprite_pnj.iron_musk_bas = SDL_CreateTextureFromSurface(game.renderer, imageSprite[5]);
+    if (!game.sprite_pnj.iron_musk_bas) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
-    sprite_pnj->iron_musk_droite = SDL_CreateTextureFromSurface(game->renderer, imageSprite[6]);
-    if (!sprite_pnj->iron_musk_droite) {
+    game.sprite_pnj.iron_musk_droite = SDL_CreateTextureFromSurface(game.renderer, imageSprite[6]);
+    if (!game.sprite_pnj.iron_musk_droite) {
         printf("Erreur de création de la texture dans init player : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
@@ -403,7 +403,7 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     return 1;
 }
 
-int init_mecha(game_t *game, mechas_t *mecha) {
+int init_mecha() {
     char img[40] = "img/mechas/mecha_";
     char ext[5] = ".png";
     SDL_Surface * imageSprite[NB_MECHAS];
@@ -419,7 +419,7 @@ int init_mecha(game_t *game, mechas_t *mecha) {
         }
     }
     for(int i = 0; i < NB_MECHAS; i++) {
-        mecha[i].texture = SDL_CreateTextureFromSurface(game->renderer, imageSprite[i]);
+        mecha[i].texture = SDL_CreateTextureFromSurface(game.renderer, imageSprite[i]);
         if (!mecha[i].texture) {
             printf("Erreur de création de la texture dans init mecha : %s\n", SDL_GetError());
             SDL_Quit();
@@ -431,128 +431,128 @@ int init_mecha(game_t *game, mechas_t *mecha) {
 }
 
 //creé un objet
-SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
+SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
     if(type_obj == JOUEUR || type_obj == PNJ) {
-        game->mat[n_mat][(y+24)/PX][x/PX] = type_obj;
+        game.mat[n_mat][(y+24)/PX][x/PX] = type_obj;
     }
     else {
-        game->mat[n_mat][y/PX][x/PX] = type_obj;
+        game.mat[n_mat][y/PX][x/PX] = type_obj;
     }
     SDL_Rect obj;
     
-    obj.w = taille_w * game->scale;
-    obj.h = taille_h * game->scale;
+    obj.w = taille_w * game.scale;
+    obj.h = taille_h * game.scale;
     
-    obj.x = game->dms_win.x + (x * game->scale);
-    obj.y = game->dms_win.y + (y * game->scale);
+    obj.x = game.dms_win.x + (x * game.scale);
+    obj.y = game.dms_win.y + (y * game.scale);
 
     return obj;
 }
 
 //dessine le joueur
-void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j) {
+void draw_player(SDL_Rect *obj, joueur_t * j) {
     int n_img = j->moving/4;
     
     if(j->move_dx<0) {
-        SDL_RenderCopy(game->renderer, sprite_playerH->gauche[n_img], NULL, obj);
+        SDL_RenderCopy(game.renderer, game.sprite_joueur.gauche[n_img], NULL, obj);
     }
     else if(j->move_dx>0){
-        SDL_RenderCopy(game->renderer, sprite_playerH->droite[n_img], NULL, obj);
+        SDL_RenderCopy(game.renderer, game.sprite_joueur.droite[n_img], NULL, obj);
     }
     else if(j->move_dy>0){
-        SDL_RenderCopy(game->renderer, sprite_playerH->bas[n_img], NULL, obj);
+        SDL_RenderCopy(game.renderer, game.sprite_joueur.bas[n_img], NULL, obj);
     }
     else if(j->move_dy<0){
-        SDL_RenderCopy(game->renderer, sprite_playerH->haut[n_img], NULL, obj);
+        SDL_RenderCopy(game.renderer, game.sprite_joueur.haut[n_img], NULL, obj);
     }
     else {
         
         switch(j->derniere_touche){
             case 1 :
-                SDL_RenderCopy(game->renderer, sprite_playerH->gauche[0], NULL, obj);
+                SDL_RenderCopy(game.renderer, game.sprite_joueur.gauche[0], NULL, obj);
                 break;
             case 2 : 
-                SDL_RenderCopy(game->renderer, sprite_playerH->droite[0], NULL, obj);
+                SDL_RenderCopy(game.renderer, game.sprite_joueur.droite[0], NULL, obj);
                 break;
             case 3 :
-                SDL_RenderCopy(game->renderer, sprite_playerH->haut[0], NULL, obj);
+                SDL_RenderCopy(game.renderer,game.sprite_joueur.haut[0], NULL, obj);
                 break;
             case 4 :
-                SDL_RenderCopy(game->renderer, sprite_playerH->bas[0], NULL, obj);
+                SDL_RenderCopy(game.renderer, game.sprite_joueur.bas[0], NULL, obj);
                 break;
         }
     }
     
 }
-void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj,img_player_t * sprite_playerH){
-    draw_background(game);      
-    if(game->mat[game->mat_active][j->y+1][j->x] == BARRIERE || game->mat[game->mat_active][j->y+1][j->x] == BAT){
-        if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
-            draw_calque(game);
+void draw_all(joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite){
+    draw_background();      
+    if(game.mat[game.mat_active][j->y+1][j->x] == BARRIERE || game.mat[game.mat_active][j->y+1][j->x] == BAT){
+        if(game.mat[game.mat_active][j->y-1][j->x] == PNJ){
+            draw_calque();
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
                 }
             }
-        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        draw_player(sprite_p, j);           //dessine le joueur
         }
         else{
             
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
-            draw_calque(game);
+            draw_player(sprite_p, j);           //dessine le joueur
+            draw_calque();
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
                 }
             }
         }         
     }
     else{
-        if(game->mat[game->mat_active][j->y-1][j->x] == PNJ){
-            draw_calque(game);
+        if(game.mat[game.mat_active][j->y-1][j->x] == PNJ){
+            draw_calque();
             for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
                 }
             }
-            draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+            draw_player(sprite_p, j);           //dessine le joueur
         }
         else{
             
-        draw_calque(game);
-        draw_player(game, sprite_p, sprite_playerH, j);           //dessine le joueur
+        draw_calque();
+        draw_player(sprite_p, j);           //dessine le joueur
         for(int i = 0; i < 24;i++){
                 if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(game,&pnj_sprite[i],sprite_pnj,&pnj[i],j);
+                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
                 }
             }
         } 
     }
 }
 
-void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj, joueur_t *j) { 
+void draw_pnj(SDL_Rect *obj, pnj_t *pnj, joueur_t *j) { 
     if(!strcmp(pnj->pseudo,"Vin Gazole"))
-        SDL_RenderCopy(game->renderer,sprite_pnj->vin_gazole , NULL, obj);
+        SDL_RenderCopy(game.renderer,game.sprite_pnj.vin_gazole , NULL, obj);
 
     else if(pnj->id_pnj == 20 && j->pointSauvegarde <= 1)
-        SDL_RenderCopy(game->renderer,sprite_pnj->iron_musk_droite , NULL, obj);
+        SDL_RenderCopy(game.renderer,game.sprite_pnj.iron_musk_droite , NULL, obj);
 
     else if(pnj->id_pnj == 23)
-        SDL_RenderCopy(game->renderer,sprite_pnj->iron_musk_bas , NULL, obj);
+        SDL_RenderCopy(game.renderer,game.sprite_pnj.iron_musk_bas , NULL, obj);
 
     else if(pnj->id_pnj != 20){
         switch(pnj->orientation){
         case 1 :
-            SDL_RenderCopy(game->renderer, sprite_pnj->haut, NULL, obj);
+            SDL_RenderCopy(game.renderer, game.sprite_pnj.haut, NULL, obj);
             break;
         case 2 : 
-            SDL_RenderCopy(game->renderer, sprite_pnj->droite, NULL, obj);
+            SDL_RenderCopy(game.renderer, game.sprite_pnj.droite, NULL, obj);
             break;
         case 3 :
-            SDL_RenderCopy(game->renderer, sprite_pnj->bas, NULL, obj);
+            SDL_RenderCopy(game.renderer, game.sprite_pnj.bas, NULL, obj);
             break;
         case 4 :
-            SDL_RenderCopy(game->renderer, sprite_pnj->gauche, NULL, obj);
+            SDL_RenderCopy(game.renderer, game.sprite_pnj.gauche, NULL, obj);
             break;
         } 
     }
@@ -560,8 +560,8 @@ void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t *pnj, j
 }
 
 //dessine un objet 
-void draw_obj(game_t *game, SDL_Rect *obj, SDL_Texture * img ) {
-    SDL_RenderCopy(game->renderer, img, NULL, obj);
+void draw_obj(SDL_Rect *obj, SDL_Texture * img ) {
+    SDL_RenderCopy(game.renderer, img, NULL, obj);
 }
 
 //creer un rectangle avec du texte
@@ -582,21 +582,21 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
  
 }
 
-void draw_text_left_middle(game_t *game, rectangle_t* rectangle) {
+void draw_text_left_middle(rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
-    if (!game->police) {
+    if (!game.police) {
         printf("Erreur : Police non chargée\n");
         return;
     }
 
     SDL_Color textColor = {0, 0, 0, 255}; 
-    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
+    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game.police, rectangle->text, textColor,1500);
     if (!surface) {
         printf("Erreur SDL_ttf : %s\n", TTF_GetError());
         return;
     }
 
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(game.renderer, surface);
     if (!texture) {
         printf("Erreur SDL : %s\n", SDL_GetError());
         SDL_FreeSurface(surface);
@@ -615,15 +615,15 @@ void draw_text_left_middle(game_t *game, rectangle_t* rectangle) {
     };
     
 
-    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+    SDL_RenderCopy(game.renderer, texture, NULL, &textRect);
     SDL_DestroyTexture(texture);
 }
 
-void draw_text_center(game_t *game, rectangle_t* rectangle) {
+void draw_text_center(rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') {
         return; // Vérifier si le texte est valide
     } 
-    if (!game->police) {
+    if (!game.police) {
         printf("Erreur : Police non chargée\n");
         return;
     }
@@ -653,12 +653,12 @@ void draw_text_center(game_t *game, rectangle_t* rectangle) {
         ligne[i] = '\0'; // Terminer la ligne
 
         // Créer la texture pour la ligne actuelle
-        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
+        surface = TTF_RenderText_Solid(game.police, ligne, textColor);
         if (!surface) {
             printf("Erreur SDL_ttf : %s\n", TTF_GetError());
             return;
         }
-        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+        texture = SDL_CreateTextureFromSurface(game.renderer, surface);
 
         int text_width = surface->w;
         int text_height = surface->h;
@@ -670,7 +670,7 @@ void draw_text_center(game_t *game, rectangle_t* rectangle) {
         textRect.h = text_height;
 
         // Afficher le texte
-        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+        SDL_RenderCopy(game.renderer, texture, NULL, &textRect);
 
         SDL_FreeSurface(surface);
         SDL_DestroyTexture(texture);
@@ -683,8 +683,8 @@ void draw_text_center(game_t *game, rectangle_t* rectangle) {
 }
 
 
-void draw_text_pos(game_t  *game, char *text, int x, int y) {
-    if (!game->police) {
+void draw_text_pos(char *text, int x, int y) {
+    if (!game.police) {
         printf("Erreur : Police non chargée\n");
         return;
     }
@@ -714,12 +714,12 @@ void draw_text_pos(game_t  *game, char *text, int x, int y) {
         ligne[i] = '\0'; // Terminer la ligne
 
         // Créer la texture pour la ligne actuelle
-        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
+        surface = TTF_RenderText_Solid(game.police, ligne, textColor);
         if (!surface) {
             printf("Erreur SDL_ttf : %s\n", TTF_GetError());
             return;
         }
-        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+        texture = SDL_CreateTextureFromSurface(game.renderer, surface);
 
         int text_width = surface->w;
         int text_height = surface->h;
@@ -731,7 +731,7 @@ void draw_text_pos(game_t  *game, char *text, int x, int y) {
         textRect.h = text_height;
 
         // Afficher le texte
-        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+        SDL_RenderCopy(game.renderer, texture, NULL, &textRect);
 
         SDL_FreeSurface(surface);
         SDL_DestroyTexture(texture);
@@ -745,33 +745,33 @@ void draw_text_pos(game_t  *game, char *text, int x, int y) {
 
 
 //dessine un rectangle
-void draw_rect(game_t *game, rectangle_t *rectangle,void (*draw_func)(game_t *, rectangle_t *)) {
-        SDL_SetRenderDrawBlendMode(game->renderer, SDL_BLENDMODE_BLEND);
-        SDL_SetRenderDrawColor(game->renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
-        SDL_RenderFillRect(game->renderer, &rectangle->rect);
+void draw_rect(rectangle_t *rectangle,void (*draw_func)(rectangle_t *)) {
+        SDL_SetRenderDrawBlendMode(game.renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(game.renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
+        SDL_RenderFillRect(game.renderer, &rectangle->rect);
         // Dessiner le texte
-        if(rectangle->text[0] != '\0') draw_func(game, rectangle);
-        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
+        if(rectangle->text[0] != '\0') draw_func(rectangle);
+        SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
 
 }
 
 
-void draw_all_rect(game_t *game, int n, ...) {
+void draw_all_rect(int n, ...) {
     va_list args;
     va_start(args, n);
     for (int i = 0; i < n; i++) {
         rectangle_t *rect = va_arg(args, rectangle_t *);
-        draw_rect(game, rect,draw_text_center);
+        draw_rect(rect,draw_text_center);
     }  
     va_end(args);
 
 }
 
-int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t *sprite_pnj, img_player_t *sprite_playerH, char *pseudo, char *dialogue, int choix) {
-    if (!game || !pseudo || !dialogue) return ERR;
+int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue, int choix) {
+    if (!pseudo || !dialogue) return ERR;
     
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     
     int dialogueWidth = largeurEcran * 3 / 4;
     int dialogueHeight = hauteurEcran / 4;
@@ -803,13 +803,13 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
         displayedText[textIndex] = dialogue[index];
         displayedText[textIndex + 1] = '\0';
         strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
-        SDL_RenderClear(game->renderer);
-        draw_all(game, j, sprite_p, pnj_sprite, sprite_pnj, sprite_playerH);
-        draw_rect(game, &fondDialogue, draw_text_center);
-        draw_rect(game, &pseudoRect, draw_text_center);
-        draw_rect(game, &textRect, draw_text_left_middle);
-        draw_rect(game, &infoRect, draw_text_center);
-        SDL_RenderPresent(game->renderer);
+        SDL_RenderClear(game.renderer);
+        draw_all(j, sprite_p, pnj_sprite);
+        draw_rect( &fondDialogue, draw_text_center);
+        draw_rect(&pseudoRect, draw_text_center);
+        draw_rect(&textRect, draw_text_left_middle);
+        draw_rect(&infoRect, draw_text_center);
+        SDL_RenderPresent(game.renderer);
         
         int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
         waitingForKey = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
@@ -844,9 +844,9 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
     return choix ? choix : OK;
 }
 
-int afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
+/*int afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
     
-}
+}*/
 /*=================================================*/
 
 

@@ -10,7 +10,7 @@
 //Initialisation de sdl mixer
 //Initialisation de sdl image
 
-int init_game(game_t* game) {
+int init_game() {
     srand(time(NULL)); //initialise de la lib rand
     
     SDL_Rect display_bounds; //struture contenant dimensions de l'ecran
@@ -56,7 +56,7 @@ int init_game(game_t* game) {
     }
 
     // Création de la fenêtre
-    game->window = SDL_CreateWindow(
+    game.window = SDL_CreateWindow(
             "Mechaquest",
             display_bounds.x,
             display_bounds.y,
@@ -64,31 +64,31 @@ int init_game(game_t* game) {
             H,
             SDL_WINDOW_SHOWN
     );
-    if (!game->window) {
+    if (!game.window) {
         printf("Erreur de création de la fenêtre : %s\n", SDL_GetError());
         SDL_Quit();
         return 0;
     }
 
-    if (SDL_SetWindowFullscreen(game->window, SDL_WINDOW_FULLSCREEN_DESKTOP) != 0) {     //pleine ecran
+    if (SDL_SetWindowFullscreen(game.window, SDL_WINDOW_FULLSCREEN_DESKTOP) != 0) {     //pleine ecran
         printf("Erreur lors du passage en plein écran : %s\n", SDL_GetError());
     }
 
     // Création du renderer
-    game->renderer = SDL_CreateRenderer(game->window, -1, SDL_RENDERER_ACCELERATED);
-    if (!game->renderer) {
+    game.renderer = SDL_CreateRenderer(game.window, -1, SDL_RENDERER_ACCELERATED);
+    if (!game.renderer) {
         printf("Erreur de création du renderer : %s\n", SDL_GetError());
-        SDL_DestroyWindow(game->window);
+        SDL_DestroyWindow(game.window);
         SDL_Quit();
         return 0;
     }
 
     // Création de la police
-    game->police = TTF_OpenFont("img/police_temporaire.ttf", 19);
-    if (!game->police) {
+    game.police = TTF_OpenFont("img/police_temporaire.ttf", 19);
+    if (!game.police) {
         printf("Erreur de chargement de la police: %s\n", TTF_GetError());
-        SDL_DestroyRenderer(game->renderer);
-        SDL_DestroyWindow(game->window);
+        SDL_DestroyRenderer(game.renderer);
+        SDL_DestroyWindow(game.window);
         TTF_Quit();
         SDL_Quit();
         return 0;
@@ -103,16 +103,16 @@ int init_game(game_t* game) {
 
 
 // Libération des ressources et fermeture SDL
-void cleanUp(game_t* game) {
+void cleanUp() {
     for(int i = 0; i < 8; i++) {
-        SDL_DestroyTexture(game->backgroundTexture[i]);
+        SDL_DestroyTexture(game.backgroundTexture[i]);
     }
     for(int i = 0; i < 6; i++) {
-        SDL_DestroyTexture(game->calqueTexture[i]);
+        SDL_DestroyTexture(game.calqueTexture[i]);
     }
-    SDL_DestroyRenderer(game->renderer);
-    SDL_DestroyWindow(game->window);
-    TTF_CloseFont(game->police);
+    SDL_DestroyRenderer(game.renderer);
+    SDL_DestroyWindow(game.window);
+    TTF_CloseFont(game.police);
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();

@@ -98,19 +98,7 @@ extern const int FRAME_DELAY;
 
 //*********STRUCTURES********//
 // Structure qui contient les initialisation de rendu du jeu 
-typedef struct {
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    SDL_Texture* backgroundTexture[8];
-    SDL_Texture* calqueTexture[6];
-    TTF_Font* police;
-    int *** mat ;
-    float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
-    SDL_Rect dms_win;
-    int img_w;
-    int img_h;
-    int mat_active;
-} game_t;
+
 
 //Structure qui contient les images animés du joueur
 typedef struct{
@@ -130,6 +118,21 @@ typedef struct{
     SDL_Texture * iron_musk_droite;
 }img_pnj_t;
 
+typedef struct {
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    SDL_Texture* backgroundTexture[8];
+    SDL_Texture* calqueTexture[6];
+    img_player_t sprite_joueur;
+    img_pnj_t sprite_pnj;
+    TTF_Font* police;
+    int *** mat ;
+    float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
+    SDL_Rect dms_win;
+    int img_w;
+    int img_h;
+    int mat_active;
+} game_t;
 
 //STRUCTURES D'AFFICHAGE
 typedef struct {
@@ -236,6 +239,6 @@ extern mechas_t mecha[NB_MECHAS];
 extern attaque_t attaque[NB_ATTAQUES];
 extern zone_t zone[NB_ZONES];
 extern pnj_t pnj[NB_PNJ];
-
+extern game_t game;
 
 #endif

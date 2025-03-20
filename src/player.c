@@ -15,7 +15,7 @@ const int FRAME = 15 ;      //Nombre d'image dans l'animation
 
 
 //Gestion de deplacement du joueur et du tp entre les maps
-int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
+int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
     int obj_case = RIEN;
     if (!j->moving){  // si joueur deja entrain de se deplacer on ne fait rien
 
@@ -46,11 +46,11 @@ int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, jo
         int new_y = j->y + dy;
 
         //verifie qu'on peut se deplacer
-        if (new_x >= 0 && new_x <= taille_x && new_y >= 0 && new_y <= taille_y && game->mat[game->mat_active][new_y][new_x] <= RIEN) {   
-            obj_case = game->mat[game->mat_active][new_y][new_x];
-            if(game->mat[game->mat_active][new_y][new_x] <= TPMAP1) { //si on change de map
-                game->mat[game->mat_active][j->y][j->x] = RIEN;
-                game->mat_active = -(game->mat[game->mat_active][new_y][new_x] + 11); //converti avec le bonne indice de la map
+        if (new_x >= 0 && new_x <= taille_x && new_y >= 0 && new_y <= taille_y && game.mat[game.mat_active][new_y][new_x] <= RIEN) {   
+            obj_case = game.mat[game.mat_active][new_y][new_x];
+            if(game.mat[game.mat_active][new_y][new_x] <= TPMAP1) { //si on change de map
+                game.mat[game.mat_active][j->y][j->x] = RIEN;
+                game.mat_active = -(game.mat[game.mat_active][new_y][new_x] + 11); //converti avec le bonne indice de la map
                 
 
                 //place au bonne endroit le joueur en fonction de ou le tp se trouve
@@ -61,26 +61,26 @@ int deplacement(game_t * game, int taille_x, int taille_y, const Uint8 *keys, jo
 
 
 
-                j->screen_x = game->dms_win.x + (PX * j->x * game->scale);
-                j->screen_y = game->dms_win.y + (PX * j->y * game->scale);
+                j->screen_x = game.dms_win.x + (PX * j->x * game.scale);
+                j->screen_y = game.dms_win.y + (PX * j->y * game.scale);
                 sprite_p->x = j->screen_x;
                 sprite_p->y = j->screen_y;
-                game->mat[game->mat_active][j->y][j->x] = JOUEUR;
-                j->numMap = game->mat_active;
+                game.mat[game.mat_active][j->y][j->x] = JOUEUR;
+                j->numMap = game.mat_active;
                 
             }
 
             else {
                 // met à jour la mat            
-                game->mat[game->mat_active][j->y][j->x] = *last_case;
-                *last_case = game->mat[game->mat_active][new_y][new_x];
-                game->mat[game->mat_active][new_y][new_x] = JOUEUR;
+                game.mat[game.mat_active][j->y][j->x] = *last_case;
+                *last_case = game.mat[game.mat_active][new_y][new_x];
+                game.mat[game.mat_active][new_y][new_x] = JOUEUR;
 
                 // initialise l'animation
                 j->x = new_x;
                 j->y = new_y;
-                j->move_dx = dx * (PX * game->scale) / FRAME;  // divise le déplacement en 15 étapes
-                j->move_dy = dy * (PX * game->scale) / FRAME;
+                j->move_dx = dx * (PX * game.scale) / FRAME;  // divise le déplacement en 15 étapes
+                j->move_dy = dy * (PX * game.scale) / FRAME;
                 j->moving = FRAME;  // animation sur 16 frames
                 //vérification sapwn mechas
                 
@@ -149,15 +149,15 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     return 0;
 }
 
-int detection_combat_pnj(game_t *game, joueur_t *joueur){
+int detection_combat_pnj(joueur_t *joueur){
     int test_x , test_y;
-    int taille_x_mat = game->img_w / PX;    //taille de la matrice
-    int taille_y_mat = game->img_h / PX;
+    int taille_x_mat = game.img_w / PX;    //taille de la matrice
+    int taille_y_mat = game.img_h / PX;
     for(int i = 0; i < VIN_GAZOLE_1; i++){
-        if((pnj[i].id_map ) == (game->mat_active+1) && pnj[i].etat == 0){
+        if((pnj[i].id_map ) == (game.mat_active+1) && pnj[i].etat == 0){
                 test_x = pnj[i].x;
                 test_y = pnj[i].y;
-            for(int j = 0; j < 3 && (game->mat[game->mat_active][test_y][test_x] <= JOUEUR || game->mat[game->mat_active][test_y][test_x] ==PNJ); j++){
+            for(int j = 0; j < 3 && (game.mat[game.mat_active][test_y][test_x] <= JOUEUR || game.mat[game.mat_active][test_y][test_x] ==PNJ); j++){
                 
                 switch(pnj[i].orientation){
                     case 1: //Vers le haut
