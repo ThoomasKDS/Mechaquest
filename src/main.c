@@ -14,6 +14,7 @@
 #include "../lib/pointDePassage.h"
 #include "../lib/menu.h"
 #include "../lib/global.h"
+#include "../lib/son.h"
 
 mechas_t mecha[NB_PNJ];
 attaque_t attaque[NB_ATTAQUES];
@@ -61,7 +62,9 @@ int main() {
     while(jeux){
         pseudo[0] = '\0';
         running = 1;
-        
+
+        lancer_musique("son/musique_general.wav");
+
         recuperation_mechas(mecha);
         recuperation_attaques(attaque);
         recuperation_zone(zone);

@@ -8,6 +8,7 @@
 #include <string.h>
 #include "../lib/player.h"
 #include "../lib/affichage.h"
+#include "../lib/son.h"
 #include <pointDePassage.h>
 
 
@@ -83,6 +84,7 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
                 j->move_dy = dy * (PX * game.scale) / FRAME;
                 j->moving = FRAME;  // animation sur 16 frames
                 //vérification sapwn mechas
+                jouer_bruit("son/pas.wav");
                 
             }
         }
