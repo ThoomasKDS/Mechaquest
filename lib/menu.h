@@ -15,23 +15,23 @@
 
 
 
-SDL_Texture* charger_texture(const char *chemin, game_t *game);
+SDL_Texture* charger_texture(const char *chemin);
 
-int afficher_choix_sexe(game_t* game, joueur_t* j, char* pseudo);
+int afficher_choix_sexe(joueur_t* j, char* pseudo);
 
-int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo);
+int afficher_choix_suppression(joueur_t* j,char* pseudo);
 
-int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo);
+int aff_saisie_pseudo(joueur_t* j, char* pseudo);
 
-void afficher_reglage(game_t* game, parametre_t* parametres);
+void afficher_reglage(parametre_t* parametres);
 
-void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo);
+void afficher_menu(parametre_t* parametres, joueur_t* j, char* pseudo);
 
-int afficher_menu_pause(game_t* game, parametre_t* parametres);
+int afficher_menu_pause(parametre_t* parametres);
 
-void afficher_informations(game_t* game);
+void afficher_informations();
 
-void aff_parametre(game_t* game, parametre_t* parametres);
+void aff_parametre(parametre_t* parametres);
 
 
 #endif
