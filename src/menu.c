@@ -5,26 +5,26 @@
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
 
-SDL_Texture* charger_texture(const char *chemin, game_t *game){
+SDL_Texture* charger_texture(const char *chemin){
     SDL_Surface *surfaceChargee = IMG_Load(chemin);
     if (!surfaceChargee) {
         printf("Erreur chargement image: %s\n", IMG_GetError());
         return NULL;
     }
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(game->renderer, surfaceChargee);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(game.renderer, surfaceChargee);
     SDL_FreeSurface(surfaceChargee);
     return texture;
 }
 
-int afficher_choix_sexe(game_t* game, joueur_t* j,char* pseudo){
+int afficher_choix_sexe(joueur_t* j,char* pseudo){
     rectangle_t rect_h, rect_f;
     int largeurEcran, hauteurEcran, frameTime;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure    
     rectangle_t btn_retour;
 
-    SDL_Texture* sprite_h = charger_texture("img/skin/skin_player_homme/bas1.png", game);
-    SDL_Texture* sprite_f = charger_texture("img/skin/skin_player_femme/bas1.png", game);
+    SDL_Texture* sprite_h = charger_texture("img/skin/skin_player_homme/bas1.png");
+    SDL_Texture* sprite_f = charger_texture("img/skin/skin_player_femme/bas1.png");
     creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, (hauteurEcran + HAUTEUR_BOUTON * 4) / 2,98, 23, 8, 255,"Retour");
     creer_rectangle(&rect_h, 200, 250, largeurEcran / 2 - 350, hauteurEcran / 2, 255, 255, 255, 150, NULL);
     creer_rectangle(&rect_f, 200, 250, largeurEcran / 2 + 150, hauteurEcran / 2, 255, 255, 255, 150, NULL);
@@ -62,11 +62,11 @@ int afficher_choix_sexe(game_t* game, joueur_t* j,char* pseudo){
             }
         }
         if(running) {
-            SDL_RenderClear(game->renderer);
-            draw_background(game);
-            draw_all_rect(game, 3, &btn_retour, &rect_h, &rect_f);
-            SDL_RenderCopy(game->renderer, sprite_h, NULL, &rect_h.rect);
-            SDL_RenderCopy(game->renderer, sprite_f, NULL, &rect_f.rect);
+            SDL_RenderClear(game.renderer);
+            draw_background();
+            draw_all_rect(3, &btn_retour, &rect_h, &rect_f);
+            SDL_RenderCopy(game.renderer, sprite_h, NULL, &rect_h.rect);
+            SDL_RenderCopy(game.renderer, sprite_f, NULL, &rect_f.rect);
 
             // Affichage des valeurs
             char buffer[50];
@@ -74,14 +74,14 @@ int afficher_choix_sexe(game_t* game, joueur_t* j,char* pseudo){
 
             // Affichage du texte : Choisir son sexe
             sprintf(buffer, "Choisir son sexe");
-            SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
-            SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
+            SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game.police, buffer, couleurTexte);
+            SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game.renderer, surfaceVolume);
             SDL_Rect rectVolume = {(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 100, surfaceVolume->w, surfaceVolume->h};
-            SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
+            SDL_RenderCopy(game.renderer, textureVolume, NULL, &rectVolume);
             SDL_FreeSurface(surfaceVolume);
             SDL_DestroyTexture(textureVolume);
 
-            SDL_RenderPresent(game->renderer);
+            SDL_RenderPresent(game.renderer);
             
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
@@ -96,9 +96,9 @@ int afficher_choix_sexe(game_t* game, joueur_t* j,char* pseudo){
     return res;
 }
 
-int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
+int afficher_choix_suppression(joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran,frameTime;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure
 
     rectangle_t btn_retour,btn_reprendre,btn_recommencer;
@@ -131,7 +131,7 @@ int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
                 }
                 // Bouton Non
                 if (x >= btn_recommencer.rect.x && x <= btn_recommencer.rect.x + btn_recommencer.rect.w && y >= btn_recommencer.rect.y && y <= btn_recommencer.rect.y + btn_recommencer.rect.h) {
-                    if(afficher_choix_sexe(game, j, pseudo)) {
+                    if(afficher_choix_sexe(j, pseudo)) {
                         suppression_partie(j,pseudo);
                         init_partie(j,pseudo,j->sexe);
                         return 1;
@@ -145,12 +145,12 @@ int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
 
         if(running) {
             // Affichage
-            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-            SDL_RenderClear(game->renderer);
+            SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
+            SDL_RenderClear(game.renderer);
             
-            draw_background(game);
-            draw_all_rect(game, 3, &btn_retour, &btn_reprendre, &btn_recommencer);
-            SDL_RenderPresent(game->renderer);
+            draw_background();
+            draw_all_rect(3, &btn_retour, &btn_reprendre, &btn_recommencer);
+            SDL_RenderPresent(game.renderer);
             
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
@@ -163,9 +163,9 @@ int afficher_choix_suppression(game_t* game, joueur_t* j,char* pseudo){
 }
 
 //affiche quand le joueur tape son pseudo
-int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
+int aff_saisie_pseudo(joueur_t* j, char* pseudo) {
     int largeurEcran, hauteurEcran,frameTime;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart;
 
     rectangle_t btn_retour,btn_commencer;
@@ -204,14 +204,14 @@ int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
                 if (x >= btn_commencer.rect.x && x <= btn_commencer.rect.x + btn_commencer.rect.w && y >= btn_commencer.rect.y && y <= btn_commencer.rect.y + btn_commencer.rect.h && strlen(pseudo) > 0){
                     //si la sauv n'existe pas
                     if(!recuperation_joueur(j,pseudo)){
-                        if(afficher_choix_sexe(game, j, pseudo)) {
+                        if(afficher_choix_sexe(j, pseudo)) {
                             init_partie(j,pseudo,j->sexe);
                             return 1;
                         }
                         
                     }
                     else{
-                        if(afficher_choix_suppression(game,j,pseudo)){       //retoune 1 si le joueur veut commence le jeu 0 et donc quitte le menu
+                        if(afficher_choix_suppression(j,pseudo)){       //retoune 1 si le joueur veut commence le jeu 0 et donc quitte le menu
                             return 1;
                         }
                     }
@@ -220,22 +220,22 @@ int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
         }
 
         if(running){
-            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-            SDL_RenderClear(game->renderer);
+            SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
+            SDL_RenderClear(game.renderer);
 
-            draw_background(game);
-            draw_all_rect(game, 2, &btn_retour, &btn_commencer);
+            draw_background();
+            draw_all_rect(2, &btn_retour, &btn_commencer);
 
             
             if (strlen(pseudo) >= 0) {  
                 
                 sprintf(texteComplet, "Pseudo : %s", pseudo);  
 
-                SDL_Surface* surfaceTexte = TTF_RenderUTF8_Solid(game->police, texteComplet, couleurTexte);
+                SDL_Surface* surfaceTexte = TTF_RenderUTF8_Solid(game.police, texteComplet, couleurTexte);
                 if (!surfaceTexte) {
                     printf("Erreur de rendu texte : %s\n", TTF_GetError());
                 } else {
-                    SDL_Texture* textureTexte = SDL_CreateTextureFromSurface(game->renderer, surfaceTexte);
+                    SDL_Texture* textureTexte = SDL_CreateTextureFromSurface(game.renderer, surfaceTexte);
                     if (textureTexte) {
                         SDL_Rect rectTexte = {
                             (largeurEcran - surfaceTexte->w) / 2,
@@ -243,13 +243,13 @@ int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
                             surfaceTexte->w,
                             surfaceTexte->h
                         };
-                        SDL_RenderCopy(game->renderer, textureTexte, NULL, &rectTexte);
+                        SDL_RenderCopy(game.renderer, textureTexte, NULL, &rectTexte);
                         SDL_DestroyTexture(textureTexte);
                     }
                     SDL_FreeSurface(surfaceTexte);
                 }
             }      
-            SDL_RenderPresent(game->renderer);
+            SDL_RenderPresent(game.renderer);
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
             if (FRAME_DELAY > frameTime) {
@@ -264,9 +264,9 @@ int aff_saisie_pseudo(game_t* game, joueur_t* j, char* pseudo) {
 }
 
 //on modifie
-void afficher_reglage(game_t* game, parametre_t* parametres) {
+void afficher_reglage(parametre_t* parametres) {
     int largeurEcran, hauteurEcran,frameTime;;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure
     rectangle_t btn_retour,btn_moins_volume,btn_plus_volume;
     char buffer[50];
@@ -306,21 +306,21 @@ void afficher_reglage(game_t* game, parametre_t* parametres) {
             }
         }
         if(running) {
-        SDL_RenderClear(game->renderer);
-        draw_background(game);
-        draw_all_rect(game, 3, &btn_retour, &btn_moins_volume, &btn_plus_volume);
+        SDL_RenderClear(game.renderer);
+        draw_background();
+        draw_all_rect(3, &btn_retour, &btn_moins_volume, &btn_plus_volume);
         
         
         // Volume
         sprintf(buffer, "Volume: %d", parametres->volume);
-        SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game->police, buffer, couleurTexte);
-        SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game->renderer, surfaceVolume);
+        SDL_Surface* surfaceVolume = TTF_RenderText_Solid(game.police, buffer, couleurTexte);
+        SDL_Texture* textureVolume = SDL_CreateTextureFromSurface(game.renderer, surfaceVolume);
         SDL_Rect rectVolume ={(largeurEcran - surfaceVolume->w) / 2, hauteurEcran / 2 - 50, surfaceVolume->w, surfaceVolume->h};
-        SDL_RenderCopy(game->renderer, textureVolume, NULL, &rectVolume);
+        SDL_RenderCopy(game.renderer, textureVolume, NULL, &rectVolume);
         SDL_FreeSurface(surfaceVolume);
         SDL_DestroyTexture(textureVolume);
         
-        SDL_RenderPresent(game->renderer);
+        SDL_RenderPresent(game.renderer);
         
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
@@ -332,9 +332,9 @@ void afficher_reglage(game_t* game, parametre_t* parametres) {
     }
 }
 
-void afficher_informations(game_t* game){
+void afficher_informations(){
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
     int frameTime;
 
@@ -364,10 +364,10 @@ void afficher_informations(game_t* game){
             }
         }
         if(running) {
-            SDL_RenderClear(game->renderer);
-        draw_background(game);
-        draw_all_rect(game, 7, &Info_1, &Info_2, &Info_3, &Info_4, &Info_5, &Info_6, &btn_retour);
-        SDL_RenderPresent(game->renderer);
+            SDL_RenderClear(game.renderer);
+        draw_background();
+        draw_all_rect(7, &Info_1, &Info_2, &Info_3, &Info_4, &Info_5, &Info_6, &btn_retour);
+        SDL_RenderPresent(game.renderer);
 
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
@@ -379,9 +379,9 @@ void afficher_informations(game_t* game){
     }
 }
 
-void aff_parametre(game_t* game, parametre_t* parametres){
+void aff_parametre(parametre_t* parametres){
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure
     int frameTime;
 
@@ -403,11 +403,11 @@ void aff_parametre(game_t* game, parametre_t* parametres){
                 int x = event.button.x, y = event.button.y;
                 if (x >= btn_informations.rect.x && x <= btn_informations.rect.x + btn_informations.rect.w &&
                     y >= btn_informations.rect.y && y <= btn_informations.rect.y + btn_informations.rect.h) {
-                    afficher_informations(game);
+                    afficher_informations();
                 }
                 if (x >= btn_reglage.rect.x && x <= btn_reglage.rect.x + btn_reglage.rect.w &&
                     y >= btn_reglage.rect.y && y <= btn_reglage.rect.y + btn_reglage.rect.h) {
-                    afficher_reglage(game, parametres);
+                    afficher_reglage(parametres);
                 }
 
                 if (x >= btn_retour.rect.x && x <= btn_retour.rect.x + btn_retour.rect.w &&
@@ -418,11 +418,11 @@ void aff_parametre(game_t* game, parametre_t* parametres){
         }
         if(running) {
             //AFFICHAGE
-            SDL_RenderClear(game->renderer);
+            SDL_RenderClear(game.renderer);
 
-            draw_background(game);
-            draw_all_rect(game, 3, &btn_informations, &btn_reglage, &btn_retour);
-            SDL_RenderPresent(game->renderer);
+            draw_background();
+            draw_all_rect(3, &btn_informations, &btn_reglage, &btn_retour);
+            SDL_RenderPresent(game.renderer);
 
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
@@ -435,10 +435,10 @@ void aff_parametre(game_t* game, parametre_t* parametres){
     }
 }
 
-void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pseudo) {
-    game->mat_active = 7;
+void afficher_menu(parametre_t* parametres, joueur_t* j, char* pseudo) {
+    game.mat_active = 7;
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure
     int frameTime;
     int x, y;
@@ -461,13 +461,13 @@ void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pse
                 x = event.button.x; 
                 y = event.button.y;
                 if (x >= btn_jouer.rect.x && x <= btn_jouer.rect.x + btn_jouer.rect.w && y >= btn_jouer.rect.y && y <= btn_jouer.rect.y + btn_jouer.rect.h) {
-                    if(aff_saisie_pseudo(game, j, pseudo)){    //si la partie s'est lancé
+                    if(aff_saisie_pseudo(j, pseudo)){    //si la partie s'est lancé
                         running = 0;
                     }
                 }
                 if (x >= btn_parametres.rect.x && x <= btn_parametres.rect.x + btn_parametres.rect.w &&
                     y >= btn_parametres.rect.y && y <= btn_parametres.rect.y + btn_parametres.rect.h) {
-                    aff_parametre(game, parametres);
+                    aff_parametre(parametres);
                 }
 
                 if (x >= btn_quitter.rect.x && x <= btn_quitter.rect.x + btn_quitter.rect.w &&
@@ -480,11 +480,11 @@ void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pse
         if(running) {
 
             //AFFICHAGE
-            SDL_RenderClear(game->renderer);
+            SDL_RenderClear(game.renderer);
 
-            SDL_RenderCopy(game->renderer, game->backgroundTexture[7], NULL, &game->dms_win);
-            draw_all_rect(game, 3, &btn_jouer, &btn_parametres, &btn_quitter);
-            SDL_RenderPresent(game->renderer);
+            SDL_RenderCopy(game.renderer, game.backgroundTexture[7], NULL, &game.dms_win);
+            draw_all_rect(3, &btn_jouer, &btn_parametres, &btn_quitter);
+            SDL_RenderPresent(game.renderer);
 
             frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
             if (FRAME_DELAY > frameTime) {
@@ -494,9 +494,9 @@ void afficher_menu(game_t* game, parametre_t* parametres, joueur_t* j, char* pse
     }
 }
 
-int afficher_menu_pause(game_t* game, parametre_t* parametres) {
+int afficher_menu_pause(parametre_t* parametres) {
     int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
     Uint32 frameStart; //obtien l'heure
     int frameTime;
 
@@ -522,7 +522,7 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
                 }
                 if (x >= btn_parametres.rect.x && x <= btn_parametres.rect.x + btn_parametres.rect.w &&
                     y >= btn_parametres.rect.y && y <= btn_parametres.rect.y + btn_parametres.rect.h) {
-                    aff_parametre(game, parametres);
+                    aff_parametre(parametres);
                 }
 
                 if (x >= btn_accueil.rect.x && x <= btn_accueil.rect.x + btn_accueil.rect.w &&
@@ -533,12 +533,12 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
         }
 
         //AFFICHAGE
-        //SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-        SDL_RenderClear(game->renderer);
-        draw_background(game);      
-        draw_calque(game);  
-        draw_all_rect(game, 3, &btn_reprendre, &btn_parametres, &btn_accueil);
-        SDL_RenderPresent(game->renderer);
+        //SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
+        SDL_RenderClear(game.renderer);
+        draw_background();      
+        draw_calque();  
+        draw_all_rect(3, &btn_reprendre, &btn_parametres, &btn_accueil);
+        SDL_RenderPresent(game.renderer);
         
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 

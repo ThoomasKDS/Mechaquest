@@ -19,6 +19,8 @@ mechas_t mecha[NB_PNJ];
 attaque_t attaque[NB_ATTAQUES];
 zone_t zone[NB_ZONES];
 pnj_t pnj[NB_PNJ];
+game_t game;
+
 
 const int FPS_LIMIT = 60;
 const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
@@ -27,9 +29,7 @@ const int FRAME_DELAY = 1000 / FPS_LIMIT; // Temps entre chaque frame (16 ms)
 int main() {
     //VARIABLES UTILES AU PROGRAMME
 
-    game_t game;
-    img_player_t sprite_playerH;
-    img_pnj_t sprite_pnj;
+    
     joueur_t j;
     parametre_t parametres;
     mechas_joueur_t mecha_sauvage;
@@ -45,16 +45,16 @@ int main() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     //INITIALISATION SDL    
-    if (!init_game(&game)) {            
+    if (!init_game()) {            
         printf("Échec de l'initialisation du jeu.\n");
         return -1;
     }        
 
     //INITIALISATION BACKGROUND
-    if(!init_background(&game)) {
+    if(!init_background()) {
         return -1;
     }
-    if(!init_calque(&game)) {
+    if(!init_calque()) {
         return -1;
     }
 
@@ -68,7 +68,7 @@ int main() {
         
         game.mat_active = 0;
         //Affichage du menu
-        afficher_menu(&game,&parametres,&j,pseudo);
+        afficher_menu(&parametres,&j,pseudo);
         if(pseudo[0] == '\0'){
             jeux = 0;
             running = 0;
@@ -85,14 +85,14 @@ int main() {
             frameStart = SDL_GetTicks();    //obtien heure
 
             //ALLOUE MEMOIRE POUR MATRICE
-            if(!init_mat(&game, taille_x_mat, taille_y_mat)) {
+            if(!init_mat(taille_x_mat, taille_y_mat)) {
                 printf("Echec init mat\n");
                 return -1;
             }
 
         
             //REMPLI LA MATRICE DE 0 DU JOUEUR ET COORS
-            remplir_mat(&game, taille_x_mat, taille_y_mat);
+            remplir_mat(taille_x_mat, taille_y_mat);
 
             //INITIALISE LES MOUVEMENT DU JOUEUR 
             j.moving = 0;
@@ -100,20 +100,20 @@ int main() {
             j.proba_combat = 0;
             j.screen_x = (float)(game.dms_win.x + (j.x * PX * game.scale));      //position du joueur en px
             j.screen_y = (float)(game.dms_win.y + (j.y * PX * game.scale));
-            if(!init_player(&game, &sprite_playerH,j.sexe)){
+            if(!init_player(j.sexe)){
                 return -1;
             }
-            if(!init_pnj(&game, &sprite_pnj)){
+            if(!init_pnj()){
                 
                 return -1;
             }
             
             recuperation_pnj(pnj,j.pseudo);
             //SPRITE JOUEUR
-            SDL_Rect sprite_p = create_obj(&game, PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
+            SDL_Rect sprite_p = create_obj(PX, 48, j.x*PX, j.y * PX - 24, JOUEUR, 1);
             SDL_Rect pnj_sprite[NB_PNJ];
             for(int i =0; i < NB_PNJ;i++){
-                pnj_sprite[i] = create_obj(&game, PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
+                pnj_sprite[i] = create_obj(PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
 
             }
             if(j.pointSauvegarde > 1){
@@ -123,7 +123,6 @@ int main() {
                     game.mat[2][9][19] = 0;
                     
             }
-            aff_mat(&game, taille_x_mat, taille_y_mat, 1);
             while(running){
                 frameStart = SDL_GetTicks(); //obtien l'heure
 
@@ -135,7 +134,7 @@ int main() {
                 while (SDL_PollEvent(&event)) {
                     if(event.type == SDL_KEYDOWN) {
                         if (event.key.keysym.sym == SDLK_ESCAPE){
-                            if(!afficher_menu_pause(&game,&parametres)) running = 0;
+                            if(!afficher_menu_pause(&parametres)) running = 0;
                         } 
                     }
                 }
@@ -147,7 +146,7 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        parler_a_vin_gazole(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
+                        parler_a_vin_gazole(&j, &sprite_p, pnj_sprite,keys);
                         if(j.pointSauvegarde == 1){
                             premier_tour = 0;
                         }
@@ -159,7 +158,7 @@ int main() {
                             game.mat[2][0][6] = BARRIERE;
                             premier_tour++;
                         }
-                        premier_combat_musk(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
+                        premier_combat_musk(&j, &sprite_p, pnj_sprite,keys);
                         if(j.pointSauvegarde == 2){
                             premier_tour = 0;
                         }
@@ -172,21 +171,21 @@ int main() {
                             game.mat[0][0][17] = BARRIERE;
                             premier_tour++;
                         }
-                        retourner_parler_a_vin_gazole(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
+                        retourner_parler_a_vin_gazole(&j, &sprite_p, pnj_sprite,keys);
                         
                     }         
                     if(j.pointSauvegarde == 3){
-                        combat_final(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
+                        combat_final(&j, &sprite_p, pnj_sprite,keys);
                     }
                     if(j.pointSauvegarde == 4)
-                        jeu_libre(&game,&j, &sprite_p, pnj_sprite, &sprite_pnj, &sprite_playerH,keys);
-                    obj_case = deplacement(&game,taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
+                        jeu_libre(&j, &sprite_p, pnj_sprite,keys);
+                    obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
 
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
-                        combat_sauvage(&j, &mecha_sauvage, &game);
+                        combat_sauvage(&j, &mecha_sauvage);
                     }
 
-                    if(detection_combat_pnj(&game, &j)){
+                    if(detection_combat_pnj(&j)){
                         //attaque_ordi_pnj(pnj, &mecha_sauvage);
                     }
 
@@ -194,7 +193,7 @@ int main() {
 
                     SDL_RenderClear(game.renderer);     //efface l'ecran
 
-                    draw_all(&game,&j,&sprite_p,pnj_sprite,&sprite_pnj,&sprite_playerH);
+                    draw_all(&j,&sprite_p,pnj_sprite);
 
 
                     SDL_RenderPresent(game.renderer);      //affiche rendu
@@ -208,14 +207,14 @@ int main() {
                 }   
             }
             sauvegarde_partie(&j,pseudo);
-            free_mat(&game,taille_x_mat, taille_y_mat);
+            free_mat(taille_x_mat, taille_y_mat);
             destruction_joueur(&j);
             for(int i = 0;i<NB_PNJ;i++){
                 destruction_pnj(&pnj[i]);
             }
         }
     }
-    cleanUp(&game);
+    cleanUp();
     return 0;
 
 }
