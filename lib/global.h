@@ -41,6 +41,12 @@
 #define ERREUR_OUVERTURE -1
 #define OK 1
 #define ERR 0
+#define KO 0
+#define RETOUR -1
+#define VRAI 1
+#define FAUX -2
+#define CAPTURE -3
+#define FUITE -4
 
 //TAILLE D'UNE CASE
 #define PX 32
@@ -149,6 +155,7 @@ typedef struct{
 } attaque_t;
 
 typedef struct{
+    SDL_Texture * texture;
     int id_mechas;
     char nom[LONGUEUR_MAX_PSEUDO];
     char type[LONGUEUR_TYPE];

@@ -403,6 +403,33 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     return 1;
 }
 
+int init_mecha(game_t *game, mechas_t *mecha) {
+    char img[40] = "img/mechas/mecha_";
+    char ext[5] = ".png";
+    SDL_Surface * imageSprite[NB_MECHAS];
+    for(int i = 0; i < NB_MECHAS; i++) {
+        img[17] = '0' + i + 1;
+        img[18] = '\0';
+        strcat(img, ext);
+        imageSprite[i] = IMG_Load(img);
+        if (!imageSprite[i]) {
+            printf("Erreur de chargement de l'image dans init mecha: %s\n", IMG_GetError());
+            IMG_Quit();
+            return 0;
+        }
+    }
+    for(int i = 0; i < NB_MECHAS; i++) {
+        mecha[i].texture = SDL_CreateTextureFromSurface(game->renderer, imageSprite[i]);
+        if (!mecha[i].texture) {
+            printf("Erreur de création de la texture dans init mecha : %s\n", SDL_GetError());
+            SDL_Quit();
+            return 0;
+        }
+        SDL_FreeSurface(imageSprite[i]);
+    }
+    return 1;
+}
+
 //creé un objet
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
     if(type_obj == JOUEUR || type_obj == PNJ) {
@@ -593,39 +620,127 @@ void draw_text_left_middle(game_t *game, rectangle_t* rectangle) {
 }
 
 void draw_text_center(game_t *game, rectangle_t* rectangle) {
-    if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
+    if (rectangle->text[0] == '\0') {
+        return; // Vérifier si le texte est valide
+    } 
     if (!game->police) {
         printf("Erreur : Police non chargée\n");
         return;
     }
 
     SDL_Color textColor = {0, 0, 0, 255}; 
-    SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(game->police, rectangle->text, textColor,1500);
-    if (!surface) {
-        printf("Erreur SDL_ttf : %s\n", TTF_GetError());
-        return;
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    SDL_Rect textRect;
+    char ligne[256];
+    char *debut = rectangle->text;
+
+    int num_lignes = 1;
+    for (int j = 0; rectangle->text[j] != '\0'; j++) {
+        if (rectangle->text[j] == '\n') num_lignes++; // Compter le nombre de lignes
     }
 
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(game->renderer, surface);
-    if (!texture) {
-        printf("Erreur SDL : %s\n", SDL_GetError());
+    int y_offset = 20; // Décalage vertical entre chaque ligne
+
+    int cmp = 0; // Compteur de lignes
+
+    while (*debut) {
+        int i = 0;
+        while (debut[i] != '\0' && debut[i] != '\n') {
+            ligne[i] = debut[i];
+            i++;
+        }
+        ligne[i] = '\0'; // Terminer la ligne
+
+        // Créer la texture pour la ligne actuelle
+        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
+        if (!surface) {
+            printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+            return;
+        }
+        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+
+        int text_width = surface->w;
+        int text_height = surface->h;
+
+        // Calcul de la position centrée
+        textRect.x = rectangle->rect.x + (rectangle->rect.w - text_width) / 2;
+        textRect.y = rectangle->rect.y + (rectangle->rect.h - text_height * num_lignes) / 2 + cmp * y_offset;
+        textRect.w = text_width;
+        textRect.h = text_height;
+
+        // Afficher le texte
+        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+
         SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+
+        // Passer à la ligne suivante
+        if (debut[i] == '\n') i++; // Sauter le '\n'
+        debut += i; // Déplacer le pointeur
+        cmp++;
+    }
+}
+
+
+void draw_text_pos(game_t  *game, char *text, int x, int y) {
+    if (!game->police) {
+        printf("Erreur : Police non chargée\n");
         return;
     }
 
-    int text_width = surface->w;
-    int text_height = surface->h;
-    SDL_FreeSurface(surface);
+    SDL_Color textColor = {0, 0, 0, 255}; 
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    SDL_Rect textRect;
+    char ligne[256];
+    char *debut = text;
+    
+    int num_lignes = 1;  
+    for (int j = 0; text[j] != '\0'; j++) {
+        if (text[j] == '\n') num_lignes++; // Compter le nombre de lignes
+    }
 
-    SDL_Rect textRect = {
-        rectangle->rect.x + (rectangle->rect.w - text_width) / 2, // Centré horizontalement
-        rectangle->rect.y + (rectangle->rect.h - text_height) / 2, // Centré verticalement
-        text_width,
-        text_height
-    };
+    int y_offset = 20; // Centrer verticalement les lignes
 
-    SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
-    SDL_DestroyTexture(texture);
+    int cmp = 0; // Compteur de lignes
+    
+    while (*debut) {
+        int i = 0;
+        while (debut[i] != '\0' && debut[i] != '\n') {
+            ligne[i] = debut[i]; 
+            i++;
+        }
+        ligne[i] = '\0'; // Terminer la ligne
+
+        // Créer la texture pour la ligne actuelle
+        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
+        if (!surface) {
+            printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+            return;
+        }
+        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+
+        int text_width = surface->w;
+        int text_height = surface->h;
+
+        // Calcul de la position centrée
+        textRect.x = x;
+        textRect.y = y + cmp * y_offset;
+        textRect.w = text_width;
+        textRect.h = text_height;
+
+        // Afficher le texte
+        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+
+        // Passer à la ligne suivante
+        if (debut[i] == '\n') i++; // Sauter le '\n'
+        debut += i; // Déplacer le pointeur
+        cmp++;
+    }
 }
 
 
@@ -652,7 +767,86 @@ void draw_all_rect(game_t *game, int n, ...) {
 
 }
 
+int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t *sprite_pnj, img_player_t *sprite_playerH, char *pseudo, char *dialogue, int choix) {
+    if (!game || !pseudo || !dialogue) return ERR;
+    
+    int largeurEcran, hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
+    
+    int dialogueWidth = largeurEcran * 3 / 4;
+    int dialogueHeight = hauteurEcran / 4;
+    int dialogueX = (largeurEcran - dialogueWidth) / 2;
+    int dialogueY = hauteurEcran - dialogueHeight - 20;
+    
+    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
+    
+    creer_rectangle(&fondDialogue, dialogueWidth, dialogueHeight, dialogueX, dialogueY, 0, 0, 0, 180, "");
+    creer_rectangle(&pseudoRect, 200, 40, dialogueX + 20, dialogueY + 10, 255, 255, 255, 255, pseudo);
+    creer_rectangle(&textRect, dialogueWidth - 40, dialogueHeight - 80, dialogueX + 20, dialogueY + 60, 255, 255, 255, 255, "");
+    
+    if (!choix)
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
+    else
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "Choisir entre 1 et 3");
 
+    int len = strlen(dialogue);
+    char displayedText[256] = "";
+    int index = 0, textIndex = 0;
+    bool waitingForKey = false;
+    SDL_Event event;
+    Uint32 frameStart, frameTime;
+    
+    SDL_FlushEvent(SDL_KEYDOWN);  // Vider les touches avant d'afficher
+    
+    while (index < len) {
+        frameStart = SDL_GetTicks();
+        displayedText[textIndex] = dialogue[index];
+        displayedText[textIndex + 1] = '\0';
+        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
+        SDL_RenderClear(game->renderer);
+        draw_all(game, j, sprite_p, pnj_sprite, sprite_pnj, sprite_playerH);
+        draw_rect(game, &fondDialogue, draw_text_center);
+        draw_rect(game, &pseudoRect, draw_text_center);
+        draw_rect(game, &textRect, draw_text_left_middle);
+        draw_rect(game, &infoRect, draw_text_center);
+        SDL_RenderPresent(game->renderer);
+        
+        int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
+        waitingForKey = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
+        index++;
+        textIndex++;
+
+        if (waitingForKey == true) {
+            SDL_FlushEvent(SDL_KEYDOWN);  // Éviter la répétition du dernier appui
+            
+            while (waitingForKey == true) {
+                if (SDL_WaitEvent(&event)) {
+                    if (event.type == SDL_QUIT) return OK;
+                    if (!choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_a) {
+                            waitingForKey = false;
+                            textIndex = 0;
+                            memset(displayedText, 0, sizeof(displayedText));
+                        }
+                    } else if (choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_KP_1) return 1;
+                        if (event.key.keysym.sym == SDLK_2 || event.key.keysym.sym == SDLK_KP_2) return 2;
+                        if (event.key.keysym.sym == SDLK_3 || event.key.keysym.sym == SDLK_KP_3) return 3;
+                    }
+                }
+            }
+        }
+        
+        frameTime = SDL_GetTicks() - frameStart;
+        if (delay > frameTime) SDL_Delay(delay - frameTime);
+    }
+    
+    return choix ? choix : OK;
+}
+
+int afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
+    
+}
 /*=================================================*/
 
 
