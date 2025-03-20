@@ -844,8 +844,68 @@ int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *p
     return choix ? choix : OK;
 }
 
-int afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
+void afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
+    int largeurEcran, hauteurEcran;
+    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
     
+    int dialogueWidth = largeurEcran * 3 / 4;
+    int dialogueHeight = hauteurEcran / 5;
+    int dialogueX = (largeurEcran - dialogueWidth) / 2;
+    int dialogueY = hauteurEcran - dialogueHeight - 20;
+    
+    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
+    
+    creer_rectangle(&fondDialogue, dialogueWidth, dialogueHeight, dialogueX, dialogueY, 0, 0, 0, 180, NULL);
+    creer_rectangle(&pseudoRect, 200, 40, dialogueX + 20, dialogueY + 10, 255, 255, 255, 255, pseudo?pseudo:NULL);
+    creer_rectangle(&textRect, dialogueWidth - 40, dialogueHeight - 80, dialogueX + 20, dialogueY + 60, 255, 255, 255, 255, NULL);
+    creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
+
+    int len = strlen(dialogue);
+    char displayedText[256] = "";
+    int index = 0, textIndex = 0;
+    bool waitingForKey = false;
+    SDL_Event event;
+    Uint32 frameStart, frameTime;
+    
+    SDL_FlushEvent(SDL_KEYDOWN);  // Vider les touches avant d'afficher
+    
+    while (index < len) {
+        frameStart = SDL_GetTicks();
+        displayedText[textIndex] = dialogue[index];
+        displayedText[textIndex + 1] = '\0';
+        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
+        SDL_RenderClear(game->renderer);
+        draw_combat(game, mecha_joueur, mecha_ordi);
+        draw_rect(game, &fondDialogue, draw_text_center);
+        draw_rect(game, &pseudoRect, draw_text_center);
+        draw_rect(game, &textRect, draw_text_left_middle);
+        draw_rect(game, &infoRect, draw_text_center);
+        SDL_RenderPresent(game->renderer);
+        
+        int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
+        waitingForKey = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
+        index++;
+        textIndex++;
+
+        if (waitingForKey == true) {
+            SDL_FlushEvent(SDL_KEYDOWN);  // Éviter la répétition du dernier appui
+            
+            while (waitingForKey == true) {
+                if (SDL_WaitEvent(&event)) {
+                    if (event.type == SDL_QUIT) return;
+                    if (event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_a) {
+                            waitingForKey = false;
+                            textIndex = 0;
+                            memset(displayedText, 0, sizeof(displayedText));
+                        }
+                    }
+            }   }
+        }
+        
+        frameTime = SDL_GetTicks() - frameStart;
+        if (delay > frameTime) SDL_Delay(delay - frameTime);
+    }
 }
 /*=================================================*/
 

@@ -221,9 +221,6 @@ int aff_mechas_combat(game_t * game, joueur_t * joueur) {
                         game->mat_active = 6;
                         return choix;
                     }
-                    else {
-                        printf("Veuillez selectionner un mechas\n");
-                    }
                 }
                 SDL_Event e;
                 while (SDL_WaitEvent(&e) && e.type != SDL_KEYUP);
@@ -364,15 +361,15 @@ int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi, int
                 if(event.key.keysym.sym == SDLK_a){
                     switch(choix) {
                         case 0: 
-                            res = utilisation_carburant(game, joueur);
+                            res = utilisation_carburant(game, joueur, ordi, actif);
                             if(res == OK) running = 0;
                              break;
                         case 1: 
-                            res = utilisation_rappel(game, joueur);
+                            res = utilisation_rappel(game, joueur, ordi, actif);
                             if(res == OK) running = 0;
                             break;
                         case 2:
-                            res = utilisation_mechaball(game, joueur, ordi);
+                            res = utilisation_mechaball(game, joueur, ordi, actif);
                             if(res == CAPTURE) return CAPTURE;
                             else if(res == FAUX) running = 0;
                             break;
@@ -427,9 +424,9 @@ int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi, int
     return OK;
 }
 
-int utilisation_carburant(game_t *game, joueur_t *joueur){
+int utilisation_carburant(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->carburant <= 0){
-        printf("Vous n'avez pas de carburant\n");
+        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de carburant.");
         return (KO);
     }
     else {
@@ -438,11 +435,11 @@ int utilisation_carburant(game_t *game, joueur_t *joueur){
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv == joueur->mechas_joueur[i].pv_max){    //Si les PV sont au Max, on ne peut pas utiliser de carburant
-            printf("Les PV sont déjà au maximun !\n");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Les PV sont déjà au maximun !");
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv < 0){  //Si les PV sont a 0, impossible d'utiliser du carburant
-            printf("Vous ne pouvez pas utiliser de carburant (PV à 0)\n");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de carburant (PV à 0).");
             return (RETOUR);
         }
         else{
@@ -451,7 +448,10 @@ int utilisation_carburant(game_t *game, joueur_t *joueur){
                 joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max;
             }
             joueur->inventaire->carburant--;
-            printf("Utilisation carburant, nouveau PV : %d\n", joueur->mechas_joueur[i].pv);
+            char message[200] = "Utilisation carburant, nouveau PV : ";
+            concat(message, joueur->mechas_joueur[i].pv);
+            strcat(message, ".");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         }
     }
 
@@ -459,9 +459,9 @@ int utilisation_carburant(game_t *game, joueur_t *joueur){
 
 }
 
-int utilisation_rappel(game_t *game, joueur_t *joueur){
+int utilisation_rappel(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->rappel <= 0){
-        printf("Vous n'avez pas de rappel\n");
+        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de rappel.");
         return (KO);
     }
     else {
@@ -470,12 +470,15 @@ int utilisation_rappel(game_t *game, joueur_t *joueur){
             return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv != 0){  //Si les PV sont pas a 0, impossible d'utiliser du rappel
-            printf("Vous ne pouvez pas utiliser de rappel sur un mechas encore en vie\n");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous ne pouvez pas utiliser de rappel sur un mechas encore en vie.");
             return (RETOUR);
         }
         else{
             joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max/2;  //Remettre les PV au max
-            printf("%s est de retour, PV : %d\n",mecha[joueur->mechas_joueur[i].id_mechas - 1].nom, joueur->mechas_joueur[i].pv);
+            char message[200] = "";
+            strcat(message, mecha[joueur->mechas_joueur[i].id_mechas - 1].nom);
+            strcat(message, "est de retour !");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
             joueur->inventaire->rappel--;
             
         }
@@ -484,9 +487,9 @@ int utilisation_rappel(game_t *game, joueur_t *joueur){
     return (OK);
 }
 
-int utilisation_mechaball(game_t *game,joueur_t * joueur, mechas_joueur_t *ordi) {
+int utilisation_mechaball(game_t *game,joueur_t * joueur, mechas_joueur_t *ordi, int *actif) {
     if(joueur->inventaire->mechaball <= 0){
-        printf("Vous n'avez pas de mechaball\n");
+        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous n'avez pas de mechaball.");
         return (KO);
     }
     else{
@@ -503,13 +506,19 @@ int utilisation_mechaball(game_t *game,joueur_t * joueur, mechas_joueur_t *ordi)
         int nbr_rand_capture = (rand() % 100) + 1;
 
         if(proba_capture >= nbr_rand_capture){  //Si le mecha est attrapé
-            printf("Vous avez attrapé %s\n", mecha[ordi->id_mechas-1].nom);
+            char message[200] = "Vous avez attrapé ";
+            strcat(message,  mecha[ordi->id_mechas-1].nom);
+            strcat(message, ".");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         
             copie_mechas(joueur, ordi);
             return (CAPTURE);
         }
         else {
-            printf("Vous n'avez pas réussi à attraper %s\n", mecha[ordi->id_mechas-1].nom);
+            char message[200] = "Vous n'avez pas reussi a attrape ";
+            strcat(message,  mecha[ordi->id_mechas-1].nom);
+            strcat(message, ".");
+            afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message);
         }
     }
     return (FAUX);
@@ -530,11 +539,11 @@ FONCTIONS ATTAQUE
 int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def, game_t *game, int mecha_choix) {
     if(choix == 2) return 0;
     if(choix == 0 && mecha_att->utilisation_1 == 0) {
-        printf("Vous ne pouvez plus utiliser cette attaque\n");
+        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
         return KO;
     }
     if(choix == 1 && mecha_att->utilisation_2 == 0) {
-        printf("Vous ne pouvez plus utiliser cette attaque\n");
+        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "Vous ne pouvez plus utiliser cette attaque.");
         return KO;
     }
     int ancien_pv = mecha_def->pv;
@@ -542,9 +551,22 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
     float stat_att_mecha = mecha_att->attaque;
     char *mecha_att_type[2] = {attaque[mecha_att->attaque_1].type, attaque[mecha_att->attaque_2].type};
     char *mecha_def_type = mecha[mecha_def->id_mechas-1].type;
+    char *nom_attaque[2] = {attaque[mecha_att->attaque_1].nom, attaque[mecha_att->attaque_2].nom};
+    int precision[2] = {attaque[mecha_att->attaque_1].precision, attaque[mecha_att->attaque_2].precision};
     char att_type[4][20] = {"Carburant", "Electrique", "Renouvelable", "Carburant"};
     int nbr_rand = (rand() % 100) + 1;
-    if(nbr_rand <= attaque[mecha_att->attaque_1].precision){  //Test si l'attaque touche (precision)
+    char msg[300];
+    strcpy(msg, mecha[mecha_att->id_mechas - 1].nom);
+    strcat(msg, " utilise ");
+    strcat(msg, nom_attaque[choix]);
+    strcat(msg, ".");
+
+    if(mecha_choix) 
+        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", msg);
+    else 
+        afficher_dialogue_combat(game, mecha_def, mecha_att, "Systeme", msg);
+
+    if(nbr_rand <= precision[choix]){  //Test si l'attaque touche (precision)
         
         if((strcmp(mecha_att_type[choix], "Uranium"))){
             for(int i = 0; i < 3; i++) {
@@ -571,9 +593,8 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         
     }
     else {
-        printf("L'attaque a échoué\n");
+        afficher_dialogue_combat(game, mecha_att, mecha_def, "Systeme", "L'attaque echoue.");
     }
-    printf("PV : %d --> %d\n", ancien_pv, mecha_def->pv);
     return OK;
 }
 
@@ -716,7 +737,7 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
     if(!utilisation[numero_attaque]){
         numero_attaque = 1 - numero_attaque;
         if(!utilisation[numero_attaque]) {
-            printf("Le mecha sauvage ne peut plus attaquer\n");
+            afficher_dialogue_combat(game, mecha_joueur, mecha_ordi, "Systeme", "Le mecha sauvage ne peut plus attaquer.");            
             return 0;
         }
         algo_attaque(numero_attaque, mecha_ordi, mecha_joueur, game, 0);
@@ -776,15 +797,15 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
 */
 
 //premet de changer de meca dans le combat
-int changer_mecha(game_t *game, joueur_t *joueur, int *actif){
+int changer_mecha(game_t *game, joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
     int choix ;
     choix = aff_mechas_combat(game, joueur);
     if (joueur->mechas_joueur[choix].pv == 0) {
-        printf("Ce mecha est mort\n");
+        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est mort."); 
         return KO;
     }
     if(choix == *actif) {
-        printf("Ce mecha est déjà actif\n");
+        afficher_dialogue_combat(game, &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Ce mecha est déjà actif.");
         return KO;
     }
     if(choix == 4) return RETOUR;
@@ -990,7 +1011,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
                                 running = 0;
                             break;
                         case 2 : 
-                            res = changer_mecha(game, joueur, actif);
+                            res = changer_mecha(game, joueur, actif, mecha_sauvage);
                             if(res == OK){
                                 return OK;
                             }
@@ -1072,14 +1093,13 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *ga
 
             }
             if(verif) {
-                while( changer_mecha(game, joueur, &actif) != 1);
+                while( changer_mecha(game, joueur, &actif, mecha_sauvage) != 1);
             }
         }
     }while(verif && mecha_sauvage->pv > 0 && res == OK);
-    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) printf("perdu\n");
-    else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0)printf("gagné\n");
-    else if(res == FUITE)printf("fuite\n");
-    else if(res == CAPTURE) printf("Capturer\n");
+    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez perdu !");
+    else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0)afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez gagne !");
+    else if(res == FUITE)afficher_dialogue_combat(game, &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous prennez la fuite!");
     
     game->mat_active = save_map_active;
 }

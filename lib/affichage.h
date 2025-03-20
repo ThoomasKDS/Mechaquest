@@ -10,6 +10,7 @@
 #include "../lib/initGame.h"
 #include "../lib/sauv.h"
 #include "../lib/global.h"
+#include "../lib/combat.h"
 
 
 //FONCTION BACKGROUND
@@ -44,6 +45,6 @@ void draw_text_pos(game_t  *game, char *text, int x, int y);
 void draw_all_rect(game_t *game, int n, ...);
 
 int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t * sprite_pnj, img_player_t * sprite_playerH, char *pseudo, char *dialogue,int choix);
-
+void afficher_dialogue_combat(game_t *game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue);
 
 #endif
