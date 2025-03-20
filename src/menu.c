@@ -274,8 +274,8 @@ void afficher_reglage(game_t* game, parametre_t* parametres) {
    
 
     creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
-    creer_rectangle(&btn_moins_volume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
-    creer_rectangle(&btn_plus_volume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&btn_moins_volume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&btn_plus_volume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
     
     int running = 1;
     SDL_Event event;
@@ -535,7 +535,8 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
         //AFFICHAGE
         //SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
-        draw_background(game);        
+        draw_background(game);      
+        draw_calque(game);  
         draw_all_rect(game, 3, &btn_reprendre, &btn_parametres, &btn_accueil);
         SDL_RenderPresent(game->renderer);
         
@@ -548,82 +549,6 @@ int afficher_menu_pause(game_t* game, parametre_t* parametres) {
     return 0;
 }
 
-int afficher_dialogue(game_t *game, joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, img_pnj_t *sprite_pnj, img_player_t *sprite_playerH, char *pseudo, char *dialogue, int choix) {
-    if (!game || !pseudo || !dialogue) return ERR;
-    
-    int largeurEcran, hauteurEcran;
-    SDL_GetRendererOutputSize(game->renderer, &largeurEcran, &hauteurEcran);
-    
-    int dialogueWidth = largeurEcran * 3 / 4;
-    int dialogueHeight = hauteurEcran / 4;
-    int dialogueX = (largeurEcran - dialogueWidth) / 2;
-    int dialogueY = hauteurEcran - dialogueHeight - 20;
-    
-    rectangle_t fondDialogue, textRect, pseudoRect, infoRect;
-    
-    creer_rectangle(&fondDialogue, dialogueWidth, dialogueHeight, dialogueX, dialogueY, 0, 0, 0, 180, "");
-    creer_rectangle(&pseudoRect, 200, 40, dialogueX + 20, dialogueY + 10, 255, 255, 255, 255, pseudo);
-    creer_rectangle(&textRect, dialogueWidth - 40, dialogueHeight - 80, dialogueX + 20, dialogueY + 60, 255, 255, 255, 255, "");
-    
-    if (!choix)
-        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
-    else
-        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "Choisir entre 1 et 3");
-
-    int len = strlen(dialogue);
-    char displayedText[256] = "";
-    int index = 0, textIndex = 0;
-    bool waitingForKey = false;
-    SDL_Event event;
-    Uint32 frameStart, frameTime;
-    
-    SDL_FlushEvent(SDL_KEYDOWN);  // Vider les touches avant d'afficher
-    
-    while (index < len) {
-        frameStart = SDL_GetTicks();
-        displayedText[textIndex] = dialogue[index];
-        displayedText[textIndex + 1] = '\0';
-        strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
-        SDL_RenderClear(game->renderer);
-        draw_all(game, j, sprite_p, pnj_sprite, sprite_pnj, sprite_playerH);
-        draw_rect(game, &fondDialogue, draw_text_center);
-        draw_rect(game, &pseudoRect, draw_text_center);
-        draw_rect(game, &textRect, draw_text_left_middle);
-        draw_rect(game, &infoRect, draw_text_center);
-        SDL_RenderPresent(game->renderer);
-        
-        int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
-        waitingForKey = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?');
-        index++;
-        textIndex++;
-
-        if (waitingForKey == true) {
-            SDL_FlushEvent(SDL_KEYDOWN);  // Éviter la répétition du dernier appui
-            
-            while (waitingForKey == true) {
-                if (SDL_WaitEvent(&event)) {
-                    if (event.type == SDL_QUIT) return OK;
-                    if (!choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
-                        if (event.key.keysym.sym == SDLK_a) {
-                            waitingForKey = false;
-                            textIndex = 0;
-                            memset(displayedText, 0, sizeof(displayedText));
-                        }
-                    } else if (choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
-                        if (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_KP_1) return 1;
-                        if (event.key.keysym.sym == SDLK_2 || event.key.keysym.sym == SDLK_KP_2) return 2;
-                        if (event.key.keysym.sym == SDLK_3 || event.key.keysym.sym == SDLK_KP_3) return 3;
-                    }
-                }
-            }
-        }
-        
-        frameTime = SDL_GetTicks() - frameStart;
-        if (delay > frameTime) SDL_Delay(delay - frameTime);
-    }
-    
-    return choix ? choix : OK;
-}
 
 
 
