@@ -373,6 +373,33 @@ int init_pnj(game_t * game, img_pnj_t * sprite_pnj) {
     return 1;
 }
 
+int init_mecha(game_t *game, mechas_t *mecha) {
+    char img[40] = "img/mechas/mecha_";
+    char ext[5] = ".png";
+    SDL_Surface * imageSprite[NB_MECHAS];
+    for(int i = 0; i < NB_MECHAS; i++) {
+        img[17] = '0' + i + 1;
+        img[18] = '\0';
+        strcat(img, ext);
+        imageSprite[i] = IMG_Load(img);
+        if (!imageSprite[i]) {
+            printf("Erreur de chargement de l'image dans init mecha: %s\n", IMG_GetError());
+            IMG_Quit();
+            return 0;
+        }
+    }
+    for(int i = 0; i < NB_MECHAS; i++) {
+        mecha[i].texture = SDL_CreateTextureFromSurface(game->renderer, imageSprite[i]);
+        if (!mecha[i].texture) {
+            printf("Erreur de création de la texture dans init mecha : %s\n", SDL_GetError());
+            SDL_Quit();
+            return 0;
+        }
+        SDL_FreeSurface(imageSprite[i]);
+    }
+    return 1;
+}
+
 //creé un objet
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
     if(type_obj == JOUEUR || type_obj == PNJ) {
@@ -544,6 +571,66 @@ void draw_text(game_t *game, rectangle_t* rectangle) {
         // Calcul de la position centrée
         textRect.x = rectangle->rect.x + (rectangle->rect.w - text_width) / 2;
         textRect.y = rectangle->rect.y + (cmp + 1) * y_offset - text_height / 2;
+        textRect.w = text_width;
+        textRect.h = text_height;
+
+        // Afficher le texte
+        SDL_RenderCopy(game->renderer, texture, NULL, &textRect);
+
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+
+        // Passer à la ligne suivante
+        if (debut[i] == '\n') i++; // Sauter le '\n'
+        debut += i; // Déplacer le pointeur
+        cmp++;
+    }
+}
+
+void draw_text_pos(game_t  *game, char *text, int x, int y) {
+    if (!game->police) {
+        printf("Erreur : Police non chargée\n");
+        return;
+    }
+
+    SDL_Color textColor = {0, 0, 0, 255}; 
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    SDL_Rect textRect;
+    char ligne[256];
+    char *debut = text;
+    
+    int num_lignes = 1;  
+    for (int j = 0; text[j] != '\0'; j++) {
+        if (text[j] == '\n') num_lignes++; // Compter le nombre de lignes
+    }
+
+    int y_offset = 20; // Centrer verticalement les lignes
+
+    int cmp = 0; // Compteur de lignes
+    
+    while (*debut) {
+        int i = 0;
+        while (debut[i] != '\0' && debut[i] != '\n') {
+            ligne[i] = debut[i]; 
+            i++;
+        }
+        ligne[i] = '\0'; // Terminer la ligne
+
+        // Créer la texture pour la ligne actuelle
+        surface = TTF_RenderText_Solid(game->police, ligne, textColor);
+        if (!surface) {
+            printf("Erreur SDL_ttf : %s\n", TTF_GetError());
+            return;
+        }
+        texture = SDL_CreateTextureFromSurface(game->renderer, surface);
+
+        int text_width = surface->w;
+        int text_height = surface->h;
+
+        // Calcul de la position centrée
+        textRect.x = x;
+        textRect.y = y + cmp * y_offset;
         textRect.w = text_width;
         textRect.h = text_height;
 

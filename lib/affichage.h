@@ -24,7 +24,8 @@ void free_mat(game_t *game, int taille_x, int taille_y);              //libere l
 
 //FONCTION GESTION OBJETS
 int init_player(game_t * game, img_player_t * sprite_player,char sexe);                                            //initialise le joueur 
-int init_pnj(game_t * game, img_pnj_t * sprite_pnj) ;                                                         //initialise un pnj
+int init_pnj(game_t * game, img_pnj_t * sprite_pnj) ;             
+int init_mecha(game_t *game, mechas_t *mecha);                                            //initialise un pnj
 SDL_Rect create_obj(game_t * game, int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
 void draw_player(game_t *game, SDL_Rect *obj, img_player_t * sprite_playerH, joueur_t * j);                 //dessine le joueur
 void draw_pnj(game_t *game, SDL_Rect *obj, img_pnj_t * sprite_pnj, pnj_t * pnj, joueur_t *j);                           //dessine un pnj
@@ -33,6 +34,7 @@ void draw_all(game_t *game,joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite, 
 //w : largeur, h, hauteur, x, coord x, y : coord y, "r,g,b" :  systeme de couleur, a : oppacité
 void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[50]); //creer un rectangle avec du texte
 void draw_text(game_t *game, rectangle_t* rectangle);
+void draw_text_pos(game_t  *game, char *text, int x, int y);
 void draw_rect(game_t *game, rectangle_t *rectangle);
 void draw_all_rect(game_t *game, int n, ...);
 

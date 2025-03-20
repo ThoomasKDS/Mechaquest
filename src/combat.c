@@ -20,12 +20,108 @@ char nom[50] = "player1";
 mechas_joueur_t ordi;
 joueur_t joueur;
 
+rectangle_t rect_bas; //fond des boutons
+
+static void init_rect_bas(rectangle_t *rect_bas, game_t *game) {            
+    int win_w, win_h;
+    SDL_GetRendererOutputSize(game->renderer, &win_w, &win_h);       //dimensions ecran
+    // Définition de rect_bas (fond des boutons)
+    rect_bas->rect.w = win_w;
+    rect_bas->rect.h = win_h / 4;
+    rect_bas->rect.x = 0;
+    rect_bas->rect.y = win_h - rect_bas->rect.h;
+    rect_bas->couleur.r = 0;
+    rect_bas->couleur.g = 0;
+    rect_bas->couleur.b = 0;
+    rect_bas->couleur.a = 150;
+}
+
 static void concat(char *dest, int nb) { //concatene un entier a une chaine de caractere
     char tmp[10];
     sprintf(tmp, "%d", nb);
     strcat(dest, tmp);
 }
 
+void draw_combat(game_t * game, mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) {
+    int win_w, win_h;
+    SDL_GetRendererOutputSize(game->renderer, &win_w, &win_h);       //dimensions ecran
+
+    //texte à afficher
+    int pv_mecha_joueur = mecha_joueur->pv;
+    int pv_mecha_ordi = mecha_ordi->pv;
+    int niv_mecha_joueur = mecha_joueur->niveau;
+    int niv_mecha_ordi = mecha_ordi->niveau;
+    char nom_mecha_joueur[50];
+    strcpy(nom_mecha_joueur, mecha[mecha_joueur->id_mechas - 1].nom);
+    char nom_mecha_ordi[50];
+    strcpy(nom_mecha_ordi, mecha[mecha_ordi->id_mechas - 1].nom);
+    char texte_joueur[256];
+    char texte_ordi[256];
+    strcpy(texte_joueur, "Pv : ");
+   //concat(texte_joueur, pv_mecha_joueur);
+    /*strcat(texte_joueur, "\nNiv : ");
+    concat(texte_joueur, niv_mecha_joueur);*/
+    strcpy(texte_ordi, "Pv : ");
+    //concat(texte_ordi, pv_mecha_ordi);
+    /*strcat(texte_ordi, "\nNiv : ");
+    concat(texte_ordi, niv_mecha_ordi);*/
+
+    rectangle_t rect_joueur, rect_ordi, rect_bordure_joueur, rect_bordure_ordi, rect_pv_joueur, rect_pv_ordi, border_pv_joueur, border_pv_ordi, fond_pv_joueur, fond_pv_ordi;
+
+    int bordure_size = 25 * game->scale;
+    int w = win_w / 8;
+    int h = win_h / 14;
+    int x_joueur = 0 + win_w / 12;
+    int y = win_h / 10;
+    int x_ordi = win_w - win_w / 12 - w;
+    int h_pv = win_h / 60;
+    int w_fond_pv = win_w / 10;
+    int w_pv_joueur = win_w / 10 * pv_mecha_joueur / mecha_joueur->pv_max;
+    int w_pv_ordi = win_w / 10 * pv_mecha_ordi / mecha_ordi->pv_max;
+    int x_pv_joueur = x_joueur + w/2 - w_fond_pv/2;
+    int x_pv_ordi = x_ordi + w/2 - w_fond_pv/2;
+    int y_pv = y + win_h / 30;
+    int border_pv = 3 * game->scale;
+
+
+    creer_rectangle(&rect_joueur, w, h, x_joueur, y, 160, 160, 160, 255, NULL);
+    creer_rectangle(&rect_ordi, w, h, x_ordi, y, 160, 160, 160, 255, NULL);
+    creer_rectangle(&rect_bordure_joueur, w, bordure_size, x_joueur, y - bordure_size, 0, 0, 0, 0, nom_mecha_joueur);
+    creer_rectangle(&rect_bordure_ordi, w, bordure_size, x_ordi, y - bordure_size, 0, 0, 0, 0, nom_mecha_ordi);
+    creer_rectangle(&rect_pv_joueur, w_pv_joueur, h_pv, x_pv_joueur, y_pv, 0, 255, 0, 255, NULL);
+    creer_rectangle(&rect_pv_ordi, w_pv_ordi, h_pv, x_pv_ordi, y_pv, 0, 255, 0, 255, NULL);
+    creer_rectangle(&fond_pv_joueur, w_fond_pv, h_pv, x_pv_joueur, y_pv, 116, 117, 117, 255, NULL);
+    creer_rectangle(&fond_pv_ordi, w_fond_pv, h_pv, x_pv_ordi, y_pv, 116, 117, 117, 255, NULL);
+    creer_rectangle(&border_pv_joueur, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_joueur - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
+    creer_rectangle(&border_pv_ordi, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_ordi - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
+    draw_background(game);
+    draw_all_rect(game, 11, rect_bas,&rect_bordure_joueur,&rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
+    draw_text_pos(game, texte_joueur, x_pv_joueur, y);
+    draw_text_pos(game, texte_ordi, x_pv_ordi, y);
+    
+    
+
+}
+
+void animation_degat(int mecha_att, int pv_old, int pv_new, game_t *game, mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi) {
+    int temp_pv = pv_old;  // Utiliser une variable temporaire pour éviter des bugs d'affichage
+    while(temp_pv > pv_new) {
+        SDL_RenderClear(game->renderer);
+        if(!mecha_att) {
+            mecha_joueur->pv = temp_pv;  // Temporairement réduire les PV affichés
+        } else {
+            mecha_ordi->pv = temp_pv;   // Temporairement réduire les PV affichés
+        }
+        draw_combat(game, mecha_joueur, mecha_ordi);
+        SDL_RenderPresent(game->renderer);
+        SDL_Delay(60);
+        temp_pv--;
+    }
+
+    // Mise à jour finale des PV réels après l'animation
+    if(!mecha_att) mecha_joueur->pv = pv_new;
+    else mecha_ordi->pv = pv_new;
+}
 
 
 //Affiche les  mechas et permet d'en selectionner un
@@ -176,7 +272,7 @@ int aff_mechas_combat(game_t * game, joueur_t * joueur) {
         if (FRAME_DELAYS > frameTime) SDL_Delay(FRAME_DELAYS - frameTime);
     }
     game->mat_active = 6;
-    return -1;
+    return KO;
 }
 
 /*
@@ -186,12 +282,13 @@ FONCTIONS UTILISATION OBJET
 */
 
 //PERMET AU JOUEUR D'UTILISER UN OBJET
-int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi){
+int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     SDL_Event event;
     Uint32 frameStart;
     int frameTime;
     int running = 1;
     int win_w, win_h;
+    int res;
     SDL_GetRendererOutputSize(game->renderer, &win_w, &win_h);       //dimensions ecran
 
     //texte à afficher
@@ -216,33 +313,26 @@ int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi){
     SDL_Color couleur_bordure_mechaball = {162, 202, 154, 230};
     SDL_Color couleur_bordure_retour = {255, 255, 255, 230};
 
-    // Définition de rect_bas (fond des boutons)
-    int rect_bas_w = win_w;
-    int rect_bas_h = win_h / 4;
-    int rect_bas_x = 0; // Centrer horizontalement
-    int rect_bas_y = win_h - rect_bas_h;
-
     // Définition des tailles des boutons
-    int btn_w = rect_bas_w / 6; // Largeur des boutons (1/6 de l'écran)
-    int btn_h = rect_bas_h / 2; // Hauteur des boutons (1/2 du rect_bas)
+    int btn_w = rect_bas.rect.w / 6; // Largeur des boutons (1/6 de l'écran)
+    int btn_h = rect_bas.rect.h / 2; // Hauteur des boutons (1/2 du rect_bas)
     int border_size = 5 * game->scale; // Épaisseur des bords
 
     // Calcul de l'espacement entre les boutons
-    int espacement = ((rect_bas_w - (4 * btn_w)) / 3) * 0.7;
+    int espacement = ((rect_bas.rect.w - (4 * btn_w)) / 3) * 0.7;
 
     // Positionnement des boutons 
-    int btn_center_y = rect_bas_y + (rect_bas_h - btn_h) / 2;
+    int btn_center_y = rect_bas.rect.y + (rect_bas.rect.h - btn_h) / 2;
     int total_width = (4 * btn_w) + (3 * espacement);  // Largeur totale de la ligne
-    int btn_carbu_x = (rect_bas_w - total_width) / 2; // Centre le premier bouton
+    int btn_carbu_x = (rect_bas.rect.w - total_width) / 2; // Centre le premier bouton
     int btn_rappel_x = btn_carbu_x + btn_w + espacement;
     int btn_mechaball_x = btn_rappel_x + btn_w + espacement;
     int btn_retour_x = btn_mechaball_x + btn_w + espacement;
 
-    rectangle_t rect_bas, btn_carbu, btn_rappel, btn_mechaball, btn_retour;
+    rectangle_t btn_carbu, btn_rappel, btn_mechaball, btn_retour;
     rectangle_t bordure_carbu, bordure_rappel, bordure_mechaball, bordure_retour;
 
     //creation des rectangles
-    creer_rectangle(&rect_bas,rect_bas_w, rect_bas_h, rect_bas_x, rect_bas_y,  0, 0, 0, 150, NULL);
     creer_rectangle(&btn_carbu,btn_w, btn_h, btn_carbu_x, btn_center_y,  210, 145, 132, 255, texte_carburant);
     creer_rectangle(&btn_rappel,btn_w, btn_h, btn_rappel_x, btn_center_y,  229, 185, 135, 255, texte_rappel);
     creer_rectangle(&btn_mechaball, btn_w, btn_h, btn_mechaball_x, btn_center_y, 162, 202, 154, 255, texte_mechaball);
@@ -273,10 +363,20 @@ int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi){
                 }
                 if(event.key.keysym.sym == SDLK_a){
                     switch(choix) {
-                        case 0: if(utilisation_carburant(game, joueur)) running = 0; break;
-                        case 1: if(utilisation_rappel(game, joueur)) running = 0; break;
-                        case 2: if(utilisation_mechaball(game, joueur, ordi)) return 0; break;
-                        case 3: running = 0; return 0;
+                        case 0: 
+                            res = utilisation_carburant(game, joueur);
+                            if(res == OK) running = 0;
+                             break;
+                        case 1: 
+                            res = utilisation_rappel(game, joueur);
+                            if(res == OK) running = 0;
+                            break;
+                        case 2:
+                            res = utilisation_mechaball(game, joueur, ordi);
+                            if(res == CAPTURE) return CAPTURE;
+                            else if(res == FAUX) running = 0;
+                            break;
+                        case 3: return (RETOUR);
                     }
                 }
                 SDL_Event e;
@@ -286,92 +386,92 @@ int utilisation_objet(game_t *game, joueur_t *joueur, mechas_joueur_t *ordi){
             }
             
         }
+        if(running) {
 
-        switch(choix){      //couleur de la bordure du bouton selectionné
-            case 0 : bordure_carbu.couleur = couleur_bordure_carburant;
-                        bordure_rappel.couleur = couleur_bordure;
-                        bordure_mechaball.couleur = couleur_bordure;
-                        bordure_retour.couleur = couleur_bordure;
-                        break;
-            case 1 : bordure_carbu.couleur = couleur_bordure;
-                        bordure_rappel.couleur = couleur_bordure_rappel;
-                        bordure_mechaball.couleur = couleur_bordure;
-                        bordure_retour.couleur = couleur_bordure;
-                        break;
-            case 2 : bordure_carbu.couleur = couleur_bordure;
-                        bordure_rappel.couleur = couleur_bordure;
-                        bordure_mechaball.couleur = couleur_bordure_mechaball;
-                        bordure_retour.couleur = couleur_bordure;
-                        break;
-            case 3 : bordure_carbu.couleur = couleur_bordure;
-                        bordure_rappel.couleur = couleur_bordure;
-                        bordure_mechaball.couleur = couleur_bordure;
-                        bordure_retour.couleur = couleur_bordure_retour;
-                        break;
+            switch(choix){      //couleur de la bordure du bouton selectionné
+                case 0 : bordure_carbu.couleur = couleur_bordure_carburant;
+                            bordure_rappel.couleur = couleur_bordure;
+                            bordure_mechaball.couleur = couleur_bordure;
+                            bordure_retour.couleur = couleur_bordure;
+                            break;
+                case 1 : bordure_carbu.couleur = couleur_bordure;
+                            bordure_rappel.couleur = couleur_bordure_rappel;
+                            bordure_mechaball.couleur = couleur_bordure;
+                            bordure_retour.couleur = couleur_bordure;
+                            break;
+                case 2 : bordure_carbu.couleur = couleur_bordure;
+                            bordure_rappel.couleur = couleur_bordure;
+                            bordure_mechaball.couleur = couleur_bordure_mechaball;
+                            bordure_retour.couleur = couleur_bordure;
+                            break;
+                case 3 : bordure_carbu.couleur = couleur_bordure;
+                            bordure_rappel.couleur = couleur_bordure;
+                            bordure_mechaball.couleur = couleur_bordure;
+                            bordure_retour.couleur = couleur_bordure_retour;
+                            break;
+            }
+
+            SDL_RenderClear(game->renderer);
+            draw_combat(game, &(joueur->mechas_joueur[*actif]), ordi);
+            draw_all_rect(game, 8, &bordure_carbu, &bordure_rappel, &bordure_mechaball, &bordure_retour, &btn_carbu, &btn_rappel, &btn_mechaball, &btn_retour);
+
+            SDL_RenderPresent(game->renderer);
+
+
+            frameTime = SDL_GetTicks() - frameStart;
+            if (FRAME_DELAYS > frameTime) SDL_Delay(FRAME_DELAYS - frameTime);
         }
-
-        SDL_RenderClear(game->renderer);
-        draw_background(game);
-
-        draw_all_rect(game, 9,&rect_bas, &bordure_carbu, &bordure_rappel, &bordure_mechaball, &bordure_retour, &btn_carbu, &btn_rappel, &btn_mechaball, &btn_retour);
-
-        SDL_RenderPresent(game->renderer);
-
-
-        frameTime = SDL_GetTicks() - frameStart;
-        if (FRAME_DELAYS > frameTime) SDL_Delay(FRAME_DELAYS - frameTime);
 
     }
 
-    return 1;
+    return OK;
 }
 
 int utilisation_carburant(game_t *game, joueur_t *joueur){
     if(joueur->inventaire->carburant <= 0){
         printf("Vous n'avez pas de carburant\n");
-        return 0;
+        return (KO);
     }
     else {
         int i = aff_mechas_combat(game, joueur); //recupere le numero du mechas selectionne
-        if(i == -1 || i == 4){
-            return 0;
+        if(i == -1 || i == 4){  //si on a rien choisi
+            return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv == joueur->mechas_joueur[i].pv_max){    //Si les PV sont au Max, on ne peut pas utiliser de carburant
             printf("Les PV sont déjà au maximun !\n");
-            return 0;
+            return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv < 0){  //Si les PV sont a 0, impossible d'utiliser du carburant
             printf("Vous ne pouvez pas utiliser de carburant (PV à 0)\n");
-            return 0;
+            return (RETOUR);
         }
         else{
-            printf("Ancien PV : %d\n", joueur->mechas_joueur[i].pv);
             joueur->mechas_joueur[i].pv += 20;  //Ajouter 20 aux PV actuels
             if(joueur->mechas_joueur[i].pv > joueur->mechas_joueur[i].pv_max){
                 joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max;
             }
             joueur->inventaire->carburant--;
-            printf("Nouveau PV : %d\n", joueur->mechas_joueur[i].pv);
+            printf("Utilisation carburant, nouveau PV : %d\n", joueur->mechas_joueur[i].pv);
         }
     }
 
-    return 1;
+    return (OK);
 
 }
 
 int utilisation_rappel(game_t *game, joueur_t *joueur){
     if(joueur->inventaire->rappel <= 0){
         printf("Vous n'avez pas de rappel\n");
-        return 0;
+        return (KO);
     }
     else {
         int i = aff_mechas_combat(game, joueur); //recupere le numero du mechas selectionne
-        if(i == -1 || i == 5){
-            return 0;
+        if(i == -1 || i == 4){ //si on a pas choisi de mecha
+            return (RETOUR);
         }
         else if(joueur->mechas_joueur[i].pv != 0){  //Si les PV sont pas a 0, impossible d'utiliser du rappel
             printf("Vous ne pouvez pas utiliser de rappel sur un mechas encore en vie\n");
-            return 0;
+            return (RETOUR);
         }
         else{
             joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max/2;  //Remettre les PV au max
@@ -381,38 +481,38 @@ int utilisation_rappel(game_t *game, joueur_t *joueur){
         }
     }
 
-    return 1;
+    return (OK);
 }
 
 int utilisation_mechaball(game_t *game,joueur_t * joueur, mechas_joueur_t *ordi) {
     if(joueur->inventaire->mechaball <= 0){
         printf("Vous n'avez pas de mechaball\n");
-        return 0;
+        return (KO);
     }
     else{
         joueur->inventaire->mechaball--;
         float taux_capture;   //Un taux de capture different en fonction du type de mecha (nucleaire + difficile a attraper)
         if((strcmp(mecha[ordi->id_mechas-1].type, "Nucleaire") == 0)){
-            taux_capture = 0.3;
+            taux_capture = 0.1;
         }
         else{
-            taux_capture = 0.8;
+            taux_capture = 0.5;
         }
-        int proba_capture = (1 - ordi->pv / ordi->pv_max) * taux_capture;   //Calcul les chances d'attraper le mecha
+        int proba_capture = (1 - (float)ordi->pv / ordi->pv_max) * taux_capture * 100;
 
         int nbr_rand_capture = (rand() % 100) + 1;
 
-        if(proba_capture <= nbr_rand_capture){  //Si le mecha est attrapé
+        if(proba_capture >= nbr_rand_capture){  //Si le mecha est attrapé
             printf("Vous avez attrapé %s\n", mecha[ordi->id_mechas-1].nom);
         
             copie_mechas(joueur, ordi);
-            return 1;
+            return (CAPTURE);
         }
         else {
             printf("Vous n'avez pas réussi à attraper %s\n", mecha[ordi->id_mechas-1].nom);
         }
     }
-    return -1;
+    return (FAUX);
 }
 
 
@@ -427,8 +527,16 @@ FONCTIONS ATTAQUE
 ===========================================
 */
 
-int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def) {
+int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def, game_t *game, int mecha_choix) {
     if(choix == 2) return 0;
+    if(choix == 0 && mecha_att->utilisation_1 == 0) {
+        printf("Vous ne pouvez plus utiliser cette attaque\n");
+        return KO;
+    }
+    if(choix == 1 && mecha_att->utilisation_2 == 0) {
+        printf("Vous ne pouvez plus utiliser cette attaque\n");
+        return KO;
+    }
     int ancien_pv = mecha_def->pv;
     float att_degat[2] = {attaque[mecha_att->attaque_1].degats, attaque[mecha_att->attaque_2].degats};
     float stat_att_mecha = mecha_att->attaque;
@@ -448,9 +556,15 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         else if(!strcmp(mecha_att_type[choix], "Uranium") && strcmp(mecha_def_type, "Uranium")){    //Test si l'attaque est du type uranium sur un autre type
             att_degat[choix] *= 1.2;
         }
-        if(stat_att_mecha + att_degat[choix] > mecha_def->defense){
-            mecha_def->pv -= (stat_att_mecha + att_degat[choix] - mecha_def->defense);
-            if (mecha_def->pv < 0) mecha_def->pv = 0;
+        if(stat_att_mecha + att_degat[choix] > mecha_def->defense) {
+            int pv_old = mecha_def->pv;
+            int pv_new = pv_old - (stat_att_mecha + att_degat[choix] - mecha_def->defense);
+            if(pv_new < 0) pv_new = 0;
+        
+            if(mecha_choix) 
+                animation_degat(mecha_choix, pv_old, pv_new, game, mecha_att, mecha_def);
+            else 
+                animation_degat(mecha_choix, pv_old, pv_new, game, mecha_def, mecha_att);
         }
         if(!choix) mecha_att->utilisation_1--;
         else mecha_att->utilisation_2--;
@@ -460,7 +574,7 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         printf("L'attaque a échoué\n");
     }
     printf("PV : %d --> %d\n", ancien_pv, mecha_def->pv);
-    return 1;
+    return OK;
 }
 
 int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int * actif){
@@ -477,7 +591,7 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
     char texte_retour[7] = "Retour";
     char texte_attaque[2][400] = {"Attaque 1 : ", "Attaque 2 : "};
     int attaque_num[2] = {j->mechas_joueur[*actif].attaque_1-1, j->mechas_joueur[*actif].attaque_2-1};
-    int utilisation_num[2] = {j->mechas_joueur[*actif].utilisation_1-1, j->mechas_joueur[*actif].utilisation_2-1};
+    int utilisation_num[2] = {j->mechas_joueur[*actif].utilisation_1, j->mechas_joueur[*actif].utilisation_2};
     for(int i = 0; i < 2; i++){
         strcpy(texte_attaque[i], attaque[attaque_num[i]].nom);
         strcat(texte_attaque[i], "\nDegats:");
@@ -511,31 +625,24 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
     SDL_Color selec_bordure_retour = {80, 80, 80, 255};
 
 
-    rectangle_t btn_attaque1, btn_attaque2, btn_retour, rect_bas;
+    rectangle_t btn_attaque1, btn_attaque2, btn_retour;
     rectangle_t border_attaque1, border_attaque2, border_retour;
 
     int border_size = 5 * game->scale; // Épaisseur des bords
 
-    // Définition de rect_bas (fond des boutons)
-    int rect_bas_w = win_w;
-    int rect_bas_h = win_h / 4;
-    int rect_bas_x = 0; // Centrer horizontalement
-    int rect_bas_y = win_h - rect_bas_h;
-
         // Définition des tailles des boutons
-    int btn_w = rect_bas_w / 5; // Chaque bouton fait environ 1/5 de la largeur de rect_bas
-    int btn_h = rect_bas_h / 2; // Hauteur du bouton = moitié de rect_bas
-    int btn_spacing = rect_bas_w / 20; // Espacement entre les boutons (ajustable)
+    int btn_w = rect_bas.rect.w / 5; // Chaque bouton fait environ 1/5 de la largeur de rect_bas
+    int btn_h = rect_bas.rect.h / 2; // Hauteur du bouton = moitié de rect_bas
+    int btn_spacing = rect_bas.rect.w / 20; // Espacement entre les boutons (ajustable)
 
     // Positionnement des boutons
-    int btn_center_x = (rect_bas_w - btn_w) / 2;  // Centré horizontalement dans rect_bas
-    int btn_center_y = rect_bas_y + (rect_bas_h - btn_h) / 2; // Centré verticalement
+    int btn_center_x = (rect_bas.rect.w - btn_w) / 2;  // Centré horizontalement dans rect_bas
+    int btn_center_y = rect_bas.rect.y + (rect_bas.rect.h - btn_h) / 2; // Centré verticalement
 
     int btn_left_x = btn_center_x - btn_w - btn_spacing;  // À gauche du centre
     int btn_right_x = btn_center_x + btn_w + btn_spacing; // À droite du centre
 
     //creer les boutons
-    creer_rectangle(&rect_bas, rect_bas_w, rect_bas_h, rect_bas_x, rect_bas_y, 0, 0, 0, 150, NULL);
     creer_rectangle(&btn_attaque1, btn_w, btn_h, btn_left_x, btn_center_y, 142, 142, 142, 255, texte_attaque[0]);
     creer_rectangle(&btn_attaque2, btn_w, btn_h, btn_center_x, btn_center_y, 142, 142, 142, 255, texte_attaque[1]);
     creer_rectangle(&btn_retour, btn_w, btn_h, btn_right_x, btn_center_y, 142, 142, 142, 255, texte_retour);
@@ -561,7 +668,13 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
                     choix = (choix + 1) % 3;
                 }
                 if(event.key.keysym.sym == SDLK_a){
-                    return algo_attaque(choix, &j->mechas_joueur[*actif], mecha_ordi);
+                    if(choix == 2)
+                        return RETOUR;
+                    int res = algo_attaque(choix, &j->mechas_joueur[*actif], mecha_ordi, game, 1);
+                    if(res != KO) {
+                        return res;
+                    }
+                    
                 }
                 SDL_Event e;
                 while (SDL_WaitEvent(&e) && e.type != SDL_KEYUP);
@@ -582,8 +695,8 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
             break;
         }
         SDL_RenderClear(game->renderer);
-        draw_background(game);
-        draw_all_rect(game, 7, &rect_bas, &border_attaque1, &border_attaque2, &border_retour, &btn_attaque1, &btn_attaque2, &btn_retour);
+        draw_combat(game, &(j->mechas_joueur[*actif]), mecha_ordi);
+        draw_all_rect(game, 6, &border_attaque1, &border_attaque2, &border_retour, &btn_attaque1, &btn_attaque2, &btn_retour);
         
         SDL_RenderPresent(game->renderer);
 
@@ -596,124 +709,67 @@ int attaque_joueur(game_t *game, joueur_t *j, mechas_joueur_t *mecha_ordi, int *
     return OK;
 }
 
-int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){  //Retourne 0 si ne peut pas attaquer
+int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur, game_t *game){  //Retourne 0 si ne peut pas attaquer
     int numero_attaque;
     int utilisation[2] = {mecha_ordi->utilisation_1, mecha_ordi->utilisation_2};
-    printf("uti %d\nuti %d\n", utilisation[0], utilisation[1]);
     numero_attaque = rand() % 2;
     if(!utilisation[numero_attaque]){
         numero_attaque = 1 - numero_attaque;
         if(!utilisation[numero_attaque]) {
-            printf("Le mechas sauvage ne peut plus attaquer\n");
+            printf("Le mecha sauvage ne peut plus attaquer\n");
             return 0;
         }
-        algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
-        printf("ok\n");
+        algo_attaque(numero_attaque, mecha_ordi, mecha_joueur, game, 0);
+       
     }
-    
+    else{
+        algo_attaque(numero_attaque, mecha_ordi, mecha_joueur, game, 0);
+    }
     return OK;
 }
 
 
-int attaque_ordi_pnj(pnj_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
-
-    int ok = -1;
-    int cpt = 0;
-    int att1, att2;
+/*int attaque_ordi_pnj(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
     int ancien_pv;
-    int nbr_rand_att, nbr_rand_preci;
     int nbr_rand_choix = 0;
 
-    srand(time(NULL));
-
-    if(mecha_ordi->mechas_joueur->pv <= mecha_ordi->mechas_joueur->pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max
+    
+    if(mecha_ordi->pv <= mecha_ordi->pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
         nbr_rand_choix = (rand() % 2) + 1;
     }
 
-    if(nbr_rand_choix == 1){    //Utilisation d'un carburant
+    if(nbr_rand_choix){    //Utilisation d'un carburant
         if(mecha_ordi->inventaire->carburant <= 0){
-            nbr_rand_choix = 2;
-        }
-        else if(mecha_ordi->mechas_joueur->pv + 20 > mecha_ordi->mechas_joueur->pv_max){ //Si les PV + 20 sont sup aux PV Max, les PV deviennent les PV Max
-            mecha_ordi->mechas_joueur->pv = mecha_ordi->mechas_joueur->pv_max;
-            mecha_ordi->inventaire->carburant--;
+            nbr_rand_choix = 0;
         }
         else{
             mecha_ordi->mechas_joueur->pv += 20;
+            if(mecha_ordi->mechas_joueur->pv > mecha_ordi->mechas_joueur->pv_max){
+                mecha_ordi->mechas_joueur->pv = mecha_ordi->mechas_joueur->pv_max;
+            }
             mecha_ordi->inventaire->carburant--;
         }
     }
-    else{   //Attaque
-        ancien_pv = mecha_joueur->pv;
-        att1 = attaque[mecha_ordi->mechas_joueur->attaque_1].degats;
-        att2 = attaque[mecha_ordi->mechas_joueur->attaque_2].degats;
-
-        nbr_rand_att = (rand() % 2) + 1;
-
-        while(ok != 0){ //Test si les attaques ont encore des utilisations
-            if((nbr_rand_att == 1) && (attaque[mecha_ordi->mechas_joueur->attaque_1].utilisations > 0)){
-                ok = 0;
-            }
-            else{
-                nbr_rand_att = 2;   //Si l'utilisation est a 0, on test directement l'autre attaque
-            }
-            if((nbr_rand_att == 2) && (attaque[mecha_ordi->mechas_joueur->attaque_2].utilisations > 0)){
-                ok = 0;
-            }
-            else{
-                nbr_rand_att = 1;   //Si l'utilisation est a 0, on test directement l'autre attaque
-            }
-            cpt++;
-            if(cpt > 2){    //Si aucune attaque n'a d'utilisation
+    if(!nbr_rand_choix){   //Attaque
+        int numero_attaque;
+        int utilisation[2] = {mecha_ordi->utilisation_1, mecha_ordi->utilisation_2};
+        numero_attaque = rand() % 2;
+        if(!utilisation[numero_attaque]){
+            numero_attaque = 1 - numero_attaque;
+            if(!utilisation[numero_attaque]) {
+                printf("Le mecha sauvage ne peut plus attaquer\n");
                 return 0;
             }
-        }
-
-        nbr_rand_preci = (rand() % 100) + 1;
-
-        if(nbr_rand_att == 1){
-            if(nbr_rand_preci <= attaque[mecha_joueur->attaque_1].precision){  //Test si l'attaque touche (precision)
-
-                // Test en fonction des types (+ de degats ou non)
-                if(((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
-                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
-                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
-                    att1 *= 1.5;
-                }
-                else if((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_1].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
-                    att1 *= 1.2;
-                }
-
-                if(mecha_ordi->mechas_joueur->attaque + att1 > mecha_joueur->defense){
-                    mecha_joueur->pv -= (mecha_ordi->mechas_joueur->attaque + att1 - mecha_joueur->defense);
-                }
-
-                attaque[mecha_ordi->mechas_joueur->attaque_1].utilisations--;    //Decrementer le nombre d'utilisations restantes
-            }
+            algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
+       
         }
         else{
-            if(nbr_rand_preci <= attaque[mecha_joueur->attaque_2].precision){ //Test si l'attaque touche (precision)
-                // Test en fonction des types (+ de degats ou non)
-                if(((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Carburant") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Electrique") == 0))
-                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Electrique") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Renouvelable") == 0))
-                || ((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Renouvelable") == 0) && (strcmp(mecha[mecha_joueur->id_mechas-1].type, "Carburant") == 0))){
-                    att2 *= 1.5;
-                }
-                else if((strcmp(attaque[mecha_ordi->mechas_joueur->attaque_2].type, "Nucleaire" ) == 0) && strcmp(mecha[mecha_joueur->id_mechas-1].type, "Nucleaire")){
-                    att2 *= 1.2;
-                }
-
-                if(mecha_ordi->mechas_joueur->attaque + att2 > mecha_joueur->defense){
-                    mecha_joueur->pv -= (mecha_ordi->mechas_joueur->attaque + att2 - mecha_joueur->defense);
-                }
-
-                attaque[mecha_ordi->mechas_joueur->attaque_2].utilisations--;    //Decrementer le nombre d'utilisations restantes
-            }
+            algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
         }
-        printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
+            printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
     }
     return OK;
-}
+}*/
 
 /*
 ===========================================
@@ -721,18 +777,20 @@ int attaque_ordi_pnj(pnj_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
 
 //premet de changer de meca dans le combat
 int changer_mecha(game_t *game, joueur_t *joueur, int *actif){
-    int choix = aff_mechas_combat(game, joueur);
+    int choix ;
+    choix = aff_mechas_combat(game, joueur);
+    if (joueur->mechas_joueur[choix].pv == 0) {
+        printf("Ce mecha est mort\n");
+        return KO;
+    }
     if(choix == *actif) {
         printf("Ce mecha est déjà actif\n");
-        return 0;
+        return KO;
     }
-    if(choix == 4) return 0;
+    if(choix == 4) return RETOUR;
     *actif = choix;
-    return 1;
+    return OK;
 }
-
-
-
 
 
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur){
@@ -857,13 +915,13 @@ void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue){
 
 
 
-
 int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, int * actif) {
     SDL_Event event;
     Uint32 frameStart;
     int frameTime;
     int running = 1;
     int win_w, win_h;
+    int res;
     SDL_GetRendererOutputSize(game->renderer, &win_w, &win_h);       //dimensions ecran
     
     //couleurs des bordures
@@ -872,33 +930,25 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
     SDL_Color couleur_bordure_objet = {229, 185, 135, 150};
     SDL_Color couleur_bordure_mecha = {162, 202, 154, 150};
     int choix = 1;
-
-
-    // Définition de rect_bas (fond des boutons)
-    int rect_bas_w = win_w;
-    int rect_bas_h = win_h / 4;
-    int rect_bas_x = 0; // Centrer horizontalement
-    int rect_bas_y = win_h - rect_bas_h;
     
     // Définition des tailles des boutons
-    int btn_w = rect_bas_w / 5; // Largeur des boutons (1/5 de l'écran)
-    int btn_h = rect_bas_h / 2; // Hauteur des boutons (1/2 du rect_bas)
+    int btn_w = rect_bas.rect.w / 5; // Largeur des boutons (1/5 de l'écran)
+    int btn_h = rect_bas.rect.h / 2; // Hauteur des boutons (1/2 du rect_bas)
     int btn_margin = btn_w / 2; // Marge entre les boutons
     int border_size = 5 * game->scale; // Épaisseur des bords
     
     // Positionnement des boutons
-    int btn_center_x = (rect_bas_w - btn_w) / 2;
-    int btn_center_y = rect_bas_y + (rect_bas_h - btn_h) / 2;
+    int btn_center_x = (rect_bas.rect.w - btn_w) / 2;
+    int btn_center_y = rect_bas.rect.y + (rect_bas.rect.h - btn_h) / 2;
     int btn_left_x = btn_center_x - btn_w - btn_margin;
     int btn_right_x = btn_center_x + btn_w + btn_margin;
     int btn_fuite_y = btn_center_y + btn_h + btn_margin;
 
     
-    rectangle_t rect_bas, rect_attaque, rect_objet, rect_changer_mecha, rect_fuite;
+    rectangle_t rect_attaque, rect_objet, rect_changer_mecha, rect_fuite;
     rectangle_t border_attaque, border_objet, border_mecha;
     
     // Création des rectangles
-    creer_rectangle(&rect_bas, rect_bas_w, rect_bas_h, rect_bas_x, rect_bas_y, 0, 0, 0, 150, NULL);
     creer_rectangle(&rect_attaque, btn_w, btn_h, btn_center_x, btn_center_y, 165, 36, 8, 250, "Attaquer");
     creer_rectangle(&rect_objet, btn_w, btn_h, btn_left_x, btn_center_y, 204, 116, 16, 250, "Objet");
     creer_rectangle(&rect_changer_mecha, btn_w, btn_h, btn_right_x, btn_center_y, 69, 150, 54, 250, "Mechas");
@@ -916,7 +966,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
         
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)) {
-                return 0;
+                return FUITE;
             }
             if(event.type == SDL_KEYDOWN) {
                 if(event.key.keysym.sym == SDLK_LEFT){
@@ -928,13 +978,22 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
                 if(event.key.keysym.sym == SDLK_a) {
                     switch(choix) {
                         case 0 : 
-                                if(!utilisation_objet(game, joueur, mecha_sauvage)) return 0;
-                                else {
+                                res = utilisation_objet(game, joueur, mecha_sauvage, actif);
+                                if(res == CAPTURE) 
+                                    return CAPTURE;
+                                else if(res!= RETOUR){
                                     running = 0;
                                 }
-                                    break;
-                        case 1 : attaque_joueur(game, joueur, mecha_sauvage, actif);running = 0; break;
-                        case 2 : changer_mecha(game, joueur, actif);running = 0; break;
+                                break;
+                        case 1 :
+                            if(attaque_joueur(game, joueur, mecha_sauvage, actif) == OK)
+                                running = 0;
+                            break;
+                        case 2 : 
+                            res = changer_mecha(game, joueur, actif);
+                            if(res == OK){
+                                return OK;
+                            }
                     }
                 }
                 SDL_Event e;
@@ -955,10 +1014,8 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
         }
         
         SDL_RenderClear(game->renderer);
-        draw_background(game);
-        draw_all_rect(game, 7, &rect_bas, &border_attaque, &border_objet, &border_mecha, &rect_attaque, &rect_objet, &rect_changer_mecha, &rect_fuite);
-        //draw_rect(game, &border_fuite);
-        //draw_rect(game, &rect_fuite);
+        draw_combat(game, &(joueur->mechas_joueur[*actif]), mecha_sauvage);
+        draw_all_rect(game, 6, &border_attaque, &border_objet, &border_mecha, &rect_attaque, &rect_objet, &rect_changer_mecha, &rect_fuite);
         SDL_RenderPresent(game->renderer);
         
         frameTime = SDL_GetTicks() - frameStart;
@@ -966,27 +1023,62 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game, 
             SDL_Delay(FRAME_DELAYS - frameTime);
         }
     }
-    return 1;
+    return OK;
 }
 
 
+
+
+void combat_pnj(joueur_t *joueur, pnj_t *pnj, game_t *game) {
+
+}
+
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, game_t *game) {
     int save_map_active = game->mat_active;
+    init_rect_bas(&rect_bas, game);
     game->mat_active = 6;
     int actif = 0;
-    printf("\nvitesse %d\ndef : %d\n", mecha_sauvage->vitesse, mecha_sauvage->defense);
-    while(mecha_sauvage->pv > 0 && joueur->mechas_joueur[actif].pv > 0) {
-        if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
-            if(!tour_joueur(joueur, mecha_sauvage, game, &actif)) break;
-            attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
-        }
-        else {
-            attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
-            if(!tour_joueur(joueur, mecha_sauvage, game, &actif)) break;
-        }
+    int res;
+    int verif = 0;
+    int existe[4] = {0,0,0,0};
+    for(int i = 0; i < 4; i++) {
+        if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
+            existe[i] = 1;
     }
-    if(mecha_sauvage->pv == 0) printf("gagné\n");
-    else printf("perdu\n");
+    while(joueur->mechas_joueur[actif].pv == 0) {
+        actif++;
+    }
+    do {
+        while(mecha_sauvage->pv > 0 && joueur->mechas_joueur[actif].pv > 0 && res == OK) {
+            if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
+                res = tour_joueur(joueur, mecha_sauvage, game, &actif);
+                
+                if(mecha_sauvage->pv != 0 && res == OK) 
+                    attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]), game);
+            }
+            else {
+                attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]), game);
+                if(joueur->mechas_joueur[actif].pv != 0) {
+                    res = tour_joueur(joueur, mecha_sauvage, game, &actif);
+                }
+            }
+        }
+        if(mecha_sauvage->pv > 0 && res == OK) {
+            verif = 0;
+            for(int i = 0; i < 4; i++) {
+                if(existe[i] && joueur->mechas_joueur[i].pv > 0)
+                    verif = 1;
+
+            }
+            if(verif) {
+                while( changer_mecha(game, joueur, &actif) != 1);
+            }
+        }
+    }while(verif && mecha_sauvage->pv > 0 && res == OK);
+    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) printf("perdu\n");
+    else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0)printf("gagné\n");
+    else if(res == FUITE)printf("fuite\n");
+    else if(res == CAPTURE) printf("Capturer\n");
     
     game->mat_active = save_map_active;
 }

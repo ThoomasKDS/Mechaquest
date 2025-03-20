@@ -125,26 +125,23 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
             mecha_sauvage->pv_max = (rand() % 5) + (zone[obj_case].PvMoyen - 2);
             mecha_sauvage->pv = mecha_sauvage->pv_max;
             mecha_sauvage->id_mechas = indice_mechas;
-            printf("indice : %d\n", indice_mechas);
             mecha_sauvage->attaque = (rand() % 10) + (zone[obj_case].Attaque - 4);
             mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
             mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
             for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
-            printf("i : %d\n", i);
             mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].id_attaques;
             mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].id_attaques;
             mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].utilisations;
             mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].utilisations;
-            printf("Mecha Sauvage:\n");
-    printf(" Niveau: %d\n", mecha_sauvage->niveau);
-    printf(" PV: %d/%d\n", mecha_sauvage->pv, mecha_sauvage->pv_max);
-    printf(" ID: %d\n", mecha_sauvage->id_mechas);
-    printf(" Attaque: %d\n", mecha_sauvage->attaque);
-    printf(" Défense: %d\n", mecha_sauvage->defense);
-    printf(" Vitesse: %d\n", mecha_sauvage->vitesse);
-    printf(" Attaque 1: %d, Utilisations %d\n", mecha_sauvage->attaque_1, mecha_sauvage->utilisation_1);
-    printf(" Attaque 2: %d, Utilisations %d\n", mecha_sauvage->attaque_2, mecha_sauvage->utilisation_2);
-
+            /*printf("Mecha Sauvage:\n");
+            printf(" Niveau: %d\n", mecha_sauvage->niveau);
+            printf(" PV: %d/%d\n", mecha_sauvage->pv, mecha_sauvage->pv_max);
+            printf(" ID: %d\n", mecha_sauvage->id_mechas);
+            printf(" Attaque: %d\n", mecha_sauvage->attaque);
+            printf(" Défense: %d\n", mecha_sauvage->defense);
+            printf(" Vitesse: %d\n", mecha_sauvage->vitesse);
+            printf(" Attaque 1: %d, Utilisations %d\n", mecha_sauvage->attaque_1, mecha_sauvage->utilisation_1);
+            printf(" Attaque 2: %d, Utilisations %d\n", mecha_sauvage->attaque_2, mecha_sauvage->utilisation_2);*/
 
             return 1;
         }

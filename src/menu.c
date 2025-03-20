@@ -274,8 +274,8 @@ void afficher_reglage(game_t* game, parametre_t* parametres) {
    
 
     creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, hauteurEcran / 2 + 100,98, 23, 8, 255,"Retour");
-    creer_rectangle(&btn_moins_volume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
-    creer_rectangle(&btn_plus_volume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&btn_moins_volume, 50, 50, largeurEcran / 2 - 150, hauteurEcran / 2 - 60, 255, 0, 0, 255,"-");
+    creer_rectangle(&btn_plus_volume, 50, 50, largeurEcran / 2 + 100, hauteurEcran / 2 - 60, 0, 255, 0, 255,"+");
     
     int running = 1;
     SDL_Event event;
