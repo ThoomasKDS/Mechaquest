@@ -1,7 +1,38 @@
+/**
+ * \file pointDePassage.c
+ * \brief Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas,
+ *        du choix du starter, des interactions avec les PNJ importants et des événements clés du jeu.
+ */
 #include "../lib/pointDePassage.h"
 #include "../lib/combat.h"
 
-
+/**
+ * @brief Restaure entièrement la santé et les objets du joueur et sauvegarde la partie.
+ *
+ * Cette fonction réinitialise les objets de l'inventaire du joueur (mechaballs, carburant, rappel, repousse) 
+ * à leur quantité maximale prédéfinie (`NB_OBJET`). Elle restaure également entièrement les points de vie (PV) 
+ * et le nombre d'utilisations des attaques des Mechas présents dans l'équipe du joueur.
+ *
+ * Après avoir restauré les statistiques des Mechas et les objets du joueur, elle sauvegarde automatiquement
+ * l’état actuel de la partie en appelant `sauvegarde_partie()`.
+ *
+ * @param j Pointeur vers la structure du joueur dont les Mechas et l'inventaire seront restaurés.
+ *
+ * @return int
+ *         - `OK` : si les opérations de soin et de sauvegarde ont été effectuées avec succès.
+ *
+ * @pre Le pointeur `j`, ainsi que ses sous-structures (`inventaire`, `mechas_joueur`) doivent être initialisés correctement.
+ *      Les tableaux globaux (notamment `attaque[]`) doivent également être initialisés et valides.
+ *
+ * @post Tous les objets de l'inventaire du joueur sont restaurés à leur quantité maximale.
+ *       Les PV et les utilisations des attaques des Mechas du joueur sont entièrement restaurés.
+ *       L’état de la partie est sauvegardé.
+ *
+ * @note Cette fonction est typiquement utilisée après un soin complet (comme dans un centre de soin).
+ *
+ * @warning Vérifier la validité des constantes utilisées (`NB_OBJET`, `NB_MECHAS_INVENTAIRE`, et `OK`) et
+ *          que la fonction `sauvegarde_partie` soit bien implémentée.
+ */
 int soigner(joueur_t *j){
     j->inventaire->mechaball = NB_OBJET;
     j->inventaire->carburant = NB_OBJET;
@@ -16,6 +47,29 @@ int soigner(joueur_t *j){
     return OK;
 }
 
+/**
+ * @brief Copie intégralement les attributs d'un Mecha vers l'équipe du joueur.
+ *
+ * Cette fonction ajoute un nouveau Mecha à l'équipe du joueur en copiant intégralement les attributs
+ * d'un Mecha passé en paramètre (`mecha`) vers la prochaine position disponible dans l'équipe du joueur (`j->mechas_joueur[]`).
+ *
+ * Après la copie, le compteur du nombre de Mechas du joueur (`j->nb_mechas`) est incrémenté automatiquement.
+ *
+ * @param j      Pointeur vers la structure du joueur dont l'équipe va recevoir le nouveau Mecha.
+ * @param mecha  Pointeur vers la structure du Mecha à copier dans l'équipe du joueur.
+ *
+ * @return int
+ *         - `OK` si la copie du Mecha s'est effectuée correctement.
+ *
+ * @pre Les pointeurs (`j` et `mecha`) doivent être valides et correctement initialisés.
+ *      L'équipe du joueur ne doit pas avoir atteint la limite maximale de Mechas autorisés (à vérifier avant appel).
+ *
+ * @post Le Mecha est copié intégralement dans l'équipe du joueur, et le nombre total de Mechas (`j->nb_mechas`) est mis à jour.
+ *
+ * @note Assurez-vous avant d'appeler cette fonction que le joueur dispose d'un emplacement libre dans son équipe.
+ *
+ * @warning Vérifiez que les constantes (`OK` et la taille maximale du tableau `j->mechas_joueur`) soient correctement définies pour éviter tout débordement.
+ */
 int copie_mechas(joueur_t *j,mechas_joueur_t *mecha){
     j->mechas_joueur[j->nb_mechas].id_mechas = mecha->id_mechas;
     j->mechas_joueur[j->nb_mechas].numero = j->nb_mechas+1;
@@ -34,6 +88,39 @@ int copie_mechas(joueur_t *j,mechas_joueur_t *mecha){
     return OK;
 }
 
+/**
+ * @brief Permet au joueur de choisir son Mecha de départ parmi trois options disponibles.
+ *
+ * Cette fonction affiche un dialogue interactif demandant au joueur de choisir son Mecha de départ ("starter") parmi trois possibilités :
+ * - Tournicoton (option 1)
+ * - Rasetout (option 2)
+ * - Tikart (option 3)
+ *
+ * Selon la réponse du joueur, le Mecha choisi est copié depuis les Mechas disponibles du PNJ `vinGazole` vers l'équipe du joueur.
+ * Un dialogue de confirmation du choix effectué est ensuite affiché au joueur.
+ *
+ * @param game            Pointeur vers la structure principale du jeu (affichage, événements, etc.).
+ * @param j               Pointeur vers la structure du joueur où le Mecha choisi sera ajouté.
+ * @param vinGazole       Pointeur vers la structure du PNJ possédant les Mechas disponibles à la sélection.
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ *
+ * @return int
+ *         - `OK` si le choix du Mecha est effectué et copié avec succès dans l'équipe du joueur.
+ *         - `ERR` en cas de choix invalide ou de problème lors de la copie.
+ *
+ * @pre Toutes les structures et ressources graphiques doivent être initialisées correctement.
+ *      Le PNJ (`vinGazole`) doit disposer d'au moins trois Mechas valides dans son inventaire.
+ *
+ * @post Le Mecha choisi est ajouté à l'équipe du joueur.
+ *
+ * @note Cette fonction est interactive et bloque jusqu'à ce que le joueur sélectionne un choix valide (1, 2 ou 3).
+ *
+ * @warning Vérifie que les constantes `OK` et `ERR` soient définies dans ton projet.
+ *          Pense à gérer le cas où la copie du Mecha échoue (par exemple, équipe pleine).
+ */
 int choix_starter(joueur_t *j, pnj_t *vinGazole, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite){
     int choix = 0;
     int resultat;
@@ -70,7 +157,36 @@ int choix_starter(joueur_t *j, pnj_t *vinGazole, SDL_Rect *sprite_p, SDL_Rect *p
     return OK;
 }
 
-
+/**
+ * @brief Gère l'interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, choix du starter et modification de la carte.
+ *
+ * Cette fonction vérifie si le joueur se trouve à côté du PNJ "Vin Gazole" dans la carte initiale (map 0) et qu'il presse la touche `P` pour initier l'interaction. 
+ * Si l'interaction est valide (position, orientation et état initial du PNJ), un dialogue initial s'affiche, suivi du choix d'un Mecha starter. 
+ * Ensuite, un dialogue final est affiché, l'état du PNJ est modifié (indiquant que l'interaction a eu lieu), une sauvegarde du PNJ est effectuée, 
+ * et certaines cases spécifiques de la carte sont modifiées pour permettre la progression du joueur.
+ *
+ * De plus, la fonction empêche le joueur d'accéder à une autre zone de la carte avant d'avoir parlé à Vin Gazole, affichant alors un message d'avertissement.
+ *
+ * @param game            Pointeur vers la structure du jeu contenant les informations graphiques et l'état des cartes.
+ * @param j               Pointeur vers la structure du joueur.
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ * @param keys            Tableau des touches pressées (`Uint8` SDL) pour gérer l'interaction.
+ *
+ * @return int
+ *         - `OK` si la fonction s'exécute correctement.
+ *
+ * @pre Toutes les ressources graphiques (sprites, textures), ainsi que les structures (`game`, `joueur`, `pnj`), doivent être initialisées correctement.
+ *      La matrice du jeu (`game->mat`) doit être définie et cohérente avec les positions du PNJ.
+ *
+ * @post Le PNJ "Vin Gazole" a changé d'état (`etat = 1`), une sauvegarde est effectuée, le joueur possède un Mecha starter, et certaines cases de la carte sont modifiées pour permettre une progression ultérieure.
+ *
+ * @note L'interaction se déclenche spécifiquement avec la touche `P`. Le message d'avertissement est affiché lorsque le joueur essaie de progresser prématurément vers une autre zone.
+ *
+ * @warning Vérifier que les constantes (`VIN_GAZOLE_1`, `OK`, `TPMAP2`) soient définies et valides, et que les coordonnées d'interaction soient correctes pour éviter les incohérences.
+ */
 int parler_a_vin_gazole( joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys){
                 if (keys[SDL_SCANCODE_P]){
                     if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_1].x && j->y == pnj[VIN_GAZOLE_1].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_1].etat == 0){
@@ -97,6 +213,43 @@ int parler_a_vin_gazole( joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, 
     return OK;
 }
 
+/**
+ * @brief Gère l'interaction du joueur avec les PNJs "Vin Gazole 2" et "Iron Musk", incluant dialogues, soins et combats.
+ *
+ * Cette fonction permet d'interagir avec deux PNJs spécifiques :
+ * 
+ * - **Vin Gazole 2 (map 0)** : Si le joueur interagit avec ce PNJ et que ses objets ou Mechas ne sont pas au maximum de leur capacité, 
+ *   ses Mechas et son inventaire sont automatiquement soignés, et un dialogue confirmant le soin est affiché.
+ *   Sinon, un simple dialogue initial est affiché.
+ * 
+ * - **Iron Musk (map 2)** : Lors de l'interaction, un dialogue de début s'affiche, un combat se déroule (actuellement commenté), 
+ *   suivi d'un dialogue de fin. Après le combat, l'état du PNJ est mis à jour, une sauvegarde est effectuée, 
+ *   des accès à d'autres cartes sont débloqués, et le joueur est téléporté à une position spécifique sur la carte initiale (map 0).
+ *
+ * De plus, la fonction empêche explicitement le joueur de quitter la zone d'Iron Musk avant d'avoir complété ce combat obligatoire, 
+ * affichant alors un message d'avertissement.
+ *
+ * @param game            Pointeur vers la structure principale du jeu contenant les informations sur les cartes et le renderer.
+ * @param j               Pointeur vers la structure du joueur (inventaire, équipe de Mechas, position).
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ * @param keys            Tableau des touches pressées (`Uint8` SDL) utilisé pour gérer l'interaction (`P` et flèches directionnelles).
+ *
+ * @return int
+ *         - `OK` lorsque la fonction s'est correctement déroulée.
+ *
+ * @pre Toutes les structures du jeu (`game`, `joueur`, `pnj`) et les ressources graphiques doivent être initialisées.
+ *      La fonction `soigner` ainsi que les fonctions de sauvegarde (`sauvegarde_pnj`, `sauvegarde_partie`) doivent être valides.
+ *
+ * @post Les états des PNJs sont modifiés après interaction, le joueur est éventuellement soigné, et des modifications de carte sont effectuées pour permettre la progression du joueur.
+ *
+ * @note La fonction déclenche l'interaction uniquement lors de l'appui sur la touche `P`. 
+ *       Le message d'avertissement apparaît lorsque le joueur tente de quitter la zone sans avoir effectué le combat requis.
+ *
+ * @warning Vérifie que toutes les constantes (`VIN_GAZOLE_2`, `IRON_MUSK_DEB`, `OK`, `TPMAP4`, `TPMAP6`, `NB_OBJET`) soient correctement définies et initialisées.
+ */
 int premier_combat_musk(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys){
    int soin = 0;
     if (keys[SDL_SCANCODE_P]){
@@ -156,6 +309,40 @@ int premier_combat_musk(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, c
     return OK;
 }
 
+                /**
+ * @brief Gère la seconde interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, soin du joueur et déblocage de la carte.
+ *
+ * Cette fonction permet au joueur de retourner parler au PNJ "Vin Gazole" après avoir progressé dans l'histoire.  
+ * Lors de cette interaction, deux dialogues successifs sont affichés au joueur (début et fin). Ensuite,  
+ * le joueur et ses Mechas sont complètement soignés (inventaire et PV), l'état du PNJ est modifié pour indiquer  
+ * que l'interaction a eu lieu, une sauvegarde du PNJ est effectuée, et les cases permettant la progression ultérieure  
+ * du joueur sont débloquées. De plus, un nouveau point de sauvegarde est défini pour le joueur.
+ *
+ * Si le joueur tente de progresser avant cette interaction obligatoire, un message d'avertissement lui indique  
+ * clairement qu'il doit aller se soigner au préalable.
+ *
+ * @param game            Pointeur vers la structure principale du jeu (état actuel, renderer, cartes).
+ * @param j               Pointeur vers la structure du joueur (position, inventaire, état des Mechas).
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ * @param keys            Tableau des touches pressées (`Uint8` SDL) pour gérer l'interaction.
+ *
+ * @return int
+ *         - `OK` si la fonction s'exécute correctement.
+ *
+ * @pre Toutes les structures du jeu (`game`, `joueur`, `pnj`) et ressources graphiques doivent être initialisées correctement.
+ *      Les fonctions appelées (`afficher_dialogue`, `soigner`, `sauvegarde_pnj`) doivent être implémentées et valides.
+ *
+ * @post L'état du PNJ "Vin Gazole" est mis à jour (`etat = 1`), le joueur est intégralement soigné, une sauvegarde est effectuée,
+ *       et la carte est modifiée pour permettre au joueur de progresser. Un point de sauvegarde est enregistré.
+ *
+ * @note L'interaction se déclenche uniquement en pressant la touche `P`. 
+ *       Un message d'avertissement est affiché en cas de tentative prématurée d'avancer.
+ *
+ * @warning Vérifier que toutes les constantes (`VIN_GAZOLE_3`, `OK`, `TPMAP2`) soient correctement définies et initialisées.
+ */
 int retourner_parler_a_vin_gazole(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys){
     if (keys[SDL_SCANCODE_P]){
         if(j->x+1 == pnj[VIN_GAZOLE_3].x && j->y == pnj[VIN_GAZOLE_3].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_3].etat == 0){
@@ -181,6 +368,42 @@ int retourner_parler_a_vin_gazole(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj
     return OK;
 }
 
+                /**
+ * @brief Gère les interactions finales avec les PNJs "Vin Gazole" et "Iron Musk", incluant dialogues, soin automatique et combat final.
+ *
+ * Cette fonction gère deux interactions distinctes :
+ *
+ * - **Interaction avec Vin Gazole (map 0)** :  
+ *   Le joueur peut interagir pour se faire entièrement soigner (inventaire et Mechas) si ses objets ou ses Mechas ne sont pas au maximum.  
+ *   Un dialogue spécifique est alors affiché pour indiquer que le soin a eu lieu. Sinon, un simple dialogue de début est affiché.
+ *
+ * - **Combat final contre Iron Musk (map 4)** :  
+ *   Cette interaction déclenche un dialogue initial, un combat (actuellement commenté), puis un dialogue final.  
+ *   Après la victoire, le joueur reçoit un Mecha spécifique de la part d'Iron Musk, le jeu sauvegarde automatiquement l'état  
+ *   du joueur et du PNJ, et un nouveau point de sauvegarde est enregistré.
+ *
+ * @param game            Pointeur vers la structure du jeu (état des cartes, renderer, etc.).
+ * @param j               Pointeur vers la structure du joueur (inventaire, Mechas, position, état).
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ * @param keys            Tableau des touches pressées (`Uint8` SDL) pour gérer les interactions (touche `P`).
+ *
+ * @return int
+ *         - `OK` lorsque la fonction s'exécute correctement.
+ *
+ * @pre Toutes les structures et ressources graphiques nécessaires doivent être initialisées et valides.
+ *      Les fonctions appelées (`afficher_dialogue`, `soigner`, `copie_mechas`, `sauvegarde_partie`, `sauvegarde_pnj`) doivent être implémentées.
+ *
+ * @post L'interaction avec "Vin Gazole" entraîne le soin automatique du joueur si nécessaire.
+ *       L'interaction avec "Iron Musk" déclenche le combat final, l'ajout d'un nouveau Mecha à l'équipe du joueur, la sauvegarde automatique, et met à jour l'état du PNJ.
+ *
+ * @note Le combat contre Iron Musk doit être implémenté explicitement (actuellement commenté).
+ *       L'interaction s'active en pressant la touche `P`.
+ *
+ * @warning Vérifie bien que toutes les constantes (`VIN_GAZOLE_4`, `IRON_MUSK_FIN`, `NB_OBJET`, `OK`) soient correctement définies et initialisées.
+ */
 int combat_final(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys){
     int soin = 0;
     if (keys[SDL_SCANCODE_P]){
@@ -223,6 +446,37 @@ int combat_final(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Ui
     return OK;
 }
 
+                /**
+ * @brief Gère l'interaction avec le PNJ "Vin Gazole" en mode jeu libre, permettant soins et dialogues répétés.
+ *
+ * Cette fonction permet au joueur d'interagir avec le PNJ "Vin Gazole" après avoir terminé l'histoire principale du jeu.
+ * Lors de la toute première interaction dans ce mode (`etat == 0`), deux dialogues (début et fin) sont affichés, puis le joueur est soigné complètement.
+ * L'état du PNJ passe ensuite à 1 et une sauvegarde de cet état est réalisée.
+ *
+ * Pour les interactions suivantes (`etat == 1`), le joueur peut toujours revenir pour être soigné automatiquement en cas de besoin (inventaire ou PV des Mechas non maximaux).
+ * Un dialogue adapté selon l'état actuel du joueur est alors affiché (indiquant le soin ou non).
+ *
+ * @param game            Pointeur vers la structure du jeu (cartes, renderer, état général).
+ * @param j               Pointeur vers la structure du joueur (inventaire, Mechas, position).
+ * @param sprite_p        Rectangle définissant la position graphique du sprite joueur.
+ * @param pnj_sprite      Rectangle définissant la position graphique du sprite du PNJ.
+ * @param sprite_pnj      Pointeur vers les textures associées au PNJ.
+ * @param sprite_playerH  Pointeur vers les textures associées au joueur.
+ * @param keys            Tableau des touches pressées (`Uint8` SDL) permettant l'interaction (`P`).
+ *
+ * @return int
+ *         - `OK` si l'interaction est traitée correctement.
+ *
+ * @pre Toutes les ressources graphiques et structures (`game`, `joueur`, `pnj`) doivent être initialisées.
+ *      Les fonctions `afficher_dialogue`, `soigner`, `sauvegarde_pnj` doivent être implémentées.
+ *
+ * @post L'état initial du PNJ est modifié à la première interaction (`etat` passe à 1), et le joueur peut revenir indéfiniment pour des soins.
+ *       L'inventaire et les Mechas du joueur peuvent être restaurés à chaque interaction si nécessaire.
+ *
+ * @note La touche `P` déclenche l'interaction avec le PNJ.
+ *
+ * @warning Assure-toi que toutes les constantes (`VIN_GAZOLE_4`, `VIN_GAZOLE_5`, `OK`, `NB_OBJET`) soient définies et initialisées.
+ */
 int jeu_libre(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite,const Uint8 *keys){
     int soin = 0;
     if (keys[SDL_SCANCODE_P]){
