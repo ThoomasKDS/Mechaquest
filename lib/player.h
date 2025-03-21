@@ -1,3 +1,10 @@
+/**
+ * @file player.h
+ * @brief Gestion du joueur dans le jeu.
+ * 
+ * Ce fichier contient les déclarations des fonctions permettant de gérer les déplacements,
+ * les animations et l'apparition des mechas ainsi que les interactions avec les PNJ.
+ */
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
