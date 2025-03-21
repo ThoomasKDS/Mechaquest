@@ -7,7 +7,16 @@
 //FONCTION BACKGROUND
 /*=================================================*/
 
-//initalise la background
+/**
+ * @brief Initialise et charge les arrière-plans du jeu.
+ * 
+ * Cette fonction charge huit images d'arrière-plan depuis le dossier 
+ * "img/background" et les convertit en textures SDL. Elle ajuste également 
+ * la taille de l'affichage pour s'adapter à l'écran du joueur.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et les textures.
+ * @return Retourne 1 en cas de succès, 0 en cas d'échec du chargement des textures.
+ */
 int init_background() {
 
     char ext[5] = ".png";
@@ -73,6 +82,15 @@ int init_background() {
     return 1;
 }
 
+/**
+ * @brief Initialise et charge les textures des calques du jeu.
+ * 
+ * Cette fonction charge deux images de calque depuis le dossier 
+ * "img/calque" et les convertit en textures SDL pour l'affichage.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et les textures de calque.
+ * @return Retourne OK (1) en cas de succès, 0 en cas d'échec du chargement des textures.
+ */
 int init_calque() {
 
     char ext[5] = ".png";
@@ -103,11 +121,26 @@ int init_calque() {
     return OK;
 }
 
-//dessine le background
+/**
+ * @brief Dessine l'arrière-plan du jeu à l'écran.
+ * 
+ * Cette fonction copie la texture d'arrière-plan active sur le renderer principal
+ * afin de l'afficher dans la fenêtre du jeu.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et les textures d'arrière-plan.
+ */
 void draw_background() {
     SDL_RenderCopy(game.renderer,game.backgroundTexture[game.mat_active] , NULL, &game.dms_win);                 // Dessiner le background
 }
 
+/**
+ * @brief Dessine le calque actif du jeu à l'écran.
+ * 
+ * Cette fonction copie la texture du calque actif sur le renderer principal
+ * afin de l'afficher dans la fenêtre du jeu.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et les textures de calque.
+ */
 void draw_calque() {
     SDL_RenderCopy(game.renderer,game.calqueTexture[game.mat_active] , NULL, &game.dms_win);                 // Dessiner le background
 }
@@ -122,7 +155,18 @@ void draw_calque() {
 //FONCTION MAT
 /*=================================================*/
 
-//initialise la matrice
+/**
+ * @brief Initialise la matrice de jeu pour stocker les données de la carte.
+ * 
+ * Cette fonction alloue dynamiquement une matrice tridimensionnelle utilisée pour stocker 
+ * les informations des différentes couches de la carte du jeu. Elle gère également 
+ * la libération de la mémoire en cas d'échec d'allocation.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant la matrice de carte.
+ * @param taille_x Nombre de colonnes de la matrice.
+ * @param taille_y Nombre de lignes de la matrice.
+ * @return Retourne 1 en cas de succès, 0 en cas d'échec d'allocation mémoire.
+ */
 int init_mat(int taille_x, int taille_y) {
     game.mat = malloc(6 * sizeof(int **));
     if (game.mat == NULL) {
@@ -169,7 +213,18 @@ int init_mat(int taille_x, int taille_y) {
 }
 
 
-//rempli les matrices avec les txt
+/**
+ * @brief Remplit la matrice de jeu avec les données des fichiers de carte.
+ * 
+ * Cette fonction lit les fichiers de sauvegarde des cartes situés dans le dossier "save/" 
+ * et remplit la matrice de jeu en fonction des valeurs lues. Elle gère six fichiers 
+ * correspondant aux différentes couches de la carte.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant la matrice de carte.
+ * @param taille_x Nombre de colonnes de la matrice.
+ * @param taille_y Nombre de lignes de la matrice.
+ * @return Retourne 1 en cas de succès, 0 en cas d'échec d'ouverture des fichiers.
+ */
 int remplir_mat(int taille_x, int taille_y) {
     char chemin[100] = "save/map";
     char ext[5] = ".txt";
@@ -197,7 +252,17 @@ int remplir_mat(int taille_x, int taille_y) {
     return 1;
 }
 
-//affiche la matrice dans le terminal
+/**
+ * @brief Affiche la matrice de jeu dans la console.
+ * 
+ * Cette fonction affiche la matrice spécifiée en parcourant ses lignes et ses colonnes,
+ * puis imprime les valeurs stockées dans la console.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant la matrice.
+ * @param taille_x Nombre de colonnes de la matrice.
+ * @param taille_y Nombre de lignes de la matrice.
+ * @param n_mat Index de la matrice à afficher (correspondant à une couche de la carte).
+ */
 void aff_mat(int taille_x, int taille_y, int n_mat)  {
     for(int i = 0; i < taille_y; i++) {
         for(int j = 0;j < taille_x; j++){
@@ -210,7 +275,16 @@ void aff_mat(int taille_x, int taille_y, int n_mat)  {
 
 }
 
-//libere la matrice
+/**
+ * @brief Libère la mémoire allouée à la matrice du jeu.
+ * 
+ * Cette fonction désalloue l'espace mémoire occupé par la matrice tridimensionnelle 
+ * utilisée pour stocker les différentes couches de la carte du jeu.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant la matrice.
+ * @param taille_x Nombre de colonnes de la matrice (non utilisé dans la fonction, mais peut être utile pour modification future).
+ * @param taille_y Nombre de lignes de la matrice.
+ */
 void free_mat(int taille_x, int taille_y) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < taille_y; j++) {
@@ -227,7 +301,18 @@ void free_mat(int taille_x, int taille_y) {
 
 //FONCTION GESTION OBJET
 /*=================================================*/
-//initialise le joueur 
+/**
+ * @brief Initialise les textures du joueur en fonction de son sexe.
+ * 
+ * Cette fonction charge les sprites du joueur (haut, bas, gauche, droite) 
+ * en fonction du sexe sélectionné et les convertit en textures SDL. 
+ * Elle gère également les erreurs de chargement des images.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param sprite_player Pointeur vers la structure des textures du joueur.
+ * @param sexe Caractère représentant le sexe du joueur ('M' pour homme, autre pour femme).
+ * @return Retourne 1 en cas de succès, 0 en cas d'échec du chargement des textures.
+ */
 int init_player(char sexe) {
     char c;
     char img_bas[40];
@@ -326,6 +411,17 @@ int init_player(char sexe) {
     return 1;
 }
 
+/**
+ * @brief Initialise les textures des PNJ du jeu.
+ * 
+ * Cette fonction charge les sprites des PNJ (haut, bas, gauche, droite) ainsi que 
+ * les sprites spécifiques à certains personnages comme Vin Gazole et Iron Musk. 
+ * Elle convertit les images en textures SDL et gère les erreurs de chargement.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param sprite_pnj Pointeur vers la structure des textures des PNJ.
+ * @return Retourne 1 en cas de succès, 0 en cas d'échec du chargement des textures.
+ */
 int init_pnj() {
     char img_haut[40] = "img/skin/skin_pnj/pnj_1.png";
     char img_droite[40] = "img/skin/skin_pnj/pnj_2.png";
@@ -430,7 +526,22 @@ int init_mecha() {
     return 1;
 }
 
-//creé un objet
+/**
+ * @brief Crée un objet et l'ajoute à la matrice de jeu.
+ * 
+ * Cette fonction initialise un objet graphique (ex: joueur, PNJ, objet interactif) 
+ * avec ses dimensions, sa position à l'écran et l'ajoute dans la matrice du jeu. 
+ * Les entités comme le joueur et les PNJ ont un ajustement de leur position dans la matrice.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant la matrice et l'affichage.
+ * @param taille_w Largeur de l'objet avant mise à l'échelle.
+ * @param taille_h Hauteur de l'objet avant mise à l'échelle.
+ * @param x Position horizontale de l'objet en pixels.
+ * @param y Position verticale de l'objet en pixels.
+ * @param type_obj Type de l'objet (JOUEUR, PNJ, etc.).
+ * @param n_mat Index de la couche de la matrice où ajouter l'objet.
+ * @return Un SDL_Rect contenant les dimensions et la position mise à l'échelle de l'objet.
+ */
 SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int n_mat) {
     if(type_obj == JOUEUR || type_obj == PNJ) {
         game.mat[n_mat][(y+24)/PX][x/PX] = type_obj;
@@ -449,7 +560,18 @@ SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int 
     return obj;
 }
 
-//dessine le joueur
+/**
+ * @brief Affiche le joueur à l'écran en fonction de sa direction et de son animation.
+ * 
+ * Cette fonction affiche le sprite du joueur en fonction de son mouvement 
+ * actuel ou de sa dernière direction. Elle sélectionne la bonne texture pour 
+ * donner un effet d'animation lorsque le joueur est en mouvement.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param obj Pointeur vers le rectangle SDL définissant la position et la taille du joueur.
+ * @param sprite_playerH Pointeur vers la structure contenant les sprites animés du joueur.
+ * @param j Pointeur vers la structure du joueur contenant son état de déplacement.
+ */
 void draw_player(SDL_Rect *obj, joueur_t * j) {
     int n_img = j->moving/4;
     
@@ -484,6 +606,21 @@ void draw_player(SDL_Rect *obj, joueur_t * j) {
     }
     
 }
+
+/**
+ * @brief Dessine tous les éléments visibles sur l'écran de jeu.
+ * 
+ * Cette fonction gère l'affichage de l'arrière-plan, des calques, du joueur et des PNJ. 
+ * Elle prend en compte la position du joueur et les éléments environnants (barrières, bâtiments, PNJ) 
+ * pour gérer l'ordre d'affichage afin d'assurer une cohérence visuelle.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant les éléments graphiques.
+ * @param j Pointeur vers la structure du joueur.
+ * @param sprite_p Pointeur vers le rectangle SDL représentant la position du joueur.
+ * @param pnj_sprite Pointeur vers le rectangle SDL des PNJ.
+ * @param sprite_pnj Pointeur vers la structure des sprites des PNJ.
+ * @param sprite_playerH Pointeur vers la structure contenant les sprites animés du joueur.
+ */
 void draw_all(joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite){
     draw_background();      
     if(game.mat[game.mat_active][j->y+1][j->x] == BARRIERE || game.mat[game.mat_active][j->y+1][j->x] == BAT){
@@ -559,13 +696,42 @@ void draw_pnj(SDL_Rect *obj, pnj_t *pnj, joueur_t *j) {
     
 }
 
-//dessine un objet 
+/**
+ * @brief Dessine un PNJ à l'écran en fonction de son orientation et de son type.
+ * 
+ * Cette fonction affiche un PNJ en fonction de son identité et de son orientation. 
+ * Certains PNJ spécifiques, comme "Vin Gazole" et "Iron Musk", ont des sprites dédiés. 
+ * Les autres PNJ sont affichés selon leur direction (haut, bas, gauche, droite).
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param obj Pointeur vers le rectangle SDL définissant la position et la taille du PNJ.
+ * @param sprite_pnj Pointeur vers la structure contenant les textures des PNJ.
+ * @param pnj Pointeur vers la structure du PNJ à afficher.
+ * @param j Pointeur vers la structure du joueur (utilisé pour déterminer certaines conditions d'affichage).
+ */
 void draw_obj(SDL_Rect *obj, SDL_Texture * img ) {
     SDL_RenderCopy(game.renderer, img, NULL, obj);
 }
 
-//creer un rectangle avec du texte
-void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[500]) { //creer un rectangle avec tt les parametres
+/**
+ * @brief Crée un rectangle avec des propriétés personnalisées.
+ * 
+ * Cette fonction initialise un rectangle avec une position, des dimensions, 
+ * une couleur et un texte optionnel. Elle assure également que la chaîne de texte 
+ * est correctement copiée et terminée.
+ * 
+ * @param rectangle Pointeur vers la structure du rectangle à initialiser.
+ * @param w Largeur du rectangle.
+ * @param h Hauteur du rectangle.
+ * @param x Position horizontale du rectangle.
+ * @param y Position verticale du rectangle.
+ * @param r Composante rouge de la couleur du rectangle (0-255).
+ * @param g Composante verte de la couleur du rectangle (0-255).
+ * @param b Composante bleue de la couleur du rectangle (0-255).
+ * @param a Opacité du rectangle (0-255).
+ * @param text Chaîne de caractères à afficher dans le rectangle (peut être NULL).
+ */
+void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, const char *text) { //creer un rectangle avec tt les parametres
     rectangle->rect.x = x ;
     rectangle->rect.y = y ;
     rectangle->rect.w = w ;
@@ -575,13 +741,23 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
     rectangle->couleur.b = b;
     rectangle->couleur.a = a;       //oppacité
     if (text) {
-        strcpy(rectangle->text, text);
+        strncpy(rectangle->text, text, sizeof(rectangle->text) - 1);
     } else {
-        rectangle->text[0] = '\0'; // eviter une chaîne non initialisée
+        rectangle->text[sizeof(rectangle->text) - 1] = '\0'; // eviter une chaîne non initialisée
     }
  
 }
 
+/**
+ * @brief Affiche un texte aligné à gauche et centré verticalement dans un rectangle.
+ * 
+ * Cette fonction dessine un texte à l'intérieur d'un rectangle en l'alignant à gauche 
+ * et en le centrant verticalement. Elle utilise SDL_ttf pour le rendu du texte 
+ * et gère les erreurs de chargement de la police et de création de texture.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et la police.
+ * @param rectangle Pointeur vers la structure du rectangle où afficher le texte.
+ */
 void draw_text_left_middle(rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') return; // Vérifier si le texte est valide
     if (!game.police) {
@@ -619,6 +795,16 @@ void draw_text_left_middle(rectangle_t* rectangle) {
     SDL_DestroyTexture(texture);
 }
 
+/**
+ * @brief Affiche un texte centré horizontalement et verticalement dans un rectangle.
+ * 
+ * Cette fonction affiche un texte au centre d'un rectangle donné. Elle utilise SDL_ttf 
+ * pour le rendu du texte et ajuste automatiquement la position du texte 
+ * afin qu'il soit parfaitement centré dans le rectangle.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer et la police.
+ * @param rectangle Pointeur vers la structure du rectangle où afficher le texte.
+ */
 void draw_text_center(rectangle_t* rectangle) {
     if (rectangle->text[0] == '\0') {
         return; // Vérifier si le texte est valide
@@ -682,7 +868,6 @@ void draw_text_center(rectangle_t* rectangle) {
     }
 }
 
-
 void draw_text_pos(char *text, int x, int y) {
     if (!game.police) {
         printf("Erreur : Police non chargée\n");
@@ -744,7 +929,18 @@ void draw_text_pos(char *text, int x, int y) {
 }
 
 
-//dessine un rectangle
+/**
+ * @brief Dessine un rectangle coloré et y affiche un texte en fonction d'une fonction de rendu.
+ * 
+ * Cette fonction dessine un rectangle rempli avec une couleur donnée et applique 
+ * une fonction de rendu pour afficher du texte à l'intérieur si nécessaire. 
+ * La fonction de rendu (`draw_func`) peut être utilisée pour aligner le texte 
+ * différemment (ex: centré, aligné à gauche).
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param rectangle Pointeur vers la structure du rectangle à afficher.
+ * @param draw_func Pointeur vers une fonction de rendu du texte (ex: `draw_text_left_middle` ou `draw_text_center`).
+ */
 void draw_rect(rectangle_t *rectangle,void (*draw_func)(rectangle_t *)) {
         SDL_SetRenderDrawBlendMode(game.renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(game.renderer, rectangle->couleur.r, rectangle->couleur.g, rectangle->couleur.b, rectangle->couleur.a);
@@ -755,7 +951,18 @@ void draw_rect(rectangle_t *rectangle,void (*draw_func)(rectangle_t *)) {
 
 }
 
-
+/**
+ * @brief Dessine plusieurs rectangles avec du texte centré.
+ * 
+ * Cette fonction permet d'afficher plusieurs rectangles avec du texte en appelant 
+ * `draw_rect` pour chacun d'eux. Le texte est automatiquement centré dans chaque rectangle.
+ * Elle utilise une liste d'arguments variables (`va_list`) pour gérer un nombre dynamique 
+ * de rectangles à afficher.
+ * 
+ * @param game Pointeur vers la structure du jeu contenant le renderer.
+ * @param n Nombre de rectangles à dessiner.
+ * @param ... Liste des pointeurs vers les structures `rectangle_t` à afficher.
+ */
 void draw_all_rect(int n, ...) {
     va_list args;
     va_start(args, n);
@@ -767,6 +974,44 @@ void draw_all_rect(int n, ...) {
 
 }
 
+/**
+ * @brief Affiche un dialogue interactif à l'écran, lettre par lettre, avec gestion des choix utilisateur.
+ *
+ * Cette fonction affiche un texte de dialogue progressivement (effet typewriter) dans une zone dédiée de l'écran.
+ * Un rectangle de fond sombre est affiché, accompagné du pseudo du personnage parlant et d'une consigne utilisateur :
+ * - Sans choix (`choix = 0`) : Affiche "A pour continuer" et attend l'appui sur la touche 'A'.
+ * - Avec choix (`choix != 0`) : Affiche "Choisir entre 1 et 3" et attend la sélection utilisateur par touche (1, 2 ou 3).
+ *
+ * L'affichage du texte se fait progressivement avec des pauses plus longues en fin de phrases (., !, ?).
+ * La fonction retourne immédiatement la valeur sélectionnée par l'utilisateur en cas de choix, ou OK (défini comme constante)
+ * pour signaler la fin du dialogue sans choix particulier.
+ *
+ * @param game           Pointeur vers la structure du jeu contenant le renderer SDL.
+ * @param j              Pointeur vers la structure joueur pour l'affichage éventuel du personnage.
+ * @param sprite_p       Rectangle définissant la position du sprite joueur.
+ * @param pnj_sprite     Rectangle définissant la position du sprite du PNJ en interaction.
+ * @param sprite_pnj     Pointeur vers la structure contenant les textures du PNJ.
+ * @param sprite_playerH Pointeur vers la structure contenant les textures du joueur.
+ * @param pseudo         Chaîne de caractères indiquant le pseudo ou nom du personnage parlant.
+ * @param dialogue       Chaîne de caractères contenant le texte à afficher.
+ * @param choix          Entier indiquant si le dialogue inclut un choix utilisateur (0 : pas de choix, sinon choix activé).
+ *
+ * @return int
+ *         - `OK` si le dialogue se termine normalement sans choix utilisateur (appui sur 'A').
+ *         - `1`, `2` ou `3` en cas de choix utilisateur correspondant à la touche pressée.
+ *         - `ERR` si les paramètres passés sont invalides.
+ *
+ * @pre Les ressources graphiques et les pointeurs passés (`game`, `j`, `sprite_p`, etc.) doivent être valides et initialisés.
+ *      Le renderer SDL (`game->renderer`) doit être initialisé avant l'appel.
+ *
+ * @post La fonction bloque tant que l'utilisateur n'a pas interagi conformément aux instructions affichées.
+ *       Aucun changement d'état du jeu n’est effectué hormis l'affichage.
+ *
+ * @note La fonction gère elle-même les événements SDL et contrôle finement le framerate pour un affichage fluide du texte.
+ *
+ * @warning Le dialogue passé doit avoir une longueur inférieure à 256 caractères.
+ *          Vérifier que les constantes `ERR` et `OK` soient définies correctement dans le programme.
+ */
 int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue, int choix) {
     if (!pseudo || !dialogue) return ERR;
     
