@@ -1,3 +1,10 @@
+/**
+ * @file affichage.h
+ * @brief Fichier d'en-tête pour la gestion de l'affichage dans le jeu.
+ *
+ * Ce fichier contient les déclarations des fonctions responsables de l'affichage des éléments du jeu,
+ * y compris le background, les matrices et les objets (joueurs, PNJ, objets divers).
+ */
 #ifndef AFF_H
 #define AFF_H
 
