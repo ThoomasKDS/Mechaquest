@@ -1,3 +1,10 @@
+/**
+ * @file pointDePassage.h
+ * @brief Gestion des points de passage et événements du jeu.
+ * 
+ * Ce fichier contient les déclarations des fonctions permettant de gérer les événements
+ * clés du jeu, tels que les soins, la sélection du starter, et les combats majeurs.
+ */
 #ifndef POINT_DE_PASSAGE_H
 #define POINT_DE_PASSAGE_H
 
