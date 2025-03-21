@@ -44,7 +44,7 @@ void draw_pnj(SDL_Rect *obj, pnj_t *pnj ,joueur_t *j);                          
 void draw_obj(SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
 void draw_all(joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite);
 //w : largeur, h, hauteur, x, coord x, y : coord y, "r,g,b" :  systeme de couleur, a : oppacité
-void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, char text[500]); //creer un rectangle avec du texte
+void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int r, int g, int b, int a, const char *text); //creer un rectangle avec du texte
 void draw_text_left_middle(rectangle_t* rectangle);
 void draw_text_center(rectangle_t* rectangle);
 void draw_rect(rectangle_t *rectangle,void (*draw_func)(rectangle_t *));
