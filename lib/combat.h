@@ -1,3 +1,10 @@
+/**
+ * @file combat.h
+ * @brief Gestion des combats dans le jeu.
+ * 
+ * Ce fichier contient les déclarations des fonctions permettant de gérer les combats, 
+ * l'utilisation d'objets et l'évolution des mechas.
+ */
 #ifndef COMBAT_H
 #define COMBAT_H
 #include "sauv.h"
