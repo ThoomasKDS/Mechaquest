@@ -1,3 +1,10 @@
+/**
+ * @file sauv.h
+ * @brief Gestion des sauvegardes et récupération des données du jeu.
+ * 
+ * Ce fichier contient les déclarations des fonctions permettant d'initialiser, sauvegarder,
+ * récupérer et supprimer les données du jeu, y compris celles des joueurs, inventaires, mechas et PNJ.
+ */
 #ifndef SAUV_H
 #define SAUV_H
 
