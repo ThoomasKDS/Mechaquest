@@ -15,7 +15,40 @@
 const int FRAME = 15 ;      //Nombre d'image dans l'animation
 
 
-//Gestion de deplacement du joueur et du tp entre les maps
+/**
+ * @brief Gère le déplacement du joueur sur la carte en fonction des touches pressées.
+ *
+ * Cette fonction détermine la direction du déplacement en fonction des touches fléchées pressées par l'utilisateur
+ * (gauche, droite, haut, bas). Elle vérifie si la case cible est valide (libre, accessible ou portail vers une autre carte).
+ * Si le déplacement est valide, elle met à jour la position logique et graphique du joueur, et gère éventuellement le changement de carte.
+ *
+ * La fonction empêche explicitement le déplacement en diagonale et bloque tout déplacement si le joueur est déjà en animation.
+ *
+ * @param game        Pointeur vers la structure principale du jeu contenant l'état actuel du jeu et des cartes.
+ * @param taille_x    Largeur de la carte en nombre de cases.
+ * @param taille_y    Hauteur de la carte en nombre de cases.
+ * @param keys        Tableau des touches pressées (`Uint8` SDL) pour déterminer le déplacement.
+ * @param j           Pointeur vers la structure du joueur (position, état d’animation).
+ * @param last_case   Pointeur vers un entier stockant l'identifiant de la dernière case occupée avant le déplacement du joueur.
+ * @param sprite_p    Rectangle SDL définissant la position graphique du sprite du joueur.
+ *
+ * @return int  
+ *         - La valeur de la case vers laquelle le joueur se déplace (`obj_case`), qui peut être :
+ *           - `RIEN` si la case est vide ou traversable.
+ *           - Un identifiant spécial (par exemple : changement de carte).
+ *         - `0` si aucun déplacement valide n'est effectué (mouvement diagonal ou joueur en déplacement).
+ *
+ * @pre Les pointeurs (`game`, `j`, `keys`, `last_case`, `sprite_p`) doivent être valides et correctement initialisés.
+ *      La carte et ses dimensions doivent être cohérentes avec `taille_x` et `taille_y`.
+ *
+ * @post La position du joueur (`j->x`, `j->y`) est mise à jour ainsi que la matrice du jeu (`game->mat`) selon le déplacement effectué.
+ *       La gestion du changement de carte est faite si la case cible est un portail (`TPMAP1`, etc.).
+ *
+ * @note La fonction gère uniquement la logique du déplacement initial. L'animation réelle du joueur est traitée dans la boucle principale en fonction des paramètres `j->moving`, `j->move_dx` et `j->move_dy`.
+ *
+ * @warning Cette fonction ne doit pas être appelée si le joueur est déjà en animation (`j->moving != 0`).
+ *          Assurez-vous que les constantes (`RIEN`, `JOUEUR`, `TPMAP1`, etc.) soient définies avant utilisation.
+ */
 int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
     int obj_case = RIEN;
     if (!j->moving){  // si joueur deja entrain de se deplacer on ne fait rien
@@ -93,7 +126,31 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
 }
 
 
-//animation du joueur en switchant entre les sprites
+/**
+ * @brief Met à jour l'animation du joueur lors de son déplacement.
+ *
+ * Cette fonction actualise progressivement la position graphique du joueur (`sprite_p`)
+ * sur l'écran, selon les incréments définis (`j->move_dx` et `j->move_dy`).
+ * L'animation se déroule sur un nombre prédéfini de frames (`j->moving`), décrémenté
+ * à chaque appel de la fonction jusqu’à atteindre zéro (fin de l’animation).
+ *
+ * Lorsque l'animation se termine (`j->moving == 0`), les valeurs de déplacement (`move_dx`, `move_dy`)
+ * sont remises à zéro pour stopper tout mouvement résiduel.
+ *
+ * @param j         Pointeur vers la structure du joueur contenant les informations sur l'animation en cours.
+ * @param sprite_p  Pointeur vers la structure SDL_Rect définissant la position du sprite du joueur à l’écran.
+ *
+ * @pre Les valeurs de déplacement (`j->move_dx` et `j->move_dy`) doivent être définies avant le début de l’animation.
+ *      Le pointeur `sprite_p` doit être valide et initialisé correctement avec la position actuelle du joueur.
+ *
+ * @post La position graphique du joueur (`sprite_p->x`, `sprite_p->y`) est mise à jour progressivement à chaque appel.
+ *       Les valeurs de déplacement sont réinitialisées à zéro lorsque l'animation se termine.
+ *
+ * @note Cette fonction doit être appelée régulièrement dans la boucle principale (généralement chaque frame)
+ *       pour garantir une animation fluide du déplacement du joueur.
+ *
+ * @warning Veiller à ce que `j->screen_x` et `j->screen_y` soient initialisées correctement pour éviter tout décalage du sprite.
+ */
 void animation(joueur_t *j, SDL_Rect *sprite_p) {
     if (j->moving > 0) {
         j->screen_x += j->move_dx;
@@ -111,7 +168,35 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
     
 }
 
-//gere l'apparition des mechas 
+/**
+ * @brief Détermine et génère l'apparition aléatoire d'un Mecha sauvage dans une zone définie.
+ *
+ * Cette fonction gère l'apparition aléatoire d'un Mecha sauvage en fonction d'une probabilité cumulative. 
+ * À chaque déplacement du joueur dans une zone propice (identifiée par `obj_case`), la probabilité 
+ * de rencontrer un Mecha augmente. Lorsqu'un Mecha apparaît, ses attributs (niveau, PV, attaque, défense, vitesse, attaques disponibles) 
+ * sont définis aléatoirement en fonction des valeurs moyennes prédéfinies pour cette zone.
+ *
+ * @param j              Pointeur vers la structure du joueur (pour la gestion de la probabilité d'apparition).
+ * @param obj_case       Valeur représentant la case où se situe le joueur (détermine la zone de spawn éventuel).
+ * @param mecha_sauvage  Pointeur vers une structure Mecha qui sera remplie avec les attributs du Mecha sauvage généré.
+ *
+ * @return int
+ *         - `1` : Un Mecha sauvage est apparu, et ses attributs ont été initialisés.
+ *         - `0` : Aucun Mecha sauvage n’est apparu (probabilité insuffisante).
+ *
+ * @pre La structure `zone[]`, ainsi que les tableaux globaux (`attaque[]`, `mecha[]`), doivent être initialisés 
+ *      et contenir des données valides.
+ *      Les constantes telles que `Z1` et `Z10` doivent être correctement définies.
+ *      Le générateur aléatoire (`rand()`) doit être initialisé préalablement (par exemple via `srand()`).
+ *
+ * @post Si un Mecha apparaît, ses attributs sont initialisés dans la structure pointée par `mecha_sauvage`.
+ *       La probabilité de rencontre est réinitialisée (`j->proba_combat = 0`) en cas de succès.
+ *       Sinon, la probabilité cumulative (`j->proba_combat`) est augmentée.
+ *
+ * @note Des logs détaillés sur les attributs générés sont affichés sur la sortie standard (utile pour le debug).
+ *
+ * @warning Vérifier soigneusement les bornes des tableaux (`zone`, `mecha`, `attaque`) pour éviter tout accès hors limites.
+ */
 int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
         int i;
@@ -151,6 +236,36 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     return 0;
 }
 
+/** 
+* @brief Détecte si un PNJ peut déclencher un combat avec le joueur en fonction de sa position et orientation.
+*
+* Cette fonction parcourt la liste des PNJ présents sur la carte active, vérifiant leur état, leur position,
+* et leur orientation pour déterminer si l'un d'entre eux peut voir directement le joueur. Le PNJ peut détecter 
+* le joueur jusqu'à 3 cases devant lui selon son orientation actuelle (haut, droite, bas, gauche).
+*
+* Dès qu'un PNJ détecte le joueur, la fonction retourne immédiatement l'indice correspondant à ce PNJ dans le tableau global `pnj[]`.
+*
+* @param game    Pointeur vers la structure contenant l’état du jeu et la carte active.
+* @param joueur  Pointeur vers la structure du joueur contenant sa position actuelle sur la carte.
+*
+* @return int
+*         - L'indice (`i`) du PNJ dans le tableau `pnj[]` qui a détecté le joueur.
+*         - `0` si aucun PNJ ne détecte le joueur à proximité.
+*
+* @pre Les tableaux `game->mat` et `pnj[]` doivent être initialisés correctement.
+*      Les constantes (`JOUEUR`, `PNJ`, `VIN_GAZOLE_1`) doivent être définies.
+*
+* @post Aucune modification d’état du jeu n'est réalisée par cette fonction.
+*       Elle ne fait que retourner l'indice d'un PNJ pouvant déclencher un combat.
+*
+* @note La fonction s’assure que les coordonnées testées restent toujours à l'intérieur des limites de la matrice.
+*
+* @warning Assurez-vous que les valeurs des orientations du PNJ sont correctement définies :
+*          - `1` : vers le haut
+*          - `2` : vers la droite
+*          - `3` : vers le bas
+*          - `4` : vers la gauche
+*/
 int detection_combat_pnj(joueur_t *joueur){
     int test_x , test_y;
     int taille_x_mat = game.img_w / PX;    //taille de la matrice
