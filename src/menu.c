@@ -1,3 +1,7 @@
+/**
+ * \file menu.c
+ * \brief Fichier contenant les fonctions liées à l'affichage et la gestion du menu principal et des sous-menus du jeu.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,6 +9,25 @@
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
 
+/**
+ * @brief Charge une image depuis un fichier et la convertit en texture SDL.
+ *
+ * Cette fonction prend en charge le chargement d'une image depuis un chemin spécifié, en utilisant SDL_image.
+ * L'image chargée est convertie en une texture compatible avec le renderer SDL spécifié dans `game`.
+ * Si une erreur survient pendant le chargement ou la création de la texture, la fonction renvoie `NULL`.
+ *
+ * @param chemin  Chemin relatif ou absolu vers le fichier image à charger.
+ * @param game    Pointeur vers la structure `game_t` contenant le renderer SDL initialisé.
+ *
+ * @return SDL_Texture*
+ *         - La texture SDL créée à partir de l'image chargée en cas de succès.
+ *         - `NULL` si le chargement ou la création de texture échoue. Un message d'erreur est affiché sur la sortie standard.
+ *
+ * @pre Le renderer de `game` doit être initialisé et valide avant l'appel à cette fonction.
+ * @post L'image chargée est libérée après conversion en texture ; seule la texture persiste en mémoire.
+ *
+ * @warning La texture retournée doit être libérée avec `SDL_DestroyTexture()` après utilisation pour éviter les fuites mémoire.
+ */
 SDL_Texture* charger_texture(const char *chemin){
     SDL_Surface *surfaceChargee = IMG_Load(chemin);
     if (!surfaceChargee) {
@@ -16,6 +39,30 @@ SDL_Texture* charger_texture(const char *chemin){
     return texture;
 }
 
+/**
+ * @brief Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin).
+ *
+ * Cette fonction affiche deux rectangles interactifs représentant respectivement les sexes masculin et féminin,
+ * chacun associé à une image. Le joueur peut cliquer sur l'un des rectangles pour sélectionner son sexe,
+ * ou utiliser un bouton de retour pour annuler son choix.
+ *
+ * Le choix effectué est stocké dans la structure joueur (`j->sexe`). Si le joueur choisit le bouton retour,
+ * le pseudo sera remis à zéro (`pseudo[0] = '\0'`).
+ *
+ * @param game   Pointeur vers la structure du jeu contenant le renderer et les informations d'affichage.
+ * @param j      Pointeur vers la structure du joueur, où le sexe choisi sera enregistré.
+ * @param pseudo Chaîne de caractères du pseudo du joueur, réinitialisée à vide si le joueur revient en arrière.
+ *
+ * @return `1` si le joueur a sélectionné son sexe (Masculin ou Féminin),
+ *         `0` si le joueur choisit de retourner en arrière (bouton retour).
+ *
+ * @pre Le renderer (`game->renderer`) doit être initialisé avant l'appel.
+ *      Les pointeurs `game`, `j` et `pseudo` doivent être valides.
+ * @post La valeur du sexe du joueur est enregistrée ('M' ou 'F'), et le pseudo est éventuellement modifié.
+ *
+ * @note Cette fonction gère sa propre boucle d'événements et assure le rendu continu de l'écran jusqu'à la sélection du joueur.
+ *       Elle libère automatiquement les textures créées avant de quitter.
+ */
 int afficher_choix_sexe(joueur_t* j,char* pseudo){
     rectangle_t rect_h, rect_f;
     int largeurEcran, hauteurEcran, frameTime;
@@ -96,6 +143,32 @@ int afficher_choix_sexe(joueur_t* j,char* pseudo){
     return res;
 }
 
+/**
+ * @brief Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière avant une suppression de sauvegarde.
+ *
+ * Cette fonction affiche trois boutons distincts à l'écran : 
+ * - "Reprendre" pour continuer avec la sauvegarde existante.
+ * - "Recommencer" pour supprimer la sauvegarde actuelle et démarrer une nouvelle partie (le joueur devra choisir son sexe à nouveau).
+ * - "Retour" pour annuler l’action en cours et revenir à l'écran précédent.
+ *
+ * La fonction attend la réponse du joueur via un clic souris sur un des trois boutons affichés et exécute les actions associées :
+ * mise à jour ou suppression des données du joueur selon la sélection.
+ *
+ * @param game   Pointeur vers la structure du jeu (renderer, fenêtre, etc.).
+ * @param j      Pointeur vers la structure du joueur dont la sauvegarde est concernée.
+ * @param pseudo Pointeur vers le tableau de caractères contenant le pseudo du joueur.
+ *
+ * @return Un entier indiquant le résultat de l’action du joueur :
+ *         - `1` : Le joueur choisit "Reprendre" ou "Recommencer" (dans ce cas, la sauvegarde est supprimée puis réinitialisée).
+ *         - `0` : Le joueur choisit "Retour" ou ferme la fenêtre, aucune action effectuée.
+ *
+ * @pre Le renderer (`game->renderer`) doit être initialisé. Les pointeurs `game`, `j`, et `pseudo` doivent être valides.
+ * @post Selon l’action choisie, la sauvegarde du joueur peut être supprimée et réinitialisée. 
+ *       Le pseudo peut être vidé (`pseudo[0] = '\0'`) si l'utilisateur annule son choix.
+ *
+ * @note Cette fonction gère elle-même les événements SDL et le rendu graphique associé aux boutons.
+ *       Elle contrôle aussi le framerate (temps d'attente entre chaque affichage) pour fluidifier l'affichage.
+ */
 int afficher_choix_suppression(joueur_t* j,char* pseudo){
     int largeurEcran, hauteurEcran,frameTime;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
@@ -162,7 +235,35 @@ int afficher_choix_suppression(joueur_t* j,char* pseudo){
     return 0;
 }
 
-//affiche quand le joueur tape son pseudo
+/**
+ * @brief Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie.
+ *
+ * Cette fonction présente une interface de saisie de texte où le joueur peut entrer son pseudo. 
+ * Deux boutons sont affichés à l'écran :
+ * - "Commencer" : vérifie si une sauvegarde existe sous le pseudo saisi et propose de continuer ou recommencer.
+ * - "Retour" : permet au joueur d'annuler la saisie et revenir en arrière (réinitialisant le pseudo).
+ *
+ * Elle gère l'entrée utilisateur via le clavier (y compris la gestion de la suppression avec BACKSPACE) 
+ * et les interactions par clic souris sur les boutons.
+ *
+ * @param game    Pointeur vers la structure du jeu contenant le renderer et les ressources nécessaires à l'affichage.
+ * @param j       Pointeur vers la structure du joueur où les données chargées ou initialisées seront stockées.
+ * @param pseudo  Chaîne de caractères où sera stocké le pseudo saisi par le joueur. Réinitialisé en cas de retour.
+ *
+ * @return int
+ *         - `1` : si le joueur a terminé la saisie et validé en appuyant sur "Commencer" après avoir choisi son sexe ou confirmé une sauvegarde existante.
+ *         - `0` : si le joueur quitte ou utilise le bouton "Retour".
+ *
+ * @pre Le renderer (`game->renderer`) et la police de caractères (`game->police`) doivent être initialisés.
+ *      Les pointeurs `game`, `j` et `pseudo` doivent être valides.
+ * @post Le pseudo du joueur est stocké ou réinitialisé selon l'action choisie. La partie peut être initialisée si le joueur valide.
+ *
+ * @note La saisie du texte utilise SDL pour gérer les événements clavier. 
+ *       La fonction inclut une régulation de framerate pour un affichage fluide.
+ *
+ * @warning La longueur maximale du pseudo est définie par la constante `LONGUEUR_MAX_PSEUDO`. 
+ *          Veiller à ce que cette constante soit cohérente avec la taille réelle du tableau `pseudo`.
+ */
 int aff_saisie_pseudo(joueur_t* j, char* pseudo) {
     int largeurEcran, hauteurEcran,frameTime;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
@@ -263,7 +364,29 @@ int aff_saisie_pseudo(joueur_t* j, char* pseudo) {
     return 0;
 }
 
-//on modifie
+/**
+ * @brief Affiche un menu permettant de régler le volume sonore du jeu (Pour l'instant).
+ *
+ * Cette fonction présente une interface graphique avec les éléments suivants :
+ * - Un bouton pour diminuer le volume ("+").
+ * - Un bouton pour augmenter le volume ("+").
+ * - Un bouton "Retour" permettant de quitter le menu des réglages.
+ *
+ * L'utilisateur peut cliquer sur ces boutons pour augmenter ou diminuer le volume par palier de 10 unités,
+ * dans une plage comprise entre 0 et 100. Le volume modifié est directement enregistré dans la structure `parametres`.
+ *
+ * @param game        Pointeur vers la structure du jeu contenant le renderer SDL.
+ * @param parametres  Pointeur vers une structure contenant les paramètres du jeu, notamment le volume.
+ *
+ * @pre Le renderer (`game->renderer`) et la police (`game->police`) doivent être initialisés avant l'appel.
+ *      Les pointeurs `game` et `parametres` doivent être valides.
+ * @post Le volume sonore du jeu est mis à jour selon l'interaction utilisateur.
+ *
+ * @note Cette fonction gère intégralement sa propre boucle d'événements et réalise l'affichage en continu.
+ *       Le bouton "Retour" permet de quitter le menu et revenir à l'écran précédent.
+ *
+ * @warning Assurez-vous que les textures générées durant l'affichage (`SDL_Surface` et `SDL_Texture`) soient correctement libérées après utilisation pour éviter les fuites mémoire.
+ */
 void afficher_reglage(parametre_t* parametres) {
     int largeurEcran, hauteurEcran,frameTime;;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
@@ -332,6 +455,29 @@ void afficher_reglage(parametre_t* parametres) {
     }
 }
 
+/**
+ * @brief Affiche un écran d'informations sur les contrôles du jeu.
+ *
+ * Cette fonction présente un écran listant les touches de contrôle disponibles pour le joueur.
+ * Chaque contrôle est affiché dans un rectangle spécifique avec son explication correspondante.
+ * Un bouton « Retour » permet au joueur de quitter l'écran d'informations et revenir à l'écran précédent.
+ *
+ * Les informations affichées comprennent :
+ *  - Déplacement vers le haut, bas, gauche, droite.
+ *  - Pause du jeu.
+ *  - Interaction avec des éléments du jeu.
+ *
+ * L’écran reste affiché jusqu’à ce que le joueur clique sur "Retour" ou ferme la fenêtre.
+ *
+ * @param game Pointeur vers la structure du jeu contenant le renderer SDL utilisé pour l’affichage.
+ *
+ * @pre Le renderer (`game->renderer`) et la police (`game->police`) doivent être initialisés.
+ *      Le pointeur `game` doit être valide.
+ *
+ * @post Aucun changement d’état du jeu n’est effectué en dehors de l’affichage des informations.
+ *
+ * @note Cette fonction gère elle-même la boucle d'événements et l’affichage continu de l’écran d’information.
+ */
 void afficher_informations(){
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
@@ -379,6 +525,28 @@ void afficher_informations(){
     }
 }
 
+/**
+ * @brief Affiche l'écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour.
+ *
+ * Cette fonction présente trois boutons interactifs :
+ * - "Informations" : affiche l'écran expliquant les contrôles du jeu.
+ * - "Réglage" : affiche l'écran permettant d'ajuster des paramètres (comme le volume sonore).
+ * - "Retour" : permet de quitter l'écran des paramètres et revenir au menu précédent.
+ *
+ * L'utilisateur interagit avec ces boutons via la souris. Chaque clic entraîne l'affichage de l'écran correspondant,
+ * sauf "Retour" qui termine immédiatement la fonction en cours.
+ *
+ * @param game        Pointeur vers la structure du jeu contenant le renderer SDL.
+ * @param parametres  Pointeur vers une structure contenant les paramètres modifiables du jeu.
+ *
+ * @pre Le renderer (`game->renderer`) et la police (`game->police`) doivent être initialisés avant l'appel.
+ *      Les pointeurs `game` et `parametres` doivent être valides.
+ *
+ * @post Aucun paramètre n’est directement modifié par cette fonction, mais les sous-menus appelés peuvent changer les valeurs de la structure `parametres`.
+ *
+ * @note La fonction gère une boucle d'événements SDL et effectue le rendu graphique en continu tant que l'écran des paramètres est actif.
+ *       Le framerate est régulé afin d’assurer un affichage fluide.
+ */
 void aff_parametre(parametre_t* parametres){
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
@@ -435,6 +603,31 @@ void aff_parametre(parametre_t* parametres){
     }
 }
 
+/**
+ * @brief Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter.
+ *
+ * Cette fonction affiche le menu principal du jeu avec trois boutons interactifs :
+ * - "Jouer" : pour saisir ou choisir un pseudo et démarrer une partie.
+ * - "Parametres" : pour accéder aux réglages du jeu tels que le volume sonore et les contrôles.
+ * - "Quitter" : pour fermer immédiatement l'application.
+ *
+ * La fonction gère la boucle principale des événements (clics souris) jusqu'à ce que le joueur choisisse de quitter,
+ * démarre une partie valide ou ferme la fenêtre du jeu.
+ *
+ * @param game        Pointeur vers la structure principale du jeu (renderer, textures, état actuel du jeu).
+ * @param parametres  Pointeur vers la structure contenant les paramètres ajustables du jeu (par exemple, le volume).
+ * @param j           Pointeur vers la structure du joueur pour sauvegarder ou charger les données de la partie.
+ * @param pseudo      Chaîne de caractères utilisée pour stocker le pseudo saisi par le joueur.
+ *
+ * @pre Toutes les ressources graphiques (renderer, police, textures) doivent être initialisées. 
+ *      Les pointeurs passés (`game`, `parametres`, `j`, `pseudo`) doivent être valides.
+ *
+ * @post L'état du jeu peut changer en fonction de l'action sélectionnée par l'utilisateur.
+ *       Le pseudo peut être saisi ou réinitialisé, les paramètres ajustés, ou le jeu fermé.
+ *
+ * @note Cette fonction gère intégralement sa propre boucle d'événements SDL et les rendus graphiques associés.
+ *       Elle régule également le framerate pour un affichage fluide de l'interface.
+ */
 void afficher_menu(parametre_t* parametres, joueur_t* j, char* pseudo) {
     game.mat_active = 7;
     int largeurEcran, hauteurEcran;
@@ -494,6 +687,37 @@ void afficher_menu(parametre_t* parametres, joueur_t* j, char* pseudo) {
     }
 }
 
+/**
+ * @brief Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil.
+ *
+ * Cette fonction affiche un menu de pause permettant au joueur de choisir entre :
+ * - **Reprendre** : pour retourner directement à la partie en cours.
+ * - **Parametres** : accéder aux réglages du jeu (volume, contrôles, etc.).
+ * - "Accueil" : quitter la partie en cours pour revenir au menu principal.
+ *
+ * L'utilisateur interagit avec le menu en cliquant sur l'un des boutons affichés.
+ * L'action associée est immédiatement déclenchée :
+ * - Reprendre la partie.
+ * - Accéder aux paramètres.
+ * - Revenir au menu principal (Accueil).
+ *
+ * @param game        Pointeur vers la structure du jeu contenant les ressources nécessaires à l'affichage.
+ * @param parametres  Pointeur vers la structure contenant les paramètres ajustables du jeu.
+ *
+ * @return int
+ *         - `1` : Si l'utilisateur choisit "Reprendre", la partie continue.
+ *         - `0` : Si l'utilisateur clique sur "Accueil" ou ferme la fenêtre.
+ *
+ * @pre Le renderer (`game->renderer`) et les ressources graphiques doivent être initialisés avant l'appel.
+ *      Les pointeurs `game` et `parametres` doivent être valides.
+ *
+ * @post Le jeu reprend son cours ou revient au menu d'accueil en fonction de l'option sélectionnée par l'utilisateur.
+ *
+ * @note La fonction gère entièrement l'affichage graphique et la boucle d'événements SDL associée à l'écran de pause.
+ *       Elle maintient un framerate constant grâce à un contrôle du temps d'affichage par frame.
+ *
+ * @warning Veillez à bien définir les constantes telles que `LARGEUR_BOUTON`, `HAUTEUR_BOUTON`, et `FRAME_DELAY`.
+ */
 int afficher_menu_pause(parametre_t* parametres) {
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize(game.renderer, &largeurEcran, &hauteurEcran);
