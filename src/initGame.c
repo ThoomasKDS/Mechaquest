@@ -6,10 +6,27 @@
 #include "../lib/initGame.h"
 
 
-//Initialisation de sdl 
-//Initialisation de sdl mixer
-//Initialisation de sdl image
-
+/**
+ * @brief Initialise l'environnement du jeu en préparant SDL et ses modules associés.
+ *
+ * Cette fonction initialise SDL, SDL_ttf, SDL_image et SDL_mixer pour gérer l'affichage graphique, les polices, les images et le son.
+ * Elle crée une fenêtre principale en mode plein écran ainsi qu'un renderer pour gérer l'affichage.
+ * Une police spécifique est également chargée pour le rendu des textes dans le jeu.
+ *
+ * @param game  Pointeur vers une structure `game_t` où seront stockées les ressources créées (fenêtre, renderer, police).
+ *
+ * @return int
+ *         - `1` si l'initialisation complète réussit.
+ *         - `0` en cas d'erreur dans l'initialisation de SDL, SDL_image, SDL_mixer, ou à la création de la fenêtre/renderer.
+ *         - `1` si l'erreur provient de SDL_ttf (ce cas particulier peut être une incohérence et devrait être vérifié dans l'implémentation).
+ *
+ * @pre Le pointeur `game` doit être valide et non NULL.
+ * @post La structure `game` est remplie avec les ressources initialisées. En cas d'erreur, toutes les ressources allouées précédemment sont libérées.
+ *
+ * @note La fonction initialise également la génération aléatoire (`rand()`).
+ *
+ * @warning Le chemin vers le fichier de police `"img/police_temporaire.ttf"` doit être valide, sinon l'initialisation échoue.
+ */
 int init_game() {
     srand(time(NULL)); //initialise de la lib rand
     
@@ -102,7 +119,19 @@ int init_game() {
 }
 
 
-// Libération des ressources et fermeture SDL
+/**
+ * @brief Libère proprement toutes les ressources utilisées par le jeu avant de quitter.
+ *
+ * Cette fonction détruit les textures des arrière-plans, le renderer, la fenêtre, la police chargée,
+ * et quitte correctement les modules SDL (SDL_ttf, SDL_image, SDL).
+ *
+ * @param game  Pointeur vers une structure `game_t` contenant toutes les ressources à libérer.
+ *
+ * @pre Le pointeur `game` doit être valide et initialisé, ainsi que toutes les ressources associées (textures, renderer, fenêtre, police).
+ * @post Toutes les ressources allouées dynamiquement par SDL sont libérées, et SDL est correctement quitté.
+ *
+ * @note Cette fonction doit être appelée systématiquement avant la fermeture de l'application pour éviter les fuites mémoire.
+ */
 void cleanUp() {
     for(int i = 0; i < 8; i++) {
         SDL_DestroyTexture(game.backgroundTexture[i]);
