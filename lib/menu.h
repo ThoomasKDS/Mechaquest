@@ -1,3 +1,11 @@
+/**
+ * @file menu.h
+ * @brief Gestion des menus et des interfaces utilisateur.
+ * 
+ * Ce fichier contient les déclarations des fonctions permettant d'afficher et de gérer
+ * les différents menus du jeu, notamment la sélection du sexe, la suppression de données,
+ * les paramètres et les dialogues.
+ */
 #ifndef MENU_H
 #define MENU_H
 
