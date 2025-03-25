@@ -63,6 +63,7 @@ int main() {
         pseudo[0] = '\0';
         running = 1;
 
+        regler_volume(&parametres);
         lancer_musique("son/musique_general.wav");
 
         recuperation_mechas(mecha);

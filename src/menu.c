@@ -8,6 +8,7 @@
 #include "../lib/menu.h"
 #include "../lib/initGame.h"
 #include "../lib/affichage.h"
+#include "../lib/son.h"
 
 /**
  * @brief Charge une image depuis un fichier et la convertit en texture SDL.
@@ -425,6 +426,12 @@ void afficher_reglage(parametre_t* parametres) {
                 if (x >= btn_plus_volume.rect.x && x <= btn_plus_volume.rect.x + btn_plus_volume.rect.w &&
                     y >= btn_plus_volume.rect.y && y <= btn_plus_volume.rect.y + btn_plus_volume.rect.h) {
                     if (parametres->volume < 100) parametres->volume += 10;
+                }
+
+                int dernier_volume = -1;
+                if (parametres->volume != dernier_volume) {  
+                    dernier_volume = parametres->volume;  
+                    regler_volume(parametres);  // Applique le nouveau volume pour les musiques
                 }
             }
         }

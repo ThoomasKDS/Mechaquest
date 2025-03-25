@@ -50,6 +50,8 @@ const int FRAME = 15 ;      //Nombre d'image dans l'animation
  *          Assurez-vous que les constantes (`RIEN`, `JOUEUR`, `TPMAP1`, etc.) soient définies avant utilisation.
  */
 int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
+
+
     int obj_case = RIEN;
     if (!j->moving){  // si joueur deja entrain de se deplacer on ne fait rien
 
@@ -105,6 +107,7 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
             }
 
             else {
+                jouer_bruit("son/pas3.wav");   //Joue le son des pas
                 // met à jour la mat            
                 game.mat[game.mat_active][j->y][j->x] = *last_case;
                 *last_case = game.mat[game.mat_active][new_y][new_x];
@@ -117,7 +120,6 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
                 j->move_dy = dy * (PX * game.scale) / FRAME;
                 j->moving = FRAME;  // animation sur 16 frames
                 //vérification sapwn mechas
-                jouer_bruit("son/pas.wav");
                 
             }
         }
