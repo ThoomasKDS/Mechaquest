@@ -499,30 +499,41 @@ int init_pnj() {
     return 1;
 }
 
+
 int init_mecha() {
-    char img[40] = "img/mechas/mecha_";
-    char ext[5] = ".png";
-    SDL_Surface * imageSprite[NB_MECHAS];
-    for(int i = 0; i < NB_MECHAS; i++) {
-        img[17] = '0' + i + 1;
-        img[18] = '\0';
-        strcat(img, ext);
-        imageSprite[i] = IMG_Load(img);
-        if (!imageSprite[i]) {
-            printf("Erreur de chargement de l'image dans init mecha: %s\n", IMG_GetError());
-            IMG_Quit();
-            return 0;
+    int i, j;
+    char img[40];
+    char ext[6]; // "D.png" ou "G.png"
+
+    SDL_Surface *imageSprite[NB_MECHAS][2];
+
+    for (i = 0; i < NB_MECHAS; i++) {
+        for (j = 0; j < 2; j++) {
+            snprintf(ext, sizeof(ext), "%c.png", (j == 0) ? 'D' : 'G');     //choisit la lettre par rapport a j
+            snprintf(img, sizeof(img), "img/mechas/%d%s", i + 1, ext);      
+
+            imageSprite[i][j] = IMG_Load(img);
+            if (!imageSprite[i][j]) {
+                printf("Erreur de chargement de l'image %s: %s\n", img, IMG_GetError());
+                IMG_Quit();
+                return 0;
+            }
         }
     }
-    for(int i = 0; i < NB_MECHAS; i++) {
-        mecha[i].texture = SDL_CreateTextureFromSurface(game.renderer, imageSprite[i]);
-        if (!mecha[i].texture) {
-            printf("Erreur de création de la texture dans init mecha : %s\n", SDL_GetError());
-            SDL_Quit();
-            return 0;
+
+    // Conversion en textures et libération des surfaces
+    for (i = 0; i < NB_MECHAS; i++) {
+        for (j = 0; j < 2; j++) {
+            mecha[i].texture[j] = SDL_CreateTextureFromSurface(game.renderer, imageSprite[i][j]);
+            if (!mecha[i].texture[j]) {
+                printf("Erreur de chargement de l'image %s: %s\n", img, IMG_GetError());
+                SDL_Quit();
+                return 0;
+            }
+            SDL_FreeSurface(imageSprite[i][j]);
         }
-        SDL_FreeSurface(imageSprite[i]);
     }
+
     return 1;
 }
 

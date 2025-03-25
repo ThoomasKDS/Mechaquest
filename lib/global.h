@@ -12,7 +12,6 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-
 //*********DEFINE********//
 #define LONGUEUR_MAX_PSEUDO 50
 #define LONGUEUR_LIGNE 256
@@ -366,7 +365,7 @@ typedef struct{
  * Nombre total d’attaques dans la liste que ce mecha peut apprendre.
  */
 typedef struct{
-    SDL_Texture * texture;
+    SDL_Texture * texture[2];
     int id_mechas;
     char nom[LONGUEUR_MAX_PSEUDO];
     char type[LONGUEUR_TYPE];

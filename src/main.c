@@ -109,7 +109,9 @@ int main() {
                 return -1;
             }
             if(!init_pnj()){
-                
+                return -1;
+            }
+            if(!init_mecha()){
                 return -1;
             }
             
