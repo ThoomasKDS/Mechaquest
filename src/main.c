@@ -39,6 +39,7 @@ int main() {
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;
+    int indice_combat;
     int last_case = 0;
     SDL_Event event;
     Uint32 frameStart;  
@@ -188,8 +189,9 @@ int main() {
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         combat_sauvage(&j, &mecha_sauvage);
                     }
-
-                    if(detection_combat_pnj(&j)){
+                    indice_combat = detection_combat_pnj(&j);
+                    if(indice_combat){
+                        //afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
                         //attaque_ordi_pnj(pnj, &mecha_sauvage);
                     }
 
