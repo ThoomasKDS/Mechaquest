@@ -8,6 +8,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
@@ -42,7 +43,8 @@
 #define IRON_MUSK_FIN 22
 
 
-
+//TEMPS
+#define T 500
 //RETURN 
 #define ERREUR_OUVERTURE -1
 #define OK 1
