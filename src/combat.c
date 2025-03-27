@@ -58,11 +58,9 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
     char texte_joueur[256];
     char texte_ordi[256];
     strcpy(texte_joueur, "Pv : ");
-   //concat(texte_joueur, pv_mecha_joueur);
     /*strcat(texte_joueur, "\nNiv : ");
     concat(texte_joueur, niv_mecha_joueur);*/
     strcpy(texte_ordi, "Pv : ");
-    //concat(texte_ordi, pv_mecha_ordi);
     /*strcat(texte_ordi, "\nNiv : ");
     concat(texte_ordi, niv_mecha_ordi);*/
 
@@ -95,7 +93,7 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
     creer_rectangle(&border_pv_joueur, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_joueur - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     creer_rectangle(&border_pv_ordi, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_ordi - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     draw_background();
-    draw_all_rect(11, rect_bas,&rect_bordure_joueur,&rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
+    draw_all_rect(11, &rect_bas,&rect_bordure_joueur,&rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
     draw_text_pos(texte_joueur, x_pv_joueur, y);
     draw_text_pos(texte_ordi, x_pv_ordi, y);
     
@@ -872,47 +870,60 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
 }
 
 
-/*int attaque_ordi_pnj(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){
+int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
     int ancien_pv;
     int nbr_rand_choix = 0;
 
-    
-    if(mecha_ordi->pv <= mecha_ordi->pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
-        nbr_rand_choix = (rand() % 2) + 1;
+    if(pnj->mechas_joueur[*actif].pv <= pnj->mechas_joueur[*actif].pv_max / 4) { //si les pv sont < a un quart des pv max on a 1/3 chances de changer de mechas
+        nbr_rand_choix = (rand() % 3);
+    }
+    if(nbr_rand_choix) {
+        if(pnj->mechas_joueur[*actif].pv <= pnj->mechas_joueur[*actif].pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
+            nbr_rand_choix = (rand() % 2);
+        }
+
+        if(nbr_rand_choix){    //Utilisation d'un carburant
+            if(pnj->inventaire->carburant <= 0){
+                nbr_rand_choix = 0;
+            }
+            else{
+                pnj->mechas_joueur[*actif].pv += 20;
+                if(pnj->mechas_joueur[*actif].pv > pnj->mechas_joueur[*actif].pv_max){
+                    pnj->mechas_joueur[*actif].pv = pnj->mechas_joueur[*actif].pv_max;
+                }
+                pnj->inventaire->carburant--;
+            }
+        }
+        if(!nbr_rand_choix){   //Attaque
+            int numero_attaque;
+            int utilisation[2] = {pnj->mechas_joueur[*actif].utilisation_1, pnj->mechas_joueur[*actif].utilisation_2};
+            numero_attaque = rand() % 2;
+            if(!utilisation[numero_attaque]){
+                numero_attaque = 1 - numero_attaque;
+                if(!utilisation[numero_attaque]) {
+                afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  Le mechas n'a plus d'utilisations."); 
+                return KO;
+                }
+                algo_attaque(numero_attaque, &(pnj->mechas_joueur[*actif]), mecha_joueur, 0);
+        
+            }
+            else{
+                algo_attaque(numero_attaque, &(pnj->mechas_joueur[*actif]), mecha_joueur, 0);
+            }
+        }
+    }
+    else {
+        for(int i = 0; i < 4; i++) {
+            if(pnj->mechas_joueur[i].pv > 0) {
+                (*actif) = i;
+                break;
+            }
+        }
+        afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  L'adversaire change de mecha."); 
     }
 
-    if(nbr_rand_choix){    //Utilisation d'un carburant
-        if(mecha_ordi->inventaire->carburant <= 0){
-            nbr_rand_choix = 0;
-        }
-        else{
-            mecha_ordi->mechas_joueur->pv += 20;
-            if(mecha_ordi->mechas_joueur->pv > mecha_ordi->mechas_joueur->pv_max){
-                mecha_ordi->mechas_joueur->pv = mecha_ordi->mechas_joueur->pv_max;
-            }
-            mecha_ordi->inventaire->carburant--;
-        }
-    }
-    if(!nbr_rand_choix){   //Attaque
-        int numero_attaque;
-        int utilisation[2] = {mecha_ordi->utilisation_1, mecha_ordi->utilisation_2};
-        numero_attaque = rand() % 2;
-        if(!utilisation[numero_attaque]){
-            numero_attaque = 1 - numero_attaque;
-            if(!utilisation[numero_attaque]) {
-                printf("Le mecha sauvage ne peut plus attaquer\n");
-                return 0;
-            }
-            algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
-       
-        }
-        else{
-            algo_attaque(numero_attaque, mecha_ordi, mecha_joueur);
-        }
-            printf("PV : %d --> %d\n", ancien_pv, mecha_joueur->pv);
-    }
     return OK;
-}*/
+}
 
 /*
 ===========================================
@@ -1289,7 +1300,72 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif) {
 
 
 void combat_pnj(joueur_t *joueur, pnj_t *pnj) {
+    printf("Attaque\n");
+    int save_map_active = game.mat_active;
+    init_rect_bas();
+    game.mat_active = 6;
+    int actif_joueur = 0, actif_pnj = 0;
+    int res = OK;
+    int verif;
+    int existe_joueur[4] = {0,0,0,0};
+    int existe_pnj[4] = {0,0,0,0};
+    for(int i = 0; i < 4; i++) {
+        if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
+            existe_joueur[i] = 1;
+        if(pnj->mechas_joueur[i].numero == i+1 && pnj->mechas_joueur[i].pv > 0)
+        existe_joueur[i] = 1;
+    }
+    while(joueur->mechas_joueur[actif_joueur].pv == 0) {
+        actif_joueur++;
+    }
+    do {
+        while(pnj->mechas_joueur[actif_pnj].pv > 0 && joueur->mechas_joueur[actif_joueur].pv > 0 && res == OK) {
+            if(joueur->mechas_joueur[actif_joueur].vitesse > pnj->mechas_joueur[actif_pnj].vitesse) {
+                res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]),  &actif_joueur);
+                
+                if(pnj->mechas_joueur[actif_joueur].pv > 0 && res == OK)
+                   attaque_ordi_pnj(pnj, &(joueur->mechas_joueur[actif_joueur]), &actif_pnj);
+            }
+            else {
+                attaque_ordi_pnj(pnj, &(joueur->mechas_joueur[actif_joueur]), &actif_pnj);
+                if(joueur->mechas_joueur[actif_joueur].pv > 0) {
+                    res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]),  &actif_joueur);
+                }
+            }
+        }
+        if(pnj->mechas_joueur[actif_pnj].pv > 0 && res == OK) {
+            verif = 0;
+            for(int i = 0; i < 4; i++) {
+                if(existe_joueur[i] && joueur->mechas_joueur[i].pv > 0)
+                    verif = 1;
 
+            }
+            if(verif) {
+                while( changer_mecha(joueur, &actif_joueur, &(pnj->mechas_joueur[actif_pnj])) != 1);
+            }
+        }
+        else if(joueur->mechas_joueur[actif_pnj].pv > 0 && res == OK) {
+            verif = 0;
+            for(int i = 0; i < 4; i++) {
+                if(existe_pnj[i] && pnj->mechas_joueur[i].pv > 0)
+                    verif = 1;
+
+            }
+            if(verif) {
+                for(int i = 0; i < 4; i++) {
+                    if(pnj->mechas_joueur[i].pv > 0) {
+                        (actif_pnj) = i;
+                        break;
+                    }
+                }
+                afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", "  L'adversaire change de mecha."); 
+            }
+        }
+    }while(verif && res == OK);
+    if(pnj->mechas_joueur[actif_pnj].pv != 0 && joueur->mechas_joueur[actif_joueur].pv == 0) afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !");
+    else if(pnj->mechas_joueur[actif_pnj].pv == 0 && joueur->mechas_joueur[actif_joueur].pv != 0)afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !");
+    else if(res == FUITE)afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous prennez la fuite!");
+    game.mat_active = save_map_active;
 }
 
 /**
@@ -1332,7 +1408,7 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
             if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
                 res = tour_joueur(joueur, mecha_sauvage,  &actif);
                 
-                if(mecha_sauvage->pv != 0 && res == OK) 
+                if(mecha_sauvage->pv != 0 && res == OK) {}
                     attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
             }
             else {
