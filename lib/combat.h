@@ -25,7 +25,7 @@ int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
 int utilisation_mechaball(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
 
-int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif);
+int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif, int type_combat);
 
 int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi);
 
@@ -35,9 +35,9 @@ int attaque_joueur(joueur_t *j, mechas_joueur_t *mecha_ordi, int * actif);
 
 int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
 
-int attaque_ordi_pnj(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur);
+int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif);
 
-int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int *actif);
+int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, int type_combat);
 
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage);
 
