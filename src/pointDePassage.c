@@ -490,7 +490,8 @@ int jeu_libre(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite,const Uint8 
                 pnj[VIN_GAZOLE_5].etat = 1;
                 sauvegarde_pnj(&pnj[VIN_GAZOLE_5],pnj[VIN_GAZOLE_5].id_pnj,j->pseudo);
             }
-            else if(pnj[VIN_GAZOLE_5].etat == 1){
+            else if(pnj[VIN_GAZOLE_3].etat == 1){
+                game_over(j);
                 if(j->inventaire->mechaball < NB_OBJET || j->inventaire->carburant < NB_OBJET|| j->inventaire->repousse < NB_OBJET || j->inventaire->rappel< NB_OBJET)
                     soin = 1;
                 for(int i = 0;i < NB_MECHAS_INVENTAIRE && soin == 0;i++){

@@ -41,15 +41,15 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int *actif);
 
 void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage);
 
-int apprentissage_attaque(mechas_joueur_t *mecha_joueur);
+int apprentissage_attaque(mechas_joueur_t *mecha_joueur,mechas_joueur_t *mecha_ordi);
 
-void level_mechas(joueur_t *mechas_presents, joueur_t *mecha_tue);
+void level_mechas(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi);
 
-int evolution_mechas(mechas_joueur_t *mecha_joueur);
+int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi);
 
-void montee_niveau(mechas_joueur_t *mecha, int xp_partage, int lvlup);
+void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_partage, int lvlup);
 
-void distribuer_xp(joueur_t *mechas_presents, int xp_gagne);
+void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int xp_gagne);
 
 
 

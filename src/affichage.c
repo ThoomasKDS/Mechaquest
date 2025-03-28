@@ -19,14 +19,10 @@
  */
 int init_background() {
 
-    char ext[5] = ".png";
-    char chemin[30] = "img/background/fond";
+    char chemin[40];
 
-    for(int i = 0; i < 8; i++) {
-        chemin[19] = '0' + (i + 1);
-        chemin[20] = '\0';
-        strcat(chemin, ext);
-
+    for(int i = 0; i < 10; i++) {
+        sprintf(chemin,"img/background/fond%d.png",i+1);
         //charger fond
         SDL_Surface * imageSurface = IMG_Load(chemin);
         if (!imageSurface) {
@@ -1055,11 +1051,11 @@ int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, cha
     SDL_FlushEvent(SDL_KEYDOWN);  // Vider les touches avant d'afficher
     
     while (index < len) {
+        SDL_RenderClear(game.renderer);
         frameStart = SDL_GetTicks();
         displayedText[textIndex] = dialogue[index];
         displayedText[textIndex + 1] = '\0';
         strncpy(textRect.text, displayedText, sizeof(textRect.text) - 1);
-        SDL_RenderClear(game.renderer);
         draw_all(j, sprite_p, pnj_sprite);
         draw_rect( &fondDialogue, draw_text_center);
         draw_rect(&pseudoRect, draw_text_center);
@@ -1097,10 +1093,10 @@ int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, cha
         if (delay > frameTime) SDL_Delay(delay - frameTime);
     }
     
-    return choix ? choix : OK;
+    return OK;
 }
 
-void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue) {
+int afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue, int choix) {
     int largeurEcran, hauteurEcran;
     SDL_GetRendererOutputSize( game.renderer, &largeurEcran, &hauteurEcran);
     
@@ -1115,7 +1111,10 @@ void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * 
     creer_rectangle(&pseudoRect, 200, 40, dialogueX + 20, dialogueY + 10, 255, 255, 255, 255, pseudo?pseudo:NULL);
     creer_rectangle(&textRect, dialogueWidth - 40, dialogueHeight - 80, dialogueX + 20, dialogueY + 60, 255, 255, 255, 255, NULL);
     creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
-
+    if (!choix)
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "A pour continuer");
+    else
+        creer_rectangle(&infoRect, 300, 30, dialogueX + (dialogueWidth / 2) - 150, dialogueY + dialogueHeight - 35, 255, 255, 255, 255, "Choisir entre 1 et 3");
     int len = strlen(dialogue);
     char displayedText[256] = "";
     int index = 0, textIndex = 0;
@@ -1148,24 +1147,73 @@ void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * 
             
             while (waitingForKey == true) {
                 if (SDL_WaitEvent(&event)) {
-                    if (event.type == SDL_QUIT) return;
+                    if (event.type == SDL_QUIT) return KO;
                     if (event.type == SDL_KEYDOWN && !event.key.repeat) {
-                        if (event.key.keysym.sym == SDLK_a) {
+                        if (!choix && event.key.keysym.sym == SDLK_a) {
                             waitingForKey = false;
                             textIndex = 0;
                             memset(displayedText, 0, sizeof(displayedText));
+                        }else if (choix && event.type == SDL_KEYDOWN && !event.key.repeat) {
+                        if (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_KP_1) return 1;
+                        if (event.key.keysym.sym == SDLK_2 || event.key.keysym.sym == SDLK_KP_2) return 2;
+                        if (event.key.keysym.sym == SDLK_3 || event.key.keysym.sym == SDLK_KP_3) return 3;
                         }
                     }
-            }   }
+                }   
+            }
         }
         
         frameTime = SDL_GetTicks() - frameStart;
         if (delay > frameTime) SDL_Delay(delay - frameTime);
     }
+    return OK;
 }
 /*=================================================*/
 
+void game_over(joueur_t *j) {
+    int frameTime;
+    Uint32 frameStart;
+    int running = 1;
+    SDL_Event event;
 
+    game.mat_active = 9;
+    
+    while (running) {
+        frameStart = SDL_GetTicks();
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            } else if (event.type == SDL_KEYDOWN) {
+                if (SDL_GetKeyboardState(NULL)[SDL_SCANCODE_A]) {
+                    running = 0;
+                }
+            }
+        }
+
+        if (running) {
+            // Efface l'écran et dessine l'image
+            SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
+            SDL_RenderClear(game.renderer);
+            draw_background();
+            SDL_RenderPresent(game.renderer);
+        }
+
+        // Gestion du framerate
+        frameTime = SDL_GetTicks() - frameStart;
+        if (FRAME_DELAY > frameTime) {
+            SDL_Delay(FRAME_DELAY - frameTime);
+        }
+    }
+
+    // Réinitialisation du joueur
+    j->numMap = 0;
+    game.mat_active = j->numMap;
+    j->x = 23;
+    j->y = 8;
+    j->derniere_touche = 4;
+    j->screen_x = (float)(game.dms_win.x + (j->x * PX * game.scale));
+    j->screen_y = (float)(game.dms_win.y + (j->y * PX * game.scale));
+}
 
 
 

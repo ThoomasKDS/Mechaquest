@@ -133,7 +133,7 @@ int init_game() {
  * @note Cette fonction doit être appelée systématiquement avant la fermeture de l'application pour éviter les fuites mémoire.
  */
 void cleanUp() {
-    for(int i = 0; i < 8; i++) {
+    for(int i = 0; i < 10; i++) {
         SDL_DestroyTexture(game.backgroundTexture[i]);
     }
     for(int i = 0; i < 6; i++) {

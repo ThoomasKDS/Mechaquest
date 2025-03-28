@@ -6,7 +6,7 @@
  * y compris le background, les matrices et les objets (joueurs, PNJ, objets divers).
  */
 #ifndef AFF_H
-#define AFF_H
+#define AFF_H                           
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -38,6 +38,7 @@ int init_player(char sexe);                                            //initial
 int init_pnj() ;             
 int init_mecha();                                            //initialise un pnj
 SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
+void game_over(joueur_t *j);
 void draw_player(SDL_Rect *obj, joueur_t * j);                 //dessine le joueur
 void draw_pnj(SDL_Rect *obj, pnj_t *pnj ,joueur_t *j);                           //dessine un pnj
 void draw_obj(SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
@@ -51,6 +52,6 @@ void draw_text_pos(char *text, int x, int y);
 void draw_all_rect(int n, ...);
 
 int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue,int choix);
-void afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue);
+int afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue,int choix);
 
 #endif

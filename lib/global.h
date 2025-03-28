@@ -225,11 +225,11 @@ typedef struct{
 typedef struct {
     SDL_Window* window;
     SDL_Renderer* renderer;
-    SDL_Texture* backgroundTexture[8];
+    SDL_Texture* backgroundTexture[11];
     SDL_Texture* calqueTexture[6];
+    TTF_Font* police;
     img_player_t sprite_joueur;
     img_pnj_t sprite_pnj;
-    TTF_Font* police;
     int *** mat ;
     float scale;                        //echelle qui adapte l'affichage à l'ecran et à la taille de l'image
     SDL_Rect dms_win;
