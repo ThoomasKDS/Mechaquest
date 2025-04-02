@@ -984,7 +984,7 @@ int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi){
     int i;
     int choix = -1;
-    char text[200];
+    char text[300];
 
     for(i = 0;attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau != mecha_joueur->niveau && i<5 ;i++);
     if(attaque[mecha[mecha_joueur->id_mechas -1].liste_attaque[i] -1 ].niveau == mecha_joueur->niveau){
@@ -1036,7 +1036,7 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_
  * @return Retourne `OK` après l'exécution, que le mecha évolue ou non.
  */
 int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi){
-    char text[100];
+    char text[200];
     if(mecha_joueur->niveau >= mecha[mecha_joueur->id_mechas -1].niveau_evolution && mecha[mecha_joueur->id_mechas -1].evolution > 0){
         mecha_joueur->id_mechas++;
         sprintf(text,"%s à évolué en %s.",mecha[mecha_joueur->id_mechas -2].nom,mecha[mecha_joueur->id_mechas -1].nom );

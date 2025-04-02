@@ -39,7 +39,7 @@ int main() {
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;
-    int indice_combat;
+    int indice_combat = 0;
     int last_case = 0;
     SDL_Event event;
     Uint32 frameStart;  
