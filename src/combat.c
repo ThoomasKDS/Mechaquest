@@ -182,7 +182,7 @@ int aff_mechas_combat(joueur_t * joueur) {
     rectangle_t rect_bodure1, rect_bordure2, rect_bordure3, rect_bordure4, rect_bordure_retour;
 
     //initialisation des rectangles
-    int rect_w = win_w * 0.4;
+    int rect_w = win_w * 0.3;
     int rect_h = win_h * 0.2;
     int margin = 50;  // Ajuste la marge selon tes besoins
 
@@ -194,16 +194,16 @@ int aff_mechas_combat(joueur_t * joueur) {
 
     int border_size = 5 * game.scale; // Épaisseur des bords
 
-    int x1 = win_w * 0.1;
+    int x1 = 0 + win_w * 0.1;
     int y1 = win_h * 0.1;
 
-    int x2 = win_w * 0.1;
+    int x2 = 0 + win_w * 0.1;
     int y2 = win_h * 0.1 + rect_h + margin;
 
-    int x3 = win_w * 0.1 + rect_w + margin;
+    int x3 = win_w - win_w * 0.1 - rect_w;
     int y3 = win_h * 0.1;
 
-    int x4 = win_w * 0.1 + rect_w + margin;
+    int x4 = win_w - win_w * 0.1 - rect_w;
     int y4 = win_h * 0.1 + rect_h + margin;
 
     int w = win_w * 0.08;
