@@ -49,20 +49,19 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
     //texte à afficher
     int pv_mecha_joueur = mecha_joueur->pv;
     int pv_mecha_ordi = mecha_ordi->pv;
-    int niv_mecha_joueur = mecha_joueur->niveau;
-    int niv_mecha_ordi = mecha_ordi->niveau;
     char nom_mecha_joueur[50];
     strcpy(nom_mecha_joueur, mecha[mecha_joueur->id_mechas - 1].nom);
+    strcat(nom_mecha_joueur, " Niv.");
+    concat(nom_mecha_joueur, mecha_joueur->niveau);
     char nom_mecha_ordi[50];
     strcpy(nom_mecha_ordi, mecha[mecha_ordi->id_mechas - 1].nom);
+    strcat(nom_mecha_ordi, " Niv.");
+    concat(nom_mecha_ordi, mecha_ordi->niveau);
     char texte_joueur[256];
     char texte_ordi[256];
     strcpy(texte_joueur, "Pv : ");
-    /*strcat(texte_joueur, "\nNiv : ");
-    concat(texte_joueur, niv_mecha_joueur);*/
     strcpy(texte_ordi, "Pv : ");
-    /*strcat(texte_ordi, "\nNiv : ");
-    concat(texte_ordi, niv_mecha_ordi);*/
+
 
     rectangle_t rect_joueur, rect_ordi, rect_bordure_joueur, rect_bordure_ordi, rect_pv_joueur, rect_pv_ordi, border_pv_joueur, border_pv_ordi, fond_pv_joueur, fond_pv_ordi;
 
@@ -79,13 +78,17 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
     int x_pv_joueur = x_joueur + w/2 - w_fond_pv/2;
     int x_pv_ordi = x_ordi + w/2 - w_fond_pv/2;
     int y_pv = y + win_h / 30;
+    int x_mecha_g = win_w / 10;
+    int x_mecha_d  = win_w / 8 * 5;
+    int y_mecha = win_h / 2 - win_h / 10;
+    int w_mecha = win_w/4;
+    int h_mecha = win_h/3;
     int border_pv = 3 * game.scale;
-
 
     creer_rectangle(&rect_joueur, w, h, x_joueur, y, 160, 160, 160, 255, NULL);
     creer_rectangle(&rect_ordi, w, h, x_ordi, y, 160, 160, 160, 255, NULL);
-    creer_rectangle(&rect_bordure_joueur, w, bordure_size, x_joueur, y - bordure_size, 0, 0, 0, 0, nom_mecha_joueur);
-    creer_rectangle(&rect_bordure_ordi, w, bordure_size, x_ordi, y - bordure_size, 0, 0, 0, 0, nom_mecha_ordi);
+    creer_rectangle(&rect_bordure_joueur, w, bordure_size, x_joueur, y - bordure_size,160, 160, 160, 255, nom_mecha_joueur);
+    creer_rectangle(&rect_bordure_ordi, w, bordure_size, x_ordi, y - bordure_size, 160, 160, 160, 255, nom_mecha_ordi);
     creer_rectangle(&rect_pv_joueur, w_pv_joueur, h_pv, x_pv_joueur, y_pv, 0, 255, 0, 255, NULL);
     creer_rectangle(&rect_pv_ordi, w_pv_ordi, h_pv, x_pv_ordi, y_pv, 0, 255, 0, 255, NULL);
     creer_rectangle(&fond_pv_joueur, w_fond_pv, h_pv, x_pv_joueur, y_pv, 116, 117, 117, 255, NULL);
@@ -93,6 +96,8 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
     creer_rectangle(&border_pv_joueur, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_joueur - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     creer_rectangle(&border_pv_ordi, w_fond_pv + 2 * border_pv, h_pv + 2 * border_pv, x_pv_ordi - border_pv, y_pv - border_pv, 0, 0, 0, 255, NULL);
     draw_background();
+    draw_mecha(&mecha[mecha_joueur->id_mechas - 1], x_mecha_g, y_mecha, h_mecha, w_mecha, 0);
+    draw_mecha(&mecha[mecha_ordi->id_mechas - 1], x_mecha_d, y_mecha, h_mecha, w_mecha, 1);
     draw_all_rect(11, &rect_bas,&rect_bordure_joueur,&rect_bordure_ordi ,&rect_joueur, &rect_ordi, &border_pv_joueur, &border_pv_ordi,&fond_pv_joueur, &fond_pv_ordi, &rect_pv_joueur, &rect_pv_ordi);
     draw_text_pos(texte_joueur, x_pv_joueur, y);
     draw_text_pos(texte_ordi, x_pv_ordi, y);
@@ -103,6 +108,8 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
 
 void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi) {
     int temp_pv = pv_old;  // Utiliser une variable temporaire pour éviter des bugs d'affichage
+    int diff_pv = pv_old - pv_new; // Calcul de la différence de PV
+    
     while(temp_pv > pv_new) {
         SDL_RenderClear(game.renderer);
         if(!mecha_att) {
@@ -110,9 +117,11 @@ void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mec
         } else {
             mecha_ordi->pv = temp_pv;   // Temporairement réduire les PV affichés
         }
-        draw_combat( mecha_joueur, mecha_ordi);
+        draw_combat(mecha_joueur, mecha_ordi);
         SDL_RenderPresent(game.renderer);
-        SDL_Delay(60);
+        
+        int delay = 20 + (40 * (temp_pv - pv_new) / diff_pv); // Plus la différence est grande, plus c'est rapide
+        SDL_Delay(delay);
         temp_pv--;
     }
 
@@ -134,7 +143,7 @@ void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mec
  * @return L'index du mecha sélectionné (0 à 3) en cas de succès, -1 si aucun mecha n'est sélectionné.
  */
 int aff_mechas_combat(joueur_t * joueur) {
-    game.mat_active = 7;
+    game.mat_active = 8;
     SDL_Event event;
     Uint32 frameStart;
     int frameTime;
@@ -175,20 +184,7 @@ int aff_mechas_combat(joueur_t * joueur) {
     //initialisation des rectangles
     int rect_w = win_w * 0.4;
     int rect_h = win_h * 0.2;
-    int margin = 5;  // Ajuste la marge selon tes besoins
-    int margin_vertical = rect_h / 8;
-    
-    int x1 = margin;
-    int y1 = margin;  // Remonté
-
-    int x2 = win_w - rect_w - margin;
-    int y2 = margin;  // Remonté
-
-    int x3 = margin;
-    int y3 = win_h - rect_h - margin - rect_h - margin_vertical;  // Remonté
-
-    int x4 = win_w - rect_w - margin;
-    int y4 = win_h - rect_h - margin - rect_h - margin_vertical;  // Remonté
+    int margin = 50;  // Ajuste la marge selon tes besoins
 
     // Position et taille du 5e rectangle 
     int rect5_w = 2 * rect_w + margin;
@@ -197,6 +193,21 @@ int aff_mechas_combat(joueur_t * joueur) {
     int y5 = win_h - rect_h - margin;  // Juste en dessous des 4 rects
 
     int border_size = 5 * game.scale; // Épaisseur des bords
+
+    int x1 = win_w * 0.1;
+    int y1 = win_h * 0.1;
+
+    int x2 = win_w * 0.1;
+    int y2 = win_h * 0.1 + rect_h + margin;
+
+    int x3 = win_w * 0.1 + rect_w + margin;
+    int y3 = win_h * 0.1;
+
+    int x4 = win_w * 0.1 + rect_w + margin;
+    int y4 = win_h * 0.1 + rect_h + margin;
+
+    int w = win_w * 0.08;
+    int h = win_h * 0.1;
 
     //Creation des rectangles
     creer_rectangle(&rect1, rect_w, rect_h, x1, y1, 255, 255, 255, 255, texte_mecha[0]);
@@ -269,7 +280,10 @@ int aff_mechas_combat(joueur_t * joueur) {
         SDL_RenderClear(game.renderer);
         draw_background();
         draw_all_rect(10,&rect_bodure1, &rect_bordure2, &rect_bordure3, &rect_bordure4, &rect_bordure_retour, &rect1, &rect2, &rect3, &rect4, &rect_retour);
-    
+        draw_mecha(&mecha[joueur->mechas_joueur[0].id_mechas - 1], x1, y1 + (rect_h / 2) - (h/2), h, w, 0);
+        draw_mecha(&mecha[joueur->mechas_joueur[1].id_mechas - 1], x2, y2 + (rect_h / 2) - (h/2), h, w, 0);
+        draw_mecha(&mecha[joueur->mechas_joueur[2].id_mechas - 1], x3, y3 + (rect_h / 2) - (h/2), h, w, 0);
+        draw_mecha(&mecha[joueur->mechas_joueur[3].id_mechas - 1], x4, y4 + (rect_h / 2) - (h/2), h, w, 0);
         
         SDL_RenderPresent(game.renderer);
 
@@ -682,7 +696,10 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
         
     }
     else {
-        afficher_dialogue_combat(  mecha_att, mecha_def, "Systeme", "L'attaque echoue.",false);
+        if(mecha_choix) 
+            afficher_dialogue_combat(mecha_att, mecha_def, "Systeme", "L'attaque echoue.",false);
+        else
+            afficher_dialogue_combat(mecha_def,mecha_att, "Systeme", "L'attaque echoue.",false);
     }
     return OK;
 }
@@ -1426,7 +1443,7 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
             if(joueur->mechas_joueur[actif].vitesse > mecha_sauvage->vitesse) {
                 res = tour_joueur(joueur, mecha_sauvage,  &actif, 0);
                 
-                if(mecha_sauvage->pv != 0 && res == OK) {}
+                if(mecha_sauvage->pv != 0 && res == OK)
                     attaque_ordi_sauvage(mecha_sauvage, &(joueur->mechas_joueur[actif]));
             }
             else {
