@@ -218,10 +218,10 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
             mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
             mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
             for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
-            mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].id_attaques;
-            mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].id_attaques;
-            mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas].liste_attaque[i-1]-1].utilisations;
-            mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas].liste_attaque[i-2]-1].utilisations;
+            mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].id_attaques;
+            mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;
+            mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].utilisations;
+            mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
             /*printf("Mecha Sauvage:\n");
             printf(" Niveau: %d\n", mecha_sauvage->niveau);
             printf(" PV: %d/%d\n", mecha_sauvage->pv, mecha_sauvage->pv_max);
