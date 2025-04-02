@@ -761,10 +761,10 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
     rectangle->couleur.g = g;
     rectangle->couleur.b = b;
     rectangle->couleur.a = a;       //oppacité
-    if (text) {
+    if (text != NULL) {
         strncpy(rectangle->text, text, sizeof(rectangle->text) - 1);
     } else {
-        rectangle->text[sizeof(rectangle->text) - 1] = '\0'; // eviter une chaîne non initialisée
+        rectangle->text[0] = '\0'; // eviter une chaîne non initialisée
     }
  
 }

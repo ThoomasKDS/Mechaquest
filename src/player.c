@@ -202,7 +202,7 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
 int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
     if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
         int i;
-        j->proba_combat += 100;
+        j->proba_combat += 5;
         int n = rand() % 100;
         if(n < j->proba_combat) {
             j->proba_combat = 0;
