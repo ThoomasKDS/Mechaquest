@@ -628,7 +628,10 @@ void draw_player(SDL_Rect *obj, joueur_t * j) {
  * @param sprite_pnj Pointeur vers la structure des sprites des PNJ.
  * @param sprite_playerH Pointeur vers la structure contenant les sprites animés du joueur.
  */
-
+void draw_mecha(mechas_t * m, int x, int y, int h, int w, int orientation) {
+    SDL_Rect hitbox = {x, y, w, h};
+    SDL_RenderCopy(game.renderer, m->texture[orientation], NULL, &hitbox);
+}
 
 void draw_all(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite) {
     draw_background();
@@ -761,10 +764,10 @@ void creer_rectangle(rectangle_t *rectangle,int w, int h, float x, float y, int 
     rectangle->couleur.g = g;
     rectangle->couleur.b = b;
     rectangle->couleur.a = a;       //oppacité
-    if (text) {
+    if (text != NULL) {
         strncpy(rectangle->text, text, sizeof(rectangle->text) - 1);
     } else {
-        rectangle->text[sizeof(rectangle->text) - 1] = '\0'; // eviter une chaîne non initialisée
+        rectangle->text[0] = '\0'; // eviter une chaîne non initialisée
     }
  
 }

@@ -40,6 +40,7 @@ int init_mecha();                                            //initialise un pnj
 SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int n_mat);      //creé un objet
 void game_over(joueur_t *j);
 void draw_player(SDL_Rect *obj, joueur_t * j);                 //dessine le joueur
+void draw_mecha(mechas_t * m, int x, int y, int h, int w, int orientation); //dessine un mecha
 void draw_pnj(SDL_Rect *obj, pnj_t *pnj ,joueur_t *j);                           //dessine un pnj
 void draw_obj(SDL_Rect *obj, SDL_Texture * img );                                             //dessine un objet 
 void draw_all(joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite);
