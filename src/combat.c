@@ -395,7 +395,7 @@ int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif, int t
                                 else if(res == FAUX) running = 0;
                             }
                             else {
-                                afficher_dialogue_combat(&(joueur->mechas_joueur[*actif]), ordi, "Systeme", "  Impossible voyons ! ");
+                                afficher_dialogue_combat(&(joueur->mechas_joueur[*actif]), ordi, "Systeme", "  Impossible voyons ! ",false);
                             }
                             break;
                         case 3: return (RETOUR);
@@ -905,7 +905,7 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
             if(!utilisation[numero_attaque]){
                 numero_attaque = 1 - numero_attaque;
                 if(!utilisation[numero_attaque]) {
-                afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  Le mechas n'a plus d'utilisations."); 
+                afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  Le mechas n'a plus d'utilisations.",false); 
                 return KO;
                 }
                 algo_attaque(numero_attaque, &(pnj->mechas_joueur[*actif]), mecha_joueur, 0);
@@ -923,7 +923,7 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
                 break;
             }
         }
-        afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  L'adversaire change de mecha."); 
+        afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  L'adversaire change de mecha.",false); 
     }
 
     return OK;
@@ -961,7 +961,7 @@ int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
         return KO;
     }
     if(choix == 4) return RETOUR;
-    afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous changez de mecha.");;
+    afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", "Vous changez de mecha.",false);
     *actif = choix;
     return OK;
 }
@@ -1330,7 +1330,7 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
             if(joueur->mechas_joueur[actif_joueur].vitesse > pnj->mechas_joueur[actif_pnj].vitesse) {
                 do {
                     res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]),  &actif_joueur, 1);
-                    if(res == FUITE) afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", " Vous ne pouvez pas fuir pendant ce combat !");
+                    if(res == FUITE) afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", " Vous ne pouvez pas fuir pendant ce combat !",false);
                 }while(res == FUITE);
                 if(pnj->mechas_joueur[actif_joueur].pv > 0 && res == OK){
                     attaque_ordi_pnj(pnj, &(joueur->mechas_joueur[actif_joueur]), &actif_pnj);
@@ -1370,17 +1370,17 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
                         ver = 0;
                     }
                 }
-                afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", "  L'adversaire change de mecha."); 
+                afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", "  L'adversaire change de mecha.",false); 
             }
         }
     }while(verif && res == OK);
     if(pnj->mechas_joueur[actif_pnj].pv != 0 && joueur->mechas_joueur[actif_joueur].pv == 0){ 
-        afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !");
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !",false);
         game.mat_active = save_map_active;
         return FAUX;
     }
     pnj->etat = 1;
-    afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !");
+    afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !",false);
     game.mat_active = save_map_active;
     return VRAI;
 

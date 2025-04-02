@@ -51,6 +51,6 @@ void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_p
 
 void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int xp_gagne);
 
-
+int combat_pnj(joueur_t *joueur, pnj_t *pnj);
 
 #endif

@@ -640,6 +640,11 @@ typedef struct{
     int nb_mechas;
 }zone_t;
 
+typedef enum {
+    PNJ_NORMAL,    
+    PNJ_DEVANT,    
+    PNJ_DERRIERE   
+} pnj_pos_t;
 
 //VARIABLES GLOBALE
 extern mechas_t mecha[NB_MECHAS];

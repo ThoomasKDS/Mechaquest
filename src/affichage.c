@@ -628,51 +628,65 @@ void draw_player(SDL_Rect *obj, joueur_t * j) {
  * @param sprite_pnj Pointeur vers la structure des sprites des PNJ.
  * @param sprite_playerH Pointeur vers la structure contenant les sprites animés du joueur.
  */
-void draw_all(joueur_t *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite){
-    draw_background();      
-    if(game.mat[game.mat_active][j->y+1][j->x] == BARRIERE || game.mat[game.mat_active][j->y+1][j->x] == BAT){
-        if(game.mat[game.mat_active][j->y-1][j->x] == PNJ){
-            draw_calque();
-            for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
-                }
-            }
-        draw_player(sprite_p, j);           //dessine le joueur
+
+
+void draw_all(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite) {
+    draw_background();
+    
+    int joueur_x = j->x;
+    int joueur_y = j->y;
+    int map_active = game.mat_active;
+    
+    int joueur_derriere = (game.mat[map_active][joueur_y + 1][joueur_x] == BARRIERE || 
+                               game.mat[map_active][joueur_y + 1][joueur_x] == BAT || 
+                               game.mat[map_active][joueur_y + 1][joueur_x] == PNJ);
+    
+    pnj_pos_t pnj_states[NB_PNJ] = {PNJ_NORMAL};
+    for (int i = 0; i < NB_PNJ; i++) {
+        if ((pnj[i].id_map - 1) != j->numMap) continue; 
+        int pnj_x = pnj[i].x;
+        int pnj_y = pnj[i].y;
+        int devant = (game.mat[map_active][pnj_y + 1][pnj_x] == BARRIERE || 
+                          game.mat[map_active][pnj_y + 1][pnj_x] == BAT ||
+                          game.mat[map_active][pnj_y + 1][pnj_x] == JOUEUR);
+        int derriere = (game.mat[map_active][pnj_y - 1][pnj_x] == BARRIERE || 
+                            game.mat[map_active][pnj_y - 1][pnj_x] == BAT ||
+                            game.mat[map_active][pnj_y + 1][pnj_x] == JOUEUR);
+
+        if (devant) {
+            pnj_states[i] = PNJ_DEVANT;
+        } else if (derriere) {
+            pnj_states[i] = PNJ_DERRIERE;
         }
-        else{
-            
-            draw_player(sprite_p, j);           //dessine le joueur
-            draw_calque();
-            for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
-                }
-            }
-        }         
     }
-    else{
-        if(game.mat[game.mat_active][j->y-1][j->x] == PNJ){
-            draw_calque();
-            for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
-                }
-            }
-            draw_player(sprite_p, j);           //dessine le joueur
+    for (int i = 0; i < NB_PNJ; i++) {
+        if (pnj_states[i] == PNJ_NORMAL && (pnj[i].id_map - 1) == j->numMap) {
+            draw_pnj(&pnj_sprite[i], &pnj[i], j);
         }
-        else{
-            
-        draw_calque();
-        draw_player(sprite_p, j);           //dessine le joueur
-        for(int i = 0; i < 24;i++){
-                if((pnj[i].id_map -1) == j->numMap){
-                    draw_pnj(&pnj_sprite[i],&pnj[i],j);
-                }
-            }
-        } 
+    }
+
+    if (joueur_derriere) {
+        draw_player(sprite_p, j);
+    }
+
+    draw_calque();
+
+    for (int i = 0; i < NB_PNJ; i++) {
+        if (pnj_states[i] == PNJ_DEVANT && (pnj[i].id_map - 1) == j->numMap) {
+            draw_pnj(&pnj_sprite[i], &pnj[i], j);
+        }
+    }
+    for (int i = 0; i < NB_PNJ; i++) {
+        if (pnj_states[i] == PNJ_DERRIERE && (pnj[i].id_map - 1) == j->numMap) {
+            draw_pnj(&pnj_sprite[i], &pnj[i], j);
+        }
+    }
+
+    if (!joueur_derriere) {
+        draw_player(sprite_p, j);
     }
 }
+
 
 void draw_pnj(SDL_Rect *obj, pnj_t *pnj, joueur_t *j) { 
     if(!strcmp(pnj->pseudo,"Vin Gazole"))
