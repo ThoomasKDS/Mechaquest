@@ -767,7 +767,12 @@ int attaque_joueur(joueur_t *j, mechas_joueur_t *mecha_ordi, int * actif){
     SDL_Color couleur_bordure_retour = {109, 110, 110, 255};
     
     //Couleur bordure selectionné
-    SDL_Color selec_bordure[4] = {{200, 187, 0, 255}, {30, 63, 200, 255}, {180, 100, 0, 255}, {40, 150, 0, 255}};
+    SDL_Color selec_bordure[4] = {
+        {100, 90, 0, 255},   // Jaune très foncé
+        {10, 20, 100, 255},  // Bleu très foncé
+        {80, 40, 0, 255},    // Orange très foncé
+        {10, 60, 0, 255}     // Vert très foncé
+    };
     SDL_Color selec_bordure_retour = {80, 80, 80, 255};
 
 
@@ -1215,9 +1220,9 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, i
     
     //couleurs des bordures
     SDL_Color couleur_bordure =  {94, 99, 102, 250};
-    SDL_Color couleur_bordure_attaque = {210, 145, 132, 150};
-    SDL_Color couleur_bordure_objet = {229, 185, 135, 150};
-    SDL_Color couleur_bordure_mecha = {162, 202, 154, 150};
+    SDL_Color couleur_bordure_attaque = {210, 145, 132, 200};
+    SDL_Color couleur_bordure_objet = {229, 185, 135, 200};
+    SDL_Color couleur_bordure_mecha = {162, 202, 154, 200};
     int choix = 1;
     
     // Définition des tailles des boutons
