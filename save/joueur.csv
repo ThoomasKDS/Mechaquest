@@ -1,11 +1,18 @@
 Pseudo,Sexe,NumMap,X,Y,PDP
 noah,M,3,19,4,4
 maxounette,F,1,16,14,1
-toto,M,1,2,9,1
 Grogeur,F,3,15,2,3
+<<<<<<< HEAD
+newtoto,F,1,8,15,1
+popopopo,M,1,3,13,1
+newtot,M,0,11,5,1
+jojo,M,1,7,15,1
+toto,M,1,2,9,1
+=======
 noah,M,3,19,4,4
 maxounette,F,1,16,14,1
 toto,M,1,24,2,4
 newtoto,F,1,8,15,1
 popopopo,M,1,3,13,1
 noah2,M,1,16,13,1
+>>>>>>> c5dbfaccfee2faad72f9fe912d80d5c23f906448
