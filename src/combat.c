@@ -623,8 +623,8 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             strcat(message,  mecha[ordi->id_mechas-1].nom);
             strcat(message, ".");
             afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message,false);
-            joueur->nb_mechas++;
             copie_mechas(joueur, ordi);
+            joueur->nb_mechas++;
             return (CAPTURE);
         }
         else {
@@ -1448,7 +1448,7 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
         return FAUX;
     }
     pnj->etat = 1;
-    afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !", false);
+    afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !",false);
     game.mat_active = save_map_active;
     return VRAI;
 }
