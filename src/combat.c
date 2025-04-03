@@ -109,37 +109,48 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
 void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi) {
     int temp_pv = pv_old;
     int diff_pv = pv_old - pv_new;
-    const int duree_max = 2000; // Durée max de l'animation en ms (5 secondes)
+    const int duree_max = 2000; // Durée max de l'animation en ms (2 secondes)
     
     if (diff_pv <= 0) return; // Pas d'animation si aucun dégât
-    
+
     int frame_time = duree_max / diff_pv; // Temps par étape
-    if (frame_time < 10) frame_time = 10; // Limite minimale pour éviter des itérations trop rapides
-    
+    if (frame_time < 10) frame_time = 10; // Limite minimale
+
     Uint32 start_time = SDL_GetTicks();
-    while(temp_pv > pv_new) {
-        SDL_RenderClear(game.renderer);
+    
+    while (temp_pv > pv_new) {
+        Uint32 frameStart = SDL_GetTicks(); // Début de la frame
         
-        if(!mecha_att) {
+        SDL_RenderClear(game.renderer);
+
+        if (!mecha_att) {
             mecha_joueur->pv = temp_pv;
         } else {
             mecha_ordi->pv = temp_pv;
         }
-        
+
         draw_combat(mecha_joueur, mecha_ordi);
         SDL_RenderPresent(game.renderer);
-        
+
         Uint32 elapsed = SDL_GetTicks() - start_time;
-        if (elapsed >= duree_max) break; // Si le temps max est dépassé, on sort
-        
+        if (elapsed >= duree_max) break; // Arrêt si l'animation dépasse la durée max
+
         SDL_Delay(frame_time);
         temp_pv--;
+
+        // Gestion du FPS
+        int frameTime = SDL_GetTicks() - frameStart;
+        const int FRAME_DELAYS = 16; // ~60 FPS (1000ms / 60)
+        if (FRAME_DELAYS > frameTime) {
+            SDL_Delay(FRAME_DELAYS - frameTime);
+        }
     }
-    
-    // Mise à jour finale des PV réels après l'animation
-    if(!mecha_att) mecha_joueur->pv = pv_new;
+
+    // Mise à jour finale des PV
+    if (!mecha_att) mecha_joueur->pv = pv_new;
     else mecha_ordi->pv = pv_new;
 }
+
 
 
 /**
@@ -918,10 +929,11 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
 
 
 int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
-    int nbr_rand_choix1 = 0, nbr_rand_choix = 0;
+    int nbr_rand_choix1 = 1, nbr_rand_choix = 0;
 
-    if(pnj->mechas_joueur[*actif].pv < pnj->mechas_joueur[*actif].pv_max/4) { //si les pv sont < a un quart des pv max on a 1/3 chances de changer de mechas
-        nbr_rand_choix1 = (rand() % 3);
+    if(pnj->mechas_joueur[*actif].pv < pnj->mechas_joueur[*actif].pv_max/4) { //si les pv sont < a un quart des pv max on a 1/4 chances de changer de mechas
+        nbr_rand_choix1 = (rand() % 4);
+        printf("nbr_rand_choix1 = %d\n, pv actif : %d, pv max : %d\n", nbr_rand_choix1, pnj->mechas_joueur[*actif].pv, pnj->mechas_joueur[*actif].pv_max);
     }
     if(nbr_rand_choix1 > 0) {
         if(pnj->mechas_joueur[*actif].pv <= pnj->mechas_joueur[*actif].pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
@@ -959,6 +971,7 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
         }
     }
     else {
+        printf("Changement de mecha\n");
         for(int i = 0; i < 4; i++) {
             if(pnj->mechas_joueur[i].pv > 0 && i != (*actif)) {
                 (*actif) = i;
@@ -1311,7 +1324,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, i
                         case 1 :
                             if(attaque_joueur( joueur, mecha_sauvage, actif) == OK) {
                                 SDL_Delay(T); 
-                                running = 0;
+                                return OK;
                             }
                             break;
                         case 2 : 
@@ -1322,6 +1335,7 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, i
                             }
                     }
                 }
+                SDL_FlushEvent(SDL_KEYDOWN);
                 SDL_Event e;
                 while (SDL_WaitEvent(&e) && e.type != SDL_KEYUP);
             }
@@ -1361,78 +1375,84 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
     game.mat_active = 6;
     int actif_joueur = 0, actif_pnj = 0;
     int res = OK;
-    int verif;
-    int existe_joueur[4] = {0,0,0,0};
-    int existe_pnj[4] = {0,0,0,0};
+    int existe_joueur[4] = {0}, existe_pnj[4] = {0};
+    
+    // Vérification des méchas disponibles
     for(int i = 0; i < 4; i++) {
-        if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
+        if (joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
             existe_joueur[i] = 1;
-        if(pnj->mechas_joueur[i].numero == i+1 && pnj->mechas_joueur[i].pv > 0)
+        if (pnj->mechas_joueur[i].numero == i+1 && pnj->mechas_joueur[i].pv > 0)
             existe_pnj[i] = 1;
     }
-    while(joueur->mechas_joueur[actif_joueur].pv == 0) {
+    
+    // Sélection du premier mécha joueur en état de combattre
+    while (actif_joueur < 4 && joueur->mechas_joueur[actif_joueur].pv == 0) {
         actif_joueur++;
     }
-    do {
-        while(pnj->mechas_joueur[actif_pnj].pv > 0 && joueur->mechas_joueur[actif_joueur].pv > 0 && res == OK) {
-            if(joueur->mechas_joueur[actif_joueur].vitesse > pnj->mechas_joueur[actif_pnj].vitesse) {
+    
+    int combat_encours = 1;
+    while (combat_encours && res == OK) {
+        while (pnj->mechas_joueur[actif_pnj].pv > 0 && joueur->mechas_joueur[actif_joueur].pv > 0 && res == OK) {
+            if (joueur->mechas_joueur[actif_joueur].vitesse > pnj->mechas_joueur[actif_pnj].vitesse) {
                 do {
-                    res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]),  &actif_joueur, 1);
-                    if(res == FUITE) afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", " Vous ne pouvez pas fuir pendant ce combat !",false);
-                }while(res == FUITE);
-                if(pnj->mechas_joueur[actif_joueur].pv > 0 && res == OK){
+                    res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]), &actif_joueur, 1);
+                    if (res == FUITE) {
+                        afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", " Vous ne pouvez pas fuir pendant ce combat !", false);
+                    }
+                } while (res == FUITE);
+                
+                if (pnj->mechas_joueur[actif_pnj].pv > 0 && res == OK) {
                     attaque_ordi_pnj(pnj, &(joueur->mechas_joueur[actif_joueur]), &actif_pnj);
                 }
-            }
-            else {
+            } else {
                 attaque_ordi_pnj(pnj, &(joueur->mechas_joueur[actif_joueur]), &actif_pnj);
-                if(joueur->mechas_joueur[actif_joueur].pv > 0) {
-                    res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]),  &actif_joueur, 1);
+                if (joueur->mechas_joueur[actif_joueur].pv > 0) {
+                    res = tour_joueur(joueur, &(pnj->mechas_joueur[actif_pnj]), &actif_joueur, 1);
                 }
             }
-            printf("Pv joueur : %d\nPv ordi : %d\n", joueur->mechas_joueur[actif_joueur].pv , pnj->mechas_joueur[actif_pnj].pv);
         }
-        if(pnj->mechas_joueur[actif_pnj].pv > 0 && joueur->mechas_joueur[actif_pnj].pv == 0) {
-            verif = 0;
-            for(int i = 0; i < 4; i++) {
-                if(existe_joueur[i] && joueur->mechas_joueur[i].pv > 0)
-                    verif = 1;
-
-            }
-            if(verif) {
-                while( changer_mecha(joueur, &actif_joueur, &(pnj->mechas_joueur[actif_pnj])) != 1);
-            }
-        }
-        else if(joueur->mechas_joueur[actif_pnj].pv > 0 && pnj->mechas_joueur[actif_pnj].pv == 0) {
-            verif = 0;
-            for(int i = 0; i < 4; i++) {
-                if(existe_pnj[i] && pnj->mechas_joueur[i].pv > 0)
-                    verif = 1;
-
-            }
-            if(verif) {
-                int ver = 1;
-                for(int i = 0; i < 4 && ver; i++) {
-                    if(pnj->mechas_joueur[i].pv > 0) {
-                        (actif_pnj) = i;
-                        ver = 0;
-                    }
+        
+        if (joueur->mechas_joueur[actif_joueur].pv == 0) {
+            int nouveau_joueur = -1;
+            for (int i = 0; i < 4; i++) {
+                if (existe_joueur[i] && joueur->mechas_joueur[i].pv > 0) {
+                    nouveau_joueur = i;
+                    break;
                 }
-                afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]) ,  &(pnj->mechas_joueur[actif_pnj]), "Systeme", "  L'adversaire change de mecha.",false); 
+            }
+            if (nouveau_joueur != -1) {
+                while (changer_mecha(joueur, &actif_joueur, &(pnj->mechas_joueur[actif_pnj])) != 1);
+            } else {
+                combat_encours = 0;
+            }
+        } else if (pnj->mechas_joueur[actif_pnj].pv == 0) {
+            int nouveau_pnj = -1;
+            for (int i = 0; i < 4; i++) {
+                if (existe_pnj[i] && pnj->mechas_joueur[i].pv > 0) {
+                    nouveau_pnj = i;
+                    break;
+                }
+            }
+            if (nouveau_pnj != -1) {
+                actif_pnj = nouveau_pnj;
+                afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "  L'adversaire change de mecha.", false);
+            } else {
+                combat_encours = 0;
             }
         }
-    }while(verif && res == OK);
-    if(pnj->mechas_joueur[actif_pnj].pv != 0 && joueur->mechas_joueur[actif_joueur].pv == 0){ 
-        afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !",false);
+    }
+    
+    if (joueur->mechas_joueur[actif_joueur].pv == 0) { 
+        afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !", false);
         game.mat_active = save_map_active;
         return FAUX;
     }
     pnj->etat = 1;
-    afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !",false);
+    afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !", false);
     game.mat_active = save_map_active;
     return VRAI;
-
 }
+
 
 /**
  * @brief Lance un combat entre le joueur et un Mecha sauvage.

@@ -223,16 +223,6 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
             mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;
             mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].utilisations;
             mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
-            /*printf("Mecha Sauvage:\n");
-            printf(" Niveau: %d\n", mecha_sauvage->niveau);
-            printf(" PV: %d/%d\n", mecha_sauvage->pv, mecha_sauvage->pv_max);
-            printf(" ID: %d\n", mecha_sauvage->id_mechas);
-            printf(" Attaque: %d\n", mecha_sauvage->attaque);
-            printf(" Défense: %d\n", mecha_sauvage->defense);
-            printf(" Vitesse: %d\n", mecha_sauvage->vitesse);
-            printf(" Attaque 1: %d, Utilisations %d\n", mecha_sauvage->attaque_1, mecha_sauvage->utilisation_1);
-            printf(" Attaque 2: %d, Utilisations %d\n", mecha_sauvage->attaque_2, mecha_sauvage->utilisation_2);*/
-
             return 1;
         }
     }

@@ -1,65 +1,65 @@
 aid_attaques,Nom,Type,Niveau,Degats,Precision,Utilisation,Description
-1,Decharge tranchante,Electrique,0,8,60,25,Une coupure suivie d’un puissant courant électrique.
-2,Court circuit,Electrique,5,12,80,21,Décharge d'électricité qui fait mal.
-3,Lame tournoyante,Electrique,15,22,90,17,Tourne à grande vitesse pour trancher l’ennemi.
-4,Pulverisation eclair,Electrique,25,28,100,13,Vaporise l’ennemi avec une décharge rapide et brûlante.
-5,Fauche eclair,Electrique,35,38,80,10,Frappe rapide et électrique avec une précision chirurgicale.
-6,Vibre-choc,Electrique,0,10,90,26,Génère une onde vibratoire remplie de charges électriques.
-7,Onde réseau,Electrique,15,13,100,20,Projette une onde énergétique via des signaux radio.
-8,Sonnerie fatale,Electrique,35,42,100,12,Une vibration sonore électrifiée qui désoriente l’ennemi.
-9,Impact lumineux,Electrique,0,7,70,28,Projette un rayon de lumière pour frapper l’adversaire.
-10,Rayon eblouissant,Electrique,15,20,90,21,Un rayon concentré aveuglant et destructeur.
-11,Flash destructeur,Electrique,35,38,90,11,Une explosion lumineuse qui inflige de lourds dégâts.
-12,Clavier fracassant,Electrique,0,9,50,25,Écrase l’ennemi avec une force mécanique intense.
-13,Decharge systeme,Electrique,5,13,90,22,Libère une surcharge électrique destructrice sur la cible.
-14,Bug foudroyant,Electrique,15,23,70,19,Plante l’ennemi avec une onde électromagnétique puissante.
-15,Virus destructeur,Electrique,25,30,70,17,Injecte un programme dévastateur pour déstabiliser l’adversaire.
-16,Ecran bleu fatal,Electrique,35,41,100,11,Crée un dysfonctionnement massifchez l'adversaire.
-17,Choc aromatique,Electrique,0,7,80,24,Envoie un souffle parfumé et électrisé sur l’ennemi.
-18,Nuage electrostatique,Electrique,15,18,60,20,Relâche un nuage chargé d’électricité pour paralyser.
-19,Vapeur foudroyante,Electrique,35,45,80,13,Projette une vapeur brûlante et chargée électriquement.
+1,Decharge tranchante,Electrique,0,8,60,25,Une coupure suivie d’un puissant courant electrique.
+2,Court circuit,Electrique,5,12,80,21,Decharge d'electricite qui fait mal.
+3,Lame tournoyante,Electrique,15,22,90,17,Tourne a grande vitesse pour trancher l’ennemi.
+4,Pulverisation eclair,Electrique,25,28,100,13,Vaporise l’ennemi avec une decharge rapide et brûlante.
+5,Fauche eclair,Electrique,35,38,80,10,Frappe rapide et electrique avec une precision chirurgicale.
+6,Vibre-choc,Electrique,0,10,90,26,Genere une onde vibratoire remplie de charges electriques.
+7,Onde reseau,Electrique,15,13,100,20,Projette une onde energetique via des signaux radio.
+8,Sonnerie fatale,Electrique,35,42,100,12,Une vibration sonore electrifiee qui desoriente l’ennemi.
+9,Impact lumineux,Electrique,0,7,70,28,Projette un rayon de lumiere pour frapper l’adversaire.
+10,Rayon eblouissant,Electrique,15,20,90,21,Un rayon concentre aveuglant et destructeur.
+11,Flash destructeur,Electrique,35,38,90,11,Une explosion lumineuse qui inflige de lourds degâts.
+12,Clavier fracassant,Electrique,0,9,50,25,ecrase l’ennemi avec une force mecanique intense.
+13,Decharge systeme,Electrique,5,13,90,22,Libere une surcharge electrique destructrice sur la cible.
+14,Bug foudroyant,Electrique,15,23,70,19,Plante l’ennemi avec une onde electromagnetique puissante.
+15,Virus destructeur,Electrique,25,30,70,17,Injecte un programme devastateur pour destabiliser l’adversaire.
+16,Ecran bleu fatal,Electrique,35,41,100,11,Cree un dysfonctionnement massifchez l'adversaire.
+17,Choc aromatique,Electrique,0,7,80,24,Envoie un souffle parfume et electrise sur l’ennemi.
+18,Nuage electrostatique,Electrique,15,18,60,20,Relâche un nuage charge d’electricite pour paralyser.
+19,Vapeur foudroyante,Electrique,35,45,80,13,Projette une vapeur brûlante et chargee electriquement.
 20,Coup de baguette,Electrique,0,10,60,27,Une attaque rapide avec sa baguette.
 21,Pain grillee,Electrique,5,15,70,23,Frappe l’ennemi avec une chaleur cuisante.
-22,Eclair carbonise,Electrique,15,22,90,19,Projette une étincelle capable de carboniser la cible.
+22,Eclair carbonise,Electrique,15,22,90,19,Projette une etincelle capable de carboniser la cible.
 23,Lance crouton,Electrique,25,32,40,18,Percute l’adversaire avec le crouton de sa baguette.
-24,Toasteur explosif,Electrique,35,42,80,14,Libère une explosion électrique après surchauffe.
-25,Coupe vent,Renouvelable,0,8,90,28,Une lame d’air chargée d’énergie pure.
+24,Toasteur explosif,Electrique,35,42,80,14,Libere une explosion electrique apres surchauffe.
+25,Coupe vent,Renouvelable,0,8,90,28,Une lame d’air chargee d’energie pure.
 26,Souffle tranchant,Renouvelable,5,11,100,22,Une rafale de vent coupante et rapide.
 27,Bourrasque tourbillonnante,Renouvelable,15,20,80,18,Un tourbillon de vent qui balaye l’ennemi.
-28,Toutourbillon,Renouvelable,25,32,80,14,Un cyclone alimenté par l’énergie éolienne.
-29,Lame eolienne,Renouvelable,35,41,90,10,Une attaque tranchante portée par une turbine.
+28,Toutourbillon,Renouvelable,25,32,80,14,Un cyclone alimente par l’energie eolienne.
+29,Lame eolienne,Renouvelable,35,41,90,10,Une attaque tranchante portee par une turbine.
 30,Herosion,Renouvelable,0,8,80,30,Usure l'adversaire.
-31,Onde aquatique,Renouvelable,5,12,90,24,Une onde massive chargée d’énergie aquatique.
+31,Onde aquatique,Renouvelable,5,12,90,24,Une onde massive chargee d’energie aquatique.
 32,Coma hydraulique,Renouvelable,15,24,40,22,Attaque lourde.
-33,Inondation,Renouvelable,25,30,90,16,Une inondation dévastatrice.
-34,Cascade destructrice,Renouvelable,35,40,80,10,Une chute d’eau intense qui pulvérise l’adversaire.
-35,Rayon UV,Renouvelable,0,9,100,26,Une lumière intense qui surchauffe l’adversaire.
-36,Coup de soleil,Renouvelable,5,13,100,21,Un tir concentré d’énergie solaire brûlante.
-37,Canicule,Renouvelable,15,22,70,18,Augmente la température pour brûler tout obstacle.
-38,Impact photovoltaïque,Renouvelable,25,33,100,14,Une frappe directe alimentée par la lumière du soleil.
-39,Tempete solaire,Renouvelable,25,44,80,11,Libère une énorme vague d’énergie solaire.
-40,Retour de flamme,Carburant,0,9,70,26,Crache une flamme brûlante depuis un moteur surchauffé.
-41,Tete a queue,Carburant,5,12,80,23,Une accélération brutale pour écraser l’adversaire.
+33,Inondation,Renouvelable,25,30,90,16,Une inondation devastatrice.
+34,Cascade destructrice,Renouvelable,35,40,80,10,Une chute d’eau intense qui pulverise l’adversaire.
+35,Rayon UV,Renouvelable,0,9,100,26,Une lumiere intense qui surchauffe l’adversaire.
+36,Coup de soleil,Renouvelable,5,13,100,21,Un tir concentre d’energie solaire brûlante.
+37,Canicule,Renouvelable,15,22,70,18,Augmente la temperature pour brûler tout obstacle.
+38,Impact photovoltaïque,Renouvelable,25,33,100,14,Une frappe directe alimentee par la lumiere du soleil.
+39,Tempete solaire,Renouvelable,25,44,80,11,Libere une enorme vague d’energie solaire.
+40,Retour de flamme,Carburant,0,9,70,26,Crache une flamme brûlante depuis un moteur surchauffe.
+41,Tete a queue,Carburant,5,12,80,23,Une acceleration brutale pour ecraser l’adversaire.
 42,Nitrocharge,Carburant,15,20,100,20,Une charge avec un impact explosif.
-43,Derapage foudroyant,Carburant,25,28,70,15,Une attaque fulgurante en sortie de dérapage.
-44,Turbo combustion,Carburant,35,40,80,90,8,Une frappe alimentée par une propulsion rapide.
+43,Derapage foudroyant,Carburant,25,28,70,15,Une attaque fulgurante en sortie de derapage.
+44,Turbo combustion,Carburant,35,40,80,90,Une frappe alimentee par une propulsion rapide.
 45,Champs poing,Carburant,0,7,60,30,Donne un coup de champs.
 46,Trace de pneu,Carburant,5,15,70,26,Une roue massive qui laisse une trace.
-47,Fumée nocive,Carburant,15,20,80,22,Libère un épais nuage toxique pour étouffer l’adversaire.
-48,Fort Broyeur,Carburant,25,33,70,17,Utilise une pression hydraulique pour écraser tout obstacle.
-49,Labour destructeur,Carburant,35,46,90,11,Lacère l’ennemi à l’aide d’outils de labour.
-50,Choc marine,Carburant,0,8,80,29,Libère une puissante décharge depuis une source d’eau.
-51,SONAR,Carburant,5,13,100,26,Une onde propulsé du bateau à haute vitesse.
-52,Ocean Pacifique,Carburant,15,19,60,22,Projette un océan générée par un moteur marin.
-53,Ocean pas Pacifique,Carburant,25,31,100,18,Projette un océan massive générée par un moteur marin.
+47,Fumee nocive,Carburant,15,20,80,22,Libere un epais nuage toxique pour etouffer l’adversaire.
+48,Fort Broyeur,Carburant,25,33,70,17,Utilise une pression hydraulique pour ecraser tout obstacle.
+49,Labour destructeur,Carburant,35,46,90,11,Lacere l’ennemi a l’aide d’outils de labour.
+50,Choc marine,Carburant,0,8,80,29,Libere une puissante decharge depuis une source d’eau.
+51,SONAR,Carburant,5,13,100,26,Une onde propulse du bateau a haute vitesse.
+52,Ocean Pacifique,Carburant,15,19,60,22,Projette un ocean generee par un moteur marin.
+53,Ocean pas Pacifique,Carburant,25,31,100,18,Projette un ocean massive generee par un moteur marin.
 54,Touche coule,Carburant,35,45,40,6,One tap.
-55,Onde de choc,Uranium,15,30,100,21,Une impulsion nucléaire écrasante à courte portée.
-56,Impact neutronique,Uranium,25,45,70,17,Projette une énergie radioactive concentrée.
-57,Missile radiatif,Uranium,35,55,80,13,Un projectile nucléaire inflige des dégâts sur zone.
-58,Frappe atomique,Uranium,45,70,90,7,Une explosion nucléaire massive et destructrice.
-59,Explosion supersonique,Uranium,55,100,80,2,Une onde de choc rapide et dévastatrice.
-60,Poing mutan,Uranium,15,32,90,19,Un coup physique explosif à base de fission nucléaire.
+55,Onde de choc,Uranium,15,30,100,21,Une impulsion nucleaire ecrasante a courte portee.
+56,Impact neutronique,Uranium,25,45,70,17,Projette une energie radioactive concentree.
+57,Missile radiatif,Uranium,35,55,80,13,Un projectile nucleaire inflige des degâts sur zone.
+58,Frappe atomique,Uranium,45,70,90,7,Une explosion nucleaire massive et destructrice.
+59,Explosion supersonique,Uranium,55,100,80,2,Une onde de choc rapide et devastatrice.
+60,Poing mutan,Uranium,15,32,90,19,Un coup physique explosif a base de fission nucleaire.
 61,Coup irradie,Uranium,25,48,70,15,Un coup direct rempli de radiations dangereuses.
-62,Laser kryptonien,Uranium,35,60,100,10,Un laser concentré chargé en énergie nucléaire.
-63,All in Uranus,Uranium,45,72,90,7,Une explosion nucléaire causée par une surcharge.
-64,Pulverisation nucleaire,Uranium,55,100,80,4,Réduit tout à néant grâce à une onde radioactive.
+62,Laser kryptonien,Uranium,35,60,100,10,Un laser concentre charge en energie nucleaire.
+63,All in Uranus,Uranium,45,72,90,7,Une explosion nucleaire causee par une surcharge.
+64,Pulverisation nucleaire,Uranium,55,100,80,4,Reduit tout a neant grâce a une onde radioactive.
