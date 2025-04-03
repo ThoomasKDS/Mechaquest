@@ -303,5 +303,5 @@ int detection_combat_pnj(joueur_t *joueur){
             
         }
     }
-    return 0;
+    return -1;
 }

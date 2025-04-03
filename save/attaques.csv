@@ -1,4 +1,4 @@
-aid_attaques,Nom,Type,Niveau,Degats,Precision,Utilisation,Description
+id_attaques,Nom,Type,Niveau,Degats,Precision,Utilisation,Description
 1,Decharge tranchante,Electrique,0,8,60,25,Une coupure suivie d’un puissant courant électrique.
 2,Court circuit,Electrique,5,12,80,21,Décharge d'électricité qui fait mal.
 3,Lame tournoyante,Electrique,15,22,90,17,Tourne à grande vitesse pour trancher l’ennemi.

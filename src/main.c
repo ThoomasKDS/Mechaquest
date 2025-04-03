@@ -39,7 +39,7 @@ int main() {
     int premier_tour = 0;
     int obj_case;
     int running = 1,jeux = 1;
-    int indice_combat = 0;
+    int indice_combat = -1;
     int last_case = 0;
     SDL_Event event;
     Uint32 frameStart;  
@@ -186,6 +186,7 @@ int main() {
                     }
                     if(j.pointSauvegarde == 4)
                         jeu_libre(&j, &sprite_p, pnj_sprite,keys);
+                    animation(&j, &sprite_p);
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
 
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
@@ -193,14 +194,14 @@ int main() {
                         combat_sauvage(&j, &mecha_sauvage);
                     }
                     indice_combat = detection_combat_pnj(&j);
-                    if(indice_combat){
+                    if(indice_combat > -1){
                         afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
                         if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {
                             afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueFin,false);
                         }
                     }
 
-                    animation(&j, &sprite_p);
+                    
 
                     SDL_RenderClear(game.renderer);     //efface l'ecran
 
