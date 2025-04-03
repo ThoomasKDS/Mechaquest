@@ -189,6 +189,7 @@ int main() {
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
 
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
+                        afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
                         combat_sauvage(&j, &mecha_sauvage);
                     }
                     //indice_combat = detection_combat_pnj(&j);
