@@ -613,7 +613,6 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             strcat(message, ".");
             afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message,false);
             copie_mechas(joueur, ordi);
-            joueur->nb_mechas++;
             return (CAPTURE);
         }
         else {

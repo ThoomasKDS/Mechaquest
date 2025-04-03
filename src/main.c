@@ -191,13 +191,16 @@ int main() {
 
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
-                        combat_sauvage(&j, &mecha_sauvage);
+                         if(combat_sauvage(&j, &mecha_sauvage) == FAUX)game_over(&j);
                     }
                     indice_combat = detection_combat_pnj(&j);
                     if(indice_combat > -1){
                         afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
                         if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {
                             afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueFin,false);
+                        }
+                        else{
+                            game_over(&j);
                         }
                     }
 
