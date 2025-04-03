@@ -211,12 +211,13 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
             int indice_liste = (rand() % zone[obj_case].nb_mechas );
             int indice_mechas =  zone[obj_case].listeMechasZone[indice_liste];      
             mecha_sauvage->niveau = (rand() % 5) + (zone[obj_case].NiveauMoyenApparition - 2);
+            if(mecha_sauvage->niveau < 5 )mecha_sauvage->niveau = 5 ;
             mecha_sauvage->pv_max = (rand() % 5) + (zone[obj_case].PvMoyen - 2);
             mecha_sauvage->pv = mecha_sauvage->pv_max;
             mecha_sauvage->id_mechas = indice_mechas;
-            mecha_sauvage->attaque = (rand() % 10) + (zone[obj_case].Attaque - 4);
-            mecha_sauvage->defense = (rand() % 10) + (zone[obj_case].Defense - 4);
-            mecha_sauvage->vitesse = (rand() % 6) + (zone[obj_case].VitesseMoyenne  - 3);
+            mecha_sauvage->attaque = (rand() % 5) + (zone[obj_case].Attaque - 2);
+            mecha_sauvage->defense = (rand() % 5) + (zone[obj_case].Defense - 2);
+            mecha_sauvage->vitesse = (rand() % 10) + (zone[obj_case].VitesseMoyenne  - 4);
             for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
             mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].id_attaques;
             mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;

@@ -592,7 +592,7 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             strcat(message,  mecha[ordi->id_mechas-1].nom);
             strcat(message, ".");
             afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message,false);
-        
+            joueur->nb_mechas++;
             copie_mechas(joueur, ordi);
             return (CAPTURE);
         }
@@ -1093,7 +1093,7 @@ int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)
  */
 void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_partage, int lvlup){
     int nouv_level;
-
+    int ajout;
     nouv_level = mecha->xp + xp_partage;
     if(nouv_level >= lvlup){
         while(nouv_level >= lvlup){
@@ -1104,6 +1104,11 @@ void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_p
             lvlup = (int)(15 * exp(0.05 * mecha->niveau));   //Calculer le nouveau nombre d'XP necessaire
             evolution_mechas(mecha,mecha_ordi);
             apprentissage_attaque(mecha,mecha_ordi);
+            ajout = 1 + rand()%3;
+            mecha->pv += ajout;
+            mecha->pv_max += ajout;
+            mecha->attaque += 1 + rand()%2;
+            mecha->defense += 1 + rand()%2;
         }
     }
     else{
@@ -1143,6 +1148,7 @@ void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int x
     else{
         nb = mechas_presents->nb_mechas;
     }
+    printf("%d\n",nb);
     for (int i = 0; i < nb; i++) {
         int lvlup = (int)(15 * exp(0.05 * mechas_presents->mechas_joueur[i].niveau));
         int xp_partage = (int)(xp_gagne * coef_repartition[nb-1][i]); // Conversion propre en int

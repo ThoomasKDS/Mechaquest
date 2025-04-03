@@ -7,8 +7,8 @@ id_mechas,Nom,Type,Evolution,Description,ListeAttaque
 6,Handiboost,Carburant,0,0,Un fauteuil roulant,40;41;42;43;44
 7,Nokito,Electrique,8,15,Un nokia 3310,6;2;7;4;8
 8,Phonito,Electrique,0,0,Un IPhone costaud,6;2;7;4;8
-9,Front’al,Electrique,10,15,Une lampe frontale,9;2;10;4;11
-10,Lamp’air,Electrique,0,0,Un lampadaire,9;2;10;4;11
+9,Front'al,Electrique,10,15,Une lampe frontale,9;2;10;4;11
+10,Lamp'air,Electrique,0,0,Un lampadaire,9;2;10;4;11
 11,Peufair,Electrique,12,15,Une peuf mignonne,17;2;18;4;19
 12,Vapotu,Electrique,0,0,Une cigarette électrique,17;2;18;4;19
 13,Winamac,Electrique,0,0,Un ordinateur polivalent,12;13;14;15;16LI
