@@ -63,7 +63,7 @@ void afficherTexteCentre(const char* texte, int fondX, int y);
 void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, mechas_joueur_t *mecha_j, int *quitter_total);
 void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int *quitter_total);
 void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int objet_id, int *quitter_total);
-int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game);
+int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int *repousse);
 int affichage_pc(joueur_t *joueur);
 
 #endif
