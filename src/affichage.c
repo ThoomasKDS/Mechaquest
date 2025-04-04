@@ -1632,7 +1632,7 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
 }
 
 
-int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game) {
+int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int *repousse) {
     int selection = 0;
     int quitter = 0;
     int quitter_total = 0;
@@ -1729,7 +1729,25 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
                                 afficherTexte(game->renderer, game->police, msg, msgX, 620);
                                 verif = 1;
                             }
-                        } else { 
+                        }
+                        else if (selection == 3) { // Repousse
+                            if (j->inventaire->repousse > 0) {
+                                const char *msg = "Repousse utilise avec succes !";
+                                int msgWidth = strlen(msg) * 9;
+                                int msgX = fondX + (440 - msgWidth) / 2;
+                                afficherTexte(game->renderer, game->police, msg, msgX, 620);
+                                verif = 1;
+                                *repousse += 50;
+                                j->inventaire->repousse--;
+                            } else {
+                                const char *msg = "Aucun repousse disponible.";
+                                int msgWidth = strlen(msg) * 9;
+                                int msgX = fondX + (440 - msgWidth) / 2;
+                                afficherTexte(game->renderer, game->police, msg, msgX, 620);
+                                verif = 1;
+                            }
+                        }
+                        else { 
                             const char *msg = "Utilisable uniquement en combat";
                             int msgWidth = strlen(msg) * 9;
                             int msgX = fondX + (440 - msgWidth) / 2;
