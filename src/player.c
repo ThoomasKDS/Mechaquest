@@ -54,10 +54,6 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
 
     int obj_case = RIEN;
     if (!j->moving){  // si joueur deja entrain de se deplacer on ne fait rien
-
-        // si le joueur a utilisé l'objet repousse, à vhaque déplacement on lui en retire 1.
-        if(*repousse > 0)
-            (*repousse)--;
         
         int dx = 0, dy = 0;
 
@@ -111,6 +107,11 @@ int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int
             }
 
             else {
+                
+                // si le joueur a utilisé l'objet repousse, à vhaque déplacement on lui en retire 1.
+                if(*repousse > 0)
+                    (*repousse)--;
+                
                 jouer_bruit("son/pas3.wav");   //Joue le son des pas
                 // met à jour la mat            
                 game.mat[game.mat_active][j->y][j->x] = *last_case;
