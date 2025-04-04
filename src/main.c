@@ -186,14 +186,18 @@ int main() {
                     }
                     if(j.pointSauvegarde == 4)
                         jeu_libre(&j, &sprite_p, pnj_sprite,keys);
-                    animation(&j, &sprite_p);
+                    
+                    
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
-
+                    animation(&j, &sprite_p);
+                    
+                    
                     if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
                         afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
-                         if(combat_sauvage(&j, &mecha_sauvage) == FAUX)game_over(&j);
+                         if(combat_sauvage(&j, &mecha_sauvage) == FAUX) game_over(&j);
                     }
                     indice_combat = detection_combat_pnj(&j);
+                    
                     if(indice_combat > -1){
                         afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
                         if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {
@@ -203,17 +207,14 @@ int main() {
                             game_over(&j);
                         }
                     }
-
                     
-
+ 
                     SDL_RenderClear(game.renderer);     //efface l'ecran
 
                     draw_all(&j,&sprite_p,pnj_sprite);
 
 
                     SDL_RenderPresent(game.renderer);      //affiche rendu
-
-
                     frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame
 
                     if (FRAME_DELAY > frameTime) {

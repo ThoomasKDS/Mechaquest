@@ -39,7 +39,7 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif);
 
 int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, int type_combat);
 
-void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage);
+int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage);
 
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur,mechas_joueur_t *mecha_ordi);
 
