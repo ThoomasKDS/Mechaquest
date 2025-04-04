@@ -22,6 +22,24 @@ joueur_t joueur;
 
 rectangle_t rect_bas; //fond des boutons
 
+
+/**
+ * @brief Initialise les dimensions et la couleur du rectangle inférieur utilisé comme fond des boutons d'action en combat.
+ *
+ * Cette fonction définit le rectangle situé en bas de l'écran, qui sert de support graphique pour afficher les boutons d'interaction durant les phases de combat. Elle calcule dynamiquement la taille et la position en fonction des dimensions actuelles de la fenêtre du jeu.
+ *
+ * - La largeur du rectangle correspond à la largeur complète de la fenêtre.
+ * - La hauteur du rectangle est définie comme 1/4 de la hauteur totale de l'écran.
+ * - Le rectangle est positionné tout en bas de l'écran.
+ * - La couleur du rectangle est définie en noir semi-transparent (RGBA : 0, 0, 0, 150).
+ *
+ * @note Cette fonction utilise les attributs globaux (`game.renderer` et `rect_bas`) définis en dehors de la fonction.
+ *
+ * @warning Cette fonction est statique, ce qui signifie qu'elle est uniquement accessible à l'intérieur du fichier source (`combat.c`) où elle est définie.
+ *
+ * @pre Le renderer SDL (`game.renderer`) doit être initialisé avant l'appel de cette fonction.
+ * @post Le rectangle inférieur (`rect_bas`) est prêt à être rendu à l'écran.
+ */
 static void init_rect_bas() {            
     int win_w, win_h;
     SDL_GetRendererOutputSize(game.renderer, &win_w, &win_h);       //dimensions ecran
@@ -36,8 +54,26 @@ static void init_rect_bas() {
     rect_bas.couleur.a = 150;
 }
 
-
-
+/**
+ * @brief Affiche à l'écran tous les éléments graphiques d'un combat entre deux Mechas.
+ *
+ * Cette fonction gère l'affichage complet d'un combat, incluant :
+ * - Les noms et niveaux des Mechas en combat.
+ * - Les points de vie (PV) des deux Mechas sous forme de barres graphiques.
+ * - Les textures des Mechas du joueur et de l'ordinateur.
+ * - Les rectangles décoratifs servant de fond à l'affichage des informations.
+ *
+ * @param mecha_joueur Pointeur vers la structure représentant le Mecha du joueur.
+ * @param mecha_ordi   Pointeur vers la structure représentant le Mecha adverse contrôlé par l'ordinateur.
+ *
+ * @pre Les ressources graphiques (`game.renderer`, textures des Mechas, rectangles graphiques) doivent être chargées et initialisées correctement avant l'appel de cette fonction.
+ *
+ * @post L'écran affiche toutes les informations nécessaires à la compréhension visuelle du combat en cours.
+ *
+ * @note Cette fonction utilise des variables globales (notamment `game`, `rect_bas`, `mecha[]`) définies ailleurs dans le programme.
+ *
+ * @warning Assure-toi que les structures `mecha_joueur` et `mecha_ordi` contiennent des informations valides afin d'éviter tout problème d'affichage ou de segmentation.
+ */
 void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) {
     int win_w, win_h;
     SDL_GetRendererOutputSize(game.renderer, &win_w, &win_h);       //dimensions ecran
@@ -102,6 +138,29 @@ void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) 
 
 }
 
+/**
+ * @brief Anime visuellement la diminution progressive des PV d'un Mecha durant un combat.
+ *
+ * Cette fonction génère une animation fluide montrant la baisse progressive des points de vie (PV) après une attaque réussie. 
+ * Elle ajuste dynamiquement la vitesse de l'animation en fonction des dégâts subis et limite sa durée maximale à 2 secondes 
+ * pour maintenir le rythme du combat.
+ *
+ * @param mecha_att Indique quel Mecha reçoit les dégâts :
+ *                  - `0` pour le Mecha du joueur.
+ *                  - `1` pour le Mecha adverse contrôlé par l'ordinateur.
+ * @param pv_old    Valeur initiale des PV avant les dégâts.
+ * @param pv_new    Valeur finale des PV après les dégâts.
+ * @param mecha_joueur Pointeur vers le Mecha du joueur en combat.
+ * @param mecha_ordi   Pointeur vers le Mecha adverse contrôlé par l'ordinateur.
+ *
+ * @pre Les ressources graphiques (`game.renderer`, `mecha[]`, textures, etc.) doivent être chargées et initialisées avant l'appel.
+ *
+ * @post Le Mecha concerné affiche la nouvelle valeur de PV, avec une animation fluide entre les deux états.
+ *
+ * @note La durée maximale de l'animation est limitée à 2 secondes pour éviter une attente excessive.
+ *
+ * @warning La fonction est bloquante pendant la durée de l'animation (utilise `SDL_Delay`). Elle doit donc être utilisée à bon escient pour préserver la fluidité générale du jeu.
+ */
 void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi) {
     int temp_pv = pv_old;
     int diff_pv = pv_old - pv_new;
@@ -150,15 +209,27 @@ void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mec
 
 
 /**
- * @brief Affiche l'écran de sélection des mechas pour le combat.
- * 
- * Cette fonction affiche une interface permettant au joueur de sélectionner l'un de ses mechas 
- * pour le combat en cours. Elle crée des rectangles interactifs affichant les informations des mechas 
- * disponibles et gère la navigation avec les touches directionnelles.
- * 
- * @param game Pointeur vers la structure du jeu contenant le renderer et les textures.
- * @param joueur Pointeur vers la structure du joueur contenant ses mechas.
- * @return L'index du mecha sélectionné (0 à 3) en cas de succès, -1 si aucun mecha n'est sélectionné.
+ * @brief Affiche l'interface de sélection du Mecha du joueur durant un combat.
+ *
+ * Cette fonction permet au joueur de sélectionner visuellement un Mecha parmi les quatre disponibles dans son équipe, ou bien de revenir au menu précédent (option "Retour"). 
+ * Elle affiche les Mechas disponibles avec leurs informations clés (nom, niveau, PV) sous forme de rectangles interactifs, ainsi qu'un bouton retour. 
+ *
+ * La sélection est réalisée via les touches directionnelles (gauche/droite), et validée avec la touche `A`.
+ *
+ * @param joueur Pointeur vers la structure du joueur contenant l'équipe de Mechas à afficher.
+ *
+ * @return int
+ *         - L'indice du Mecha sélectionné (0 à 3) si la sélection est validée.
+ *         - `KO` si le joueur choisit l'option "Retour".
+ *
+ * @pre Le renderer SDL (`game.renderer`), les textures des Mechas, ainsi que les structures du joueur doivent être initialisés.
+ *
+ * @post Le Mecha sélectionné est prêt à être utilisé dans le combat, ou la fonction retourne au menu précédent.
+ *
+ * @note Cette fonction bloque l'exécution en attendant que l'utilisateur effectue une sélection.
+ *
+ * @warning Les informations des Mechas doivent être valides pour éviter les erreurs d'affichage.
+ *          Assure-toi également que les constantes globales comme `FRAME_DELAYS` sont correctement définies.
  */
 int aff_mechas_combat(joueur_t * joueur) {
     int sauv = game.mat_active;
@@ -329,17 +400,37 @@ FONCTIONS UTILISATION OBJET
 */
 
 /**
- * @brief Affiche l'interface de sélection des objets et gère leur utilisation en combat.
- * 
- * Cette fonction permet au joueur de sélectionner et d'utiliser un objet en combat 
- * parmi le carburant, le rappel ou la mechaball. L'interface affiche les quantités 
- * disponibles et met en surbrillance l'option sélectionnée. La navigation se fait avec 
- * les touches directionnelles et la sélection avec la touche d'action.
- * 
- * @param game Pointeur vers la structure du jeu contenant le renderer et l'affichage.
- * @param joueur Pointeur vers la structure du joueur contenant son inventaire.
- * @param ordi Pointeur vers le mecha adverse (utilisé si la mechaball est sélectionnée).
- * @return Retourne 1 si un objet a été utilisé avec succès, 0 si le joueur quitte l'interface.
+ * @brief Affiche l'interface d'utilisation d'objets pendant un combat.
+ *
+ * Cette fonction permet au joueur de choisir et d'utiliser des objets spécifiques lors d'un combat entre son Mecha et un adversaire (Mecha sauvage ou combat scénarisé). 
+ * Les objets disponibles sont :
+ * - **Carburant** : Restaure les PV d'un Mecha.
+ * - **Rappel** : Réanime un Mecha KO.
+ * - **Mechaball** : Permet de capturer un Mecha sauvage (uniquement dans certains types de combat).
+ * - **Retour** : Revenir au menu précédent.
+ *
+ * Le joueur navigue entre ces choix à l'aide des touches directionnelles gauche/droite et valide sa sélection avec la touche `A`.
+ *
+ * @param joueur Pointeur vers la structure du joueur en combat.
+ * @param ordi   Pointeur vers le Mecha adverse en combat.
+ * @param actif  Pointeur vers l'indice du Mecha actif du joueur actuellement utilisé en combat.
+ * @param type_combat Type du combat en cours :
+ *                    - `0` : Combat contre un Mecha sauvage (capture possible).
+ *                    - `1` : Combat scénarisé (capture impossible).
+ *
+ * @return int
+ *         - `OK` : Objet utilisé avec succès ou retour effectué.
+ *         - `CAPTURE` : Capture réussie du Mecha sauvage avec une Mechaball.
+ *         - `FAUX` : La capture a échoué, le combat continue.
+ *         - `RETOUR` : L'utilisateur a choisi de revenir en arrière sans utiliser d'objet.
+ *
+ * @pre Les ressources graphiques (`game.renderer`, rectangles graphiques, Mechas, etc.) doivent être correctement initialisées.
+ *
+ * @post Le combat est mis à jour selon l'effet de l'objet choisi.
+ *
+ * @note La fonction bloque l'exécution jusqu'à ce que l'utilisateur fasse une sélection valide ou annule l'action.
+ *
+ * @warning Veille à ce que le joueur dispose bien des objets dans son inventaire avant leur utilisation pour éviter des résultats inattendus.
  */
 int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif, int type_combat){
     SDL_Event event;
@@ -492,17 +583,32 @@ int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif, int t
 }
 
 /**
- * @brief Utilise un carburant pour restaurer les PV d'un mecha en combat.
- * 
- * Cette fonction permet au joueur d'utiliser un carburant pour restaurer 20 PV 
- * au mecha sélectionné. L'utilisation est soumise à certaines conditions :
- * - Le joueur doit posséder du carburant.
- * - Le mecha sélectionné ne doit pas avoir ses PV au maximum.
- * - Un mecha KO (PV à 0) ne peut pas être soigné avec du carburant.
- * 
- * @param game Pointeur vers la structure du jeu contenant l'affichage et l'état du combat.
- * @param joueur Pointeur vers la structure du joueur contenant son inventaire et ses mechas.
- * @return Retourne 1 si l'utilisation est réussie, 0 si l'utilisation est impossible.
+ * @brief Gère l'utilisation d'un objet "carburant" durant un combat.
+ *
+ * Cette fonction permet au joueur d'utiliser un objet carburant pour restaurer les points de vie (PV) d'un Mecha spécifique de son équipe durant un combat. 
+ * Elle effectue plusieurs vérifications avant utilisation :
+ * - Vérifie si le joueur possède au moins un carburant dans son inventaire.
+ * - Vérifie que le Mecha choisi n'est pas déjà à ses PV max ou KO.
+ * - Permet au joueur de choisir le Mecha cible de l'utilisation via `aff_mechas_combat`.
+ *
+ * En cas de succès, 50 PV sont restaurés au Mecha sélectionné, sans dépasser les PV max, et l'objet est retiré de l'inventaire.
+ *
+ * @param joueur Pointeur vers la structure du joueur actuellement en combat.
+ * @param ordi   Pointeur vers le Mecha adverse (utilisé pour l'affichage du combat).
+ * @param actif  Pointeur vers l'indice du Mecha actif du joueur actuellement utilisé en combat.
+ *
+ * @return int
+ *         - `OK` : Le carburant a été utilisé avec succès.
+ *         - `KO` : Échec de l'utilisation (pas de carburant disponible).
+ *         - `RETOUR` : L'action a été annulée ou impossible (Mecha sélectionné KO, PV déjà au max ou aucun choix effectué).
+ *
+ * @pre Les structures joueur, inventaire et Mechas doivent être correctement initialisées.
+ *
+ * @post Le Mecha sélectionné a reçu des PV supplémentaires, et l'inventaire est mis à jour.
+ *
+ * @note Des dialogues informatifs sont affichés à l'écran pour expliquer chaque situation rencontrée par le joueur.
+ *
+ * @warning Vérifie toujours que le joueur dispose de l'objet avant son utilisation pour éviter des résultats incorrects.
  */
 int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->carburant <= 0){
@@ -540,17 +646,32 @@ int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
 }
 
 /**
- * @brief Utilise un rappel pour ranimer un mecha KO en combat.
- * 
- * Cette fonction permet au joueur d'utiliser un rappel pour restaurer à 50% de ses PV max 
- * un mecha qui a été mis KO (PV à 0). L'utilisation est soumise à certaines conditions :
- * - Le joueur doit posséder un rappel dans son inventaire.
- * - Le mecha sélectionné doit être KO (PV = 0).
- * - Un rappel ne peut pas être utilisé sur un mecha encore en vie.
- * 
- * @param game Pointeur vers la structure du jeu contenant l'affichage et l'état du combat.
- * @param joueur Pointeur vers la structure du joueur contenant son inventaire et ses mechas.
- * @return Retourne 1 si l'utilisation est réussie, 0 si l'utilisation est impossible.
+ * @brief Gère l'utilisation d'un objet "rappel" durant un combat.
+ *
+ * Cette fonction permet au joueur d'utiliser un rappel afin de ranimer un Mecha mis K.O. (dont les PV sont à zéro) durant un combat.
+ * Elle effectue plusieurs vérifications avant l'utilisation :
+ * - Vérifie si le joueur possède au moins un rappel dans son inventaire.
+ * - Vérifie que le Mecha sélectionné est bien mis K.O. (PV à zéro).
+ * - Permet au joueur de choisir le Mecha cible via l'interface `aff_mechas_combat`.
+ *
+ * En cas de succès, le Mecha choisi revient au combat avec la moitié de ses PV max et l'objet est retiré de l'inventaire.
+ *
+ * @param joueur Pointeur vers la structure du joueur actuellement en combat.
+ * @param ordi   Pointeur vers le Mecha adverse (utilisé pour l'affichage du combat).
+ * @param actif  Pointeur vers l'indice du Mecha actif actuellement utilisé par le joueur en combat.
+ *
+ * @return int
+ *         - `OK` : Le rappel a été utilisé avec succès.
+ *         - `KO` : Échec de l'utilisation (aucun rappel disponible).
+ *         - `RETOUR` : L'action a été annulée ou impossible (Mecha sélectionné encore en vie ou aucun choix effectué).
+ *
+ * @pre Les structures joueur, inventaire et Mechas doivent être correctement initialisées.
+ *
+ * @post Le Mecha sélectionné a été ranimé, ses PV ont été restaurés à la moitié de leur maximum, et l'inventaire du joueur est mis à jour.
+ *
+ * @note Des dialogues informatifs s'affichent pour expliquer clairement chaque résultat à l'utilisateur.
+ *
+ * @warning Vérifie toujours que le joueur possède l'objet avant son utilisation pour éviter des erreurs inattendues.
  */
 int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
     if(joueur->inventaire->rappel <= 0){
@@ -581,21 +702,35 @@ int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
 }
 
 /**
- * @brief Utilise une Mechaball pour tenter de capturer un mecha sauvage.
- * 
- * Cette fonction permet au joueur de lancer une Mechaball pour capturer un mecha sauvage.
- * Le taux de capture est influencé par le type du mecha (les mechas nucléaires sont plus difficiles à attraper) 
- * et par le rapport entre ses PV actuels et ses PV max. 
- * 
- * Conditions d'utilisation :
- * - Le joueur doit posséder au moins une Mechaball.
- * - Le taux de capture est calculé en fonction des PV restants du mecha sauvage et de son type.
- * - Si la capture réussit, le mecha est ajouté à l'équipe du joueur.
- * 
- * @param game Pointeur vers la structure du jeu contenant l'affichage et les mécaniques de combat.
- * @param joueur Pointeur vers la structure du joueur contenant son inventaire et ses mechas.
- * @param ordi Pointeur vers la structure du mecha sauvage à capturer.
- * @return Retourne 1 si la capture réussit, -1 si elle échoue, et 0 si le joueur n'a pas de Mechaball.
+ * @brief Gère l'utilisation d'une "mechaball" pour capturer un Mecha adverse durant un combat.
+ *
+ * Cette fonction permet au joueur d'utiliser une mechaball afin d'essayer de capturer un Mecha sauvage en combat.
+ * Elle réalise plusieurs étapes clés :
+ * - Vérifie que le joueur dispose d'au moins une mechaball dans son inventaire.
+ * - Calcule le taux de capture en fonction du type du Mecha adverse :
+ *   - Type "Nucléaire" : taux de base faible (10% max).
+ *   - Autres types : taux de base plus élevé (50% max).
+ * - Le taux effectif de capture dépend des PV restants du Mecha adverse : plus les PV sont bas, plus le taux est élevé.
+ * - Un tirage aléatoire détermine si la capture est réussie ou non.
+ *
+ * En cas de succès, le Mecha sauvage est ajouté à l'équipe du joueur.
+ *
+ * @param joueur Pointeur vers la structure du joueur en combat.
+ * @param ordi   Pointeur vers le Mecha adverse que le joueur tente de capturer.
+ * @param actif  Pointeur vers l'indice du Mecha actif du joueur utilisé actuellement en combat.
+ *
+ * @return int
+ *         - `CAPTURE` : La capture a réussi, le Mecha adverse rejoint l'équipe.
+ *         - `FAUX` : La capture a échoué, la mechaball est consommée.
+ *         - `KO` : Échec d'utilisation (aucune mechaball disponible).
+ *
+ * @pre Les structures joueur, inventaire et Mechas doivent être initialisées et valides.
+ *
+ * @post La mechaball est retirée de l'inventaire, et le Mecha sauvage est ajouté à l'équipe en cas de succès.
+ *
+ * @note Des dialogues informatifs sont affichés pour expliquer le résultat de l'action au joueur.
+ *
+ * @warning Cette fonction ne devrait être utilisée que durant des combats contre des Mechas sauvages. Pour les combats spéciaux ou scénarisés, la capture pourrait être désactivée.
  */
 int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) {
     if(joueur->inventaire->mechaball <= 0){
@@ -646,25 +781,41 @@ FONCTIONS ATTAQUE
 */
 
 /**
- * @brief Gère le calcul des dégâts et l'application d'une attaque en combat.
- * 
- * Cette fonction applique une attaque choisie par un mecha attaquant sur un mecha défenseur.
- * Elle prend en compte plusieurs paramètres :
- * - La précision de l'attaque (si elle touche ou échoue).
- * - Les dégâts de base de l'attaque.
- * - Les statistiques d'attaque et de défense des mechas.
- * - L'efficacité de l'attaque en fonction des types de mechas (avantages et désavantages élémentaires).
- * 
- * Conditions :
- * - Si l'attaque rate, aucun dégât n'est infligé.
- * - Une attaque de type "Uranium" inflige des dégâts supplémentaires sauf contre un autre mecha de type "Uranium".
- * - Certaines attaques peuvent être plus efficaces contre certains types de mechas.
- * - Les utilisations de l'attaque sont décrémentées après chaque action.
- * 
- * @param choix Index de l'attaque choisie (0 ou 1).
- * @param mecha_att Pointeur vers le mecha attaquant.
- * @param mecha_def Pointeur vers le mecha défenseur.
- * @return Retourne 1 si l'attaque a été effectuée, 0 si elle est annulée.
+ * @brief Calcule et applique les effets d'une attaque lors d'un combat entre deux Mechas.
+ *
+ * Cette fonction gère le calcul des dégâts infligés par un Mecha attaquant à un Mecha défenseur en tenant compte :
+ * - De l'attaque choisie (attaque_1 ou attaque_2).
+ * - De la précision de l'attaque.
+ * - Des affinités de types entre l'attaque et le Mecha défenseur.
+ * - Des statistiques (attaque et défense) des deux Mechas impliqués.
+ *
+ * En cas de succès, les dégâts sont calculés, et une animation de perte de PV est jouée.
+ * La fonction affiche également des dialogues informatifs sur les actions réalisées et leur résultat (échec ou succès de l'attaque).
+ *
+ * @param choix        Indice de l'attaque choisie par le joueur (0 pour attaque_1, 1 pour attaque_2, 2 pour passer le tour).
+ * @param mecha_att    Pointeur vers la structure du Mecha attaquant.
+ * @param mecha_def    Pointeur vers la structure du Mecha défenseur.
+ * @param mecha_choix  Indicateur du Mecha attaquant (1 si joueur attaque, 0 si adversaire attaque).
+ *
+ * @return int
+ *         - `OK` : Attaque exécutée avec succès.
+ *         - `KO` : Impossible d'exécuter l'attaque (plus d'utilisations disponibles).
+ *         - `0`  : Action spéciale "passer son tour", aucune action réalisée.
+ *
+ * @pre Les structures des Mechas et les tableaux globaux des attaques doivent être initialisés correctement.
+ *
+ * @post La fonction modifie les PV du Mecha défenseur et réduit le compteur d'utilisation de l'attaque effectuée.
+ *
+ * @note
+ * - L'efficacité des attaques dépend des types :
+ *   - "Carburant" efficace contre "Électrique"
+ *   - "Électrique" efficace contre "Renouvelable"
+ *   - "Renouvelable" efficace contre "Carburant"
+ *   - "Uranium" inflige des dégâts légèrement supérieurs contre tous les types sauf lui-même.
+ *
+ * @warning La fonction ne vérifie pas si les Mechas sont déjà KO avant de calculer les dégâts ; cela doit être géré en amont.
+ *
+ * @see animation_degat() pour l'affichage animé de la perte de PV.
  */
 int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def, int mecha_choix) {
     if(choix == 2) return 0;
@@ -732,23 +883,36 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
 }
 
 /**
- * @brief Affiche l'interface de sélection d'attaque et applique l'attaque choisie par le joueur.
- * 
- * Cette fonction permet au joueur de sélectionner une attaque parmi les deux disponibles 
- * pour son mecha actif et de l'appliquer sur le mecha adverse. L'interface affiche les attaques 
- * avec leurs statistiques (dégâts, utilisations restantes) et permet de naviguer avec les touches 
- * directionnelles. Une attaque est déclenchée avec la touche d'action.
- * 
- * Fonctionnalités :
- * - Affichage des attaques disponibles avec leur type, dégâts et utilisations restantes.
- * - Navigation entre les attaques et l'option de retour.
- * - Application de l'attaque sélectionnée via `algo_attaque`.
- * 
- * @param game Pointeur vers la structure du jeu contenant l'affichage et le moteur de combat.
- * @param j Pointeur vers la structure du joueur contenant ses mechas.
- * @param mecha_ordi Pointeur vers le mecha adverse.
- * @param actif Pointeur vers l'index du mecha actuellement utilisé par le joueur.
- * @return Retourne le résultat de `algo_attaque`, ou `OK` si aucune attaque n'est sélectionnée.
+ * @brief Affiche l'interface permettant au joueur de choisir et effectuer une attaque durant un combat.
+ *
+ * Cette fonction permet au joueur de sélectionner l'une des deux attaques disponibles pour son Mecha actif ou de revenir en arrière.
+ * Elle affiche les informations sur chaque attaque (nom, dégâts, type, utilisations restantes) et gère les interactions utilisateur via le clavier.
+ *
+ * L'utilisateur navigue entre les choix avec les touches gauche/droite et valide avec la touche 'a'. Une fois validée, l'attaque est traitée via la fonction `algo_attaque()`.
+ *
+ * @param j            Un pointeur vers la structure `joueur_t` représentant l'état actuel du joueur.
+ * @param mecha_ordi   Pointeur vers la structure du Mecha adverse (cible de l'attaque).
+ * @param actif        Pointeur vers l'indice du Mecha actuellement actif du joueur dans son équipe.
+ *
+ * @return int
+ *         - `OK` : L'attaque a été effectuée avec succès.
+ *         - `KO` : Impossible d'exécuter l'attaque (plus d'utilisations disponibles).
+ *         - `RETOUR` : Le joueur a choisi l'option "Retour" pour annuler l'action d'attaque.
+ *
+ * @pre Les structures globales `game`, `attaque` et `mecha` doivent être initialisées correctement.
+ *
+ * @post 
+ * - La fonction met à jour les utilisations restantes de l'attaque choisie.
+ * - Applique les dégâts au Mecha adverse via `algo_attaque()`.
+ *
+ * @note 
+ * - L'interface utilise un système de couleur pour distinguer clairement les attaques selon leur type.
+ * - Les boutons affichés sont dynamiquement adaptés à la taille de l'écran.
+ *
+ * @warning Cette fonction suppose que les structures globales (`game`, `attaque`, `mecha`) sont déjà initialisées, sinon le comportement est indéfini.
+ *
+ * @see algo_attaque() pour le traitement des attaques et le calcul des dégâts.
+ * @see draw_combat() pour l'affichage graphique de l'état actuel du combat.
  */
 int attaque_joueur(joueur_t *j, mechas_joueur_t *mecha_ordi, int * actif){
    
@@ -888,21 +1052,35 @@ int attaque_joueur(joueur_t *j, mechas_joueur_t *mecha_ordi, int * actif){
 }
 
 /**
- * @brief Gère l'attaque d'un mecha sauvage contre le joueur.
+ * @brief Gère l'attaque aléatoire d'un Mecha sauvage durant un combat contre le joueur.
+ *
+ * Cette fonction sélectionne aléatoirement une attaque parmi les deux disponibles pour le Mecha sauvage. 
+ * Si l'attaque sélectionnée ne possède plus d'utilisations, elle tente automatiquement l'autre attaque.
+ * Si aucune attaque n'est disponible, un message indiquant que le Mecha sauvage ne peut plus attaquer est affiché.
  * 
- * Cette fonction sélectionne aléatoirement l'une des deux attaques du mecha sauvage 
- * et l'applique au mecha du joueur. Si l'attaque choisie initialement n'est plus utilisable 
- * (nombre d'utilisations épuisé), l'autre attaque est tentée. Si les deux attaques ne peuvent 
- * pas être utilisées, le mecha sauvage ne peut plus attaquer.
- * 
- * Fonctionnalités :
- * - Sélection aléatoire entre les deux attaques disponibles.
- * - Vérification du nombre d'utilisations restantes avant de lancer une attaque.
- * - Exécution de l'attaque via `algo_attaque`.
- * 
- * @param mecha_ordi Pointeur vers la structure du mecha sauvage attaquant.
- * @param mecha_joueur Pointeur vers la structure du mecha du joueur subissant l'attaque.
- * @return Retourne `OK` si une attaque a été effectuée, ou `0` si le mecha sauvage ne peut plus attaquer.
+ * L'attaque choisie est exécutée via la fonction `algo_attaque()`.
+ *
+ * @param mecha_ordi     Pointeur vers la structure du Mecha sauvage effectuant l'attaque.
+ * @param mecha_joueur   Pointeur vers la structure du Mecha du joueur ciblé par l'attaque.
+ *
+ * @return int
+ *         - `OK` : L'attaque a été exécutée avec succès.
+ *         - `0` : Aucune attaque disponible pour le Mecha sauvage (toutes les utilisations sont épuisées).
+ *
+ * @pre Les structures globales `attaque` et `mecha` doivent être initialisées correctement.
+ *
+ * @post 
+ * - La fonction décrémente les utilisations restantes de l'attaque choisie du Mecha sauvage.
+ * - Applique les dégâts au Mecha du joueur via `algo_attaque()`.
+ *
+ * @note 
+ * - Un message informatif est affiché à l'utilisateur si aucune attaque ne peut être effectuée.
+ * - L'attaque est sélectionnée aléatoirement afin de varier les stratégies du Mecha sauvage.
+ *
+ * @warning Cette fonction suppose que les Mechas et attaques correspondantes sont correctement initialisées. Un comportement imprévisible pourrait se produire en cas d'erreur d'initialisation.
+ *
+ * @see algo_attaque() pour le traitement concret des attaques et le calcul des dégâts infligés.
+ * @see afficher_dialogue_combat() pour afficher des messages à l'utilisateur.
  */
 int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur){  //Retourne 0 si ne peut pas attaquer
     int numero_attaque;
@@ -923,7 +1101,38 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
     return OK;
 }
 
-
+/**
+ * @brief Gère les actions automatiques d'un PNJ (personnage non-joueur) lors d'un combat contre le joueur.
+ *
+ * Cette fonction décide automatiquement des actions du PNJ selon l'état actuel du Mecha actif :
+ * - Si les PV du Mecha actif sont inférieurs à 25% des PV maximum, le PNJ a 1 chance sur 4 de changer de Mecha.
+ * - Si les PV du Mecha actif sont inférieurs ou égaux à 50% des PV maximum, le PNJ a une chance sur deux d'utiliser un carburant pour récupérer 20 PV.
+ * - Sinon, le PNJ effectue une attaque aléatoire parmi celles disponibles. Si aucune attaque n'est disponible, un message indique que le Mecha ne peut plus attaquer.
+ *
+ * @param pnj           Pointeur vers la structure du PNJ effectuant l'action.
+ * @param mecha_joueur  Pointeur vers le Mecha du joueur cible de l'action du PNJ.
+ * @param actif         Pointeur vers l'indice du Mecha actuellement actif chez le PNJ. Peut être modifié si un changement de Mecha est effectué.
+ *
+ * @return int
+ *         - `OK` : Une action a été effectuée avec succès (attaque, utilisation de carburant, ou changement de Mecha).
+ *         - `KO` : Aucune attaque disponible pour le Mecha actif du PNJ (toutes les utilisations sont épuisées).
+ *
+ * @pre Les structures globales (`attaque`, `mecha`) et l'inventaire du PNJ doivent être initialisés.
+ *
+ * @post 
+ * - Les PV du Mecha actif du PNJ peuvent augmenter si un carburant est utilisé.
+ * - Les utilisations restantes des attaques du Mecha actif peuvent être décrémentées.
+ * - L'indice du Mecha actif peut changer si le PNJ décide de changer de Mecha.
+ *
+ * @note 
+ * - Des dialogues informatifs sont affichés à l'utilisateur en fonction des actions du PNJ.
+ * - Le comportement est semi-aléatoire, dépendant des PV actuels du Mecha actif pour simuler une stratégie plus réaliste.
+ *
+ * @warning Cette fonction suppose que les Mechas et leurs attaques correspondantes sont correctement initialisés, et que le PNJ dispose d'un inventaire valide. Un comportement indéterminé pourrait se produire sinon.
+ *
+ * @see algo_attaque() pour le traitement des attaques et des dégâts.
+ * @see afficher_dialogue_combat() pour afficher les messages durant le combat.
+ */
 int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
     int nbr_rand_choix1 = 1, nbr_rand_choix = 0;
 
@@ -985,20 +1194,35 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
 */
 
 /**
- * @brief Permet au joueur de changer de mecha actif en combat.
- * 
- * Cette fonction affiche l'interface de sélection des mechas via `aff_mechas_combat` 
- * et permet au joueur de choisir un nouveau mecha actif. 
- * 
- * Conditions :
- * - Si le joueur sélectionne le même mecha que celui déjà actif, le changement est annulé.
- * - Si l'option de retour est choisie (`choix == 4`), le changement est annulé.
- * - Sinon, le mecha actif est mis à jour avec la sélection du joueur.
- * 
- * @param game Pointeur vers la structure du jeu contenant l'affichage et l'état du combat.
- * @param joueur Pointeur vers la structure du joueur contenant ses mechas.
- * @param actif Pointeur vers l'index du mecha actuellement actif.
- * @return Retourne 1 si le changement de mecha est effectué, 0 si aucune modification n'a été faite.
+ * @brief Permet au joueur de changer le Mecha actif pendant un combat.
+ *
+ * Cette fonction affiche un menu pour permettre au joueur de sélectionner un nouveau Mecha actif. 
+ * Elle vérifie plusieurs conditions avant d'autoriser le changement :
+ * - Le Mecha sélectionné ne doit pas être KO (PV != 0).
+ * - Le Mecha sélectionné ne doit pas être déjà actif.
+ * - Le joueur peut revenir en arrière en choisissant « retour ».
+ *
+ * Des messages de dialogues informatifs sont affichés selon le résultat de l'opération.
+ *
+ * @param joueur  Pointeur vers la structure du joueur.
+ * @param actif   Pointeur vers l'indice du Mecha actuellement actif du joueur (sera mis à jour si le changement est accepté).
+ * @param ordi    Pointeur vers le Mecha adverse (utilisé uniquement pour afficher des dialogues informatifs en cas d'erreur).
+ *
+ * @return int
+ *         - `OK` : Changement de Mecha effectué avec succès.
+ *         - `KO` : Le changement de Mecha a échoué (Mecha mort ou déjà actif).
+ *         - `RETOUR` : Le joueur a annulé l'action.
+ *
+ * @pre Le joueur doit avoir au moins un Mecha valide dans son équipe (autre que celui actif).
+ *
+ * @post L'indice du Mecha actif (`*actif`) est modifié si un changement est validé par le joueur.
+ *
+ * @note Cette fonction fait appel à l'interface graphique via `aff_mechas_combat()` pour permettre le choix du joueur.
+ *
+ * @warning Aucune vérification n'est effectuée pour le cas extrême où tous les Mechas seraient KO. Une telle vérification doit être faite en amont si nécessaire.
+ *
+ * @see aff_mechas_combat() pour l'interface de sélection graphique.
+ * @see afficher_dialogue_combat() pour les messages informatifs.
  */
 int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
     int choix ;
@@ -1018,19 +1242,30 @@ int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi){
 }
 
 /**
- * @brief Permet à un mecha d'apprendre une nouvelle attaque lorsqu'il atteint un niveau requis.
- * 
- * Cette fonction vérifie si un mecha a atteint le niveau nécessaire pour apprendre une nouvelle attaque. 
- * Si c'est le cas, le joueur a la possibilité de remplacer l'une des deux attaques existantes du mecha par la nouvelle attaque.
- * 
- * Fonctionnalités :
- * - Vérifie si une nouvelle attaque est disponible pour le mecha à son niveau actuel.
- * - Affiche les détails de la nouvelle attaque ainsi que celles actuellement équipées.
- * - Permet au joueur de choisir s'il souhaite remplacer une attaque existante ou conserver ses attaques actuelles.
- * - Met à jour les attaques du mecha en fonction du choix du joueur.
- * 
- * @param mecha_joueur Pointeur vers la structure du mecha du joueur qui peut apprendre une nouvelle attaque.
- * @return Retourne `OK` après l'exécution, indépendamment du choix du joueur.
+ * @brief Gère l'apprentissage d'une nouvelle attaque par un Mecha lors d'un changement de niveau.
+ *
+ * Cette fonction vérifie si le Mecha joueur acquiert une nouvelle attaque lorsqu'il atteint un niveau précis.
+ * Si une nouvelle attaque est disponible au niveau actuel du Mecha, la fonction propose au joueur de remplacer une de ses deux attaques actuelles, 
+ * ou bien de ne pas changer ses attaques. 
+ *
+ * Des messages informatifs sur l'attaque actuelle et les attaques disponibles sont affichés au joueur pour guider son choix.
+ *
+ * @param mecha_joueur Pointeur vers le Mecha du joueur concerné par l'apprentissage.
+ * @param mecha_ordi   Pointeur vers le Mecha adverse, utilisé uniquement pour l'affichage de dialogues.
+ *
+ * @return int
+ *         - `OK` : L'apprentissage a été géré correctement (même si le joueur décide de ne pas changer d'attaque ou qu'aucune attaque n'est disponible).
+ *
+ * @pre Le Mecha joueur doit avoir un niveau valide et cohérent avec les attaques définies dans le tableau `attaque` associé au type du Mecha.
+ *
+ * @post L'attaque du Mecha joueur peut être modifiée en fonction du choix du joueur. Si une attaque est remplacée, son nombre d'utilisations est réinitialisé à la valeur par défaut de la nouvelle attaque.
+ *
+ * @note Cette fonction utilise `afficher_dialogue_combat` pour interagir avec le joueur. 
+ *       La fonction est sans effet si aucune attaque ne correspond au niveau actuel du Mecha.
+ *
+ * @warning Cette fonction suppose que les attaques associées au Mecha sont correctement définies et triées par niveau d'apprentissage.
+ *
+ * @see afficher_dialogue_combat() pour l'affichage interactif des dialogues avec le joueur.
  */
 int apprentissage_attaque(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi){
     int i;
@@ -1071,20 +1306,29 @@ int apprentissage_attaque(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_
 }
 
 /**
- * @brief Vérifie si un mecha peut évoluer et applique son évolution.
- * 
- * Cette fonction vérifie si un mecha a atteint le niveau requis pour évoluer 
- * et si une évolution est disponible. Si ces conditions sont remplies, 
- * le mecha évolue en son stade supérieur.
- * 
- * Fonctionnalités :
- * - Vérifie si le niveau du mecha atteint le niveau d'évolution défini.
- * - Vérifie si le mecha possède une évolution disponible.
- * - Met à jour l'ID du mecha pour refléter son évolution.
- * - Affiche un message indiquant la réussite de l'évolution.
- * 
- * @param mecha_joueur Pointeur vers la structure du mecha du joueur pouvant évoluer.
- * @return Retourne `OK` après l'exécution, que le mecha évolue ou non.
+ * @brief Gère l'évolution d'un Mecha joueur lorsqu'il atteint le niveau requis.
+ *
+ * Cette fonction vérifie si le Mecha joueur répond aux conditions nécessaires pour évoluer.
+ * Si le niveau actuel du Mecha est supérieur ou égal au niveau requis pour l'évolution 
+ * et qu'une évolution est définie, alors l'ID du Mecha est mis à jour pour refléter cette évolution.
+ * Un message informant le joueur de l'évolution effectuée est affiché à l'écran.
+ *
+ * @param mecha_joueur Pointeur vers le Mecha joueur susceptible d'évoluer.
+ * @param mecha_ordi   Pointeur vers le Mecha adverse, utilisé uniquement pour l'affichage de dialogues contextuels.
+ *
+ * @return int
+ *         - `OK` : L'évolution a été vérifiée et traitée correctement.
+ *
+ * @pre Les attributs `niveau_evolution` et `evolution` du Mecha doivent être correctement initialisés.
+ *
+ * @post Si une évolution a eu lieu, `mecha_joueur->id_mechas` est incrémenté pour pointer vers le Mecha évolué.
+ *
+ * @note La fonction utilise `afficher_dialogue_combat` pour notifier le joueur de l'évolution.
+ *
+ * @warning La fonction suppose que le Mecha suivant immédiatement dans le tableau `mecha` correspond à l'évolution logique du Mecha actuel.
+ *          Assurez-vous que le tableau `mecha` respecte strictement cet ordre d'évolution.
+ *
+ * @see afficher_dialogue_combat() pour l'affichage interactif des dialogues avec le joueur.
  */
 int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi){
     char text[200];
@@ -1100,25 +1344,32 @@ int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)
 }
 
 /**
- * @brief Gère la montée de niveau d'un mecha en fonction de l'expérience gagnée.
- * 
- * Cette fonction ajoute l'expérience gagnée (`xp_partage`) au mecha et vérifie 
- * si le niveau suivant est atteint. Si le mecha atteint un nouveau niveau :
- * - Son niveau est incrémenté.
- * - Son XP est ajusté en conséquence.
- * - Le seuil d'XP pour le prochain niveau est recalculé.
- * - L'évolution du mecha est vérifiée et appliquée si possible.
- * - Une nouvelle attaque peut être apprise via `apprentissage_attaque`.
- * 
- * Fonctionnalités :
- * - Ajoute l'expérience gagnée et vérifie si le mecha atteint un nouveau niveau.
- * - Gère la montée de plusieurs niveaux en une seule fois si nécessaire.
- * - Applique l'évolution et l'apprentissage de nouvelles attaques.
- * - Recalcule dynamiquement l'expérience requise pour monter au niveau suivant.
- * 
- * @param mecha Pointeur vers la structure du mecha gagnant de l'expérience.
- * @param xp_partage Quantité d'expérience gagnée par le mecha.
- * @param lvlup Expérience requise pour atteindre le niveau suivant.
+ * @brief Gère la montée en niveau d'un Mecha joueur après avoir reçu des points d'expérience (XP).
+ *
+ * Cette fonction ajoute un nombre spécifié d'XP au Mecha joueur. Si le seuil d'XP pour le niveau suivant est atteint ou dépassé,
+ * le Mecha monte en niveau, réinitialise son compteur d'XP en excès pour le prochain niveau et met à jour ses statistiques (PV, attaque, défense).
+ * Elle vérifie également les possibilités d'évolution et d'apprentissage d'une nouvelle attaque à chaque montée en niveau.
+ *
+ * @param mecha       Pointeur vers le Mecha joueur recevant l'expérience.
+ * @param mecha_ordi  Pointeur vers le Mecha adverse (pour l'affichage des dialogues contextuels).
+ * @param xp_partage  Nombre de points d'expérience à ajouter au Mecha.
+ * @param lvlup       Seuil d'expérience nécessaire pour atteindre le niveau supérieur actuel.
+ *
+ * @pre
+ *  - `mecha` doit pointer vers un Mecha joueur correctement initialisé.
+ *  - `lvlup` doit correspondre au nombre d'XP nécessaires à l'atteinte du prochain niveau avant appel de la fonction.
+ *
+ * @post
+ *  - Les attributs du Mecha (niveau, XP, PV, attaque, défense) sont mis à jour en conséquence.
+ *  - Si le Mecha atteint un niveau où il peut évoluer ou apprendre une attaque, ces changements sont appliqués immédiatement.
+ *
+ * @note
+ *  - La fonction utilise un calcul exponentiel pour déterminer l'XP nécessaire pour chaque nouveau niveau :
+ *    \f[ \text{lvlup} = \left\lfloor 15 \times e^{0.05 \times \text{niveau}} \right\rfloor \f]
+ *
+ * @warning
+ *  - Cette fonction suppose que les fonctions `evolution_mechas` et `apprentissage_attaque` ne provoquent pas d'erreurs d'accès mémoire ou d'index hors limites.
+ *  - Assurez-vous que les modifications de statistiques ne dépassent pas les limites prévues par le jeu.
  */
 void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_partage, int lvlup){
     int nouv_level;
@@ -1146,20 +1397,37 @@ void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_p
 }
 
 /**
- * @brief Répartit l'expérience gagnée entre les mechas présents en combat.
- * 
- * Cette fonction distribue l'expérience gagnée à un maximum de 4 mechas présents. 
- * L'expérience est répartie selon un coefficient de répartition fixe, favorisant 
- * les mechas qui ont contribué le plus au combat.
- * 
- * Fonctionnalités :
- * - Détermine combien de mechas reçoivent l'expérience (maximum 4).
- * - Applique un coefficient de répartition basé sur le nombre de mechas actifs.
- * - Calcule l'expérience nécessaire pour le niveau suivant.
- * - Ajoute l'expérience gagnée et déclenche une montée de niveau si applicable via `montee_niveau`.
- * 
- * @param mechas_presents Pointeur vers la structure du joueur contenant les mechas à répartir.
- * @param xp_gagne Quantité d'expérience totale à répartir entre les mechas présents.
+ * @brief Distribue les points d'expérience (XP) gagnés lors d'un combat à un ensemble de Méchas ayant participé.
+ *
+ * Cette fonction calcule la répartition des points d'expérience gagnés à la fin d'un combat selon le nombre de Méchas du joueur ayant participé.
+ * La répartition suit une logique prédéfinie : 
+ *  - 1 Mécha reçoit 100% de l'XP,
+ *  - 2 Méchas reçoivent respectivement 2/3 et 1/3 de l'XP,
+ *  - 3 Méchas reçoivent respectivement 3/5, 1/5, 1/5 de l'XP,
+ *  - 4 Méchas reçoivent respectivement 4/7, 1/7, 1/7, 1/7 de l'XP.
+ *
+ * Chaque Mécha reçoit son montant d'XP calculé et gère ensuite individuellement sa montée de niveau éventuelle.
+ *
+ * @param mechas_presents  Pointeur vers la structure du joueur contenant les Méchas ayant participé au combat.
+ * @param mecha_ordi       Pointeur vers le Mécha adverse vaincu (pour contexte d'évolution ou apprentissage d'attaques).
+ * @param xp_gagne         Quantité totale d'XP gagnée à répartir entre les Méchas participants.
+ *
+ * @pre
+ *  - `mechas_presents` doit pointer vers une structure joueur initialisée avec un nombre correct de Méchas (`nb_mechas` renseigné).
+ *  - `xp_gagne` doit être une valeur positive représentant l'expérience totale à distribuer.
+ *
+ * @post
+ *  - Chaque Mécha ayant participé voit ses XP augmenter selon la répartition définie.
+ *  - Si un Mécha dépasse le seuil d'XP pour monter de niveau, la fonction `montee_niveau` est appelée et met à jour ses statistiques en conséquence.
+ *
+ * @warning
+ *  - Si plus de 4 Méchas sont présents, seuls les 4 premiers Méchas reçoivent de l'XP.
+ *  - Assurez-vous que l'ordre des Méchas présents est correct, car il influence la répartition des XP.
+ *
+ * @note
+ *  - Le calcul du seuil d'expérience (`lvlup`) requis pour chaque Mécha utilise la formule exponentielle suivante :
+ *    \f[ \text{lvlup} = \left\lfloor 15 \times e^{0.05 \times \text{niveau}} \right\rfloor \f]
+ *
  */
 void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int xp_gagne) {
 
@@ -1186,19 +1454,38 @@ void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int x
 }
 
 /**
- * @brief Gère l'attribution de l'expérience et la montée de niveau après la défaite d'un adversaire.
- * 
- * Cette fonction calcule l'expérience gagnée lorsqu'un mecha adverse est vaincu 
- * et la distribue entre les mechas présents en combat. Elle affiche également 
- * les niveaux des mechas après l'attribution de l'expérience.
- * 
- * Fonctionnalités :
- * - Calcule l'expérience gagnée en fonction du niveau du mecha vaincu.
- * - Distribue l'expérience aux mechas actifs via `distribuer_xp`.
- * - Affiche les niveaux des mechas après la distribution.
- * 
- * @param mechas_presents Pointeur vers la structure du joueur contenant les mechas actifs.
- * @param mecha_tue Pointeur vers la structure du joueur ou mecha adverse vaincu.
+ * @brief Calcule et distribue les points d'expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha adverse.
+ *
+ * Cette fonction est appelée après la défaite d'un Mécha adverse. Elle effectue les opérations suivantes :
+ * - Calcule la quantité totale d'expérience gagnée en fonction du niveau du Mécha adverse, selon la formule :
+ *   \f[
+ *      \text{xp\_gagne} = \left\lfloor 20 \times e^{0.02 \times \text{niveau adversaire}} \right\rfloor
+ *   \f]
+ * - Répartit cette expérience aux Méchas du joueur qui ont participé au combat (maximum 4 Méchas).
+ * - Affiche dans la console les niveaux mis à jour des Méchas participants après la distribution d'expérience.
+ *
+ * @param mechas_presents  Pointeur vers la structure du joueur, contenant les Méchas participants au combat.
+ * @param mecha_ordi       Pointeur vers le Mécha adverse vaincu, utilisé pour déterminer la quantité d'expérience à distribuer.
+ *
+ * @pre
+ * - Les structures pointées par `mechas_presents` et `mecha_ordi` doivent être initialisées et valides.
+ *
+ * @post
+ * - Les Méchas du joueur ayant participé voient leur expérience et potentiellement leurs niveaux augmentés en fonction de l'expérience gagnée.
+ * - Les informations mises à jour des Méchas sont affichées à l'écran via `printf`.
+ *
+ * @warning
+ * - Cette fonction limite explicitement la distribution d'expérience aux quatre premiers Méchas du joueur (`nb_mechas`).
+ *   Les Méchas au-delà du quatrième ne reçoivent pas d'expérience.
+ *
+ * @note
+ * - La distribution réelle d'expérience aux Méchas est gérée par la fonction `distribuer_xp`.
+ * - L'affichage des niveaux après distribution sert à fournir un retour visuel rapide sur les résultats de l'attribution d'expérience.
+ *
+ * @param[in] joueur_t Structure contenant les informations des Méchas du joueur.
+ * @param[in] mechas_joueur_t Structure du Mécha adverse vaincu, pour calcul d'expérience.
+ *
+ * @see distribuer_xp() Pour la répartition détaillée de l'expérience aux Méchas.
  */
 void level_mechas(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi){
     
@@ -1223,26 +1510,51 @@ void level_mechas(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi){
 }
 
 /**
- * @brief Gère le tour du joueur en combat, permettant de choisir une action.
- * 
- * Cette fonction affiche une interface de combat où le joueur peut choisir entre 
- * attaquer, utiliser un objet, changer de mecha ou tenter de fuir. 
- * 
- * Fonctionnalités :
- * - Affiche une interface avec des options interactives.
- * - Permet de naviguer entre les options avec les touches directionnelles.
- * - Exécute l'action sélectionnée par le joueur :
- *   - **Attaquer** : Lance `attaque_joueur`.
- *   - **Utiliser un objet** : Ouvre `utilisation_objet`.
- *   - **Changer de mecha** : Ouvre `changer_mecha`.
- *   - **Fuite** (non implémentée dans ce code).
- * - Met à jour l'affichage des boutons et leur sélection en temps réel.
- * 
- * @param joueur Pointeur vers la structure du joueur participant au combat.
- * @param mecha_sauvage Pointeur vers le mecha sauvage adverse.
- * @param game Pointeur vers la structure du jeu contenant le moteur de rendu et les événements.
- * @param actif Pointeur vers l'index du mecha actif du joueur.
- * @return Retourne 1 si le tour se déroule normalement, 0 si le joueur quitte ou annule.
+ * @brief Gère le tour du joueur lors d'un combat contre un Mécha sauvage ou un PNJ.
+ *
+ * Cette fonction permet au joueur de réaliser une action pendant son tour. Le joueur peut :
+ * - Utiliser un objet (carburant, rappel, mechaball).
+ * - Attaquer avec son Mécha actif.
+ * - Changer de Mécha actif.
+ *
+ * L'interface graphique affiche les choix possibles (Attaquer, Objet, Mechas, Fuite) et permet au joueur de naviguer entre eux avec les touches directionnelles.
+ * L'action sélectionnée est validée avec la touche `A`.
+ *
+ * @param joueur        Pointeur vers la structure contenant les informations du joueur (inventaire, Méchas disponibles).
+ * @param mecha_sauvage Pointeur vers le Mécha adverse (sauvage ou PNJ).
+ * @param actif         Pointeur vers l'entier représentant l'indice du Mécha actuellement actif du joueur.
+ * @param type_combat   Type du combat : 
+ *                      - `0` pour combat contre un Mécha sauvage.
+ *                      - `1` pour combat contre un PNJ.
+ *
+ * @return Retourne un entier indiquant l'action effectuée ou le résultat du tour :
+ *  - `OK` (action réussie, tour terminé normalement).
+ *  - `CAPTURE` (capture réussie du Mécha sauvage).
+ *  - `FUITE` (le joueur quitte le combat en fermant la fenêtre ou via la touche Escape).
+ *
+ * @pre
+ * - Les pointeurs `joueur`, `mecha_sauvage` et `actif` doivent être valides et initialisés.
+ * - La fenêtre SDL et le renderer doivent être initialisés.
+ *
+ * @post
+ * - Met à jour les PV, l'inventaire et/ou les Méchas actifs en fonction des actions effectuées.
+ * - Affiche l'état actualisé du combat après chaque action.
+ *
+ * @note
+ * - L'action "Fuite" est affichée à l'écran mais n'est pas sélectionnable par le joueur (implémentation visuelle uniquement).
+ * - Les choix d'action se font uniquement entre les options "Attaquer", "Objet" et "Mechas".
+ * - L'utilisation d'un objet (notamment Mechaball) peut mener à la fin du combat via capture.
+ *
+ * @warning
+ * - Cette fonction gère son propre cycle d'affichage et d'événements SDL, bloquant ainsi jusqu'à ce qu'une action valide soit choisie par le joueur.
+ * - Elle ne vérifie pas si tous les Méchas du joueur sont hors combat (cette vérification doit être faite à l'extérieur).
+ *
+ * @param[in,out] joueur Structure du joueur mise à jour selon les actions effectuées.
+ * @param[in,out] actif Indice du Mécha actif pouvant être modifié si le joueur change de Mécha.
+ *
+ * @bug
+ * - L'option "Fuite" n'est pas fonctionnelle via le menu visuel (prévue en cas de fermeture directe du jeu).
+ *
  */
 int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, int type_combat) {       //type_combat : combat_sauv = 0 o pnj = 1
     SDL_Event event;
@@ -1362,9 +1674,46 @@ int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int * actif, i
     return OK;
 }
 
-
-
-
+/**
+ * @brief Gère un combat complet entre le joueur et un PNJ.
+ *
+ * Cette fonction orchestre l'intégralité d'un combat contre un PNJ, en gérant :
+ *  - La sélection automatique du premier Mécha actif disponible chez le joueur et le PNJ.
+ *  - Le cycle complet des tours joueur et PNJ jusqu’à la victoire ou la défaite.
+ *  - Le changement automatique de Méchas lorsque l'un d'entre eux tombe KO.
+ *  - La gestion spécifique empêchant le joueur de fuir un combat contre un PNJ.
+ *  - Le gain d'expérience et la montée en niveau des Méchas après avoir vaincu un adversaire.
+ *  - La sauvegarde automatique de l'état du PNJ après le combat (si victoire).
+ *
+ * @param joueur Un pointeur vers la structure `joueur_t` représentant le joueur.
+ * @param pnj Un pointeur vers la structure `pnj_t` représentant l'adversaire PNJ.
+ *
+ * @return Retourne un entier indiquant le résultat du combat :
+ * - `VRAI` si le joueur gagne le combat.
+ * - `FAUX` si le joueur perd le combat (tous ses Méchas sont KO).
+ *
+ * @pre
+ * - Les pointeurs `joueur` et `pnj` doivent être initialisés.
+ * - Les structures associées aux Méchas des deux participants doivent être valides.
+ *
+ * @post
+ * - Met à jour les PV des Méchas impliqués dans le combat.
+ * - Modifie l'état du PNJ à `1` (déjà combattu) si le joueur gagne.
+ * - Sauvegarde automatiquement l'état modifié du PNJ après victoire.
+ *
+ * @warning
+ * - Le joueur ne peut pas fuir un combat contre un PNJ (tentative déclenche un message spécifique).
+ * - Si le joueur possède le Mécha `Aeroshima` (id_mechas = 23), celui-ci ne peut pas participer contre les fils d'Iron Musk. Un changement forcé est demandé.
+ *
+ * @note
+ * - Cette fonction gère entièrement la boucle de combat, bloquant ainsi jusqu’à son issue finale (victoire ou défaite).
+ * - La montée de niveau (`level_mechas`) est automatiquement gérée à chaque victoire contre un Mécha adverse.
+ * - En cas de défaite, les PV du PNJ sont restaurés à leur maximum initial.
+ *
+ * @param[in,out] joueur La structure du joueur mise à jour selon l’issue du combat (PV, expérience gagnée).
+ * @param[in,out] pnj La structure du PNJ mise à jour selon l’issue du combat (PV mis à jour ou restaurés, état modifié en cas de victoire du joueur).
+ *
+ */
 int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
     int save_map_active = game.mat_active;
     init_rect_bas();
@@ -1459,24 +1808,39 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
 
 
 /**
- * @brief Lance un combat entre le joueur et un Mecha sauvage.
- * 
- * Cette fonction gère entièrement le déroulement d'un combat sauvage entre l'un des Mechas du joueur
- * et un Mecha ennemi sauvage. Le combat se déroule à tour de rôle en tenant compte de la vitesse de chaque Mecha.
- * Le Mecha ayant la plus grande vitesse attaque en premier. Le combat se poursuit jusqu'à ce qu'un des deux Mechas 
- * atteigne 0 point de vie.
+ * @brief Gère un combat entre le joueur et un Mécha sauvage.
  *
- * Durant le combat, l'état de la carte active (`game->mat_active`) est modifié temporairement et restauré à la fin.
- * 
- * @param joueur         Pointeur vers la structure du joueur (contenant ses Mechas).
- * @param mecha_sauvage  Pointeur vers le Mecha sauvage rencontré.
- * @param game           Pointeur vers l'état actuel du jeu.
+ * Cette fonction permet au joueur de combattre un Mécha sauvage en gérant :
+ *  - L'ordre des tours basé sur la vitesse des Méchas.
+ *  - La possibilité pour le joueur d'utiliser des objets, d'attaquer ou de changer de Mécha.
+ *  - La fuite possible du joueur en cours de combat.
+ *  - Le changement automatique de Mécha si celui-ci est KO.
+ *  - La montée de niveau des Méchas du joueur en cas de victoire.
  *
- * @pre joueur, mecha_sauvage et game doivent être des pointeurs valides initialisés avant l'appel.
- * @post Le combat est résolu, affichant un message indiquant si le joueur a gagné ou perdu.
- *       L'état original de `game->mat_active` est restauré.
+ * @param joueur Un pointeur vers la structure `joueur_t` représentant le joueur.
+ * @param mecha_sauvage Un pointeur vers la structure `mechas_joueur_t` représentant le Mécha sauvage.
  *
- * @note Cette fonction appelle `tour_joueur()` pour le tour du joueur et `attaque_ordi_sauvage()` pour le tour du Mecha sauvage.
+ * @return Retourne un entier indiquant le résultat du combat :
+ * - `VRAI` si le joueur gagne le combat ou réussit à fuir.
+ * - `FAUX` si tous les Méchas du joueur sont KO.
+ *
+ * @pre
+ * - Les pointeurs `joueur` et `mecha_sauvage` doivent être valides.
+ * - Le Mécha sauvage doit être initialisé avec ses PV, attaques, etc.
+ *
+ * @post
+ * - Met à jour les PV et l'expérience (`xp`) des Méchas du joueur.
+ * - Permet éventuellement au joueur d'augmenter de niveau ou d'apprendre de nouvelles attaques après une victoire.
+ * - Permet de fuir le combat en conservant l'état actuel des Méchas.
+ *
+ * @note
+ * - Le joueur peut fuir un combat contre un Mécha sauvage (à l'inverse des combats contre les PNJ).
+ * - L'XP gagnée est distribuée uniquement si le Mécha sauvage est vaincu.
+ * - L'affichage du combat est restauré après la fin du combat (restauration de `game.mat_active`).
+ *
+ * @warning
+ * - Si tous les Méchas du joueur sont KO, le combat est perdu automatiquement.
+ * - Si le joueur choisit de fuir, le combat se termine immédiatement.
  */
 int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
     int save_map_active = game.mat_active;
