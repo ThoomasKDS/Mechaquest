@@ -523,7 +523,7 @@ int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif){
             return (RETOUR);
         }
         else{
-            joueur->mechas_joueur[i].pv += 20;  //Ajouter 20 aux PV actuels
+            joueur->mechas_joueur[i].pv += 50;  //Ajouter 50 aux PV actuels
             if(joueur->mechas_joueur[i].pv > joueur->mechas_joueur[i].pv_max){
                 joueur->mechas_joueur[i].pv = joueur->mechas_joueur[i].pv_max;
             }
