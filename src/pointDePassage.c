@@ -128,11 +128,6 @@ int choix_starter(joueur_t *j, pnj_t *vinGazole, SDL_Rect *sprite_p, SDL_Rect *p
     //SDL_Event event;
     resultat = afficher_dialogue(j, sprite_p, pnj_sprite, vinGazole->pseudo, " Choisissez Le mechas que vous souhaité: \n 1: Tournicoton \n 2: Rasetout \n 3: Tikart.",true);
             
-    printf("Choisissez Le mechas que vous souhaité: \n");
-    printf("1: Tournicoton \n");
-    printf("2: Rasetout \n");
-    printf("3: Tikart\n");
-    printf("resultat = %d",resultat);
     switch(resultat){
         case 1: choix = copie_mechas(j,&vinGazole->mechas_joueur[0]);
                 afficher_dialogue(j, sprite_p, pnj_sprite, vinGazole->pseudo, " Vous avez choisit Tournicoton.",false);

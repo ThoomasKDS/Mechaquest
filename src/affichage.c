@@ -1078,6 +1078,12 @@ int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, cha
         draw_rect(&pseudoRect, draw_text_center);
         draw_rect(&textRect, draw_text_left_middle);
         draw_rect(&infoRect, draw_text_center);
+        if(choix) {
+            draw_mecha(&mecha[0], largeurEcran / 4 -  largeurEcran/6, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
+            draw_mecha(&mecha[2], (largeurEcran / 2) -  ((largeurEcran/6)) / 2, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
+            draw_mecha(&mecha[4], (largeurEcran / 4)*3, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
+
+        }
         SDL_RenderPresent(game.renderer);
         
         int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
