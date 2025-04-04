@@ -1236,7 +1236,7 @@ void game_over(joueur_t *j) {
 
 void afficherTexte(SDL_Renderer *renderer, TTF_Font *font, const char *texte, int x, int y) {
     SDL_Color couleur = {255, 255, 255};
-    SDL_Surface *surface = TTF_RenderText_Solid(font, texte, couleur);
+    SDL_Surface *surface = TTF_RenderUTF8_Blended_Wrapped(font, texte, couleur);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_Rect dst = {x, y, surface->w, surface->h};
     SDL_RenderCopy(renderer, texture, NULL, &dst);
