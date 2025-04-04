@@ -14,93 +14,154 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 //*********DEFINE********//
+/// @brief Longueur maximale autorisée pour un pseudo de joueur.
 #define LONGUEUR_MAX_PSEUDO 50
+/// @brief Taille maximale d'une ligne standard de texte.
 #define LONGUEUR_LIGNE 256
+/// @brief Taille maximale pour une ligne de description longue.
 #define LONGUEUR_LIGNE_DESC 1070
+/// @brief Taille maximale d'une ligne de dialogue.
 #define LONGUEUR_DIALOGUE 500
+/// @brief Taille maximale pour un type de Mécha.
 #define LONGUEUR_TYPE 20
+/// @brief Taille maximale pour une description de Mécha.
 #define LONGUEUR_DESC 200
 
 //TAILLE TAB
+/// @brief Nombre maximal de Méchas que peut contenir le jeu (y compris ceux capturés).
 #define NB_MECHAS_MAX 54
+/// @brief Nombre de Méchas différents disponibles dans le jeu.
 #define NB_MECHAS 24
+/// @brief Nombre total d'attaques disponibles.
 #define NB_ATTAQUES 64
+/// @brief Nombre total de zones différentes explorables.
 #define NB_ZONES 10
+/// @brief Nombre total de PNJ présents dans le jeu.
 #define NB_PNJ 24
 
 //INVENTAIRE
+/// @brief Nombre de Méchas maximum que le joueur peut avoir simultanément dans son équipe active.
 #define NB_MECHAS_INVENTAIRE 4
+/// @brief Nombre total d'objets différents disponibles dans l'inventaire.
 #define NB_OBJET 5
 
 //PNJ IMPORTANT 
+/// @brief Identifiant du premier Mécha de Vin Gazole.
 #define VIN_GAZOLE_1 17
+/// @brief Identifiant du deuxième Mécha de Vin Gazole.
 #define VIN_GAZOLE_2 18
+/// @brief Identifiant du troisième Mécha de Vin Gazole.
 #define VIN_GAZOLE_3 20
+/// @brief Identifiant du quatrième Mécha de Vin Gazole.
 #define VIN_GAZOLE_4 21
+/// @brief Identifiant du cinquième Mécha de Vin Gazole.
 #define VIN_GAZOLE_5 23
 
+/// @brief Identifiant du début de la séquence de Méchas d'Iron Musk.
 #define IRON_MUSK_DEB 19
+/// @brief Identifiant de la fin de la séquence de Méchas d'Iron Musk.
 #define IRON_MUSK_FIN 22
 
 
 //TEMPS
+/// @brief Constante utilisée pour définir un temps ou une valeur temporelle fixe (500 ms).
 #define T 500
+
 //RETURN 
+/// @brief Code d'erreur utilisé lors d'une erreur d'ouverture de fichier.
 #define ERREUR_OUVERTURE -1
+/// @brief Code de succès général (opération réussie).
 #define OK 1
+/// @brief Code d'erreur générique pour une opération échouée.
 #define ERR 0
+/// @brief Code utilisé pour représenter un échec (équivalent à ERR).
 #define KO 0
+/// @brief Code utilisé pour indiquer un retour ou annulation d'une action.
 #define RETOUR -1
+/// @brief Valeur représentant le booléen VRAI.
 #define VRAI 1
+/// @brief Valeur représentant le booléen FAUX.
 #define FAUX -2
+/// @brief Code spécifique indiquant qu'un Mécha a été capturé avec succès.
 #define CAPTURE -3
+/// @brief Code spécifique indiquant que le joueur a fui le combat.
 #define FUITE -4
 
 //TAILLE D'UNE CASE
+/// @brief Taille d'une case (tile) en pixels pour l'affichage du jeu.
 #define PX 32
 
 //COLLISION
+/// @brief Aucune collision, case vide.
 #define RIEN 0
+/// @brief Collision avec le joueur.
 #define JOUEUR 1
+/// @brief Collision avec une barrière (obstacle infranchissable).
 #define BARRIERE 2
+/// @brief Collision avec un bâtiment.
 #define BAT 3
+/// @brief Collision avec un déchet.
 #define DECHET 5
 
+
 //INTERACTION
+/// @brief Collision ou interaction avec un PNJ (personnage non joueur).
 #define PNJ 6
+/// @brief Collision ou interaction avec un PC (gestion des Méchas capturés).
 #define PC 7
+/// @brief Collision ou interaction avec une porte (changement de zone).
 #define PORTE 4
 
 //CHANGEMENT MAP
-
+/// @brief Téléportation ou changement vers la Map 1.
 #define TPMAP1 -11
+/// @brief Téléportation ou changement vers la Map 2.
 #define TPMAP2 -12
+/// @brief Téléportation ou changement vers la Map 3.
 #define TPMAP3 -13
+/// @brief Téléportation ou changement vers la Map 4.
 #define TPMAP4 -14
+/// @brief Téléportation ou changement vers la Map 5.
 #define TPMAP5 -15
+/// @brief Téléportation ou changement vers la Map 6.
 #define TPMAP6 -16
 
 //ZONE SPAWN MECHA
+/// @brief Zone de spawn Mécha n°1.
 #define Z1 -1
+/// @brief Zone de spawn Mécha n°2.
 #define Z2 -2
+/// @brief Zone de spawn Mécha n°3.
 #define Z3 -3
+/// @brief Zone de spawn Mécha n°4.
 #define Z4 -4
+/// @brief Zone de spawn Mécha n°5.
 #define Z5 -5
+/// @brief Zone de spawn Mécha n°6.
 #define Z6 -6
+/// @brief Zone de spawn Mécha n°7.
 #define Z7 -7
+/// @brief Zone de spawn Mécha n°8.
 #define Z8 -8
+/// @brief Zone de spawn Mécha n°9.
 #define Z9 -9
-#define Z10 -10 
+/// @brief Zone de spawn Mécha n°10.
+#define Z10 -10
 
 //DIMENSIONS
+/// @brief Hauteur de la fenêtre de jeu en pixels.
 #define H 768
+/// @brief Largeur de la fenêtre de jeu en pixels.
 #define L 1280
 
 //DIMENSIONS BOUTON
+/// @brief Largeur standard d'un bouton en pixels.
 #define LARGEUR_BOUTON 200
+/// @brief Hauteur standard d'un bouton en pixels.
 #define HAUTEUR_BOUTON 50
 
 //*********CONSTANTES********//
+/// @brief Délai entre chaque frame en millisecondes pour contrôler le framerate global du jeu.
 extern const int FRAME_DELAY;
 
 
@@ -641,10 +702,13 @@ typedef struct{
     int nb_mechas;
 }zone_t;
 
-typedef enum {
-    PNJ_NORMAL,    
-    PNJ_DEVANT,    
-    PNJ_DERRIERE   
+/**
+ * @brief États possibles de la position d'un PNJ par rapport au joueur.
+ */
+ typedef enum {
+    PNJ_NORMAL,    ///< Le PNJ est affiché normalement (aucun obstacle devant ou derrière).
+    PNJ_DEVANT,    ///< Le PNJ est devant un obstacle ou le joueur.
+    PNJ_DERRIERE   ///< Le PNJ est derrière un obstacle ou le joueur.
 } pnj_pos_t;
 
 //VARIABLES GLOBALE
