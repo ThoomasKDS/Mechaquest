@@ -1209,7 +1209,6 @@ void game_over(joueur_t *j) {
 
         if (running) {
             // Efface l'écran et dessine l'image
-            SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
             SDL_RenderClear(game.renderer);
             draw_background();
             SDL_RenderPresent(game.renderer);
