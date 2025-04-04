@@ -28,8 +28,12 @@ test: all
 	@./test_fonction_utilisation_rappel
 	@./test_fonction_algo_attaque
 
+# === Déboguer un test spécifique ===
+debug: $(DEBUG_TARGET)
+	gdb ./$(DEBUG_TARGET)
+
 # === Nettoyer les exécutables ===
 clean:
 	rm -f $(EXECUTABLES)
 
-.PHONY: all test clean
+.PHONY: all test clean debug

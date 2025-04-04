@@ -143,6 +143,9 @@ int main() {
                         if (event.key.keysym.sym == SDLK_ESCAPE){
                             if(!afficher_menu_pause(&parametres)) running = 0;
                         } 
+                        if (event.key.keysym.sym == SDLK_i){
+                            afficherInventaire(&j, &sprite_p, pnj_sprite, &game);
+                        } 
                     }
                 }
                 if(running){
