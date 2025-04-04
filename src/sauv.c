@@ -406,23 +406,25 @@ int recuperation_attaques(attaque_t *attaques) {
         perror("Erreur d'ouverture du fichier");
         return ERREUR_OUVERTURE;
     }
-
     int count = 0;
-    char ligne[LONGUEUR_LIGNE];
+    char ligne[LONGUEUR_LIGNE_DESC];
     //traitement du csv
     fgets(ligne, sizeof(ligne), file);                      // Lire la première ligne (en-têtes)
 
     while (fgets(ligne, sizeof(ligne), file) != NULL){      //Lecture de chaque ligne
-        sscanf(ligne, "%d,%49[^,],%19[^,],%d,%d,%d,%d\n",
+        sscanf(ligne, "%d,%49[^,],%19[^,],%d,%d,%d,%d,%199[^,]\n",
                                  &attaques[count].id_attaques,
                                  attaques[count].nom,
                                  attaques[count].type,
                                  &attaques[count].niveau,
                                  &attaques[count].degats,
                                  &attaques[count].precision,
-                                 &attaques[count].utilisations) ;
+                                 &attaques[count].utilisations,
+                                 attaques[count].description) ;
         count++;
     }
+        
+
     fclose(file);
     return count;       //renvoies le nombre d'attqaues
 }

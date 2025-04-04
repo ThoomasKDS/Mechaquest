@@ -332,6 +332,7 @@ typedef struct{
     int degats;
     int precision;
     int utilisations;
+    char description[LONGUEUR_DESC];
 } attaque_t;
 
 /**

@@ -59,7 +59,6 @@ int main() {
     if(!init_calque()) {
         return -1;
     }
-
     while(jeux){
         pseudo[0] = '\0';
         running = 1;

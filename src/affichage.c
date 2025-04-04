@@ -1233,22 +1233,70 @@ void game_over(joueur_t *j) {
 }
 
 /*----------Inventaire-----------*/
-
-void afficherTexte(SDL_Renderer *renderer, TTF_Font *font, const char *texte, int x, int y) {
+int afficherTexte(SDL_Renderer *renderer, TTF_Font *font, const char *texte, int x, int y) {
     SDL_Color couleur = {255, 255, 255};
-    SDL_Surface *surface = TTF_RenderText_Solid(font, texte, couleur);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_Rect dst = {x, y, surface->w, surface->h};
-    SDL_RenderCopy(renderer, texture, NULL, &dst);
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
+    int current_y = y;
+    
+    char *texte_copie = strdup(texte);
+    char *ligne_start = texte_copie;
+    char *ptr = texte_copie;
+    
+    while (*ptr) {
+        // Détection des sauts de ligne (vrais \n ou séquence \n)
+        if ((*ptr == '\n') || (ptr[0] == '\\' && ptr[1] == 'n')) {
+            // Temporairement termine la ligne
+            char old_char = *ptr;
+            *ptr = '\0';
+            
+            // Affiche la ligne si elle n'est pas vide
+            if (strlen(ligne_start) > 0) {
+                SDL_Surface *surface = TTF_RenderText_Solid(font, ligne_start, couleur);
+                if (surface) {
+                    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+                    if (texture) {
+                        SDL_Rect dst = {x, current_y, surface->w, surface->h};
+                        SDL_RenderCopy(renderer, texture, NULL, &dst);
+                        SDL_DestroyTexture(texture);
+                    }
+                    current_y += 25;
+                    SDL_FreeSurface(surface);
+                }
+            }
+            
+            // Restaure le caractère et avance
+            *ptr = old_char;
+            ligne_start = ptr + ((old_char == '\n') ? 1 : 2);
+            ptr = ligne_start;
+            
+            continue;
+        }
+        
+        ptr++;
+    }
+    
+    // Affiche le reste du texte après le dernier saut de ligne
+    if (strlen(ligne_start) > 0) {
+        SDL_Surface *surface = TTF_RenderText_Solid(font, ligne_start, couleur);
+        if (surface) {
+            SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+            if (texture) {
+                SDL_Rect dst = {x, current_y, surface->w, surface->h};
+                SDL_RenderCopy(renderer, texture, NULL, &dst);
+                SDL_DestroyTexture(texture);
+            }
+            SDL_FreeSurface(surface);
+        }
+    }
+    current_y += 25;
+    free(texte_copie);
+    return current_y;
 }
 
 void utiliserObjetSurMecha(int objet_id, mechas_joueur_t *mecha, joueur_t *j, char *message_buffer) {
     switch (objet_id) {
         case 0: // Carburant
             if (j->inventaire->carburant > 0 && mecha->pv > 0 && mecha->pv < mecha->pv_max) {
-                mecha->pv += 20;
+                mecha->pv += 50;
                 if (mecha->pv > mecha->pv_max) mecha->pv = mecha->pv_max;
                 j->inventaire->carburant--;
                 strcpy(message_buffer, "Mecha soigne avec carburant.");
@@ -1268,10 +1316,10 @@ void utiliserObjetSurMecha(int objet_id, mechas_joueur_t *mecha, joueur_t *j, ch
     }
 }
 
-void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, mechas_joueur_t mecha_j, int *quitter_total) {
+void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, mechas_joueur_t* mecha_j, int *quitter_total) {
     SDL_Event event;
     int quitter = 0;
-    int id = mecha_j.id_mechas;
+    int id = mecha_j->id_mechas;
     if (id <= 0 || id > NB_MECHAS) return;
 
     while (!quitter && !*quitter_total) {
@@ -1284,7 +1332,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         rectangle_t fondNoir, fondBleu;
         creer_rectangle(&fondNoir, 440, 700, game.dms_win.x + game.dms_win.w - 460, 40, 0, 0, 0, 180, "");
         creer_rectangle(&fondBleu, 420, 680, game.dms_win.x + game.dms_win.w - 450, 50, 0, 0, 255, 220, "");
-        draw_all_rect(2, &fondNoir, &fondBleu);
+        draw_all_rect(2, &fondNoir,&fondBleu);
 
         int fondX = fondNoir.rect.x;
 
@@ -1317,8 +1365,8 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
         SDL_RenderFillRect(game.renderer, &pvBg);
 
-        int pv = mecha_j.pv;
-        int pv_max = mecha_j.pv_max;
+        int pv = mecha_j->pv;
+        int pv_max = mecha_j->pv_max;
         int largeur = (pv_max > 0) ? (200 * pv / pv_max) : 0;
         SDL_Rect pvFill = { fondX + 130, 130, largeur, 16 };
 
@@ -1340,35 +1388,32 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         int y_info = 220;
 
         sprintf(buffer, "Type : %s", mecha[id - 1].type);
-        afficherTexte(game.renderer, game.police, buffer, fondX + 30, y_info);
-        y_info += 40;
+        y_info=afficherTexte(game.renderer, game.police, buffer, fondX + 30, y_info);
 
-        sprintf(buffer, "Evolution : niveau %d", mecha[id - 1].niveau_evolution);
-        afficherTexte(game.renderer, game.police, buffer, fondX + 30, y_info);
-        y_info += 40;
+        sprintf(buffer, "Niveau : %d", mecha_j->niveau);
+        y_info=afficherTexte(game.renderer, game.police, buffer, fondX + 30, y_info);
 
-        afficherTexte(game.renderer, game.police, "Description :", fondX + 30, y_info);
-        y_info += 30;
+        y_info=afficherTexte(game.renderer, game.police, "Description :", fondX + 30, y_info);
 
-        afficherTexte(game.renderer, game.police, mecha[id - 1].description, fondX + 30, y_info);
-        y_info += 50;
+        y_info=afficherTexte(game.renderer, game.police, mecha[id - 1].description, fondX + 30, y_info);
 
-        afficherTexte(game.renderer, game.police, "Attaques :", fondX + 30, y_info);
-        y_info += 30;
+        sprintf(buffer,"Attaque 1: %s \nDegats: %d \nPrecision: %d\nDescription: %s",
+        attaque[mecha_j->attaque_1 -1].nom,attaque[mecha_j->attaque_1 -1].degats,attaque[mecha_j->attaque_1 -1].precision
+        ,attaque[mecha_j->attaque_1 -1].description);
+        y_info=afficherTexte(game.renderer, game.police,buffer, fondX + 50, y_info);
+         y_info += 25;
+        sprintf(buffer,"Attaque 2: %s \nDegats: %d \nPrecision: %d\nDescription: %s",
+        attaque[mecha_j->attaque_2 -1].nom,attaque[mecha_j->attaque_2 -1].degats,attaque[mecha_j->attaque_2 -1].precision
+        ,attaque[mecha_j->attaque_1 -1].description);
+        y_info=afficherTexte(game.renderer, game.police, buffer, fondX + 50, y_info);
+         y_info += 25;
 
-        for (int i = 0; i < mecha[id - 1].nb_attaques; i++) {
-            int id_attaque = mecha[id - 1].liste_attaque[i] - 1;
-            if (id_attaque >= 0 && id_attaque < NB_ATTAQUES) {
-                afficherTexte(game.renderer, game.police, attaque[id_attaque].nom, fondX + 50, y_info);
-                y_info += 25;
-            }
-        }
 
         // Footer "Appuyez sur 'A' pour revenir" centré
         const char *footer = "Appuyez sur 'A' pour revenir";
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
-        afficherTexte(game.renderer, game.police, footer, footerX, 700);
+        y_info=afficherTexte(game.renderer, game.police, footer, footerX, 700);
 
         SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
         SDL_RenderPresent(game.renderer);
@@ -1486,7 +1531,7 @@ void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, gam
                         quitter = 1;
                         break;
                     case SDLK_RETURN:
-                        afficherInfosMecha(j, sprite_p, pnj_sprite, j->mechas_joueur[selection], quitter_total);
+                        afficherInfosMecha(j, sprite_p, pnj_sprite, &(j->mechas_joueur[selection]), quitter_total);
                         break;
                     case SDLK_UP:
                         if (selection > 0) selection--;
@@ -1627,7 +1672,7 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
 
     const char *noms[] = {"Carburant", "Rappel", "Mechaball", "Repousse"};
     const char *descriptions[] = {
-        "Rend 50% des PV",
+        "Soigne de 50 PV",
         "Ranime un mecha K.O.",
         "Permet de capturer un mecha",
         "Repousse les combats"
