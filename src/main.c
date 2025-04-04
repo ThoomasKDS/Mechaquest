@@ -144,7 +144,7 @@ int main() {
                             if(!afficher_menu_pause(&parametres)) running = 0;
                         } 
                         if (event.key.keysym.sym == SDLK_i){
-                            afficherInventaire(&j, &sprite_p, pnj_sprite, &game/*, &repousse*/);
+                            afficherInventaire(&j, &sprite_p, pnj_sprite, &game, &repousse);
                         } 
                         if(event.key.keysym.sym == SDLK_a){
                             if(j.numMap == 0 &&  game.mat[game.mat_active][j.y][j.x+1] == PC){
