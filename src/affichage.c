@@ -1201,7 +1201,7 @@ void game_over(joueur_t *j) {
             if (event.type == SDL_QUIT) {
                 running = 0;
             } else if (event.type == SDL_KEYDOWN) {
-                if (SDL_GetKeyboardState(NULL)[SDL_SCANCODE_A]) {
+                if (event.key.keysym.sym  == SDLK_a) {
                     running = 0;
                 }
             }
