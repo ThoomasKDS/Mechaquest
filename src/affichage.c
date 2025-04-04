@@ -1209,7 +1209,6 @@ void game_over(joueur_t *j) {
 
         if (running) {
             // Efface l'écran et dessine l'image
-            SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
             SDL_RenderClear(game.renderer);
             draw_background();
             SDL_RenderPresent(game.renderer);
@@ -1267,7 +1266,6 @@ int afficherTexte(SDL_Renderer *renderer, TTF_Font *font, const char *texte, int
             *ptr = old_char;
             ligne_start = ptr + ((old_char == '\n') ? 1 : 2);
             ptr = ligne_start;
-            
             continue;
         }
         
@@ -1640,6 +1638,7 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
     int quitter_total = 0;
     SDL_Event event;
     char buffer[100];
+    int verif = 0;
 
     const char *noms[] = {"Carburant", "Rappel", "Mechaball", "Repousse"};
     const char *descriptions[] = {
@@ -1701,7 +1700,6 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
         int footerX = fondX + (440 - footerWidth) / 2;
         afficherTexte(game->renderer, game->police, footer, footerX, 670);
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-        SDL_RenderPresent(game->renderer);
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT || 
@@ -1729,28 +1727,27 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
                                 int msgWidth = strlen(msg) * 9;
                                 int msgX = fondX + (440 - msgWidth) / 2;
                                 afficherTexte(game->renderer, game->police, msg, msgX, 620);
-                                SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-                                SDL_RenderPresent(game->renderer);
-                                SDL_Delay(1000);
+                                verif = 1;
                             }
-                        } else {
-                            
+                        } else { 
                             const char *msg = "Utilisable uniquement en combat";
                             int msgWidth = strlen(msg) * 9;
                             int msgX = fondX + (440 - msgWidth) / 2;
                             afficherTexte(game->renderer, game->police, msg, msgX, 620);
-                            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-                            SDL_RenderPresent(game->renderer);
-                            SDL_Delay(1000);
+                            verif = 1;
                         }
                         break;
                 }
             }
         }
+        
 
+        SDL_RenderPresent(game->renderer);
+        if(verif)   SDL_Delay(1000);
         Uint32 frameTime = SDL_GetTicks() - frameStart;
         if (1000 / 60 > frameTime)
             SDL_Delay((1000 / 60) - frameTime);
+        verif = 0;
     }
 
     return 0;
