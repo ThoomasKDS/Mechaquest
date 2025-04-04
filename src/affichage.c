@@ -1577,7 +1577,7 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
         afficherTexte(game->renderer, game->police, footer, footerX, 670);
-
+        SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderPresent(game->renderer);
 
         while (SDL_PollEvent(&event)) {
@@ -1618,8 +1618,8 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
     int quitter_total = 0;
     SDL_Event event;
     char buffer[100];
-    char msg[256] = "";
-    Uint32 msg_timer = 0; // Timer pour effacer automatiquement les messages
+    char msg[128] = "";
+    Uint32 msg_timer = 0;
 
     const char *noms[] = {"Carburant", "Rappel", "Mechaball", "Repousse"};
     const char *descriptions[] = {
@@ -1641,20 +1641,14 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
         SDL_RenderClear(game->renderer);
         draw_all(j, sprite_p, pnj_sprite);
 
-        // Fond noir seulement
         rectangle_t fondNoir;
         creer_rectangle(&fondNoir, 440, 700, game->dms_win.x + game->dms_win.w - 460, 40, 0, 0, 0, 180, "");
         draw_all_rect(1, &fondNoir);
 
         int fondX = fondNoir.rect.x;
 
-        // Titre
-        const char *titre = "Inventaire";
-        int titreWidth = strlen(titre) * 9;
-        int titreX = fondX + (440 - titreWidth) / 2;
-        afficherTexte(game->renderer, game->police, titre, titreX, 60);
+        afficherTexte(game->renderer, game->police, "Inventaire", fondX + 140, 60);
 
-        // Liste des objets
         for (int i = 0; i < NB_OBJET - 1; i++) {
             rectangle_t itemRect;
             creer_rectangle(&itemRect, 420, 110, fondX + 10, 90 + i * 130, 0, 0, 180, 255, "");
@@ -1676,20 +1670,20 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
             afficherTexte(game->renderer, game->police, buffer, fondX + 360, 105 + i * 130);
         }
 
-        // Footer centré
+        // Footer
         const char *footer = "Appuyez sur 'A' pour le MechaDex";
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
         afficherTexte(game->renderer, game->police, footer, footerX, 670);
 
-        // Message temporaire s'il existe
+        // Affichage du message s'il existe (sans fond noir)
         if (strlen(msg) > 0) {
             int msgWidth = strlen(msg) * 9;
             int msgX = fondX + (440 - msgWidth) / 2;
             afficherTexte(game->renderer, game->police, msg, msgX, 620);
 
             if (SDL_GetTicks() - msg_timer > 2000) {
-                msg[0] = '\0'; // Effacer après 2 secondes
+                msg[0] = '\0'; // Supprimer après 2 secondes
             }
         }
 
@@ -1698,8 +1692,7 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT || 
-                (event.type == SDL_KEYDOWN &&
-                (event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_i))) {
+                (event.type == SDL_KEYDOWN && (event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_i))) {
                 quitter = 1;
                 quitter_total = 1;
             } else if (event.type == SDL_KEYDOWN) {
@@ -1714,8 +1707,6 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
                         if (selection < NB_OBJET - 1) selection++;
                         break;
                     case SDLK_RETURN:
-                        msg[0] = '\0'; // reset message à chaque action
-
                         if (selection == 0 || selection == 1) { // Carburant ou Rappel
                             if (*quantites[selection] > 0 && j->nb_mechas > 0) {
                                 afficherSelectionMecha(j, sprite_p, pnj_sprite, game, selection, &quitter_total);
@@ -1728,11 +1719,10 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
                                 *repousse += 50;
                                 j->inventaire->repousse--;
                                 strcpy(msg, "Repousse utilisé avec succès !");
-                                msg_timer = SDL_GetTicks();
                             } else {
                                 strcpy(msg, "Aucun repousse disponible.");
-                                msg_timer = SDL_GetTicks();
                             }
+                            msg_timer = SDL_GetTicks();
                         } else { // Mechaball
                             strcpy(msg, "Utilisable uniquement en combat.");
                             msg_timer = SDL_GetTicks();
