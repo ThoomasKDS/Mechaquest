@@ -41,6 +41,7 @@ int main() {
     int running = 1,jeux = 1;
     int indice_combat = -1;
     int last_case = 0;
+    int repousse = 0;
     SDL_Event event;
     Uint32 frameStart;  
     int frameTime;
@@ -143,7 +144,7 @@ int main() {
                             if(!afficher_menu_pause(&parametres)) running = 0;
                         } 
                         if (event.key.keysym.sym == SDLK_i){
-                            afficherInventaire(&j, &sprite_p, pnj_sprite, &game);
+                            afficherInventaire(&j, &sprite_p, pnj_sprite, &game/*, &repousse*/);
                         } 
                         if(event.key.keysym.sym == SDLK_a){
                             if(j.numMap == 0 &&  game.mat[game.mat_active][j.y][j.x+1] == PC){
@@ -196,11 +197,11 @@ int main() {
                         jeu_libre(&j, &sprite_p, pnj_sprite,keys);
                     
                     
-                    obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p);
+                    obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, &repousse);
                     animation(&j, &sprite_p);
                     
                     
-                    if(spawn_mecha(&j, obj_case,&mecha_sauvage)) {
+                    if((repousse <= 0) && (spawn_mecha(&j, obj_case,&mecha_sauvage))) {
                         afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
                          if(combat_sauvage(&j, &mecha_sauvage) == FAUX) game_over(&j);
                     }

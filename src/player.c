@@ -49,12 +49,16 @@ const int FRAME = 15 ;      //Nombre d'image dans l'animation
  * @warning Cette fonction ne doit pas être appelée si le joueur est déjà en animation (`j->moving != 0`).
  *          Assurez-vous que les constantes (`RIEN`, `JOUEUR`, `TPMAP1`, etc.) soient définies avant utilisation.
  */
-int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p) {
+int deplacement(int taille_x, int taille_y, const Uint8 *keys, joueur_t * j, int * last_case, SDL_Rect *sprite_p, int *repousse) {
 
 
     int obj_case = RIEN;
     if (!j->moving){  // si joueur deja entrain de se deplacer on ne fait rien
 
+        // si le joueur a utilisé l'objet repousse, à vhaque déplacement on lui en retire 1.
+        if(*repousse > 0)
+            (*repousse)--;
+        
         int dx = 0, dy = 0;
 
         //direction du deplacement

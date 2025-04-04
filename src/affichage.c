@@ -1078,12 +1078,6 @@ int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, cha
         draw_rect(&pseudoRect, draw_text_center);
         draw_rect(&textRect, draw_text_left_middle);
         draw_rect(&infoRect, draw_text_center);
-        if(choix) {
-            draw_mecha(&mecha[0], largeurEcran / 4 -  largeurEcran/6, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
-            draw_mecha(&mecha[2], (largeurEcran / 2) -  ((largeurEcran/6)) / 2, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
-            draw_mecha(&mecha[4], (largeurEcran / 4)*3, (hauteurEcran / 2) - ((hauteurEcran / 4) / 2), hauteurEcran / 4, largeurEcran/6, 0);
-
-        }
         SDL_RenderPresent(game.renderer);
         
         int delay = (dialogue[index] == '.' || dialogue[index] == '!' || dialogue[index] == '?') ? 500 : 10;
@@ -1334,10 +1328,9 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         draw_all(j, sprite_p, pnj_sprite);
 
         // Fond noir + bleu avec tes rectangles
-        rectangle_t fondNoir, fondBleu;
+        rectangle_t fondNoir;
         creer_rectangle(&fondNoir, 440, 700, game.dms_win.x + game.dms_win.w - 460, 40, 0, 0, 0, 180, "");
-        creer_rectangle(&fondBleu, 420, 680, game.dms_win.x + game.dms_win.w - 450, 50, 0, 0, 255, 220, "");
-        draw_all_rect(2, &fondNoir,&fondBleu);
+        draw_all_rect(1, &fondNoir);
 
         int fondX = fondNoir.rect.x;
 
@@ -1402,7 +1395,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
          y_info += 25;
         sprintf(buffer,"Attaque 2: %s \nDegats: %d \nPrecision: %d\nDescription: %s",
         attaque[mecha_j->attaque_2 -1].nom,attaque[mecha_j->attaque_2 -1].degats,attaque[mecha_j->attaque_2 -1].precision
-        ,attaque[mecha_j->attaque_1 -1].description);
+        ,attaque[mecha_j->attaque_2 -1].description);
         y_info=afficherTexte(game.renderer, game.police, buffer, fondX + 50, y_info);
          y_info += 25;
 
@@ -1465,7 +1458,7 @@ void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, gam
 
         for (int i = 0; i < NB_MECHAS_INVENTAIRE && i < j->nb_mechas; i++) {
             SDL_Rect mechaRect = {fondX + 10, 90 + i * 130, 420, 110};
-            SDL_SetRenderDrawColor(game->renderer, 0, 0, 200, 255);
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 200);
             SDL_RenderFillRect(game->renderer, &mechaRect);
 
             if (i == selection) {
@@ -1563,7 +1556,7 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
 
         for (int i = 0; i < j->nb_mechas && i < NB_MECHAS_INVENTAIRE; i++) {
             SDL_Rect mechaRect = {fondX + 10, 90 + i * 130, 420, 110};
-            SDL_SetRenderDrawColor(game->renderer, 0, 0, 200, 255);
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 200);
             SDL_RenderFillRect(game->renderer, &mechaRect);
 
             if (i == selection) {
@@ -1670,10 +1663,9 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
         draw_all(j, sprite_p, pnj_sprite);
 
         // Fond
-        rectangle_t fondNoir, fondBleu;
+        rectangle_t fondNoir;
         creer_rectangle(&fondNoir, 440, 700, game->dms_win.x + game->dms_win.w - 460, 40, 0, 0, 0, 180, "");
-        creer_rectangle(&fondBleu, 420, 680, game->dms_win.x + game->dms_win.w - 450, 50, 0, 0, 255, 220, "");
-        draw_all_rect(2, &fondNoir, &fondBleu);
+        draw_all_rect(1, &fondNoir );
 
         int fondX = fondNoir.rect.x;
 
@@ -1685,7 +1677,7 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
 
         for (int i = 0; i < NB_OBJET - 1; i++) {
             rectangle_t itemBox;
-            creer_rectangle(&itemBox, 420, 110, fondX + 10, 90 + i * 130, 0, 0, 180, 255, "");
+            creer_rectangle(&itemBox, 420, 110, fondX + 10, 90 + i * 130, 0, 0, 0, 200, "");
             draw_all_rect(1, &itemBox);
 
             if (i == selection) {
