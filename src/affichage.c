@@ -1594,6 +1594,10 @@ void game_over(joueur_t *j) {
     int running = 1;
     SDL_Event event;
 
+    for(int i = 0; i <4; i++) {
+        j->mechas_joueur[i].pv = j->mechas_joueur[i].pv_max;
+    }
+
     game.mat_active = 9;
     
     while (running) {

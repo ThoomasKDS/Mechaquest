@@ -205,7 +205,9 @@ int main() {
                         
                         if(res_spawn == 1){
                             afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
-                            if(combat_sauvage(&j, &mecha_sauvage) == FAUX) game_over(&j);
+                            if(combat_sauvage(&j, &mecha_sauvage) == FAUX){
+                                game_over(&j);
+                            }
                         }
                         else {
                             for(int i = 0; i < 54; i++) {
