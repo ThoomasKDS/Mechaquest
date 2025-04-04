@@ -270,9 +270,7 @@ int premier_combat_musk(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, c
         }
         if(j->numMap == 2 && j->x+1 == pnj[IRON_MUSK_DEB].x && j->y == pnj[IRON_MUSK_DEB].y && j->derniere_touche == 2){
             afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_DEB].pseudo, pnj[IRON_MUSK_DEB].dialogueDebut,false);
-            
-            //combat(j,&pnj[IRON_MUSK_DEB]);
-
+            combat_pnj(j, &pnj[IRON_MUSK_DEB]);
             afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_DEB].pseudo, pnj[IRON_MUSK_DEB].dialogueFin,false);
             pnj[IRON_MUSK_DEB].etat = 1;
             sauvegarde_pnj(&pnj[IRON_MUSK_DEB],pnj[IRON_MUSK_DEB].id_pnj,j->pseudo);
@@ -426,17 +424,21 @@ int combat_final(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Ui
             afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_FIN].pseudo, pnj[IRON_MUSK_FIN].dialogueDebut,false);
             printf("%s\n",pnj[IRON_MUSK_FIN].dialogueDebut);
             
-            //combat avec iron musk
+            if(combat_pnj(j, &pnj[IRON_MUSK_FIN])){
+                afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_FIN].pseudo, pnj[IRON_MUSK_FIN].dialogueFin,false);
+                printf("%s\n",pnj[IRON_MUSK_FIN].dialogueFin);
+                copie_mechas(j,&pnj[IRON_MUSK_FIN].mechas_joueur[0]);
+                sauvegarde_partie(j,j->pseudo);
+                pnj[IRON_MUSK_FIN].etat = 1;
+                sauvegarde_pnj(&pnj[IRON_MUSK_FIN],pnj[IRON_MUSK_FIN].id_pnj,j->pseudo);
+
+                j->pointSauvegarde = 4;
+            }
+            else {
+                game_over(j);
+            }
             
-            afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_FIN].pseudo, pnj[IRON_MUSK_FIN].dialogueFin,false);
-            printf("%s\n",pnj[IRON_MUSK_FIN].dialogueFin);
-            copie_mechas(j,&pnj[IRON_MUSK_FIN].mechas_joueur[0]);
-            sauvegarde_partie(j,j->pseudo);
-            pnj[IRON_MUSK_FIN].etat = 1;
-            sauvegarde_pnj(&pnj[IRON_MUSK_FIN],pnj[IRON_MUSK_FIN].id_pnj,j->pseudo);
-
-            j->pointSauvegarde = 4;
-
+            
         }
     }
     return OK;
