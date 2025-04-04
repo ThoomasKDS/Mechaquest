@@ -85,6 +85,7 @@ int copie_mechas(joueur_t *j,mechas_joueur_t *mecha){
     j->mechas_joueur[j->nb_mechas].utilisation_1 = mecha->utilisation_1;
     j->mechas_joueur[j->nb_mechas].utilisation_2 = mecha->utilisation_2;
     j->nb_mechas+=1;
+
     return OK;
 }
 

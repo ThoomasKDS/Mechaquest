@@ -621,7 +621,6 @@ int utilisation_mechaball(joueur_t * joueur, mechas_joueur_t *ordi, int *actif) 
             strcat(message, ".");
             afficher_dialogue_combat(  &(joueur->mechas_joueur[*actif]), ordi, "Systeme", message,false);
             copie_mechas(joueur, ordi);
-            joueur->nb_mechas++;
             return (CAPTURE);
         }
         else {
@@ -680,7 +679,7 @@ int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_d
    // int ancien_pv = mecha_def->pv;
     float att_degat[2] = {attaque[mecha_att->attaque_1].degats, attaque[mecha_att->attaque_2].degats};
     float stat_att_mecha = mecha_att->attaque;
-    char *mecha_att_type[2] = {attaque[mecha_att->attaque_1].type, attaque[mecha_att->attaque_2].type};
+    char *mecha_att_type[2] = {attaque[mecha_att->attaque_1 -1].type, attaque[mecha_att->attaque_2- 1].type};
     char *mecha_def_type = mecha[mecha_def->id_mechas-1].type;
     char *nom_attaque[2] = {attaque[mecha_att->attaque_1-1].nom, attaque[mecha_att->attaque_2-1].nom};
     int precision[2] = {attaque[mecha_att->attaque_1].precision, attaque[mecha_att->attaque_2].precision};
@@ -1424,6 +1423,7 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
             }
         } else if (pnj->mechas_joueur[actif_pnj].pv == 0) {
             int nouveau_pnj = -1;
+            level_mechas(joueur,&pnj->mechas_joueur[actif_pnj]);
             for (int i = 0; i < 4; i++) {
                 if (existe_pnj[i] && pnj->mechas_joueur[i].pv > 0) {
                     nouveau_pnj = i;
@@ -1441,10 +1441,12 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
     
     if (joueur->mechas_joueur[actif_joueur].pv == 0) { 
         afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez perdu !", false);
+        for(int i = 0;i<pnj->nb_mechas;i++) pnj->mechas_joueur[i].pv = pnj->mechas_joueur[i].pv_max;
         game.mat_active = save_map_active;
         return FAUX;
     }
     pnj->etat = 1;
+    sauvegarde_pnj(pnj,pnj->id_pnj,joueur->pseudo);
     afficher_dialogue_combat(  &(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Vous avez gagne !",false);
     game.mat_active = save_map_active;
     return VRAI;
@@ -1471,7 +1473,7 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
  *
  * @note Cette fonction appelle `tour_joueur()` pour le tour du joueur et `attaque_ordi_sauvage()` pour le tour du Mecha sauvage.
  */
-void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
+int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
     int save_map_active = game.mat_active;
     init_rect_bas();
     game.mat_active = 6;
@@ -1513,14 +1515,23 @@ void combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
             }
         }
     }while(verif && mecha_sauvage->pv > 0 && res == OK);
-    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez perdu !",false);
+    if(mecha_sauvage->pv != 0 && joueur->mechas_joueur[actif].pv == 0) {
+        afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez perdu !",false);
+        return FAUX;
+    }
     else if(mecha_sauvage->pv == 0 && joueur->mechas_joueur[actif].pv != 0){
         level_mechas(joueur,mecha_sauvage);
         afficher_dialogue_combat(  &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous avez gagne !",false);
+        game.mat_active = save_map_active;
+        return VRAI;
     }
-    else if(res == FUITE)afficher_dialogue_combat( &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous prennez la fuite!",false);
-    
+    else if(res == FUITE){
+        afficher_dialogue_combat( &(joueur->mechas_joueur[actif]), mecha_sauvage, "Systeme", "Vous prennez la fuite!",false);
+        game.mat_active = save_map_active;
+        return VRAI;
+    }
     game.mat_active = save_map_active;
+    return VRAI;
 }
 
 
