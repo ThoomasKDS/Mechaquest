@@ -1,48 +1,39 @@
-# Nom du projet (exécutable généré)
-TARGET = mechaquest
-
-# Compilateur
+# === Compilateur & options ===
 CC = gcc
+CFLAGS = -Wall -Wextra -g -I../lib
 
-# Drapeaux de compilation
-CFLAGS = -std=c99 -Wall -Ilib \
-         $(shell sdl2-config --cflags) \
-         $(shell pkg-config --cflags SDL2_image SDL2_mixer SDL2_ttf)
+# === Répertoires ===
+TEST_DIR = ../test
 
-# Drapeaux de l'éditeur de liens
-LFLAGS = -lm $(shell pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf)
+# === Fichiers source de test ===
+TESTS = \
+    test_fonction_utilisation_carburant.c \
+    test_fonction_utilisation_rappel.c \
+    test_fonction_algo_attaque.c
 
-# Répertoires
-SRCDIR = src
-INCDIR = lib
-OBJDIR = obj
-BINDIR = bin
+# === Générer les noms d'exécutables ===
+EXECUTABLES = $(TESTS:.c=)
 
-# Liste des fichiers source et objets
-SOURCES = $(wildcard $(SRCDIR)/*.c)
-OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+# === Cibles individuelles ===
+all: $(EXECUTABLES)
 
-# Règle par défaut : compilation complète
-all: $(BINDIR)/$(TARGET)
+# Règle générique pour compiler chaque fichier .c en exécutable
+%: $(TEST_DIR)/%.c
+	$(CC) $(CFLAGS) $< -o $@
 
-# Création de l'exécutable
-$(BINDIR)/$(TARGET): $(OBJECTS)
-	@mkdir -p $(BINDIR)
-	@$(CC) $^ $(LFLAGS) -o $@
+# === Exécuter tous les tests ===
+test: all
+	@echo "\n--- Exécution de tous les tests ---"
+	@./test_fonction_utilisation_carburant
+	@./test_fonction_utilisation_rappel
+	@./test_fonction_algo_attaque
 
-# Compilation des fichiers .c en fichiers .o
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(OBJDIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+# === Déboguer un test spécifique ===
+debug: $(DEBUG_TARGET)
+	gdb ./$(DEBUG_TARGET)
 
-# Nettoyage des fichiers objets
-.PHONY: clean
+# === Nettoyer les exécutables ===
 clean:
-	@rm -rf $(OBJDIR)/*.o
-	@echo "Cleanup complete: Object files removed."
+	rm -f $(EXECUTABLES)
 
-# Suppression des exécutables
-.PHONY: remove
-remove: clean
-	@rm -rf $(BINDIR)/$(TARGET)
-	@echo "Executable removed: $(BINDIR)/$(TARGET)"
+.PHONY: all test clean debug
