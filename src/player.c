@@ -204,7 +204,7 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
  * @warning Vérifier soigneusement les bornes des tableaux (`zone`, `mecha`, `attaque`) pour éviter tout accès hors limites.
  */
 int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
-    if(obj_case <= Z1 && obj_case >= Z10) {     //Z1 => Z10 nombres negatifs
+    if(obj_case <= Z1 && obj_case >= Z10 && obj_case != Z8) {     //Z1 => Z10 nombres negatifs
         int i;
         j->proba_combat += 5;
         int n = rand() % 100;
@@ -229,6 +229,20 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
             mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
             return 1;
         }
+    }
+    if(obj_case == Z8) {
+        mecha_sauvage->id_mechas = 23;
+        mecha_sauvage->niveau = 100;
+        mecha_sauvage->pv_max = 300;
+        mecha_sauvage->pv = mecha_sauvage->pv_max;
+        mecha_sauvage->attaque = 170;
+        mecha_sauvage->defense = 170;
+        mecha_sauvage->vitesse = 100;
+        mecha_sauvage->attaque_1 = 58;
+        mecha_sauvage->attaque_2 = 59;
+        mecha_sauvage->utilisation_1 = 17;
+        mecha_sauvage->utilisation_2 = 10;
+        return 2;
     }
     return 0;
 }

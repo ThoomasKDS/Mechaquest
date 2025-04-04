@@ -1385,7 +1385,12 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
     while (actif_joueur < 4 && joueur->mechas_joueur[actif_joueur].pv == 0) {
         actif_joueur++;
     }
-    
+    if(joueur->mechas_joueur[actif_joueur].id_mechas == 23) {
+        afficher_dialogue_combat(&(joueur->mechas_joueur[actif_joueur]), &(pnj->mechas_joueur[actif_pnj]), "Systeme", "Aeroshima ne peut pas combatre les fils d'Iron Musk.", false);
+        do {
+            changer_mecha(joueur, &actif_joueur, &(pnj->mechas_joueur[actif_pnj]));
+        } while (joueur->mechas_joueur[actif_joueur].id_mechas == 23);
+    }
     int combat_encours = 1;
     while (combat_encours && res == OK) {
         while (pnj->mechas_joueur[actif_pnj].pv > 0 && joueur->mechas_joueur[actif_joueur].pv > 0 && res == OK) {

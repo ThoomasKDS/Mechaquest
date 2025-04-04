@@ -42,6 +42,7 @@ int main() {
     int indice_combat = -1;
     int last_case = 0;
     int repousse = 0;
+    int res_spawn = 0;
     SDL_Event event;
     Uint32 frameStart;  
     int frameTime;
@@ -121,7 +122,6 @@ int main() {
             SDL_Rect pnj_sprite[NB_PNJ];
             for(int i =0; i < NB_PNJ;i++){
                 pnj_sprite[i] = create_obj(PX, 48, (pnj[i].x)*PX, (pnj[i].y) * PX - 24, PNJ, pnj[i].id_map - 1);
-
             }
             if(j.pointSauvegarde > 1){
                     game.mat[2][8][0] = TPMAP6;
@@ -200,10 +200,27 @@ int main() {
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, &repousse);
                     animation(&j, &sprite_p);
                     
-                    
-                    if((repousse <= 0) && (spawn_mecha(&j, obj_case,&mecha_sauvage))) {
-                        afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
-                         if(combat_sauvage(&j, &mecha_sauvage) == FAUX) game_over(&j);
+                    res_spawn = spawn_mecha(&j, obj_case,&mecha_sauvage);
+                    if((repousse <= 0) && res_spawn){
+                        
+                        if(res_spawn == 1){
+                            afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
+                            if(combat_sauvage(&j, &mecha_sauvage) == FAUX) game_over(&j);
+                        }
+                        else {
+                            for(int i = 0; i < 54; i++) {
+                                if(j.mechas_joueur[i].id_mechas == 23) {
+                                    res_spawn = 0;
+                                }
+                            }
+                            printf("res : %d\n",res_spawn);
+                            if(res_spawn) {
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Tiens, un mecha special ?",false);
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima a rejoint votre equipe !",false);
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima ne peut combatre que contre des mechas sauvages ou contre Iron Musk.",false);
+                                copie_mechas(&j, &mecha_sauvage);
+                            }
+                        }
                     }
                     indice_combat = detection_combat_pnj(&j);
                     
@@ -229,7 +246,7 @@ int main() {
                     if (FRAME_DELAY > frameTime) {
                         SDL_Delay(FRAME_DELAY - frameTime); // Attend le temps restant
                     }
-                }   
+                } 
             }
             sauvegarde_partie(&j,pseudo);
             free_mat(taille_x_mat, taille_y_mat);
