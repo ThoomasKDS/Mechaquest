@@ -1280,7 +1280,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         SDL_RenderClear(game.renderer);
         draw_all(j, sprite_p, pnj_sprite);
 
-        // Fond noir semi-transparent
+        // Fond noir + bleu avec tes rectangles
         rectangle_t fondNoir, fondBleu;
         creer_rectangle(&fondNoir, 440, 700, game.dms_win.x + game.dms_win.w - 460, 40, 0, 0, 0, 180, "");
         creer_rectangle(&fondBleu, 420, 680, game.dms_win.x + game.dms_win.w - 450, 50, 0, 0, 255, 220, "");
@@ -1294,17 +1294,10 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         int titreX = fondX + (440 - titreWidth) / 2;
         afficherTexte(game.renderer, game.police, titre, titreX, 60);
 
-        // Image du mecha
-        SDL_Rect imgRect = { fondX + 30, 100, 80, 80 };
-        char chemin[64];
-        sprintf(chemin, "img/mechas/%dD.png", id);
-        SDL_Texture *img = charger_texture(chemin);
-        if (img) {
-            SDL_RenderCopy(game.renderer, img, NULL, &imgRect);
-            SDL_DestroyTexture(img);
-        }
+        // ➔ Image du mecha (utilisation de draw_mecha ici)
+        draw_mecha(&mecha[id - 1], fondX + 30, 100, 80, 80, 0);
 
-        // RECTANGLE sous nom + PV
+        // Rectangle noir sous nom + PV
         rectangle_t rectNomPV;
         creer_rectangle(&rectNomPV, 280, 100, fondX + 120, 90, 0, 0, 0, 180, "");
         draw_all_rect(1, &rectNomPV);
@@ -1320,8 +1313,8 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         int pv = mecha_j.pv;
         int pv_max = mecha_j.pv_max;
         int largeur = (pv_max > 0) ? (200 * pv / pv_max) : 0;
-        SDL_Rect pvFill = { fondX + 130, 130, largeur, 16 };
 
+        SDL_Rect pvFill = { fondX + 130, 130, largeur, 16 };
         if (pv <= 0)
             SDL_SetRenderDrawColor(game.renderer, 200, 0, 0, 255);
         else if (pv < pv_max / 3)
@@ -1330,12 +1323,12 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
             SDL_SetRenderDrawColor(game.renderer, 0, 255, 0, 255);
         SDL_RenderFillRect(game.renderer, &pvFill);
 
-        // RECTANGLE sous toutes les infos
+        // Rectangle sous les infos
         rectangle_t rectInfos;
         creer_rectangle(&rectInfos, 400, 460, fondX + 20, 200, 0, 0, 0, 150, "");
         draw_all_rect(1, &rectInfos);
 
-        // Infos
+        // Infos du Mecha
         char buffer[256];
         int y_info = 220;
 
@@ -1364,7 +1357,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
             }
         }
 
-        // Footer "Appuyez sur 'A' pour revenir" centré
+        // Footer centré
         const char *footer = "Appuyez sur 'A' pour revenir";
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
@@ -1373,6 +1366,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
         SDL_RenderPresent(game.renderer);
 
+        // Gestion événements
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT ||
                 (event.type == SDL_KEYDOWN &&
@@ -1384,11 +1378,13 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
                 quitter = 1;
         }
 
+        // Limitation FPS
         Uint32 frameTime = SDL_GetTicks() - frameStart;
         if (1000 / 60 > frameTime)
             SDL_Delay((1000 / 60) - frameTime);
     }
 }
+
 
 
 
@@ -1404,44 +1400,33 @@ void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, gam
         SDL_RenderClear(game->renderer);
         draw_all(j, sprite_p, pnj_sprite);
 
-        // FONDS
-        rectangle_t fondNoir, fondBleu;
+        // Fond
+        rectangle_t fondNoir;
         creer_rectangle(&fondNoir, 440, 700, game->dms_win.x + game->dms_win.w - 460, 40, 0, 0, 0, 180, "");
-        creer_rectangle(&fondBleu, 420, 680, game->dms_win.x + game->dms_win.w - 450, 50, 0, 0, 255, 220, "");
-        draw_all_rect(2, &fondNoir, &fondBleu);
+        draw_all_rect(1, &fondNoir);
 
         int fondX = fondNoir.rect.x;
 
-        // TITRE
+        // Titre
         const char *titre = "Mechadex";
         int titreWidth = strlen(titre) * 9;
         int titreX = fondX + (440 - titreWidth) / 2;
-        afficherTexte(game->renderer, game->police, titre, titreX, 60);
+        afficherTexte(game->renderer, game->police, titre, titreX, 50);
 
-        // AFFICHAGE DES MECHAS
         for (int i = 0; i < NB_MECHAS_INVENTAIRE && i < j->nb_mechas; i++) {
-            rectangle_t mechaBox;
-            creer_rectangle(&mechaBox, 420, 110, fondX + 10, 90 + i * 130, 0, 0, 200, 255, "");
-            draw_all_rect(1, &mechaBox);
+            SDL_Rect mechaRect = {fondX + 10, 90 + i * 130, 420, 110};
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 200, 255);
+            SDL_RenderFillRect(game->renderer, &mechaRect);
 
             if (i == selection) {
                 SDL_SetRenderDrawColor(game->renderer, 255, 255, 0, 255);
-                SDL_RenderDrawRect(game->renderer, &mechaBox.rect);
+                SDL_RenderDrawRect(game->renderer, &mechaRect);
             }
 
-            SDL_Rect imgRect = {fondX + 20, 100 + i * 130, 80, 80};
-            int id_mecha = j->mechas_joueur[i].id_mechas;
-            char chemin_img[64];
-            sprintf(chemin_img, "img/mechas/%dD.png", id_mecha);
-            SDL_Texture *img = charger_texture(chemin_img);
-            if (img) {
-                SDL_RenderCopy(game->renderer, img, NULL, &imgRect);
-                SDL_DestroyTexture(img);
-            } else {
-                SDL_SetRenderDrawColor(game->renderer, 0, 200, 0, 255);
-                SDL_RenderFillRect(game->renderer, &imgRect);
-            }
+            // ➔ Image du mecha
+            draw_mecha(&mecha[j->mechas_joueur[i].id_mechas - 1], fondX + 20, 100 + i * 130, 80, 80, 0);
 
+            // Texte
             strcpy(buffer, mecha[j->mechas_joueur[i].id_mechas - 1].nom);
             afficherTexte(game->renderer, game->police, buffer, fondX + 110, 105 + i * 130);
             afficherTexte(game->renderer, game->police, "PV:", fondX + 110, 135 + i * 130);
@@ -1465,7 +1450,7 @@ void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, gam
             SDL_RenderFillRect(game->renderer, &pvFill);
         }
 
-        // FOOTER
+        // Footer centré
         const char *footer = "Appuyez sur 'A' pour l'inventaire";
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
@@ -1505,6 +1490,7 @@ void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, gam
 }
 
 
+
 void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int objet_id, int *quitter_total) {
     int selection = 0;
     int quitter = 0;
@@ -1518,48 +1504,33 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
         SDL_RenderClear(game->renderer);
         draw_all(j, sprite_p, pnj_sprite);
 
-        // Fond
-        rectangle_t fondNoir, fondBleu;
-        creer_rectangle(&fondNoir, 440, 700, game->dms_win.x + game->dms_win.w - 460, 40, 0, 0, 0, 180, "");
-        creer_rectangle(&fondBleu, 420, 680, game->dms_win.x + game->dms_win.w - 450, 50, 0, 0, 255, 220, "");
-        draw_all_rect(2, &fondNoir, &fondBleu);
+        int fondX = game->dms_win.x + game->dms_win.w - 460;
+        rectangle_t fond;
+        creer_rectangle(&fond, 440, 700, fondX, 40, 0, 0, 0, 180, "");
+        draw_all_rect(1, &fond);
 
-        int fondX = fondNoir.rect.x;
+        afficherTexte(game->renderer, game->police, "Choix du Mecha", fondX + 140, 50);
 
-        // Titre
-        const char *titre = "Choix du Mecha";
-        int titreWidth = strlen(titre) * 9;
-        int titreX = fondX + (440 - titreWidth) / 2;
-        afficherTexte(game->renderer, game->police, titre, titreX, 60);
-
-        // Liste des mechas
         for (int i = 0; i < j->nb_mechas && i < NB_MECHAS_INVENTAIRE; i++) {
-            rectangle_t mechaBox;
-            creer_rectangle(&mechaBox, 420, 110, fondX + 10, 90 + i * 130, 0, 0, 200, 255, "");
-            draw_all_rect(1, &mechaBox);
+            SDL_Rect mechaRect = {fondX + 10, 90 + i * 130, 420, 110};
+            SDL_SetRenderDrawColor(game->renderer, 0, 0, 200, 255);
+            SDL_RenderFillRect(game->renderer, &mechaRect);
 
             if (i == selection) {
                 SDL_SetRenderDrawColor(game->renderer, 255, 255, 0, 255);
-                SDL_RenderDrawRect(game->renderer, &mechaBox.rect);
+                SDL_RenderDrawRect(game->renderer, &mechaRect);
             }
 
-            int id_mecha = j->mechas_joueur[i].id_mechas;
-            SDL_Rect imgRect = {fondX + 20, 100 + i * 130, 80, 80};
-            char chemin_img[64];
-            sprintf(chemin_img, "img/mechas/%dD.png", id_mecha);
-            SDL_Texture *img = charger_texture(chemin_img);
-            if (img) {
-                SDL_RenderCopy(game->renderer, img, NULL, &imgRect);
-                SDL_DestroyTexture(img);
-            }
+            // ➔ Image mecha
+            draw_mecha(&mecha[j->mechas_joueur[i].id_mechas - 1], fondX + 20, 100 + i * 130, 80, 80, 0);
 
-            sprintf(buffer, "Mecha #%d", id_mecha);
+            sprintf(buffer, "Mecha #%d", j->mechas_joueur[i].id_mechas);
             afficherTexte(game->renderer, game->police, buffer, fondX + 110, 105 + i * 130);
             afficherTexte(game->renderer, game->police, "PV:", fondX + 110, 135 + i * 130);
 
-            SDL_Rect pvBg = {fondX + 150, 138 + i * 130, 200, 16};
+            SDL_Rect pvBarBg = {fondX + 150, 138 + i * 130, 200, 16};
             SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
-            SDL_RenderFillRect(game->renderer, &pvBg);
+            SDL_RenderFillRect(game->renderer, &pvBarBg);
 
             int pvWidth = (int)(200.0 * j->mechas_joueur[i].pv / j->mechas_joueur[i].pv_max);
             SDL_Rect pvBar = {fondX + 150, 138 + i * 130, pvWidth, 16};
@@ -1579,11 +1550,11 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
             afficherTexte(game->renderer, game->police, message, textX, 610);
         }
 
-        // Footer
         const char *footer = "Appuyez sur 'A' pour revenir";
         int footerWidth = strlen(footer) * 9;
         int footerX = fondX + (440 - footerWidth) / 2;
         afficherTexte(game->renderer, game->police, footer, footerX, 670);
+
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderPresent(game->renderer);
 
@@ -1617,6 +1588,7 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
             SDL_Delay((1000 / 60) - frameTime);
     }
 }
+
 
 int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game) {
     int selection = 0;
@@ -1739,8 +1711,6 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
 
     return 0;
 }
-
-
 
 
 int affichage_pc(joueur_t *joueur) {
