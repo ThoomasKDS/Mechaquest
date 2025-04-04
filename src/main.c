@@ -143,6 +143,12 @@ int main() {
                         if (event.key.keysym.sym == SDLK_ESCAPE){
                             if(!afficher_menu_pause(&parametres)) running = 0;
                         } 
+                        if(event.key.keysym.sym == SDLK_a){
+                            if(j.numMap == 0 &&  game.mat[game.mat_active][j.y][j.x+1] == PC){
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite,"Systeme", "  Vous utilisez le pc.",false);
+                                affichage_pc(&j);
+                            }
+                        }
                     }
                 }
                 if(running){

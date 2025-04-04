@@ -55,4 +55,8 @@ void draw_all_rect(int n, ...);
 int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue,int choix);
 int afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue,int choix);
 
+int affichage_pc(joueur_t *joueur);
+
+void concat(char *dest, int nb);
+
 #endif

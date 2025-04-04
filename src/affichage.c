@@ -1232,18 +1232,162 @@ void game_over(joueur_t *j) {
     j->screen_y = (float)(game.dms_win.y + (j->y * PX * game.scale));
 }
 
+int affichage_pc(joueur_t *joueur) {
+    int mat_sauv = game.mat_active;
+    game.mat_active = 8;
+    SDL_Event event;
+    Uint32 frameStart;
+    int frameTime;
+    int running = 1;
+    int win_w, win_h;
+    SDL_GetRendererOutputSize(game.renderer, &win_w, &win_h);       //dimensions ecran
+    int choix = 0;
+    int page = 0;
+    int start_index = 0, end_index = 10;
+    int num_mecha;
+    mechas_joueur_t temp;
+
+    //texte à afficher
+    char texte_mecha[50][256];
+
+    int existe[50];
+    for(int i = 4, j = 0; i < 54; i++, j++){
+        if(joueur->mechas_joueur[i].numero == i + 1){
+            existe[j] = 1;
+            strcpy(texte_mecha[j], mecha[joueur->mechas_joueur[i].id_mechas - 1].nom);
+            strcat(texte_mecha[j], "\t | \t Niveau : ");
+            concat(texte_mecha[j], joueur->mechas_joueur[i].niveau);
+        }
+        else{
+            strcpy(texte_mecha[j], "\0");
+            existe[j] = 0;
+        }
+
+    }
+
+    //couleur des bordures
+    SDL_Color couleur_bordure =  {94, 99, 102, 250};
+    SDL_Color couleur_bordure_selec = {0, 0, 0, 230};
+    
+    //declaration des rectangles
+    rectangle_t rect_info;
+    rectangle_t rect[50];
+    rectangle_t rect_bordure[50];
+    rectangle_t rect_bordure_info;
+
+    //initialisation des rectangles
+    int rect_w = win_w * 0.3;
+    int rect_h = win_h * 0.1;
+    int info_w = win_w * 0.15;
+    int info_h = win_h * 0.4;
+    int h =  win_h * 0.07;
+    int w = win_w * 0.07;
+
+    int info_x = win_w  / 2 - (info_w / 2);
+    int info_y = win_h / 2 - (info_h / 2);
+
+    int border_size = 5 * game.scale; // Épaisseur des bords
+    int spacing_y = (win_h - (5*rect_h)) /6;
+
+    int x1 = (win_w/4) - (rect_w/2);
+    int x2 = ((3*win_w)/4) - (rect_w/2);
+    int x[10];
+    for (int i = 0; i < 10; i++) {
+        x[i] = (i < 5) ? x1 : x2;  // Les 5 premiers à gauche, les 5 suivants à droite
+    }
+    int y[10];
+    for(int i = 0; i < 10; i++){
+        y[i] = spacing_y + (i % 5) * (rect_h + spacing_y);
+    }
+
+    for(int i = 0; i < 50; i++) {
+        creer_rectangle(&rect[i], rect_w, rect_h, x[i%10], y[i%10], 255, 255, 255, 255, texte_mecha[i]);
+        creer_rectangle(&rect_bordure[i], rect_w + 2 * border_size, rect_h + 2 * border_size, x[i%10] - border_size, y[i%10] - border_size, 255, 255, 255, 230, NULL);
+    }    
+    creer_rectangle(&rect_info, info_w, info_h, info_x, info_y, 255, 255, 255, 255, "<------- \n P : Precedent \n \n \n A : Echanger dans\n \n votre equipe \n \n \n  ESC : Retour  \n \n \n  S : Suivant \n ------->");
+    creer_rectangle(&rect_bordure_info, info_w + 2 * border_size, info_h + 2 * border_size, info_x - border_size, info_y - border_size, 94, 99, 102, 250, NULL);
+
+    while(running) {
+        frameStart = SDL_GetTicks();
+        
+        while (SDL_PollEvent(&event)) {
+            if(event.type == SDL_KEYDOWN) {
+                if(event.key.keysym.sym == SDLK_LEFT){
+                    choix = (choix - 1 + 10) % 10;
+                }
+                if(event.key.keysym.sym == SDLK_RIGHT){
+                    choix = (choix + 1) % 10;
+                }
+                if(event.key.keysym.sym == SDLK_s){
+                    page = (page + 1) % 5;
+                }
+                if(event.key.keysym.sym == SDLK_p){
+                    page = (page -1 + 5) % 5;
+                }
+                if(event.key.keysym.sym == SDLK_ESCAPE){
+                    running = 0;
+                }
+                if(event.key.keysym.sym == SDLK_a) {
+                    if(existe[choix + start_index]) {
+                        num_mecha = aff_mechas_combat(joueur);
+                        if(num_mecha != 4) {
+                            temp = joueur->mechas_joueur[num_mecha];
+                            joueur->mechas_joueur[num_mecha] = joueur->mechas_joueur[choix + start_index + 4];
+                            joueur->mechas_joueur[choix + start_index + 4] = temp;
+                            joueur->mechas_joueur[num_mecha].numero = num_mecha + 1;
+                            joueur->mechas_joueur[choix + start_index + 4].numero = choix + start_index + 5;
+                            
+                            strcpy(texte_mecha[choix + start_index], mecha[joueur->mechas_joueur[choix + start_index + 4].id_mechas - 1].nom);
+                            strcat(texte_mecha[choix + start_index], "\t | \t Niveau : ");
+                            concat(texte_mecha[choix + start_index], joueur->mechas_joueur[choix + start_index + 4].niveau);
+                            strcpy(rect[choix + start_index].text, texte_mecha[choix + start_index]);
 
 
+                        }
+                    }
+                }
+                SDL_Event e;
+                while (SDL_WaitEvent(&e) && e.type != SDL_KEYUP);
+            }
+        }
+        if(running) {
+            start_index = page * 10; // Début de la page
+            end_index = start_index + 10; // Fin de la page
+            for(int i = start_index; i < end_index; i++) {
+                rect_bordure[i].couleur = couleur_bordure;
+            }
+            rect_bordure[choix + start_index].couleur = couleur_bordure_selec;
+            SDL_RenderClear(game.renderer);
+            draw_background();
 
+            
+            for (int i = start_index; i < end_index; i++) {
+                draw_rect(&rect_bordure[i],draw_text_center);
+            }
+            
+            for (int i = start_index; i < end_index; i++) {
+                draw_rect(&rect[i],draw_text_center);
+                if(existe[i]) {
+                    draw_mecha(&mecha[joueur->mechas_joueur[i+4].id_mechas - 1], x[i%10], y[i%10], h, w, 0); 
+                }
 
+            }
 
+            draw_all_rect(2, &rect_bordure_info, &rect_info);
+            
+            SDL_RenderPresent(game.renderer);
 
+            frameTime = SDL_GetTicks() - frameStart;
+            if (FRAME_DELAY > frameTime) SDL_Delay(FRAME_DELAY - frameTime);
+        }
+    }
+    game.mat_active = mat_sauv;
+    return 0;
 
+}
 
-
-
-
-
-
-
-
+void concat(char *dest, int nb) { //concatene un entier a une chaine de caractere
+    char tmp[10];
+    sprintf(tmp, "%d", nb);
+    strcat(dest, tmp);
+}

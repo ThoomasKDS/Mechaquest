@@ -491,14 +491,15 @@ void afficher_informations(){
     Uint32 frameStart = SDL_GetTicks(); //obtien l'heure
     int frameTime;
 
-    rectangle_t Info_1,Info_2,Info_3,Info_4,Info_5,Info_6,btn_retour;
+    rectangle_t Info_1,Info_2,Info_3,Info_4,Info_5,Info_6, Info_7 ,btn_retour;
     creer_rectangle(&Info_1,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 100 ,255, 255, 255, 100,"Pour aller en haut : fleche du haut");
     creer_rectangle(&Info_2,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 150 ,255, 255, 255, 100,"Pour aller en bas : fleche du bas");
     creer_rectangle(&Info_3,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 200 ,255, 255, 255, 100,"Pour aller a droite : fleche de droite");
     creer_rectangle(&Info_4,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 250 ,255, 255, 255, 100,"Pour aller a gauche : fleche de gauche");
     creer_rectangle(&Info_5,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 300 ,255, 255, 255, 100,"Pour faire pause : echap");
     creer_rectangle(&Info_6,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 350,255, 255, 255, 100,"Pour interagire : A");
-    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 400 ,98, 23, 8, 255,"Retour");
+    creer_rectangle(&Info_7,750,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2 - 275, 400,255, 255, 255, 100,"Pour parler a un pnj : P");
+    creer_rectangle(&btn_retour,LARGEUR_BOUTON,HAUTEUR_BOUTON,(largeurEcran - LARGEUR_BOUTON) / 2, 450 ,98, 23, 8, 255,"Retour");
 
     int running = 1;
     SDL_Event event;
@@ -519,7 +520,7 @@ void afficher_informations(){
         if(running) {
             SDL_RenderClear(game.renderer);
         draw_background();
-        draw_all_rect(7, &Info_1, &Info_2, &Info_3, &Info_4, &Info_5, &Info_6, &btn_retour);
+        draw_all_rect(8, &Info_1, &Info_2, &Info_3, &Info_4, &Info_5, &Info_6, &Info_7 ,&btn_retour);
         SDL_RenderPresent(game.renderer);
 
         frameTime = SDL_GetTicks() - frameStart; // Temps écoulé pour la frame

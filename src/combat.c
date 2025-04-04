@@ -36,11 +36,7 @@ static void init_rect_bas() {
     rect_bas.couleur.a = 150;
 }
 
-static void concat(char *dest, int nb) { //concatene un entier a une chaine de caractere
-    char tmp[10];
-    sprintf(tmp, "%d", nb);
-    strcat(dest, tmp);
-}
+
 
 void draw_combat( mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi) {
     int win_w, win_h;
@@ -165,6 +161,7 @@ void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mec
  * @return L'index du mecha sélectionné (0 à 3) en cas de succès, -1 si aucun mecha n'est sélectionné.
  */
 int aff_mechas_combat(joueur_t * joueur) {
+    int sauv = game.mat_active;
     game.mat_active = 8;
     SDL_Event event;
     Uint32 frameStart;
@@ -259,7 +256,7 @@ int aff_mechas_combat(joueur_t * joueur) {
                 }
                 if(event.key.keysym.sym == SDLK_a){
                     if(existe[choix]){
-                        game.mat_active = 6;
+                        game.mat_active = sauv;
                         return choix;
                     }
                 }
@@ -321,7 +318,7 @@ int aff_mechas_combat(joueur_t * joueur) {
         frameTime = SDL_GetTicks() - frameStart;
         if (FRAME_DELAYS > frameTime) SDL_Delay(FRAME_DELAYS - frameTime);
     }
-    game.mat_active = 6;
+    game.mat_active = sauv;
     return KO;
 }
 
