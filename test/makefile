@@ -1,35 +1,48 @@
-# === Compilateur & options ===
+# Nom du projet (exécutable généré)
+TARGET = mechaquest
+
+# Compilateur
 CC = gcc
-CFLAGS = -Wall -Wextra -g -I../lib
 
-# === Répertoires ===
-TEST_DIR = ../test
+# Drapeaux de compilation
+CFLAGS = -std=c99 -Wall -Ilib \
+         $(shell sdl2-config --cflags) \
+         $(shell pkg-config --cflags SDL2_image SDL2_mixer SDL2_ttf)
 
-# === Fichiers source de test ===
-TESTS = \
-    test_fonction_utilisation_carburant.c \
-    test_fonction_utilisation_rappel.c \
-    test_fonction_algo_attaque.c
+# Drapeaux de l'éditeur de liens
+LFLAGS = -lm $(shell pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf)
 
-# === Générer les noms d'exécutables ===
-EXECUTABLES = $(TESTS:.c=)
+# Répertoires
+SRCDIR = src
+INCDIR = lib
+OBJDIR = obj
+BINDIR = bin
 
-# === Cibles individuelles ===
-all: $(EXECUTABLES)
+# Liste des fichiers source et objets
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-# Règle générique pour compiler chaque fichier .c en exécutable
-%: $(TEST_DIR)/%.c
-	$(CC) $(CFLAGS) $< -o $@
+# Règle par défaut : compilation complète
+all: $(BINDIR)/$(TARGET)
 
-# === Exécuter tous les tests ===
-test: all
-	@echo "\n--- Exécution de tous les tests ---"
-	@./test_fonction_utilisation_carburant
-	@./test_fonction_utilisation_rappel
-	@./test_fonction_algo_attaque
+# Création de l'exécutable
+$(BINDIR)/$(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	@$(CC) $^ $(LFLAGS) -o $@
 
-# === Nettoyer les exécutables ===
+# Compilation des fichiers .c en fichiers .o
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+# Nettoyage des fichiers objets
+.PHONY: clean
 clean:
-	rm -f $(EXECUTABLES)
+	@rm -rf $(OBJDIR)/*.o
+	@echo "Cleanup complete: Object files removed."
 
-.PHONY: all test clean
+# Suppression des exécutables
+.PHONY: remove
+remove: clean
+	@rm -rf $(BINDIR)/$(TARGET)
+	@echo "Executable removed: $(BINDIR)/$(TARGET)"
