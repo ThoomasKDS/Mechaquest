@@ -55,6 +55,14 @@ void draw_all_rect(int n, ...);
 int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue,int choix);
 int afficher_dialogue_combat(mechas_joueur_t * mecha_joueur, mechas_joueur_t * mecha_ordi, char *pseudo, char *dialogue,int choix);
 
+int affichage_pc(joueur_t *joueur);
+
+void concat(char *dest, int nb);
+
+int affichage_pc(joueur_t *joueur);
+
+void concat(char *dest, int nb);
+
 void utiliserObjetSurMecha(int objet_id, mechas_joueur_t *mecha, joueur_t *j, char *message_buffer);
 void afficherTitre(const char* titre, int fondX, int y);
 int afficherTexteCentre(const char* texte, int fondX, int y);
