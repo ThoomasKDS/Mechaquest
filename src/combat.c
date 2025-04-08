@@ -248,7 +248,7 @@ int aff_mechas_combat(joueur_t * joueur) {
 
     int existe[4] = {0, 0, 0, 0};
     for(int i = 0; i < 4; i++){
-        if(joueur->mechas_joueur[i].numero == i + 1){
+        if(joueur->mechas_joueur[i].numero == i + 1 && i < joueur->nb_mechas){
             existe[i] = 1;
             strcpy(texte_mecha[i], mecha[joueur->mechas_joueur[i].id_mechas - 1].nom);
             strcat(texte_mecha[i], "\nNiveau : ");
@@ -1724,9 +1724,9 @@ int combat_pnj(joueur_t *joueur, pnj_t *pnj) {
     
     // Vérification des méchas disponibles
     for(int i = 0; i < 4; i++) {
-        if (joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
+        if (joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0 && joueur->nb_mechas > i)
             existe_joueur[i] = 1;
-        if (pnj->mechas_joueur[i].numero == i+1 && pnj->mechas_joueur[i].pv > 0)
+        if (pnj->mechas_joueur[i].numero == i+1 && pnj->mechas_joueur[i].pv > 0 && pnj->nb_mechas > i)
             existe_pnj[i] = 1;
     }
     
@@ -1850,7 +1850,7 @@ int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
     int res = OK;
     int verif;
     int existe[4] = {0,0,0,0};
-    for(int i = 0; i < 4; i++) {
+    for(int i = 0; i < 4 && i < joueur->nb_mechas; i++) {
         if(joueur->mechas_joueur[i].numero == i+1 && joueur->mechas_joueur[i].pv > 0)
             existe[i] = 1;
     }
@@ -1877,7 +1877,6 @@ int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage) {
             for(int i = 0; i < 4; i++) {
                 if(existe[i] && joueur->mechas_joueur[i].pv > 0)
                     verif = 1;
-
             }
             if(verif) {
                 while( changer_mecha(joueur, &actif, mecha_sauvage) != 1);

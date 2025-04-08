@@ -1100,6 +1100,7 @@ int suppression_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO]) {
  * @warning Ne pas appeler cette fonction sur une structure joueur dont l'inventaire n'est pas alloué dynamiquement (risque d'erreur de segmentation).
  */
 int destruction_joueur(joueur_t *joueur){
+    joueur->nb_mechas = 0;
     free(joueur->inventaire);
     joueur->inventaire = NULL;
     return OK;

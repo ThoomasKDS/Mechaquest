@@ -2410,7 +2410,7 @@ int affichage_pc(joueur_t *joueur) {
 
     int existe[50];
     for(int i = 4, j = 0; i < 54; i++, j++){
-        if(joueur->mechas_joueur[i].numero == i + 1){
+        if(joueur->mechas_joueur[i].numero == i + 1 && i < joueur->nb_mechas){
             existe[j] = 1;
             strcpy(texte_mecha[j], mecha[joueur->mechas_joueur[i].id_mechas - 1].nom);
             strcat(texte_mecha[j], "\t | \t Niveau : ");
