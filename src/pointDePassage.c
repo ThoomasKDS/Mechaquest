@@ -186,10 +186,8 @@ int choix_starter(joueur_t *j, pnj_t *vinGazole, SDL_Rect *sprite_p, SDL_Rect *p
 int parler_a_vin_gazole( joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys){
                 if (keys[SDL_SCANCODE_P]){
                     if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_1].x && j->y == pnj[VIN_GAZOLE_1].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_1].etat == 0){
-                        printf("%s\n",pnj[VIN_GAZOLE_1].dialogueDebut);
                         afficher_dialogue(j, sprite_p, pnj_sprite, pnj[VIN_GAZOLE_1].pseudo, pnj[VIN_GAZOLE_1].dialogueDebut,false);
                         choix_starter(j, &pnj[VIN_GAZOLE_1], sprite_p, pnj_sprite);
-                        printf("%s\n",pnj[VIN_GAZOLE_1].dialogueFin);
                         afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_1].pseudo, pnj[VIN_GAZOLE_1].dialogueFin,false);
                         
                         pnj[VIN_GAZOLE_1].etat = 1;
@@ -203,7 +201,6 @@ int parler_a_vin_gazole( joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, 
                 if(keys[SDL_SCANCODE_UP]){
                     if(j->numMap == 0 && (  j->x == 15 || j->x == 16 ||j->x == 17) && j->y == 1 ){
                         afficher_dialogue(j, sprite_p, pnj_sprite, "indice", " Allez d'abord parler à Vin Gazole.",false);
-                        printf("Allez d'abord parler à Vin Gazole\n");
                     }
                 }
     return OK;
@@ -258,13 +255,11 @@ int premier_combat_musk(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, c
             }
             if(soin){
                 afficher_dialogue(j, sprite_p, pnj_sprite, pnj[VIN_GAZOLE_2].pseudo, pnj[VIN_GAZOLE_2].dialogueFin,false);
-                printf("%s\n",pnj[VIN_GAZOLE_2].dialogueFin);
                 soigner(j);
                 soin = 0;
             }
             else{
                 afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_2].pseudo, pnj[VIN_GAZOLE_2].dialogueDebut,false);
-                printf("%s\n",pnj[VIN_GAZOLE_2].dialogueDebut);
             }
             
         }
@@ -297,7 +292,6 @@ int premier_combat_musk(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, c
     if(keys[SDL_SCANCODE_UP]){
         if(j->numMap == 2 && (j->x == 4 || j->x == 5 ||j->x == 6) && j->y == 1){
             afficher_dialogue(j, sprite_p, pnj_sprite,"indice", " Allez combattre Iron Musk avant.\n",false);
-            printf("Allez combattre Iron Musk avant\n");
         }
     }
     return OK;
@@ -341,9 +335,7 @@ int retourner_parler_a_vin_gazole(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj
     if (keys[SDL_SCANCODE_P]){
         if(j->x+1 == pnj[VIN_GAZOLE_3].x && j->y == pnj[VIN_GAZOLE_3].y && j->derniere_touche == 2 && pnj[VIN_GAZOLE_3].etat == 0){
             afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_3].pseudo, pnj[VIN_GAZOLE_3].dialogueDebut,false);
-            printf("%s\n",pnj[VIN_GAZOLE_3].dialogueDebut);
             afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_3].pseudo, pnj[VIN_GAZOLE_3].dialogueFin,false);
-            printf("%s\n",pnj[VIN_GAZOLE_3].dialogueFin);
             soigner(j);
             pnj[VIN_GAZOLE_3].etat = 1;
             sauvegarde_pnj(&pnj[VIN_GAZOLE_3],pnj[VIN_GAZOLE_3].id_pnj,j->pseudo);
@@ -356,7 +348,6 @@ int retourner_parler_a_vin_gazole(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj
     if(keys[SDL_SCANCODE_UP]){
         if((j->x == 15 || j->x == 16 ||j->x == 17) && j->y == 1){
             afficher_dialogue(j, sprite_p, pnj_sprite, "indice", " Allez vous soigner.",false);
-            printf("Allez vous soigner\n");
         }
     } 
     return OK;
@@ -410,23 +401,19 @@ int combat_final(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Ui
             }
             if(soin){
                 afficher_dialogue(j, sprite_p, pnj_sprite, pnj[VIN_GAZOLE_4].pseudo, pnj[VIN_GAZOLE_4].dialogueFin,false);
-                printf("%s\n",pnj[VIN_GAZOLE_4].dialogueFin);
                 soigner(j);
                 soin = 0;
             }
             else{
                 afficher_dialogue(j, sprite_p, pnj_sprite ,pnj[VIN_GAZOLE_4].pseudo, pnj[VIN_GAZOLE_4].dialogueDebut,false);
-                printf("%s\n",pnj[VIN_GAZOLE_4].dialogueDebut);
             }
             
         }
         if(j->numMap == 4 && j->x == pnj[IRON_MUSK_FIN].x && j->y-1 == pnj[IRON_MUSK_FIN].y && j->derniere_touche == 3 && pnj[IRON_MUSK_FIN].etat == 0){
             afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_FIN].pseudo, pnj[IRON_MUSK_FIN].dialogueDebut,false);
-            printf("%s\n",pnj[IRON_MUSK_FIN].dialogueDebut);
             
             if(combat_pnj(j, &pnj[IRON_MUSK_FIN])){
                 afficher_dialogue(j, sprite_p, pnj_sprite, pnj[IRON_MUSK_FIN].pseudo, pnj[IRON_MUSK_FIN].dialogueFin,false);
-                printf("%s\n",pnj[IRON_MUSK_FIN].dialogueFin);
                 copie_mechas(j,&pnj[IRON_MUSK_FIN].mechas_joueur[0]);
                 sauvegarde_partie(j,j->pseudo);
                 pnj[IRON_MUSK_FIN].etat = 1;
@@ -481,9 +468,7 @@ int jeu_libre(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite,const Uint8 
         if(j->numMap == 0 && j->x+1 == pnj[VIN_GAZOLE_5].x && j->y == pnj[VIN_GAZOLE_5].y && j->derniere_touche == 2){
             if(pnj[VIN_GAZOLE_5].etat == 0){
                 afficher_dialogue(j, sprite_p, pnj_sprite, pnj[VIN_GAZOLE_5].pseudo, pnj[VIN_GAZOLE_5].dialogueDebut,false);
-                printf("%s\n",pnj[VIN_GAZOLE_5].dialogueDebut);
                 afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_5].pseudo, pnj[VIN_GAZOLE_5].dialogueFin,false);
-                printf("%s\n",pnj[VIN_GAZOLE_5].dialogueFin);
                 soigner(j);
                 pnj[VIN_GAZOLE_5].etat = 1;
                 sauvegarde_pnj(&pnj[VIN_GAZOLE_5],pnj[VIN_GAZOLE_5].id_pnj,j->pseudo);
@@ -498,13 +483,11 @@ int jeu_libre(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite,const Uint8 
                 }
                 if(soin){
                     afficher_dialogue(j, sprite_p, pnj_sprite, pnj[VIN_GAZOLE_4].pseudo, pnj[VIN_GAZOLE_4].dialogueFin,false);
-                    printf("%s\n",pnj[VIN_GAZOLE_4].dialogueFin);
                     soigner(j);
                     soin = 0;
                 }
                 else{
                     afficher_dialogue(j, sprite_p, pnj_sprite,pnj[VIN_GAZOLE_4].pseudo, pnj[VIN_GAZOLE_4].dialogueDebut,false);
-                    printf("%s\n",pnj[VIN_GAZOLE_4].dialogueDebut);
                 }
             }
             

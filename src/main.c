@@ -199,9 +199,12 @@ int main() {
                     
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, &repousse);
                     animation(&j, &sprite_p);
-                    
+                    if(repousse == 1) res_spawn = 0; //eviter que à la fin de repousse un combat se lance avec un combat stocké
                     res_spawn = spawn_mecha(&j, obj_case,&mecha_sauvage, res_spawn);
+                    indice_combat = detection_combat_pnj(&j, indice_combat);
+
                     if(j.moving == 0) {
+                    
                         if((repousse <= 0) && res_spawn){
                             
                             if(res_spawn == 1){
@@ -216,7 +219,6 @@ int main() {
                                         res_spawn = 0;
                                     }
                                 }
-                                printf("res : %d\n",res_spawn);
                                 if(res_spawn) {
                                     afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Tiens, un mecha special ?",false);
                                     afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima a rejoint votre equipe !",false);
@@ -226,10 +228,6 @@ int main() {
                             }
                             res_spawn = 0;
                         }
-                    
-                    }
-                    indice_combat = detection_combat_pnj(&j, indice_combat);
-                    if(j.moving == 0) {
                         if(indice_combat > -1){
                             afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
                             if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {

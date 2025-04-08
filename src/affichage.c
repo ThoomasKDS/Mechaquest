@@ -2439,7 +2439,7 @@ int affichage_pc(joueur_t *joueur) {
     int info_w = win_w * 0.15;
     int info_h = win_h * 0.4;
     int h =  win_h * 0.07;
-    int w = win_w * 0.07;
+    int w = win_w * 0.06;
 
     int info_x = win_w  / 2 - (info_w / 2);
     int info_y = win_h / 2 - (info_h / 2);
@@ -2526,7 +2526,7 @@ int affichage_pc(joueur_t *joueur) {
             for (int i = start_index; i < end_index; i++) {
                 draw_rect(&rect[i],draw_text_center);
                 if(existe[i]) {
-                    draw_mecha(&mecha[joueur->mechas_joueur[i+4].id_mechas - 1], x[i%10], y[i%10], h, w, 0); 
+                    draw_mecha(&mecha[joueur->mechas_joueur[i+4].id_mechas - 1], x[i%10], y[i%10] + 10, h, w, 0); 
                 }
 
             }
