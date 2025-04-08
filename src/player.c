@@ -204,48 +204,51 @@ void animation(joueur_t *j, SDL_Rect *sprite_p) {
  *
  * @warning Vérifier soigneusement les bornes des tableaux (`zone`, `mecha`, `attaque`) pour éviter tout accès hors limites.
  */
-int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
-    if(obj_case <= Z1 && obj_case >= Z10 && obj_case != Z8) {     //Z1 => Z10 nombres negatifs
-        int i;
-        j->proba_combat += 5;
-        int n = rand() % 100;
-        if(n < j->proba_combat) {
-            j->proba_combat = 0;
-            obj_case *= -1;
-            obj_case--;               //donne l'indice de la zone
-            int indice_liste = (rand() % zone[obj_case].nb_mechas );
-            int indice_mechas =  zone[obj_case].listeMechasZone[indice_liste];      
-            mecha_sauvage->niveau = (rand() % 5) + (zone[obj_case].NiveauMoyenApparition - 2);
-            if(mecha_sauvage->niveau < 5 )mecha_sauvage->niveau = 5 ;
-            mecha_sauvage->pv_max = (rand() % 5) + (zone[obj_case].PvMoyen - 2);
-            mecha_sauvage->pv = mecha_sauvage->pv_max;
-            mecha_sauvage->id_mechas = indice_mechas;
-            mecha_sauvage->attaque = (rand() % 5) + (zone[obj_case].Attaque - 2);
-            mecha_sauvage->defense = (rand() % 5) + (zone[obj_case].Defense - 2);
-            mecha_sauvage->vitesse = (rand() % 10) + (zone[obj_case].VitesseMoyenne  - 4);
-            for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
-            mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].id_attaques;
-            mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;
-            mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].utilisations;
-            mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
-            return 1;
+int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage, int res) {
+    if(res == 0) {
+        if(obj_case <= Z1 && obj_case >= Z10 && obj_case != Z8) {     //Z1 => Z10 nombres negatifs
+            int i;
+            j->proba_combat += 5;
+            int n = rand() % 100;
+            if(n < j->proba_combat) {
+                j->proba_combat = 0;
+                obj_case *= -1;
+                obj_case--;               //donne l'indice de la zone
+                int indice_liste = (rand() % zone[obj_case].nb_mechas );
+                int indice_mechas =  zone[obj_case].listeMechasZone[indice_liste];      
+                mecha_sauvage->niveau = (rand() % 5) + (zone[obj_case].NiveauMoyenApparition - 2);
+                if(mecha_sauvage->niveau < 5 )mecha_sauvage->niveau = 5 ;
+                mecha_sauvage->pv_max = (rand() % 5) + (zone[obj_case].PvMoyen - 2);
+                mecha_sauvage->pv = mecha_sauvage->pv_max;
+                mecha_sauvage->id_mechas = indice_mechas;
+                mecha_sauvage->attaque = (rand() % 5) + (zone[obj_case].Attaque - 2);
+                mecha_sauvage->defense = (rand() % 5) + (zone[obj_case].Defense - 2);
+                mecha_sauvage->vitesse = (rand() % 10) + (zone[obj_case].VitesseMoyenne  - 4);
+                for(i = 0; i < 5 && attaque[mecha[mecha_sauvage->id_mechas].liste_attaque[i]-1].niveau <= mecha_sauvage->niveau; i++);
+                mecha_sauvage->attaque_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].id_attaques;
+                mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;
+                mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].utilisations;
+                mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
+                return 1;
+            }
         }
+        if(obj_case == Z8) {
+            mecha_sauvage->id_mechas = 23;
+            mecha_sauvage->niveau = 100;
+            mecha_sauvage->pv_max = 300;
+            mecha_sauvage->pv = mecha_sauvage->pv_max;
+            mecha_sauvage->attaque = 170;
+            mecha_sauvage->defense = 170;
+            mecha_sauvage->vitesse = 100;
+            mecha_sauvage->attaque_1 = 58;
+            mecha_sauvage->attaque_2 = 59;
+            mecha_sauvage->utilisation_1 = 17;
+            mecha_sauvage->utilisation_2 = 10;
+            return 2;
+        }
+        return 0;
     }
-    if(obj_case == Z8) {
-        mecha_sauvage->id_mechas = 23;
-        mecha_sauvage->niveau = 100;
-        mecha_sauvage->pv_max = 300;
-        mecha_sauvage->pv = mecha_sauvage->pv_max;
-        mecha_sauvage->attaque = 170;
-        mecha_sauvage->defense = 170;
-        mecha_sauvage->vitesse = 100;
-        mecha_sauvage->attaque_1 = 58;
-        mecha_sauvage->attaque_2 = 59;
-        mecha_sauvage->utilisation_1 = 17;
-        mecha_sauvage->utilisation_2 = 10;
-        return 2;
-    }
-    return 0;
+    return res;
 }
 
 /** 
@@ -278,39 +281,42 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage) {
 *          - `3` : vers le bas
 *          - `4` : vers la gauche
 */
-int detection_combat_pnj(joueur_t *joueur){
-    int test_x , test_y;
-    int taille_x_mat = game.img_w / PX;    //taille de la matrice
-    int taille_y_mat = game.img_h / PX;
-    for(int i = 0; i < VIN_GAZOLE_1; i++){
-        if((pnj[i].id_map ) == (game.mat_active+1) && pnj[i].etat == 0){
-                test_x = pnj[i].x;
-                test_y = pnj[i].y;
-            for(int j = 0; j < 3 && (game.mat[game.mat_active][test_y][test_x] <= JOUEUR || game.mat[game.mat_active][test_y][test_x] ==PNJ); j++){
-                
-                switch(pnj[i].orientation){
-                    case 1: //Vers le haut
-                        test_y -= 1;
-                    break;
-                    case 2: //Vers la droite
-                        test_x += 1;
-                    break;
-                    case 3: //Vers le bas
-                        test_y += 1;
-                    break;
-                    case 4: //Vers la gauche
-                        test_x -= 1;
-                    break;
-                }
+int detection_combat_pnj(joueur_t *joueur, int res){ 
+    if(res == -1) {
+        int test_x , test_y;
+        int taille_x_mat = game.img_w / PX;    //taille de la matrice
+        int taille_y_mat = game.img_h / PX;
+        for(int i = 0; i < VIN_GAZOLE_1; i++){
+            if((pnj[i].id_map ) == (game.mat_active+1) && pnj[i].etat == 0){
+                    test_x = pnj[i].x;
+                    test_y = pnj[i].y;
+                for(int j = 0; j < 3 && (game.mat[game.mat_active][test_y][test_x] <= JOUEUR || game.mat[game.mat_active][test_y][test_x] ==PNJ); j++){
+                    
+                    switch(pnj[i].orientation){
+                        case 1: //Vers le haut
+                            test_y -= 1;
+                        break;
+                        case 2: //Vers la droite
+                            test_x += 1;
+                        break;
+                        case 3: //Vers le bas
+                            test_y += 1;
+                        break;
+                        case 4: //Vers la gauche
+                            test_x -= 1;
+                        break;
+                    }
 
-                if(test_x >= 0 && test_x < taille_x_mat && test_y >= 0 && test_y < taille_y_mat){   //Test si les calculs ne sortent pas de la matrice
-                    if(test_x == joueur->x && test_y == joueur->y){
-                        return i;
+                    if(test_x >= 0 && test_x < taille_x_mat && test_y >= 0 && test_y < taille_y_mat){   //Test si les calculs ne sortent pas de la matrice
+                        if(test_x == joueur->x && test_y == joueur->y){
+                            return i;
+                        }
                     }
                 }
+                
             }
-            
         }
+        return -1;
     }
-    return -1;
+    return res;
 }

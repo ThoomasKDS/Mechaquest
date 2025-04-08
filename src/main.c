@@ -200,40 +200,47 @@ int main() {
                     obj_case = deplacement(taille_x_mat, taille_y_mat, keys, &j, &last_case, &sprite_p, &repousse);
                     animation(&j, &sprite_p);
                     
-                    res_spawn = spawn_mecha(&j, obj_case,&mecha_sauvage);
-                    if((repousse <= 0) && res_spawn){
-                        
-                        if(res_spawn == 1){
-                            afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
-                            if(combat_sauvage(&j, &mecha_sauvage) == FAUX){
-                                game_over(&j);
-                            }
-                        }
-                        else {
-                            for(int i = 0; i < 54; i++) {
-                                if(j.mechas_joueur[i].id_mechas == 23) {
-                                    res_spawn = 0;
+                    res_spawn = spawn_mecha(&j, obj_case,&mecha_sauvage, res_spawn);
+                    if(j.moving == 0) {
+                        if((repousse <= 0) && res_spawn){
+                            
+                            if(res_spawn == 1){
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Un mecha sauvage apparait ! ",false);
+                                if(combat_sauvage(&j, &mecha_sauvage) == FAUX){
+                                    game_over(&j);
                                 }
                             }
-                            printf("res : %d\n",res_spawn);
-                            if(res_spawn) {
-                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Tiens, un mecha special ?",false);
-                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima a rejoint votre equipe !",false);
-                                afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima ne peut combatre que contre des mechas sauvages ou contre Iron Musk.",false);
-                                copie_mechas(&j, &mecha_sauvage);
+                            else {
+                                for(int i = 0; i < 54; i++) {
+                                    if(j.mechas_joueur[i].id_mechas == 23) {
+                                        res_spawn = 0;
+                                    }
+                                }
+                                printf("res : %d\n",res_spawn);
+                                if(res_spawn) {
+                                    afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Tiens, un mecha special ?",false);
+                                    afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima a rejoint votre equipe !",false);
+                                    afficher_dialogue(&j, &sprite_p, pnj_sprite, "Systeme", "  Aeroshima ne peut combatre que contre des mechas sauvages ou contre Iron Musk.",false);
+                                    copie_mechas(&j, &mecha_sauvage);
+                                }
                             }
-                        }
-                    }
-                    indice_combat = detection_combat_pnj(&j);
+                            res_spawn = 0;
+
                     
-                    if(indice_combat > -1){
-                        afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
-                        if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {
-                            afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueFin,false);
+                    }
+                    indice_combat = detection_combat_pnj(&j, indice_combat);
+                    if(j.moving == 0) {
+                        if(indice_combat > -1){
+                            afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueDebut,false);
+                            if(combat_pnj(&j, &pnj[indice_combat]) == VRAI) {
+                                afficher_dialogue(&j, &sprite_p, pnj_sprite,pnj[indice_combat].pseudo, pnj[indice_combat].dialogueFin,false);
+                            }
+                            else{
+                                game_over(&j);
+                            }
+                            indice_combat = -1;
                         }
-                        else{
-                            game_over(&j);
-                        }
+                        
                     }
                     
  
