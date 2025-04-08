@@ -2231,7 +2231,7 @@ int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, ga
     const char *chemins_img[] = {
         "img/inventaire/carburant.png",
         "img/inventaire/rappel.png",
-        NULL,
+        "img/inventaire/mechaball.png",
         "img/inventaire/repousse.png"
     };
 
