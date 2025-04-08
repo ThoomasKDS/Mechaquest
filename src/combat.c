@@ -1135,13 +1135,18 @@ int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_jou
  */
 int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
     int nbr_rand_choix1 = 1, nbr_rand_choix = 0;
+    int cmp = 0
+    for(int i = 0; i < pnj->nb_mechas; i++) {
+        if(pnj->mechas_joueur[i].pv > 0) {
+            cmp++;
+        }
+    }
 
-    if(pnj->mechas_joueur[*actif].pv < pnj->mechas_joueur[*actif].pv_max/4) { //si les pv sont < a un quart des pv max on a 1/4 chances de changer de mechas
+    if(pnj->mechas_joueur[*actif].pv < pnj->mechas_joueur[*actif].pv_max/4 && cmp > 1) { //si les pv sont < a un quart des pv max on a 1/4 chances de changer de mechas
         nbr_rand_choix1 = (rand() % 4);
-        printf("nbr_rand_choix1 = %d\n, pv actif : %d, pv max : %d\n", nbr_rand_choix1, pnj->mechas_joueur[*actif].pv, pnj->mechas_joueur[*actif].pv_max);
     }
     if(nbr_rand_choix1 > 0) {
-        if(pnj->mechas_joueur[*actif].pv <= pnj->mechas_joueur[*actif].pv_max / 2){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
+        if(pnj->mechas_joueur[*actif].pv <= pnj->mechas_joueur[*actif].pv_max / 2 && pnj->inventaire->mechaball > 0){   //Si les PV sont inferieurs a la moitie des PV Max 1 chance sur 2 d'utiliser un carburant
             nbr_rand_choix = (rand() % 2);
         }
 
@@ -1150,6 +1155,7 @@ int attaque_ordi_pnj(pnj_t * pnj, mechas_joueur_t *mecha_joueur, int * actif){
                 nbr_rand_choix = 0;
             }
             else{
+                afficher_dialogue_combat(mecha_joueur ,  &(pnj->mechas_joueur[*actif]), "Systeme", "  Le mechas utilise un carburant.",false);
                 pnj->mechas_joueur[*actif].pv += 20;
                 if(pnj->mechas_joueur[*actif].pv > pnj->mechas_joueur[*actif].pv_max){
                     pnj->mechas_joueur[*actif].pv = pnj->mechas_joueur[*actif].pv_max;
