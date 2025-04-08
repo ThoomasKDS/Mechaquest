@@ -225,7 +225,7 @@ int main() {
                                 }
                             }
                             res_spawn = 0;
-
+                        }
                     
                     }
                     indice_combat = detection_combat_pnj(&j, indice_combat);
