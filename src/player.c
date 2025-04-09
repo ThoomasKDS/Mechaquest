@@ -229,6 +229,7 @@ int spawn_mecha(joueur_t * j, int obj_case, mechas_joueur_t * mecha_sauvage, int
                 mecha_sauvage->attaque_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].id_attaques;
                 mecha_sauvage->utilisation_1 = attaque[mecha[indice_mechas-1].liste_attaque[i-1]-1].utilisations;
                 mecha_sauvage->utilisation_2 = attaque[mecha[indice_mechas-1].liste_attaque[i-2]-1].utilisations;
+                mecha_sauvage->xp = 0;
                 return 1;
             }
         }
