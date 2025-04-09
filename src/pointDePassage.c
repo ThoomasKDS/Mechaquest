@@ -126,7 +126,7 @@ int choix_starter(joueur_t *j, pnj_t *vinGazole, SDL_Rect *sprite_p, SDL_Rect *p
     int choix = 0;
     int resultat;
     //SDL_Event event;
-    resultat = afficher_dialogue(j, sprite_p, pnj_sprite, vinGazole->pseudo, " Choisissez Le mechas que vous souhaité: \n 1: Tournicoton \n 2: Rasetout \n 3: Tikart.",true);
+    resultat = afficher_dialogue(j, sprite_p, pnj_sprite, vinGazole->pseudo, " Choisissez le Mecha que vous souhaitez: \n 1: Tournicoton \n 2: Rasetout \n 3: Tikart.",true);
             
     switch(resultat){
         case 1: choix = copie_mechas(j,&vinGazole->mechas_joueur[0]);
@@ -200,7 +200,7 @@ int parler_a_vin_gazole( joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, 
                 }
                 if(keys[SDL_SCANCODE_UP]){
                     if(j->numMap == 0 && (  j->x == 15 || j->x == 16 ||j->x == 17) && j->y == 1 ){
-                        afficher_dialogue(j, sprite_p, pnj_sprite, "indice", " Allez d'abord parler à Vin Gazole.",false);
+                        afficher_dialogue(j, sprite_p, pnj_sprite, "indice", " Allez d'abord parler a Vin Gazole.",false);
                     }
                 }
     return OK;
