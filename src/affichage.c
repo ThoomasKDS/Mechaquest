@@ -1671,7 +1671,8 @@ int afficherTexte(SDL_Renderer *renderer, TTF_Font *font, const char *texte, int
     SDL_Color couleur = {255, 255, 255};
     int current_y = y;
     
-    char *texte_copie = strdup(texte);
+    char *texte_copie = malloc(sizeof(char) * strlen(texte)+1);
+    strcpy(texte_copie,texte);
     char *ligne_start = texte_copie;
     char *ptr = texte_copie;
     
@@ -1868,7 +1869,7 @@ void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, m
         draw_all_rect(1, &rectInfos);
 
         // Infos du Mecha
-        char buffer[256];
+        char buffer[350];
         int y_info = 220;
 
         sprintf(buffer, "Type : %s", mecha[id - 1].type);
@@ -2087,7 +2088,7 @@ void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprit
     int selection = 0;
     int quitter = 0;
     SDL_Event event;
-    char buffer[100];
+    char buffer[400];
     char message[128] = "";
 
     while (!quitter && !*quitter_total) {
