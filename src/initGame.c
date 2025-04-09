@@ -132,18 +132,39 @@ int init_game() {
  *
  * @note Cette fonction doit être appelée systématiquement avant la fermeture de l'application pour éviter les fuites mémoire.
  */
-void cleanUp() {
-    for(int i = 0; i < 10; i++) {
-        SDL_DestroyTexture(game.backgroundTexture[i]);
+ void cleanUp() {
+    for (int i = 0; i < 10; i++) {
+        if (game.backgroundTexture[i]) {
+            SDL_DestroyTexture(game.backgroundTexture[i]);
+            game.backgroundTexture[i] = NULL;
+        }
     }
-    for(int i = 0; i < 6; i++) {
-        SDL_DestroyTexture(game.calqueTexture[i]);
+
+    for (int i = 0; i < 6; i++) {
+        if (game.calqueTexture[i]) {
+            SDL_DestroyTexture(game.calqueTexture[i]);
+            game.calqueTexture[i] = NULL;
+        }
     }
-    SDL_DestroyRenderer(game.renderer);
-    SDL_DestroyWindow(game.window);
-    TTF_CloseFont(game.police);
-    TTF_Quit();
+
+    if (game.renderer) {
+        SDL_DestroyRenderer(game.renderer);
+        game.renderer = NULL;
+    }
+
+    if (game.window) {
+        SDL_DestroyWindow(game.window);
+        game.window = NULL;
+    }
+
+    if (game.police) {
+        TTF_CloseFont(game.police);
+        game.police = NULL;
+    }
+
+    Mix_CloseAudio();
+    Mix_Quit();
     IMG_Quit();
+    TTF_Quit();
     SDL_Quit();
 }
-
