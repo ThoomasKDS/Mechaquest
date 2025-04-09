@@ -36,7 +36,7 @@ aid_attaques,Nom,Type,Niveau,Degats,Precision,Utilisation,Description
 35,Rayon UV,Renouvelable,0,9,100,26,Une lumiere intense \nqui surchauffe l'adversaire.
 36,Coup de soleil,Renouvelable,5,13,100,21,Un tir concentre \nd'energie solaire brûlante.
 37,Canicule,Renouvelable,15,22,70,18,Augmente la temperature pour \nbrûler tout obstacle.
-38,Impact photovoltaïque,Renouvelable,25,33,100,14,Une frappe directe \nalimentee par la lumiere du soleil.
+38,Impact photovoltaique,Renouvelable,25,33,100,14,Une frappe directe \nalimentee par la lumiere du soleil.
 39,Tempete solaire,Renouvelable,25,44,80,11,Libere une enorme \nvague d'energie solaire.
 40,Retour de flamme,Carburant,0,9,70,26,Crache une flamme brulante \ndepuis un moteur qui surchauffe.
 41,Tete a queue,Carburant,5,12,80,23,Une acceleration brutale\n pour ecraser l'adversaire.
