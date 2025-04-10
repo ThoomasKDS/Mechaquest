@@ -6,8 +6,7 @@ fichier contenant les fonctions de sauvegarde et récupération
 
 
 {\ttfamily \#include "{}../lib/sauv.\+h"{}}\newline
-Graphe des dépendances par inclusion de sauv.\+c\+:
-\nopagebreak
+Graphe des dépendances par inclusion de sauv.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -186,16 +185,14 @@ Assure-\/toi que les fonctions appelées ({\ttfamily nouveau\+\_\+fichier\+\_\+p
 \begin{DoxyWarning}{Avertissement}
 L\textquotesingle{}appel à cette fonction entraîne une allocation dynamique ({\ttfamily malloc}) pour l\textquotesingle{}inventaire. La mémoire ainsi allouée devra être libérée ({\ttfamily free}) en fin d\textquotesingle{}utilisation pour éviter toute fuite mémoire. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{sauv_8c_a72f7ea1b998d9c8d83135418b440260c_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -240,8 +237,7 @@ Assure-\/toi de vérifier que le pseudo ne contient pas de caractères spéciaux
 \begin{DoxyWarning}{Avertissement}
 Pense à gérer correctement les droits d\textquotesingle{}accès au dossier de sauvegarde et aux fichiers, ainsi qu\textquotesingle{}à gérer les erreurs éventuelles. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -342,8 +338,7 @@ Cette fonction peut être utilisée aussi bien pour le joueur que pour les PNJs.
 \begin{DoxyWarning}{Avertissement}
 Vérifie la cohérence des données stockées dans le fichier CSV pour éviter les erreurs d’initialisation. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -396,16 +391,14 @@ La mémoire allouée dynamiquement pour l\textquotesingle{}inventaire devra êtr
 \begin{DoxyWarning}{Avertissement}
 Vérifie les fichiers CSV et les fonctions annexes pour éviter les incohérences de données. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=334pt]{sauv_8c_a27e4df079f565f0ca025fea8e134b47e_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -510,8 +503,7 @@ Vérifie que les indices ({\ttfamily num}) utilisés dans le fichier CSV respect
 \begin{DoxyWarning}{Avertissement}
 Assure-\/toi de gérer les éventuelles incohérences des données (par exemple, index hors tableau). 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -568,8 +560,7 @@ La mémoire dynamiquement allouée pour l\textquotesingle{}inventaire de chaque 
 \begin{DoxyWarning}{Avertissement}
 Vérifie la validité des fichiers CSV et des fonctions associées pour éviter les incohérences et problèmes de chargement. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -671,8 +662,7 @@ Cette fonction utilise un fichier temporaire pour éviter la corruption des donn
 \begin{DoxyWarning}{Avertissement}
 Assure-\/toi que le dossier {\ttfamily save} existe et que les fichiers sont accessibles en lecture et écriture. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -731,8 +721,7 @@ Cette fonction crée un fichier temporaire pour garantir l\textquotesingle{}int�
 \begin{DoxyWarning}{Avertissement}
 Vérifie que le dossier {\ttfamily save} existe et que les fichiers nécessaires sont accessibles. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -800,16 +789,14 @@ Un fichier temporaire est utilisé pour garantir l\textquotesingle{}intégrité 
 \begin{DoxyWarning}{Avertissement}
 Vérifie la disponibilité des fichiers CSV nécessaires et le bon fonctionnement des fonctions annexes pour éviter toute perte de données. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{sauv_8c_a68cba593cfe77461f153f38b2a08a374_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -866,8 +853,7 @@ Utilise un fichier temporaire pour assurer l\textquotesingle{}intégrité des do
 \begin{DoxyWarning}{Avertissement}
 Vérifie que le pseudo du joueur ne comporte aucun caractère spécial incompatible avec le système de fichiers. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -914,8 +900,7 @@ La structure {\ttfamily inventaire} en paramètre est conservée pour compatibil
 \begin{DoxyWarning}{Avertissement}
 Cette opération est irréversible. Assure-\/toi que les données ne seront plus nécessaires avant d\textquotesingle{}appeler cette fonction. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -964,8 +949,7 @@ Les paramètres {\ttfamily mechas\+\_\+joueur} et {\ttfamily nb\+\_\+mechas} ne 
 \begin{DoxyWarning}{Avertissement}
 Cette opération est irréversible. Assure-\/toi que les données supprimées ne seront plus nécessaires. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1018,16 +1002,14 @@ Utilise des fichiers temporaires pour garantir l\textquotesingle{}intégrité de
 \begin{DoxyWarning}{Avertissement}
 Cette opération est irréversible. Assure-\/toi que les données du joueur ne seront plus nécessaires avant de lancer cette opération. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=330pt]{sauv_8c_a3748382cfddb2c574b37de5987534cea_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

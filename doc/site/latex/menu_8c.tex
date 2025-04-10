@@ -12,8 +12,7 @@ Fichier contenant les fonctions liées à l\textquotesingle{}affichage et la ges
 {\ttfamily \#include "{}../lib/init\+Game.\+h"{}}\newline
 {\ttfamily \#include "{}../lib/affichage.\+h"{}}\newline
 {\ttfamily \#include "{}../lib/son.\+h"{}}\newline
-Graphe des dépendances par inclusion de menu.\+c\+:
-\nopagebreak
+Graphe des dépendances par inclusion de menu.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -84,16 +83,14 @@ Aucun paramètre n’est directement modifié par cette fonction, mais les sous-
 \begin{DoxyNote}{Note}
 La fonction gère une boucle d\textquotesingle{}événements SDL et effectue le rendu graphique en continu tant que l\textquotesingle{}écran des paramètres est actif. Le framerate est régulé afin d’assurer un affichage fluide. 
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_af33efca11c59a833339ea201bd4fb9d4_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -146,16 +143,14 @@ La saisie du texte utilise SDL pour gérer les événements clavier. La fonction
 \begin{DoxyWarning}{Avertissement}
 La longueur maximale du pseudo est définie par la constante {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}. Veiller à ce que cette constante soit cohérente avec la taille réelle du tableau {\ttfamily pseudo}. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_a514079e39465e028b08558ac3458d85a_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -197,16 +192,14 @@ La valeur du sexe du joueur est enregistrée (\textquotesingle{}M\textquotesingl
 \begin{DoxyNote}{Note}
 Cette fonction gère sa propre boucle d\textquotesingle{}événements et assure le rendu continu de l\textquotesingle{}écran jusqu\textquotesingle{}à la sélection du joueur. Elle libère automatiquement les textures créées avant de quitter. 
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_aa1f62d5ef2922f420fba49063416f5ab_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -257,16 +250,14 @@ Selon l’action choisie, la sauvegarde du joueur peut être supprimée et réin
 \begin{DoxyNote}{Note}
 Cette fonction gère elle-\/même les événements SDL et le rendu graphique associé aux boutons. Elle contrôle aussi le framerate (temps d\textquotesingle{}attente entre chaque affichage) pour fluidifier l\textquotesingle{}affichage. 
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_a72fbd3d776a9a4447c7448b1a8308137_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -308,16 +299,14 @@ Aucun changement d’état du jeu n’est effectué en dehors de l’affichage d
 \begin{DoxyNote}{Note}
 Cette fonction gère elle-\/même la boucle d\textquotesingle{}événements et l’affichage continu de l’écran d’information. 
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_adb80c9d7e446e21dacf40b55cc973deb_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -363,8 +352,7 @@ L\textquotesingle{}état du jeu peut changer en fonction de l\textquotesingle{}a
 \begin{DoxyNote}{Note}
 Cette fonction gère intégralement sa propre boucle d\textquotesingle{}événements SDL et les rendus graphiques associés. Elle régule également le framerate pour un affichage fluide de l\textquotesingle{}interface. 
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -421,8 +409,7 @@ La fonction gère entièrement l\textquotesingle{}affichage graphique et la bouc
 \begin{DoxyWarning}{Avertissement}
 Veillez à bien définir les constantes telles que {\ttfamily LARGEUR\+\_\+\+BOUTON}, {\ttfamily HAUTEUR\+\_\+\+BOUTON}, et {\ttfamily FRAME\+\_\+\+DELAY}. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -467,16 +454,14 @@ Cette fonction gère intégralement sa propre boucle d\textquotesingle{}événem
 \begin{DoxyWarning}{Avertissement}
 Assurez-\/vous que les textures générées durant l\textquotesingle{}affichage ({\ttfamily SDL\+\_\+\+Surface} et {\ttfamily SDL\+\_\+\+Texture}) soient correctement libérées après utilisation pour éviter les fuites mémoire. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu_8c_a6ef0addf6407c785be3cf605618b938e_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -518,8 +503,7 @@ L\textquotesingle{}image chargée est libérée après conversion en texture ; s
 \begin{DoxyWarning}{Avertissement}
 La texture retournée doit être libérée avec {\ttfamily SDL\+\_\+\+Destroy\+Texture()} après utilisation pour éviter les fuites mémoire. 
 \end{DoxyWarning}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

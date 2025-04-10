@@ -8,16 +8,14 @@ Gestion des combats dans le jeu.
 {\ttfamily \#include "{}sauv.\+h"{}}\newline
 {\ttfamily \#include "{}point\+De\+Passage.\+h"{}}\newline
 {\ttfamily \#include "{}../lib/global.\+h"{}}\newline
-Graphe des dépendances par inclusion de combat.\+h\+:
-\nopagebreak
+Graphe des dépendances par inclusion de combat.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
-\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -113,16 +111,14 @@ Cette fonction bloque l\textquotesingle{}exécution en attendant que l\textquote
 \begin{DoxyWarning}{Avertissement}
 Les informations des Mechas doivent être valides pour éviter les erreurs d\textquotesingle{}affichage. Assure-\/toi également que les constantes globales comme {\ttfamily FRAME\+\_\+\+DELAYS} sont correctement définies. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a30cb93b663d557e0e81271f956c24379_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -192,16 +188,14 @@ La fonction ne vérifie pas si les Mechas sont déjà KO avant de calculer les d
 \begin{DoxySeeAlso}{Voir également}
 \doxylink{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9}{animation\+\_\+degat()} pour l\textquotesingle{}affichage animé de la perte de PV. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a8c19b3bf83d09e9fb4b596cd4ff45219_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -249,16 +243,14 @@ La durée maximale de l\textquotesingle{}animation est limitée à 2 secondes po
 \begin{DoxyWarning}{Avertissement}
 La fonction est bloquante pendant la durée de l\textquotesingle{}animation (utilise {\ttfamily SDL\+\_\+\+Delay}). Elle doit donc être utilisée à bon escient pour préserver la fluidité générale du jeu. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_ab9469ab4f84b56a27ef05848c4a78cb9_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -307,16 +299,14 @@ Cette fonction suppose que les attaques associées au Mecha sont correctement d�
 \begin{DoxySeeAlso}{Voir également}
 \doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour l\textquotesingle{}affichage interactif des dialogues avec le joueur. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_af35e79d0f311c06fb1fe44ce8bb34ca4_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -379,16 +369,14 @@ Cette fonction suppose que les structures globales ({\ttfamily game}, {\ttfamily
 
 \doxylink{combat_8c_a159b2a6408c605d1fc9432689f92e3cb}{draw\+\_\+combat()} pour l\textquotesingle{}affichage graphique de l\textquotesingle{}état actuel du combat. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_aeabe45f0372840462d595a801345672b_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -454,16 +442,14 @@ Cette fonction suppose que les Mechas et leurs attaques correspondantes sont cor
 
 \doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour afficher les messages durant le combat. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a5491a6cd3adeb619da6eb84e6d888e7a_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -523,16 +509,14 @@ Cette fonction suppose que les Mechas et attaques correspondantes sont correctem
 
 \doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour afficher des messages à l\textquotesingle{}utilisateur. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_ac6ceced0c9217ccb31c1400649cfd67c_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -592,16 +576,14 @@ Aucune vérification n\textquotesingle{}est effectuée pour le cas extrême où 
 
 \doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour les messages informatifs. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a16e4593cbfaef36a7cc088aa6bef48c0_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -679,16 +661,14 @@ Retourne un entier indiquant le résultat du combat \+:
 \mbox{\texttt{ in,out}}  & {\em pnj} & La structure du PNJ mise à jour selon l’issue du combat (PV mis à jour ou restaurés, état modifié en cas de victoire du joueur). \\
 \hline
 \end{DoxyParams}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a03ca199547656caabf8e81d769b770e4_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -758,8 +738,7 @@ Retourne un entier indiquant le résultat du combat \+:
 \item Si le joueur choisit de fuir, le combat se termine immédiatement. 
 \end{DoxyItemize}
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -822,16 +801,14 @@ Chaque Mécha reçoit son montant d\textquotesingle{}XP calculé et gère ensuit
 \item Le calcul du seuil d\textquotesingle{}expérience ({\ttfamily lvlup}) requis pour chaque Mécha utilise la formule exponentielle suivante \+: \[ \text{lvlup} = \left\lfloor 15 \times e^{0.05 \times \text{niveau}} \right\rfloor \] 
 \end{DoxyItemize}
 \end{DoxyNote}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_ac6fcdad743dc3526b2b89a1630618a07_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -875,16 +852,14 @@ Cette fonction utilise des variables globales (notamment {\ttfamily game}, {\ttf
 \begin{DoxyWarning}{Avertissement}
 Assure-\/toi que les structures {\ttfamily mecha\+\_\+joueur} et {\ttfamily mecha\+\_\+ordi} contiennent des informations valides afin d\textquotesingle{}éviter tout problème d\textquotesingle{}affichage ou de segmentation. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a159b2a6408c605d1fc9432689f92e3cb_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -931,16 +906,14 @@ La fonction suppose que le Mecha suivant immédiatement dans le tableau {\ttfami
 \begin{DoxySeeAlso}{Voir également}
 \doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour l\textquotesingle{}affichage interactif des dialogues avec le joueur. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_afe15b54290598e06032e0c418f626461_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1009,16 +982,14 @@ Cette fonction est appelée après la défaite d\textquotesingle{}un Mécha adve
 \begin{DoxySeeAlso}{Voir également}
 \doxylink{combat_8c_ac6fcdad743dc3526b2b89a1630618a07}{distribuer\+\_\+xp()} Pour la répartition détaillée de l\textquotesingle{}expérience aux Méchas. 
 \end{DoxySeeAlso}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a2de6c3e2a52edcf450da90005d5fad1d_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1075,16 +1046,14 @@ Cette fonction ajoute un nombre spécifié d\textquotesingle{}XP au Mecha joueur
 \item Assurez-\/vous que les modifications de statistiques ne dépassent pas les limites prévues par le jeu. 
 \end{DoxyItemize}
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_aec838d58a7def8717d7fcd0faab3a107_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1174,16 +1143,14 @@ Retourne un entier indiquant l\textquotesingle{}action effectuée ou le résulta
 \begin{DoxyItemize}
 \item L\textquotesingle{}option "{}\+Fuite"{} n\textquotesingle{}est pas fonctionnelle via le menu visuel (prévue en cas de fermeture directe du jeu).
 \end{DoxyItemize}\end{DoxyRefDesc}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a3c18ce2957ca72f56737d0082766ad63_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1238,16 +1205,14 @@ Des dialogues informatifs sont affichés à l\textquotesingle{}écran pour expli
 \begin{DoxyWarning}{Avertissement}
 Vérifie toujours que le joueur dispose de l\textquotesingle{}objet avant son utilisation pour éviter des résultats incorrects. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a7f2daafca6455a03963db8f32d8a8d10_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1307,16 +1272,14 @@ Des dialogues informatifs sont affichés pour expliquer le résultat de l\textqu
 \begin{DoxyWarning}{Avertissement}
 Cette fonction ne devrait être utilisée que durant des combats contre des Mechas sauvages. Pour les combats spéciaux ou scénarisés, la capture pourrait être désactivée. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_a53bf2250ba00b21dceed166fa59bd150_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1379,16 +1342,14 @@ La fonction bloque l\textquotesingle{}exécution jusqu\textquotesingle{}à ce qu
 \begin{DoxyWarning}{Avertissement}
 Veille à ce que le joueur dispose bien des objets dans son inventaire avant leur utilisation pour éviter des résultats inattendus. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_ae82c6dcf76c1412964511d71b75c637e_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1443,16 +1404,14 @@ Des dialogues informatifs s\textquotesingle{}affichent pour expliquer clairement
 \begin{DoxyWarning}{Avertissement}
 Vérifie toujours que le joueur possède l\textquotesingle{}objet avant son utilisation pour éviter des erreurs inattendues. 
 \end{DoxyWarning}
-Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
-\nopagebreak
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{combat_8h_afff6b8b516af5c46c938f407788d1b5f_cgraph}
 \end{center}
 \end{figure}
-Voici le graphe des appelants de cette fonction \+:
-\nopagebreak
+Voici le graphe des appelants de cette fonction \+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
