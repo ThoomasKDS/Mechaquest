@@ -1,0 +1,64 @@
+\doxysection{sauv.\+h}
+\hypertarget{sauv_8h_source}{}\label{sauv_8h_source}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/sauv.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/sauv.h}}
+\mbox{\hyperlink{sauv_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SAUV\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SAUV\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../lib/global.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ FONCTIONS\ D'INITIALISATION\ :\ }}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_aec5928f1d3393d66b9df8e4066b8d8da}{nouveau\_fichier\_pnj}}(\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a72f7ea1b998d9c8d83135418b440260c}{init\_partie}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}],\textcolor{keywordtype}{char}\ sexe);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ FONCTIONS\ DE\ RECUPERATION\ :\ }}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a27e4df079f565f0ca025fea8e134b47e}{recuperation\_joueur}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a5df71d1ff822e93d595691020a67fcac}{recuperation\_inventaire}}(\mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8c_a163544a5ed388ef250c2b5402fd1c552}{recuperation\_mechas\_joueur}}(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mechas\_joueur,\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a95f85960ed5fca42b0affe9a8a79c2ee}{recuperation\_attaques}}(\mbox{\hyperlink{structattaque__t}{attaque\_t}}\ *attaques);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_abb51a9229438e3f3f69f63b4e6cb7067}{recuperation\_mechas}}(\mbox{\hyperlink{structmechas__t}{mechas\_t}}\ *mechas\_l);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8c_a099dce0c2a73af791f6cd412e9b085f2}{recuperation\_pnj}}(\mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj,\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a7762d77d095eb75079f0da668e05250f}{recuperation\_zone}}(\mbox{\hyperlink{structzone__t}{zone\_t}}\ *zone);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//FONCTIONS\ DE\ SAUVEGARDE\ :}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a68cba593cfe77461f153f38b2a08a374}{sauvegarde\_partie}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_ab8195ddd8dbc45661b6c79de94f968e7}{sauvegarde\_inventaire}}(\mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a48e80e16d5df5b56d2279ae7c965bb71}{sauvegarde\_mechas\_joueur}}(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mechas\_joueur,\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}],\textcolor{keywordtype}{int}\ nb\_mechas);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_ab1da7937b8e445add82b83c23950cc74}{sauvegarde\_pnj}}(\mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj,\ \textcolor{keywordtype}{int}\ id\_pnj,\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//FONCTION\ DE\ SUPPRESSION\ DE\ SAUVEGARDES}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a3748382cfddb2c574b37de5987534cea}{suppression\_partie}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a020e784ece3effc4c331f7955d822f1e}{suppression\_inventaire}}(\mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *inventaire,\ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}]);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_accca901359a4eafa002b577efb20fff1}{suppression\_mechas\_joueur}}(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mechas\_joueur,\textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}],\textcolor{keywordtype}{int}\ nb\_mechas);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//FONCTIONS\ DE\ DESTRUCTION\ ALLOCATION\ DYNAMIQUE}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_aabb5472f53dbb474524b053b75d3668f}{destruction\_joueur}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sauv_8h_a493358ab8bc3b3e8d2b90a9aa3f100bb}{destruction\_pnj}}(\mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

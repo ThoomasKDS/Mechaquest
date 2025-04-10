@@ -1,0 +1,7 @@
+<map id="recuperation_pnj" name="recuperation_pnj">
+<area shape="rect" id="Node000001" title="Récupère l&#39;état et les données détaillées des PNJs à partir d&#39;un fichier CSV personnalisé." alt="" coords="5,35,123,60"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#a5df71d1ff822e93d595691020a67fcac" title="Récupère les données de l&#39;inventaire d&#39;un joueur ou d&#39;un PNJ depuis un fichier CSV." alt="" coords="171,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,35,156,30,157,35,123,41"/>
+<area shape="rect" id="Node000003" href="$sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552" title="Récupère l&#39;équipe de Mechas d&#39;un joueur à partir d&#39;un fichier CSV." alt="" coords="175,55,322,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,54,162,59,161,65,123,59"/>
+</map>

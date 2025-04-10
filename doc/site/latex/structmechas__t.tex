@@ -1,0 +1,94 @@
+\doxysection{Référence de la structure mechas\+\_\+t}
+\hypertarget{structmechas__t}{}\label{structmechas__t}\index{mechas\_t@{mechas\_t}}
+
+
+Représente un mecha disponible dans le jeu avec ses caractéristiques.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structmechas__t_a2125e7a0c5f4f6cb87af922e18963581}\label{structmechas__t_a2125e7a0c5f4f6cb87af922e18963581} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture} \mbox{[}2\mbox{]}
+\item 
+int \mbox{\hyperlink{structmechas__t_a16042cbceeedcf759410f525a8427a83}{id\+\_\+mechas}}
+\item 
+char \mbox{\hyperlink{structmechas__t_a2eeb42729f3fbf58bb91c70df9a698d0}{nom}} \mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}
+\item 
+char \mbox{\hyperlink{structmechas__t_aeb68796d450a9247cdb1f35af3a82c79}{type}} \mbox{[}\mbox{\hyperlink{global_8h_a32f0560714e1a90c7f9805cb97b85f7e}{LONGUEUR\+\_\+\+TYPE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structmechas__t_a154c4d35227c90950e2cfd46d9423de7}{evolution}}
+\item 
+int \mbox{\hyperlink{structmechas__t_ac9c243d610b6029a40145219f85522c4}{niveau\+\_\+evolution}}
+\item 
+char \mbox{\hyperlink{structmechas__t_a355caad746fdd3fb9f860c3d21e658e5}{description}} \mbox{[}\mbox{\hyperlink{global_8h_a9b9bf46a80f803a594977e440886be8f}{LONGUEUR\+\_\+\+DESC}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structmechas__t_a8437497a6164c50fd36e8b460783bc83}{liste\+\_\+attaque}} \mbox{[}5\mbox{]}
+\item 
+int \mbox{\hyperlink{structmechas__t_a6b96d26e83bbd9d73c5e893db23c7d5a}{nb\+\_\+attaques}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente un mecha disponible dans le jeu avec ses caractéristiques. 
+
+Cette structure contient toutes les informations statiques d’un mecha, telles que son type, ses attaques disponibles, sa description et ses critères d’évolution. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structmechas__t_a355caad746fdd3fb9f860c3d21e658e5}\label{structmechas__t_a355caad746fdd3fb9f860c3d21e658e5} 
+\index{mechas\_t@{mechas\_t}!description@{description}}
+\index{description@{description}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::description}
+
+Description détaillée du mecha. \Hypertarget{structmechas__t_a154c4d35227c90950e2cfd46d9423de7}\label{structmechas__t_a154c4d35227c90950e2cfd46d9423de7} 
+\index{mechas\_t@{mechas\_t}!evolution@{evolution}}
+\index{evolution@{evolution}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{evolution}{evolution}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::evolution}
+
+Identifiant du mecha en lequel celui-\/ci évolue (0 si aucune évolution). \Hypertarget{structmechas__t_a16042cbceeedcf759410f525a8427a83}\label{structmechas__t_a16042cbceeedcf759410f525a8427a83} 
+\index{mechas\_t@{mechas\_t}!id\_mechas@{id\_mechas}}
+\index{id\_mechas@{id\_mechas}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{id\_mechas}{id\_mechas}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::id\+\_\+mechas}
+
+Identifiant unique du mecha. \Hypertarget{structmechas__t_a8437497a6164c50fd36e8b460783bc83}\label{structmechas__t_a8437497a6164c50fd36e8b460783bc83} 
+\index{mechas\_t@{mechas\_t}!liste\_attaque@{liste\_attaque}}
+\index{liste\_attaque@{liste\_attaque}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{liste\_attaque}{liste\_attaque}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::liste\+\_\+attaque}
+
+Tableau des identifiants des attaques que le mecha peut apprendre (taille maximale \+: 5). \Hypertarget{structmechas__t_a6b96d26e83bbd9d73c5e893db23c7d5a}\label{structmechas__t_a6b96d26e83bbd9d73c5e893db23c7d5a} 
+\index{mechas\_t@{mechas\_t}!nb\_attaques@{nb\_attaques}}
+\index{nb\_attaques@{nb\_attaques}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{nb\_attaques}{nb\_attaques}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::nb\+\_\+attaques}
+
+Nombre total d’attaques dans la liste que ce mecha peut apprendre. \Hypertarget{structmechas__t_ac9c243d610b6029a40145219f85522c4}\label{structmechas__t_ac9c243d610b6029a40145219f85522c4} 
+\index{mechas\_t@{mechas\_t}!niveau\_evolution@{niveau\_evolution}}
+\index{niveau\_evolution@{niveau\_evolution}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{niveau\_evolution}{niveau\_evolution}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::niveau\+\_\+evolution}
+
+Niveau requis pour que le mecha évolue. \Hypertarget{structmechas__t_a2eeb42729f3fbf58bb91c70df9a698d0}\label{structmechas__t_a2eeb42729f3fbf58bb91c70df9a698d0} 
+\index{mechas\_t@{mechas\_t}!nom@{nom}}
+\index{nom@{nom}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{nom}{nom}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::nom}
+
+Nom du mecha. \Hypertarget{structmechas__t_aeb68796d450a9247cdb1f35af3a82c79}\label{structmechas__t_aeb68796d450a9247cdb1f35af3a82c79} 
+\index{mechas\_t@{mechas\_t}!type@{type}}
+\index{type@{type}!mechas\_t@{mechas\_t}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily mechas\+\_\+t\+::type}
+
+Type du mecha (ex\+: Carburant, Electrique, Renouvelable, Nucleaire...). 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

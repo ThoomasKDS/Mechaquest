@@ -1,0 +1,13 @@
+digraph "suppression_partie"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="suppression_partie",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Supprime définitivement toutes les données d'une partie d'un joueur depuis les fichiers CSV."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="suppression_inventaire",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sauv_8c.html#a020e784ece3effc4c331f7955d822f1e",tooltip="Supprime l'entrée d'un inventaire associé à un joueur (ou PNJ) d'un fichier CSV."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="suppression_mechas\l_joueur",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sauv_8c.html#accca901359a4eafa002b577efb20fff1",tooltip="Supprime toutes les entrées associées aux Mechas d'un joueur dans un fichier CSV."];
+}

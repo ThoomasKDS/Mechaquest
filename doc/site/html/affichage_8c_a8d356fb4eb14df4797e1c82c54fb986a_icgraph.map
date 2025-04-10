@@ -1,0 +1,14 @@
+<map id="afficherTexte" name="afficherTexte">
+<area shape="rect" id="Node000001" title="Affiche un texte multiligne à l&#39;écran en gérant les sauts de ligne." alt="" coords="564,81,661,107"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5" title="Affiche l&#39;écran d&#39;information détaillée d&#39;un Mécha du joueur." alt="" coords="383,5,516,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="571,78,477,33,479,28,573,73"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#aff36844a9bc0417b311b691e2957adae" title="Affiche le Mechadex du joueur, listant tous ses Méchas capturés." alt="" coords="193,56,318,81"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="550,92,318,76,318,70,550,87"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="5,107,128,132"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="550,100,128,119,128,114,550,94"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a9519a3474a5b9ff0162efbc07d652b0c" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="176,157,335,183"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="578,115,517,141,423,160,335,169,335,164,422,155,515,135,576,111"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,37,306,58,304,53,386,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="195,88,116,109,114,104,193,82"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="193,156,114,135,116,130,195,151"/>
+</map>

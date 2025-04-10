@@ -1,0 +1,520 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/src/point\+De\+Passage.c}
+\hypertarget{pointDePassage_8c}{}\label{pointDePassage_8c}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/pointDePassage.c@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/pointDePassage.c}}
+
+
+Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas, du choix du starter, des interactions avec les PNJ importants et des événements clés du jeu.  
+
+
+{\ttfamily \#include "{}../lib/point\+De\+Passage.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/combat.\+h"{}}\newline
+Graphe des dépendances par inclusion de point\+De\+Passage.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a}{soigner}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Restaure entièrement la santé et les objets du joueur et sauvegarde la partie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb}{copie\+\_\+mechas}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha)
+\begin{DoxyCompactList}\small\item\em Copie intégralement les attributs d\textquotesingle{}un Mecha vers l\textquotesingle{}équipe du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566}{choix\+\_\+starter}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, \mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}vin\+Gazole, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de choisir son Mecha de départ parmi trois options disponibles. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d}{parler\+\_\+a\+\_\+vin\+\_\+gazole}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, const Uint8 \texorpdfstring{$\ast$}{*}keys)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction du joueur avec le PNJ "{}\+Vin Gazole"{}, incluant dialogues, choix du starter et modification de la carte. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da}{premier\+\_\+combat\+\_\+musk}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, const Uint8 \texorpdfstring{$\ast$}{*}keys)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction du joueur avec les PNJs "{}\+Vin Gazole 2"{} et "{}\+Iron Musk"{}, incluant dialogues, soins et combats. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_a7ec67454376236ff74521e75806f1f8b}{retourner\+\_\+parler\+\_\+a\+\_\+vin\+\_\+gazole}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, const Uint8 \texorpdfstring{$\ast$}{*}keys)
+\begin{DoxyCompactList}\small\item\em Gère la seconde interaction du joueur avec le PNJ "{}\+Vin Gazole"{}, incluant dialogues, soin du joueur et déblocage de la carte. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_ade398b595e60d698c8c259edf2f8252a}{combat\+\_\+final}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, const Uint8 \texorpdfstring{$\ast$}{*}keys)
+\begin{DoxyCompactList}\small\item\em Gère les interactions finales avec les PNJs "{}\+Vin Gazole"{} et "{}\+Iron Musk"{}, incluant dialogues, soin automatique et combat final. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d}{jeu\+\_\+libre}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, const Uint8 \texorpdfstring{$\ast$}{*}keys)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}interaction avec le PNJ "{}\+Vin Gazole"{} en mode jeu libre, permettant soins et dialogues répétés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas, du choix du starter, des interactions avec les PNJ importants et des événements clés du jeu. 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566}\label{pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566} 
+\index{pointDePassage.c@{pointDePassage.c}!choix\_starter@{choix\_starter}}
+\index{choix\_starter@{choix\_starter}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{choix\_starter()}{choix\_starter()}}
+{\footnotesize\ttfamily int choix\+\_\+starter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{vin\+Gazole,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de choisir son Mecha de départ parmi trois options disponibles. 
+
+Cette fonction affiche un dialogue interactif demandant au joueur de choisir son Mecha de départ ("{}starter"{}) parmi trois possibilités \+:
+\begin{DoxyItemize}
+\item Tournicoton (option 1)
+\item Rasetout (option 2)
+\item Tikart (option 3)
+\end{DoxyItemize}
+
+Selon la réponse du joueur, le Mecha choisi est copié depuis les Mechas disponibles du PNJ {\ttfamily vin\+Gazole} vers l\textquotesingle{}équipe du joueur. Un dialogue de confirmation du choix effectué est ensuite affiché au joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure principale du jeu (affichage, événements, etc.). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur où le Mecha choisi sera ajouté. \\
+\hline
+{\em vin\+Gazole} & Pointeur vers la structure du PNJ possédant les Mechas disponibles à la sélection. \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si le choix du Mecha est effectué et copié avec succès dans l\textquotesingle{}équipe du joueur.
+\item {\ttfamily ERR} en cas de choix invalide ou de problème lors de la copie.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les structures et ressources graphiques doivent être initialisées correctement. Le PNJ ({\ttfamily vin\+Gazole}) doit disposer d\textquotesingle{}au moins trois Mechas valides dans son inventaire.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha choisi est ajouté à l\textquotesingle{}équipe du joueur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction est interactive et bloque jusqu\textquotesingle{}à ce que le joueur sélectionne un choix valide (1, 2 ou 3).
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie que les constantes {\ttfamily OK} et {\ttfamily ERR} soient définies dans ton projet. Pense à gérer le cas où la copie du Mecha échoue (par exemple, équipe pleine). 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_ade398b595e60d698c8c259edf2f8252a}\label{pointDePassage_8c_ade398b595e60d698c8c259edf2f8252a} 
+\index{pointDePassage.c@{pointDePassage.c}!combat\_final@{combat\_final}}
+\index{combat\_final@{combat\_final}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{combat\_final()}{combat\_final()}}
+{\footnotesize\ttfamily int combat\+\_\+final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys }\end{DoxyParamCaption})}
+
+
+
+Gère les interactions finales avec les PNJs "{}\+Vin Gazole"{} et "{}\+Iron Musk"{}, incluant dialogues, soin automatique et combat final. 
+
+Cette fonction gère deux interactions distinctes \+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Interaction avec Vin Gazole (map 0)}} \+: ~\newline
+ Le joueur peut interagir pour se faire entièrement soigner (inventaire et Mechas) si ses objets ou ses Mechas ne sont pas au maximum. ~\newline
+ Un dialogue spécifique est alors affiché pour indiquer que le soin a eu lieu. Sinon, un simple dialogue de début est affiché.
+\item {\bfseries{Combat final contre Iron Musk (map 4)}} \+: ~\newline
+ Cette interaction déclenche un dialogue initial, un combat (actuellement commenté), puis un dialogue final. ~\newline
+ Après la victoire, le joueur reçoit un Mecha spécifique de la part d\textquotesingle{}Iron Musk, le jeu sauvegarde automatiquement l\textquotesingle{}état ~\newline
+ du joueur et du PNJ, et un nouveau point de sauvegarde est enregistré.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu (état des cartes, renderer, etc.). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur (inventaire, Mechas, position, état). \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) pour gérer les interactions (touche {\ttfamily P}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} lorsque la fonction s\textquotesingle{}exécute correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les structures et ressources graphiques nécessaires doivent être initialisées et valides. Les fonctions appelées ({\ttfamily afficher\+\_\+dialogue}, {\ttfamily soigner}, {\ttfamily copie\+\_\+mechas}, {\ttfamily sauvegarde\+\_\+partie}, {\ttfamily sauvegarde\+\_\+pnj}) doivent être implémentées.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}interaction avec "{}\+Vin Gazole"{} entraîne le soin automatique du joueur si nécessaire. L\textquotesingle{}interaction avec "{}\+Iron Musk"{} déclenche le combat final, l\textquotesingle{}ajout d\textquotesingle{}un nouveau Mecha à l\textquotesingle{}équipe du joueur, la sauvegarde automatique, et met à jour l\textquotesingle{}état du PNJ.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Le combat contre Iron Musk doit être implémenté explicitement (actuellement commenté). L\textquotesingle{}interaction s\textquotesingle{}active en pressant la touche {\ttfamily P}.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie bien que toutes les constantes ({\ttfamily VIN\+\_\+\+GAZOLE\+\_\+4}, {\ttfamily IRON\+\_\+\+MUSK\+\_\+\+FIN}, {\ttfamily NB\+\_\+\+OBJET}, {\ttfamily OK}) soient correctement définies et initialisées. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_ade398b595e60d698c8c259edf2f8252a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb}\label{pointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb} 
+\index{pointDePassage.c@{pointDePassage.c}!copie\_mechas@{copie\_mechas}}
+\index{copie\_mechas@{copie\_mechas}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{copie\_mechas()}{copie\_mechas()}}
+{\footnotesize\ttfamily int copie\+\_\+mechas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha }\end{DoxyParamCaption})}
+
+
+
+Copie intégralement les attributs d\textquotesingle{}un Mecha vers l\textquotesingle{}équipe du joueur. 
+
+Cette fonction ajoute un nouveau Mecha à l\textquotesingle{}équipe du joueur en copiant intégralement les attributs d\textquotesingle{}un Mecha passé en paramètre ({\ttfamily mecha}) vers la prochaine position disponible dans l\textquotesingle{}équipe du joueur ({\ttfamily j-\/\texorpdfstring{$>$}{>}mechas\+\_\+joueur\mbox{[}\mbox{]}}).
+
+Après la copie, le compteur du nombre de Mechas du joueur ({\ttfamily j-\/\texorpdfstring{$>$}{>}nb\+\_\+mechas}) est incrémenté automatiquement.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Pointeur vers la structure du joueur dont l\textquotesingle{}équipe va recevoir le nouveau Mecha. \\
+\hline
+{\em mecha} & Pointeur vers la structure du Mecha à copier dans l\textquotesingle{}équipe du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la copie du Mecha s\textquotesingle{}est effectuée correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les pointeurs ({\ttfamily j} et {\ttfamily mecha}) doivent être valides et correctement initialisés. L\textquotesingle{}équipe du joueur ne doit pas avoir atteint la limite maximale de Mechas autorisés (à vérifier avant appel).
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha est copié intégralement dans l\textquotesingle{}équipe du joueur, et le nombre total de Mechas ({\ttfamily j-\/\texorpdfstring{$>$}{>}nb\+\_\+mechas}) est mis à jour.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Assurez-\/vous avant d\textquotesingle{}appeler cette fonction que le joueur dispose d\textquotesingle{}un emplacement libre dans son équipe.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifiez que les constantes ({\ttfamily OK} et la taille maximale du tableau {\ttfamily j-\/\texorpdfstring{$>$}{>}mechas\+\_\+joueur}) soient correctement définies pour éviter tout débordement. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d}\label{pointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d} 
+\index{pointDePassage.c@{pointDePassage.c}!jeu\_libre@{jeu\_libre}}
+\index{jeu\_libre@{jeu\_libre}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{jeu\_libre()}{jeu\_libre()}}
+{\footnotesize\ttfamily int jeu\+\_\+libre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}interaction avec le PNJ "{}\+Vin Gazole"{} en mode jeu libre, permettant soins et dialogues répétés. 
+
+Cette fonction permet au joueur d\textquotesingle{}interagir avec le PNJ "{}\+Vin Gazole"{} après avoir terminé l\textquotesingle{}histoire principale du jeu. Lors de la toute première interaction dans ce mode ({\ttfamily etat == 0}), deux dialogues (début et fin) sont affichés, puis le joueur est soigné complètement. L\textquotesingle{}état du PNJ passe ensuite à 1 et une sauvegarde de cet état est réalisée.
+
+Pour les interactions suivantes ({\ttfamily etat == 1}), le joueur peut toujours revenir pour être soigné automatiquement en cas de besoin (inventaire ou PV des Mechas non maximaux). Un dialogue adapté selon l\textquotesingle{}état actuel du joueur est alors affiché (indiquant le soin ou non).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu (cartes, renderer, état général). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur (inventaire, Mechas, position). \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) permettant l\textquotesingle{}interaction ({\ttfamily P}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si l\textquotesingle{}interaction est traitée correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les ressources graphiques et structures ({\ttfamily game}, {\ttfamily joueur}, {\ttfamily pnj}) doivent être initialisées. Les fonctions {\ttfamily afficher\+\_\+dialogue}, {\ttfamily soigner}, {\ttfamily sauvegarde\+\_\+pnj} doivent être implémentées.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}état initial du PNJ est modifié à la première interaction ({\ttfamily etat} passe à 1), et le joueur peut revenir indéfiniment pour des soins. L\textquotesingle{}inventaire et les Mechas du joueur peuvent être restaurés à chaque interaction si nécessaire.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La touche {\ttfamily P} déclenche l\textquotesingle{}interaction avec le PNJ.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi que toutes les constantes ({\ttfamily VIN\+\_\+\+GAZOLE\+\_\+4}, {\ttfamily VIN\+\_\+\+GAZOLE\+\_\+5}, {\ttfamily OK}, {\ttfamily NB\+\_\+\+OBJET}) soient définies et initialisées. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d}\label{pointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d} 
+\index{pointDePassage.c@{pointDePassage.c}!parler\_a\_vin\_gazole@{parler\_a\_vin\_gazole}}
+\index{parler\_a\_vin\_gazole@{parler\_a\_vin\_gazole}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{parler\_a\_vin\_gazole()}{parler\_a\_vin\_gazole()}}
+{\footnotesize\ttfamily int parler\+\_\+a\+\_\+vin\+\_\+gazole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}interaction du joueur avec le PNJ "{}\+Vin Gazole"{}, incluant dialogues, choix du starter et modification de la carte. 
+
+Cette fonction vérifie si le joueur se trouve à côté du PNJ "{}\+Vin Gazole"{} dans la carte initiale (map 0) et qu\textquotesingle{}il presse la touche {\ttfamily P} pour initier l\textquotesingle{}interaction. Si l\textquotesingle{}interaction est valide (position, orientation et état initial du PNJ), un dialogue initial s\textquotesingle{}affiche, suivi du choix d\textquotesingle{}un Mecha starter. Ensuite, un dialogue final est affiché, l\textquotesingle{}état du PNJ est modifié (indiquant que l\textquotesingle{}interaction a eu lieu), une sauvegarde du PNJ est effectuée, et certaines cases spécifiques de la carte sont modifiées pour permettre la progression du joueur.
+
+De plus, la fonction empêche le joueur d\textquotesingle{}accéder à une autre zone de la carte avant d\textquotesingle{}avoir parlé à Vin Gazole, affichant alors un message d\textquotesingle{}avertissement.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant les informations graphiques et l\textquotesingle{}état des cartes. \\
+\hline
+{\em j} & Pointeur vers la structure du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) pour gérer l\textquotesingle{}interaction.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la fonction s\textquotesingle{}exécute correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les ressources graphiques (sprites, textures), ainsi que les structures ({\ttfamily game}, {\ttfamily joueur}, {\ttfamily pnj}), doivent être initialisées correctement. La matrice du jeu ({\ttfamily game-\/\texorpdfstring{$>$}{>}mat}) doit être définie et cohérente avec les positions du PNJ.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le PNJ "{}\+Vin Gazole"{} a changé d\textquotesingle{}état ({\ttfamily etat = 1}), une sauvegarde est effectuée, le joueur possède un Mecha starter, et certaines cases de la carte sont modifiées pour permettre une progression ultérieure.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+L\textquotesingle{}interaction se déclenche spécifiquement avec la touche {\ttfamily P}. Le message d\textquotesingle{}avertissement est affiché lorsque le joueur essaie de progresser prématurément vers une autre zone.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifier que les constantes ({\ttfamily VIN\+\_\+\+GAZOLE\+\_\+1}, {\ttfamily OK}, {\ttfamily TPMAP2}) soient définies et valides, et que les coordonnées d\textquotesingle{}interaction soient correctes pour éviter les incohérences. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da}\label{pointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da} 
+\index{pointDePassage.c@{pointDePassage.c}!premier\_combat\_musk@{premier\_combat\_musk}}
+\index{premier\_combat\_musk@{premier\_combat\_musk}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{premier\_combat\_musk()}{premier\_combat\_musk()}}
+{\footnotesize\ttfamily int premier\+\_\+combat\+\_\+musk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}interaction du joueur avec les PNJs "{}\+Vin Gazole 2"{} et "{}\+Iron Musk"{}, incluant dialogues, soins et combats. 
+
+Cette fonction permet d\textquotesingle{}interagir avec deux PNJs spécifiques \+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Vin Gazole 2 (map 0)}} \+: Si le joueur interagit avec ce PNJ et que ses objets ou Mechas ne sont pas au maximum de leur capacité, ses Mechas et son inventaire sont automatiquement soignés, et un dialogue confirmant le soin est affiché. Sinon, un simple dialogue initial est affiché.
+\item {\bfseries{Iron Musk (map 2)}} \+: Lors de l\textquotesingle{}interaction, un dialogue de début s\textquotesingle{}affiche, un combat se déroule (actuellement commenté), suivi d\textquotesingle{}un dialogue de fin. Après le combat, l\textquotesingle{}état du PNJ est mis à jour, une sauvegarde est effectuée, des accès à d\textquotesingle{}autres cartes sont débloqués, et le joueur est téléporté à une position spécifique sur la carte initiale (map 0).
+\end{DoxyItemize}
+
+De plus, la fonction empêche explicitement le joueur de quitter la zone d\textquotesingle{}Iron Musk avant d\textquotesingle{}avoir complété ce combat obligatoire, affichant alors un message d\textquotesingle{}avertissement.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure principale du jeu contenant les informations sur les cartes et le renderer. \\
+\hline
+{\em j} & Pointeur vers la structure du joueur (inventaire, équipe de Mechas, position). \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) utilisé pour gérer l\textquotesingle{}interaction ({\ttfamily P} et flèches directionnelles).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} lorsque la fonction s\textquotesingle{}est correctement déroulée.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les structures du jeu ({\ttfamily game}, {\ttfamily joueur}, {\ttfamily pnj}) et les ressources graphiques doivent être initialisées. La fonction {\ttfamily soigner} ainsi que les fonctions de sauvegarde ({\ttfamily sauvegarde\+\_\+pnj}, {\ttfamily sauvegarde\+\_\+partie}) doivent être valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Les états des PNJs sont modifiés après interaction, le joueur est éventuellement soigné, et des modifications de carte sont effectuées pour permettre la progression du joueur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction déclenche l\textquotesingle{}interaction uniquement lors de l\textquotesingle{}appui sur la touche {\ttfamily P}. Le message d\textquotesingle{}avertissement apparaît lorsque le joueur tente de quitter la zone sans avoir effectué le combat requis.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie que toutes les constantes ({\ttfamily VIN\+\_\+\+GAZOLE\+\_\+2}, {\ttfamily IRON\+\_\+\+MUSK\+\_\+\+DEB}, {\ttfamily OK}, {\ttfamily TPMAP4}, {\ttfamily TPMAP6}, {\ttfamily NB\+\_\+\+OBJET}) soient correctement définies et initialisées. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_a7ec67454376236ff74521e75806f1f8b}\label{pointDePassage_8c_a7ec67454376236ff74521e75806f1f8b} 
+\index{pointDePassage.c@{pointDePassage.c}!retourner\_parler\_a\_vin\_gazole@{retourner\_parler\_a\_vin\_gazole}}
+\index{retourner\_parler\_a\_vin\_gazole@{retourner\_parler\_a\_vin\_gazole}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{retourner\_parler\_a\_vin\_gazole()}{retourner\_parler\_a\_vin\_gazole()}}
+{\footnotesize\ttfamily int retourner\+\_\+parler\+\_\+a\+\_\+vin\+\_\+gazole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys }\end{DoxyParamCaption})}
+
+
+
+Gère la seconde interaction du joueur avec le PNJ "{}\+Vin Gazole"{}, incluant dialogues, soin du joueur et déblocage de la carte. 
+
+Cette fonction permet au joueur de retourner parler au PNJ "{}\+Vin Gazole"{} après avoir progressé dans l\textquotesingle{}histoire. ~\newline
+ Lors de cette interaction, deux dialogues successifs sont affichés au joueur (début et fin). Ensuite, ~\newline
+ le joueur et ses Mechas sont complètement soignés (inventaire et PV), l\textquotesingle{}état du PNJ est modifié pour indiquer ~\newline
+ que l\textquotesingle{}interaction a eu lieu, une sauvegarde du PNJ est effectuée, et les cases permettant la progression ultérieure ~\newline
+ du joueur sont débloquées. De plus, un nouveau point de sauvegarde est défini pour le joueur.
+
+Si le joueur tente de progresser avant cette interaction obligatoire, un message d\textquotesingle{}avertissement lui indique ~\newline
+ clairement qu\textquotesingle{}il doit aller se soigner au préalable.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure principale du jeu (état actuel, renderer, cartes). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur (position, inventaire, état des Mechas). \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position graphique du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position graphique du sprite du PNJ. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers les textures associées au PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers les textures associées au joueur. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) pour gérer l\textquotesingle{}interaction.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la fonction s\textquotesingle{}exécute correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Toutes les structures du jeu ({\ttfamily game}, {\ttfamily joueur}, {\ttfamily pnj}) et ressources graphiques doivent être initialisées correctement. Les fonctions appelées ({\ttfamily afficher\+\_\+dialogue}, {\ttfamily soigner}, {\ttfamily sauvegarde\+\_\+pnj}) doivent être implémentées et valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}état du PNJ "{}\+Vin Gazole"{} est mis à jour ({\ttfamily etat = 1}), le joueur est intégralement soigné, une sauvegarde est effectuée, et la carte est modifiée pour permettre au joueur de progresser. Un point de sauvegarde est enregistré.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+L\textquotesingle{}interaction se déclenche uniquement en pressant la touche {\ttfamily P}. Un message d\textquotesingle{}avertissement est affiché en cas de tentative prématurée d\textquotesingle{}avancer.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifier que toutes les constantes ({\ttfamily VIN\+\_\+\+GAZOLE\+\_\+3}, {\ttfamily OK}, {\ttfamily TPMAP2}) soient correctement définies et initialisées. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a7ec67454376236ff74521e75806f1f8b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a}\label{pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a} 
+\index{pointDePassage.c@{pointDePassage.c}!soigner@{soigner}}
+\index{soigner@{soigner}!pointDePassage.c@{pointDePassage.c}}
+\doxysubsubsection{\texorpdfstring{soigner()}{soigner()}}
+{\footnotesize\ttfamily int soigner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j }\end{DoxyParamCaption})}
+
+
+
+Restaure entièrement la santé et les objets du joueur et sauvegarde la partie. 
+
+Cette fonction réinitialise les objets de l\textquotesingle{}inventaire du joueur (mechaballs, carburant, rappel, repousse) à leur quantité maximale prédéfinie ({\ttfamily NB\+\_\+\+OBJET}). Elle restaure également entièrement les points de vie (PV) et le nombre d\textquotesingle{}utilisations des attaques des Mechas présents dans l\textquotesingle{}équipe du joueur.
+
+Après avoir restauré les statistiques des Mechas et les objets du joueur, elle sauvegarde automatiquement l’état actuel de la partie en appelant {\ttfamily \doxylink{sauv_8c_a68cba593cfe77461f153f38b2a08a374}{sauvegarde\+\_\+partie()}}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Pointeur vers la structure du joueur dont les Mechas et l\textquotesingle{}inventaire seront restaurés.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: si les opérations de soin et de sauvegarde ont été effectuées avec succès.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily j}, ainsi que ses sous-\/structures ({\ttfamily inventaire}, {\ttfamily mechas\+\_\+joueur}) doivent être initialisés correctement. Les tableaux globaux (notamment {\ttfamily attaque\mbox{[}\mbox{]}}) doivent également être initialisés et valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Tous les objets de l\textquotesingle{}inventaire du joueur sont restaurés à leur quantité maximale. Les PV et les utilisations des attaques des Mechas du joueur sont entièrement restaurés. L’état de la partie est sauvegardé.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction est typiquement utilisée après un soin complet (comme dans un centre de soin).
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifier la validité des constantes utilisées ({\ttfamily NB\+\_\+\+OBJET}, {\ttfamily NB\+\_\+\+MECHAS\+\_\+\+INVENTAIRE}, et {\ttfamily OK}) et que la fonction {\ttfamily sauvegarde\+\_\+partie} soit bien implémentée. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_icgraph}
+\end{center}
+\end{figure}

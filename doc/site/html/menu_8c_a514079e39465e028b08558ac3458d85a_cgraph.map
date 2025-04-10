@@ -1,0 +1,49 @@
+<map id="aff_saisie_pseudo" name="aff_saisie_pseudo">
+<area shape="rect" id="Node000001" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="5,183,132,208"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#aa1f62d5ef2922f420fba49063416f5ab" title="Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin)." alt="" coords="417,107,555,132"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,180,179,167,402,129,403,134,181,173,123,185"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="634,5,745,31"/>
+<area shape="poly" id="edge21_Node000001_Node000004" title=" " alt="" coords="79,181,120,139,148,116,179,97,235,72,295,53,356,38,416,28,529,16,620,14,620,19,529,22,417,33,357,44,296,58,237,77,181,102,151,120,123,143,83,184"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="640,80,739,105"/>
+<area shape="poly" id="edge22_Node000001_Node000005" title=" " alt="" coords="88,180,129,157,179,134,239,116,300,103,424,88,537,84,626,86,626,91,537,89,424,93,301,108,240,122,181,139,131,161,91,185"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="627,203,751,228"/>
+<area shape="poly" id="edge23_Node000001_Node000008" title=" " alt="" coords="118,205,180,217,299,225,417,226,614,219,614,224,417,232,298,230,180,222,117,211"/>
+<area shape="rect" id="Node000009" href="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="180,183,360,208"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="132,193,166,193,166,198,132,198"/>
+<area shape="rect" id="Node000010" href="$sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="447,359,525,384"/>
+<area shape="poly" id="edge24_Node000001_Node000010" title=" " alt="" coords="83,207,124,247,151,269,181,288,247,316,315,338,434,362,433,367,313,343,245,321,179,292,148,273,121,251,80,210"/>
+<area shape="rect" id="Node000018" href="$sauv_8c.html#a27e4df079f565f0ca025fea8e134b47e" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="203,416,337,441"/>
+<area shape="poly" id="edge25_Node000001_Node000018" title=" " alt="" coords="79,207,118,277,148,321,182,363,209,387,237,406,233,411,205,391,178,367,143,325,113,280,74,210"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a18a2045c75cbd09addc1567af7adc09d" title="Charge une image depuis un fichier et la convertit en texture SDL." alt="" coords="633,129,745,155"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="556,124,620,132,619,137,556,130"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="512,104,649,35,652,39,514,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="555,108,626,98,626,104,556,113"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="515,130,650,194,648,199,513,134"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="867,56,946,81"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="739,85,854,72,854,77,739,90"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="845,105,968,131"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="739,96,832,107,831,112,739,101"/>
+<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="306,180,435,134,437,139,308,185"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="283,180,335,137,370,113,407,92,461,69,518,51,620,26,621,32,519,56,463,74,409,96,373,117,338,141,287,185"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="360,185,459,169,512,157,563,141,587,128,611,114,628,107,630,112,613,119,590,133,565,146,513,162,460,174,361,190"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="360,197,613,209,613,214,360,202"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="281,206,330,272,367,311,409,345,435,357,433,362,407,350,363,315,326,276,277,210"/>
+<area shape="rect" id="Node000015" href="$sauv_8c.html#a3748382cfddb2c574b37de5987534cea" title="Supprime définitivement toutes les données d&#39;une partie d&#39;un joueur depuis les fichiers CSV." alt="" coords="421,309,551,335"/>
+<area shape="poly" id="edge18_Node000009_Node000015" title=" " alt="" coords="294,206,453,300,450,305,292,210"/>
+<area shape="rect" id="Node000011" href="$sauv_8c.html#aec5928f1d3393d66b9df8e4066b8d8da" title="Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial." alt="" coords="621,367,758,392"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="526,370,607,373,607,379,525,376"/>
+<area shape="rect" id="Node000012" href="$sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="625,416,753,441"/>
+<area shape="poly" id="edge15_Node000010_Node000012" title=" " alt="" coords="526,380,631,410,630,415,525,385"/>
+<area shape="rect" id="Node000013" href="$sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="831,391,983,416"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="753,419,816,411,817,416,754,424"/>
+<area shape="rect" id="Node000014" href="$sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="815,440,999,465"/>
+<area shape="poly" id="edge17_Node000012_Node000014" title=" " alt="" coords="754,433,801,438,800,444,753,438"/>
+<area shape="rect" id="Node000016" href="$sauv_8c.html#a020e784ece3effc4c331f7955d822f1e" title="Supprime l&#39;entrée d&#39;un inventaire associé à un joueur (ou PNJ) d&#39;un fichier CSV." alt="" coords="612,252,767,277"/>
+<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="531,307,630,278,631,284,533,312"/>
+<area shape="rect" id="Node000017" href="$sauv_8c.html#accca901359a4eafa002b577efb20fff1" title="Supprime toutes les entrées associées aux Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="617,302,762,342"/>
+<area shape="poly" id="edge20_Node000015_Node000017" title=" " alt="" coords="551,319,603,319,603,325,551,325"/>
+<area shape="rect" id="Node000019" href="$sauv_8c.html#a5df71d1ff822e93d595691020a67fcac" title="Récupère les données de l&#39;inventaire d&#39;un joueur ou d&#39;un PNJ depuis un fichier CSV." alt="" coords="408,473,564,499"/>
+<area shape="poly" id="edge26_Node000018_Node000019" title=" " alt="" coords="319,439,425,467,424,472,318,444"/>
+<area shape="rect" id="Node000020" href="$sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552" title="Récupère l&#39;équipe de Mechas d&#39;un joueur à partir d&#39;un fichier CSV." alt="" coords="413,409,559,449"/>
+<area shape="poly" id="edge27_Node000018_Node000020" title=" " alt="" coords="338,426,399,426,399,431,338,431"/>
+</map>

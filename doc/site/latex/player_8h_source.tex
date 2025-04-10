@@ -1,0 +1,26 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/player.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/player.h}}
+\mbox{\hyperlink{player_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../lib/initGame.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../lib/affichage.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../lib/sauv.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../lib/global.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Gestion\ de\ deplacement\ du\ joueur\ et\ du\ tp\ entre\ les\ maps}}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{player_8h_af51d5e095cb4fc41eec0983022449146}{deplacement}}(\textcolor{keywordtype}{int}\ taille\_x,\ \textcolor{keywordtype}{int}\ taille\_y,\ \textcolor{keyword}{const}\ Uint8\ *keys,\ \mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *\ j,\ \textcolor{keywordtype}{int}\ *\ last\_case,\ SDL\_Rect\ *sprite\_p,\ \textcolor{keywordtype}{int}\ *repousse);}
+\DoxyCodeLine{00021\ \textcolor{comment}{//animation\ du\ joueur\ en\ switchant\ entre\ les\ sprites}}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a279408d93f54625f9229df493ae67180}{animation}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p);\ \ \ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//gere\ l'apparition\ des\ mechas\ }}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{player_8h_aa063304a19a8497e45220ea85ad96307}{spawn\_mecha}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *\ j,\ \textcolor{keywordtype}{int}\ obj\_case,\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mecha\_sauvage,\ \textcolor{keywordtype}{int}\ res);}
+\DoxyCodeLine{00025\ \textcolor{comment}{//Detecte\ quand\ on\ passe\ devant\ un\ pnj\ pour\ lancer\ un\ combat}}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{player_8h_a09715347a5e61cb5a25e0a2cefc73696}{detection\_combat\_pnj}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur,\ \textcolor{keywordtype}{int}\ res);}
+
+\end{DoxyCode}

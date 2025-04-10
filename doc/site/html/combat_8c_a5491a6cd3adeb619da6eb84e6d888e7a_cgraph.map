@@ -1,0 +1,34 @@
+<map id="attaque_ordi_pnj" name="attaque_ordi_pnj">
+<area shape="rect" id="Node000001" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="5,207,123,233"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a1091893e7df87a967b878919b232b0d5" title="Affiche un dialogue interactif durant un combat entre deux Méchas." alt="" coords="315,231,485,257"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,222,301,234,300,240,123,227"/>
+<area shape="rect" id="Node000013" href="$combat_8c.html#a8c19b3bf83d09e9fb4b596cd4ff45219" title="Calcule et applique les effets d&#39;une attaque lors d&#39;un combat entre deux Mechas." alt="" coords="171,182,267,207"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="122,208,157,202,158,207,123,213"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="737,282,848,307"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,254,534,267,724,287,724,292,533,272,461,259"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a159b2a6408c605d1fc9432689f92e3cb" title="Affiche à l&#39;écran tous les éléments graphiques d&#39;un combat entre deux Mechas." alt="" coords="558,182,658,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="454,229,544,207,545,212,455,234"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="925,270,1003,295"/>
+<area shape="poly" id="edge12_Node000002_Node000007" title=" " alt="" coords="433,254,480,272,534,288,623,311,693,325,764,328,854,317,888,309,920,298,922,303,890,314,855,323,764,333,693,330,622,316,533,293,479,277,431,259"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="903,195,1025,221"/>
+<area shape="poly" id="edge13_Node000002_Node000008" title=" " alt="" coords="457,229,484,216,499,205,508,194,531,168,622,80,666,48,730,20,765,9,794,3,823,6,856,20,878,36,896,55,926,98,946,143,959,181,954,183,941,145,921,101,892,58,874,40,853,25,822,11,794,9,766,14,732,25,669,52,626,84,535,171,513,197,502,209,487,221,459,234"/>
+<area shape="rect" id="Node000012" href="$affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="533,231,683,257"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="485,241,519,241,519,247,485,247"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="659,205,684,217,700,230,709,243,718,256,732,269,741,274,738,278,729,273,714,259,705,246,696,233,681,221,657,209"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#afc970416ff2ee1d9f8351a288625f23a" title="Concatène un entier à la fin d&#39;une chaîne de caractères." alt="" coords="762,183,823,209"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="658,192,748,193,748,198,658,198"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="743,233,842,258"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="656,205,733,226,732,232,655,210"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="731,35,855,61"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="617,180,662,128,694,97,729,70,739,64,741,69,732,74,697,101,666,132,621,184"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="745,85,841,110"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="627,180,673,151,729,119,743,113,745,118,732,124,675,155,630,184"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#ac0e780352c4ab1739b9e31be92740c2d" title="Dessine du texte à une position spécifique à l&#39;écran, avec gestion des retours à la ligne." alt="" coords="739,134,846,159"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="657,179,729,161,730,166,658,185"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="843,254,912,269,911,274,842,259"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="842,232,892,221,893,226,843,237"/>
+<area shape="poly" id="edge16_Node000013_Node000002" title=" " alt="" coords="267,205,340,225,339,230,265,210"/>
+<area shape="rect" id="Node000014" href="$combat_8c.html#ab9469ab4f84b56a27ef05848c4a78cb9" title="Anime visuellement la diminution progressive des PV d&#39;un Mecha durant un combat." alt="" coords="341,182,459,207"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="267,192,327,192,327,197,267,197"/>
+<area shape="poly" id="edge18_Node000014_Node000004" title=" " alt="" coords="459,192,544,192,544,197,459,197"/>
+</map>

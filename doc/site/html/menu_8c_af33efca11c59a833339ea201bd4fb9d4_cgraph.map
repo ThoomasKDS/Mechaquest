@@ -1,0 +1,23 @@
+<map id="aff_parametre" name="aff_parametre">
+<area shape="rect" id="Node000001" title="Affiche l&#39;écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour." alt="" coords="5,79,108,104"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#adb80c9d7e446e21dacf40b55cc973deb" title="Affiche un écran d&#39;informations sur les contrôles du jeu." alt="" coords="156,30,299,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,77,168,57,170,62,102,82"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="353,79,464,104"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="101,102,156,113,227,119,298,113,346,105,347,110,299,118,227,124,156,118,100,107"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="359,128,458,154"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="87,102,120,115,157,125,255,138,345,140,345,146,255,143,155,130,118,120,85,107"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="347,30,471,55"/>
+<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="68,77,104,44,128,27,155,15,209,4,264,5,315,12,359,23,358,28,314,18,263,10,209,9,157,20,131,32,107,48,72,81"/>
+<area shape="rect" id="Node000008" href="$menu_8c.html#a6ef0addf6407c785be3cf605618b938e" title="Affiche un menu permettant de régler le volume sonore du jeu (Pour l&#39;instant)." alt="" coords="170,79,285,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="108,89,156,89,156,94,108,94"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,53,349,73,347,78,274,58"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="277,53,300,64,315,77,325,89,334,101,348,114,359,120,357,125,345,118,330,105,321,92,312,81,297,69,274,58"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="299,40,333,40,333,45,299,45"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="541,103,619,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="458,131,526,121,527,126,459,137"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="519,152,641,178"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="459,145,505,152,504,157,458,151"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="285,89,340,89,340,94,285,94"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="275,102,349,122,347,127,274,107"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="274,77,347,56,349,61,275,82"/>
+</map>

@@ -1,0 +1,21 @@
+digraph "utilisation_rappel"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="utilisation_rappel",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Gère l'utilisation d'un objet \"rappel\" durant un combat."];
+  Node1 -> Node2 [id="edge7_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="utilisation_objet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$combat_8c.html#ae82c6dcf76c1412964511d71b75c637e",tooltip="Affiche l'interface d'utilisation d'objets pendant un combat."];
+  Node2 -> Node3 [id="edge8_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="tour_joueur",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$combat_8c.html#a3c18ce2957ca72f56737d0082766ad63",tooltip="Gère le tour du joueur lors d'un combat contre un Mécha sauvage ou un PNJ."];
+  Node3 -> Node4 [id="edge9_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="combat_pnj",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$combat_8c.html#a03ca199547656caabf8e81d769b770e4",tooltip="Gère un combat complet entre le joueur et un PNJ."];
+  Node4 -> Node5 [id="edge10_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="combat_final",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a",tooltip="Gère les interactions finales avec les PNJs \"Vin Gazole\" et \"Iron Musk\", incluant dialogues,..."];
+  Node4 -> Node6 [id="edge11_Node000004_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="premier_combat_musk",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da",tooltip="Gère l'interaction du joueur avec les PNJs \"Vin Gazole 2\" et \"Iron Musk\", incluant dialogues,..."];
+  Node3 -> Node7 [id="edge12_Node000003_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="combat_sauvage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e",tooltip="Gère un combat entre le joueur et un Mécha sauvage."];
+}

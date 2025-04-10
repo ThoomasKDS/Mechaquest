@@ -1,0 +1,69 @@
+\doxysection{affichage.\+h}
+\hypertarget{affichage_8h_source}{}\label{affichage_8h_source}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/affichage.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/affichage.h}}
+\mbox{\hyperlink{affichage_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ AFF\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ AFF\_H\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../lib/player.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../lib/initGame.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../lib/sauv.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../lib/global.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../lib/combat.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//FONCTION\ BACKGROUND}}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a9a0c4550fcb73a704a8ecb9059731b40}{init\_background}}();\ \ \ \ \ \textcolor{comment}{//initalise\ la\ background}}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a37762eaaf5ff37b10814afba0e6f0aa5}{init\_calque}}()\ ;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();\ \ \ \ \textcolor{comment}{//dessine\ le\ background}}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a78d50882c5d889e15ca86ddba5aa62bd}{draw\_calque}}()\ ;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//FONCTION\ MAT}}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a1e25ed2b94d05cf8dae2fe968589573e}{init\_mat}}(\textcolor{keywordtype}{int}\ taille\_x,\ \textcolor{keywordtype}{int}\ taille\_y);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//initialise\ la\ matrice}}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_ad9d3b44ef81854da019931f0c15b40ca}{remplir\_mat}}(\textcolor{keywordtype}{int}\ taille\_x,\ \textcolor{keywordtype}{int}\ taille\_y);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//rempli\ les\ matrices\ avec\ les\ txt}}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_acccbd26fc4489bcee9baa113b9dac4e1}{aff\_mat}}(\textcolor{keywordtype}{int}\ taille\_x,\ \textcolor{keywordtype}{int}\ taille\_y,\ \textcolor{keywordtype}{int}\ n\_mat);\ \ \ \textcolor{comment}{//affiche\ la\ matrice\ dans\ le\ terminal}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a0e3013e95f4c920f17b775d33ac0ee82}{free\_mat}}(\textcolor{keywordtype}{int}\ taille\_x,\ \textcolor{keywordtype}{int}\ taille\_y);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//libere\ la\ matrice}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//FONCTION\ GESTION\ OBJETS}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a9de0b29edaa04d0f607cd14d448ff25e}{init\_player}}(\textcolor{keywordtype}{char}\ sexe);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//initialise\ le\ joueur\ }}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a065c0902e63f16318150da6add0b96b6}{init\_pnj}}()\ ;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_aaf9b1b9fed295b95719d447183c0a7bb}{init\_mecha}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//initialise\ un\ pnj}}
+\DoxyCodeLine{00040\ SDL\_Rect\ \mbox{\hyperlink{affichage_8h_a0e1fc8eee26e274af453bd4630bd7566}{create\_obj}}(\textcolor{keywordtype}{int}\ taille\_w,\ \textcolor{keywordtype}{int}\ taille\_h,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ type\_obj,\ \textcolor{keywordtype}{int}\ n\_mat);\ \ \ \ \ \ \textcolor{comment}{//creé\ un\ objet}}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a}{game\_over}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_ab476829218385851d4e69263f07e488b}{draw\_player}}(SDL\_Rect\ *obj,\ \mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *\ j);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//dessine\ le\ joueur}}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_ae63215d67a18f635b3a1c2e1464a0a6f}{draw\_mecha}}(\mbox{\hyperlink{structmechas__t}{mechas\_t}}\ *\ m,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ orientation);\ \textcolor{comment}{//dessine\ un\ mecha}}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a81ed48c2407a1c13ac5884e0f162aaa7}{draw\_pnj}}(SDL\_Rect\ *obj,\ \mbox{\hyperlink{structpnj__t}{pnj\_t}}\ *pnj\ ,\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//dessine\ un\ pnj}}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a26aea5bf98ae3244b38faf08e3ebd667}{draw\_obj}}(SDL\_Rect\ *obj,\ SDL\_Texture\ *\ img\ );\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//dessine\ un\ objet\ }}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a16a8360b65479c7343b03f418ed56939}{draw\_all}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,SDL\_Rect\ *sprite\_p,SDL\_Rect\ *pnj\_sprite);}
+\DoxyCodeLine{00047\ \textcolor{comment}{//w\ :\ largeur,\ h,\ hauteur,\ x,\ coord\ x,\ y\ :\ coord\ y,\ "{}r,g,b"{}\ :\ \ systeme\ de\ couleur,\ a\ :\ oppacité}}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a7290dad76779d8dd7f48366a16812be8}{creer\_rectangle}}(\mbox{\hyperlink{structrectangle__t}{rectangle\_t}}\ *rectangle,\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{int}\ g,\ \textcolor{keywordtype}{int}\ b,\ \textcolor{keywordtype}{int}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *text);\ \textcolor{comment}{//creer\ un\ rectangle\ avec\ du\ texte}}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_ab54c358911a2ed823f20797846583531}{draw\_text\_left\_middle}}(\mbox{\hyperlink{structrectangle__t}{rectangle\_t}}*\ rectangle);}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a390da1c2cd15fd5355de26bd34b3d3dc}{draw\_text\_center}}(\mbox{\hyperlink{structrectangle__t}{rectangle\_t}}*\ rectangle);}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_ab542b24175a0231f8530346fc8ab790f}{draw\_rect}}(\mbox{\hyperlink{structrectangle__t}{rectangle\_t}}\ *rectangle,\textcolor{keywordtype}{void}\ (*draw\_func)(\mbox{\hyperlink{structrectangle__t}{rectangle\_t}}\ *));}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_ac0e780352c4ab1739b9e31be92740c2d}{draw\_text\_pos}}(\textcolor{keywordtype}{char}\ *text,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a4f7e45e8554e8971bdba352cf9838405}{draw\_all\_rect}}(\textcolor{keywordtype}{int}\ n,\ ...);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1}{afficher\_dialogue}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p,\ SDL\_Rect\ *pnj\_sprite,\ \textcolor{keywordtype}{char}\ *pseudo,\ \textcolor{keywordtype}{char}\ *dialogue,\textcolor{keywordtype}{int}\ choix);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a1091893e7df87a967b878919b232b0d5}{afficher\_dialogue\_combat}}(\mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mecha\_joueur,\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *\ mecha\_ordi,\ \textcolor{keywordtype}{char}\ *pseudo,\ \textcolor{keywordtype}{char}\ *dialogue,\textcolor{keywordtype}{int}\ choix);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_afc970416ff2ee1d9f8351a288625f23a}{concat}}(\textcolor{keywordtype}{char}\ *dest,\ \textcolor{keywordtype}{int}\ nb);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a76e0589a991f4ad00c5baae522dfeee1}{utiliserObjetSurMecha}}(\textcolor{keywordtype}{int}\ objet\_id,\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *mecha,\ \mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ \textcolor{keywordtype}{char}\ *message\_buffer);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ afficherTitre(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ titre,\ \textcolor{keywordtype}{int}\ fondX,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ afficherTexteCentre(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ texte,\ \textcolor{keywordtype}{int}\ fondX,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5}{afficherInfosMecha}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p,\ SDL\_Rect\ *pnj\_sprite,\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ *mecha\_j,\ \textcolor{keywordtype}{int}\ *quitter\_total);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_aff36844a9bc0417b311b691e2957adae}{afficherMechadex}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p,\ SDL\_Rect\ *pnj\_sprite,\ \mbox{\hyperlink{structgame__t}{game\_t}}\ *game,\ \textcolor{keywordtype}{int}\ *quitter\_total);}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c}{afficherSelectionMecha}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p,\ SDL\_Rect\ *pnj\_sprite,\ \mbox{\hyperlink{structgame__t}{game\_t}}\ *game,\ \textcolor{keywordtype}{int}\ objet\_id,\ \textcolor{keywordtype}{int}\ *quitter\_total);}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_a17c5a7569d3f699b38d5124f198e916a}{afficherInventaire}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *j,\ SDL\_Rect\ *sprite\_p,\ SDL\_Rect\ *pnj\_sprite,\ \mbox{\hyperlink{structgame__t}{game\_t}}\ *game,\ \textcolor{keywordtype}{int}\ *repousse);}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{affichage_8h_af70cd65063ba7719d712c57fcce296a3}{affichage\_pc}}(\mbox{\hyperlink{structjoueur__t}{joueur\_t}}\ *joueur);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,13 @@
+digraph "utiliserObjetSurMecha"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="utiliserObjetSurMecha",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Utilise un objet de l'inventaire du joueur sur un Mécha donné."];
+  Node1 -> Node2 [id="edge3_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="afficherSelectionMecha",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a9519a3474a5b9ff0162efbc07d652b0c",tooltip="Affiche l'écran de sélection d'un Mécha pour utiliser un objet."];
+  Node2 -> Node3 [id="edge4_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="afficherInventaire",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a",tooltip="Affiche l'inventaire du joueur et permet d'utiliser certains objets."];
+}

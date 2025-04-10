@@ -1,0 +1,25 @@
+<map id="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/initGame.h" name="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/initGame.h">
+<area shape="rect" id="Node000001" title="Initialisation et gestion de la SDL pour le jeu." alt="" coords="294,5,437,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,67,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,64,80,124,79,119,293,59"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="91,123,155,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="295,71,167,120,165,115,293,66"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="179,123,245,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="311,77,244,118,241,113,309,73"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="269,123,328,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="343,76,317,113,313,110,339,73"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="232,196,328,221"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="365,75,357,112,342,149,326,171,308,189,304,185,322,168,338,147,352,110,360,74"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="353,196,487,221"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="379,74,414,182,409,184,374,76"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="512,196,651,221"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="438,52,471,62,504,76,536,96,563,121,579,151,584,181,579,182,573,152,559,124,533,100,502,81,469,67,436,57"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="675,196,789,221"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="438,62,510,88,586,120,651,154,705,186,702,191,648,159,584,125,508,93,436,67"/>
+<area shape="rect" id="Node000010" href="$global_8h.html" title="Définition des constantes, structures et variables globales du jeu." alt="" coords="453,123,549,148"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="416,73,474,112,471,117,413,77"/>
+<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="467,151,329,194,328,189,465,145"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="490,150,445,189,442,185,487,146"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="516,146,560,185,556,189,512,150"/>
+<area shape="poly" id="edge13_Node000010_Node000009" title=" " alt="" coords="539,145,683,189,681,195,538,151"/>
+</map>

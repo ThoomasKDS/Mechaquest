@@ -1,0 +1,15 @@
+<map id="afficher_choix_sexe" name="afficher_choix_sexe">
+<area shape="rect" id="Node000001" title="Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin)." alt="" coords="5,80,144,105"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#a18a2045c75cbd09addc1567af7adc09d" title="Charge une image depuis un fichier et la convertit en texture SDL." alt="" coords="198,5,310,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,77,191,40,206,33,208,38,193,44,106,82"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="199,55,309,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,80,184,74,185,80,145,86"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="205,104,303,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,99,191,106,190,111,144,105"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="192,153,316,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="108,103,210,145,208,150,106,108"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="386,80,465,105"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="303,107,372,97,372,103,304,112"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="364,129,487,155"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="304,121,350,128,350,134,303,127"/>
+</map>

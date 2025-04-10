@@ -1,0 +1,9 @@
+<map id="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/son.h" name="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/son.h">
+<area shape="rect" id="Node000001" title="Gestion de la musique et des effets sonore du jeu." alt="" coords="159,5,327,60"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title="fichier contenant la fonctions principale" alt="" coords="5,108,148,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,70,130,110,128,105,190,65"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html" title="Fichier contenant les fonctions liées à l&#39;affichage et la gestion du menu principal et des sous&#45;menus..." alt="" coords="172,108,315,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,74,246,108,241,108,241,74"/>
+<area shape="rect" id="Node000004" href="$player_8c.html" title="fichier contenant les fonctions de déplacement" alt="" coords="339,108,481,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="297,65,359,105,356,110,294,70"/>
+</map>

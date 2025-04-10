@@ -1,0 +1,13 @@
+digraph "recuperation_joueur"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="recuperation_joueur",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Récupère les données d'une partie sauvegardée pour un joueur donné depuis un fichier CSV."];
+  Node1 -> Node2 [id="edge3_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="aff_saisie_pseudo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$menu_8c.html#a514079e39465e028b08558ac3458d85a",tooltip="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie."];
+  Node2 -> Node3 [id="edge4_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="afficher_menu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229",tooltip="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter."];
+}

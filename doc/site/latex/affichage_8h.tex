@@ -1,0 +1,1958 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/affichage.h}
+\hypertarget{affichage_8h}{}\label{affichage_8h}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/affichage.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/affichage.h}}
+
+
+Fichier d\textquotesingle{}en-\/tête pour la gestion de l\textquotesingle{}affichage dans le jeu.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include "{}../lib/player.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/init\+Game.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/sauv.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/global.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/combat.\+h"{}}\newline
+Graphe des dépendances par inclusion de affichage.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{affichage_8h_a9a0c4550fcb73a704a8ecb9059731b40}{init\+\_\+background}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les textures de fond et adapte l\textquotesingle{}affichage à la taille de la fenêtre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a37762eaaf5ff37b10814afba0e6f0aa5}{init\+\_\+calque}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les textures des calques utilisés pour l\textquotesingle{}affichage du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a3d385ca0396c4c2b3001371505a410e4}{draw\+\_\+background}} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arrière-\/plan (background) actuel du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a78d50882c5d889e15ca86ddba5aa62bd}{draw\+\_\+calque}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le calque (overlay) actuel du jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a1e25ed2b94d05cf8dae2fe968589573e}{init\+\_\+mat}} (int taille\+\_\+x, int taille\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Initialise une matrice 3D pour la gestion des calques du jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_ad9d3b44ef81854da019931f0c15b40ca}{remplir\+\_\+mat}} (int taille\+\_\+x, int taille\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Remplit les matrices de calques avec les données de fichiers de sauvegarde. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_acccbd26fc4489bcee9baa113b9dac4e1}{aff\+\_\+mat}} (int taille\+\_\+x, int taille\+\_\+y, int n\+\_\+mat)
+\begin{DoxyCompactList}\small\item\em Affiche le contenu d\textquotesingle{}une matrice spécifique à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a0e3013e95f4c920f17b775d33ac0ee82}{free\+\_\+mat}} (int taille\+\_\+x, int taille\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Libère la mémoire allouée pour les matrices des calques du jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a9de0b29edaa04d0f607cd14d448ff25e}{init\+\_\+player}} (char sexe)
+\begin{DoxyCompactList}\small\item\em Initialise les textures d\textquotesingle{}animation du joueur selon son sexe. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a065c0902e63f16318150da6add0b96b6}{init\+\_\+pnj}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les textures des PNJ (personnages non-\/joueurs) du jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_aaf9b1b9fed295b95719d447183c0a7bb}{init\+\_\+mecha}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les textures des Méchas du jeu. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{affichage_8h_a0e1fc8eee26e274af453bd4630bd7566}{create\+\_\+obj}} (int taille\+\_\+w, int taille\+\_\+h, int x, int y, int type\+\_\+obj, int n\+\_\+mat)
+\begin{DoxyCompactList}\small\item\em Crée un objet de type SDL\+\_\+\+Rect et met à jour la matrice du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a}{game\+\_\+over}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}écran de fin de partie et réinitialise le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_ab476829218385851d4e69263f07e488b}{draw\+\_\+player}} (SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Dessine le joueur à l\textquotesingle{}écran en fonction de sa direction et de son mouvement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_ae63215d67a18f635b3a1c2e1464a0a6f}{draw\+\_\+mecha}} (\mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}} \texorpdfstring{$\ast$}{*}m, int x, int y, int h, int w, int orientation)
+\begin{DoxyCompactList}\small\item\em Dessine un Mécha à l\textquotesingle{}écran avec la texture correspondant à son orientation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a81ed48c2407a1c13ac5884e0f162aaa7}{draw\+\_\+pnj}} (SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Dessine un PNJ à l\textquotesingle{}écran en fonction de son identité et de son orientation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a26aea5bf98ae3244b38faf08e3ebd667}{draw\+\_\+obj}} (SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}obj, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}img)
+\begin{DoxyCompactList}\small\item\em Dessine un objet générique à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a16a8360b65479c7343b03f418ed56939}{draw\+\_\+all}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite)
+\begin{DoxyCompactList}\small\item\em Gère et affiche tous les éléments visuels principaux du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a7290dad76779d8dd7f48366a16812be8}{creer\+\_\+rectangle}} (\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}rectangle, int w, int h, float x, float y, int r, int g, int b, int a, const char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_ab54c358911a2ed823f20797846583531}{draw\+\_\+text\+\_\+left\+\_\+middle}} (\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}rectangle)
+\begin{DoxyCompactList}\small\item\em Dessine un texte centré verticalement et aligné à gauche dans un rectangle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a390da1c2cd15fd5355de26bd34b3d3dc}{draw\+\_\+text\+\_\+center}} (\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}rectangle)
+\begin{DoxyCompactList}\small\item\em Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_ab542b24175a0231f8530346fc8ab790f}{draw\+\_\+rect}} (\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}rectangle, void(\texorpdfstring{$\ast$}{*}draw\+\_\+func)(\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}))
+\begin{DoxyCompactList}\small\item\em Dessine un rectangle coloré et son texte associé si présent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_ac0e780352c4ab1739b9e31be92740c2d}{draw\+\_\+text\+\_\+pos}} (char \texorpdfstring{$\ast$}{*}text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Dessine du texte à une position spécifique à l\textquotesingle{}écran, avec gestion des retours à la ligne. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a4f7e45e8554e8971bdba352cf9838405}{draw\+\_\+all\+\_\+rect}} (int n,...)
+\begin{DoxyCompactList}\small\item\em Dessine plusieurs rectangles avec leurs textes centrés. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1}{afficher\+\_\+dialogue}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, char \texorpdfstring{$\ast$}{*}pseudo, char \texorpdfstring{$\ast$}{*}dialogue, int choix)
+\begin{DoxyCompactList}\small\item\em Affiche un dialogue interactif à l\textquotesingle{}écran, lettre par lettre, avec gestion des choix utilisateur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi, char \texorpdfstring{$\ast$}{*}pseudo, char \texorpdfstring{$\ast$}{*}dialogue, int choix)
+\begin{DoxyCompactList}\small\item\em Affiche un dialogue interactif durant un combat entre deux Méchas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_afc970416ff2ee1d9f8351a288625f23a}{concat}} (char \texorpdfstring{$\ast$}{*}dest, int nb)
+\begin{DoxyCompactList}\small\item\em Concatène un entier à la fin d\textquotesingle{}une chaîne de caractères. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a76e0589a991f4ad00c5baae522dfeee1}{utiliser\+Objet\+Sur\+Mecha}} (int objet\+\_\+id, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, char \texorpdfstring{$\ast$}{*}message\+\_\+buffer)
+\begin{DoxyCompactList}\small\item\em Utilise un objet de l\textquotesingle{}inventaire du joueur sur un Mécha donné. \end{DoxyCompactList}\item 
+\Hypertarget{affichage_8h_a3490300ae9aac81459bac72f42bfa39b}\label{affichage_8h_a3490300ae9aac81459bac72f42bfa39b} 
+void {\bfseries afficher\+Titre} (const char \texorpdfstring{$\ast$}{*}titre, int fondX, int y)
+\item 
+\Hypertarget{affichage_8h_a348b46937c17ebc99c6aefaec07c7b4e}\label{affichage_8h_a348b46937c17ebc99c6aefaec07c7b4e} 
+void {\bfseries afficher\+Texte\+Centre} (const char \texorpdfstring{$\ast$}{*}texte, int fondX, int y)
+\item 
+void \mbox{\hyperlink{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5}{afficher\+Infos\+Mecha}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+j, int \texorpdfstring{$\ast$}{*}quitter\+\_\+total)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran d\textquotesingle{}information détaillée d\textquotesingle{}un Mécha du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_aff36844a9bc0417b311b691e2957adae}{afficher\+Mechadex}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int \texorpdfstring{$\ast$}{*}quitter\+\_\+total)
+\begin{DoxyCompactList}\small\item\em Affiche le Mechadex du joueur, listant tous ses Méchas capturés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c}{afficher\+Selection\+Mecha}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int objet\+\_\+id, int \texorpdfstring{$\ast$}{*}quitter\+\_\+total)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran de sélection d\textquotesingle{}un Mécha pour utiliser un objet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_a17c5a7569d3f699b38d5124f198e916a}{afficher\+Inventaire}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}pnj\+\_\+sprite, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}game, int \texorpdfstring{$\ast$}{*}repousse)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}inventaire du joueur et permet d\textquotesingle{}utiliser certains objets. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{affichage_8h_af70cd65063ba7719d712c57fcce296a3}{affichage\+\_\+pc}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier d\textquotesingle{}en-\/tête pour la gestion de l\textquotesingle{}affichage dans le jeu. 
+
+Ce fichier contient les déclarations des fonctions responsables de l\textquotesingle{}affichage des éléments du jeu, y compris le background, les matrices et les objets (joueurs, PNJ, objets divers). 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{affichage_8h_acccbd26fc4489bcee9baa113b9dac4e1}\label{affichage_8h_acccbd26fc4489bcee9baa113b9dac4e1} 
+\index{affichage.h@{affichage.h}!aff\_mat@{aff\_mat}}
+\index{aff\_mat@{aff\_mat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{aff\_mat()}{aff\_mat()}}
+{\footnotesize\ttfamily void aff\+\_\+mat (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+x,  }\item[{int}]{taille\+\_\+y,  }\item[{int}]{n\+\_\+mat }\end{DoxyParamCaption})}
+
+
+
+Affiche le contenu d\textquotesingle{}une matrice spécifique à l\textquotesingle{}écran. 
+
+Cette fonction parcourt et affiche dans la console la matrice {\ttfamily game.\+mat\mbox{[}n\+\_\+mat\mbox{]}} sous forme d\textquotesingle{}une grille d\textquotesingle{}entiers.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille\+\_\+x} & La largeur de la matrice à afficher (nombre de colonnes). \\
+\hline
+{\em taille\+\_\+y} & La hauteur de la matrice à afficher (nombre de lignes). \\
+\hline
+{\em n\+\_\+mat} & L\textquotesingle{}indice du calque (de 0 à 5) à afficher dans {\ttfamily game.\+mat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+mat} doit avoir été initialisé et rempli correctement.
+\item {\ttfamily n\+\_\+mat} doit être compris entre 0 et 5 inclus.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche la matrice spécifiée dans la console.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Un saut de ligne est ajouté entre chaque ligne de la matrice pour une meilleure lisibilité.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité de {\ttfamily n\+\_\+mat}. Un indice invalide peut entraîner un comportement indéfini. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_af70cd65063ba7719d712c57fcce296a3}\label{affichage_8h_af70cd65063ba7719d712c57fcce296a3} 
+\index{affichage.h@{affichage.h}!affichage\_pc@{affichage\_pc}}
+\index{affichage\_pc@{affichage\_pc}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{affichage\_pc()}{affichage\_pc()}}
+{\footnotesize\ttfamily int affichage\+\_\+pc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés. 
+
+Cette fonction affiche l\textquotesingle{}ensemble des Méchas capturés par le joueur (hors équipe principale), permet de naviguer entre différentes pages, de sélectionner un Mécha, et de l\textquotesingle{}échanger avec un Mécha actif.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant le joueur et ses Méchas capturés.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 0} après fermeture de l\textquotesingle{}interface PC.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le {\ttfamily renderer} et les textures de {\ttfamily game} doivent être initialisés.
+\item Le pointeur {\ttfamily joueur} doit être valide et son tableau de Méchas correctement rempli.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche dynamiquement la liste paginée des Méchas capturés.
+\item Permet l\textquotesingle{}échange d\textquotesingle{}un Mécha capturé avec un Mécha actif de l\textquotesingle{}équipe du joueur.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 50 emplacements de stockage sont disponibles (5 pages de 10 Méchas affichés).
+\item La sélection est visuellement mise en évidence par un changement de couleur.
+\item Le joueur utilise les touches {\ttfamily ←} {\ttfamily →} pour se déplacer, {\ttfamily P}/{\ttfamily S} pour changer de page, {\ttfamily A} pour échanger, {\ttfamily Échap} pour quitter.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur l\textquotesingle{}intégrité des données Mécha au moment de l\textquotesingle{}échange.
+\item En cas de données invalides dans {\ttfamily mechas\+\_\+joueur}, des erreurs d\textquotesingle{}affichage ou de logique peuvent apparaître. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_af70cd65063ba7719d712c57fcce296a3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1}\label{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1} 
+\index{affichage.h@{affichage.h}!afficher\_dialogue@{afficher\_dialogue}}
+\index{afficher\_dialogue@{afficher\_dialogue}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_dialogue()}{afficher\_dialogue()}}
+{\footnotesize\ttfamily int afficher\+\_\+dialogue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo,  }\item[{char \texorpdfstring{$\ast$}{*}}]{dialogue,  }\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Affiche un dialogue interactif à l\textquotesingle{}écran, lettre par lettre, avec gestion des choix utilisateur. 
+
+Cette fonction affiche un texte de dialogue progressivement (effet typewriter) dans une zone dédiée de l\textquotesingle{}écran. Un rectangle de fond sombre est affiché, accompagné du pseudo du personnage parlant et d\textquotesingle{}une consigne utilisateur \+:
+\begin{DoxyItemize}
+\item Sans choix ({\ttfamily choix = 0}) \+: Affiche "{}\+A pour continuer"{} et attend l\textquotesingle{}appui sur la touche \textquotesingle{}A\textquotesingle{}.
+\item Avec choix ({\ttfamily choix != 0}) \+: Affiche "{}\+Choisir entre 1 et 3"{} et attend la sélection utilisateur par touche (1, 2 ou 3).
+\end{DoxyItemize}
+
+L\textquotesingle{}affichage du texte se fait progressivement avec des pauses plus longues en fin de phrases (., !, ?). La fonction retourne immédiatement la valeur sélectionnée par l\textquotesingle{}utilisateur en cas de choix, ou OK (défini comme constante) pour signaler la fin du dialogue sans choix particulier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Rectangle définissant la position du sprite joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Rectangle définissant la position du sprite du PNJ en interaction. \\
+\hline
+{\em sprite\+\_\+pnj} & Pointeur vers la structure contenant les textures du PNJ. \\
+\hline
+{\em sprite\+\_\+playerH} & Pointeur vers la structure contenant les textures du joueur. \\
+\hline
+{\em pseudo} & Chaîne de caractères indiquant le pseudo ou nom du personnage parlant. \\
+\hline
+{\em dialogue} & Chaîne de caractères contenant le texte à afficher. \\
+\hline
+{\em choix} & Entier indiquant si le dialogue inclut un choix utilisateur (0 \+: pas de choix, sinon choix activé).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si le dialogue se termine normalement sans choix utilisateur (appui sur \textquotesingle{}A\textquotesingle{}).
+\item {\ttfamily 1}, {\ttfamily 2} ou {\ttfamily 3} en cas de choix utilisateur correspondant à la touche pressée.
+\item {\ttfamily ERR} si les paramètres passés sont invalides.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les ressources graphiques et les pointeurs passés ({\ttfamily game}, {\ttfamily j}, {\ttfamily sprite\+\_\+p}, etc.) doivent être valides et initialisés. Le renderer SDL ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) doit être initialisé avant l\textquotesingle{}appel.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La fonction bloque tant que l\textquotesingle{}utilisateur n\textquotesingle{}a pas interagi conformément aux instructions affichées. Aucun changement d\textquotesingle{}état du jeu n’est effectué hormis l\textquotesingle{}affichage.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction gère elle-\/même les événements SDL et contrôle finement le framerate pour un affichage fluide du texte.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Le dialogue passé doit avoir une longueur inférieure à 256 caractères. Vérifier que les constantes {\ttfamily ERR} et {\ttfamily OK} soient définies correctement dans le programme. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a265b0bc1ac18afe4fdf6233323561dd1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a1091893e7df87a967b878919b232b0d5}\label{affichage_8h_a1091893e7df87a967b878919b232b0d5} 
+\index{affichage.h@{affichage.h}!afficher\_dialogue\_combat@{afficher\_dialogue\_combat}}
+\index{afficher\_dialogue\_combat@{afficher\_dialogue\_combat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_dialogue\_combat()}{afficher\_dialogue\_combat()}}
+{\footnotesize\ttfamily int afficher\+\_\+dialogue\+\_\+combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo,  }\item[{char \texorpdfstring{$\ast$}{*}}]{dialogue,  }\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Affiche un dialogue interactif durant un combat entre deux Méchas. 
+
+Cette fonction affiche progressivement un texte de dialogue pendant un combat, en attendant des actions du joueur à certains moments (soit continuer, soit choisir une option).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+joueur} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} représentant le Mécha du joueur. \\
+\hline
+{\em mecha\+\_\+ordi} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} représentant le Mécha adverse. \\
+\hline
+{\em pseudo} & Une chaîne de caractères représentant le nom du personnage qui parle. \\
+\hline
+{\em dialogue} & Le texte du dialogue à afficher, pouvant contenir des ponctuations pour forcer l\textquotesingle{}attente. \\
+\hline
+{\em choix} & Un entier indiquant si le joueur doit faire un choix ({\ttfamily 0} pour continuer normalement, {\ttfamily 1} pour choisir entre plusieurs options).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne \+:
+\begin{DoxyItemize}
+\item {\ttfamily OK} si le dialogue est déroulé normalement sans choix,
+\item {\ttfamily 1}, {\ttfamily 2} ou {\ttfamily 3} selon la sélection du joueur si un choix est demandé,
+\item {\ttfamily KO} si l\textquotesingle{}utilisateur quitte la fenêtre SDL.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+renderer} doit être initialisé.
+\item {\ttfamily game.\+police} doit être chargée correctement.
+\item Les pointeurs {\ttfamily mecha\+\_\+joueur}, {\ttfamily mecha\+\_\+ordi}, {\ttfamily pseudo} et {\ttfamily dialogue} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche l\textquotesingle{}état du combat mis à jour avec le dialogue par-\/dessus.
+\item Le texte est affiché progressivement caractère par caractère.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Une pause est imposée après les signes de ponctuation ({\ttfamily .}, {\ttfamily !}, {\ttfamily ?}) jusqu\textquotesingle{}à ce qu\textquotesingle{}une touche soit pressée.
+\item Le joueur peut interagir avec {\ttfamily A} pour continuer ou avec {\ttfamily 1}, {\ttfamily 2}, {\ttfamily 3} pour effectuer un choix selon le contexte.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la longueur du texte ({\ttfamily dialogue}), limité ici à 255 caractères affichables.
+\item Le texte affiché est tronqué si sa longueur dépasse la capacité du buffer.
+\item Un mauvais état de {\ttfamily game.\+renderer} ou {\ttfamily game.\+police} peut provoquer des erreurs d\textquotesingle{}affichage ou de crash. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a1091893e7df87a967b878919b232b0d5_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a1091893e7df87a967b878919b232b0d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5}\label{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5} 
+\index{affichage.h@{affichage.h}!afficherInfosMecha@{afficherInfosMecha}}
+\index{afficherInfosMecha@{afficherInfosMecha}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficherInfosMecha()}{afficherInfosMecha()}}
+{\footnotesize\ttfamily void afficher\+Infos\+Mecha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+j,  }\item[{int \texorpdfstring{$\ast$}{*}}]{quitter\+\_\+total }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran d\textquotesingle{}information détaillée d\textquotesingle{}un Mécha du joueur. 
+
+Cette fonction ouvre un écran présentant les caractéristiques d\textquotesingle{}un Mécha, son nom, son type, son niveau, ses PV actuels, ses attaques ainsi que sa description. L\textquotesingle{}affichage reste actif jusqu\textquotesingle{}à ce que le joueur appuie sur {\ttfamily A}, {\ttfamily Escape}, ou quitte la fenêtre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Un pointeur vers le {\ttfamily SDL\+\_\+\+Rect} représentant le sprite du joueur à afficher. \\
+\hline
+{\em pnj\+\_\+sprite} & Un tableau de {\ttfamily SDL\+\_\+\+Rect} représentant les sprites des PNJ. \\
+\hline
+{\em mecha\+\_\+j} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} représentant le Mécha sélectionné. \\
+\hline
+{\em quitter\+\_\+total} & Un pointeur vers un entier permettant de quitter entièrement l\textquotesingle{}affichage global.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le {\ttfamily renderer} de {\ttfamily game} doit être initialisé.
+\item La police ({\ttfamily game.\+police}) doit être chargée.
+\item Les pointeurs {\ttfamily j}, {\ttfamily sprite\+\_\+p}, {\ttfamily pnj\+\_\+sprite} et {\ttfamily mecha\+\_\+j} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche les informations du Mécha jusqu\textquotesingle{}à réception d\textquotesingle{}un événement de sortie ou d\textquotesingle{}une touche spécifique.
+\item Met à jour {\ttfamily quitter\+\_\+total} si une sortie globale est demandée ({\ttfamily Escape} ou {\ttfamily i}).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Le fond d\textquotesingle{}affichage est composé de plusieurs rectangles semi-\/transparents pour organiser les informations.
+\item Les barres de PV sont colorées en fonction du pourcentage de vie du Mécha (vert, orange, rouge).
+\item Les attaques sont affichées avec leurs noms, dégâts, précisions et descriptions.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si {\ttfamily mecha\+\_\+j-\/\texorpdfstring{$>$}{>}id\+\_\+mechas} est invalide (hors limites du tableau {\ttfamily mecha}), l\textquotesingle{}affichage est annulé.
+\item Une erreur dans les ressources chargées (sprites, police) peut empêcher le rendu correct. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a4bfda0a3d2e621f3521d2bcf1c59a7d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a17c5a7569d3f699b38d5124f198e916a}\label{affichage_8h_a17c5a7569d3f699b38d5124f198e916a} 
+\index{affichage.h@{affichage.h}!afficherInventaire@{afficherInventaire}}
+\index{afficherInventaire@{afficherInventaire}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficherInventaire()}{afficherInventaire()}}
+{\footnotesize\ttfamily int afficher\+Inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{int \texorpdfstring{$\ast$}{*}}]{repousse }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}inventaire du joueur et permet d\textquotesingle{}utiliser certains objets. 
+
+Cette fonction affiche une interface listant les objets disponibles dans l\textquotesingle{}inventaire du joueur, permettant la navigation, la consultation des quantités, et l\textquotesingle{}utilisation directe de certains objets (comme le repousse).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Un pointeur vers le {\ttfamily SDL\+\_\+\+Rect} représentant le sprite du joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Un tableau de {\ttfamily SDL\+\_\+\+Rect} représentant les sprites des PNJ. \\
+\hline
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em repousse} & Un pointeur vers un entier représentant la durée d\textquotesingle{}effet du repousse actif.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 0} après avoir quitté l\textquotesingle{}inventaire.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le {\ttfamily renderer} et la {\ttfamily police} de {\ttfamily game} doivent être initialisés.
+\item Les pointeurs {\ttfamily j}, {\ttfamily sprite\+\_\+p}, {\ttfamily pnj\+\_\+sprite}, {\ttfamily game} et {\ttfamily repousse} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche les objets de l\textquotesingle{}inventaire du joueur avec leurs quantités et descriptions.
+\item Permet d\textquotesingle{}utiliser un objet de soin ou un repousse selon le contexte.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La navigation dans l\textquotesingle{}inventaire se fait avec les flèches haut et bas.
+\item {\ttfamily Entrée} permet d\textquotesingle{}utiliser un objet ou d\textquotesingle{}interagir selon l\textquotesingle{}objet sélectionné.
+\item La touche {\ttfamily A} permet d\textquotesingle{}ouvrir directement le Mechadex.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}utilisation d\textquotesingle{}un objet dépend de la disponibilité dans l\textquotesingle{}inventaire et de l\textquotesingle{}état du joueur.
+\item L\textquotesingle{}affichage suppose que les images des objets existent aux chemins spécifiés, sinon un carré coloré est affiché. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a17c5a7569d3f699b38d5124f198e916a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_aff36844a9bc0417b311b691e2957adae}\label{affichage_8h_aff36844a9bc0417b311b691e2957adae} 
+\index{affichage.h@{affichage.h}!afficherMechadex@{afficherMechadex}}
+\index{afficherMechadex@{afficherMechadex}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficherMechadex()}{afficherMechadex()}}
+{\footnotesize\ttfamily void afficher\+Mechadex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{int \texorpdfstring{$\ast$}{*}}]{quitter\+\_\+total }\end{DoxyParamCaption})}
+
+
+
+Affiche le Mechadex du joueur, listant tous ses Méchas capturés. 
+
+Cette fonction affiche une liste des Méchas du joueur avec leurs informations principales (nom, PV), et permet de consulter les détails d\textquotesingle{}un Mécha sélectionné ou de quitter l\textquotesingle{}affichage.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Un pointeur vers le {\ttfamily SDL\+\_\+\+Rect} représentant le sprite du joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Un tableau de {\ttfamily SDL\+\_\+\+Rect} représentant les sprites des PNJ. \\
+\hline
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em quitter\+\_\+total} & Un pointeur vers un entier indiquant si la fermeture complète de l\textquotesingle{}affichage est demandée.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le {\ttfamily renderer} et la {\ttfamily police} de {\ttfamily game} doivent être initialisés.
+\item Les pointeurs {\ttfamily j}, {\ttfamily sprite\+\_\+p}, {\ttfamily pnj\+\_\+sprite} et {\ttfamily game} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche tous les Méchas du joueur sous forme de liste scrollable.
+\item Permet de consulter les informations détaillées d\textquotesingle{}un Mécha via la touche {\ttfamily Entrée}.
+\item Met à jour {\ttfamily quitter\+\_\+total} si une sortie globale est demandée ({\ttfamily Escape} ou {\ttfamily i}).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La sélection est mise en valeur avec un cadre jaune.
+\item Le joueur peut naviguer dans la liste avec les flèches haut/bas.
+\item La touche {\ttfamily A} permet de revenir au jeu principal.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si un Mécha du joueur a un ID invalide, des erreurs d\textquotesingle{}affichage peuvent survenir.
+\item Un mauvais chargement des textures ou de la police peut entraîner des erreurs SDL. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_aff36844a9bc0417b311b691e2957adae_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{affichage_8h_aff36844a9bc0417b311b691e2957adae_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c}\label{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c} 
+\index{affichage.h@{affichage.h}!afficherSelectionMecha@{afficherSelectionMecha}}
+\index{afficherSelectionMecha@{afficherSelectionMecha}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{afficherSelectionMecha()}{afficherSelectionMecha()}}
+{\footnotesize\ttfamily void afficher\+Selection\+Mecha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite,  }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{int}]{objet\+\_\+id,  }\item[{int \texorpdfstring{$\ast$}{*}}]{quitter\+\_\+total }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran de sélection d\textquotesingle{}un Mécha pour utiliser un objet. 
+
+Cette fonction permet au joueur de parcourir ses Méchas et de sélectionner celui sur lequel utiliser un objet (comme un carburant ou un rappel). Le joueur peut naviguer, choisir un Mécha, ou quitter l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Un pointeur vers le {\ttfamily SDL\+\_\+\+Rect} représentant le sprite du joueur. \\
+\hline
+{\em pnj\+\_\+sprite} & Un tableau de {\ttfamily SDL\+\_\+\+Rect} représentant les sprites des PNJ. \\
+\hline
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em objet\+\_\+id} & L\textquotesingle{}identifiant de l\textquotesingle{}objet à utiliser ({\ttfamily 0} pour carburant, {\ttfamily 1} pour rappel, etc.). \\
+\hline
+{\em quitter\+\_\+total} & Un pointeur vers un entier permettant de quitter complètement l\textquotesingle{}affichage si nécessaire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le {\ttfamily renderer} et la {\ttfamily police} de {\ttfamily game} doivent être initialisés.
+\item Les pointeurs {\ttfamily j}, {\ttfamily sprite\+\_\+p}, {\ttfamily pnj\+\_\+sprite} et {\ttfamily game} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Permet de sélectionner un Mécha et d\textquotesingle{}appliquer l\textquotesingle{}objet spécifié.
+\item Affiche un message de succès ou d\textquotesingle{}échec après utilisation d\textquotesingle{}un objet.
+\item Met à jour {\ttfamily quitter\+\_\+total} si une sortie globale est demandée ({\ttfamily Escape} ou {\ttfamily i}).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La sélection est encadrée visuellement avec un rectangle jaune.
+\item Le joueur peut naviguer avec {\ttfamily Flèche Haut} et {\ttfamily Flèche Bas}, utiliser un objet avec {\ttfamily Entrée}, et quitter avec {\ttfamily A}.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si l\textquotesingle{}objet ne peut pas être utilisé (conditions non remplies), un message d\textquotesingle{}erreur est affiché.
+\item Le système ne vérifie pas la validité de l\textquotesingle{}{\ttfamily objet\+\_\+id} en dehors des cas prévus dans {\ttfamily utiliser\+Objet\+Sur\+Mecha}. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{affichage_8h_a9519a3474a5b9ff0162efbc07d652b0c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_afc970416ff2ee1d9f8351a288625f23a}\label{affichage_8h_afc970416ff2ee1d9f8351a288625f23a} 
+\index{affichage.h@{affichage.h}!concat@{concat}}
+\index{concat@{concat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily void concat (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{int}]{nb }\end{DoxyParamCaption})}
+
+
+
+Concatène un entier à la fin d\textquotesingle{}une chaîne de caractères. 
+
+Cette fonction transforme un entier en chaîne de caractères, puis l\textquotesingle{}ajoute à la fin de la chaîne {\ttfamily dest}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dest} & Un pointeur vers la chaîne de caractères à modifier. \\
+\hline
+{\em nb} & L\textquotesingle{}entier à convertir et à concaténer à {\ttfamily dest}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily dest} doit être un pointeur valide vers une chaîne de caractères suffisamment grande pour accueillir le résultat.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item La chaîne {\ttfamily dest} est modifiée pour inclure la valeur numérique de {\ttfamily nb} à sa fin.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Utilise {\ttfamily sprintf} pour convertir l\textquotesingle{}entier en texte, puis {\ttfamily strcat} pour concaténer.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucune vérification n\textquotesingle{}est faite sur la taille de {\ttfamily dest}, ce qui peut provoquer un débordement si l\textquotesingle{}espace disponible est insuffisant. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_afc970416ff2ee1d9f8351a288625f23a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a0e1fc8eee26e274af453bd4630bd7566}\label{affichage_8h_a0e1fc8eee26e274af453bd4630bd7566} 
+\index{affichage.h@{affichage.h}!create\_obj@{create\_obj}}
+\index{create\_obj@{create\_obj}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{create\_obj()}{create\_obj()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Rect create\+\_\+obj (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+w,  }\item[{int}]{taille\+\_\+h,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{type\+\_\+obj,  }\item[{int}]{n\+\_\+mat }\end{DoxyParamCaption})}
+
+
+
+Crée un objet de type SDL\+\_\+\+Rect et met à jour la matrice du jeu. 
+
+Cette fonction initialise un {\ttfamily SDL\+\_\+\+Rect} représentant un objet du jeu (joueur, PNJ ou autre), en fonction de sa taille, sa position, son type et du calque ({\ttfamily n\+\_\+mat}) où il doit être placé.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille\+\_\+w} & La largeur de l\textquotesingle{}objet (avant mise à l\textquotesingle{}échelle). \\
+\hline
+{\em taille\+\_\+h} & La hauteur de l\textquotesingle{}objet (avant mise à l\textquotesingle{}échelle). \\
+\hline
+{\em x} & La position horizontale de l\textquotesingle{}objet (en pixels). \\
+\hline
+{\em y} & La position verticale de l\textquotesingle{}objet (en pixels). \\
+\hline
+{\em type\+\_\+obj} & Le type de l\textquotesingle{}objet ({\ttfamily JOUEUR}, {\ttfamily PNJ} ou autre type d\textquotesingle{}objet). \\
+\hline
+{\em n\+\_\+mat} & L\textquotesingle{}indice du calque ({\ttfamily game.\+mat}) où placer l\textquotesingle{}objet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\ttfamily SDL\+\_\+\+Rect} représentant l\textquotesingle{}objet positionné et mis à l\textquotesingle{}échelle.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+scale} et {\ttfamily game.\+dms\+\_\+win} doivent être initialisés correctement.
+\item {\ttfamily game.\+mat} doit être alloué et accessible.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Met à jour la matrice {\ttfamily game.\+mat\mbox{[}n\+\_\+mat\mbox{]}} avec la position de l\textquotesingle{}objet créé.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Pour les types {\ttfamily JOUEUR} et {\ttfamily PNJ}, la position verticale est ajustée avec un décalage de 24 pixels avant division.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité des indices donnés (risque de débordement hors matrice).
+\item Un mauvais type ou des coordonnées incorrectes peuvent entraîner un comportement indéfini. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_a7290dad76779d8dd7f48366a16812be8}\label{affichage_8h_a7290dad76779d8dd7f48366a16812be8} 
+\index{affichage.h@{affichage.h}!creer\_rectangle@{creer\_rectangle}}
+\index{creer\_rectangle@{creer\_rectangle}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{creer\_rectangle()}{creer\_rectangle()}}
+{\footnotesize\ttfamily void creer\+\_\+rectangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{rectangle,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b,  }\item[{int}]{a,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text }\end{DoxyParamCaption})}
+
+
+
+Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel. 
+
+Cette fonction remplit la structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} avec les dimensions, la position, la couleur RGBA spécifiée et un texte associé s\textquotesingle{}il est fourni.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rectangle} & Un pointeur vers la structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} à initialiser. \\
+\hline
+{\em w} & La largeur du rectangle. \\
+\hline
+{\em h} & La hauteur du rectangle. \\
+\hline
+{\em x} & La position horizontale du rectangle (coordonnée flottante). \\
+\hline
+{\em y} & La position verticale du rectangle (coordonnée flottante). \\
+\hline
+{\em r} & La composante rouge de la couleur (0-\/255). \\
+\hline
+{\em g} & La composante verte de la couleur (0-\/255). \\
+\hline
+{\em b} & La composante bleue de la couleur (0-\/255). \\
+\hline
+{\em a} & La composante alpha (opacité) de la couleur (0-\/255). \\
+\hline
+{\em text} & Un pointeur vers une chaîne de caractères optionnelle à associer au rectangle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le pointeur {\ttfamily rectangle} doit être valide.
+\item Si fourni, {\ttfamily text} doit être une chaîne de caractères valide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Initialise tous les champs du rectangle, y compris la couleur et le texte (si donné).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Si {\ttfamily text} est {\ttfamily NULL}, le champ texte du rectangle est initialisé avec une chaîne vide.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur les bornes des valeurs de couleur (supposées entre 0 et 255).
+\item Si {\ttfamily text} dépasse la taille autorisée dans {\ttfamily rectangle-\/\texorpdfstring{$>$}{>}text}, il est tronqué automatiquement. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a7290dad76779d8dd7f48366a16812be8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a16a8360b65479c7343b03f418ed56939}\label{affichage_8h_a16a8360b65479c7343b03f418ed56939} 
+\index{affichage.h@{affichage.h}!draw\_all@{draw\_all}}
+\index{draw\_all@{draw\_all}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_all()}{draw\_all()}}
+{\footnotesize\ttfamily void draw\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{pnj\+\_\+sprite }\end{DoxyParamCaption})}
+
+
+
+Gère et affiche tous les éléments visuels principaux du jeu. 
+
+Cette fonction dessine successivement l\textquotesingle{}arrière-\/plan, les PNJ, le joueur, et les calques de décor en fonction de leur position relative et des obstacles présents sur la carte active.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Un pointeur vers un {\ttfamily SDL\+\_\+\+Rect} représentant le sprite du joueur à l\textquotesingle{}écran. \\
+\hline
+{\em pnj\+\_\+sprite} & Un tableau de {\ttfamily SDL\+\_\+\+Rect} représentant les sprites des PNJ à l\textquotesingle{}écran.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les structures {\ttfamily game}, {\ttfamily pnj}, et les textures correspondantes doivent être initialisées.
+\item Les pointeurs {\ttfamily j}, {\ttfamily sprite\+\_\+p} et {\ttfamily pnj\+\_\+sprite} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Tous les éléments visibles sont dessinés correctement à l\textquotesingle{}écran selon leur état et position.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Les PNJ peuvent être dessinés devant ou derrière certains éléments selon la présence d\textquotesingle{}obstacles ({\ttfamily BARRIERE}, {\ttfamily BAT}, {\ttfamily JOUEUR}).
+\item Le joueur peut être dessiné devant ou derrière selon son environnement immédiat.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucune vérification n\textquotesingle{}est effectuée sur les dimensions ou les limites des matrices de jeu ({\ttfamily game.\+mat}).
+\item Des erreurs de rendu peuvent survenir si des textures ou des pointeurs sont incorrectement initialisés. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{affichage_8h_a16a8360b65479c7343b03f418ed56939_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a16a8360b65479c7343b03f418ed56939_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a4f7e45e8554e8971bdba352cf9838405}\label{affichage_8h_a4f7e45e8554e8971bdba352cf9838405} 
+\index{affichage.h@{affichage.h}!draw\_all\_rect@{draw\_all\_rect}}
+\index{draw\_all\_rect@{draw\_all\_rect}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_all\_rect()}{draw\_all\_rect()}}
+{\footnotesize\ttfamily void draw\+\_\+all\+\_\+rect (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Dessine plusieurs rectangles avec leurs textes centrés. 
+
+Cette fonction permet de dessiner un ensemble de rectangles ({\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}}) en appelant {\ttfamily draw\+\_\+rect} pour chacun d\textquotesingle{}eux, en utilisant systématiquement la fonction {\ttfamily draw\+\_\+text\+\_\+center} pour afficher le texte.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Le nombre de rectangles à dessiner. \\
+\hline
+{\em ...} & Une liste de pointeurs vers des structures {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de {\ttfamily game} doit être initialisé et valide.
+\item Chaque argument variable doit être un pointeur valide vers un {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Tous les rectangles fournis sont dessinés avec leur texte centré.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Utilise {\ttfamily va\+\_\+list} pour parcourir dynamiquement les pointeurs reçus en paramètres.
+\item Le texte associé est affiché uniquement si le champ {\ttfamily text} du rectangle n\textquotesingle{}est pas vide.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si un des pointeurs est invalide, cela peut provoquer un comportement indéfini.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité du nombre de rectangles réellement passés en arguments. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{affichage_8h_a4f7e45e8554e8971bdba352cf9838405_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a4f7e45e8554e8971bdba352cf9838405_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a3d385ca0396c4c2b3001371505a410e4}\label{affichage_8h_a3d385ca0396c4c2b3001371505a410e4} 
+\index{affichage.h@{affichage.h}!draw\_background@{draw\_background}}
+\index{draw\_background@{draw\_background}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_background()}{draw\_background()}}
+{\footnotesize\ttfamily void draw\+\_\+background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}arrière-\/plan (background) actuel du jeu. 
+
+Cette fonction utilise le renderer SDL pour copier la texture du background correspondant à la map active ({\ttfamily game.\+mat\+\_\+active}) sur toute la fenêtre ({\ttfamily game.\+dms\+\_\+win}).
+
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+renderer} doit être initialisé.
+\item {\ttfamily game.\+background\+Texture} doit contenir les textures chargées via {\ttfamily init\+\_\+background}.
+\item {\ttfamily game.\+mat\+\_\+active} doit être un indice valide dans le tableau {\ttfamily background\+Texture}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le fond d\textquotesingle{}écran correspondant à la map active est dessiné à l\textquotesingle{}écran.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Aucune mise à l\textquotesingle{}échelle supplémentaire n\textquotesingle{}est faite ici \+: la texture est directement redimensionnée via {\ttfamily game.\+dms\+\_\+win}. 
+\end{DoxyItemize}
+\end{DoxyNote}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a3d385ca0396c4c2b3001371505a410e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a78d50882c5d889e15ca86ddba5aa62bd}\label{affichage_8h_a78d50882c5d889e15ca86ddba5aa62bd} 
+\index{affichage.h@{affichage.h}!draw\_calque@{draw\_calque}}
+\index{draw\_calque@{draw\_calque}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_calque()}{draw\_calque()}}
+{\footnotesize\ttfamily void draw\+\_\+calque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche le calque (overlay) actuel du jeu. 
+
+Cette fonction utilise le renderer SDL pour copier la texture du calque correspondant à la map active ({\ttfamily game.\+mat\+\_\+active}) sur toute la fenêtre ({\ttfamily game.\+dms\+\_\+win}).
+
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+renderer} doit être initialisé.
+\item {\ttfamily game.\+calque\+Texture} doit contenir les textures chargées via {\ttfamily init\+\_\+calque}.
+\item {\ttfamily game.\+mat\+\_\+active} doit être un indice valide dans le tableau {\ttfamily calque\+Texture}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le calque correspondant à la map active est dessiné à l\textquotesingle{}écran.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Le calque est superposé par-\/dessus le fond, couvrant la zone définie par {\ttfamily game.\+dms\+\_\+win}. 
+\end{DoxyItemize}
+\end{DoxyNote}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a78d50882c5d889e15ca86ddba5aa62bd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_ae63215d67a18f635b3a1c2e1464a0a6f}\label{affichage_8h_ae63215d67a18f635b3a1c2e1464a0a6f} 
+\index{affichage.h@{affichage.h}!draw\_mecha@{draw\_mecha}}
+\index{draw\_mecha@{draw\_mecha}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mecha()}{draw\_mecha()}}
+{\footnotesize\ttfamily void draw\+\_\+mecha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{m,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{h,  }\item[{int}]{w,  }\item[{int}]{orientation }\end{DoxyParamCaption})}
+
+
+
+Dessine un Mécha à l\textquotesingle{}écran avec la texture correspondant à son orientation. 
+
+Cette fonction affiche un Mécha sur la fenêtre de jeu en utilisant ses textures et les coordonnées/dimensions spécifiées.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em m} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__t}{mechas\+\_\+t}} représentant le Mécha à afficher. \\
+\hline
+{\em x} & La position horizontale du Mécha à l\textquotesingle{}écran (en pixels). \\
+\hline
+{\em y} & La position verticale du Mécha à l\textquotesingle{}écran (en pixels). \\
+\hline
+{\em h} & La hauteur du Mécha (en pixels). \\
+\hline
+{\em w} & La largeur du Mécha (en pixels). \\
+\hline
+{\em orientation} & L\textquotesingle{}orientation actuelle du Mécha (0 pour droite, 1 pour gauche).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+renderer} doit être initialisé et valide.
+\item Le pointeur {\ttfamily m} doit être valide et ses textures correctement chargées.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le Mécha est affiché à l\textquotesingle{}écran à la position et avec la dimension spécifiées.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}orientation permet de choisir entre la texture droite ({\ttfamily 0}) et gauche ({\ttfamily 1}).
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité de l\textquotesingle{}orientation fournie.
+\item En cas de texture non initialisée pour l\textquotesingle{}orientation donnée, SDL peut provoquer une erreur de rendu. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_ae63215d67a18f635b3a1c2e1464a0a6f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a26aea5bf98ae3244b38faf08e3ebd667}\label{affichage_8h_a26aea5bf98ae3244b38faf08e3ebd667} 
+\index{affichage.h@{affichage.h}!draw\_obj@{draw\_obj}}
+\index{draw\_obj@{draw\_obj}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_obj()}{draw\_obj()}}
+{\footnotesize\ttfamily void draw\+\_\+obj (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{img }\end{DoxyParamCaption})}
+
+
+
+Dessine un objet générique à l\textquotesingle{}écran. 
+
+Cette fonction affiche une texture SDL donnée à l\textquotesingle{}emplacement spécifié par un {\ttfamily SDL\+\_\+\+Rect}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & Un pointeur vers un {\ttfamily SDL\+\_\+\+Rect} représentant la position et la taille de l\textquotesingle{}objet à afficher. \\
+\hline
+{\em img} & Un pointeur vers une {\ttfamily SDL\+\_\+\+Texture} représentant l\textquotesingle{}image de l\textquotesingle{}objet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de la structure {\ttfamily game} doit être correctement initialisé.
+\item Les pointeurs {\ttfamily obj} et {\ttfamily img} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item La texture est rendue sur la fenêtre de jeu aux coordonnées spécifiées par {\ttfamily obj}.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Aucun ajustement ou transformation n\textquotesingle{}est effectué sur l\textquotesingle{}image avant le rendu.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Un pointeur {\ttfamily img} nul peut entraîner une erreur d\textquotesingle{}affichage via SDL.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité des dimensions du rectangle {\ttfamily obj}. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_ab476829218385851d4e69263f07e488b}\label{affichage_8h_ab476829218385851d4e69263f07e488b} 
+\index{affichage.h@{affichage.h}!draw\_player@{draw\_player}}
+\index{draw\_player@{draw\_player}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_player()}{draw\_player()}}
+{\footnotesize\ttfamily void draw\+\_\+player (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j }\end{DoxyParamCaption})}
+
+
+
+Dessine le joueur à l\textquotesingle{}écran en fonction de sa direction et de son mouvement. 
+
+Cette fonction sélectionne la bonne texture du joueur en fonction de ses mouvements ({\ttfamily move\+\_\+dx}, {\ttfamily move\+\_\+dy}) ou de sa dernière touche directionnelle ({\ttfamily derniere\+\_\+touche}), puis la rend sur la fenêtre de jeu à l\textquotesingle{}emplacement spécifié.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & Un pointeur vers un {\ttfamily SDL\+\_\+\+Rect} représentant la position et la taille du joueur à l\textquotesingle{}écran. \\
+\hline
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de {\ttfamily game} doit être correctement initialisé.
+\item Les textures de {\ttfamily game.\+sprite\+\_\+joueur} doivent être chargées.
+\item Les pointeurs {\ttfamily obj} et {\ttfamily j} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche la texture appropriée du joueur à l\textquotesingle{}écran en fonction de sa direction ou de son dernier mouvement.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}animation utilise une division entière du champ {\ttfamily moving} pour choisir l\textquotesingle{}image à afficher.
+\item En l\textquotesingle{}absence de mouvement, la dernière direction connue ({\ttfamily derniere\+\_\+touche}) est utilisée pour afficher le joueur immobile.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité du contenu des champs de la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}}.
+\item Une mauvaise initialisation des textures peut entraîner un crash au moment du rendu. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_ab476829218385851d4e69263f07e488b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a81ed48c2407a1c13ac5884e0f162aaa7}\label{affichage_8h_a81ed48c2407a1c13ac5884e0f162aaa7} 
+\index{affichage.h@{affichage.h}!draw\_pnj@{draw\_pnj}}
+\index{draw\_pnj@{draw\_pnj}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_pnj()}{draw\_pnj()}}
+{\footnotesize\ttfamily void draw\+\_\+pnj (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j }\end{DoxyParamCaption})}
+
+
+
+Dessine un PNJ à l\textquotesingle{}écran en fonction de son identité et de son orientation. 
+
+Cette fonction sélectionne et affiche la texture appropriée pour un PNJ donné, en tenant compte de son nom, de son ID spécial ou de son orientation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & Un pointeur vers un {\ttfamily SDL\+\_\+\+Rect} représentant la position et la taille du PNJ à l\textquotesingle{}écran. \\
+\hline
+{\em pnj} & Un pointeur vers la structure {\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}} représentant le PNJ à afficher. \\
+\hline
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de la structure {\ttfamily game} doit être correctement initialisé.
+\item Les textures de {\ttfamily game.\+sprite\+\_\+pnj} doivent être chargées.
+\item Les pointeurs {\ttfamily obj}, {\ttfamily pnj} et {\ttfamily j} doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche la texture du PNJ choisie en fonction de son état et de son contexte.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Certains PNJ spécifiques (ex\+: "{}\+Vin Gazole"{}, "{}\+Iron Musk"{}) ont des textures particulières selon l\textquotesingle{}ID ou les conditions de jeu.
+\item Si aucun cas particulier n\textquotesingle{}est détecté, la texture est choisie selon l\textquotesingle{}orientation du PNJ.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Une mauvaise initialisation des textures ou un ID invalide peut entraîner un comportement imprévu.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité du champ {\ttfamily pseudo} ou des valeurs d\textquotesingle{}orientation. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a81ed48c2407a1c13ac5884e0f162aaa7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_ab542b24175a0231f8530346fc8ab790f}\label{affichage_8h_ab542b24175a0231f8530346fc8ab790f} 
+\index{affichage.h@{affichage.h}!draw\_rect@{draw\_rect}}
+\index{draw\_rect@{draw\_rect}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_rect()}{draw\_rect()}}
+{\footnotesize\ttfamily void draw\+\_\+rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{rectangle,  }\item[{void(\texorpdfstring{$\ast$}{*})(\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*})}]{draw\+\_\+func }\end{DoxyParamCaption})}
+
+
+
+Dessine un rectangle coloré et son texte associé si présent. 
+
+Cette fonction remplit un rectangle avec la couleur spécifiée, puis utilise une fonction de dessin ({\ttfamily draw\+\_\+func}) pour afficher le texte associé s\textquotesingle{}il existe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rectangle} & Un pointeur vers la structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} contenant les informations du rectangle et du texte. \\
+\hline
+{\em draw\+\_\+func} & Un pointeur vers une fonction de dessin prenant un {\ttfamily rectangle\+\_\+t\texorpdfstring{$\ast$}{*}} en paramètre (ex\+: {\ttfamily draw\+\_\+text\+\_\+center}, {\ttfamily draw\+\_\+text\+\_\+left\+\_\+middle}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de {\ttfamily game} doit être initialisé et valide.
+\item Le pointeur {\ttfamily rectangle} doit être valide.
+\item La fonction {\ttfamily draw\+\_\+func} doit être une fonction valide acceptant un {\ttfamily rectangle\+\_\+t\texorpdfstring{$\ast$}{*}}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le rectangle est dessiné avec la couleur spécifiée.
+\item Si du texte est présent, il est affiché selon la fonction {\ttfamily draw\+\_\+func}.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Le mode de fusion SDL est activé pour permettre la transparence (blend mode).
+\item La couleur du renderer est réinitialisée en noir ({\ttfamily 0, 0, 0, 255}) après le dessin.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité ou la compatibilité de {\ttfamily draw\+\_\+func} avec le contexte actuel.
+\item Si {\ttfamily rectangle-\/\texorpdfstring{$>$}{>}text} est vide (`'\textbackslash{}0\textquotesingle{}\`{}), la fonction de dessin du texte n\textquotesingle{}est pas appelée. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_ab542b24175a0231f8530346fc8ab790f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a390da1c2cd15fd5355de26bd34b3d3dc}\label{affichage_8h_a390da1c2cd15fd5355de26bd34b3d3dc} 
+\index{affichage.h@{affichage.h}!draw\_text\_center@{draw\_text\_center}}
+\index{draw\_text\_center@{draw\_text\_center}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_text\_center()}{draw\_text\_center()}}
+{\footnotesize\ttfamily void draw\+\_\+text\+\_\+center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{rectangle }\end{DoxyParamCaption})}
+
+
+
+Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire. 
+
+Cette fonction affiche le texte contenu dans une structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}}, centré horizontalement et verticalement par rapport au rectangle. Si plusieurs lignes sont présentes, elles sont affichées avec un décalage vertical fixe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rectangle} & Un pointeur vers la structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} contenant le texte et les dimensions du rectangle d\textquotesingle{}affichage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item La police {\ttfamily game.\+police} doit être chargée et valide.
+\item Le pointeur {\ttfamily rectangle} doit être valide et contenir un texte non vide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le texte est affiché centré dans le rectangle, ligne par ligne si nécessaire.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Chaque saut de ligne ({\ttfamily \textbackslash{}n}) dans le texte entraîne une nouvelle ligne avec un décalage vertical fixé à 20 pixels.
+\item Le texte est centré horizontalement ligne par ligne, mais le bloc de texte global est également centré verticalement.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si la police n\textquotesingle{}est pas chargée ou si une erreur SDL/\+SDL\+\_\+ttf survient, le texte ne sera pas affiché.
+\item Des erreurs peuvent survenir si le texte est trop long pour le rectangle sans mécanisme de coupure automatique. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a390da1c2cd15fd5355de26bd34b3d3dc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_ab54c358911a2ed823f20797846583531}\label{affichage_8h_ab54c358911a2ed823f20797846583531} 
+\index{affichage.h@{affichage.h}!draw\_text\_left\_middle@{draw\_text\_left\_middle}}
+\index{draw\_text\_left\_middle@{draw\_text\_left\_middle}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_text\_left\_middle()}{draw\_text\_left\_middle()}}
+{\footnotesize\ttfamily void draw\+\_\+text\+\_\+left\+\_\+middle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{rectangle }\end{DoxyParamCaption})}
+
+
+
+Dessine un texte centré verticalement et aligné à gauche dans un rectangle. 
+
+Cette fonction affiche le texte contenu dans une structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} en utilisant la police chargée dans {\ttfamily game.\+police}. Le texte est aligné à gauche et centré verticalement dans le rectangle.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rectangle} & Un pointeur vers la structure {\ttfamily \doxylink{structrectangle__t}{rectangle\+\_\+t}} contenant les informations du texte et du rectangle d\textquotesingle{}affichage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item La police {\ttfamily game.\+police} doit être chargée et valide.
+\item Le pointeur {\ttfamily rectangle} doit être valide et contenir un texte non vide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le texte est rendu à l\textquotesingle{}écran, aligné à gauche et centré verticalement par rapport au rectangle spécifié.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Si aucun texte n\textquotesingle{}est présent (`text\mbox{[}0\mbox{]} == '\textbackslash{}0\textquotesingle{}\`{}), la fonction quitte immédiatement sans dessiner.
+\item La largeur maximale de rendu du texte est fixée à 1500 pixels pour le wrapping automatique.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si la police n\textquotesingle{}est pas chargée ou si une erreur SDL/\+SDL\+\_\+ttf survient, le texte ne sera pas affiché et un message d\textquotesingle{}erreur sera affiché dans la console.
+\item Une erreur dans la création de la texture ou du rendu peut entraîner une perte du texte à l\textquotesingle{}affichage. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_ab54c358911a2ed823f20797846583531_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_ac0e780352c4ab1739b9e31be92740c2d}\label{affichage_8h_ac0e780352c4ab1739b9e31be92740c2d} 
+\index{affichage.h@{affichage.h}!draw\_text\_pos@{draw\_text\_pos}}
+\index{draw\_text\_pos@{draw\_text\_pos}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{draw\_text\_pos()}{draw\_text\_pos()}}
+{\footnotesize\ttfamily void draw\+\_\+text\+\_\+pos (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Dessine du texte à une position spécifique à l\textquotesingle{}écran, avec gestion des retours à la ligne. 
+
+Cette fonction affiche un texte à partir des coordonnées spécifiées ({\ttfamily x}, {\ttfamily y}), en prenant en compte les retours à la ligne ({\ttfamily \textbackslash{}n}) pour afficher plusieurs lignes avec un décalage vertical fixe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em text} & Un pointeur vers la chaîne de caractères à afficher. \\
+\hline
+{\em x} & La position horizontale de départ du texte (en pixels). \\
+\hline
+{\em y} & La position verticale de départ du texte (en pixels).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item La police {\ttfamily game.\+police} doit être chargée et valide.
+\item Le pointeur {\ttfamily text} doit être valide et contenir une chaîne de caractères non vide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le texte est affiché à partir de la position {\ttfamily (x, y)}, en sautant de 20 pixels vers le bas à chaque nouvelle ligne.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Chaque saut de ligne ({\ttfamily \textbackslash{}n}) est interprété pour créer une nouvelle ligne affichée en dessous de la précédente.
+\item Le texte est aligné à gauche sans centrage horizontal automatique.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si la police n\textquotesingle{}est pas chargée ou en cas d\textquotesingle{}erreur de rendu SDL/\+SDL\+\_\+ttf, le texte ne sera pas affiché.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la longueur des lignes ou sur l\textquotesingle{}espace disponible à l\textquotesingle{}écran. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_ac0e780352c4ab1739b9e31be92740c2d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a0e3013e95f4c920f17b775d33ac0ee82}\label{affichage_8h_a0e3013e95f4c920f17b775d33ac0ee82} 
+\index{affichage.h@{affichage.h}!free\_mat@{free\_mat}}
+\index{free\_mat@{free\_mat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{free\_mat()}{free\_mat()}}
+{\footnotesize\ttfamily void free\+\_\+mat (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+x,  }\item[{int}]{taille\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Libère la mémoire allouée pour les matrices des calques du jeu. 
+
+Cette fonction libère toute la mémoire précédemment allouée pour {\ttfamily game.\+mat} via {\ttfamily init\+\_\+mat}, en parcourant et libérant chaque ligne, chaque matrice, puis la structure principale.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille\+\_\+x} & La largeur de chaque matrice (nombre de colonnes). (Non utilisé dans cette fonction mais requis pour cohérence d\textquotesingle{}interface) \\
+\hline
+{\em taille\+\_\+y} & La hauteur de chaque matrice (nombre de lignes).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+mat} doit avoir été correctement alloué par {\ttfamily init\+\_\+mat}.
+\item {\ttfamily taille\+\_\+y} doit correspondre au nombre de lignes effectivement allouées.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Toute la mémoire associée à {\ttfamily game.\+mat} est libérée.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item {\ttfamily taille\+\_\+x} n\textquotesingle{}est pas utilisé dans la fonction, mais il est conservé pour cohérence avec les autres fonctions de manipulation de matrices.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Un appel incorrect (par exemple, sans initialisation préalable) peut entraîner un comportement indéfini.
+\item Après l\textquotesingle{}appel, {\ttfamily game.\+mat} devient invalide et ne doit plus être utilisé sans réinitialisation. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a}\label{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a} 
+\index{affichage.h@{affichage.h}!game\_over@{game\_over}}
+\index{game\_over@{game\_over}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{game\_over()}{game\_over()}}
+{\footnotesize\ttfamily void game\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}écran de fin de partie et réinitialise le joueur. 
+
+Cette fonction affiche un écran de "{}\+Game Over"{}, attend une action de l\textquotesingle{}utilisateur pour continuer, puis réinitialise la position et la carte du joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le champ {\ttfamily renderer} de {\ttfamily game} doit être initialisé.
+\item Le pointeur {\ttfamily j} doit être valide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Affiche l\textquotesingle{}écran de fin de partie jusqu\textquotesingle{}à l\textquotesingle{}appui sur la touche {\ttfamily A} ou la fermeture de la fenêtre.
+\item Réinitialise la position du joueur sur la carte de départ ({\ttfamily num\+Map = 0}, {\ttfamily x = 23}, {\ttfamily y = 8}).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}image de fond affichée correspond à la carte d\textquotesingle{}indice {\ttfamily 9} dans {\ttfamily game.\+mat\+\_\+active}.
+\item Le joueur est repositionné à des coordonnées fixes après la fin du Game Over.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Une fermeture de la fenêtre pendant l\textquotesingle{}écran de Game Over termine immédiatement la boucle.
+\item La fonction suppose que la carte 9 existe et est correctement chargée. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{affichage_8h_abd6001ed54f2062b95bb92ceef20e74a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{affichage_8h_a9a0c4550fcb73a704a8ecb9059731b40}\label{affichage_8h_a9a0c4550fcb73a704a8ecb9059731b40} 
+\index{affichage.h@{affichage.h}!init\_background@{init\_background}}
+\index{init\_background@{init\_background}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_background()}{init\_background()}}
+{\footnotesize\ttfamily int init\+\_\+background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise les textures de fond et adapte l\textquotesingle{}affichage à la taille de la fenêtre. 
+
+Cette fonction \+:
+\begin{DoxyItemize}
+\item Charge 10 images de fond depuis le répertoire "{}img/background/"{}.
+\item Convertit ces images en textures utilisables par le moteur de rendu SDL.
+\item Ajuste dynamiquement les dimensions d\textquotesingle{}affichage pour conserver le ratio largeur/hauteur de l\textquotesingle{}image par rapport à la fenêtre.
+\item Calcule le facteur d\textquotesingle{}échelle ({\ttfamily scale}) pour les futurs dessins (sprites, objets, etc.).
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Renvoie}
+Retourne 1 si l\textquotesingle{}initialisation est réussie, 0 en cas d\textquotesingle{}erreur (chargement ou création de texture échouée).
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item SDL Renderer ({\ttfamily game.\+renderer}) doit être initialisé avant d\textquotesingle{}appeler cette fonction.
+\item Les images de fond doivent être présentes dans "{}img/background/"{} sous les noms "{}fond1.\+png"{} à "{}fond10.\+png"{}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+background\+Texture\mbox{[}i\mbox{]}} est rempli avec les textures des images chargées.
+\item {\ttfamily game.\+dms\+\_\+win} est mis à jour pour centrer et adapter correctement l\textquotesingle{}image.
+\item {\ttfamily game.\+scale} est défini pour maintenir la proportion lors du rendu des autres éléments.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}échec de chargement d\textquotesingle{}une image, un message d\textquotesingle{}erreur est affiché, les textures ne sont pas initialisées complètement et {\ttfamily IMG\+\_\+\+Quit} est appelé prématurément.
+\item L\textquotesingle{}affichage peut être déséquilibré si les images de fond n\textquotesingle{}ont pas le même ratio largeur/hauteur que prévu.
+\end{DoxyItemize}
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Cette fonction prépare aussi indirectement les bases pour tous les affichages suivants (sprites, maps, etc.) en déterminant {\ttfamily game.\+scale}. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{affichage_8h_a37762eaaf5ff37b10814afba0e6f0aa5}\label{affichage_8h_a37762eaaf5ff37b10814afba0e6f0aa5} 
+\index{affichage.h@{affichage.h}!init\_calque@{init\_calque}}
+\index{init\_calque@{init\_calque}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_calque()}{init\_calque()}}
+{\footnotesize\ttfamily int init\+\_\+calque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise les textures des calques utilisés pour l\textquotesingle{}affichage du jeu. 
+
+Cette fonction \+:
+\begin{DoxyItemize}
+\item Charge 6 images de calques depuis le répertoire "{}img/calque/"{}.
+\item Les fichiers doivent être nommés "{}calque1.\+png"{} à "{}calque6.\+png"{}.
+\item Convertit chaque image chargée en une texture SDL stockée dans {\ttfamily game.\+calque\+Texture}.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Renvoie}
+Retourne OK (1) si toutes les textures sont correctement chargées et créées, sinon 0 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item SDL Renderer ({\ttfamily game.\+renderer}) doit être initialisé.
+\item Les images de calques doivent exister dans le répertoire "{}img/calque/"{}.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily game.\+calque\+Texture\mbox{[}i\mbox{]}} est rempli avec la texture correspondante à l\textquotesingle{}image chargée pour chaque {\ttfamily i} de 0 à 5.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si une image ne peut pas être chargée ou transformée en texture, la fonction arrête le chargement, imprime une erreur et retourne 0.
+\end{DoxyItemize}
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Les textures de calques sont utilisées pour dessiner des éléments superposés à l\textquotesingle{}arrière-\/plan, comme des couches additionnelles sur la map. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{affichage_8h_a1e25ed2b94d05cf8dae2fe968589573e}\label{affichage_8h_a1e25ed2b94d05cf8dae2fe968589573e} 
+\index{affichage.h@{affichage.h}!init\_mat@{init\_mat}}
+\index{init\_mat@{init\_mat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_mat()}{init\_mat()}}
+{\footnotesize\ttfamily int init\+\_\+mat (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+x,  }\item[{int}]{taille\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Initialise une matrice 3D pour la gestion des calques du jeu. 
+
+Cette fonction alloue dynamiquement une matrice 3D {\ttfamily game.\+mat} composée de 6 couches, chacune représentant un calque de la carte du jeu. Chaque couche est une matrice de dimensions {\ttfamily taille\+\_\+y} x {\ttfamily taille\+\_\+x}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille\+\_\+x} & La largeur de chaque matrice (nombre de colonnes). \\
+\hline
+{\em taille\+\_\+y} & La hauteur de chaque matrice (nombre de lignes).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 1} si l\textquotesingle{}allocation est réussie, {\ttfamily 0} en cas d\textquotesingle{}échec.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily taille\+\_\+x} et {\ttfamily taille\+\_\+y} doivent être strictement positifs.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Alloue et initialise {\ttfamily game.\+mat} si toutes les allocations sont réussies.
+\item En cas d\textquotesingle{}échec, libère toute la mémoire précédemment allouée pour éviter les fuites.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La structure {\ttfamily game} doit être accessible et correctement initialisée avant appel.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}échec d\textquotesingle{}allocation mémoire à n\textquotesingle{}importe quelle étape, toute la mémoire déjà réservée est libérée.
+\item Aucun contrôle supplémentaire n\textquotesingle{}est effectué sur la validité des tailles fournies ({\ttfamily taille\+\_\+x}, {\ttfamily taille\+\_\+y}). 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_aaf9b1b9fed295b95719d447183c0a7bb}\label{affichage_8h_aaf9b1b9fed295b95719d447183c0a7bb} 
+\index{affichage.h@{affichage.h}!init\_mecha@{init\_mecha}}
+\index{init\_mecha@{init\_mecha}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_mecha()}{init\_mecha()}}
+{\footnotesize\ttfamily int init\+\_\+mecha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise les textures des Méchas du jeu. 
+
+Cette fonction charge les images représentant les Méchas en orientation droite et gauche, les convertit en textures SDL, et les stocke dans la structure {\ttfamily mecha}.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 1} si toutes les textures sont chargées et créées correctement, sinon {\ttfamily 0} en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le module SDL\+\_\+image doit être initialisé avant l\textquotesingle{}appel à cette fonction.
+\item Le champ {\ttfamily renderer} de la structure {\ttfamily game} doit être valide et initialisé.
+\item La constante {\ttfamily NB\+\_\+\+MECHAS} doit être définie et correcte.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Chaque élément du tableau {\ttfamily mecha\mbox{[}i\mbox{]}.texture\mbox{[}j\mbox{]}} est initialisé avec une texture SDL valide.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Les fichiers images doivent être présents sous le chemin {\ttfamily img/mechas/} et nommés sous la forme {\ttfamily \texorpdfstring{$<$}{<}index\texorpdfstring{$>$}{>}D.\+png} ou {\ttfamily \texorpdfstring{$<$}{<}index\texorpdfstring{$>$}{>}G.\+png}.
+\item Chaque surface chargée est libérée après la création de la texture correspondante.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}échec de chargement ou de création d\textquotesingle{}une texture, la fonction s\textquotesingle{}arrête immédiatement et retourne {\ttfamily 0}.
+\item Après une erreur, le module SDL\+\_\+image est quitté via {\ttfamily IMG\+\_\+\+Quit()}, et SDL peut être quitté via {\ttfamily SDL\+\_\+\+Quit()}.
+\item Un fichier manquant ou mal nommé entraînera l\textquotesingle{}échec de l\textquotesingle{}initialisation. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_a9de0b29edaa04d0f607cd14d448ff25e}\label{affichage_8h_a9de0b29edaa04d0f607cd14d448ff25e} 
+\index{affichage.h@{affichage.h}!init\_player@{init\_player}}
+\index{init\_player@{init\_player}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_player()}{init\_player()}}
+{\footnotesize\ttfamily int init\+\_\+player (\begin{DoxyParamCaption}\item[{char}]{sexe }\end{DoxyParamCaption})}
+
+
+
+Initialise les textures d\textquotesingle{}animation du joueur selon son sexe. 
+
+Cette fonction charge les images de sprite correspondant aux différentes directions (bas, haut, gauche, droite) du joueur, en fonction du sexe sélectionné (\textquotesingle{}M\textquotesingle{} ou autre), puis les convertit en textures SDL stockées dans {\ttfamily game.\+sprite\+\_\+joueur}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sexe} & Le sexe du joueur (\textquotesingle{}M\textquotesingle{} pour masculin, tout autre caractère pour féminin).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 1} si toutes les textures sont correctement chargées et créées, sinon {\ttfamily 0} en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le module SDL\+\_\+image doit être initialisé avant l\textquotesingle{}appel à cette fonction.
+\item Le champ {\ttfamily renderer} de la structure {\ttfamily game} doit être valide et initialisé.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Remplit les champs {\ttfamily bas}, {\ttfamily haut}, {\ttfamily gauche} et {\ttfamily droite} de {\ttfamily game.\+sprite\+\_\+joueur} avec les textures correspondantes.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Les fichiers images doivent suivre une nomenclature précise selon le sexe, sous {\ttfamily img/skin/skin\+\_\+player\+\_\+\texorpdfstring{$<$}{<}sexe\texorpdfstring{$>$}{>}/}.
+\item Seules les images 1 à 4 pour chaque direction sont chargées.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}échec de chargement ou de création de texture, la fonction arrête immédiatement l\textquotesingle{}initialisation et retourne {\ttfamily 0}.
+\item Après une erreur, le module SDL\+\_\+image est quitté avec {\ttfamily IMG\+\_\+\+Quit()}, et SDL peut être quitté via {\ttfamily SDL\+\_\+\+Quit()}.
+\item L\textquotesingle{}absence ou la corruption des fichiers images attendus entraînera un échec. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_a065c0902e63f16318150da6add0b96b6}\label{affichage_8h_a065c0902e63f16318150da6add0b96b6} 
+\index{affichage.h@{affichage.h}!init\_pnj@{init\_pnj}}
+\index{init\_pnj@{init\_pnj}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{init\_pnj()}{init\_pnj()}}
+{\footnotesize\ttfamily int init\+\_\+pnj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise les textures des PNJ (personnages non-\/joueurs) du jeu. 
+
+Cette fonction charge les images associées aux différentes orientations et personnages spéciaux, puis les convertit en textures SDL stockées dans la structure {\ttfamily game.\+sprite\+\_\+pnj}.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 1} si toutes les textures sont correctement chargées et créées, sinon {\ttfamily 0} en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le module SDL\+\_\+image doit être initialisé avant l\textquotesingle{}appel à cette fonction.
+\item Le champ {\ttfamily renderer} de la structure {\ttfamily game} doit être valide et initialisé.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Remplit les champs de {\ttfamily game.\+sprite\+\_\+pnj} avec les textures correspondantes aux différentes orientations et personnages.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Les fichiers images doivent exister dans le dossier {\ttfamily img/skin/skin\+\_\+pnj/} et porter les noms attendus.
+\item Toutes les surfaces SDL utilisées sont libérées après la création des textures correspondantes.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}échec de chargement d\textquotesingle{}une image ou de création d\textquotesingle{}une texture, la fonction interrompt l\textquotesingle{}initialisation et retourne {\ttfamily 0}.
+\item Après une erreur, le module SDL\+\_\+image est quitté via {\ttfamily IMG\+\_\+\+Quit()}, et SDL peut être quitté via {\ttfamily SDL\+\_\+\+Quit()}.
+\item Un fichier manquant ou corrompu entraînera l\textquotesingle{}échec de l\textquotesingle{}initialisation complète des PNJ. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_ad9d3b44ef81854da019931f0c15b40ca}\label{affichage_8h_ad9d3b44ef81854da019931f0c15b40ca} 
+\index{affichage.h@{affichage.h}!remplir\_mat@{remplir\_mat}}
+\index{remplir\_mat@{remplir\_mat}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{remplir\_mat()}{remplir\_mat()}}
+{\footnotesize\ttfamily int remplir\+\_\+mat (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+x,  }\item[{int}]{taille\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Remplit les matrices de calques avec les données de fichiers de sauvegarde. 
+
+Cette fonction lit les fichiers {\ttfamily save/map1.\+txt} à {\ttfamily save/map6.\+txt} et remplit les matrices correspondantes dans {\ttfamily game.\+mat} avec les valeurs lues.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille\+\_\+x} & La largeur de chaque matrice (nombre de colonnes). \\
+\hline
+{\em taille\+\_\+y} & La hauteur de chaque matrice (nombre de lignes).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne {\ttfamily 1} si tous les fichiers sont lus correctement, sinon {\ttfamily 0} en cas d\textquotesingle{}erreur d\textquotesingle{}ouverture.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily init\+\_\+mat} doit avoir été appelé avec succès pour initialiser {\ttfamily game.\+mat}.
+\item Les fichiers {\ttfamily save/map1.\+txt} à {\ttfamily save/map6.\+txt} doivent exister et être correctement formatés.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Remplit entièrement {\ttfamily game.\+mat} avec les données lues depuis les fichiers.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Chaque fichier doit contenir exactement {\ttfamily taille\+\_\+x \texorpdfstring{$\ast$}{*} taille\+\_\+y} entiers séparés par des espaces ou retours à la ligne.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si un fichier ne peut pas être ouvert, la fonction retourne immédiatement {\ttfamily 0} sans remplir les autres matrices.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité du contenu des fichiers (format des données lues). 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{affichage_8h_a76e0589a991f4ad00c5baae522dfeee1}\label{affichage_8h_a76e0589a991f4ad00c5baae522dfeee1} 
+\index{affichage.h@{affichage.h}!utiliserObjetSurMecha@{utiliserObjetSurMecha}}
+\index{utiliserObjetSurMecha@{utiliserObjetSurMecha}!affichage.h@{affichage.h}}
+\doxysubsubsection{\texorpdfstring{utiliserObjetSurMecha()}{utiliserObjetSurMecha()}}
+{\footnotesize\ttfamily void utiliser\+Objet\+Sur\+Mecha (\begin{DoxyParamCaption}\item[{int}]{objet\+\_\+id,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{char \texorpdfstring{$\ast$}{*}}]{message\+\_\+buffer }\end{DoxyParamCaption})}
+
+
+
+Utilise un objet de l\textquotesingle{}inventaire du joueur sur un Mécha donné. 
+
+Cette fonction applique les effets d\textquotesingle{}un objet ({\ttfamily carburant} ou {\ttfamily rappel}) sur un Mécha du joueur, en modifiant ses points de vie ({\ttfamily pv}) et en mettant à jour l\textquotesingle{}inventaire du joueur. Le résultat de l\textquotesingle{}action est stocké dans {\ttfamily message\+\_\+buffer}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em objet\+\_\+id} & L\textquotesingle{}identifiant de l\textquotesingle{}objet à utiliser ({\ttfamily 0} pour carburant, {\ttfamily 1} pour rappel). \\
+\hline
+{\em mecha} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} représentant le Mécha ciblé. \\
+\hline
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em message\+\_\+buffer} & Un pointeur vers un tampon de caractères pour stocker le message d\textquotesingle{}information.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les pointeurs {\ttfamily mecha}, {\ttfamily j} et {\ttfamily message\+\_\+buffer} doivent être valides.
+\item L\textquotesingle{}inventaire du joueur ({\ttfamily j-\/\texorpdfstring{$>$}{>}inventaire}) doit être correctement initialisé.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Modifie les points de vie du Mécha et les quantités d\textquotesingle{}objets dans l\textquotesingle{}inventaire en fonction de l\textquotesingle{}action effectuée.
+\item Remplit {\ttfamily message\+\_\+buffer} avec un message indiquant le succès ou l\textquotesingle{}échec de l\textquotesingle{}opération.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}objet "{}carburant"{} restaure jusqu\textquotesingle{}à 50 PV, sans dépasser les PV maximum.
+\item L\textquotesingle{}objet "{}rappel"{} réanime un Mécha KO à la moitié de ses PV maximum.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si les conditions d\textquotesingle{}utilisation de l\textquotesingle{}objet ne sont pas respectées, l\textquotesingle{}objet n\textquotesingle{}est pas consommé et une erreur est renvoyée dans {\ttfamily message\+\_\+buffer}.
+\item Aucun contrôle n\textquotesingle{}est effectué sur la validité de {\ttfamily objet\+\_\+id} en dehors des cas {\ttfamily 0} et {\ttfamily 1}. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{affichage_8h_a76e0589a991f4ad00c5baae522dfeee1_icgraph}
+\end{center}
+\end{figure}

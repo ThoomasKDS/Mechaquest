@@ -1,0 +1,11 @@
+<map id="init_partie" name="init_partie">
+<area shape="rect" id="Node000001" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="5,31,84,56"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#aec5928f1d3393d66b9df8e4066b8d8da" title="Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial." alt="" coords="132,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,34,118,29,119,34,85,40"/>
+<area shape="rect" id="Node000003" href="$sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="137,55,265,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="85,47,124,53,123,58,84,52"/>
+<area shape="rect" id="Node000004" href="$sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="333,29,485,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="265,57,320,50,320,55,265,62"/>
+<area shape="rect" id="Node000005" href="$sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="317,79,501,104"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="265,72,304,77,303,82,265,77"/>
+</map>

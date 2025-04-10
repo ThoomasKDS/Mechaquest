@@ -1,0 +1,21 @@
+<map id="algo_attaque" name="algo_attaque">
+<area shape="rect" id="Node000001" title="Calcule et applique les effets d&#39;une attaque lors d&#39;un combat entre deux Mechas." alt="" coords="740,56,836,81"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#aeabe45f0372840462d595a801345672b" title="Affiche l&#39;interface permettant au joueur de choisir et effectuer une attaque durant un combat." alt="" coords="564,56,671,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="726,71,671,71,671,66,726,66"/>
+<area shape="rect" id="Node000008" href="$combat_8c.html#a5491a6cd3adeb619da6eb84e6d888e7a" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="377,5,495,31"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="729,55,692,47,587,33,495,24,495,19,588,27,692,42,730,50"/>
+<area shape="rect" id="Node000009" href="$combat_8c.html#ac6ceced0c9217ccb31c1400649cfd67c" title="Gère l&#39;attaque aléatoire d&#39;un Mecha sauvage durant un combat contre le joueur." alt="" coords="543,105,692,131"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="731,88,663,108,662,103,729,83"/>
+<area shape="rect" id="Node000003" href="$combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="393,55,479,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="550,71,480,70,480,65,550,66"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,31,313,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="378,62,313,52,314,47,379,57"/>
+<area shape="rect" id="Node000007" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,80,329,105"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="379,79,330,86,329,81,378,73"/>
+<area shape="rect" id="Node000005" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,5,131,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,38,131,27,131,22,211,33"/>
+<area shape="rect" id="Node000006" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,55,160,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="211,53,160,60,160,55,210,48"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="364,32,314,39,313,34,363,26"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="529,114,329,100,330,94,529,109"/>
+</map>

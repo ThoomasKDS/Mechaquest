@@ -1,0 +1,131 @@
+\doxysection{Référence de la structure mechas\+\_\+joueur\+\_\+t}
+\hypertarget{structmechas__joueur__t}{}\label{structmechas__joueur__t}\index{mechas\_joueur\_t@{mechas\_joueur\_t}}
+
+
+Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_ac842f9787d114784075b5130519c5817}{numero}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a03321f8114557e405f5609858b125076}{id\+\_\+mechas}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a5d053ec22a2d40262c398ea493e766cc}{niveau}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a9033fc398b742ea8189b24d3c1d1a656}{xp}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a9c102ff6546c1b4a52f4bdd496cdb28a}{pv}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_afab1b4461029c5b33a91e5b5aef6cb2d}{pv\+\_\+max}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_ae46e9897c4c1c42cb709c62283efc876}{attaque}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_af949cf21db359b52cfa766f57f06e0df}{defense}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a12fcc84a50c5a1dfb9a2af47026a5a7b}{vitesse}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_aec148a9678835be43f681e77c9d12150}{attaque\+\_\+1}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a7dc76caaea354024dd09aecda187fe12}{attaque\+\_\+2}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_a17bc19142934c4440111a3b16e79d9bf}{utilisation\+\_\+1}}
+\item 
+int \mbox{\hyperlink{structmechas__joueur__t_acf94d5aba63f733f0b174beba9950609}{utilisation\+\_\+2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente un mecha appartenant à un joueur, avec ses statistiques et attaques. 
+
+Cette structure contient les informations dynamiques d’un mecha possédé par un joueur, notamment son niveau, ses points de vie, ses statistiques de combat et les attaques actuellement apprises. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structmechas__joueur__t_ae46e9897c4c1c42cb709c62283efc876}\label{structmechas__joueur__t_ae46e9897c4c1c42cb709c62283efc876} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!attaque@{attaque}}
+\index{attaque@{attaque}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{attaque}{attaque}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::attaque}
+
+Statistique d’attaque du mecha (influence les dégâts infligés). \Hypertarget{structmechas__joueur__t_aec148a9678835be43f681e77c9d12150}\label{structmechas__joueur__t_aec148a9678835be43f681e77c9d12150} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!attaque\_1@{attaque\_1}}
+\index{attaque\_1@{attaque\_1}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{attaque\_1}{attaque\_1}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::attaque\+\_\+1}
+
+Identifiant de la première attaque apprise (référence à {\ttfamily \doxylink{structattaque__t}{attaque\+\_\+t}}). \Hypertarget{structmechas__joueur__t_a7dc76caaea354024dd09aecda187fe12}\label{structmechas__joueur__t_a7dc76caaea354024dd09aecda187fe12} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!attaque\_2@{attaque\_2}}
+\index{attaque\_2@{attaque\_2}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{attaque\_2}{attaque\_2}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::attaque\+\_\+2}
+
+Identifiant de la seconde attaque apprise (référence à {\ttfamily \doxylink{structattaque__t}{attaque\+\_\+t}}). \Hypertarget{structmechas__joueur__t_af949cf21db359b52cfa766f57f06e0df}\label{structmechas__joueur__t_af949cf21db359b52cfa766f57f06e0df} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!defense@{defense}}
+\index{defense@{defense}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{defense}{defense}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::defense}
+
+Statistique de défense du mecha (réduit les dégâts reçus). \Hypertarget{structmechas__joueur__t_a03321f8114557e405f5609858b125076}\label{structmechas__joueur__t_a03321f8114557e405f5609858b125076} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!id\_mechas@{id\_mechas}}
+\index{id\_mechas@{id\_mechas}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{id\_mechas}{id\_mechas}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::id\+\_\+mechas}
+
+Identifiant du modèle de mecha (référence à la structure {\ttfamily \doxylink{structmechas__t}{mechas\+\_\+t}}). \Hypertarget{structmechas__joueur__t_a5d053ec22a2d40262c398ea493e766cc}\label{structmechas__joueur__t_a5d053ec22a2d40262c398ea493e766cc} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!niveau@{niveau}}
+\index{niveau@{niveau}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{niveau}{niveau}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::niveau}
+
+Niveau actuel du mecha. \Hypertarget{structmechas__joueur__t_ac842f9787d114784075b5130519c5817}\label{structmechas__joueur__t_ac842f9787d114784075b5130519c5817} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!numero@{numero}}
+\index{numero@{numero}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{numero}{numero}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::numero}
+
+Numéro du mecha dans l’équipe du joueur (position dans l’inventaire/combat). \Hypertarget{structmechas__joueur__t_a9c102ff6546c1b4a52f4bdd496cdb28a}\label{structmechas__joueur__t_a9c102ff6546c1b4a52f4bdd496cdb28a} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!pv@{pv}}
+\index{pv@{pv}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{pv}{pv}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::pv}
+
+Points de vie actuels du mecha. \Hypertarget{structmechas__joueur__t_afab1b4461029c5b33a91e5b5aef6cb2d}\label{structmechas__joueur__t_afab1b4461029c5b33a91e5b5aef6cb2d} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!pv\_max@{pv\_max}}
+\index{pv\_max@{pv\_max}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{pv\_max}{pv\_max}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::pv\+\_\+max}
+
+Points de vie maximum du mecha. \Hypertarget{structmechas__joueur__t_a17bc19142934c4440111a3b16e79d9bf}\label{structmechas__joueur__t_a17bc19142934c4440111a3b16e79d9bf} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!utilisation\_1@{utilisation\_1}}
+\index{utilisation\_1@{utilisation\_1}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{utilisation\_1}{utilisation\_1}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::utilisation\+\_\+1}
+
+Nombre d’utilisations restantes pour l’attaque 1. \Hypertarget{structmechas__joueur__t_acf94d5aba63f733f0b174beba9950609}\label{structmechas__joueur__t_acf94d5aba63f733f0b174beba9950609} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!utilisation\_2@{utilisation\_2}}
+\index{utilisation\_2@{utilisation\_2}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{utilisation\_2}{utilisation\_2}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::utilisation\+\_\+2}
+
+Nombre d’utilisations restantes pour l’attaque 2. \Hypertarget{structmechas__joueur__t_a12fcc84a50c5a1dfb9a2af47026a5a7b}\label{structmechas__joueur__t_a12fcc84a50c5a1dfb9a2af47026a5a7b} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!vitesse@{vitesse}}
+\index{vitesse@{vitesse}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{vitesse}{vitesse}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::vitesse}
+
+Statistique de vitesse (peut influencer l’ordre des tours). \Hypertarget{structmechas__joueur__t_a9033fc398b742ea8189b24d3c1d1a656}\label{structmechas__joueur__t_a9033fc398b742ea8189b24d3c1d1a656} 
+\index{mechas\_joueur\_t@{mechas\_joueur\_t}!xp@{xp}}
+\index{xp@{xp}!mechas\_joueur\_t@{mechas\_joueur\_t}}
+\doxysubsubsection{\texorpdfstring{xp}{xp}}
+{\footnotesize\ttfamily mechas\+\_\+joueur\+\_\+t\+::xp}
+
+Expérience accumulée vers le niveau suivant. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

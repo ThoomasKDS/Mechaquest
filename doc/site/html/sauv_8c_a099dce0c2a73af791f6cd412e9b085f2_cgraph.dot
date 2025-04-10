@@ -1,0 +1,13 @@
+digraph "recuperation_pnj"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="recuperation_pnj",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Récupère l'état et les données détaillées des PNJs à partir d'un fichier CSV personnalisé."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="recuperation_inventaire",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sauv_8c.html#a5df71d1ff822e93d595691020a67fcac",tooltip="Récupère les données de l'inventaire d'un joueur ou d'un PNJ depuis un fichier CSV."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="recuperation_mechas\l_joueur",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552",tooltip="Récupère l'équipe de Mechas d'un joueur à partir d'un fichier CSV."];
+}

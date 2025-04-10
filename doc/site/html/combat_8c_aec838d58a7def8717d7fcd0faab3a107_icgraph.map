@@ -1,0 +1,15 @@
+<map id="montee_niveau" name="montee_niveau">
+<area shape="rect" id="Node000001" title="Gère la montée en niveau d&#39;un Mecha joueur après avoir reçu des points d&#39;expérience (XP)." alt="" coords="672,55,783,80"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#ac6fcdad743dc3526b2b89a1630618a07" title="Distribue les points d&#39;expérience (XP) gagnés lors d&#39;un combat à un ensemble de Méchas ayant particip..." alt="" coords="528,55,624,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="658,70,624,70,624,65,658,65"/>
+<area shape="rect" id="Node000003" href="$combat_8c.html#a2de6c3e2a52edcf450da90005d5fad1d" title="Calcule et distribue les points d&#39;expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha ad..." alt="" coords="377,55,480,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="514,70,480,70,480,65,514,65"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,29,313,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="363,60,313,52,314,46,364,54"/>
+<area shape="rect" id="Node000007" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,79,329,104"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="364,80,330,85,329,80,363,74"/>
+<area shape="rect" id="Node000005" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,5,131,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,37,131,27,131,22,211,32"/>
+<area shape="rect" id="Node000006" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,55,160,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="211,53,160,59,160,54,210,47"/>
+</map>

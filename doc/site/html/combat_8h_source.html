@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest:  Fichier source de /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/combat.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('combat_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">combat.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="combat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef COMBAT_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define COMBAT_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="sauv_8h.html">sauv.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="pointDePassage_8h.html">pointDePassage.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../lib/global.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a30cb93b663d557e0e81271f956c24379">aff_mechas_combat</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> * joueur);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> <a class="code hl_function" href="combat_8h.html#a159b2a6408c605d1fc9432689f92e3cb">draw_combat</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_ordi);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="combat_8h.html#ab9469ab4f84b56a27ef05848c4a78cb9">animation_degat</a>(<span class="keywordtype">int</span> mecha_att, <span class="keywordtype">int</span> pv_old, <span class="keywordtype">int</span> pv_new, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_ordi);<span class="comment">//mecha 0 pour le joueur, 1 pour l&#39;ordi</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a7f2daafca6455a03963db8f32d8a8d10">utilisation_carburant</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *ordi, <span class="keywordtype">int</span> *actif);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#afff6b8b516af5c46c938f407788d1b5f">utilisation_rappel</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *ordi, <span class="keywordtype">int</span> *actif);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a53bf2250ba00b21dceed166fa59bd150">utilisation_mechaball</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *ordi, <span class="keywordtype">int</span> *actif);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#ae82c6dcf76c1412964511d71b75c637e">utilisation_objet</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *ordi, <span class="keywordtype">int</span> *actif, <span class="keywordtype">int</span> type_combat);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a16e4593cbfaef36a7cc088aa6bef48c0">changer_mecha</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <span class="keywordtype">int</span> *actif, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *ordi);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a8c19b3bf83d09e9fb4b596cd4ff45219">algo_attaque</a>(<span class="keywordtype">int</span> choix, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_att, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_def,<span class="keywordtype">int</span> mecha_choix);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#aeabe45f0372840462d595a801345672b">attaque_joueur</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi, <span class="keywordtype">int</span> * actif);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#ac6ceced0c9217ccb31c1400649cfd67c">attaque_ordi_sauvage</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_joueur);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a5491a6cd3adeb619da6eb84e6d888e7a">attaque_ordi_pnj</a>(<a class="code hl_struct" href="structpnj__t.html">pnj_t</a> * pnj, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_joueur, <span class="keywordtype">int</span> * actif);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a3c18ce2957ca72f56737d0082766ad63">tour_joueur</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_sauvage, <span class="keywordtype">int</span> * actif, <span class="keywordtype">int</span> type_combat);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#ae03e9f733803425a6c1dcb7b81c8234e">combat_sauvage</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_sauvage);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#af35e79d0f311c06fb1fe44ce8bb34ca4">apprentissage_attaque</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_joueur,<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="combat_8h.html#a2de6c3e2a52edcf450da90005d5fad1d">level_mechas</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *mechas_presents, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#afe15b54290598e06032e0c418f626461">evolution_mechas</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="combat_8h.html#aec838d58a7def8717d7fcd0faab3a107">montee_niveau</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi, <span class="keywordtype">int</span> xp_partage, <span class="keywordtype">int</span> lvlup);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="combat_8h.html#ac6fcdad743dc3526b2b89a1630618a07">distribuer_xp</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *mechas_presents, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_ordi, <span class="keywordtype">int</span> xp_gagne);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">int</span> <a class="code hl_function" href="combat_8h.html#a03ca199547656caabf8e81d769b770e4">combat_pnj</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="code hl_struct" href="structpnj__t.html">pnj_t</a> *pnj);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acombat_8h_html_a03ca199547656caabf8e81d769b770e4"><div class="ttname"><a href="combat_8h.html#a03ca199547656caabf8e81d769b770e4">combat_pnj</a></div><div class="ttdeci">int combat_pnj(joueur_t *joueur, pnj_t *pnj)</div><div class="ttdoc">Gère un combat complet entre le joueur et un PNJ.</div><div class="ttdef"><b>Definition</b> combat.c:1722</div></div>
+<div class="ttc" id="acombat_8h_html_a159b2a6408c605d1fc9432689f92e3cb"><div class="ttname"><a href="combat_8h.html#a159b2a6408c605d1fc9432689f92e3cb">draw_combat</a></div><div class="ttdeci">void draw_combat(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)</div><div class="ttdoc">Affiche à l'écran tous les éléments graphiques d'un combat entre deux Mechas.</div><div class="ttdef"><b>Definition</b> combat.c:77</div></div>
+<div class="ttc" id="acombat_8h_html_a16e4593cbfaef36a7cc088aa6bef48c0"><div class="ttname"><a href="combat_8h.html#a16e4593cbfaef36a7cc088aa6bef48c0">changer_mecha</a></div><div class="ttdeci">int changer_mecha(joueur_t *joueur, int *actif, mechas_joueur_t *ordi)</div><div class="ttdoc">Permet au joueur de changer le Mecha actif pendant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:1232</div></div>
+<div class="ttc" id="acombat_8h_html_a2de6c3e2a52edcf450da90005d5fad1d"><div class="ttname"><a href="combat_8h.html#a2de6c3e2a52edcf450da90005d5fad1d">level_mechas</a></div><div class="ttdeci">void level_mechas(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi)</div><div class="ttdoc">Calcule et distribue les points d'expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha ad...</div><div class="ttdef"><b>Definition</b> combat.c:1493</div></div>
+<div class="ttc" id="acombat_8h_html_a30cb93b663d557e0e81271f956c24379"><div class="ttname"><a href="combat_8h.html#a30cb93b663d557e0e81271f956c24379">aff_mechas_combat</a></div><div class="ttdeci">int aff_mechas_combat(joueur_t *joueur)</div><div class="ttdoc">Affiche l'interface de sélection du Mecha du joueur durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:234</div></div>
+<div class="ttc" id="acombat_8h_html_a3c18ce2957ca72f56737d0082766ad63"><div class="ttname"><a href="combat_8h.html#a3c18ce2957ca72f56737d0082766ad63">tour_joueur</a></div><div class="ttdeci">int tour_joueur(joueur_t *joueur, mechas_joueur_t *mecha_sauvage, int *actif, int type_combat)</div><div class="ttdoc">Gère le tour du joueur lors d'un combat contre un Mécha sauvage ou un PNJ.</div><div class="ttdef"><b>Definition</b> combat.c:1562</div></div>
+<div class="ttc" id="acombat_8h_html_a53bf2250ba00b21dceed166fa59bd150"><div class="ttname"><a href="combat_8h.html#a53bf2250ba00b21dceed166fa59bd150">utilisation_mechaball</a></div><div class="ttdeci">int utilisation_mechaball(joueur_t *joueur, mechas_joueur_t *ordi, int *actif)</div><div class="ttdoc">Gère l'utilisation d'une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:735</div></div>
+<div class="ttc" id="acombat_8h_html_a5491a6cd3adeb619da6eb84e6d888e7a"><div class="ttname"><a href="combat_8h.html#a5491a6cd3adeb619da6eb84e6d888e7a">attaque_ordi_pnj</a></div><div class="ttdeci">int attaque_ordi_pnj(pnj_t *pnj, mechas_joueur_t *mecha_joueur, int *actif)</div><div class="ttdoc">Gère les actions automatiques d'un PNJ (personnage non-joueur) lors d'un combat contre le joueur.</div><div class="ttdef"><b>Definition</b> combat.c:1136</div></div>
+<div class="ttc" id="acombat_8h_html_a7f2daafca6455a03963db8f32d8a8d10"><div class="ttname"><a href="combat_8h.html#a7f2daafca6455a03963db8f32d8a8d10">utilisation_carburant</a></div><div class="ttdeci">int utilisation_carburant(joueur_t *joueur, mechas_joueur_t *ordi, int *actif)</div><div class="ttdoc">Gère l'utilisation d'un objet &quot;carburant&quot; durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:613</div></div>
+<div class="ttc" id="acombat_8h_html_a8c19b3bf83d09e9fb4b596cd4ff45219"><div class="ttname"><a href="combat_8h.html#a8c19b3bf83d09e9fb4b596cd4ff45219">algo_attaque</a></div><div class="ttdeci">int algo_attaque(int choix, mechas_joueur_t *mecha_att, mechas_joueur_t *mecha_def, int mecha_choix)</div><div class="ttdoc">Calcule et applique les effets d'une attaque lors d'un combat entre deux Mechas.</div><div class="ttdef"><b>Definition</b> combat.c:820</div></div>
+<div class="ttc" id="acombat_8h_html_ab9469ab4f84b56a27ef05848c4a78cb9"><div class="ttname"><a href="combat_8h.html#ab9469ab4f84b56a27ef05848c4a78cb9">animation_degat</a></div><div class="ttdeci">void animation_degat(int mecha_att, int pv_old, int pv_new, mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)</div><div class="ttdoc">Anime visuellement la diminution progressive des PV d'un Mecha durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:164</div></div>
+<div class="ttc" id="acombat_8h_html_ac6ceced0c9217ccb31c1400649cfd67c"><div class="ttname"><a href="combat_8h.html#ac6ceced0c9217ccb31c1400649cfd67c">attaque_ordi_sauvage</a></div><div class="ttdeci">int attaque_ordi_sauvage(mechas_joueur_t *mecha_ordi, mechas_joueur_t *mecha_joueur)</div><div class="ttdoc">Gère l'attaque aléatoire d'un Mecha sauvage durant un combat contre le joueur.</div><div class="ttdef"><b>Definition</b> combat.c:1085</div></div>
+<div class="ttc" id="acombat_8h_html_ac6fcdad743dc3526b2b89a1630618a07"><div class="ttname"><a href="combat_8h.html#ac6fcdad743dc3526b2b89a1630618a07">distribuer_xp</a></div><div class="ttdeci">void distribuer_xp(joueur_t *mechas_presents, mechas_joueur_t *mecha_ordi, int xp_gagne)</div><div class="ttdoc">Distribue les points d'expérience (XP) gagnés lors d'un combat à un ensemble de Méchas ayant particip...</div><div class="ttdef"><b>Definition</b> combat.c:1436</div></div>
+<div class="ttc" id="acombat_8h_html_ae03e9f733803425a6c1dcb7b81c8234e"><div class="ttname"><a href="combat_8h.html#ae03e9f733803425a6c1dcb7b81c8234e">combat_sauvage</a></div><div class="ttdeci">int combat_sauvage(joueur_t *joueur, mechas_joueur_t *mecha_sauvage)</div><div class="ttdoc">Gère un combat entre le joueur et un Mécha sauvage.</div><div class="ttdef"><b>Definition</b> combat.c:1844</div></div>
+<div class="ttc" id="acombat_8h_html_ae82c6dcf76c1412964511d71b75c637e"><div class="ttname"><a href="combat_8h.html#ae82c6dcf76c1412964511d71b75c637e">utilisation_objet</a></div><div class="ttdeci">int utilisation_objet(joueur_t *joueur, mechas_joueur_t *ordi, int *actif, int type_combat)</div><div class="ttdoc">Affiche l'interface d'utilisation d'objets pendant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:435</div></div>
+<div class="ttc" id="acombat_8h_html_aeabe45f0372840462d595a801345672b"><div class="ttname"><a href="combat_8h.html#aeabe45f0372840462d595a801345672b">attaque_joueur</a></div><div class="ttdeci">int attaque_joueur(joueur_t *j, mechas_joueur_t *mecha_ordi, int *actif)</div><div class="ttdoc">Affiche l'interface permettant au joueur de choisir et effectuer une attaque durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:917</div></div>
+<div class="ttc" id="acombat_8h_html_aec838d58a7def8717d7fcd0faab3a107"><div class="ttname"><a href="combat_8h.html#aec838d58a7def8717d7fcd0faab3a107">montee_niveau</a></div><div class="ttdeci">void montee_niveau(mechas_joueur_t *mecha, mechas_joueur_t *mecha_ordi, int xp_partage, int lvlup)</div><div class="ttdoc">Gère la montée en niveau d'un Mecha joueur après avoir reçu des points d'expérience (XP).</div><div class="ttdef"><b>Definition</b> combat.c:1378</div></div>
+<div class="ttc" id="acombat_8h_html_af35e79d0f311c06fb1fe44ce8bb34ca4"><div class="ttname"><a href="combat_8h.html#af35e79d0f311c06fb1fe44ce8bb34ca4">apprentissage_attaque</a></div><div class="ttdeci">int apprentissage_attaque(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)</div><div class="ttdoc">Gère l'apprentissage d'une nouvelle attaque par un Mecha lors d'un changement de niveau.</div><div class="ttdef"><b>Definition</b> combat.c:1275</div></div>
+<div class="ttc" id="acombat_8h_html_afe15b54290598e06032e0c418f626461"><div class="ttname"><a href="combat_8h.html#afe15b54290598e06032e0c418f626461">evolution_mechas</a></div><div class="ttdeci">int evolution_mechas(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi)</div><div class="ttdoc">Gère l'évolution d'un Mecha joueur lorsqu'il atteint le niveau requis.</div><div class="ttdef"><b>Definition</b> combat.c:1338</div></div>
+<div class="ttc" id="acombat_8h_html_afff6b8b516af5c46c938f407788d1b5f"><div class="ttname"><a href="combat_8h.html#afff6b8b516af5c46c938f407788d1b5f">utilisation_rappel</a></div><div class="ttdeci">int utilisation_rappel(joueur_t *joueur, mechas_joueur_t *ordi, int *actif)</div><div class="ttdoc">Gère l'utilisation d'un objet &quot;rappel&quot; durant un combat.</div><div class="ttdef"><b>Definition</b> combat.c:676</div></div>
+<div class="ttc" id="apointDePassage_8h_html"><div class="ttname"><a href="pointDePassage_8h.html">pointDePassage.h</a></div><div class="ttdoc">Gestion des points de passage et événements du jeu.</div></div>
+<div class="ttc" id="asauv_8h_html"><div class="ttname"><a href="sauv_8h.html">sauv.h</a></div><div class="ttdoc">Gestion des sauvegardes et récupération des données du jeu.</div></div>
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.</div><div class="ttdef"><b>Definition</b> global.h:588</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html"><div class="ttname"><a href="structmechas__joueur__t.html">mechas_joueur_t</a></div><div class="ttdoc">Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.</div><div class="ttdef"><b>Definition</b> global.h:516</div></div>
+<div class="ttc" id="astructpnj__t_html"><div class="ttname"><a href="structpnj__t.html">pnj_t</a></div><div class="ttdoc">Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.</div><div class="ttdef"><b>Definition</b> global.h:648</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="combat_8h.html">combat.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

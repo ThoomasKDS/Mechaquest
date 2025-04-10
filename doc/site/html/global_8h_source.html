@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest:  Fichier source de /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/global.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('global_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">global.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="global_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef GLOBAL_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define GLOBAL_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;SDL2/SDL_mixer.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//*********DEFINE********//</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">   18</a></span><span class="preprocessor">#define LONGUEUR_MAX_PSEUDO 50</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="global_8h.html#afaa90d2dafe83e0ea356ec20177460f8">   20</a></span><span class="preprocessor">#define LONGUEUR_LIGNE 256</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="global_8h.html#a25a08fb2723860a714d91a6ddd824c59">   22</a></span><span class="preprocessor">#define LONGUEUR_LIGNE_DESC 1070</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="global_8h.html#a7042b61ed737eea3286b324ecdf2345d">   24</a></span><span class="preprocessor">#define LONGUEUR_DIALOGUE 500</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="global_8h.html#a32f0560714e1a90c7f9805cb97b85f7e">   26</a></span><span class="preprocessor">#define LONGUEUR_TYPE 20</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="global_8h.html#a9b9bf46a80f803a594977e440886be8f">   28</a></span><span class="preprocessor">#define LONGUEUR_DESC 200</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//TAILLE TAB</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="global_8h.html#ae6f79319e8e437cea4d39afcbc569e34">   32</a></span><span class="preprocessor">#define NB_MECHAS_MAX 54</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="global_8h.html#a0afb952f6a516ad02412229d57dbafe7">   34</a></span><span class="preprocessor">#define NB_MECHAS 24</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="global_8h.html#abf306b216bc9e75c1271c8f80a688a3f">   36</a></span><span class="preprocessor">#define NB_ATTAQUES 64</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="global_8h.html#a94439adf310c755550b3efe018fc5b26">   38</a></span><span class="preprocessor">#define NB_ZONES 10</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="global_8h.html#acd19773d24e0450b01a69dbe5d47725e">   40</a></span><span class="preprocessor">#define NB_PNJ 24</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">//INVENTAIRE</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="global_8h.html#a4aeb3791139e011fa3473ef77642d643">   44</a></span><span class="preprocessor">#define NB_MECHAS_INVENTAIRE 4</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="global_8h.html#ad58ba2d6c28c6265844e455c07cc6a00">   46</a></span><span class="preprocessor">#define NB_OBJET 5</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">//PNJ IMPORTANT </span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="global_8h.html#a8a70bbe101837ea5ba300fc9e5f11cf3">   50</a></span><span class="preprocessor">#define VIN_GAZOLE_1 17</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="global_8h.html#a270ff812c807ff1377880e151e50ebee">   52</a></span><span class="preprocessor">#define VIN_GAZOLE_2 18</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="global_8h.html#ab9af89677c6b5ad3d38278a4890ec345">   54</a></span><span class="preprocessor">#define VIN_GAZOLE_3 20</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="global_8h.html#a37f2a76bab8b7d9001c3c5fe4f811c34">   56</a></span><span class="preprocessor">#define VIN_GAZOLE_4 21</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="global_8h.html#a0c47e09c080c2a962ccb17112c43b073">   58</a></span><span class="preprocessor">#define VIN_GAZOLE_5 23</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="global_8h.html#aa495e64003d2d36472de0aa1f610b8b0">   61</a></span><span class="preprocessor">#define IRON_MUSK_DEB 19</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="global_8h.html#ab518db7fb19665a2a66af140c850e3c3">   63</a></span><span class="preprocessor">#define IRON_MUSK_FIN 22</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">//TEMPS</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="global_8h.html#a0acb682b8260ab1c60b918599864e2e5">   68</a></span><span class="preprocessor">#define T 500</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">//RETURN </span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="global_8h.html#a01030fe3204d819a224c4def4c20f19a">   72</a></span><span class="preprocessor">#define ERREUR_OUVERTURE -1</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="global_8h.html#aba51915c87d64af47fb1cc59348961c9">   74</a></span><span class="preprocessor">#define OK 1</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="global_8h.html#a735563036dced0b7d6cc98f97ea4978b">   76</a></span><span class="preprocessor">#define ERR 0</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="global_8h.html#acb00992efca56626cdf0907e5edb5b51">   78</a></span><span class="preprocessor">#define KO 0</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="global_8h.html#aac300d38e82a5b413ade48e8a194a87c">   80</a></span><span class="preprocessor">#define RETOUR -1</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="global_8h.html#ad27cf51e3cb443ff12b1385821051877">   82</a></span><span class="preprocessor">#define VRAI 1</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="global_8h.html#ad87b2ac6b56be83aba5eddf673df04c1">   84</a></span><span class="preprocessor">#define FAUX -2</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="global_8h.html#abb69d780b56e8a35bfbbb27b21beb0fd">   86</a></span><span class="preprocessor">#define CAPTURE -3</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="global_8h.html#aef1d57d8b5cac815b694603b7fcc3687">   88</a></span><span class="preprocessor">#define FUITE -4</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">//TAILLE D&#39;UNE CASE</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="global_8h.html#ac889ac835a92b0db741b1c92a2546533">   92</a></span><span class="preprocessor">#define PX 32</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">//COLLISION</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="global_8h.html#a2ebb68473716de487c7927f692aaa91d">   96</a></span><span class="preprocessor">#define RIEN 0</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="global_8h.html#a7f907d351a198b9a0405ce45155625dc">   98</a></span><span class="preprocessor">#define JOUEUR 1</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="global_8h.html#a164736e4f8f9b98b0e5547d8c44d7ef9">  100</a></span><span class="preprocessor">#define BARRIERE 2</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="global_8h.html#a90db5040d96902329ad6a8bae1190740">  102</a></span><span class="preprocessor">#define BAT 3</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="global_8h.html#ac90f8d73b7b7c0d4421987a779000196">  104</a></span><span class="preprocessor">#define DECHET 5</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">//INTERACTION</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="global_8h.html#addc4937e45d7b283437e5453872cd2e1">  109</a></span><span class="preprocessor">#define PNJ 6</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="global_8h.html#a600721f0222b857dc8a3ae59e5077347">  111</a></span><span class="preprocessor">#define PC 7</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="global_8h.html#a7e2386d3b1084b5b875ae3696f550ba9">  113</a></span><span class="preprocessor">#define PORTE 4</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">//CHANGEMENT MAP</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="global_8h.html#a876def4d1021d1a82380f7065111e9e1">  117</a></span><span class="preprocessor">#define TPMAP1 -11</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="global_8h.html#abd9e1d2f89cf10284028326a4a821a1c">  119</a></span><span class="preprocessor">#define TPMAP2 -12</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="global_8h.html#a52723074a697a545171ba9711e863588">  121</a></span><span class="preprocessor">#define TPMAP3 -13</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="global_8h.html#afd2bdaa1d0b34160519766ac74812c89">  123</a></span><span class="preprocessor">#define TPMAP4 -14</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="global_8h.html#aa33d59672306ac3e247cc892260e2024">  125</a></span><span class="preprocessor">#define TPMAP5 -15</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="global_8h.html#a76bf5353788c2b47c619e2291d77d628">  127</a></span><span class="preprocessor">#define TPMAP6 -16</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">//ZONE SPAWN MECHA</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="global_8h.html#a497883135e16147a29670e304793bef4">  131</a></span><span class="preprocessor">#define Z1 -1</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="global_8h.html#a3550f7bd3eb3a1d5d589bcd8482a1e28">  133</a></span><span class="preprocessor">#define Z2 -2</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="global_8h.html#a4d1e80d51fbd0faa8283d1fffdd8869b">  135</a></span><span class="preprocessor">#define Z3 -3</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="global_8h.html#ae981b991a807ba0f1f0dd307d5a1cd64">  137</a></span><span class="preprocessor">#define Z4 -4</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="global_8h.html#a1887db70b541773b00f8e33933ae57bf">  139</a></span><span class="preprocessor">#define Z5 -5</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="global_8h.html#a381feca27f9218de3cd1e0bf50f1c061">  141</a></span><span class="preprocessor">#define Z6 -6</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="global_8h.html#a7ec92a8e15ce948a1cd6d8a780643050">  143</a></span><span class="preprocessor">#define Z7 -7</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="global_8h.html#a552f57269c7cc3b257d45210076bc733">  145</a></span><span class="preprocessor">#define Z8 -8</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="global_8h.html#ae4f4f19a26e3e18917f1bf74750110dc">  147</a></span><span class="preprocessor">#define Z9 -9</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="global_8h.html#a52c662ce66959fe7106e72c4da83ce9e">  149</a></span><span class="preprocessor">#define Z10 -10</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">//DIMENSIONS</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="global_8h.html#abec92cc72a096640b821b8cd56a02495">  153</a></span><span class="preprocessor">#define H 768</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="global_8h.html#aa73214aa5f2f94f63d90bb4e3d99fe53">  155</a></span><span class="preprocessor">#define L 1280</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">//DIMENSIONS BOUTON</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="global_8h.html#a16f32899c832224c23fcf3820d61c0a8">  159</a></span><span class="preprocessor">#define LARGEUR_BOUTON 200</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="global_8h.html#a4facaf5b60b1297288b4327b7fde730f">  161</a></span><span class="preprocessor">#define HAUTEUR_BOUTON 50</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">//*********CONSTANTES********//</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="global_8h.html#a1fbff4d3d715a8db61583721e1806c44">FRAME_DELAY</a>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">//*********STRUCTURES********//</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">// Structure qui contient les initialisation de rendu du jeu </span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">//Structure qui contient les images animés du joueur</span></div>
+<div class="foldopen" id="foldopen00195" data-start="{" data-end="};">
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="structimg__player__t.html">  195</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="structimg__player__t.html#aacf0144cd0b7568635c242d68fb6992d">  196</a></span>    SDL_Texture * gauche[4];</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="structimg__player__t.html#aca779d2fc2c21a28a2a3a6d25fd61fc9">  197</a></span>    SDL_Texture * droite[4];</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="structimg__player__t.html#a70bcc54e2d9634f0224cc3131596818f">  198</a></span>    SDL_Texture * haut[4];</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="structimg__player__t.html#ac08048b352901a482190bb9c05a91569">  199</a></span>    SDL_Texture * bas[4];</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}<a class="code hl_struct" href="structimg__player__t.html">img_player_t</a>;</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="foldopen" id="foldopen00234" data-start="{" data-end="};">
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html">  234</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#a41b0a6e8da253af70c4a0348d5a6d33d">  235</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#a41b0a6e8da253af70c4a0348d5a6d33d">gauche</a>;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#a21cb780b19185ea925265e43032586be">  236</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#a21cb780b19185ea925265e43032586be">droite</a>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#ada2b36d9aebcc8211471d7a7f31627ec">  237</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#ada2b36d9aebcc8211471d7a7f31627ec">haut</a>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#a60da74b129012bdea91023cd5a8ea681">  238</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#a60da74b129012bdea91023cd5a8ea681">bas</a>;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#a30bb24d34028da28782f010629b2ad0c">  239</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#a30bb24d34028da28782f010629b2ad0c">vin_gazole</a>;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#ad07a6da4dd1767465df72c9009743065">  240</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#ad07a6da4dd1767465df72c9009743065">iron_musk_bas</a>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="structimg__pnj__t.html#a62056680da79a50e922de954f38b906e">  241</a></span>    SDL_Texture * <a class="code hl_variable" href="structimg__pnj__t.html#a62056680da79a50e922de954f38b906e">iron_musk_droite</a>;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}<a class="code hl_struct" href="structimg__pnj__t.html">img_pnj_t</a>;</div>
+</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="foldopen" id="foldopen00288" data-start="{" data-end="};">
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="structgame__t.html">  288</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno"><a class="line" href="structgame__t.html#abe304079dac0127cffcbad18af510445">  289</a></span>    SDL_Window* <a class="code hl_variable" href="structgame__t.html#abe304079dac0127cffcbad18af510445">window</a>;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="structgame__t.html#abaf3718ff829691abf04102a4aac292f">  290</a></span>    SDL_Renderer* <a class="code hl_variable" href="structgame__t.html#abaf3718ff829691abf04102a4aac292f">renderer</a>;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno"><a class="line" href="structgame__t.html#a899dfdd15fa43e59102180b3f2cc2fd0">  291</a></span>    SDL_Texture* backgroundTexture[11];</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno"><a class="line" href="structgame__t.html#aa7e5ff17f522bd358d4ec63d4059335b">  292</a></span>    SDL_Texture* calqueTexture[6];</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno"><a class="line" href="structgame__t.html#af0729baa0912b7a7fab1f52b4ce250cf">  293</a></span>    TTF_Font* <a class="code hl_variable" href="structgame__t.html#af0729baa0912b7a7fab1f52b4ce250cf">police</a>;</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <a class="code hl_struct" href="structimg__player__t.html">img_player_t</a> sprite_joueur;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <a class="code hl_struct" href="structimg__pnj__t.html">img_pnj_t</a> sprite_pnj;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno"><a class="line" href="structgame__t.html#a27542d00cbd006b3d8db6bd5fc9130e6">  296</a></span>    <span class="keywordtype">int</span> *** <a class="code hl_variable" href="structgame__t.html#a27542d00cbd006b3d8db6bd5fc9130e6">mat</a> ;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno"><a class="line" href="structgame__t.html#a75299999dcaa4bb3a5d4849b5ce4f2b0">  297</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structgame__t.html#a75299999dcaa4bb3a5d4849b5ce4f2b0">scale</a>;                        <span class="comment">//echelle qui adapte l&#39;affichage à l&#39;ecran et à la taille de l&#39;image</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="structgame__t.html#ab249fbaf09e300ec97c40aa8e4cc5731">  298</a></span>    SDL_Rect <a class="code hl_variable" href="structgame__t.html#ab249fbaf09e300ec97c40aa8e4cc5731">dms_win</a>;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="structgame__t.html#a8d3f8c5aca4cd2b3e6e26315787e4b36">  299</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structgame__t.html#a8d3f8c5aca4cd2b3e6e26315787e4b36">img_w</a>;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno"><a class="line" href="structgame__t.html#acbe5097326f11e212ed89a62a10cb443">  300</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structgame__t.html#acbe5097326f11e212ed89a62a10cb443">img_h</a>;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="structgame__t.html#a172925c4060081a8648e19bb8f0f0170">  301</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structgame__t.html#a172925c4060081a8648e19bb8f0f0170">mat_active</a>;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>} <a class="code hl_struct" href="structgame__t.html">game_t</a>;</div>
+</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment">//STRUCTURES D&#39;AFFICHAGE</span></div>
+<div class="foldopen" id="foldopen00330" data-start="{" data-end="};">
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno"><a class="line" href="structrectangle__t.html">  330</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno"><a class="line" href="structrectangle__t.html#ab15e80a326c96b49e89f645bed7ec08f">  331</a></span>    SDL_Rect <a class="code hl_variable" href="structrectangle__t.html#ab15e80a326c96b49e89f645bed7ec08f">rect</a>;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="structrectangle__t.html#aa2a20dd961b6cf514fe455b4b04aeb70">  332</a></span>    SDL_Color <a class="code hl_variable" href="structrectangle__t.html#aa2a20dd961b6cf514fe455b4b04aeb70">couleur</a>;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno"><a class="line" href="structrectangle__t.html#a61636a0f26b67d2e01e5fcf6ff802720">  333</a></span>    <span class="keywordtype">char</span> text[500];</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno"><a class="line" href="structrectangle__t.html#a1bd91845ad4a0da8a6a6d7d54484c293">  334</a></span>    SDL_Color <a class="code hl_variable" href="structrectangle__t.html#a1bd91845ad4a0da8a6a6d7d54484c293">couleur_text</a>;</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>} <a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a>;</div>
+</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="foldopen" id="foldopen00351" data-start="{" data-end="};">
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno"><a class="line" href="structparametre__t.html">  351</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno"><a class="line" href="structparametre__t.html#a2c152a00a13d9f4177f835a1c060c994">  352</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structparametre__t.html#a2c152a00a13d9f4177f835a1c060c994">volume</a>;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>} <a class="code hl_struct" href="structparametre__t.html">parametre_t</a>;</div>
+</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="comment">//STRUCTURES DE DONNEES</span></div>
+<div class="foldopen" id="foldopen00388" data-start="{" data-end="};">
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno"><a class="line" href="structattaque__t.html">  388</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno"><a class="line" href="structattaque__t.html#a856784b5a8e10b10c6eb7bbe6c7e8752">  389</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structattaque__t.html#a856784b5a8e10b10c6eb7bbe6c7e8752">id_attaques</a>;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno"><a class="line" href="structattaque__t.html#a51616e8e75c907ad38b9ec2663792611">  390</a></span>    <span class="keywordtype">char</span> nom[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>];</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno"><a class="line" href="structattaque__t.html#a30b258fd6a401df200d76081fcbaf7aa">  391</a></span>    <span class="keywordtype">char</span> type[<a class="code hl_define" href="global_8h.html#a32f0560714e1a90c7f9805cb97b85f7e">LONGUEUR_TYPE</a>];</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno"><a class="line" href="structattaque__t.html#a3f140bdc600ea563ddc31a9465c83549">  392</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structattaque__t.html#a3f140bdc600ea563ddc31a9465c83549">niveau</a>;</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno"><a class="line" href="structattaque__t.html#a64b27f18b27a84cde9201e0ac95ad21f">  393</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structattaque__t.html#a64b27f18b27a84cde9201e0ac95ad21f">degats</a>;</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno"><a class="line" href="structattaque__t.html#a50ad34e031c8a44f49bfd95d53e4df2f">  394</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structattaque__t.html#a50ad34e031c8a44f49bfd95d53e4df2f">precision</a>;</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno"><a class="line" href="structattaque__t.html#a2e3d3fa51fde3cdc0ea6406ed372c3dd">  395</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structattaque__t.html#a2e3d3fa51fde3cdc0ea6406ed372c3dd">utilisations</a>;</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    <span class="keywordtype">char</span> description[<a class="code hl_define" href="global_8h.html#a9b9bf46a80f803a594977e440886be8f">LONGUEUR_DESC</a>];</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>} <a class="code hl_struct" href="structattaque__t.html">attaque_t</a>;</div>
+</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="foldopen" id="foldopen00431" data-start="{" data-end="};">
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno"><a class="line" href="structmechas__t.html">  431</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    SDL_Texture * texture[2];</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno"><a class="line" href="structmechas__t.html#a16042cbceeedcf759410f525a8427a83">  433</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__t.html#a16042cbceeedcf759410f525a8427a83">id_mechas</a>;</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno"><a class="line" href="structmechas__t.html#a2eeb42729f3fbf58bb91c70df9a698d0">  434</a></span>    <span class="keywordtype">char</span> nom[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>];</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno"><a class="line" href="structmechas__t.html#aeb68796d450a9247cdb1f35af3a82c79">  435</a></span>    <span class="keywordtype">char</span> type[<a class="code hl_define" href="global_8h.html#a32f0560714e1a90c7f9805cb97b85f7e">LONGUEUR_TYPE</a>];</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno"><a class="line" href="structmechas__t.html#a154c4d35227c90950e2cfd46d9423de7">  436</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__t.html#a154c4d35227c90950e2cfd46d9423de7">evolution</a>;</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno"><a class="line" href="structmechas__t.html#ac9c243d610b6029a40145219f85522c4">  437</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__t.html#ac9c243d610b6029a40145219f85522c4">niveau_evolution</a>;</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno"><a class="line" href="structmechas__t.html#a355caad746fdd3fb9f860c3d21e658e5">  438</a></span>    <span class="keywordtype">char</span> description[<a class="code hl_define" href="global_8h.html#a9b9bf46a80f803a594977e440886be8f">LONGUEUR_DESC</a>];</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno"><a class="line" href="structmechas__t.html#a8437497a6164c50fd36e8b460783bc83">  439</a></span>    <span class="keywordtype">int</span> liste_attaque[5];</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno"><a class="line" href="structmechas__t.html#a6b96d26e83bbd9d73c5e893db23c7d5a">  440</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__t.html#a6b96d26e83bbd9d73c5e893db23c7d5a">nb_attaques</a>;</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>} <a class="code hl_struct" href="structmechas__t.html">mechas_t</a>;</div>
+</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span> </div>
+<div class="foldopen" id="foldopen00462" data-start="{" data-end="};">
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno"><a class="line" href="structinventaire__t.html">  462</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno"><a class="line" href="structinventaire__t.html#a36a44c78e1677df7b717d82073c9af58">  463</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structinventaire__t.html#a36a44c78e1677df7b717d82073c9af58">mechaball</a>;</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno"><a class="line" href="structinventaire__t.html#ab29e3cd7553f814add25c21ac2d6206f">  464</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structinventaire__t.html#ab29e3cd7553f814add25c21ac2d6206f">carburant</a>;</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno"><a class="line" href="structinventaire__t.html#a8638e9d7597f4ca011f5ed4aa9dac848">  465</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structinventaire__t.html#a8638e9d7597f4ca011f5ed4aa9dac848">repousse</a>;</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno"><a class="line" href="structinventaire__t.html#a8c7dde9ff610b85ca8f0aeae192f200a">  466</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structinventaire__t.html#a8c7dde9ff610b85ca8f0aeae192f200a">rappel</a>;</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>} <a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a>;</div>
+</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span> </div>
+<div class="foldopen" id="foldopen00516" data-start="{" data-end="};">
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html">  516</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#ac842f9787d114784075b5130519c5817">  517</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#ac842f9787d114784075b5130519c5817">numero</a>;</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a03321f8114557e405f5609858b125076">  518</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a03321f8114557e405f5609858b125076">id_mechas</a>;</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a5d053ec22a2d40262c398ea493e766cc">  519</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a5d053ec22a2d40262c398ea493e766cc">niveau</a>;</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a9033fc398b742ea8189b24d3c1d1a656">  520</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a9033fc398b742ea8189b24d3c1d1a656">xp</a>;</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a9c102ff6546c1b4a52f4bdd496cdb28a">  521</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a9c102ff6546c1b4a52f4bdd496cdb28a">pv</a>;</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#afab1b4461029c5b33a91e5b5aef6cb2d">  522</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#afab1b4461029c5b33a91e5b5aef6cb2d">pv_max</a>;</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#ae46e9897c4c1c42cb709c62283efc876">  523</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#ae46e9897c4c1c42cb709c62283efc876">attaque</a>;</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#af949cf21db359b52cfa766f57f06e0df">  524</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#af949cf21db359b52cfa766f57f06e0df">defense</a>;</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a12fcc84a50c5a1dfb9a2af47026a5a7b">  525</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a12fcc84a50c5a1dfb9a2af47026a5a7b">vitesse</a>;</div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#aec148a9678835be43f681e77c9d12150">  526</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#aec148a9678835be43f681e77c9d12150">attaque_1</a>;</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a7dc76caaea354024dd09aecda187fe12">  527</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a7dc76caaea354024dd09aecda187fe12">attaque_2</a>;</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#a17bc19142934c4440111a3b16e79d9bf">  528</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#a17bc19142934c4440111a3b16e79d9bf">utilisation_1</a>;</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno"><a class="line" href="structmechas__joueur__t.html#acf94d5aba63f733f0b174beba9950609">  529</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmechas__joueur__t.html#acf94d5aba63f733f0b174beba9950609">utilisation_2</a>;</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>} <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a>;</div>
+</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
+<div class="foldopen" id="foldopen00588" data-start="{" data-end="};">
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno"><a class="line" href="structjoueur__t.html">  588</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno"><a class="line" href="structjoueur__t.html#ada2196375014da0f1bfffa29bba75c41">  589</a></span>    <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>];</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a2c250fabd0d908836b17be1f335ece40">  590</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structjoueur__t.html#a2c250fabd0d908836b17be1f335ece40">sexe</a>;</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a27f513abcb65fd9455ad365587ddf86c">  591</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#a27f513abcb65fd9455ad365587ddf86c">numMap</a>;</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a3d7ac6098b96df4163b9fedc913f8259">  592</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#a3d7ac6098b96df4163b9fedc913f8259">x</a>, y;</div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a4b11f60563ba51f12f3991987e429c09">  593</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structjoueur__t.html#a4b11f60563ba51f12f3991987e429c09">screen_x</a>, screen_y;       <span class="comment">// Position réelle à l&#39;écran </span></div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a2284ad01ef9ba13f4a3e5d7608cf24af">  594</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#a2284ad01ef9ba13f4a3e5d7608cf24af">moving</a>;                     <span class="comment">// Indique si un déplacement est en cours</span></div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno"><a class="line" href="structjoueur__t.html#aa08369b848b865ca2c431941c53c62f6">  595</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structjoueur__t.html#aa08369b848b865ca2c431941c53c62f6">move_dx</a>, move_dy;           <span class="comment">// Direction du mouvement en pixels</span></div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno"><a class="line" href="structjoueur__t.html#aa061e55e80b158de92742a39c44d0b18">  596</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#aa061e55e80b158de92742a39c44d0b18">derniere_touche</a>;</div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno"><a class="line" href="structjoueur__t.html#adb0ce6bf9365fd360e93bc946409a34f">  597</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#adb0ce6bf9365fd360e93bc946409a34f">pointSauvegarde</a>;</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno"><a class="line" href="structjoueur__t.html#aa5dc0aa8753a5a2af2a50833934d18f9">  598</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#aa5dc0aa8753a5a2af2a50833934d18f9">nb_mechas</a>;</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a90b739f76249f09c090ed3c8cbf36fa1">  599</a></span>    <a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a> *<a class="code hl_variable" href="structjoueur__t.html#a90b739f76249f09c090ed3c8cbf36fa1">inventaire</a>;</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno"><a class="line" href="structjoueur__t.html#acc525ec1e757eb493459444d5e5fd3ea">  600</a></span>    <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> mechas_joueur [<a class="code hl_define" href="global_8h.html#ae6f79319e8e437cea4d39afcbc569e34">NB_MECHAS_MAX</a>];</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a93593ead951e5c6b16c950d10bb4c5f6">  601</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structjoueur__t.html#a93593ead951e5c6b16c950d10bb4c5f6">proba_combat</a>;</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>} <a class="code hl_struct" href="structjoueur__t.html">joueur_t</a>;</div>
+</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span> </div>
+<div class="foldopen" id="foldopen00648" data-start="{" data-end="};">
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno"><a class="line" href="structpnj__t.html">  648</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno"><a class="line" href="structpnj__t.html#a7f2eed80f5fb31cccc12bc3f93947a2c">  649</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#a7f2eed80f5fb31cccc12bc3f93947a2c">id_pnj</a>;</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno"><a class="line" href="structpnj__t.html#a3dcd285723b072a83828bc5b3c564e9c">  650</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#a3dcd285723b072a83828bc5b3c564e9c">id_map</a>;</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno"><a class="line" href="structpnj__t.html#a8fddef4f03db5d661a88030ab2ffc18f">  651</a></span>    <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>];</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno"><a class="line" href="structpnj__t.html#ae53a51fb05f47aac68e1b6c451000d9e">  652</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#ae53a51fb05f47aac68e1b6c451000d9e">etat</a>;</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno"><a class="line" href="structpnj__t.html#aa76dc506813b337e884f7658d5c3cfc1">  653</a></span>    <span class="keywordtype">char</span> dialogueDebut[<a class="code hl_define" href="global_8h.html#a7042b61ed737eea3286b324ecdf2345d">LONGUEUR_DIALOGUE</a>];</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno"><a class="line" href="structpnj__t.html#a071721f36e0df9aadc0474e775ad8b92">  654</a></span>    <span class="keywordtype">char</span> dialogueFin[<a class="code hl_define" href="global_8h.html#a7042b61ed737eea3286b324ecdf2345d">LONGUEUR_DIALOGUE</a>];</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno"><a class="line" href="structpnj__t.html#a6ad111d7e2c16bbec3033c2da3442c43">  655</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#a6ad111d7e2c16bbec3033c2da3442c43">x</a>, y;</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno"><a class="line" href="structpnj__t.html#a07dbd89ec660293ff2b87508aa647080">  656</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#a07dbd89ec660293ff2b87508aa647080">orientation</a>;</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno"><a class="line" href="structpnj__t.html#aa158d69de9949e1506ca1ae1fb234f15">  657</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpnj__t.html#aa158d69de9949e1506ca1ae1fb234f15">nb_mechas</a>;</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno"><a class="line" href="structpnj__t.html#aa27103688429f27e4a13241d7d26dd3b">  658</a></span>    <a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a> *<a class="code hl_variable" href="structpnj__t.html#aa27103688429f27e4a13241d7d26dd3b">inventaire</a>;</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno"><a class="line" href="structpnj__t.html#a72300f0f479a9d3e717171dafdfa0eb2">  659</a></span>    <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> mechas_joueur [<a class="code hl_define" href="global_8h.html#ae6f79319e8e437cea4d39afcbc569e34">NB_MECHAS_MAX</a>];</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>} <a class="code hl_struct" href="structpnj__t.html">pnj_t</a>;</div>
+</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
+<div class="foldopen" id="foldopen00694" data-start="{" data-end="};">
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno"><a class="line" href="structzone__t.html">  694</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno"><a class="line" href="structzone__t.html#a5dff5b08fea58dc82770daaeaee6e90e">  695</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#a5dff5b08fea58dc82770daaeaee6e90e">id_zone</a>;</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno"><a class="line" href="structzone__t.html#afad641fd48b1090945aa6e4ab242b974">  696</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#afad641fd48b1090945aa6e4ab242b974">NiveauMoyenApparition</a>;</div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno"><a class="line" href="structzone__t.html#aa40859a9b36a42abb1ef17a19e0d7cab">  697</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#aa40859a9b36a42abb1ef17a19e0d7cab">PvMoyen</a>;</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno"><a class="line" href="structzone__t.html#aa66086a1f0705bd2e3d0b5116b0b96ab">  698</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#aa66086a1f0705bd2e3d0b5116b0b96ab">VitesseMoyenne</a>;</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno"><a class="line" href="structzone__t.html#a10d5007c77303b7812c412676ea22769">  699</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#a10d5007c77303b7812c412676ea22769">Attaque</a>;</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno"><a class="line" href="structzone__t.html#af8f7d299444386175221e806f6dfa4bf">  700</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#af8f7d299444386175221e806f6dfa4bf">Defense</a>;</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno"><a class="line" href="structzone__t.html#a08b1cfd70fd3f1f2380d091375c68b95">  701</a></span>    <span class="keywordtype">int</span> listeMechasZone[10];</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno"><a class="line" href="structzone__t.html#a00c0ffc13e69d1f0c9931d4fc00d8363">  702</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structzone__t.html#a00c0ffc13e69d1f0c9931d4fc00d8363">nb_mechas</a>;</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>}<a class="code hl_struct" href="structzone__t.html">zone_t</a>;</div>
+</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span> </div>
+<div class="foldopen" id="foldopen00708" data-start="{" data-end="};">
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno"><a class="line" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1">  708</a></span> <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno"><a class="line" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6">  709</a></span>    <a class="code hl_enumvalue" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6">PNJ_NORMAL</a>,    </div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno"><a class="line" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a">  710</a></span>    <a class="code hl_enumvalue" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a">PNJ_DEVANT</a>,    </div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    <a class="code hl_enumvalue" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39">PNJ_DERRIERE</a>   </div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno"><a class="line" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39">  712</a></span>} <a class="code hl_enumeration" href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1">pnj_pos_t</a>;</div>
+</div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span> </div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span><span class="comment">//VARIABLES GLOBALE</span></div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span><span class="keyword">extern</span> <a class="code hl_struct" href="structmechas__t.html">mechas_t</a> mecha[<a class="code hl_define" href="global_8h.html#a0afb952f6a516ad02412229d57dbafe7">NB_MECHAS</a>];</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span><span class="keyword">extern</span> <a class="code hl_struct" href="structattaque__t.html">attaque_t</a> attaque[<a class="code hl_define" href="global_8h.html#abf306b216bc9e75c1271c8f80a688a3f">NB_ATTAQUES</a>];</div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span><span class="keyword">extern</span> <a class="code hl_struct" href="structzone__t.html">zone_t</a> zone[<a class="code hl_define" href="global_8h.html#a94439adf310c755550b3efe018fc5b26">NB_ZONES</a>];</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span><span class="keyword">extern</span> <a class="code hl_struct" href="structpnj__t.html">pnj_t</a> pnj[<a class="code hl_define" href="global_8h.html#acd19773d24e0450b01a69dbe5d47725e">NB_PNJ</a>];</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span><span class="keyword">extern</span> <a class="code hl_struct" href="structgame__t.html">game_t</a> game;</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span> </div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aglobal_8h_html_a0afb952f6a516ad02412229d57dbafe7"><div class="ttname"><a href="global_8h.html#a0afb952f6a516ad02412229d57dbafe7">NB_MECHAS</a></div><div class="ttdeci">#define NB_MECHAS</div><div class="ttdoc">Nombre de Méchas différents disponibles dans le jeu.</div><div class="ttdef"><b>Definition</b> global.h:34</div></div>
+<div class="ttc" id="aglobal_8h_html_a1fbff4d3d715a8db61583721e1806c44"><div class="ttname"><a href="global_8h.html#a1fbff4d3d715a8db61583721e1806c44">FRAME_DELAY</a></div><div class="ttdeci">const int FRAME_DELAY</div><div class="ttdoc">Délai entre chaque frame en millisecondes pour contrôler le framerate global du jeu.</div><div class="ttdef"><b>Definition</b> main.c:27</div></div>
+<div class="ttc" id="aglobal_8h_html_a32f0560714e1a90c7f9805cb97b85f7e"><div class="ttname"><a href="global_8h.html#a32f0560714e1a90c7f9805cb97b85f7e">LONGUEUR_TYPE</a></div><div class="ttdeci">#define LONGUEUR_TYPE</div><div class="ttdoc">Taille maximale pour un type de Mécha.</div><div class="ttdef"><b>Definition</b> global.h:26</div></div>
+<div class="ttc" id="aglobal_8h_html_a6647ff08db8dea35a4d7a3ab22ce34e1"><div class="ttname"><a href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1">pnj_pos_t</a></div><div class="ttdeci">pnj_pos_t</div><div class="ttdoc">États possibles de la position d'un PNJ par rapport au joueur.</div><div class="ttdef"><b>Definition</b> global.h:708</div></div>
+<div class="ttc" id="aglobal_8h_html_a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6"><div class="ttname"><a href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6">PNJ_NORMAL</a></div><div class="ttdeci">@ PNJ_NORMAL</div><div class="ttdoc">Le PNJ est affiché normalement (aucun obstacle devant ou derrière).</div><div class="ttdef"><b>Definition</b> global.h:709</div></div>
+<div class="ttc" id="aglobal_8h_html_a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39"><div class="ttname"><a href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39">PNJ_DERRIERE</a></div><div class="ttdeci">@ PNJ_DERRIERE</div><div class="ttdoc">Le PNJ est derrière un obstacle ou le joueur.</div><div class="ttdef"><b>Definition</b> global.h:711</div></div>
+<div class="ttc" id="aglobal_8h_html_a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a"><div class="ttname"><a href="global_8h.html#a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a">PNJ_DEVANT</a></div><div class="ttdeci">@ PNJ_DEVANT</div><div class="ttdoc">Le PNJ est devant un obstacle ou le joueur.</div><div class="ttdef"><b>Definition</b> global.h:710</div></div>
+<div class="ttc" id="aglobal_8h_html_a7042b61ed737eea3286b324ecdf2345d"><div class="ttname"><a href="global_8h.html#a7042b61ed737eea3286b324ecdf2345d">LONGUEUR_DIALOGUE</a></div><div class="ttdeci">#define LONGUEUR_DIALOGUE</div><div class="ttdoc">Taille maximale d'une ligne de dialogue.</div><div class="ttdef"><b>Definition</b> global.h:24</div></div>
+<div class="ttc" id="aglobal_8h_html_a94439adf310c755550b3efe018fc5b26"><div class="ttname"><a href="global_8h.html#a94439adf310c755550b3efe018fc5b26">NB_ZONES</a></div><div class="ttdeci">#define NB_ZONES</div><div class="ttdoc">Nombre total de zones différentes explorables.</div><div class="ttdef"><b>Definition</b> global.h:38</div></div>
+<div class="ttc" id="aglobal_8h_html_a9b9bf46a80f803a594977e440886be8f"><div class="ttname"><a href="global_8h.html#a9b9bf46a80f803a594977e440886be8f">LONGUEUR_DESC</a></div><div class="ttdeci">#define LONGUEUR_DESC</div><div class="ttdoc">Taille maximale pour une description de Mécha.</div><div class="ttdef"><b>Definition</b> global.h:28</div></div>
+<div class="ttc" id="aglobal_8h_html_ab232c0fbfa74350c11eda67d8dba16a7"><div class="ttname"><a href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a></div><div class="ttdeci">#define LONGUEUR_MAX_PSEUDO</div><div class="ttdoc">Longueur maximale autorisée pour un pseudo de joueur.</div><div class="ttdef"><b>Definition</b> global.h:18</div></div>
+<div class="ttc" id="aglobal_8h_html_abf306b216bc9e75c1271c8f80a688a3f"><div class="ttname"><a href="global_8h.html#abf306b216bc9e75c1271c8f80a688a3f">NB_ATTAQUES</a></div><div class="ttdeci">#define NB_ATTAQUES</div><div class="ttdoc">Nombre total d'attaques disponibles.</div><div class="ttdef"><b>Definition</b> global.h:36</div></div>
+<div class="ttc" id="aglobal_8h_html_acd19773d24e0450b01a69dbe5d47725e"><div class="ttname"><a href="global_8h.html#acd19773d24e0450b01a69dbe5d47725e">NB_PNJ</a></div><div class="ttdeci">#define NB_PNJ</div><div class="ttdoc">Nombre total de PNJ présents dans le jeu.</div><div class="ttdef"><b>Definition</b> global.h:40</div></div>
+<div class="ttc" id="aglobal_8h_html_ae6f79319e8e437cea4d39afcbc569e34"><div class="ttname"><a href="global_8h.html#ae6f79319e8e437cea4d39afcbc569e34">NB_MECHAS_MAX</a></div><div class="ttdeci">#define NB_MECHAS_MAX</div><div class="ttdoc">Nombre maximal de Méchas que peut contenir le jeu (y compris ceux capturés).</div><div class="ttdef"><b>Definition</b> global.h:32</div></div>
+<div class="ttc" id="astructattaque__t_html"><div class="ttname"><a href="structattaque__t.html">attaque_t</a></div><div class="ttdoc">Structure représentant les caractéristiques d'une attaque d'un Mecha.</div><div class="ttdef"><b>Definition</b> global.h:388</div></div>
+<div class="ttc" id="astructattaque__t_html_a2e3d3fa51fde3cdc0ea6406ed372c3dd"><div class="ttname"><a href="structattaque__t.html#a2e3d3fa51fde3cdc0ea6406ed372c3dd">attaque_t::utilisations</a></div><div class="ttdeci">int utilisations</div><div class="ttdef"><b>Definition</b> global.h:395</div></div>
+<div class="ttc" id="astructattaque__t_html_a3f140bdc600ea563ddc31a9465c83549"><div class="ttname"><a href="structattaque__t.html#a3f140bdc600ea563ddc31a9465c83549">attaque_t::niveau</a></div><div class="ttdeci">int niveau</div><div class="ttdef"><b>Definition</b> global.h:392</div></div>
+<div class="ttc" id="astructattaque__t_html_a50ad34e031c8a44f49bfd95d53e4df2f"><div class="ttname"><a href="structattaque__t.html#a50ad34e031c8a44f49bfd95d53e4df2f">attaque_t::precision</a></div><div class="ttdeci">int precision</div><div class="ttdef"><b>Definition</b> global.h:394</div></div>
+<div class="ttc" id="astructattaque__t_html_a64b27f18b27a84cde9201e0ac95ad21f"><div class="ttname"><a href="structattaque__t.html#a64b27f18b27a84cde9201e0ac95ad21f">attaque_t::degats</a></div><div class="ttdeci">int degats</div><div class="ttdef"><b>Definition</b> global.h:393</div></div>
+<div class="ttc" id="astructattaque__t_html_a856784b5a8e10b10c6eb7bbe6c7e8752"><div class="ttname"><a href="structattaque__t.html#a856784b5a8e10b10c6eb7bbe6c7e8752">attaque_t::id_attaques</a></div><div class="ttdeci">int id_attaques</div><div class="ttdef"><b>Definition</b> global.h:389</div></div>
+<div class="ttc" id="astructgame__t_html"><div class="ttname"><a href="structgame__t.html">game_t</a></div><div class="ttdoc">Structure principale contenant les ressources et paramètres liés à la gestion du jeu.</div><div class="ttdef"><b>Definition</b> global.h:288</div></div>
+<div class="ttc" id="astructgame__t_html_a172925c4060081a8648e19bb8f0f0170"><div class="ttname"><a href="structgame__t.html#a172925c4060081a8648e19bb8f0f0170">game_t::mat_active</a></div><div class="ttdeci">int mat_active</div><div class="ttdef"><b>Definition</b> global.h:301</div></div>
+<div class="ttc" id="astructgame__t_html_a27542d00cbd006b3d8db6bd5fc9130e6"><div class="ttname"><a href="structgame__t.html#a27542d00cbd006b3d8db6bd5fc9130e6">game_t::mat</a></div><div class="ttdeci">int *** mat</div><div class="ttdef"><b>Definition</b> global.h:296</div></div>
+<div class="ttc" id="astructgame__t_html_a75299999dcaa4bb3a5d4849b5ce4f2b0"><div class="ttname"><a href="structgame__t.html#a75299999dcaa4bb3a5d4849b5ce4f2b0">game_t::scale</a></div><div class="ttdeci">float scale</div><div class="ttdef"><b>Definition</b> global.h:297</div></div>
+<div class="ttc" id="astructgame__t_html_a8d3f8c5aca4cd2b3e6e26315787e4b36"><div class="ttname"><a href="structgame__t.html#a8d3f8c5aca4cd2b3e6e26315787e4b36">game_t::img_w</a></div><div class="ttdeci">int img_w</div><div class="ttdef"><b>Definition</b> global.h:299</div></div>
+<div class="ttc" id="astructgame__t_html_ab249fbaf09e300ec97c40aa8e4cc5731"><div class="ttname"><a href="structgame__t.html#ab249fbaf09e300ec97c40aa8e4cc5731">game_t::dms_win</a></div><div class="ttdeci">SDL_Rect dms_win</div><div class="ttdef"><b>Definition</b> global.h:298</div></div>
+<div class="ttc" id="astructgame__t_html_abaf3718ff829691abf04102a4aac292f"><div class="ttname"><a href="structgame__t.html#abaf3718ff829691abf04102a4aac292f">game_t::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> global.h:290</div></div>
+<div class="ttc" id="astructgame__t_html_abe304079dac0127cffcbad18af510445"><div class="ttname"><a href="structgame__t.html#abe304079dac0127cffcbad18af510445">game_t::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdef"><b>Definition</b> global.h:289</div></div>
+<div class="ttc" id="astructgame__t_html_acbe5097326f11e212ed89a62a10cb443"><div class="ttname"><a href="structgame__t.html#acbe5097326f11e212ed89a62a10cb443">game_t::img_h</a></div><div class="ttdeci">int img_h</div><div class="ttdef"><b>Definition</b> global.h:300</div></div>
+<div class="ttc" id="astructgame__t_html_af0729baa0912b7a7fab1f52b4ce250cf"><div class="ttname"><a href="structgame__t.html#af0729baa0912b7a7fab1f52b4ce250cf">game_t::police</a></div><div class="ttdeci">TTF_Font * police</div><div class="ttdef"><b>Definition</b> global.h:293</div></div>
+<div class="ttc" id="astructimg__player__t_html"><div class="ttname"><a href="structimg__player__t.html">img_player_t</a></div><div class="ttdoc">Structure contenant les différentes textures du joueur selon les directions de déplacement.</div><div class="ttdef"><b>Definition</b> global.h:195</div></div>
+<div class="ttc" id="astructimg__pnj__t_html"><div class="ttname"><a href="structimg__pnj__t.html">img_pnj_t</a></div><div class="ttdoc">Structure regroupant les textures utilisées pour afficher les PNJs du jeu.</div><div class="ttdef"><b>Definition</b> global.h:234</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_a21cb780b19185ea925265e43032586be"><div class="ttname"><a href="structimg__pnj__t.html#a21cb780b19185ea925265e43032586be">img_pnj_t::droite</a></div><div class="ttdeci">SDL_Texture * droite</div><div class="ttdef"><b>Definition</b> global.h:236</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_a30bb24d34028da28782f010629b2ad0c"><div class="ttname"><a href="structimg__pnj__t.html#a30bb24d34028da28782f010629b2ad0c">img_pnj_t::vin_gazole</a></div><div class="ttdeci">SDL_Texture * vin_gazole</div><div class="ttdef"><b>Definition</b> global.h:239</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_a41b0a6e8da253af70c4a0348d5a6d33d"><div class="ttname"><a href="structimg__pnj__t.html#a41b0a6e8da253af70c4a0348d5a6d33d">img_pnj_t::gauche</a></div><div class="ttdeci">SDL_Texture * gauche</div><div class="ttdef"><b>Definition</b> global.h:235</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_a60da74b129012bdea91023cd5a8ea681"><div class="ttname"><a href="structimg__pnj__t.html#a60da74b129012bdea91023cd5a8ea681">img_pnj_t::bas</a></div><div class="ttdeci">SDL_Texture * bas</div><div class="ttdef"><b>Definition</b> global.h:238</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_a62056680da79a50e922de954f38b906e"><div class="ttname"><a href="structimg__pnj__t.html#a62056680da79a50e922de954f38b906e">img_pnj_t::iron_musk_droite</a></div><div class="ttdeci">SDL_Texture * iron_musk_droite</div><div class="ttdef"><b>Definition</b> global.h:241</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_ad07a6da4dd1767465df72c9009743065"><div class="ttname"><a href="structimg__pnj__t.html#ad07a6da4dd1767465df72c9009743065">img_pnj_t::iron_musk_bas</a></div><div class="ttdeci">SDL_Texture * iron_musk_bas</div><div class="ttdef"><b>Definition</b> global.h:240</div></div>
+<div class="ttc" id="astructimg__pnj__t_html_ada2b36d9aebcc8211471d7a7f31627ec"><div class="ttname"><a href="structimg__pnj__t.html#ada2b36d9aebcc8211471d7a7f31627ec">img_pnj_t::haut</a></div><div class="ttdeci">SDL_Texture * haut</div><div class="ttdef"><b>Definition</b> global.h:237</div></div>
+<div class="ttc" id="astructinventaire__t_html"><div class="ttname"><a href="structinventaire__t.html">inventaire_t</a></div><div class="ttdoc">Représente l’inventaire d’un joueur contenant les objets utilisables.</div><div class="ttdef"><b>Definition</b> global.h:462</div></div>
+<div class="ttc" id="astructinventaire__t_html_a36a44c78e1677df7b717d82073c9af58"><div class="ttname"><a href="structinventaire__t.html#a36a44c78e1677df7b717d82073c9af58">inventaire_t::mechaball</a></div><div class="ttdeci">int mechaball</div><div class="ttdef"><b>Definition</b> global.h:463</div></div>
+<div class="ttc" id="astructinventaire__t_html_a8638e9d7597f4ca011f5ed4aa9dac848"><div class="ttname"><a href="structinventaire__t.html#a8638e9d7597f4ca011f5ed4aa9dac848">inventaire_t::repousse</a></div><div class="ttdeci">int repousse</div><div class="ttdef"><b>Definition</b> global.h:465</div></div>
+<div class="ttc" id="astructinventaire__t_html_a8c7dde9ff610b85ca8f0aeae192f200a"><div class="ttname"><a href="structinventaire__t.html#a8c7dde9ff610b85ca8f0aeae192f200a">inventaire_t::rappel</a></div><div class="ttdeci">int rappel</div><div class="ttdef"><b>Definition</b> global.h:466</div></div>
+<div class="ttc" id="astructinventaire__t_html_ab29e3cd7553f814add25c21ac2d6206f"><div class="ttname"><a href="structinventaire__t.html#ab29e3cd7553f814add25c21ac2d6206f">inventaire_t::carburant</a></div><div class="ttdeci">int carburant</div><div class="ttdef"><b>Definition</b> global.h:464</div></div>
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.</div><div class="ttdef"><b>Definition</b> global.h:588</div></div>
+<div class="ttc" id="astructjoueur__t_html_a2284ad01ef9ba13f4a3e5d7608cf24af"><div class="ttname"><a href="structjoueur__t.html#a2284ad01ef9ba13f4a3e5d7608cf24af">joueur_t::moving</a></div><div class="ttdeci">int moving</div><div class="ttdef"><b>Definition</b> global.h:594</div></div>
+<div class="ttc" id="astructjoueur__t_html_a27f513abcb65fd9455ad365587ddf86c"><div class="ttname"><a href="structjoueur__t.html#a27f513abcb65fd9455ad365587ddf86c">joueur_t::numMap</a></div><div class="ttdeci">int numMap</div><div class="ttdef"><b>Definition</b> global.h:591</div></div>
+<div class="ttc" id="astructjoueur__t_html_a2c250fabd0d908836b17be1f335ece40"><div class="ttname"><a href="structjoueur__t.html#a2c250fabd0d908836b17be1f335ece40">joueur_t::sexe</a></div><div class="ttdeci">char sexe</div><div class="ttdef"><b>Definition</b> global.h:590</div></div>
+<div class="ttc" id="astructjoueur__t_html_a3d7ac6098b96df4163b9fedc913f8259"><div class="ttname"><a href="structjoueur__t.html#a3d7ac6098b96df4163b9fedc913f8259">joueur_t::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition</b> global.h:592</div></div>
+<div class="ttc" id="astructjoueur__t_html_a4b11f60563ba51f12f3991987e429c09"><div class="ttname"><a href="structjoueur__t.html#a4b11f60563ba51f12f3991987e429c09">joueur_t::screen_x</a></div><div class="ttdeci">float screen_x</div><div class="ttdef"><b>Definition</b> global.h:593</div></div>
+<div class="ttc" id="astructjoueur__t_html_a90b739f76249f09c090ed3c8cbf36fa1"><div class="ttname"><a href="structjoueur__t.html#a90b739f76249f09c090ed3c8cbf36fa1">joueur_t::inventaire</a></div><div class="ttdeci">inventaire_t * inventaire</div><div class="ttdef"><b>Definition</b> global.h:599</div></div>
+<div class="ttc" id="astructjoueur__t_html_a93593ead951e5c6b16c950d10bb4c5f6"><div class="ttname"><a href="structjoueur__t.html#a93593ead951e5c6b16c950d10bb4c5f6">joueur_t::proba_combat</a></div><div class="ttdeci">int proba_combat</div><div class="ttdef"><b>Definition</b> global.h:601</div></div>
+<div class="ttc" id="astructjoueur__t_html_aa061e55e80b158de92742a39c44d0b18"><div class="ttname"><a href="structjoueur__t.html#aa061e55e80b158de92742a39c44d0b18">joueur_t::derniere_touche</a></div><div class="ttdeci">int derniere_touche</div><div class="ttdef"><b>Definition</b> global.h:596</div></div>
+<div class="ttc" id="astructjoueur__t_html_aa08369b848b865ca2c431941c53c62f6"><div class="ttname"><a href="structjoueur__t.html#aa08369b848b865ca2c431941c53c62f6">joueur_t::move_dx</a></div><div class="ttdeci">float move_dx</div><div class="ttdef"><b>Definition</b> global.h:595</div></div>
+<div class="ttc" id="astructjoueur__t_html_aa5dc0aa8753a5a2af2a50833934d18f9"><div class="ttname"><a href="structjoueur__t.html#aa5dc0aa8753a5a2af2a50833934d18f9">joueur_t::nb_mechas</a></div><div class="ttdeci">int nb_mechas</div><div class="ttdef"><b>Definition</b> global.h:598</div></div>
+<div class="ttc" id="astructjoueur__t_html_adb0ce6bf9365fd360e93bc946409a34f"><div class="ttname"><a href="structjoueur__t.html#adb0ce6bf9365fd360e93bc946409a34f">joueur_t::pointSauvegarde</a></div><div class="ttdeci">int pointSauvegarde</div><div class="ttdef"><b>Definition</b> global.h:597</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html"><div class="ttname"><a href="structmechas__joueur__t.html">mechas_joueur_t</a></div><div class="ttdoc">Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.</div><div class="ttdef"><b>Definition</b> global.h:516</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a03321f8114557e405f5609858b125076"><div class="ttname"><a href="structmechas__joueur__t.html#a03321f8114557e405f5609858b125076">mechas_joueur_t::id_mechas</a></div><div class="ttdeci">int id_mechas</div><div class="ttdef"><b>Definition</b> global.h:518</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a12fcc84a50c5a1dfb9a2af47026a5a7b"><div class="ttname"><a href="structmechas__joueur__t.html#a12fcc84a50c5a1dfb9a2af47026a5a7b">mechas_joueur_t::vitesse</a></div><div class="ttdeci">int vitesse</div><div class="ttdef"><b>Definition</b> global.h:525</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a17bc19142934c4440111a3b16e79d9bf"><div class="ttname"><a href="structmechas__joueur__t.html#a17bc19142934c4440111a3b16e79d9bf">mechas_joueur_t::utilisation_1</a></div><div class="ttdeci">int utilisation_1</div><div class="ttdef"><b>Definition</b> global.h:528</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a5d053ec22a2d40262c398ea493e766cc"><div class="ttname"><a href="structmechas__joueur__t.html#a5d053ec22a2d40262c398ea493e766cc">mechas_joueur_t::niveau</a></div><div class="ttdeci">int niveau</div><div class="ttdef"><b>Definition</b> global.h:519</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a7dc76caaea354024dd09aecda187fe12"><div class="ttname"><a href="structmechas__joueur__t.html#a7dc76caaea354024dd09aecda187fe12">mechas_joueur_t::attaque_2</a></div><div class="ttdeci">int attaque_2</div><div class="ttdef"><b>Definition</b> global.h:527</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a9033fc398b742ea8189b24d3c1d1a656"><div class="ttname"><a href="structmechas__joueur__t.html#a9033fc398b742ea8189b24d3c1d1a656">mechas_joueur_t::xp</a></div><div class="ttdeci">int xp</div><div class="ttdef"><b>Definition</b> global.h:520</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_a9c102ff6546c1b4a52f4bdd496cdb28a"><div class="ttname"><a href="structmechas__joueur__t.html#a9c102ff6546c1b4a52f4bdd496cdb28a">mechas_joueur_t::pv</a></div><div class="ttdeci">int pv</div><div class="ttdef"><b>Definition</b> global.h:521</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_ac842f9787d114784075b5130519c5817"><div class="ttname"><a href="structmechas__joueur__t.html#ac842f9787d114784075b5130519c5817">mechas_joueur_t::numero</a></div><div class="ttdeci">int numero</div><div class="ttdef"><b>Definition</b> global.h:517</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_acf94d5aba63f733f0b174beba9950609"><div class="ttname"><a href="structmechas__joueur__t.html#acf94d5aba63f733f0b174beba9950609">mechas_joueur_t::utilisation_2</a></div><div class="ttdeci">int utilisation_2</div><div class="ttdef"><b>Definition</b> global.h:529</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_ae46e9897c4c1c42cb709c62283efc876"><div class="ttname"><a href="structmechas__joueur__t.html#ae46e9897c4c1c42cb709c62283efc876">mechas_joueur_t::attaque</a></div><div class="ttdeci">int attaque</div><div class="ttdef"><b>Definition</b> global.h:523</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_aec148a9678835be43f681e77c9d12150"><div class="ttname"><a href="structmechas__joueur__t.html#aec148a9678835be43f681e77c9d12150">mechas_joueur_t::attaque_1</a></div><div class="ttdeci">int attaque_1</div><div class="ttdef"><b>Definition</b> global.h:526</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_af949cf21db359b52cfa766f57f06e0df"><div class="ttname"><a href="structmechas__joueur__t.html#af949cf21db359b52cfa766f57f06e0df">mechas_joueur_t::defense</a></div><div class="ttdeci">int defense</div><div class="ttdef"><b>Definition</b> global.h:524</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html_afab1b4461029c5b33a91e5b5aef6cb2d"><div class="ttname"><a href="structmechas__joueur__t.html#afab1b4461029c5b33a91e5b5aef6cb2d">mechas_joueur_t::pv_max</a></div><div class="ttdeci">int pv_max</div><div class="ttdef"><b>Definition</b> global.h:522</div></div>
+<div class="ttc" id="astructmechas__t_html"><div class="ttname"><a href="structmechas__t.html">mechas_t</a></div><div class="ttdoc">Représente un mecha disponible dans le jeu avec ses caractéristiques.</div><div class="ttdef"><b>Definition</b> global.h:431</div></div>
+<div class="ttc" id="astructmechas__t_html_a154c4d35227c90950e2cfd46d9423de7"><div class="ttname"><a href="structmechas__t.html#a154c4d35227c90950e2cfd46d9423de7">mechas_t::evolution</a></div><div class="ttdeci">int evolution</div><div class="ttdef"><b>Definition</b> global.h:436</div></div>
+<div class="ttc" id="astructmechas__t_html_a16042cbceeedcf759410f525a8427a83"><div class="ttname"><a href="structmechas__t.html#a16042cbceeedcf759410f525a8427a83">mechas_t::id_mechas</a></div><div class="ttdeci">int id_mechas</div><div class="ttdef"><b>Definition</b> global.h:433</div></div>
+<div class="ttc" id="astructmechas__t_html_a6b96d26e83bbd9d73c5e893db23c7d5a"><div class="ttname"><a href="structmechas__t.html#a6b96d26e83bbd9d73c5e893db23c7d5a">mechas_t::nb_attaques</a></div><div class="ttdeci">int nb_attaques</div><div class="ttdef"><b>Definition</b> global.h:440</div></div>
+<div class="ttc" id="astructmechas__t_html_ac9c243d610b6029a40145219f85522c4"><div class="ttname"><a href="structmechas__t.html#ac9c243d610b6029a40145219f85522c4">mechas_t::niveau_evolution</a></div><div class="ttdeci">int niveau_evolution</div><div class="ttdef"><b>Definition</b> global.h:437</div></div>
+<div class="ttc" id="astructparametre__t_html"><div class="ttname"><a href="structparametre__t.html">parametre_t</a></div><div class="ttdoc">Structure contenant les paramètres réglables du jeu.</div><div class="ttdef"><b>Definition</b> global.h:351</div></div>
+<div class="ttc" id="astructparametre__t_html_a2c152a00a13d9f4177f835a1c060c994"><div class="ttname"><a href="structparametre__t.html#a2c152a00a13d9f4177f835a1c060c994">parametre_t::volume</a></div><div class="ttdeci">int volume</div><div class="ttdef"><b>Definition</b> global.h:352</div></div>
+<div class="ttc" id="astructpnj__t_html"><div class="ttname"><a href="structpnj__t.html">pnj_t</a></div><div class="ttdoc">Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.</div><div class="ttdef"><b>Definition</b> global.h:648</div></div>
+<div class="ttc" id="astructpnj__t_html_a07dbd89ec660293ff2b87508aa647080"><div class="ttname"><a href="structpnj__t.html#a07dbd89ec660293ff2b87508aa647080">pnj_t::orientation</a></div><div class="ttdeci">int orientation</div><div class="ttdef"><b>Definition</b> global.h:656</div></div>
+<div class="ttc" id="astructpnj__t_html_a3dcd285723b072a83828bc5b3c564e9c"><div class="ttname"><a href="structpnj__t.html#a3dcd285723b072a83828bc5b3c564e9c">pnj_t::id_map</a></div><div class="ttdeci">int id_map</div><div class="ttdef"><b>Definition</b> global.h:650</div></div>
+<div class="ttc" id="astructpnj__t_html_a6ad111d7e2c16bbec3033c2da3442c43"><div class="ttname"><a href="structpnj__t.html#a6ad111d7e2c16bbec3033c2da3442c43">pnj_t::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition</b> global.h:655</div></div>
+<div class="ttc" id="astructpnj__t_html_a7f2eed80f5fb31cccc12bc3f93947a2c"><div class="ttname"><a href="structpnj__t.html#a7f2eed80f5fb31cccc12bc3f93947a2c">pnj_t::id_pnj</a></div><div class="ttdeci">int id_pnj</div><div class="ttdef"><b>Definition</b> global.h:649</div></div>
+<div class="ttc" id="astructpnj__t_html_aa158d69de9949e1506ca1ae1fb234f15"><div class="ttname"><a href="structpnj__t.html#aa158d69de9949e1506ca1ae1fb234f15">pnj_t::nb_mechas</a></div><div class="ttdeci">int nb_mechas</div><div class="ttdef"><b>Definition</b> global.h:657</div></div>
+<div class="ttc" id="astructpnj__t_html_aa27103688429f27e4a13241d7d26dd3b"><div class="ttname"><a href="structpnj__t.html#aa27103688429f27e4a13241d7d26dd3b">pnj_t::inventaire</a></div><div class="ttdeci">inventaire_t * inventaire</div><div class="ttdef"><b>Definition</b> global.h:658</div></div>
+<div class="ttc" id="astructpnj__t_html_ae53a51fb05f47aac68e1b6c451000d9e"><div class="ttname"><a href="structpnj__t.html#ae53a51fb05f47aac68e1b6c451000d9e">pnj_t::etat</a></div><div class="ttdeci">int etat</div><div class="ttdef"><b>Definition</b> global.h:652</div></div>
+<div class="ttc" id="astructrectangle__t_html"><div class="ttname"><a href="structrectangle__t.html">rectangle_t</a></div><div class="ttdoc">Structure représentant un rectangle graphique avec du texte à afficher dans une interface SDL.</div><div class="ttdef"><b>Definition</b> global.h:330</div></div>
+<div class="ttc" id="astructrectangle__t_html_a1bd91845ad4a0da8a6a6d7d54484c293"><div class="ttname"><a href="structrectangle__t.html#a1bd91845ad4a0da8a6a6d7d54484c293">rectangle_t::couleur_text</a></div><div class="ttdeci">SDL_Color couleur_text</div><div class="ttdef"><b>Definition</b> global.h:334</div></div>
+<div class="ttc" id="astructrectangle__t_html_aa2a20dd961b6cf514fe455b4b04aeb70"><div class="ttname"><a href="structrectangle__t.html#aa2a20dd961b6cf514fe455b4b04aeb70">rectangle_t::couleur</a></div><div class="ttdeci">SDL_Color couleur</div><div class="ttdef"><b>Definition</b> global.h:332</div></div>
+<div class="ttc" id="astructrectangle__t_html_ab15e80a326c96b49e89f645bed7ec08f"><div class="ttname"><a href="structrectangle__t.html#ab15e80a326c96b49e89f645bed7ec08f">rectangle_t::rect</a></div><div class="ttdeci">SDL_Rect rect</div><div class="ttdef"><b>Definition</b> global.h:331</div></div>
+<div class="ttc" id="astructzone__t_html"><div class="ttname"><a href="structzone__t.html">zone_t</a></div><div class="ttdoc">Représente une zone de spawn pour les mechas sauvages dans le jeu.</div><div class="ttdef"><b>Definition</b> global.h:694</div></div>
+<div class="ttc" id="astructzone__t_html_a00c0ffc13e69d1f0c9931d4fc00d8363"><div class="ttname"><a href="structzone__t.html#a00c0ffc13e69d1f0c9931d4fc00d8363">zone_t::nb_mechas</a></div><div class="ttdeci">int nb_mechas</div><div class="ttdef"><b>Definition</b> global.h:702</div></div>
+<div class="ttc" id="astructzone__t_html_a10d5007c77303b7812c412676ea22769"><div class="ttname"><a href="structzone__t.html#a10d5007c77303b7812c412676ea22769">zone_t::Attaque</a></div><div class="ttdeci">int Attaque</div><div class="ttdef"><b>Definition</b> global.h:699</div></div>
+<div class="ttc" id="astructzone__t_html_a5dff5b08fea58dc82770daaeaee6e90e"><div class="ttname"><a href="structzone__t.html#a5dff5b08fea58dc82770daaeaee6e90e">zone_t::id_zone</a></div><div class="ttdeci">int id_zone</div><div class="ttdef"><b>Definition</b> global.h:695</div></div>
+<div class="ttc" id="astructzone__t_html_aa40859a9b36a42abb1ef17a19e0d7cab"><div class="ttname"><a href="structzone__t.html#aa40859a9b36a42abb1ef17a19e0d7cab">zone_t::PvMoyen</a></div><div class="ttdeci">int PvMoyen</div><div class="ttdef"><b>Definition</b> global.h:697</div></div>
+<div class="ttc" id="astructzone__t_html_aa66086a1f0705bd2e3d0b5116b0b96ab"><div class="ttname"><a href="structzone__t.html#aa66086a1f0705bd2e3d0b5116b0b96ab">zone_t::VitesseMoyenne</a></div><div class="ttdeci">int VitesseMoyenne</div><div class="ttdef"><b>Definition</b> global.h:698</div></div>
+<div class="ttc" id="astructzone__t_html_af8f7d299444386175221e806f6dfa4bf"><div class="ttname"><a href="structzone__t.html#af8f7d299444386175221e806f6dfa4bf">zone_t::Defense</a></div><div class="ttdeci">int Defense</div><div class="ttdef"><b>Definition</b> global.h:700</div></div>
+<div class="ttc" id="astructzone__t_html_afad641fd48b1090945aa6e4ab242b974"><div class="ttname"><a href="structzone__t.html#afad641fd48b1090945aa6e4ab242b974">zone_t::NiveauMoyenApparition</a></div><div class="ttdeci">int NiveauMoyenApparition</div><div class="ttdef"><b>Definition</b> global.h:696</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="global_8h.html">global.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

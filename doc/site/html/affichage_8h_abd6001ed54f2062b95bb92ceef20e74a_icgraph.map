@@ -1,0 +1,7 @@
+<map id="game_over" name="game_over">
+<area shape="rect" id="Node000001" title="Gère l&#39;écran de fin de partie et réinitialise le joueur." alt="" coords="149,31,236,56"/>
+<area shape="rect" id="Node000002" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,5,101,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,36,101,29,102,24,136,30"/>
+<area shape="rect" id="Node000003" href="$pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="18,55,89,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,56,90,64,89,59,135,50"/>
+</map>

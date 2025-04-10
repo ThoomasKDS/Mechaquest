@@ -1,0 +1,1350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest: Référence du fichier /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/sauv.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('sauv_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier sauv.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des sauvegardes et récupération des données du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="global_8h_source.html">../lib/global.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de sauv.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h__incl.png" border="0" usemap="#a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8h" alt=""/></div>
+<map name="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8h" id="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8h">
+<area shape="rect" title="Gestion des sauvegardes et récupération des données du jeu." alt="" coords="95,5,238,75"/>
+<area shape="rect" title=" " alt="" coords="5,123,67,148"/>
+<area shape="poly" title=" " alt="" coords="121,77,65,117,62,112,118,73"/>
+<area shape="rect" title=" " alt="" coords="91,123,155,148"/>
+<area shape="poly" title=" " alt="" coords="153,76,136,111,132,109,148,74"/>
+<area shape="rect" title=" " alt="" coords="179,123,245,148"/>
+<area shape="poly" title=" " alt="" coords="185,74,203,109,198,111,181,76"/>
+<area shape="rect" href="global_8h.html" title="Définition des constantes, structures et variables globales du jeu." alt="" coords="269,123,365,148"/>
+<area shape="poly" title=" " alt="" coords="222,73,289,113,286,118,220,77"/>
+<area shape="rect" title=" " alt="" coords="48,196,144,221"/>
+<area shape="poly" title=" " alt="" coords="283,151,145,194,144,189,281,145"/>
+<area shape="rect" title=" " alt="" coords="169,196,303,221"/>
+<area shape="poly" title=" " alt="" coords="306,150,261,189,258,185,303,146"/>
+<area shape="rect" title=" " alt="" coords="328,196,467,221"/>
+<area shape="poly" title=" " alt="" coords="332,146,376,185,372,189,328,150"/>
+<area shape="rect" title=" " alt="" coords="491,196,605,221"/>
+<area shape="poly" title=" " alt="" coords="355,145,499,189,497,195,354,151"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h__dep__incl.png" border="0" usemap="#a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8hdep" alt=""/></div>
+<map name="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8hdep" id="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2sauv_8hdep">
+<area shape="rect" title="Gestion des sauvegardes et récupération des données du jeu." alt="" coords="277,5,420,75"/>
+<area shape="rect" href="affichage_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion de l&#39;affichage dans le jeu." alt="" coords="540,123,683,192"/>
+<area shape="poly" title=" " alt="" coords="434,76,541,122,539,127,432,80"/>
+<area shape="rect" href="menu_8h.html" title="Gestion des menus et des interfaces utilisateur." alt="" coords="361,240,504,309"/>
+<area shape="poly" title=" " alt="" coords="368,87,423,239,418,241,363,89"/>
+<area shape="rect" href="pointDePassage_8h.html" title="Gestion des points de passage et événements du jeu." alt="" coords="252,357,395,427"/>
+<area shape="poly" title=" " alt="" coords="348,88,328,357,323,357,343,88"/>
+<area shape="rect" href="combat_8h.html" title="Gestion des combats dans le jeu." alt="" coords="92,475,235,544"/>
+<area shape="poly" title=" " alt="" coords="266,70,228,93,211,107,198,124,175,168,159,215,150,264,146,313,149,404,159,474,154,475,144,405,141,313,145,263,154,214,170,166,193,121,207,103,225,88,263,65"/>
+<area shape="rect" href="combat_8c.html" title="fichier contenant la fonctions de combat" alt="" coords="5,592,148,661"/>
+<area shape="poly" title=" " alt="" coords="265,70,196,101,161,121,128,144,100,171,77,202,62,236,57,274,57,393,63,502,74,591,69,592,57,502,51,393,51,273,57,234,72,199,96,168,125,140,158,116,194,96,263,65"/>
+<area shape="rect" href="main_8c.html" title="fichier contenant la fonctions principale" alt="" coords="355,592,497,661"/>
+<area shape="poly" title=" " alt="" coords="319,88,281,155,262,196,245,240,233,286,228,334,230,380,242,426,269,476,304,521,343,559,380,590,377,594,339,563,300,524,264,479,237,428,225,381,222,333,228,285,240,238,257,194,276,152,315,85"/>
+<area shape="rect" href="player_8h.html" title="Gestion du joueur dans le jeu." alt="" coords="791,240,933,309"/>
+<area shape="poly" title=" " alt="" coords="434,43,495,51,563,65,631,88,695,120,714,137,725,154,734,171,749,190,810,238,806,242,745,194,730,174,720,156,710,140,693,125,629,93,561,70,494,56,433,48"/>
+<area shape="rect" href="sauv_8c.html" title="fichier contenant les fonctions de sauvegarde et récupération" alt="" coords="759,123,901,192"/>
+<area shape="poly" title=" " alt="" coords="434,53,578,80,740,120,759,126,758,131,739,125,577,86,433,58"/>
+<area shape="poly" title=" " alt="" coords="549,202,487,242,484,237,546,197"/>
+<area shape="poly" title=" " alt="" coords="642,203,657,239,679,327,687,365,692,401,690,436,682,470,666,507,640,546,610,575,574,596,536,610,498,620,497,615,534,605,572,591,607,570,636,542,661,504,677,469,685,435,686,401,682,366,674,328,651,241,637,205"/>
+<area shape="rect" href="affichage_8c.html" title="fichier contenant la fonctions d&#39;affichage utilisant la librérie de SDL" alt="" coords="484,475,627,544"/>
+<area shape="poly" title=" " alt="" coords="627,205,636,252,642,309,641,369,627,428,613,454,595,476,591,473,609,451,622,426,635,368,637,309,631,253,622,206"/>
+<area shape="rect" href="player_8c.html" title="fichier contenant les fonctions de déplacement" alt="" coords="724,475,867,544"/>
+<area shape="poly" title=" " alt="" coords="684,199,705,217,723,239,755,299,776,364,789,425,796,474,790,475,784,426,771,365,750,301,718,241,701,221,680,203"/>
+<area shape="rect" href="menu_8c.html" title="Fichier contenant les fonctions liées à l&#39;affichage et la gestion du menu principal et des sous&#45;menus..." alt="" coords="471,357,613,427"/>
+<area shape="poly" title=" " alt="" coords="600,206,555,358,549,357,595,205"/>
+<area shape="poly" title=" " alt="" coords="690,195,792,242,789,247,687,200"/>
+<area shape="poly" title=" " alt="" coords="393,321,357,359,353,355,389,318"/>
+<area shape="poly" title=" " alt="" coords="434,323,429,592,424,592,429,323"/>
+<area shape="poly" title=" " alt="" coords="476,318,512,355,508,359,472,321"/>
+<area shape="poly" title=" " alt="" coords="267,437,212,476,209,472,264,433"/>
+<area shape="poly" title=" " alt="" coords="346,439,414,591,409,593,341,441"/>
+<area shape="rect" href="pointDePassage_8c.html" title="Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas,..." alt="" coords="183,592,325,661"/>
+<area shape="poly" title=" " alt="" coords="312,441,267,593,261,591,307,440"/>
+<area shape="poly" title=" " alt="" coords="404,430,489,472,486,477,402,435"/>
+<area shape="poly" title=" " alt="" coords="409,412,459,424,724,488,723,493,457,429,407,417"/>
+<area shape="poly" title=" " alt="" coords="179,461,205,407,241,346,289,287,317,260,347,238,394,213,445,193,539,168,540,173,446,198,397,218,350,242,320,264,293,290,246,349,209,410,184,463"/>
+<area shape="poly" title=" " alt="" coords="132,557,104,593,100,590,127,554"/>
+<area shape="poly" title=" " alt="" coords="248,545,356,592,354,597,246,550"/>
+<area shape="poly" title=" " alt="" coords="200,553,230,590,225,593,196,557"/>
+<area shape="poly" title=" " alt="" coords="784,237,682,190,684,185,786,232"/>
+<area shape="poly" title=" " alt="" coords="885,321,901,372,911,431,912,462,907,492,898,520,881,546,855,566,817,582,768,595,714,606,599,619,498,626,497,621,599,614,713,601,767,590,815,577,853,561,877,542,893,518,902,491,906,462,906,432,896,373,880,323"/>
+<area shape="poly" title=" " alt="" coords="851,324,807,475,802,474,846,322"/>
+</map>
+</div>
+</div>
+<p><a href="sauv_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aec5928f1d3393d66b9df8e4066b8d8da" id="r_aec5928f1d3393d66b9df8e4066b8d8da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#aec5928f1d3393d66b9df8e4066b8d8da">nouveau_fichier_pnj</a> (char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:aec5928f1d3393d66b9df8e4066b8d8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial.  <br /></td></tr>
+<tr class="separator:aec5928f1d3393d66b9df8e4066b8d8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f7ea1b998d9c8d83135418b440260c" id="r_a72f7ea1b998d9c8d83135418b440260c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a72f7ea1b998d9c8d83135418b440260c">init_partie</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>], char sexe)</td></tr>
+<tr class="memdesc:a72f7ea1b998d9c8d83135418b440260c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise une nouvelle partie avec les paramètres par défaut pour un joueur.  <br /></td></tr>
+<tr class="separator:a72f7ea1b998d9c8d83135418b440260c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e4df079f565f0ca025fea8e134b47e" id="r_a27e4df079f565f0ca025fea8e134b47e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a27e4df079f565f0ca025fea8e134b47e">recuperation_joueur</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:a27e4df079f565f0ca025fea8e134b47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les données d'une partie sauvegardée pour un joueur donné depuis un fichier CSV.  <br /></td></tr>
+<tr class="separator:a27e4df079f565f0ca025fea8e134b47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df71d1ff822e93d595691020a67fcac" id="r_a5df71d1ff822e93d595691020a67fcac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a5df71d1ff822e93d595691020a67fcac">recuperation_inventaire</a> (<a class="el" href="structinventaire__t.html">inventaire_t</a> *inventaire, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:a5df71d1ff822e93d595691020a67fcac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les données de l'inventaire d'un joueur ou d'un PNJ depuis un fichier CSV.  <br /></td></tr>
+<tr class="separator:a5df71d1ff822e93d595691020a67fcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac200836f362da463930b27f70ced06e3" id="r_ac200836f362da463930b27f70ced06e3"><td class="memItemLeft" align="right" valign="top"><a id="ac200836f362da463930b27f70ced06e3" name="ac200836f362da463930b27f70ced06e3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>recuperation_mechas_joueur</b> (<a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mechas_joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="separator:ac200836f362da463930b27f70ced06e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95f85960ed5fca42b0affe9a8a79c2ee" id="r_a95f85960ed5fca42b0affe9a8a79c2ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a95f85960ed5fca42b0affe9a8a79c2ee">recuperation_attaques</a> (<a class="el" href="structattaque__t.html">attaque_t</a> *attaques)</td></tr>
+<tr class="memdesc:a95f85960ed5fca42b0affe9a8a79c2ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les informations complètes des attaques disponibles depuis un fichier CSV.  <br /></td></tr>
+<tr class="separator:a95f85960ed5fca42b0affe9a8a79c2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb51a9229438e3f3f69f63b4e6cb7067" id="r_abb51a9229438e3f3f69f63b4e6cb7067"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#abb51a9229438e3f3f69f63b4e6cb7067">recuperation_mechas</a> (<a class="el" href="structmechas__t.html">mechas_t</a> *mechas_l)</td></tr>
+<tr class="memdesc:abb51a9229438e3f3f69f63b4e6cb7067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste complète des Mechas disponibles et leurs caractéristiques à partir d'un fichier CSV.  <br /></td></tr>
+<tr class="separator:abb51a9229438e3f3f69f63b4e6cb7067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1aa027dc9de43b14691d813305ebd4" id="r_abd1aa027dc9de43b14691d813305ebd4"><td class="memItemLeft" align="right" valign="top"><a id="abd1aa027dc9de43b14691d813305ebd4" name="abd1aa027dc9de43b14691d813305ebd4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>recuperation_pnj</b> (<a class="el" href="structpnj__t.html">pnj_t</a> *pnj, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="separator:abd1aa027dc9de43b14691d813305ebd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7762d77d095eb75079f0da668e05250f" id="r_a7762d77d095eb75079f0da668e05250f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a7762d77d095eb75079f0da668e05250f">recuperation_zone</a> (<a class="el" href="structzone__t.html">zone_t</a> *zone)</td></tr>
+<tr class="memdesc:a7762d77d095eb75079f0da668e05250f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les données détaillées des zones de jeu depuis un fichier CSV.  <br /></td></tr>
+<tr class="separator:a7762d77d095eb75079f0da668e05250f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68cba593cfe77461f153f38b2a08a374" id="r_a68cba593cfe77461f153f38b2a08a374"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a68cba593cfe77461f153f38b2a08a374">sauvegarde_partie</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:a68cba593cfe77461f153f38b2a08a374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'état global d'une partie d'un joueur dans plusieurs fichiers CSV.  <br /></td></tr>
+<tr class="separator:a68cba593cfe77461f153f38b2a08a374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8195ddd8dbc45661b6c79de94f968e7" id="r_ab8195ddd8dbc45661b6c79de94f968e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#ab8195ddd8dbc45661b6c79de94f968e7">sauvegarde_inventaire</a> (<a class="el" href="structinventaire__t.html">inventaire_t</a> *inventaire, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:ab8195ddd8dbc45661b6c79de94f968e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les données de l'inventaire d'un joueur (ou PNJ) dans un fichier CSV.  <br /></td></tr>
+<tr class="separator:ab8195ddd8dbc45661b6c79de94f968e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e80e16d5df5b56d2279ae7c965bb71" id="r_a48e80e16d5df5b56d2279ae7c965bb71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a48e80e16d5df5b56d2279ae7c965bb71">sauvegarde_mechas_joueur</a> (<a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mechas_joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>], int nb_mechas)</td></tr>
+<tr class="memdesc:a48e80e16d5df5b56d2279ae7c965bb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'équipe de Mechas d'un joueur dans un fichier CSV.  <br /></td></tr>
+<tr class="separator:a48e80e16d5df5b56d2279ae7c965bb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1da7937b8e445add82b83c23950cc74" id="r_ab1da7937b8e445add82b83c23950cc74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#ab1da7937b8e445add82b83c23950cc74">sauvegarde_pnj</a> (<a class="el" href="structpnj__t.html">pnj_t</a> *pnj, int id_pnj, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:ab1da7937b8e445add82b83c23950cc74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde ou met à jour les données d'un PNJ spécifique pour un joueur dans un fichier CSV personnalisé.  <br /></td></tr>
+<tr class="separator:ab1da7937b8e445add82b83c23950cc74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3748382cfddb2c574b37de5987534cea" id="r_a3748382cfddb2c574b37de5987534cea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a3748382cfddb2c574b37de5987534cea">suppression_partie</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:a3748382cfddb2c574b37de5987534cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime définitivement toutes les données d'une partie d'un joueur depuis les fichiers CSV.  <br /></td></tr>
+<tr class="separator:a3748382cfddb2c574b37de5987534cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a020e784ece3effc4c331f7955d822f1e" id="r_a020e784ece3effc4c331f7955d822f1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a020e784ece3effc4c331f7955d822f1e">suppression_inventaire</a> (<a class="el" href="structinventaire__t.html">inventaire_t</a> *inventaire, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>])</td></tr>
+<tr class="memdesc:a020e784ece3effc4c331f7955d822f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime l'entrée d'un inventaire associé à un joueur (ou PNJ) d'un fichier CSV.  <br /></td></tr>
+<tr class="separator:a020e784ece3effc4c331f7955d822f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accca901359a4eafa002b577efb20fff1" id="r_accca901359a4eafa002b577efb20fff1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#accca901359a4eafa002b577efb20fff1">suppression_mechas_joueur</a> (<a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mechas_joueur, char pseudo[<a class="el" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>], int nb_mechas)</td></tr>
+<tr class="memdesc:accca901359a4eafa002b577efb20fff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime toutes les entrées associées aux Mechas d'un joueur dans un fichier CSV.  <br /></td></tr>
+<tr class="separator:accca901359a4eafa002b577efb20fff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabb5472f53dbb474524b053b75d3668f" id="r_aabb5472f53dbb474524b053b75d3668f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#aabb5472f53dbb474524b053b75d3668f">destruction_joueur</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur)</td></tr>
+<tr class="memdesc:aabb5472f53dbb474524b053b75d3668f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère la mémoire dynamiquement allouée à un joueur.  <br /></td></tr>
+<tr class="separator:aabb5472f53dbb474524b053b75d3668f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a493358ab8bc3b3e8d2b90a9aa3f100bb" id="r_a493358ab8bc3b3e8d2b90a9aa3f100bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sauv_8h.html#a493358ab8bc3b3e8d2b90a9aa3f100bb">destruction_pnj</a> (<a class="el" href="structpnj__t.html">pnj_t</a> *pnj)</td></tr>
+<tr class="memdesc:a493358ab8bc3b3e8d2b90a9aa3f100bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère la mémoire dynamiquement allouée à un PNJ.  <br /></td></tr>
+<tr class="separator:a493358ab8bc3b3e8d2b90a9aa3f100bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des sauvegardes et récupération des données du jeu. </p>
+<p>Ce fichier contient les déclarations des fonctions permettant d'initialiser, sauvegarder, récupérer et supprimer les données du jeu, y compris celles des joueurs, inventaires, mechas et PNJ. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aabb5472f53dbb474524b053b75d3668f" name="aabb5472f53dbb474524b053b75d3668f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabb5472f53dbb474524b053b75d3668f">&#9670;&#160;</a></span>destruction_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int destruction_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libère la mémoire dynamiquement allouée à un joueur. </p>
+<p>Cette fonction libère explicitement la mémoire allouée à l'inventaire d'un joueur en appelant <code>free()</code>. Elle s'assure également de mettre le pointeur d'inventaire à <code>NULL</code> pour éviter les références invalides (dangling pointers).</p>
+<p>À appeler impérativement avant de supprimer ou de réinitialiser définitivement une structure joueur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure <a class="el" href="structjoueur__t.html" title="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.">joueur_t</a> dont l'inventaire sera libéré.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> après la libération réussie de l'inventaire.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur <code>joueur</code> doit être valide et l'inventaire doit avoir été alloué dynamiquement au préalable.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le pointeur <code>inventaire</code> de la structure joueur sera mis à <code>NULL</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Après appel de cette fonction, toute tentative d'accès à l'inventaire libéré doit être évitée.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ne pas appeler cette fonction sur une structure joueur dont l'inventaire n'est pas alloué dynamiquement (risque d'erreur de segmentation). </dd></dl>
+
+</div>
+</div>
+<a id="a493358ab8bc3b3e8d2b90a9aa3f100bb" name="a493358ab8bc3b3e8d2b90a9aa3f100bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493358ab8bc3b3e8d2b90a9aa3f100bb">&#9670;&#160;</a></span>destruction_pnj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int destruction_pnj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpnj__t.html">pnj_t</a> *&#160;</td>
+          <td class="paramname"><em>pnj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libère la mémoire dynamiquement allouée à un PNJ. </p>
+<p>Cette fonction libère explicitement la mémoire allouée à l'inventaire d'un PNJ en appelant la fonction <code>free()</code>. Le pointeur vers l'inventaire du PNJ est ensuite mis à <code>NULL</code> afin d’éviter les références invalides (dangling pointers).</p>
+<p>Cette opération est à réaliser avant la suppression définitive ou la réinitialisation complète d'une structure PNJ.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pnj</td><td>Pointeur vers la structure <code><a class="el" href="structpnj__t.html" title="Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.">pnj_t</a></code> dont l'inventaire sera libéré.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> après la libération réussie de l'inventaire.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur <code>pnj</code> doit être valide et son inventaire doit avoir été alloué dynamiquement auparavant.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le pointeur <code>inventaire</code> de la structure <code>pnj</code> sera mis à <code>NULL</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Après l'appel à cette fonction, toute tentative d'accès à l'inventaire libéré doit être évitée.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ne pas appeler cette fonction si l'inventaire du PNJ n'a pas été dynamiquement alloué, car cela provoquerait une erreur de segmentation. </dd></dl>
+
+</div>
+</div>
+<a id="a72f7ea1b998d9c8d83135418b440260c" name="a72f7ea1b998d9c8d83135418b440260c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72f7ea1b998d9c8d83135418b440260c">&#9670;&#160;</a></span>init_partie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_partie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>sexe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise une nouvelle partie avec les paramètres par défaut pour un joueur. </p>
+<p>Cette fonction configure une nouvelle partie en initialisant la structure du joueur :</p><ul>
+<li>Définition du pseudo.</li>
+<li>Position initiale (<code>x</code>, <code>y</code>) sur la carte de départ.</li>
+<li>Sexe du personnage (utilisé pour l'apparence graphique).</li>
+<li>Numéro de la carte initiale (<code>numMap</code>).</li>
+<li>Point de sauvegarde initialisé à 0.</li>
+<li>Initialisation à zéro du nombre de Mechas possédés.</li>
+<li>Allocation dynamique de l'inventaire et initialisation des objets à zéro.</li>
+</ul>
+<p>La fonction crée également un nouveau fichier de sauvegarde spécifique aux PNJs liés au pseudo du joueur, puis sauvegarde automatiquement l'état initial de la partie.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure du joueur à initialiser. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur (longueur maximale définie par <code>LONGUEUR_MAX_PSEUDO</code>). </td></tr>
+    <tr><td class="paramname">sexe</td><td>Caractère représentant le sexe du personnage ('M' ou 'F'), utilisé pour l'apparence du joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si l'initialisation s'est correctement déroulée.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'échec lors de l'allocation dynamique de l'inventaire.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur <code>joueur</code> doit être valide et non-null. Les constantes <code>LONGUEUR_MAX_PSEUDO</code>, <code>OK</code>, et <code>ERREUR_OUVERTURE</code> doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Une nouvelle partie est initialisée, les ressources sont allouées dynamiquement, et l'état du jeu est sauvegardé.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Assure-toi que les fonctions appelées (<code>nouveau_fichier_pnj</code>, <code>sauvegarde_partie</code>) soient implémentées correctement.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>L'appel à cette fonction entraîne une allocation dynamique (<code>malloc</code>) pour l'inventaire. La mémoire ainsi allouée devra être libérée (<code>free</code>) en fin d'utilisation pour éviter toute fuite mémoire. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a72f7ea1b998d9c8d83135418b440260c_cgraph.png" border="0" usemap="#asauv_8h_a72f7ea1b998d9c8d83135418b440260c_cgraph" alt=""/></div>
+<map name="asauv_8h_a72f7ea1b998d9c8d83135418b440260c_cgraph" id="asauv_8h_a72f7ea1b998d9c8d83135418b440260c_cgraph">
+<area shape="rect" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="5,31,84,56"/>
+<area shape="rect" href="sauv_8c.html#aec5928f1d3393d66b9df8e4066b8d8da" title="Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial." alt="" coords="132,5,269,31"/>
+<area shape="poly" title=" " alt="" coords="84,34,118,29,119,34,85,40"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="137,55,265,80"/>
+<area shape="poly" title=" " alt="" coords="85,47,124,53,123,58,84,52"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="333,29,485,55"/>
+<area shape="poly" title=" " alt="" coords="265,57,320,50,320,55,265,62"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="317,79,501,104"/>
+<area shape="poly" title=" " alt="" coords="265,72,304,77,303,82,265,77"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a72f7ea1b998d9c8d83135418b440260c_icgraph.png" border="0" usemap="#asauv_8h_a72f7ea1b998d9c8d83135418b440260c_icgraph" alt=""/></div>
+<map name="asauv_8h_a72f7ea1b998d9c8d83135418b440260c_icgraph" id="asauv_8h_a72f7ea1b998d9c8d83135418b440260c_icgraph">
+<area shape="rect" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="560,5,639,31"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="547,21,284,21,284,15,547,15"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,31,512,56"/>
+<area shape="poly" title=" " alt="" coords="547,28,511,33,511,28,546,23"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+<area shape="poly" title=" " alt="" coords="318,33,284,29,284,23,319,28"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aec5928f1d3393d66b9df8e4066b8d8da" name="aec5928f1d3393d66b9df8e4066b8d8da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec5928f1d3393d66b9df8e4066b8d8da">&#9670;&#160;</a></span>nouveau_fichier_pnj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nouveau_fichier_pnj </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial. </p>
+<p>Cette fonction génère un nouveau fichier de sauvegarde personnalisé pour les PNJs en copiant intégralement le contenu du fichier modèle (<code>save/pnj.csv</code>). Le nouveau fichier créé est spécifique au joueur et nommé selon le format suivant : <code>save/pnj_[pseudo].csv</code>.</p>
+<p>Ce mécanisme permet à chaque joueur de disposer de sa propre sauvegarde des interactions et des états des PNJs, indépendamment des autres parties ou profils existants.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur (longueur maximale définie par <code>LONGUEUR_MAX_PSEUDO</code>).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la création et la copie du fichier se sont déroulées avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas de problème d'ouverture des fichiers (lecture ou écriture).</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le dossier <code>save</code> doit exister et être accessible en écriture. Le fichier source <code>save/pnj.csv</code> doit exister et être lisible. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE_DESC</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Un nouveau fichier personnalisé pour le joueur est créé dans le dossier <code>save</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Assure-toi de vérifier que le pseudo ne contient pas de caractères spéciaux pouvant perturber le nom du fichier.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Pense à gérer correctement les droits d'accès au dossier de sauvegarde et aux fichiers, ainsi qu'à gérer les erreurs éventuelles. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_aec5928f1d3393d66b9df8e4066b8d8da_icgraph.png" border="0" usemap="#asauv_8h_aec5928f1d3393d66b9df8e4066b8d8da_icgraph" alt=""/></div>
+<map name="asauv_8h_aec5928f1d3393d66b9df8e4066b8d8da_icgraph" id="asauv_8h_aec5928f1d3393d66b9df8e4066b8d8da_icgraph">
+<area shape="rect" title="Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial." alt="" coords="687,5,824,31"/>
+<area shape="rect" href="sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="560,5,639,31"/>
+<area shape="poly" title=" " alt="" coords="673,21,639,21,639,15,673,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="547,21,284,21,284,15,547,15"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,31,512,56"/>
+<area shape="poly" title=" " alt="" coords="547,28,511,33,511,28,546,23"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+<area shape="poly" title=" " alt="" coords="318,33,284,29,284,23,319,28"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a95f85960ed5fca42b0affe9a8a79c2ee" name="a95f85960ed5fca42b0affe9a8a79c2ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f85960ed5fca42b0affe9a8a79c2ee">&#9670;&#160;</a></span>recuperation_attaques()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recuperation_attaques </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattaque__t.html">attaque_t</a> *&#160;</td>
+          <td class="paramname"><em>attaques</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les informations complètes des attaques disponibles depuis un fichier CSV. </p>
+<p>Cette fonction lit le fichier <code>save/attaques.csv</code> contenant la liste des attaques disponibles dans le jeu. Chaque attaque récupérée comprend les données suivantes :</p><ul>
+<li>Identifiant unique de l'attaque (<code>id_attaques</code>).</li>
+<li>Nom de l'attaque.</li>
+<li>Type de l'attaque (par exemple : feu, eau, etc.).</li>
+<li>Niveau requis pour apprendre/utiliser l'attaque.</li>
+<li>Dégâts infligés par l'attaque.</li>
+<li>Pourcentage de précision de l'attaque.</li>
+<li>Nombre d'utilisations disponibles pour l'attaque (PP).</li>
+</ul>
+<p>Les attaques sont stockées directement dans le tableau passé en paramètre.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attaques</td><td>Tableau de structures <code><a class="el" href="structattaque__t.html" title="Structure représentant les caractéristiques d&#39;une attaque d&#39;un Mecha.">attaque_t</a></code> à remplir avec les données récupérées.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li>Nombre total d'attaques récupérées avec succès (≥ 0).</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'échec lors de l'ouverture du fichier.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le fichier <code>save/attaques.csv</code> doit exister, être correctement formaté, et être lisible. Les constantes (<code>LONGUEUR_LIGNE</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le tableau <code>attaques</code> est initialisé avec toutes les données récupérées.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Vérifie la capacité maximale du tableau <code>attaques</code> afin d’éviter un débordement en cas d'un grand nombre d'attaques.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Assure-toi de gérer explicitement les erreurs liées à la lecture du fichier (format incorrect, dépassement du tableau, etc.). </dd></dl>
+
+</div>
+</div>
+<a id="a5df71d1ff822e93d595691020a67fcac" name="a5df71d1ff822e93d595691020a67fcac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5df71d1ff822e93d595691020a67fcac">&#9670;&#160;</a></span>recuperation_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recuperation_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structinventaire__t.html">inventaire_t</a> *&#160;</td>
+          <td class="paramname"><em>inventaire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les données de l'inventaire d'un joueur ou d'un PNJ depuis un fichier CSV. </p>
+<p>Cette fonction lit le fichier <code>save/inventaire.csv</code> à la recherche de l'entrée correspondant au pseudo spécifié. Si l'entrée est trouvée, elle charge dans la structure d'inventaire :</p><ul>
+<li>Le nombre de mechaballs disponibles.</li>
+<li>La quantité de carburant.</li>
+<li>Le nombre d'objets repousse disponibles.</li>
+<li>Le nombre d'objets rappel disponibles.</li>
+</ul>
+<p>Les données récupérées sont stockées directement dans la structure inventaire passée en paramètre.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventaire</td><td>Pointeur vers la structure <code><a class="el" href="structinventaire__t.html" title="Représente l’inventaire d’un joueur contenant les objets utilisables.">inventaire_t</a></code> qui sera remplie avec les données récupérées. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur ou du PNJ concerné par la récupération.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si l'inventaire a été récupéré avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> si une erreur d'ouverture du fichier survient.</li>
+<li><code>ERR</code> si le pseudo recherché n'est pas trouvé dans le fichier.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le fichier <code>save/inventaire.csv</code> doit exister, être correctement formaté, et être lisible. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERR</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>La structure inventaire est initialisée avec les quantités des objets récupérées en cas de succès.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction peut être utilisée aussi bien pour le joueur que pour les PNJs.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie la cohérence des données stockées dans le fichier CSV pour éviter les erreurs d’initialisation. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a5df71d1ff822e93d595691020a67fcac_icgraph.png" border="0" usemap="#asauv_8h_a5df71d1ff822e93d595691020a67fcac_icgraph" alt=""/></div>
+<map name="asauv_8h_a5df71d1ff822e93d595691020a67fcac_icgraph" id="asauv_8h_a5df71d1ff822e93d595691020a67fcac_icgraph">
+<area shape="rect" title="Récupère les données de l&#39;inventaire d&#39;un joueur ou d&#39;un PNJ depuis un fichier CSV." alt="" coords="515,31,671,56"/>
+<area shape="rect" href="sauv_8c.html#a27e4df079f565f0ca025fea8e134b47e" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="332,5,467,31"/>
+<area shape="poly" title=" " alt="" coords="501,34,467,29,467,24,501,29"/>
+<area shape="rect" href="sauv_8c.html#a099dce0c2a73af791f6cd412e9b085f2" title="Récupère l&#39;état et les données détaillées des PNJs à partir d&#39;un fichier CSV personnalisé." alt="" coords="341,55,458,80"/>
+<area shape="poly" title=" " alt="" coords="501,57,458,63,458,57,501,52"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="319,21,284,21,284,15,319,15"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a27e4df079f565f0ca025fea8e134b47e" name="a27e4df079f565f0ca025fea8e134b47e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e4df079f565f0ca025fea8e134b47e">&#9670;&#160;</a></span>recuperation_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recuperation_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les données d'une partie sauvegardée pour un joueur donné depuis un fichier CSV. </p>
+<p>Cette fonction recherche dans le fichier de sauvegarde <code>save/joueur.csv</code> les données associées au pseudo spécifié. Si le pseudo est trouvé, la fonction charge automatiquement :</p><ul>
+<li>Les informations principales du joueur (pseudo, sexe, carte actuelle, position, point de sauvegarde).</li>
+<li>L'inventaire du joueur (objets possédés).</li>
+<li>Les Mechas du joueur (équipe actuelle).</li>
+</ul>
+<p>L'inventaire est alloué dynamiquement lors de la récupération. Les fonctions <code>recuperation_inventaire</code> et <code>recuperation_mechas_joueur</code> sont appelées pour charger les données détaillées correspondantes.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure <a class="el" href="structjoueur__t.html" title="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.">joueur_t</a> qui sera remplie avec les données récupérées. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères indiquant le pseudo du joueur dont les données doivent être récupérées.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si les données ont été récupérées avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> si une erreur d'ouverture du fichier ou d'allocation mémoire survient.</li>
+<li><code>ERR</code> si le pseudo n'est pas trouvé dans le fichier.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le fichier <code>save/joueur.csv</code> doit exister et être lisible. Les fonctions <code>recuperation_inventaire</code> et <code>recuperation_mechas_joueur</code> doivent être implémentées et fonctionnelles. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERR</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>La structure <code>joueur</code> est initialisée avec les données récupérées en cas de succès.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La mémoire allouée dynamiquement pour l'inventaire devra être libérée explicitement à la fin de son utilisation pour éviter les fuites mémoire.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie les fichiers CSV et les fonctions annexes pour éviter les incohérences de données. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a27e4df079f565f0ca025fea8e134b47e_cgraph.png" border="0" usemap="#asauv_8h_a27e4df079f565f0ca025fea8e134b47e_cgraph" alt=""/></div>
+<map name="asauv_8h_a27e4df079f565f0ca025fea8e134b47e_cgraph" id="asauv_8h_a27e4df079f565f0ca025fea8e134b47e_cgraph">
+<area shape="rect" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="5,35,140,60"/>
+<area shape="rect" href="sauv_8c.html#a5df71d1ff822e93d595691020a67fcac" title="Récupère les données de l&#39;inventaire d&#39;un joueur ou d&#39;un PNJ depuis un fichier CSV." alt="" coords="188,5,344,31"/>
+<area shape="poly" title=" " alt="" coords="140,35,174,29,175,35,141,40"/>
+<area shape="rect" href="sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552" title="Récupère l&#39;équipe de Mechas d&#39;un joueur à partir d&#39;un fichier CSV." alt="" coords="193,55,339,95"/>
+<area shape="poly" title=" " alt="" coords="141,54,179,60,178,65,140,60"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a27e4df079f565f0ca025fea8e134b47e_icgraph.png" border="0" usemap="#asauv_8h_a27e4df079f565f0ca025fea8e134b47e_icgraph" alt=""/></div>
+<map name="asauv_8h_a27e4df079f565f0ca025fea8e134b47e_icgraph" id="asauv_8h_a27e4df079f565f0ca025fea8e134b47e_icgraph">
+<area shape="rect" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="332,5,467,31"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="319,21,284,21,284,15,319,15"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abb51a9229438e3f3f69f63b4e6cb7067" name="abb51a9229438e3f3f69f63b4e6cb7067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb51a9229438e3f3f69f63b4e6cb7067">&#9670;&#160;</a></span>recuperation_mechas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recuperation_mechas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmechas__t.html">mechas_t</a> *&#160;</td>
+          <td class="paramname"><em>mechas_l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère la liste complète des Mechas disponibles et leurs caractéristiques à partir d'un fichier CSV. </p>
+<p>Cette fonction lit le fichier <code>save/listeMechas.csv</code> qui contient toutes les informations relatives aux Mechas existants dans le jeu. Pour chaque Mecha, les données suivantes sont récupérées et stockées :</p><ul>
+<li>Identifiant unique (<code>id_mechas</code>).</li>
+<li>Nom du Mecha.</li>
+<li>Type du Mecha.</li>
+<li>État d'évolution (identifiant du Mecha évolué, ou 0 si aucune évolution).</li>
+<li>Niveau requis pour évoluer (si applicable).</li>
+<li>Description textuelle du Mecha.</li>
+<li>Liste des identifiants d'attaques apprises par le Mecha, récupérés sous forme de chaîne puis convertis en entiers.</li>
+<li>Nombre total d'attaques disponibles pour ce Mecha.</li>
+</ul>
+<p>Chaque attaque est stockée dans un tableau spécifique à chaque Mecha.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mechas_l</td><td>Tableau de structures <code><a class="el" href="structmechas__t.html" title="Représente un mecha disponible dans le jeu avec ses caractéristiques.">mechas_t</a></code> à remplir avec les données récupérées.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li>Nombre total de Mechas récupérés avec succès (≥ 0).</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'échec lors de l'ouverture du fichier.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le fichier <code>save/listeMechas.csv</code> doit exister, être correctement formaté et lisible. Les constantes (<code>LONGUEUR_LIGNE</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le tableau <code>mechas_l</code> est initialisé avec les données de chaque Mecha récupéré.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Assure-toi que le tableau <code>liste_attaque</code> de chaque Mecha est suffisamment grand pour accueillir toutes les attaques listées.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie le format des attaques (séparées par des points-virgules) dans le CSV afin d'éviter toute erreur de conversion ou dépassement. </dd></dl>
+
+</div>
+</div>
+<a id="a7762d77d095eb75079f0da668e05250f" name="a7762d77d095eb75079f0da668e05250f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7762d77d095eb75079f0da668e05250f">&#9670;&#160;</a></span>recuperation_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recuperation_zone </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structzone__t.html">zone_t</a> *&#160;</td>
+          <td class="paramname"><em>zone_l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les données détaillées des zones de jeu depuis un fichier CSV. </p>
+<p>Cette fonction lit le fichier <code>save/zone.csv</code> contenant les informations sur les différentes zones du jeu. <br  />
+ Pour chaque zone, les données suivantes sont chargées :</p><ul>
+<li>Identifiant unique de la zone (<code>id_zone</code>).</li>
+<li>Niveau moyen d'apparition des Mechas sauvages.</li>
+<li>Points de vie (PV) moyens des Mechas sauvages.</li>
+<li>Vitesse moyenne des Mechas sauvages.</li>
+<li>Attaque moyenne des Mechas sauvages.</li>
+<li>Défense moyenne des Mechas sauvages.</li>
+<li>Liste des identifiants des Mechas pouvant apparaître dans cette zone, récupérée sous forme de chaîne puis convertie en entiers.</li>
+<li>Nombre total de Mechas différents pouvant apparaître dans cette zone.</li>
+</ul>
+<p>Chaque identifiant de Mecha est stocké dans un tableau spécifique à chaque zone.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zone_l</td><td>Tableau de structures <code><a class="el" href="structzone__t.html" title="Représente une zone de spawn pour les mechas sauvages dans le jeu.">zone_t</a></code> à remplir avec les données récupérées.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li>Nombre total de zones récupérées avec succès (≥ 0).</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'échec lors de l'ouverture du fichier.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le fichier <code>save/zone.csv</code> doit exister, être correctement formaté et lisible. Les constantes (<code>LONGUEUR_LIGNE</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le tableau <code>zone_l</code> est initialisé avec les données de chaque zone récupérée.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Vérifie que le tableau <code>listeMechasZone</code> est suffisamment grand pour accueillir tous les identifiants des Mechas listés.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie le format des identifiants de Mechas (séparés par des points-virgules) dans le CSV afin d'éviter des erreurs de conversion ou débordement. </dd></dl>
+
+</div>
+</div>
+<a id="ab8195ddd8dbc45661b6c79de94f968e7" name="ab8195ddd8dbc45661b6c79de94f968e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8195ddd8dbc45661b6c79de94f968e7">&#9670;&#160;</a></span>sauvegarde_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structinventaire__t.html">inventaire_t</a> *&#160;</td>
+          <td class="paramname"><em>inventaire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les données de l'inventaire d'un joueur (ou PNJ) dans un fichier CSV. </p>
+<p>Cette fonction met à jour ou ajoute les informations d'un inventaire spécifique (quantités d'objets) dans le fichier <code>save/inventaire.csv</code>. Si une entrée correspondante au pseudo spécifié existe déjà, elle est mise à jour avec les nouvelles valeurs fournies. Si aucune entrée n'existe, elle sera ajoutée à la fin du fichier.</p>
+<p>Les objets sauvegardés incluent :</p><ul>
+<li>Mechaballs.</li>
+<li>Carburant.</li>
+<li>Repousses.</li>
+<li>Rappels.</li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventaire</td><td>Pointeur vers la structure d'inventaire (<code><a class="el" href="structinventaire__t.html" title="Représente l’inventaire d’un joueur contenant les objets utilisables.">inventaire_t</a></code>) à sauvegarder. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur ou du PNJ associé à cet inventaire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si l'inventaire est sauvegardé avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur d'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers doivent être accessibles en lecture/écriture dans le dossier <code>save</code>. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le fichier CSV est mis à jour avec les données actuelles de l'inventaire fourni.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction utilise un fichier temporaire pour éviter la corruption des données en cas de problème pendant la sauvegarde.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Assure-toi que le dossier <code>save</code> existe et que les fichiers sont accessibles en lecture et écriture. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_ab8195ddd8dbc45661b6c79de94f968e7_icgraph.png" border="0" usemap="#asauv_8h_ab8195ddd8dbc45661b6c79de94f968e7_icgraph" alt=""/></div>
+<map name="asauv_8h_ab8195ddd8dbc45661b6c79de94f968e7_icgraph" id="asauv_8h_ab8195ddd8dbc45661b6c79de94f968e7_icgraph">
+<area shape="rect" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="881,107,1033,132"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="705,107,833,132"/>
+<area shape="poly" title=" " alt="" coords="868,122,834,122,834,117,868,117"/>
+<area shape="rect" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="560,5,657,31"/>
+<area shape="poly" title=" " alt="" coords="735,102,628,33,631,28,738,97"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="374,56,470,81"/>
+<area shape="poly" title=" " alt="" coords="691,109,657,103,470,77,470,72,658,98,692,103"/>
+<area shape="rect" href="sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="569,271,648,296"/>
+<area shape="poly" title=" " alt="" coords="748,144,624,272,620,269,744,140"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="345,105,499,131"/>
+<area shape="poly" title=" " alt="" coords="691,122,500,121,500,116,692,116"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="577,157,641,183"/>
+<area shape="poly" title=" " alt="" coords="716,139,642,163,640,158,714,134"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="353,5,491,31"/>
+<area shape="poly" title=" " alt="" coords="546,21,491,21,491,15,546,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,296,284,321"/>
+<area shape="poly" title=" " alt="" coords="556,289,284,307,284,302,555,284"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,321,512,347"/>
+<area shape="poly" title=" " alt="" coords="557,300,470,324,469,319,555,295"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,296,109,321"/>
+<area shape="poly" title=" " alt="" coords="144,311,110,311,110,306,144,306"/>
+<area shape="poly" title=" " alt="" coords="318,324,284,319,284,314,319,318"/>
+<area shape="poly" title=" " alt="" coords="584,150,551,121,511,95,469,80,471,75,513,90,554,117,587,146"/>
+<area shape="poly" title=" " alt="" coords="563,160,468,133,469,128,564,155"/>
+<area shape="rect" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="387,220,457,245"/>
+<area shape="poly" title=" " alt="" coords="566,190,513,210,458,226,457,221,511,205,564,185"/>
+<area shape="rect" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="359,155,485,195"/>
+<area shape="poly" title=" " alt="" coords="563,174,486,176,485,171,563,169"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a48e80e16d5df5b56d2279ae7c965bb71" name="a48e80e16d5df5b56d2279ae7c965bb71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48e80e16d5df5b56d2279ae7c965bb71">&#9670;&#160;</a></span>sauvegarde_mechas_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_mechas_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>mechas_joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_mechas</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde l'équipe de Mechas d'un joueur dans un fichier CSV. </p>
+<p>Cette fonction met à jour ou ajoute les informations détaillées des Mechas appartenant à un joueur dans le fichier <code>save/infomechas.csv</code>. Pour chaque Mecha, les informations sauvegardées incluent :</p><ul>
+<li>Numéro du Mecha dans l'équipe.</li>
+<li>Identifiant du Mecha.</li>
+<li>Niveau actuel.</li>
+<li>Points de vie actuels et maximum.</li>
+<li>Expérience accumulée.</li>
+<li>Statistiques : attaque, défense et vitesse.</li>
+<li>Identifiants des deux attaques disponibles.</li>
+<li>Nombre d'utilisations restantes pour chaque attaque.</li>
+</ul>
+<p>Si une entrée correspondante à un Mecha précis existe déjà, elle est mise à jour avec les nouvelles valeurs. Sinon, une nouvelle entrée sera créée pour chaque Mecha manquant.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mechas_joueur</td><td>Tableau de structures <code><a class="el" href="structmechas__joueur__t.html" title="Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.">mechas_joueur_t</a></code> contenant les données des Mechas à sauvegarder. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur concerné par cette sauvegarde. </td></tr>
+    <tr><td class="paramname">nb_mechas</td><td>Nombre de Mechas actuellement dans l'équipe du joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si les Mechas ont été sauvegardés avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur d'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers doivent être accessibles en lecture et écriture dans le dossier <code>save</code>. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le fichier CSV est mis à jour avec les données actuelles de chaque Mecha de l'équipe du joueur.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction crée un fichier temporaire pour garantir l'intégrité des données lors de la sauvegarde.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie que le dossier <code>save</code> existe et que les fichiers nécessaires sont accessibles. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a48e80e16d5df5b56d2279ae7c965bb71_icgraph.png" border="0" usemap="#asauv_8h_a48e80e16d5df5b56d2279ae7c965bb71_icgraph" alt=""/></div>
+<map name="asauv_8h_a48e80e16d5df5b56d2279ae7c965bb71_icgraph" id="asauv_8h_a48e80e16d5df5b56d2279ae7c965bb71_icgraph">
+<area shape="rect" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="881,107,1065,132"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="705,107,833,132"/>
+<area shape="poly" title=" " alt="" coords="867,122,833,122,833,117,867,117"/>
+<area shape="rect" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="560,5,657,31"/>
+<area shape="poly" title=" " alt="" coords="735,102,628,33,631,28,738,97"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="374,56,470,81"/>
+<area shape="poly" title=" " alt="" coords="691,109,657,103,470,77,470,72,658,98,692,103"/>
+<area shape="rect" href="sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="569,271,648,296"/>
+<area shape="poly" title=" " alt="" coords="748,144,624,272,620,269,744,140"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="345,105,499,131"/>
+<area shape="poly" title=" " alt="" coords="691,122,500,121,500,116,692,116"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="577,157,641,183"/>
+<area shape="poly" title=" " alt="" coords="716,139,642,163,640,158,714,134"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="353,5,491,31"/>
+<area shape="poly" title=" " alt="" coords="546,21,491,21,491,15,546,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,296,284,321"/>
+<area shape="poly" title=" " alt="" coords="556,289,284,307,284,302,555,284"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,321,512,347"/>
+<area shape="poly" title=" " alt="" coords="557,300,470,324,469,319,555,295"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,296,109,321"/>
+<area shape="poly" title=" " alt="" coords="144,311,110,311,110,306,144,306"/>
+<area shape="poly" title=" " alt="" coords="318,324,284,319,284,314,319,318"/>
+<area shape="poly" title=" " alt="" coords="584,150,551,121,511,95,469,80,471,75,513,90,554,117,587,146"/>
+<area shape="poly" title=" " alt="" coords="563,160,468,133,469,128,564,155"/>
+<area shape="rect" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="387,220,457,245"/>
+<area shape="poly" title=" " alt="" coords="566,190,513,210,458,226,457,221,511,205,564,185"/>
+<area shape="rect" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="359,155,485,195"/>
+<area shape="poly" title=" " alt="" coords="563,174,486,176,485,171,563,169"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a68cba593cfe77461f153f38b2a08a374" name="a68cba593cfe77461f153f38b2a08a374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68cba593cfe77461f153f38b2a08a374">&#9670;&#160;</a></span>sauvegarde_partie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_partie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde l'état global d'une partie d'un joueur dans plusieurs fichiers CSV. </p>
+<p>Cette fonction sauvegarde les informations principales du joueur, telles que :</p><ul>
+<li>Pseudo du joueur.</li>
+<li>Sexe du personnage.</li>
+<li>Carte actuelle (<code>numMap</code>).</li>
+<li>Position (<code>x</code>, <code>y</code>) actuelle du joueur sur la carte.</li>
+<li>Dernier point de sauvegarde atteint.</li>
+</ul>
+<p>Les informations sont sauvegardées dans le fichier <code>save/joueur.csv</code>. <br  />
+ Si une sauvegarde correspondant au pseudo du joueur existe déjà, elle est mise à jour ; <br  />
+ sinon, une nouvelle entrée est créée.</p>
+<p>La fonction sauvegarde également automatiquement :</p><ul>
+<li>L'inventaire du joueur (objets possédés) via la fonction <code>sauvegarde_inventaire</code>.</li>
+<li>L'équipe actuelle de Mechas du joueur via la fonction <code>sauvegarde_mechas_joueur</code>.</li>
+</ul>
+<p>Ces informations sont respectivement enregistrées dans les fichiers :</p><ul>
+<li><code>save/inventaire.csv</code></li>
+<li><code>save/infomechas.csv</code></li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure <a class="el" href="structjoueur__t.html" title="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.">joueur_t</a> contenant toutes les données à sauvegarder. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur concerné par cette sauvegarde.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la sauvegarde complète s'est déroulée correctement.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur lors de l'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier <code>save</code>. Les fonctions <code>sauvegarde_inventaire</code> et <code>sauvegarde_mechas_joueur</code> doivent être valides. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Tous les fichiers CSV concernés sont mis à jour avec les informations actuelles du joueur.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Un fichier temporaire est utilisé pour garantir l'intégrité des données pendant la sauvegarde.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie la disponibilité des fichiers CSV nécessaires et le bon fonctionnement des fonctions annexes pour éviter toute perte de données. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a68cba593cfe77461f153f38b2a08a374_cgraph.png" border="0" usemap="#asauv_8h_a68cba593cfe77461f153f38b2a08a374_cgraph" alt=""/></div>
+<map name="asauv_8h_a68cba593cfe77461f153f38b2a08a374_cgraph" id="asauv_8h_a68cba593cfe77461f153f38b2a08a374_cgraph">
+<area shape="rect" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="5,31,133,56"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="197,5,349,31"/>
+<area shape="poly" title=" " alt="" coords="133,33,183,26,184,32,134,38"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="181,55,365,80"/>
+<area shape="poly" title=" " alt="" coords="134,48,168,52,167,58,134,54"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a68cba593cfe77461f153f38b2a08a374_icgraph.png" border="0" usemap="#asauv_8h_a68cba593cfe77461f153f38b2a08a374_icgraph" alt=""/></div>
+<map name="asauv_8h_a68cba593cfe77461f153f38b2a08a374_icgraph" id="asauv_8h_a68cba593cfe77461f153f38b2a08a374_icgraph">
+<area shape="rect" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="705,107,833,132"/>
+<area shape="rect" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="560,5,657,31"/>
+<area shape="poly" title=" " alt="" coords="735,102,628,33,631,28,738,97"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="374,56,470,81"/>
+<area shape="poly" title=" " alt="" coords="691,109,657,103,470,77,470,72,658,98,692,103"/>
+<area shape="rect" href="sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="569,271,648,296"/>
+<area shape="poly" title=" " alt="" coords="748,144,624,272,620,269,744,140"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="345,105,499,131"/>
+<area shape="poly" title=" " alt="" coords="691,122,500,121,500,116,692,116"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="577,157,641,183"/>
+<area shape="poly" title=" " alt="" coords="716,139,642,163,640,158,714,134"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="353,5,491,31"/>
+<area shape="poly" title=" " alt="" coords="546,21,491,21,491,15,546,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,296,284,321"/>
+<area shape="poly" title=" " alt="" coords="556,289,284,307,284,302,555,284"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,321,512,347"/>
+<area shape="poly" title=" " alt="" coords="557,300,470,324,469,319,555,295"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,296,109,321"/>
+<area shape="poly" title=" " alt="" coords="144,311,110,311,110,306,144,306"/>
+<area shape="poly" title=" " alt="" coords="318,324,284,319,284,314,319,318"/>
+<area shape="poly" title=" " alt="" coords="584,150,551,121,511,95,469,80,471,75,513,90,554,117,587,146"/>
+<area shape="poly" title=" " alt="" coords="563,160,468,133,469,128,564,155"/>
+<area shape="rect" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="387,220,457,245"/>
+<area shape="poly" title=" " alt="" coords="566,190,513,210,458,226,457,221,511,205,564,185"/>
+<area shape="rect" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="359,155,485,195"/>
+<area shape="poly" title=" " alt="" coords="563,174,486,176,485,171,563,169"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab1da7937b8e445add82b83c23950cc74" name="ab1da7937b8e445add82b83c23950cc74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1da7937b8e445add82b83c23950cc74">&#9670;&#160;</a></span>sauvegarde_pnj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_pnj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpnj__t.html">pnj_t</a> *&#160;</td>
+          <td class="paramname"><em>pnj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id_pnj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde ou met à jour les données d'un PNJ spécifique pour un joueur dans un fichier CSV personnalisé. </p>
+<p>Cette fonction sauvegarde les données associées à un PNJ particulier (identifié par son ID) dans un fichier CSV dédié au joueur concerné (<code>save/pnj_[pseudo].csv</code>). Si l'entrée correspondant à l'ID du PNJ existe déjà, les informations suivantes seront mises à jour :</p><ul>
+<li>ID du PNJ.</li>
+<li>Identifiant de la carte où se trouve le PNJ.</li>
+<li>Pseudo du PNJ.</li>
+<li>État d'interaction (non rencontré, rencontré, combat terminé, etc.).</li>
+<li>Dialogues de début et de fin d'interaction.</li>
+<li>Position (<code>x</code>, <code>y</code>) et orientation du PNJ sur la carte.</li>
+</ul>
+<p>Si l'entrée du PNJ n'existe pas, elle sera ajoutée au fichier.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pnj</td><td>Pointeur vers la structure <code><a class="el" href="structpnj__t.html" title="Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.">pnj_t</a></code> contenant les données actuelles du PNJ à sauvegarder. </td></tr>
+    <tr><td class="paramname">id_pnj</td><td>Identifiant unique du PNJ à sauvegarder ou à mettre à jour. </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur associé à cette sauvegarde.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la sauvegarde ou la mise à jour a été réalisée avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> si une erreur survient lors de l'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le dossier <code>save</code> doit exister et être accessible en lecture/écriture. Le fichier CSV personnalisé (<code>save/pnj_[pseudo].csv</code>) doit être accessible (ou sera créé si inexistant). Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE_DESC</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le fichier CSV spécifique au joueur est mis à jour ou créé avec les informations actuelles du PNJ.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Utilise un fichier temporaire pour assurer l'intégrité des données lors de la sauvegarde.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie que le pseudo du joueur ne comporte aucun caractère spécial incompatible avec le système de fichiers. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_ab1da7937b8e445add82b83c23950cc74_icgraph.png" border="0" usemap="#asauv_8h_ab1da7937b8e445add82b83c23950cc74_icgraph" alt=""/></div>
+<map name="asauv_8h_ab1da7937b8e445add82b83c23950cc74_icgraph" id="asauv_8h_ab1da7937b8e445add82b83c23950cc74_icgraph">
+<area shape="rect" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="393,113,507,139"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,13,131,39"/>
+<area shape="poly" title=" " alt="" coords="431,104,395,62,371,42,344,27,289,12,232,8,178,11,131,18,130,13,177,6,232,3,290,7,346,22,374,38,399,58,435,100"/>
+<area shape="rect" href="combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="232,37,321,63"/>
+<area shape="poly" title=" " alt="" coords="407,110,306,65,308,60,409,105"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,63,160,88"/>
+<area shape="poly" title=" " alt="" coords="380,119,160,88,161,83,380,114"/>
+<area shape="rect" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="241,139,312,164"/>
+<area shape="poly" title=" " alt="" coords="380,139,313,149,312,143,379,133"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="208,188,345,213"/>
+<area shape="poly" title=" " alt="" coords="413,147,346,179,317,190,315,185,344,174,411,143"/>
+<area shape="rect" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="213,238,340,278"/>
+<area shape="poly" title=" " alt="" coords="431,151,393,189,347,228,327,240,324,235,344,224,390,185,427,147"/>
+<area shape="poly" title=" " alt="" coords="218,45,131,34,131,29,219,40"/>
+<area shape="poly" title=" " alt="" coords="219,60,161,68,160,62,218,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a020e784ece3effc4c331f7955d822f1e" name="a020e784ece3effc4c331f7955d822f1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020e784ece3effc4c331f7955d822f1e">&#9670;&#160;</a></span>suppression_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int suppression_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structinventaire__t.html">inventaire_t</a> *&#160;</td>
+          <td class="paramname"><em>inventaire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime l'entrée d'un inventaire associé à un joueur (ou PNJ) d'un fichier CSV. </p>
+<p>Cette fonction supprime définitivement les données d'inventaire correspondant au pseudo spécifié du fichier <code>save/inventaire.csv</code>. Elle crée un fichier temporaire, recopie toutes les entrées sauf celle associée au pseudo fourni, puis remplace l'ancien fichier par ce fichier temporaire.</p>
+<p>Cette opération est utile pour nettoyer les données associées à un joueur supprimé ou réinitialisé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventaire</td><td>Pointeur vers une structure d'inventaire (non utilisée ici, conservée pour compatibilité). </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur ou du PNJ à supprimer de l'inventaire.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si l'entrée de l'inventaire a été supprimée avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur lors de l'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier <code>save</code>. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>L'entrée correspondant au pseudo spécifié est supprimée du fichier <code>inventaire.csv</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La structure <code>inventaire</code> en paramètre est conservée pour compatibilité mais n'est pas utilisée par cette fonction.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette opération est irréversible. Assure-toi que les données ne seront plus nécessaires avant d'appeler cette fonction. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a020e784ece3effc4c331f7955d822f1e_icgraph.png" border="0" usemap="#asauv_8h_a020e784ece3effc4c331f7955d822f1e_icgraph" alt=""/></div>
+<map name="asauv_8h_a020e784ece3effc4c331f7955d822f1e_icgraph" id="asauv_8h_a020e784ece3effc4c331f7955d822f1e_icgraph">
+<area shape="rect" title="Supprime l&#39;entrée d&#39;un inventaire associé à un joueur (ou PNJ) d&#39;un fichier CSV." alt="" coords="739,5,893,31"/>
+<area shape="rect" href="sauv_8c.html#a3748382cfddb2c574b37de5987534cea" title="Supprime définitivement toutes les données d&#39;une partie d&#39;un joueur depuis les fichiers CSV." alt="" coords="560,5,691,31"/>
+<area shape="poly" title=" " alt="" coords="724,21,691,21,691,15,724,15"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,5,512,31"/>
+<area shape="poly" title=" " alt="" coords="546,21,512,21,512,15,546,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="318,21,284,21,284,15,318,15"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="accca901359a4eafa002b577efb20fff1" name="accca901359a4eafa002b577efb20fff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accca901359a4eafa002b577efb20fff1">&#9670;&#160;</a></span>suppression_mechas_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int suppression_mechas_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>mechas_joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_mechas</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime toutes les entrées associées aux Mechas d'un joueur dans un fichier CSV. </p>
+<p>Cette fonction supprime définitivement les informations des Mechas appartenant à un joueur spécifique depuis le fichier <code>save/infomechas.csv</code>. Un fichier temporaire est créé, puis toutes les entrées sont recopiées sauf celles associées au pseudo spécifié. Finalement, l'ancien fichier est remplacé par le fichier temporaire.</p>
+<p>Cette fonction est utile lorsqu'une partie est supprimée ou réinitialisée afin d'assurer qu'il ne reste aucune donnée associée aux Mechas du joueur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mechas_joueur</td><td>Tableau de structures <code><a class="el" href="structmechas__joueur__t.html" title="Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.">mechas_joueur_t</a></code> (non utilisé dans cette fonction, conservé pour compatibilité). </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur dont les données Mechas doivent être supprimées. </td></tr>
+    <tr><td class="paramname">nb_mechas</td><td>Nombre de Mechas dans l'équipe (paramètre non utilisé ici, conservé pour compatibilité).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si les entrées ont été supprimées avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur lors de l'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier <code>save</code>. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Toutes les entrées correspondant aux Mechas du joueur sont supprimées du fichier <code>infomechas.csv</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Les paramètres <code>mechas_joueur</code> et <code>nb_mechas</code> ne sont pas utilisés directement ici, mais sont conservés pour compatibilité avec d'autres fonctions.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette opération est irréversible. Assure-toi que les données supprimées ne seront plus nécessaires. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_accca901359a4eafa002b577efb20fff1_icgraph.png" border="0" usemap="#asauv_8h_accca901359a4eafa002b577efb20fff1_icgraph" alt=""/></div>
+<map name="asauv_8h_accca901359a4eafa002b577efb20fff1_icgraph" id="asauv_8h_accca901359a4eafa002b577efb20fff1_icgraph">
+<area shape="rect" title="Supprime toutes les entrées associées aux Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="739,5,884,45"/>
+<area shape="rect" href="sauv_8c.html#a3748382cfddb2c574b37de5987534cea" title="Supprime définitivement toutes les données d&#39;une partie d&#39;un joueur depuis les fichiers CSV." alt="" coords="560,13,691,38"/>
+<area shape="poly" title=" " alt="" coords="725,28,691,28,691,23,725,23"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,13,512,38"/>
+<area shape="poly" title=" " alt="" coords="546,28,512,28,512,23,546,23"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,13,284,38"/>
+<area shape="poly" title=" " alt="" coords="318,28,284,28,284,23,318,23"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,13,109,38"/>
+<area shape="poly" title=" " alt="" coords="144,28,110,28,110,23,144,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3748382cfddb2c574b37de5987534cea" name="a3748382cfddb2c574b37de5987534cea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3748382cfddb2c574b37de5987534cea">&#9670;&#160;</a></span>suppression_partie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int suppression_partie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>pseudo</em>[LONGUEUR_MAX_PSEUDO]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime définitivement toutes les données d'une partie d'un joueur depuis les fichiers CSV. </p>
+<p>Cette fonction supprime intégralement les informations associées à un joueur spécifique des fichiers suivants :</p><ul>
+<li><code>save/joueur.csv</code> : informations globales du joueur (position, carte, etc.).</li>
+<li><code>save/inventaire.csv</code> : inventaire du joueur (objets possédés).</li>
+<li><code>save/infomechas.csv</code> : Mechas possédés par le joueur.</li>
+<li><code>save/pnj_[pseudo].csv</code> : informations des interactions avec les PNJs propres à ce joueur.</li>
+</ul>
+<p>La fonction procède par recopie des données dans des fichiers temporaires, en omettant les entrées correspondant au pseudo spécifié, puis remplace les fichiers originaux par les temporaires pour garantir la sécurité des données.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure <a class="el" href="structjoueur__t.html" title="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.">joueur_t</a> contenant les informations du joueur (utilisé uniquement pour l'accès aux autres fonctions). </td></tr>
+    <tr><td class="paramname">pseudo</td><td>Chaîne de caractères représentant le pseudo du joueur à supprimer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si toutes les données associées au joueur ont été supprimées avec succès.</li>
+<li><code>ERREUR_OUVERTURE</code> en cas d'erreur lors de l'ouverture des fichiers.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier <code>save</code>. Les fonctions <code>suppression_inventaire</code> et <code>suppression_mechas_joueur</code> doivent être définies et valides. Les constantes (<code>LONGUEUR_MAX_PSEUDO</code>, <code>LONGUEUR_LIGNE</code>, <code>OK</code>, <code>ERREUR_OUVERTURE</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Toutes les entrées correspondant au joueur sont supprimées définitivement des fichiers concernés.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Utilise des fichiers temporaires pour garantir l'intégrité des données durant la suppression.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette opération est irréversible. Assure-toi que les données du joueur ne seront plus nécessaires avant de lancer cette opération. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a3748382cfddb2c574b37de5987534cea_cgraph.png" border="0" usemap="#asauv_8h_a3748382cfddb2c574b37de5987534cea_cgraph" alt=""/></div>
+<map name="asauv_8h_a3748382cfddb2c574b37de5987534cea_cgraph" id="asauv_8h_a3748382cfddb2c574b37de5987534cea_cgraph">
+<area shape="rect" title="Supprime définitivement toutes les données d&#39;une partie d&#39;un joueur depuis les fichiers CSV." alt="" coords="5,35,136,60"/>
+<area shape="rect" href="sauv_8c.html#a020e784ece3effc4c331f7955d822f1e" title="Supprime l&#39;entrée d&#39;un inventaire associé à un joueur (ou PNJ) d&#39;un fichier CSV." alt="" coords="184,5,339,31"/>
+<area shape="poly" title=" " alt="" coords="136,35,170,29,171,35,137,40"/>
+<area shape="rect" href="sauv_8c.html#accca901359a4eafa002b577efb20fff1" title="Supprime toutes les entrées associées aux Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="189,55,334,95"/>
+<area shape="poly" title=" " alt="" coords="137,54,175,60,175,65,136,60"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="sauv_8h_a3748382cfddb2c574b37de5987534cea_icgraph.png" border="0" usemap="#asauv_8h_a3748382cfddb2c574b37de5987534cea_icgraph" alt=""/></div>
+<map name="asauv_8h_a3748382cfddb2c574b37de5987534cea_icgraph" id="asauv_8h_a3748382cfddb2c574b37de5987534cea_icgraph">
+<area shape="rect" title="Supprime définitivement toutes les données d&#39;une partie d&#39;un joueur depuis les fichiers CSV." alt="" coords="560,5,691,31"/>
+<area shape="rect" href="menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,5,512,31"/>
+<area shape="poly" title=" " alt="" coords="546,21,512,21,512,15,546,15"/>
+<area shape="rect" href="menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="318,21,284,21,284,15,318,15"/>
+<area shape="rect" href="menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="sauv_8h.html">sauv.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

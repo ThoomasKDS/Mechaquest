@@ -1,0 +1,36 @@
+<map id="parler_a_vin_gazole" name="parler_a_vin_gazole">
+<area shape="rect" id="Node000001" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="5,203,143,228"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="356,152,476,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,200,190,187,342,168,342,174,191,193,128,205"/>
+<area shape="rect" id="Node000012" href="$pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="199,203,296,228"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="143,213,185,213,185,218,143,218"/>
+<area shape="rect" id="Node000017" href="$sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="191,252,304,277"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="120,225,189,246,188,251,119,231"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="565,29,675,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,150,467,108,495,84,527,64,550,53,553,58,529,68,499,88,471,112,430,154"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="585,79,655,104"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="442,149,527,113,570,100,572,105,529,118,444,154"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="581,128,659,153"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="476,155,567,144,567,149,476,160"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="559,177,681,203"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="476,169,545,178,544,183,476,175"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="545,227,695,252"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="452,175,481,188,505,201,529,213,550,220,548,225,527,218,503,206,479,192,450,180"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="760,5,884,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="655,81,711,64,759,40,773,33,775,38,761,44,713,68,656,86"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="775,55,869,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="655,85,761,72,762,77,656,90"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="776,104,868,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="656,93,763,107,762,112,655,98"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="785,153,859,179"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="656,96,713,113,737,125,761,138,777,145,775,150,759,143,735,130,711,118,655,101"/>
+<area shape="poly" id="edge12_Node000012_Node000002" title=" " alt="" coords="290,200,359,179,361,184,291,205"/>
+<area shape="rect" id="Node000013" href="$pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="363,203,469,228"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="296,213,349,213,349,218,296,218"/>
+<area shape="rect" id="Node000014" href="$sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="352,276,480,301"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="279,226,374,268,372,273,277,231"/>
+<area shape="rect" id="Node000015" href="$sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="544,276,696,301"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="480,286,530,286,530,291,480,291"/>
+<area shape="rect" id="Node000016" href="$sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="528,325,712,351"/>
+<area shape="poly" id="edge16_Node000014_Node000016" title=" " alt="" coords="470,299,554,319,553,325,469,304"/>
+</map>

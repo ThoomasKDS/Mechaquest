@@ -1,0 +1,67 @@
+\doxysection{Référence de la structure img\+\_\+player\+\_\+t}
+\hypertarget{structimg__player__t}{}\label{structimg__player__t}\index{img\_player\_t@{img\_player\_t}}
+
+
+Structure contenant les différentes textures du joueur selon les directions de déplacement.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structimg__player__t_aacf0144cd0b7568635c242d68fb6992d}{gauche}} \mbox{[}4\mbox{]}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structimg__player__t_aca779d2fc2c21a28a2a3a6d25fd61fc9}{droite}} \mbox{[}4\mbox{]}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structimg__player__t_a70bcc54e2d9634f0224cc3131596818f}{haut}} \mbox{[}4\mbox{]}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structimg__player__t_ac08048b352901a482190bb9c05a91569}{bas}} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure contenant les différentes textures du joueur selon les directions de déplacement. 
+
+Cette structure regroupe les textures utilisées pour afficher les animations du personnage joueur lorsqu\textquotesingle{}il se déplace dans différentes directions. Chaque tableau contient quatre textures correspondant aux différentes étapes d\textquotesingle{}une animation dans la direction spécifiée. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structimg__player__t_ac08048b352901a482190bb9c05a91569}\label{structimg__player__t_ac08048b352901a482190bb9c05a91569} 
+\index{img\_player\_t@{img\_player\_t}!bas@{bas}}
+\index{bas@{bas}!img\_player\_t@{img\_player\_t}}
+\doxysubsubsection{\texorpdfstring{bas}{bas}}
+{\footnotesize\ttfamily img\+\_\+player\+\_\+t\+::bas}
+
+Tableau de 4 textures SDL représentant les étapes d\textquotesingle{}animation du joueur se déplaçant vers le bas.
+
+\begin{DoxyNote}{Note}
+Les textures doivent être chargées au préalable à partir des fichiers images appropriés avant leur utilisation.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Il est nécessaire de libérer explicitement chacune de ces textures à la fermeture du jeu (via {\ttfamily SDL\+\_\+\+Destroy\+Texture}) pour éviter toute fuite mémoire. 
+\end{DoxyWarning}
+\Hypertarget{structimg__player__t_aca779d2fc2c21a28a2a3a6d25fd61fc9}\label{structimg__player__t_aca779d2fc2c21a28a2a3a6d25fd61fc9} 
+\index{img\_player\_t@{img\_player\_t}!droite@{droite}}
+\index{droite@{droite}!img\_player\_t@{img\_player\_t}}
+\doxysubsubsection{\texorpdfstring{droite}{droite}}
+{\footnotesize\ttfamily img\+\_\+player\+\_\+t\+::droite}
+
+Tableau de 4 textures SDL représentant les étapes d\textquotesingle{}animation du joueur se déplaçant vers la droite. \Hypertarget{structimg__player__t_aacf0144cd0b7568635c242d68fb6992d}\label{structimg__player__t_aacf0144cd0b7568635c242d68fb6992d} 
+\index{img\_player\_t@{img\_player\_t}!gauche@{gauche}}
+\index{gauche@{gauche}!img\_player\_t@{img\_player\_t}}
+\doxysubsubsection{\texorpdfstring{gauche}{gauche}}
+{\footnotesize\ttfamily img\+\_\+player\+\_\+t\+::gauche}
+
+Tableau de 4 textures SDL représentant les étapes d\textquotesingle{}animation du joueur se déplaçant vers la gauche. \Hypertarget{structimg__player__t_a70bcc54e2d9634f0224cc3131596818f}\label{structimg__player__t_a70bcc54e2d9634f0224cc3131596818f} 
+\index{img\_player\_t@{img\_player\_t}!haut@{haut}}
+\index{haut@{haut}!img\_player\_t@{img\_player\_t}}
+\doxysubsubsection{\texorpdfstring{haut}{haut}}
+{\footnotesize\ttfamily img\+\_\+player\+\_\+t\+::haut}
+
+Tableau de 4 textures SDL représentant les étapes d\textquotesingle{}animation du joueur se déplaçant vers le haut. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

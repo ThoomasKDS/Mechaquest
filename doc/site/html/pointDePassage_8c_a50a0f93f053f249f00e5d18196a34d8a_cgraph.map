@@ -1,0 +1,9 @@
+<map id="soigner" name="soigner">
+<area shape="rect" id="Node000001" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="5,31,69,56"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="117,31,245,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,41,103,41,103,46,69,46"/>
+<area shape="rect" id="Node000003" href="$sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="309,5,461,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,33,295,26,296,32,246,38"/>
+<area shape="rect" id="Node000004" href="$sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="293,55,477,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="246,48,280,52,279,58,246,54"/>
+</map>

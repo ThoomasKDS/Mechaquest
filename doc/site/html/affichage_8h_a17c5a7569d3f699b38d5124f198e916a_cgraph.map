@@ -1,0 +1,49 @@
+<map id="afficherInventaire" name="afficherInventaire">
+<area shape="rect" id="Node000001" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="5,193,128,219"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#aff36844a9bc0417b311b691e2957adae" title="Affiche le Mechadex du joueur, listant tous ses Méchas capturés." alt="" coords="176,193,301,219"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,203,162,203,162,209,128,209"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a8d356fb4eb14df4797e1c82c54fb986a" title="Affiche un texte multiligne à l&#39;écran en gérant les sauts de ligne." alt="" coords="583,5,680,31"/>
+<area shape="poly" id="edge26_Node000001_Node000004" title=" " alt="" coords="74,191,113,139,141,109,175,84,223,58,275,39,329,25,384,16,486,8,569,10,569,15,486,14,384,21,331,30,277,44,225,63,177,88,145,113,117,143,78,195"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="576,56,687,81"/>
+<area shape="poly" id="edge28_Node000001_Node000005" title=" " alt="" coords="84,191,127,160,191,122,267,84,349,57,404,48,461,46,563,54,562,59,461,52,405,53,350,62,269,89,194,126,130,165,87,195"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="596,305,667,331"/>
+<area shape="poly" id="edge29_Node000001_Node000006" title=" " alt="" coords="92,216,131,236,177,253,289,279,402,297,504,308,582,313,582,319,503,313,401,302,288,284,175,258,129,240,90,221"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="582,204,681,229"/>
+<area shape="poly" id="edge30_Node000001_Node000011" title=" " alt="" coords="117,216,176,229,269,244,342,252,415,253,508,245,576,231,577,236,508,250,415,258,342,258,268,249,176,234,116,221"/>
+<area shape="rect" id="Node000015" href="$affichage_8c.html#a9519a3474a5b9ff0162efbc07d652b0c" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="349,105,508,131"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="119,191,361,131,363,137,121,196"/>
+<area shape="rect" id="Node000017" href="$menu_8c.html#a18a2045c75cbd09addc1567af7adc09d" title="Charge une image depuis un fichier et la convertit en texture SDL." alt="" coords="183,459,295,484"/>
+<area shape="poly" id="edge27_Node000001_Node000017" title=" " alt="" coords="73,218,84,259,105,317,136,380,155,410,178,437,193,450,190,454,174,441,151,413,131,383,100,319,79,261,68,219"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5" title="Affiche l&#39;écran d&#39;information détaillée d&#39;un Mécha du joueur." alt="" coords="362,155,495,180"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,191,352,180,353,185,302,196"/>
+<area shape="poly" id="edge14_Node000002_Node000004" title=" " alt="" coords="243,192,257,163,279,126,310,88,348,57,403,33,461,19,518,12,569,11,569,17,519,18,462,24,404,38,351,62,314,92,284,129,262,166,248,194"/>
+<area shape="poly" id="edge15_Node000002_Node000005" title=" " alt="" coords="246,192,284,141,314,112,348,90,402,71,459,61,513,58,562,59,562,64,514,63,459,67,403,76,351,95,317,117,288,144,250,195"/>
+<area shape="poly" id="edge16_Node000002_Node000006" title=" " alt="" coords="272,216,350,245,476,280,584,305,582,310,475,285,349,250,270,221"/>
+<area shape="poly" id="edge17_Node000002_Node000011" title=" " alt="" coords="277,216,350,234,429,240,508,234,568,226,568,231,508,239,429,245,349,239,275,221"/>
+<area shape="rect" id="Node000014" href="$affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="583,155,679,180"/>
+<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="301,202,399,198,508,189,570,178,571,183,508,194,399,204,302,208"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="486,152,506,140,517,128,523,117,530,92,536,67,543,54,554,41,569,31,572,36,558,45,547,57,541,69,535,93,528,119,521,131,510,144,489,157"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="480,152,507,140,521,128,530,116,539,103,555,90,566,84,568,89,557,95,543,107,534,119,525,132,509,144,483,157"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="449,178,604,295,601,299,445,182"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="482,177,569,199,568,204,481,183"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="495,165,569,165,569,170,495,170"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="755,353,879,379"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="668,324,755,347,753,352,666,330"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="769,403,864,428"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="653,328,699,358,756,389,769,395,767,400,753,394,696,362,650,333"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="771,255,863,280"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="666,306,756,281,758,286,668,311"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="779,304,854,329"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="667,315,766,314,766,320,667,320"/>
+<area shape="rect" id="Node000012" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="777,155,856,180"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="679,201,763,179,765,184,680,207"/>
+<area shape="rect" id="Node000013" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="755,204,878,229"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="681,214,741,214,741,219,681,219"/>
+<area shape="poly" id="edge20_Node000015_Node000004" title=" " alt="" coords="448,103,495,73,555,41,574,33,576,38,557,46,498,77,450,107"/>
+<area shape="poly" id="edge21_Node000015_Node000005" title=" " alt="" coords="481,103,565,82,566,87,482,108"/>
+<area shape="poly" id="edge22_Node000015_Node000006" title=" " alt="" coords="492,129,510,140,530,164,538,188,544,213,558,241,582,269,607,294,603,298,578,273,554,243,539,215,533,190,525,167,506,144,489,133"/>
+<area shape="poly" id="edge23_Node000015_Node000011" title=" " alt="" coords="485,128,509,140,525,152,534,165,543,177,558,189,571,196,568,201,554,194,539,181,530,168,521,156,507,144,483,133"/>
+<area shape="poly" id="edge24_Node000015_Node000014" title=" " alt="" coords="482,128,571,150,570,155,481,133"/>
+<area shape="rect" id="Node000016" href="$affichage_8c.html#a76e0589a991f4ad00c5baae522dfeee1" title="Utilise un objet de l&#39;inventaire du joueur sur un Mécha donné." alt="" coords="556,105,707,131"/>
+<area shape="poly" id="edge25_Node000015_Node000016" title=" " alt="" coords="508,115,542,115,542,121,508,121"/>
+</map>

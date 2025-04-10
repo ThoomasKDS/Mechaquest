@@ -1,0 +1,17 @@
+digraph "draw_all"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="draw_all",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Gère et affiche tous les éléments visuels principaux du jeu."];
+  Node1 -> Node2 [id="edge5_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="draw_background",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4",tooltip="Affiche l'arrière-plan (background) actuel du jeu."];
+  Node1 -> Node3 [id="edge6_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="draw_calque",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd",tooltip="Affiche le calque (overlay) actuel du jeu."];
+  Node1 -> Node4 [id="edge7_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="draw_player",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#ab476829218385851d4e69263f07e488b",tooltip="Dessine le joueur à l'écran en fonction de sa direction et de son mouvement."];
+  Node1 -> Node5 [id="edge8_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="draw_pnj",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7",tooltip="Dessine un PNJ à l'écran en fonction de son identité et de son orientation."];
+}

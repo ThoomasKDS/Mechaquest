@@ -1,0 +1,174 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/son.h}
+\hypertarget{son_8h}{}\label{son_8h}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/son.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/son.h}}
+
+
+Gestion de la musique et des effets sonore du jeu.  
+
+
+{\ttfamily \#include "{}../lib/global.\+h"{}}\newline
+Graphe des dépendances par inclusion de son.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{son_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{son_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{son_8h_af9d16e65dd2edeed14e7713590f7c70b}{regler\+\_\+volume}} (\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}parametres)
+\begin{DoxyCompactList}\small\item\em Ajuste le volume de la musique et des bruitages selon les paramètres du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{son_8h_af58dc785a06c70e4b717a7cab49206d4}{lancer\+\_\+musique}} (const char \texorpdfstring{$\ast$}{*}fichier\+Musique)
+\begin{DoxyCompactList}\small\item\em Charge et lance la lecture en boucle d\textquotesingle{}une musique de fond. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{son_8h_a64f3965739e7b7f26b21c1b47a317268}{jouer\+\_\+bruit}} (const char \texorpdfstring{$\ast$}{*}fichier\+Son)
+\begin{DoxyCompactList}\small\item\em Joue un effet sonore ponctuel dans le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion de la musique et des effets sonore du jeu. 
+
+Ce fichier contient les déclarations des fonctions permettant de lancer une musique, faire des bruitage à partir des paramètres 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{son_8h_a64f3965739e7b7f26b21c1b47a317268}\label{son_8h_a64f3965739e7b7f26b21c1b47a317268} 
+\index{son.h@{son.h}!jouer\_bruit@{jouer\_bruit}}
+\index{jouer\_bruit@{jouer\_bruit}!son.h@{son.h}}
+\doxysubsubsection{\texorpdfstring{jouer\_bruit()}{jouer\_bruit()}}
+{\footnotesize\ttfamily void jouer\+\_\+bruit (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fichier\+Son }\end{DoxyParamCaption})}
+
+
+
+Joue un effet sonore ponctuel dans le jeu. 
+
+Cette fonction charge un fichier sonore (effet type bruitage) et le joue immédiatement sur un canal libre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fichier\+Son} & Le chemin vers le fichier sonore à charger (format compatible SDL\+\_\+mixer, ex\+: {\ttfamily .wav}, {\ttfamily .ogg}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item SDL\+\_\+mixer ({\ttfamily Mix\+\_\+\+Open\+Audio}) doit être initialisé.
+\item Le chemin {\ttfamily fichier\+Son} doit être valide et pointer vers un fichier existant.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le son est joué une seule fois sur le premier canal libre disponible.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Utilise {\ttfamily Mix\+\_\+\+Play\+Channel(-\/1, sound, 0)} pour choisir automatiquement un canal libre.
+\item La fonction charge et joue le son à chaque appel ; elle ne garde pas le son en mémoire.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun appel à {\ttfamily Mix\+\_\+\+Free\+Chunk} n\textquotesingle{}est fait après le chargement, ce qui peut entraîner des fuites mémoire si appelée fréquemment sans gestion externe.
+\item En cas d\textquotesingle{}échec de chargement ({\ttfamily Mix\+\_\+\+Load\+WAV}), une erreur est loggée avec {\ttfamily SDL\+\_\+\+Log\+Error}. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{son_8h_af58dc785a06c70e4b717a7cab49206d4}\label{son_8h_af58dc785a06c70e4b717a7cab49206d4} 
+\index{son.h@{son.h}!lancer\_musique@{lancer\_musique}}
+\index{lancer\_musique@{lancer\_musique}!son.h@{son.h}}
+\doxysubsubsection{\texorpdfstring{lancer\_musique()}{lancer\_musique()}}
+{\footnotesize\ttfamily void lancer\+\_\+musique (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fichier\+Musique }\end{DoxyParamCaption})}
+
+
+
+Charge et lance la lecture en boucle d\textquotesingle{}une musique de fond. 
+
+Cette fonction charge un fichier musical et démarre sa lecture en boucle si aucune musique n\textquotesingle{}est actuellement en cours de lecture.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fichier\+Musique} & Le chemin vers le fichier musical à charger (format compatible SDL\+\_\+mixer, ex\+: {\ttfamily .mp3}, {\ttfamily .ogg}, {\ttfamily .wav}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item SDL\+\_\+mixer ({\ttfamily Mix\+\_\+\+Open\+Audio}) doit être initialisé.
+\item Le chemin {\ttfamily fichier\+Musique} doit être valide et pointant vers un fichier musical existant.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item La musique est jouée en boucle infinie si elle est correctement chargée et aucune autre musique n\textquotesingle{}est active.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item {\ttfamily Mix\+\_\+\+Playing\+Music()} est utilisé pour vérifier s\textquotesingle{}il y a déjà une musique en cours.
+\item Si une musique est déjà en lecture, aucun changement n\textquotesingle{}est effectué.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item En cas d\textquotesingle{}erreur de chargement ({\ttfamily Mix\+\_\+\+Load\+MUS}), un message est affiché dans la console via {\ttfamily SDL\+\_\+\+Log\+Error}.
+\item Le fichier musique chargé n\textquotesingle{}est pas libéré dans cette fonction, ce qui peut entraîner une fuite mémoire si relancée plusieurs fois sans gestion. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{son_8h_af9d16e65dd2edeed14e7713590f7c70b}\label{son_8h_af9d16e65dd2edeed14e7713590f7c70b} 
+\index{son.h@{son.h}!regler\_volume@{regler\_volume}}
+\index{regler\_volume@{regler\_volume}!son.h@{son.h}}
+\doxysubsubsection{\texorpdfstring{regler\_volume()}{regler\_volume()}}
+{\footnotesize\ttfamily void regler\+\_\+volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parametres }\end{DoxyParamCaption})}
+
+
+
+Ajuste le volume de la musique et des bruitages selon les paramètres du joueur. 
+
+Cette fonction met à jour le volume général du jeu (musique et effets sonores) en fonction du pourcentage défini dans {\ttfamily parametres-\/\texorpdfstring{$>$}{>}volume}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parametres} & Un pointeur vers la structure {\ttfamily \doxylink{structparametre__t}{parametre\+\_\+t}} contenant les réglages de volume du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Le module SDL\+\_\+mixer ({\ttfamily Mix\+\_\+\+Open\+Audio}) doit être initialisé.
+\item Le pointeur {\ttfamily parametres} doit être valide.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le volume de la musique et des effets sonores est ajusté proportionnellement au pourcentage de {\ttfamily volume}.
+\item Si le volume est mis à {\ttfamily 0}, tous les bruitages en cours sont arrêtés ({\ttfamily Mix\+\_\+\+Halt\+Channel}).
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item {\ttfamily volume} est un pourcentage entre 0 et 100, converti sur l\textquotesingle{}échelle de {\ttfamily MIX\+\_\+\+MAX\+\_\+\+VOLUME}.
+\item {\ttfamily Mix\+\_\+\+Volume\+Music} ajuste uniquement la musique, tandis que {\ttfamily Mix\+\_\+\+Volume(-\/1, ...)} ajuste tous les canaux sonores.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Aucun contrôle n\textquotesingle{}est effectué sur les bornes de {\ttfamily volume}, supposé toujours entre 0 et 100.
+\item Si SDL\+\_\+mixer n\textquotesingle{}est pas initialisé, les appels à {\ttfamily Mix\+\_\+\+Volume\+Music} ou {\ttfamily Mix\+\_\+\+Volume} peuvent échouer silencieusement. 
+\end{DoxyItemize}
+\end{DoxyWarning}

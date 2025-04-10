@@ -1,0 +1,7 @@
+<map id="recuperation_joueur" name="recuperation_joueur">
+<area shape="rect" id="Node000001" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="332,5,467,31"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="319,21,284,21,284,15,319,15"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="game_t" name="game_t">
+<area shape="rect" id="Node000001" title="Structure principale contenant les ressources et paramètres liés à la gestion du jeu." alt="" coords="77,93,142,119"/>
+<area shape="rect" id="Node000002" href="$structimg__player__t.html" title="Structure contenant les différentes textures du joueur selon les directions de déplacement." alt="" coords="5,5,101,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,44,60,68,71,81,85,91,82,95,67,85,55,71,49,45"/>
+<area shape="rect" id="Node000003" href="$structimg__pnj__t.html" title="Structure regroupant les textures utilisées pour afficher les PNJs du jeu." alt="" coords="126,5,205,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,44,138,71,121,95,116,92,134,68,150,41"/>
+</map>

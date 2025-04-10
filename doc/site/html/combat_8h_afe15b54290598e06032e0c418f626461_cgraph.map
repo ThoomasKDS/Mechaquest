@@ -1,0 +1,28 @@
+<map id="evolution_mechas" name="evolution_mechas">
+<area shape="rect" id="Node000001" title="Gère l&#39;évolution d&#39;un Mecha joueur lorsqu&#39;il atteint le niveau requis." alt="" coords="5,172,132,197"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a1091893e7df87a967b878919b232b0d5" title="Affiche un dialogue interactif durant un combat entre deux Méchas." alt="" coords="180,172,351,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,182,166,182,166,187,132,187"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="603,48,713,73"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,169,603,75,604,80,307,174"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a159b2a6408c605d1fc9432689f92e3cb" title="Affiche à l&#39;écran tous les éléments graphiques d&#39;un combat entre deux Mechas." alt="" coords="423,172,523,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="351,182,409,182,409,187,351,187"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="790,270,869,296"/>
+<area shape="poly" id="edge12_Node000002_Node000007" title=" " alt="" coords="279,169,351,112,404,77,464,44,528,18,595,4,628,3,660,7,691,17,721,33,748,55,770,82,788,112,802,144,820,207,828,257,823,257,815,208,797,146,783,115,766,85,745,59,719,37,689,22,659,13,627,9,595,9,530,23,466,49,406,81,354,116,282,174"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="768,320,891,345"/>
+<area shape="poly" id="edge13_Node000002_Node000008" title=" " alt="" coords="288,195,340,225,414,264,503,302,597,330,677,339,754,338,754,343,677,344,595,335,501,307,412,269,337,230,285,199"/>
+<area shape="rect" id="Node000012" href="$affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="399,396,548,421"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="275,196,292,231,320,278,356,329,400,374,421,388,418,392,397,378,352,333,315,281,287,233,270,199"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="490,169,546,125,569,102,595,82,605,76,608,81,597,87,573,106,550,129,493,174"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#afc970416ff2ee1d9f8351a288625f23a" title="Concatène un entier à la fin d&#39;une chaîne de caractères." alt="" coords="627,245,689,270"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="507,195,597,231,616,239,614,244,595,236,505,200"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="609,294,707,320"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="489,195,535,236,597,281,608,287,606,291,595,285,532,240,486,199"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="596,97,720,122"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="504,169,595,131,610,125,612,130,597,136,506,174"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="610,146,706,172"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="523,175,596,165,597,170,524,180"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#ac0e780352c4ab1739b9e31be92740c2d" title="Dessine du texte à une position spécifique à l&#39;écran, avec gestion des retours à la ligne." alt="" coords="605,196,711,221"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="524,188,591,197,591,202,523,193"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="707,298,776,288,776,293,708,303"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="708,312,754,319,754,324,707,317"/>
+</map>

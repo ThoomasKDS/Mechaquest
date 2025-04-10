@@ -1,0 +1,5 @@
+<map id="choix_starter" name="choix_starter">
+<area shape="rect" id="Node000001" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="191,5,288,31"/>
+<area shape="rect" id="Node000002" href="$pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="5,5,143,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,21,143,21,143,15,177,15"/>
+</map>

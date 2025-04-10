@@ -1,0 +1,33 @@
+<map id="draw_calque" name="draw_calque">
+<area shape="rect" id="Node000001" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="795,296,889,321"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#a98de4f1f9f962af528305e0d3e88d9da" title="Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil." alt="" coords="600,271,747,296"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="781,302,746,297,747,292,782,297"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="638,320,709,345"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="781,320,709,330,709,325,781,315"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="413,156,533,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="624,322,598,309,483,183,487,180,602,305,626,318"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5" title="Affiche l&#39;écran d&#39;information détaillée d&#39;un Mécha du joueur." alt="" coords="406,269,539,295"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="624,323,523,297,524,292,625,318"/>
+<area shape="rect" id="Node000012" href="$affichage_8c.html#aff36844a9bc0417b311b691e2957adae" title="Affiche le Mechadex du joueur, listant tous ses Méchas capturés." alt="" coords="205,320,331,345"/>
+<area shape="poly" id="edge15_Node000003_Node000012" title=" " alt="" coords="624,335,331,335,331,330,624,330"/>
+<area shape="rect" id="Node000013" href="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="13,371,135,396"/>
+<area shape="poly" id="edge14_Node000003_Node000013" title=" " alt="" coords="624,339,136,381,135,376,624,334"/>
+<area shape="rect" id="Node000014" href="$affichage_8c.html#a9519a3474a5b9ff0162efbc07d652b0c" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="393,421,552,447"/>
+<area shape="poly" id="edge16_Node000003_Node000014" title=" " alt="" coords="641,355,553,404,509,424,507,419,551,400,639,350"/>
+<area shape="rect" id="Node000005" href="$pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="219,5,317,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="450,147,404,100,344,52,306,33,308,28,347,48,407,96,453,144"/>
+<area shape="rect" id="Node000006" href="$pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="5,31,143,56"/>
+<area shape="poly" id="edge8_Node000004_Node000006" title=" " alt="" coords="442,150,397,122,344,96,293,80,240,67,143,52,144,47,241,62,294,75,346,92,400,117,445,146"/>
+<area shape="rect" id="Node000007" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="220,107,316,132"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="406,155,315,133,317,128,407,150"/>
+<area shape="rect" id="Node000008" href="$pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="233,156,303,181"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="399,171,303,171,303,166,399,166"/>
+<area shape="rect" id="Node000009" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="191,205,345,231"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="407,187,322,208,321,203,406,182"/>
+<area shape="rect" id="Node000010" href="$pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="205,255,331,295"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="441,191,347,244,319,258,316,253,344,240,439,186"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="206,29,143,37,142,32,205,23"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="408,301,321,323,319,317,407,295"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="206,351,124,373,123,368,205,346"/>
+<area shape="poly" id="edge17_Node000014_Node000013" title=" " alt="" coords="379,427,190,405,135,396,136,391,191,399,380,422"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="attaque_ordi_sauvage" name="attaque_ordi_sauvage">
+<area shape="rect" id="Node000001" title="Gère l&#39;attaque aléatoire d&#39;un Mecha sauvage durant un combat contre le joueur." alt="" coords="175,5,324,31"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="5,5,127,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,21,127,21,127,15,161,15"/>
+</map>

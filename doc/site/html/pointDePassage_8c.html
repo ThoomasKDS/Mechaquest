@@ -1,0 +1,1193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest: Référence du fichier /mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/pointDePassage.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('pointDePassage_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier pointDePassage.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas, du choix du starter, des interactions avec les PNJ importants et des événements clés du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="pointDePassage_8h_source.html">../lib/pointDePassage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="combat_8h_source.html">../lib/combat.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de pointDePassage.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c__incl.png" border="0" usemap="#a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2src_2pointDePassage_8c" alt=""/></div>
+<map name="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2src_2pointDePassage_8c" id="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2src_2pointDePassage_8c">
+<area shape="rect" title="Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas,..." alt="" coords="999,5,1142,75"/>
+<area shape="rect" href="pointDePassage_8h.html" title="Gestion des points de passage et événements du jeu." alt="" coords="933,123,1091,148"/>
+<area shape="poly" title=" " alt="" coords="1052,76,1029,112,1024,109,1047,73"/>
+<area shape="rect" href="combat_8h.html" title="Gestion des combats dans le jeu." alt="" coords="1066,343,1171,368"/>
+<area shape="poly" title=" " alt="" coords="1089,74,1105,122,1115,179,1120,237,1122,329,1117,329,1115,237,1110,180,1100,123,1084,76"/>
+<area shape="rect" href="menu_8h.html" title="Gestion des menus et des interfaces utilisateur." alt="" coords="677,196,771,221"/>
+<area shape="poly" title=" " alt="" coords="966,151,784,195,783,190,965,145"/>
+<area shape="rect" href="sauv_8h.html" title="Gestion des sauvegardes et récupération des données du jeu." alt="" coords="812,416,871,441"/>
+<area shape="poly" title=" " alt="" coords="1008,149,857,405,853,403,1003,147"/>
+<area shape="rect" href="global_8h.html" title="Définition des constantes, structures et variables globales du jeu." alt="" coords="916,489,1012,515"/>
+<area shape="poly" title=" " alt="" coords="1088,145,1146,162,1203,188,1226,205,1245,227,1258,252,1263,280,1263,357,1256,393,1238,423,1210,447,1176,465,1139,479,1099,489,1026,500,1025,495,1098,484,1137,474,1174,460,1207,442,1233,419,1251,391,1257,356,1257,281,1253,253,1241,230,1223,209,1200,192,1144,167,1087,151"/>
+<area shape="poly" title=" " alt="" coords="733,220,831,402,826,405,728,223"/>
+<area shape="rect" title=" " alt="" coords="831,489,892,515"/>
+<area shape="poly" title=" " alt="" coords="740,220,773,250,815,295,856,351,872,383,885,415,888,432,886,448,877,478,872,476,881,447,882,432,880,417,868,385,851,354,811,298,769,254,736,224"/>
+<area shape="rect" title=" " alt="" coords="741,489,806,515"/>
+<area shape="poly" title=" " alt="" coords="729,221,772,475,766,476,723,222"/>
+<area shape="poly" title=" " alt="" coords="749,219,785,240,822,267,869,319,907,377,937,432,956,475,952,477,932,434,903,380,864,323,818,271,782,244,746,224"/>
+<area shape="rect" title=" " alt="" coords="231,563,327,588"/>
+<area shape="poly" title=" " alt="" coords="677,217,554,236,481,251,409,272,326,295,294,312,262,344,238,386,233,424,239,465,252,514,267,550,262,552,247,516,234,466,227,424,233,384,258,341,291,308,324,290,407,267,479,246,553,231,676,212"/>
+<area shape="rect" title=" " alt="" coords="57,563,196,588"/>
+<area shape="poly" title=" " alt="" coords="676,214,520,219,317,229,133,246,69,258,33,272,17,289,10,307,9,354,9,430,12,450,18,468,40,503,68,531,97,553,94,557,65,535,36,506,13,471,6,451,4,430,4,354,5,306,13,286,30,267,67,253,132,241,317,224,520,213,676,208"/>
+<area shape="rect" title=" " alt="" coords="776,563,891,588"/>
+<area shape="poly" title=" " alt="" coords="772,211,892,225,1037,252,1104,270,1159,293,1181,306,1197,321,1208,337,1212,354,1212,430,1210,443,1203,455,1178,477,1143,497,1098,515,998,544,905,564,903,559,997,539,1097,510,1140,492,1175,473,1199,452,1205,441,1207,430,1207,354,1203,339,1193,324,1178,310,1157,298,1102,275,1036,257,891,230,771,217"/>
+<area shape="rect" href="initGame_8h.html" title="Initialisation et gestion de la SDL pour le jeu." alt="" coords="471,416,585,441"/>
+<area shape="poly" title=" " alt="" coords="715,223,550,407,546,404,711,220"/>
+<area shape="rect" href="affichage_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion de l&#39;affichage dans le jeu." alt="" coords="420,269,535,295"/>
+<area shape="poly" title=" " alt="" coords="685,224,531,268,530,263,684,219"/>
+<area shape="rect" title=" " alt="" coords="44,269,119,295"/>
+<area shape="poly" title=" " alt="" coords="677,216,444,235,292,251,138,272,133,273,132,267,137,267,291,246,444,230,676,211"/>
+<area shape="poly" title=" " alt="" coords="847,441,857,475,852,477,842,442"/>
+<area shape="rect" title=" " alt="" coords="551,489,615,515"/>
+<area shape="poly" title=" " alt="" coords="812,441,628,491,627,486,811,436"/>
+<area shape="poly" title=" " alt="" coords="832,444,796,481,792,477,828,440"/>
+<area shape="poly" title=" " alt="" coords="862,439,934,480,931,485,860,444"/>
+<area shape="poly" title=" " alt="" coords="916,516,904,517,745,537,587,553,340,573,340,567,587,548,745,532,904,512,915,510"/>
+<area shape="rect" title=" " alt="" coords="531,563,666,588"/>
+<area shape="poly" title=" " alt="" coords="916,515,671,563,670,557,915,510"/>
+<area shape="poly" title=" " alt="" coords="916,516,904,517,712,537,562,545,411,551,219,565,210,566,209,561,218,560,411,546,562,540,712,532,904,512,915,510"/>
+<area shape="poly" title=" " alt="" coords="944,517,868,558,865,554,942,512"/>
+<area shape="poly" title=" " alt="" coords="586,438,818,487,818,487,817,492,817,492,585,444"/>
+<area shape="poly" title=" " alt="" coords="539,440,568,477,563,480,535,443"/>
+<area shape="poly" title=" " alt="" coords="568,439,728,485,727,490,567,444"/>
+<area shape="poly" title=" " alt="" coords="586,436,902,486,902,492,585,441"/>
+<area shape="poly" title=" " alt="" coords="520,443,487,479,439,517,388,543,337,561,335,556,385,538,436,512,483,475,517,440"/>
+<area shape="poly" title=" " alt="" coords="530,442,531,475,541,514,555,534,573,552,569,556,551,538,536,516,526,476,524,442"/>
+<area shape="poly" title=" " alt="" coords="495,444,356,492,170,560,168,555,354,487,493,439"/>
+<area shape="poly" title=" " alt="" coords="549,439,609,473,685,512,790,555,788,560,683,517,606,478,546,444"/>
+<area shape="rect" title=" " alt="" coords="367,489,425,515"/>
+<area shape="poly" title=" " alt="" coords="508,444,431,485,428,480,505,439"/>
+<area shape="poly" title=" " alt="" coords="533,292,610,312,693,340,759,373,815,406,812,411,757,378,691,345,609,317,532,297"/>
+<area shape="poly" title=" " alt="" coords="531,292,587,311,643,340,681,373,714,409,762,476,757,479,710,413,677,376,640,345,585,316,529,297"/>
+<area shape="poly" title=" " alt="" coords="535,288,610,302,701,326,796,362,842,386,884,414,920,445,948,476,944,480,916,449,881,418,839,391,794,367,699,331,609,307,534,293"/>
+<area shape="poly" title=" " alt="" coords="420,289,385,295,349,305,314,321,285,345,268,367,258,393,253,421,253,450,260,505,272,549,267,550,255,506,248,450,248,420,253,391,264,365,281,341,311,317,347,300,384,289,419,284"/>
+<area shape="poly" title=" " alt="" coords="420,290,382,296,340,307,299,323,262,345,236,367,214,393,178,450,152,505,136,550,131,548,147,503,173,447,210,389,233,363,258,341,297,318,339,302,381,291,419,285"/>
+<area shape="poly" title=" " alt="" coords="490,293,584,389,654,452,729,512,798,554,796,559,726,517,651,456,580,392,486,297"/>
+<area shape="poly" title=" " alt="" coords="484,294,522,402,517,404,479,296"/>
+<area shape="rect" title=" " alt="" coords="415,343,484,368"/>
+<area shape="poly" title=" " alt="" coords="475,296,461,331,456,329,470,294"/>
+<area shape="rect" href="player_8h.html" title="Gestion du joueur dans le jeu." alt="" coords="295,343,391,368"/>
+<area shape="poly" title=" " alt="" coords="450,297,371,338,368,333,448,292"/>
+<area shape="poly" title=" " alt="" coords="535,287,1052,344,1052,349,534,292"/>
+<area shape="poly" title=" " alt="" coords="391,363,403,365,626,398,799,420,798,425,625,403,402,371,391,369"/>
+<area shape="poly" title=" " alt="" coords="358,366,403,400,460,439,544,482,542,486,457,444,400,405,355,370"/>
+<area shape="poly" title=" " alt="" coords="391,365,903,484,902,489,390,370"/>
+<area shape="poly" title=" " alt="" coords="350,368,359,401,361,422,359,442,347,474,331,504,299,553,294,550,327,502,342,472,353,441,356,421,354,402,345,369"/>
+<area shape="poly" title=" " alt="" coords="327,371,266,418,197,490,146,554,141,550,193,487,262,414,323,366"/>
+<area shape="poly" title=" " alt="" coords="373,366,486,409,484,413,371,371"/>
+<area shape="poly" title=" " alt="" coords="370,340,450,299,452,304,373,345"/>
+<area shape="rect" title=" " alt="" coords="277,416,345,441"/>
+<area shape="poly" title=" " alt="" coords="340,369,324,405,319,403,335,367"/>
+<area shape="poly" title=" " alt="" coords="1110,343,1021,162,1026,159,1115,341"/>
+<area shape="poly" title=" " alt="" coords="1075,371,885,419,884,414,1073,365"/>
+<area shape="poly" title=" " alt="" coords="1112,370,1085,404,1048,443,996,484,993,479,1045,439,1081,401,1108,367"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a50a0f93f053f249f00e5d18196a34d8a" id="r_a50a0f93f053f249f00e5d18196a34d8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a">soigner</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j)</td></tr>
+<tr class="memdesc:a50a0f93f053f249f00e5d18196a34d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restaure entièrement la santé et les objets du joueur et sauvegarde la partie.  <br /></td></tr>
+<tr class="separator:a50a0f93f053f249f00e5d18196a34d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6656571e1d9901fcca65ffc7217aabb" id="r_af6656571e1d9901fcca65ffc7217aabb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb">copie_mechas</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, <a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha)</td></tr>
+<tr class="memdesc:af6656571e1d9901fcca65ffc7217aabb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie intégralement les attributs d'un Mecha vers l'équipe du joueur.  <br /></td></tr>
+<tr class="separator:af6656571e1d9901fcca65ffc7217aabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d11e9c5addb8d80f32ac417e0e5566" id="r_a72d11e9c5addb8d80f32ac417e0e5566"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566">choix_starter</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, <a class="el" href="structpnj__t.html">pnj_t</a> *vinGazole, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite)</td></tr>
+<tr class="memdesc:a72d11e9c5addb8d80f32ac417e0e5566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de choisir son Mecha de départ parmi trois options disponibles.  <br /></td></tr>
+<tr class="separator:a72d11e9c5addb8d80f32ac417e0e5566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87430bbcb167664534cc9b6221b3c77d" id="r_a87430bbcb167664534cc9b6221b3c77d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d">parler_a_vin_gazole</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys)</td></tr>
+<tr class="memdesc:a87430bbcb167664534cc9b6221b3c77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère l'interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, choix du starter et modification de la carte.  <br /></td></tr>
+<tr class="separator:a87430bbcb167664534cc9b6221b3c77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed15a581ba87d71ad2d85b8649075da" id="r_a9ed15a581ba87d71ad2d85b8649075da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da">premier_combat_musk</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys)</td></tr>
+<tr class="memdesc:a9ed15a581ba87d71ad2d85b8649075da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère l'interaction du joueur avec les PNJs "Vin Gazole 2" et "Iron Musk", incluant dialogues, soins et combats.  <br /></td></tr>
+<tr class="separator:a9ed15a581ba87d71ad2d85b8649075da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec67454376236ff74521e75806f1f8b" id="r_a7ec67454376236ff74521e75806f1f8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b">retourner_parler_a_vin_gazole</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys)</td></tr>
+<tr class="memdesc:a7ec67454376236ff74521e75806f1f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la seconde interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, soin du joueur et déblocage de la carte.  <br /></td></tr>
+<tr class="separator:a7ec67454376236ff74521e75806f1f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade398b595e60d698c8c259edf2f8252a" id="r_ade398b595e60d698c8c259edf2f8252a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a">combat_final</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys)</td></tr>
+<tr class="memdesc:ade398b595e60d698c8c259edf2f8252a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les interactions finales avec les PNJs "Vin Gazole" et "Iron Musk", incluant dialogues, soin automatique et combat final.  <br /></td></tr>
+<tr class="separator:ade398b595e60d698c8c259edf2f8252a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b046624f60128f2fcf2978bf527e40d" id="r_a8b046624f60128f2fcf2978bf527e40d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d">jeu_libre</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, const Uint8 *keys)</td></tr>
+<tr class="memdesc:a8b046624f60128f2fcf2978bf527e40d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère l'interaction avec le PNJ "Vin Gazole" en mode jeu libre, permettant soins et dialogues répétés.  <br /></td></tr>
+<tr class="separator:a8b046624f60128f2fcf2978bf527e40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas, du choix du starter, des interactions avec les PNJ importants et des événements clés du jeu. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a72d11e9c5addb8d80f32ac417e0e5566" name="a72d11e9c5addb8d80f32ac417e0e5566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d11e9c5addb8d80f32ac417e0e5566">&#9670;&#160;</a></span>choix_starter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int choix_starter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpnj__t.html">pnj_t</a> *&#160;</td>
+          <td class="paramname"><em>vinGazole</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de choisir son Mecha de départ parmi trois options disponibles. </p>
+<p>Cette fonction affiche un dialogue interactif demandant au joueur de choisir son Mecha de départ ("starter") parmi trois possibilités :</p><ul>
+<li>Tournicoton (option 1)</li>
+<li>Rasetout (option 2)</li>
+<li>Tikart (option 3)</li>
+</ul>
+<p>Selon la réponse du joueur, le Mecha choisi est copié depuis les Mechas disponibles du PNJ <code>vinGazole</code> vers l'équipe du joueur. Un dialogue de confirmation du choix effectué est ensuite affiché au joueur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure principale du jeu (affichage, événements, etc.). </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur où le Mecha choisi sera ajouté. </td></tr>
+    <tr><td class="paramname">vinGazole</td><td>Pointeur vers la structure du PNJ possédant les Mechas disponibles à la sélection. </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si le choix du Mecha est effectué et copié avec succès dans l'équipe du joueur.</li>
+<li><code>ERR</code> en cas de choix invalide ou de problème lors de la copie.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les structures et ressources graphiques doivent être initialisées correctement. Le PNJ (<code>vinGazole</code>) doit disposer d'au moins trois Mechas valides dans son inventaire.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le Mecha choisi est ajouté à l'équipe du joueur.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction est interactive et bloque jusqu'à ce que le joueur sélectionne un choix valide (1, 2 ou 3).</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie que les constantes <code>OK</code> et <code>ERR</code> soient définies dans ton projet. Pense à gérer le cas où la copie du Mecha échoue (par exemple, équipe pleine). </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_cgraph.png" border="0" usemap="#apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_cgraph" id="apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_cgraph">
+<area shape="rect" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="5,203,103,228"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="155,141,275,167"/>
+<area shape="poly" title=" " alt="" coords="87,200,167,169,169,174,89,205"/>
+<area shape="rect" href="pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="161,203,268,228"/>
+<area shape="poly" title=" " alt="" coords="103,213,147,213,147,218,103,218"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="151,276,279,301"/>
+<area shape="poly" title=" " alt="" coords="84,226,174,268,172,273,82,231"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="363,29,474,55"/>
+<area shape="poly" title=" " alt="" coords="227,139,268,102,296,81,325,64,349,54,351,59,328,68,299,86,271,106,230,143"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="383,79,454,104"/>
+<area shape="poly" title=" " alt="" coords="249,139,326,113,369,101,371,106,327,118,251,144"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="379,128,458,153"/>
+<area shape="poly" title=" " alt="" coords="275,147,366,141,366,147,275,153"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="357,177,480,203"/>
+<area shape="poly" title=" " alt="" coords="275,162,344,174,343,180,274,167"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="344,227,493,252"/>
+<area shape="poly" title=" " alt="" coords="240,165,328,212,352,220,350,225,326,216,237,169"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="559,5,683,31"/>
+<area shape="poly" title=" " alt="" coords="453,81,510,64,558,40,572,33,574,38,560,44,512,68,455,86"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="573,55,668,80"/>
+<area shape="poly" title=" " alt="" coords="454,85,560,72,560,77,455,90"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="575,104,667,129"/>
+<area shape="poly" title=" " alt="" coords="455,93,561,107,561,112,454,98"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="583,153,658,179"/>
+<area shape="poly" title=" " alt="" coords="455,96,512,113,536,125,560,138,576,145,573,150,557,143,534,130,510,118,453,101"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="343,276,495,301"/>
+<area shape="poly" title=" " alt="" coords="279,286,329,286,329,291,279,291"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="327,325,511,351"/>
+<area shape="poly" title=" " alt="" coords="268,299,353,319,352,325,267,304"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_icgraph.png" border="0" usemap="#apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_icgraph" alt=""/></div>
+<map name="apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_icgraph" id="apointDePassage_8c_a72d11e9c5addb8d80f32ac417e0e5566_icgraph">
+<area shape="rect" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="191,5,288,31"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="5,5,143,31"/>
+<area shape="poly" title=" " alt="" coords="177,21,143,21,143,15,177,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ade398b595e60d698c8c259edf2f8252a" name="ade398b595e60d698c8c259edf2f8252a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade398b595e60d698c8c259edf2f8252a">&#9670;&#160;</a></span>combat_final()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int combat_final </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les interactions finales avec les PNJs "Vin Gazole" et "Iron Musk", incluant dialogues, soin automatique et combat final. </p>
+<p>Cette fonction gère deux interactions distinctes :</p>
+<ul>
+<li><b>Interaction avec Vin Gazole (map 0)</b> : <br  />
+ Le joueur peut interagir pour se faire entièrement soigner (inventaire et Mechas) si ses objets ou ses Mechas ne sont pas au maximum. <br  />
+ Un dialogue spécifique est alors affiché pour indiquer que le soin a eu lieu. Sinon, un simple dialogue de début est affiché.</li>
+<li><b>Combat final contre Iron Musk (map 4)</b> : <br  />
+ Cette interaction déclenche un dialogue initial, un combat (actuellement commenté), puis un dialogue final. <br  />
+ Après la victoire, le joueur reçoit un Mecha spécifique de la part d'Iron Musk, le jeu sauvegarde automatiquement l'état <br  />
+ du joueur et du PNJ, et un nouveau point de sauvegarde est enregistré.</li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure du jeu (état des cartes, renderer, etc.). </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (inventaire, Mechas, position, état). </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) pour gérer les interactions (touche <code>P</code>).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> lorsque la fonction s'exécute correctement.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les structures et ressources graphiques nécessaires doivent être initialisées et valides. Les fonctions appelées (<code>afficher_dialogue</code>, <code>soigner</code>, <code>copie_mechas</code>, <code>sauvegarde_partie</code>, <code>sauvegarde_pnj</code>) doivent être implémentées.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>L'interaction avec "Vin Gazole" entraîne le soin automatique du joueur si nécessaire. L'interaction avec "Iron Musk" déclenche le combat final, l'ajout d'un nouveau Mecha à l'équipe du joueur, la sauvegarde automatique, et met à jour l'état du PNJ.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Le combat contre Iron Musk doit être implémenté explicitement (actuellement commenté). L'interaction s'active en pressant la touche <code>P</code>.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie bien que toutes les constantes (<code>VIN_GAZOLE_4</code>, <code>IRON_MUSK_FIN</code>, <code>NB_OBJET</code>, <code>OK</code>) soient correctement définies et initialisées. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_ade398b595e60d698c8c259edf2f8252a_cgraph.png" border="0" usemap="#apointDePassage_8c_ade398b595e60d698c8c259edf2f8252a_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_ade398b595e60d698c8c259edf2f8252a_cgraph" id="apointDePassage_8c_ade398b595e60d698c8c259edf2f8252a_cgraph">
+<area shape="rect" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,1166,101,1191"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="1087,78,1207,103"/>
+<area shape="poly" title=" " alt="" coords="52,1165,58,1012,73,755,85,617,101,486,122,374,147,292,182,205,199,166,217,132,239,104,268,82,304,69,349,64,755,64,926,70,1073,81,1073,86,926,75,755,69,349,69,305,74,270,87,243,108,221,135,203,169,187,207,152,294,127,375,107,487,91,617,78,756,63,1012,58,1166"/>
+<area shape="rect" href="combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="149,306,239,331"/>
+<area shape="poly" title=" " alt="" coords="54,1165,186,344,191,345,59,1166"/>
+<area shape="rect" href="sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="294,648,407,674"/>
+<area shape="poly" title=" " alt="" coords="60,1164,333,684,338,687,64,1167"/>
+<area shape="rect" href="pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="1093,1167,1200,1192"/>
+<area shape="poly" title=" " alt="" coords="102,1176,349,1176,755,1176,1080,1177,1080,1182,755,1181,349,1181,102,1181"/>
+<area shape="rect" href="affichage_8c.html#abd6001ed54f2062b95bb92ceef20e74a" title="Gère l&#39;écran de fin de partie et réinitialise le joueur." alt="" coords="151,1216,237,1242"/>
+<area shape="poly" title=" " alt="" coords="90,1189,146,1209,144,1214,89,1194"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="287,1318,415,1343"/>
+<area shape="poly" title=" " alt="" coords="63,1190,94,1246,119,1277,151,1302,180,1315,211,1324,273,1331,272,1337,210,1329,178,1320,148,1306,116,1281,90,1249,58,1193"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="162,1266,226,1291"/>
+<area shape="poly" title=" " alt="" coords="71,1189,151,1251,159,1256,156,1261,148,1255,68,1193"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="1484,458,1595,483"/>
+<area shape="poly" title=" " alt="" coords="1187,101,1333,151,1431,190,1452,229,1481,300,1532,444,1527,446,1476,302,1447,231,1428,194,1331,156,1185,106"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="1319,52,1390,78"/>
+<area shape="poly" title=" " alt="" coords="1207,81,1305,68,1306,74,1207,86"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="1671,204,1750,230"/>
+<area shape="poly" title=" " alt="" coords="1173,75,1250,44,1302,27,1360,13,1422,5,1484,4,1545,14,1603,37,1623,52,1642,70,1671,111,1692,154,1705,190,1700,192,1687,156,1667,114,1638,73,1620,56,1600,42,1544,19,1484,9,1422,10,1361,18,1304,32,1252,49,1175,80"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="1649,306,1772,331"/>
+<area shape="poly" title=" " alt="" coords="1207,91,1314,106,1373,122,1431,144,1446,154,1456,164,1479,186,1582,250,1672,297,1669,302,1579,254,1476,190,1452,168,1443,158,1428,149,1372,127,1313,111,1206,96"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="1280,204,1429,230"/>
+<area shape="poly" title=" " alt="" coords="1165,101,1216,140,1281,183,1309,197,1306,201,1279,187,1212,144,1162,105"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="1477,788,1601,814"/>
+<area shape="poly" title=" " alt="" coords="1368,76,1401,125,1418,157,1432,191,1451,270,1458,339,1456,401,1450,459,1446,517,1446,578,1456,645,1480,721,1496,751,1517,776,1512,780,1492,754,1475,724,1451,646,1441,579,1440,517,1445,459,1451,401,1452,339,1446,271,1427,193,1413,159,1396,127,1364,79"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="1492,102,1587,127"/>
+<area shape="poly" title=" " alt="" coords="1391,72,1480,96,1478,101,1390,77"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="1493,151,1585,176"/>
+<area shape="poly" title=" " alt="" coords="1391,75,1431,95,1455,116,1479,136,1491,143,1488,147,1476,141,1452,120,1428,99,1389,80"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="1502,52,1577,78"/>
+<area shape="poly" title=" " alt="" coords="1390,62,1488,62,1488,68,1390,68"/>
+<area shape="rect" href="affichage_8c.html#a1091893e7df87a967b878919b232b0d5" title="Affiche un dialogue interactif durant un combat entre deux Méchas." alt="" coords="1061,306,1232,331"/>
+<area shape="poly" title=" " alt="" coords="217,303,286,272,359,246,417,228,476,218,553,214,755,214,805,217,855,223,953,245,1039,273,1105,298,1103,303,1037,278,951,250,854,229,804,222,755,220,553,220,477,223,418,234,360,251,288,277,219,308"/>
+<area shape="rect" href="combat_8c.html#a5491a6cd3adeb619da6eb84e6d888e7a" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="695,255,812,280"/>
+<area shape="poly" title=" " alt="" coords="238,306,286,297,394,285,501,276,681,267,681,272,502,282,394,290,287,302,239,311"/>
+<area shape="rect" href="combat_8c.html#a16e4593cbfaef36a7cc088aa6bef48c0" title="Permet au joueur de changer le Mecha actif pendant un combat." alt="" coords="696,306,811,331"/>
+<area shape="poly" title=" " alt="" coords="239,316,682,316,682,321,239,321"/>
+<area shape="rect" href="combat_8c.html#a2de6c3e2a52edcf450da90005d5fad1d" title="Calcule et distribue les points d&#39;expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha ad..." alt="" coords="299,154,402,179"/>
+<area shape="poly" title=" " alt="" coords="200,304,233,254,257,224,285,196,304,183,307,188,288,201,261,227,237,257,205,307"/>
+<area shape="poly" title=" " alt="" coords="204,330,340,635,336,637,199,333"/>
+<area shape="rect" href="combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="511,610,598,635"/>
+<area shape="poly" title=" " alt="" coords="212,329,530,599,526,603,209,333"/>
+<area shape="poly" title=" " alt="" coords="1210,329,1314,356,1373,376,1430,399,1474,422,1511,447,1508,452,1471,427,1428,404,1371,381,1313,361,1208,334"/>
+<area shape="poly" title=" " alt="" coords="1218,303,1657,224,1658,229,1219,308"/>
+<area shape="poly" title=" " alt="" coords="1232,316,1635,316,1635,321,1232,321"/>
+<area shape="poly" title=" " alt="" coords="1170,303,1279,247,1309,233,1312,238,1281,252,1172,308"/>
+<area shape="rect" href="combat_8c.html#a159b2a6408c605d1fc9432689f92e3cb" title="Affiche à l&#39;écran tous les éléments graphiques d&#39;un combat entre deux Mechas." alt="" coords="1305,762,1405,787"/>
+<area shape="poly" title=" " alt="" coords="1156,330,1344,748,1340,750,1151,332"/>
+<area shape="poly" title=" " alt="" coords="1399,760,1427,741,1526,495,1530,497,1431,744,1402,764"/>
+<area shape="poly" title=" " alt="" coords="1405,779,1464,788,1463,793,1404,784"/>
+<area shape="rect" href="affichage_8c.html#afc970416ff2ee1d9f8351a288625f23a" title="Concatène un entier à la fin d&#39;une chaîne de caractères." alt="" coords="1509,1015,1570,1040"/>
+<area shape="poly" title=" " alt="" coords="1367,786,1523,1002,1518,1005,1363,789"/>
+<area shape="rect" href="affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="1490,686,1589,711"/>
+<area shape="poly" title=" " alt="" coords="1385,759,1494,714,1496,719,1387,764"/>
+<area shape="rect" href="affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="1491,888,1587,914"/>
+<area shape="poly" title=" " alt="" coords="1376,785,1510,878,1507,883,1373,790"/>
+<area shape="rect" href="affichage_8c.html#ac0e780352c4ab1739b9e31be92740c2d" title="Dessine du texte à une position spécifique à l&#39;écran, avec gestion des retours à la ligne." alt="" coords="1486,636,1593,662"/>
+<area shape="poly" title=" " alt="" coords="1395,759,1428,740,1443,723,1451,706,1459,689,1476,671,1482,666,1485,671,1479,675,1464,692,1456,709,1447,726,1431,745,1397,764"/>
+<area shape="poly" title=" " alt="" coords="1585,684,1599,671,1628,623,1640,578,1642,535,1637,492,1630,447,1626,400,1630,349,1647,292,1664,263,1684,238,1688,242,1668,266,1652,294,1635,349,1631,400,1635,446,1642,491,1647,535,1646,579,1633,625,1603,675,1589,688"/>
+<area shape="poly" title=" " alt="" coords="1583,683,1599,671,1629,632,1652,589,1671,543,1684,496,1700,409,1706,344,1711,345,1706,410,1689,497,1676,544,1657,591,1633,635,1603,675,1586,688"/>
+<area shape="poly" title=" " alt="" coords="813,272,1014,297,1048,302,1047,307,1013,302,812,277"/>
+<area shape="rect" href="combat_8c.html#a8c19b3bf83d09e9fb4b596cd4ff45219" title="Calcule et applique les effets d&#39;une attaque lors d&#39;un combat entre deux Mechas." alt="" coords="889,407,985,432"/>
+<area shape="poly" title=" " alt="" coords="790,278,813,291,845,316,874,344,919,395,915,398,870,347,842,320,811,295,788,283"/>
+<area shape="poly" title=" " alt="" coords="963,405,1106,335,1108,340,965,409"/>
+<area shape="rect" href="combat_8c.html#ab9469ab4f84b56a27ef05848c4a78cb9" title="Anime visuellement la diminution progressive des PV d&#39;un Mecha durant un combat." alt="" coords="1088,559,1205,584"/>
+<area shape="poly" title=" " alt="" coords="957,430,1118,548,1115,553,954,435"/>
+<area shape="poly" title=" " alt="" coords="1163,583,1234,653,1332,750,1328,753,1230,656,1159,587"/>
+<area shape="poly" title=" " alt="" coords="811,316,1048,316,1048,321,811,321"/>
+<area shape="rect" href="combat_8c.html#a30cb93b663d557e0e81271f956c24379" title="Affiche l&#39;interface de sélection du Mecha du joueur durant un combat." alt="" coords="1285,914,1425,939"/>
+<area shape="poly" title=" " alt="" coords="767,330,862,442,997,583,1133,717,1331,902,1327,906,1130,720,994,586,858,446,763,333"/>
+<area shape="poly" title=" " alt="" coords="1363,912,1394,863,1427,797,1444,750,1453,711,1461,672,1475,623,1524,495,1529,497,1480,625,1466,674,1458,712,1449,751,1432,800,1398,866,1367,915"/>
+<area shape="poly" title=" " alt="" coords="1390,911,1428,892,1475,857,1514,822,1518,826,1479,861,1431,897,1392,916"/>
+<area shape="poly" title=" " alt="" coords="1380,937,1504,1006,1502,1011,1378,942"/>
+<area shape="poly" title=" " alt="" coords="1399,911,1427,893,1447,865,1455,838,1461,809,1475,775,1515,720,1519,723,1480,777,1466,810,1460,839,1452,867,1431,896,1402,916"/>
+<area shape="poly" title=" " alt="" coords="1424,914,1478,907,1478,912,1425,920"/>
+<area shape="rect" href="combat_8c.html#ac6fcdad743dc3526b2b89a1630618a07" title="Distribue les points d&#39;expérience (XP) gagnés lors d&#39;un combat à un ensemble de Méchas ayant particip..." alt="" coords="507,154,603,179"/>
+<area shape="poly" title=" " alt="" coords="402,164,493,164,493,169,402,169"/>
+<area shape="rect" href="combat_8c.html#aec838d58a7def8717d7fcd0faab3a107" title="Gère la montée en niveau d&#39;un Mecha joueur après avoir reçu des points d&#39;expérience (XP)." alt="" coords="698,154,809,179"/>
+<area shape="poly" title=" " alt="" coords="603,164,684,164,684,169,603,169"/>
+<area shape="rect" href="combat_8c.html#af35e79d0f311c06fb1fe44ce8bb34ca4" title="Gère l&#39;apprentissage d&#39;une nouvelle attaque par un Mecha lors d&#39;un changement de niveau." alt="" coords="860,104,1013,130"/>
+<area shape="poly" title=" " alt="" coords="800,151,875,131,876,136,802,156"/>
+<area shape="rect" href="combat_8c.html#afe15b54290598e06032e0c418f626461" title="Gère l&#39;évolution d&#39;un Mecha joueur lorsqu&#39;il atteint le niveau requis." alt="" coords="873,154,1000,179"/>
+<area shape="poly" title=" " alt="" coords="809,164,859,164,859,169,809,169"/>
+<area shape="poly" title=" " alt="" coords="994,128,1015,139,1055,175,1090,217,1117,258,1136,292,1131,295,1112,261,1085,220,1052,179,1012,143,991,132"/>
+<area shape="poly" title=" " alt="" coords="976,177,1015,196,1078,246,1127,294,1123,298,1075,250,1012,201,974,182"/>
+<area shape="poly" title=" " alt="" coords="565,608,608,563,675,501,717,469,761,439,809,412,859,392,912,382,982,381,1064,386,1152,397,1329,425,1471,453,1470,458,1328,430,1151,402,1063,392,982,387,913,388,861,397,812,417,764,443,720,473,679,505,611,567,569,612"/>
+<area shape="poly" title=" " alt="" coords="576,633,629,664,696,695,776,719,860,737,945,751,1027,761,1177,771,1291,773,1291,779,1177,777,1027,767,944,757,859,743,775,724,694,700,626,669,573,638"/>
+<area shape="poly" title=" " alt="" coords="591,607,701,575,776,557,860,541,951,529,1045,524,1140,528,1233,544,1273,556,1306,569,1359,599,1410,633,1479,671,1495,678,1493,683,1476,676,1407,638,1356,604,1304,574,1271,561,1231,549,1140,534,1045,530,951,535,861,546,777,562,702,580,593,612"/>
+<area shape="poly" title=" " alt="" coords="557,609,572,562,600,494,640,418,665,382,693,349,708,336,711,341,697,352,669,385,644,421,605,496,577,564,562,610"/>
+<area shape="rect" href="combat_8c.html#aeabe45f0372840462d595a801345672b" title="Affiche l&#39;interface permettant au joueur de choisir et effectuer une attaque durant un combat." alt="" coords="700,660,807,686"/>
+<area shape="poly" title=" " alt="" coords="599,631,690,654,689,660,597,636"/>
+<area shape="rect" href="combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="697,914,809,939"/>
+<area shape="poly" title=" " alt="" coords="566,634,739,901,734,904,562,637"/>
+<area shape="poly" title=" " alt="" coords="780,658,899,604,979,572,1061,544,1169,517,1280,500,1470,475,1471,480,1280,505,1170,522,1062,549,981,577,901,609,782,663"/>
+<area shape="poly" title=" " alt="" coords="808,680,860,689,1291,762,1290,767,860,694,807,685"/>
+<area shape="poly" title=" " alt="" coords="758,686,763,737,778,809,791,848,809,885,832,920,862,948,883,962,911,974,983,993,1070,1007,1165,1016,1354,1025,1495,1026,1495,1031,1354,1031,1165,1022,1069,1012,982,998,910,979,881,967,858,953,828,923,805,888,786,850,773,811,758,738,752,687"/>
+<area shape="poly" title=" " alt="" coords="807,672,1476,694,1476,699,807,678"/>
+<area shape="poly" title=" " alt="" coords="755,660,765,620,785,564,816,504,835,475,858,450,877,436,880,441,862,454,840,479,820,507,790,566,771,621,760,661"/>
+<area shape="poly" title=" " alt="" coords="775,912,1503,488,1506,492,778,916"/>
+<area shape="poly" title=" " alt="" coords="761,912,1127,342,1132,345,765,915"/>
+<area shape="poly" title=" " alt="" coords="803,911,860,899,965,884,1048,878,1130,869,1177,858,1231,841,1281,819,1323,793,1326,797,1283,823,1233,846,1178,863,1131,874,1049,884,965,889,860,904,804,916"/>
+<area shape="poly" title=" " alt="" coords="759,939,769,980,787,1037,818,1098,838,1126,862,1150,887,1168,910,1181,953,1193,1062,1201,1148,1212,1185,1211,1231,1201,1274,1188,1316,1170,1395,1128,1461,1084,1510,1047,1514,1051,1465,1088,1397,1132,1318,1175,1276,1193,1233,1206,1185,1216,1147,1217,1061,1206,952,1198,908,1186,884,1173,858,1154,834,1129,813,1101,782,1039,763,982,754,940"/>
+<area shape="poly" title=" " alt="" coords="801,937,860,948,937,954,1013,948,1137,928,1232,902,1321,862,1428,796,1476,758,1515,720,1519,724,1480,762,1431,801,1324,866,1234,907,1138,933,1014,953,937,960,860,953,800,942"/>
+<area shape="rect" href="combat_8c.html#a7f2daafca6455a03963db8f32d8a8d10" title="Gère l&#39;utilisation d&#39;un objet &quot;carburant&quot; durant un combat." alt="" coords="867,1066,1006,1091"/>
+<area shape="poly" title=" " alt="" coords="765,938,803,989,831,1018,862,1044,885,1058,882,1062,858,1049,827,1022,799,992,761,941"/>
+<area shape="rect" href="combat_8c.html#a53bf2250ba00b21dceed166fa59bd150" title="Gère l&#39;utilisation d&#39;une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat." alt="" coords="865,1115,1008,1140"/>
+<area shape="poly" title=" " alt="" coords="761,938,774,971,795,1014,824,1061,862,1100,871,1107,868,1111,858,1105,820,1064,790,1017,769,973,756,940"/>
+<area shape="rect" href="combat_8c.html#afff6b8b516af5c46c938f407788d1b5f" title="Gère l&#39;utilisation d&#39;un objet &quot;rappel&quot; durant un combat." alt="" coords="877,914,996,939"/>
+<area shape="poly" title=" " alt="" coords="809,924,864,924,864,929,809,929"/>
+<area shape="poly" title=" " alt="" coords="946,1064,979,1015,997,983,1011,950,1028,891,1037,840,1040,750,1041,660,1047,607,1059,546,1075,488,1095,431,1131,343,1136,345,1100,433,1080,489,1064,547,1052,608,1047,660,1046,750,1042,840,1033,892,1016,951,1001,986,983,1018,950,1067"/>
+<area shape="poly" title=" " alt="" coords="1006,1074,1197,1064,1429,1044,1495,1034,1495,1039,1430,1049,1197,1070,1006,1079"/>
+<area shape="poly" title=" " alt="" coords="1005,1065,1114,1038,1174,1018,1231,994,1255,976,1279,956,1306,942,1308,947,1281,961,1258,980,1233,998,1176,1023,1115,1043,1007,1070"/>
+<area shape="poly" title=" " alt="" coords="997,1113,1011,1101,1024,1080,1034,1055,1047,991,1052,916,1053,833,1051,671,1052,601,1059,546,1075,488,1094,431,1131,343,1136,345,1099,433,1080,489,1064,547,1057,601,1056,671,1059,833,1058,916,1052,992,1039,1056,1029,1083,1015,1104,1000,1117"/>
+<area shape="poly" title=" " alt="" coords="989,1138,1082,1161,1081,1166,988,1143"/>
+<area shape="poly" title=" " alt="" coords="940,913,986,764,1059,546,1133,343,1138,345,1064,547,991,766,945,914"/>
+<area shape="poly" title=" " alt="" coords="996,924,1271,924,1271,929,996,929"/>
+<area shape="poly" title=" " alt="" coords="238,1236,378,1262,465,1273,553,1277,755,1277,894,1281,1004,1280,1056,1273,1109,1259,1166,1236,1231,1202,1282,1167,1320,1132,1348,1097,1371,1059,1414,975,1440,927,1475,874,1516,823,1520,826,1479,877,1445,930,1418,978,1376,1062,1353,1100,1323,1136,1285,1171,1233,1206,1168,1241,1110,1264,1057,1278,1005,1285,894,1286,755,1282,553,1282,465,1278,377,1268,237,1242"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="479,1318,631,1343"/>
+<area shape="poly" title=" " alt="" coords="415,1328,465,1328,465,1333,415,1333"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="463,1367,647,1392"/>
+<area shape="poly" title=" " alt="" coords="404,1341,489,1361,488,1366,403,1346"/>
+<area shape="poly" title=" " alt="" coords="227,1286,300,1311,298,1316,225,1291"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af6656571e1d9901fcca65ffc7217aabb" name="af6656571e1d9901fcca65ffc7217aabb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6656571e1d9901fcca65ffc7217aabb">&#9670;&#160;</a></span>copie_mechas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int copie_mechas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>mecha</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copie intégralement les attributs d'un Mecha vers l'équipe du joueur. </p>
+<p>Cette fonction ajoute un nouveau Mecha à l'équipe du joueur en copiant intégralement les attributs d'un Mecha passé en paramètre (<code>mecha</code>) vers la prochaine position disponible dans l'équipe du joueur (<code>j-&gt;mechas_joueur[]</code>).</p>
+<p>Après la copie, le compteur du nombre de Mechas du joueur (<code>j-&gt;nb_mechas</code>) est incrémenté automatiquement.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur dont l'équipe va recevoir le nouveau Mecha. </td></tr>
+    <tr><td class="paramname">mecha</td><td>Pointeur vers la structure du Mecha à copier dans l'équipe du joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la copie du Mecha s'est effectuée correctement.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les pointeurs (<code>j</code> et <code>mecha</code>) doivent être valides et correctement initialisés. L'équipe du joueur ne doit pas avoir atteint la limite maximale de Mechas autorisés (à vérifier avant appel).</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le Mecha est copié intégralement dans l'équipe du joueur, et le nombre total de Mechas (<code>j-&gt;nb_mechas</code>) est mis à jour.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Assurez-vous avant d'appeler cette fonction que le joueur dispose d'un emplacement libre dans son équipe.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifiez que les constantes (<code>OK</code> et la taille maximale du tableau <code>j-&gt;mechas_joueur</code>) soient correctement définies pour éviter tout débordement. </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb_icgraph.png" border="0" usemap="#apointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb_icgraph" alt=""/></div>
+<map name="apointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb_icgraph" id="apointDePassage_8c_af6656571e1d9901fcca65ffc7217aabb_icgraph">
+<area shape="rect" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="888,56,995,81"/>
+<area shape="rect" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="720,5,817,31"/>
+<area shape="poly" title=" " alt="" coords="883,55,812,33,814,28,885,49"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,57,131,83"/>
+<area shape="poly" title=" " alt="" coords="874,71,582,71,419,71,131,72,131,67,419,66,582,66,874,66"/>
+<area shape="rect" href="combat_8c.html#a53bf2250ba00b21dceed166fa59bd150" title="Gère l&#39;utilisation d&#39;une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat." alt="" coords="697,107,840,132"/>
+<area shape="poly" title=" " alt="" coords="885,88,814,109,812,104,883,83"/>
+<area shape="rect" href="pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="512,5,649,31"/>
+<area shape="poly" title=" " alt="" coords="706,21,649,21,649,15,706,15"/>
+<area shape="rect" href="combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="525,107,637,132"/>
+<area shape="poly" title=" " alt="" coords="684,122,637,122,637,117,684,117"/>
+<area shape="rect" href="combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="377,107,464,132"/>
+<area shape="poly" title=" " alt="" coords="511,122,464,122,464,117,511,117"/>
+<area shape="rect" href="combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,107,313,132"/>
+<area shape="poly" title=" " alt="" coords="363,122,314,122,314,117,363,117"/>
+<area shape="rect" href="combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,156,329,181"/>
+<area shape="poly" title=" " alt="" coords="369,139,310,158,308,153,367,134"/>
+<area shape="poly" title=" " alt="" coords="210,107,130,85,132,80,212,102"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,107,160,132"/>
+<area shape="poly" title=" " alt="" coords="210,122,160,122,160,117,210,117"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b046624f60128f2fcf2978bf527e40d" name="a8b046624f60128f2fcf2978bf527e40d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b046624f60128f2fcf2978bf527e40d">&#9670;&#160;</a></span>jeu_libre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int jeu_libre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère l'interaction avec le PNJ "Vin Gazole" en mode jeu libre, permettant soins et dialogues répétés. </p>
+<p>Cette fonction permet au joueur d'interagir avec le PNJ "Vin Gazole" après avoir terminé l'histoire principale du jeu. Lors de la toute première interaction dans ce mode (<code>etat == 0</code>), deux dialogues (début et fin) sont affichés, puis le joueur est soigné complètement. L'état du PNJ passe ensuite à 1 et une sauvegarde de cet état est réalisée.</p>
+<p>Pour les interactions suivantes (<code>etat == 1</code>), le joueur peut toujours revenir pour être soigné automatiquement en cas de besoin (inventaire ou PV des Mechas non maximaux). Un dialogue adapté selon l'état actuel du joueur est alors affiché (indiquant le soin ou non).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure du jeu (cartes, renderer, état général). </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (inventaire, Mechas, position). </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) permettant l'interaction (<code>P</code>).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si l'interaction est traitée correctement.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les ressources graphiques et structures (<code>game</code>, <code>joueur</code>, <code>pnj</code>) doivent être initialisées. Les fonctions <code>afficher_dialogue</code>, <code>soigner</code>, <code>sauvegarde_pnj</code> doivent être implémentées.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>L'état initial du PNJ est modifié à la première interaction (<code>etat</code> passe à 1), et le joueur peut revenir indéfiniment pour des soins. L'inventaire et les Mechas du joueur peuvent être restaurés à chaque interaction si nécessaire.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La touche <code>P</code> déclenche l'interaction avec le PNJ.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Assure-toi que toutes les constantes (<code>VIN_GAZOLE_4</code>, <code>VIN_GAZOLE_5</code>, <code>OK</code>, <code>NB_OBJET</code>) soient définies et initialisées. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d_cgraph.png" border="0" usemap="#apointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d_cgraph" id="apointDePassage_8c_a8b046624f60128f2fcf2978bf527e40d_cgraph">
+<area shape="rect" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="5,255,76,280"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="124,129,244,155"/>
+<area shape="poly" title=" " alt="" coords="55,252,156,162,160,166,58,256"/>
+<area shape="rect" href="affichage_8c.html#abd6001ed54f2062b95bb92ceef20e74a" title="Gère l&#39;écran de fin de partie et réinitialise le joueur." alt="" coords="141,229,227,255"/>
+<area shape="poly" title=" " alt="" coords="76,259,126,249,127,255,77,264"/>
+<area shape="rect" href="sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="127,279,241,304"/>
+<area shape="poly" title=" " alt="" coords="76,271,114,277,113,282,76,276"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="152,328,216,353"/>
+<area shape="poly" title=" " alt="" coords="63,278,125,314,140,321,138,326,123,319,60,283"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="311,5,422,31"/>
+<area shape="poly" title=" " alt="" coords="194,127,233,85,261,61,291,40,303,33,305,38,293,44,264,65,237,89,198,131"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="331,55,402,80"/>
+<area shape="poly" title=" " alt="" coords="209,127,291,89,317,79,319,84,293,94,211,132"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="327,104,406,129"/>
+<area shape="poly" title=" " alt="" coords="244,131,313,121,314,127,245,136"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="305,153,428,179"/>
+<area shape="poly" title=" " alt="" coords="245,147,292,154,291,159,244,153"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="292,203,441,228"/>
+<area shape="poly" title=" " alt="" coords="213,152,293,188,314,196,312,201,291,192,211,157"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="519,203,643,228"/>
+<area shape="poly" title=" " alt="" coords="403,72,443,89,458,101,469,113,491,139,555,192,551,196,487,143,465,116,455,105,440,94,401,77"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="534,5,629,31"/>
+<area shape="poly" title=" " alt="" coords="401,57,520,29,521,34,403,62"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="535,55,627,80"/>
+<area shape="poly" title=" " alt="" coords="402,65,522,65,522,70,402,70"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="544,104,619,129"/>
+<area shape="poly" title=" " alt="" coords="403,73,531,103,530,108,401,78"/>
+<area shape="poly" title=" " alt="" coords="228,241,325,242,441,237,505,228,506,233,442,242,325,247,228,246"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="303,328,431,353"/>
+<area shape="poly" title=" " alt="" coords="216,338,289,338,289,343,216,343"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="505,303,657,328"/>
+<area shape="poly" title=" " alt="" coords="431,330,492,323,492,328,431,336"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="489,352,673,377"/>
+<area shape="poly" title=" " alt="" coords="431,345,476,350,475,355,431,350"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a87430bbcb167664534cc9b6221b3c77d" name="a87430bbcb167664534cc9b6221b3c77d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87430bbcb167664534cc9b6221b3c77d">&#9670;&#160;</a></span>parler_a_vin_gazole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int parler_a_vin_gazole </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère l'interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, choix du starter et modification de la carte. </p>
+<p>Cette fonction vérifie si le joueur se trouve à côté du PNJ "Vin Gazole" dans la carte initiale (map 0) et qu'il presse la touche <code>P</code> pour initier l'interaction. Si l'interaction est valide (position, orientation et état initial du PNJ), un dialogue initial s'affiche, suivi du choix d'un Mecha starter. Ensuite, un dialogue final est affiché, l'état du PNJ est modifié (indiquant que l'interaction a eu lieu), une sauvegarde du PNJ est effectuée, et certaines cases spécifiques de la carte sont modifiées pour permettre la progression du joueur.</p>
+<p>De plus, la fonction empêche le joueur d'accéder à une autre zone de la carte avant d'avoir parlé à Vin Gazole, affichant alors un message d'avertissement.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure du jeu contenant les informations graphiques et l'état des cartes. </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur. </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) pour gérer l'interaction.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la fonction s'exécute correctement.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les ressources graphiques (sprites, textures), ainsi que les structures (<code>game</code>, <code>joueur</code>, <code>pnj</code>), doivent être initialisées correctement. La matrice du jeu (<code>game-&gt;mat</code>) doit être définie et cohérente avec les positions du PNJ.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Le PNJ "Vin Gazole" a changé d'état (<code>etat = 1</code>), une sauvegarde est effectuée, le joueur possède un Mecha starter, et certaines cases de la carte sont modifiées pour permettre une progression ultérieure.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>L'interaction se déclenche spécifiquement avec la touche <code>P</code>. Le message d'avertissement est affiché lorsque le joueur essaie de progresser prématurément vers une autre zone.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifier que les constantes (<code>VIN_GAZOLE_1</code>, <code>OK</code>, <code>TPMAP2</code>) soient définies et valides, et que les coordonnées d'interaction soient correctes pour éviter les incohérences. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d_cgraph.png" border="0" usemap="#apointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d_cgraph" id="apointDePassage_8c_a87430bbcb167664534cc9b6221b3c77d_cgraph">
+<area shape="rect" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="5,203,143,228"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="356,152,476,177"/>
+<area shape="poly" title=" " alt="" coords="127,200,190,187,342,168,342,174,191,193,128,205"/>
+<area shape="rect" href="pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="199,203,296,228"/>
+<area shape="poly" title=" " alt="" coords="143,213,185,213,185,218,143,218"/>
+<area shape="rect" href="sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="191,252,304,277"/>
+<area shape="poly" title=" " alt="" coords="120,225,189,246,188,251,119,231"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="565,29,675,55"/>
+<area shape="poly" title=" " alt="" coords="426,150,467,108,495,84,527,64,550,53,553,58,529,68,499,88,471,112,430,154"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="585,79,655,104"/>
+<area shape="poly" title=" " alt="" coords="442,149,527,113,570,100,572,105,529,118,444,154"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="581,128,659,153"/>
+<area shape="poly" title=" " alt="" coords="476,155,567,144,567,149,476,160"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="559,177,681,203"/>
+<area shape="poly" title=" " alt="" coords="476,169,545,178,544,183,476,175"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="545,227,695,252"/>
+<area shape="poly" title=" " alt="" coords="452,175,481,188,505,201,529,213,550,220,548,225,527,218,503,206,479,192,450,180"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="760,5,884,31"/>
+<area shape="poly" title=" " alt="" coords="655,81,711,64,759,40,773,33,775,38,761,44,713,68,656,86"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="775,55,869,80"/>
+<area shape="poly" title=" " alt="" coords="655,85,761,72,762,77,656,90"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="776,104,868,129"/>
+<area shape="poly" title=" " alt="" coords="656,93,763,107,762,112,655,98"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="785,153,859,179"/>
+<area shape="poly" title=" " alt="" coords="656,96,713,113,737,125,761,138,777,145,775,150,759,143,735,130,711,118,655,101"/>
+<area shape="poly" title=" " alt="" coords="290,200,359,179,361,184,291,205"/>
+<area shape="rect" href="pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="363,203,469,228"/>
+<area shape="poly" title=" " alt="" coords="296,213,349,213,349,218,296,218"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="352,276,480,301"/>
+<area shape="poly" title=" " alt="" coords="279,226,374,268,372,273,277,231"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="544,276,696,301"/>
+<area shape="poly" title=" " alt="" coords="480,286,530,286,530,291,480,291"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="528,325,712,351"/>
+<area shape="poly" title=" " alt="" coords="470,299,554,319,553,325,469,304"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9ed15a581ba87d71ad2d85b8649075da" name="a9ed15a581ba87d71ad2d85b8649075da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed15a581ba87d71ad2d85b8649075da">&#9670;&#160;</a></span>premier_combat_musk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int premier_combat_musk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère l'interaction du joueur avec les PNJs "Vin Gazole 2" et "Iron Musk", incluant dialogues, soins et combats. </p>
+<p>Cette fonction permet d'interagir avec deux PNJs spécifiques :</p>
+<ul>
+<li><b>Vin Gazole 2 (map 0)</b> : Si le joueur interagit avec ce PNJ et que ses objets ou Mechas ne sont pas au maximum de leur capacité, ses Mechas et son inventaire sont automatiquement soignés, et un dialogue confirmant le soin est affiché. Sinon, un simple dialogue initial est affiché.</li>
+<li><b>Iron Musk (map 2)</b> : Lors de l'interaction, un dialogue de début s'affiche, un combat se déroule (actuellement commenté), suivi d'un dialogue de fin. Après le combat, l'état du PNJ est mis à jour, une sauvegarde est effectuée, des accès à d'autres cartes sont débloqués, et le joueur est téléporté à une position spécifique sur la carte initiale (map 0).</li>
+</ul>
+<p>De plus, la fonction empêche explicitement le joueur de quitter la zone d'Iron Musk avant d'avoir complété ce combat obligatoire, affichant alors un message d'avertissement.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure principale du jeu contenant les informations sur les cartes et le renderer. </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (inventaire, équipe de Mechas, position). </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) utilisé pour gérer l'interaction (<code>P</code> et flèches directionnelles).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> lorsque la fonction s'est correctement déroulée.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les structures du jeu (<code>game</code>, <code>joueur</code>, <code>pnj</code>) et les ressources graphiques doivent être initialisées. La fonction <code>soigner</code> ainsi que les fonctions de sauvegarde (<code>sauvegarde_pnj</code>, <code>sauvegarde_partie</code>) doivent être valides.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Les états des PNJs sont modifiés après interaction, le joueur est éventuellement soigné, et des modifications de carte sont effectuées pour permettre la progression du joueur.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La fonction déclenche l'interaction uniquement lors de l'appui sur la touche <code>P</code>. Le message d'avertissement apparaît lorsque le joueur tente de quitter la zone sans avoir effectué le combat requis.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifie que toutes les constantes (<code>VIN_GAZOLE_2</code>, <code>IRON_MUSK_DEB</code>, <code>OK</code>, <code>TPMAP4</code>, <code>TPMAP6</code>, <code>NB_OBJET</code>) soient correctement définies et initialisées. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da_cgraph.png" border="0" usemap="#apointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da_cgraph" id="apointDePassage_8c_a9ed15a581ba87d71ad2d85b8649075da_cgraph">
+<area shape="rect" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,483,160,508"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="1145,53,1265,79"/>
+<area shape="poly" title=" " alt="" coords="84,482,111,387,137,318,171,246,214,178,240,147,268,119,299,96,332,79,369,67,408,63,813,63,1132,63,1132,69,813,69,408,69,370,73,334,84,302,101,271,123,244,150,219,181,176,249,142,320,116,388,89,483"/>
+<area shape="rect" href="combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="208,407,297,432"/>
+<area shape="poly" title=" " alt="" coords="111,480,210,435,212,440,113,485"/>
+<area shape="rect" href="sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="353,508,466,533"/>
+<area shape="poly" title=" " alt="" coords="161,499,339,513,339,518,160,504"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="345,584,473,609"/>
+<area shape="poly" title=" " alt="" coords="101,506,148,539,178,555,209,569,271,585,332,592,331,597,270,590,207,574,175,560,145,543,98,510"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="221,533,285,559"/>
+<area shape="poly" title=" " alt="" coords="127,506,208,530,207,535,125,511"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="1543,608,1653,633"/>
+<area shape="poly" title=" " alt="" coords="1263,77,1293,96,1307,116,1314,135,1317,173,1320,210,1327,228,1341,247,1358,262,1376,270,1413,275,1451,280,1471,289,1490,304,1518,339,1540,377,1558,417,1572,459,1590,536,1598,594,1592,595,1585,537,1567,460,1553,419,1536,379,1513,342,1486,308,1468,293,1450,285,1413,280,1375,275,1356,266,1337,251,1322,231,1315,211,1312,174,1309,137,1302,118,1289,100,1260,81"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="1378,117,1449,143"/>
+<area shape="poly" title=" " alt="" coords="1249,76,1366,113,1364,118,1247,81"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="1730,369,1809,395"/>
+<area shape="poly" title=" " alt="" coords="1238,51,1320,26,1373,14,1431,5,1491,3,1551,9,1609,25,1662,53,1695,84,1721,122,1740,164,1754,208,1768,291,1771,356,1766,356,1763,292,1749,209,1735,166,1716,125,1691,88,1658,58,1607,30,1550,14,1491,8,1431,11,1374,19,1321,31,1240,56"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="1708,420,1831,445"/>
+<area shape="poly" title=" " alt="" coords="1254,76,1292,96,1308,110,1318,124,1327,137,1340,152,1524,280,1709,404,1725,412,1723,417,1707,408,1521,284,1337,156,1323,140,1313,127,1304,114,1289,100,1251,81"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="1339,319,1488,344"/>
+<area shape="poly" title=" " alt="" coords="1264,77,1279,85,1293,96,1310,123,1318,148,1320,174,1318,198,1316,223,1317,248,1325,272,1341,298,1355,310,1352,314,1337,301,1320,275,1312,248,1311,223,1313,198,1314,174,1313,149,1305,125,1289,100,1276,89,1262,81"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="1536,660,1660,685"/>
+<area shape="poly" title=" " alt="" coords="1424,142,1456,210,1491,305,1501,358,1502,404,1495,486,1494,524,1498,562,1512,602,1538,645,1543,650,1539,654,1534,648,1507,604,1493,563,1488,524,1490,486,1497,404,1495,358,1485,307,1451,212,1419,144"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="1551,167,1645,192"/>
+<area shape="poly" title=" " alt="" coords="1450,137,1538,161,1537,166,1448,142"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="1552,68,1644,93"/>
+<area shape="poly" title=" " alt="" coords="1448,118,1538,94,1539,99,1450,123"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="1561,117,1635,143"/>
+<area shape="poly" title=" " alt="" coords="1449,127,1546,127,1546,133,1449,133"/>
+<area shape="rect" href="affichage_8c.html#a1091893e7df87a967b878919b232b0d5" title="Affiche un dialogue interactif durant un combat entre deux Méchas." alt="" coords="1120,420,1291,445"/>
+<area shape="poly" title=" " alt="" coords="276,404,344,373,417,347,476,329,535,319,612,315,813,315,865,318,916,326,1016,351,1103,383,1168,412,1166,417,1101,388,1014,357,915,331,864,324,813,321,612,321,536,324,477,335,419,352,346,378,278,409"/>
+<area shape="rect" href="combat_8c.html#a5491a6cd3adeb619da6eb84e6d888e7a" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="753,407,871,432"/>
+<area shape="poly" title=" " alt="" coords="298,417,740,417,740,422,298,422"/>
+<area shape="rect" href="combat_8c.html#a16e4593cbfaef36a7cc088aa6bef48c0" title="Permet au joueur de changer le Mecha actif pendant un combat." alt="" coords="755,356,869,381"/>
+<area shape="poly" title=" " alt="" coords="297,407,345,398,453,386,561,377,741,368,741,373,562,382,454,391,346,403,298,412"/>
+<area shape="rect" href="combat_8c.html#a2de6c3e2a52edcf450da90005d5fad1d" title="Calcule et distribue les points d&#39;expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha ad..." alt="" coords="358,255,461,280"/>
+<area shape="poly" title=" " alt="" coords="259,405,292,355,316,325,344,297,363,284,366,289,347,302,320,328,296,358,263,408"/>
+<area shape="poly" title=" " alt="" coords="271,431,347,487,370,500,367,504,344,491,268,435"/>
+<area shape="rect" href="combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="570,535,657,560"/>
+<area shape="poly" title=" " alt="" coords="293,430,474,493,567,527,565,532,472,498,291,435"/>
+<area shape="poly" title=" " alt="" coords="1232,443,1340,500,1556,600,1554,605,1337,505,1229,448"/>
+<area shape="poly" title=" " alt="" coords="1290,417,1338,411,1548,393,1716,382,1716,388,1548,398,1339,417,1291,423"/>
+<area shape="poly" title=" " alt="" coords="1291,430,1694,430,1694,435,1291,435"/>
+<area shape="poly" title=" " alt="" coords="1229,418,1337,361,1368,347,1370,352,1340,366,1231,422"/>
+<area shape="rect" href="combat_8c.html#a159b2a6408c605d1fc9432689f92e3cb" title="Affiche à l&#39;écran tous les éléments graphiques d&#39;un combat entre deux Mechas." alt="" coords="1363,759,1463,784"/>
+<area shape="poly" title=" " alt="" coords="1222,444,1257,486,1293,544,1304,574,1309,602,1309,652,1309,675,1313,698,1323,721,1341,746,1353,755,1350,760,1337,749,1318,724,1308,700,1304,676,1303,652,1303,602,1299,575,1288,546,1253,490,1218,448"/>
+<area shape="poly" title=" " alt="" coords="1462,759,1486,745,1504,722,1510,698,1517,673,1534,647,1545,638,1548,643,1538,651,1521,675,1515,700,1509,725,1490,749,1465,764"/>
+<area shape="poly" title=" " alt="" coords="1462,757,1487,745,1501,734,1510,722,1520,709,1534,696,1546,689,1549,694,1538,700,1523,713,1514,725,1505,737,1489,750,1465,762"/>
+<area shape="rect" href="affichage_8c.html#afc970416ff2ee1d9f8351a288625f23a" title="Concatène un entier à la fin d&#39;une chaîne de caractères." alt="" coords="1567,808,1629,833"/>
+<area shape="poly" title=" " alt="" coords="1462,782,1555,807,1553,812,1461,787"/>
+<area shape="rect" href="affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="1549,857,1647,883"/>
+<area shape="poly" title=" " alt="" coords="1434,782,1480,812,1537,844,1550,850,1548,855,1535,849,1478,816,1432,786"/>
+<area shape="rect" href="affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="1550,709,1646,735"/>
+<area shape="poly" title=" " alt="" coords="1461,756,1536,736,1537,741,1462,761"/>
+<area shape="rect" href="affichage_8c.html#ac0e780352c4ab1739b9e31be92740c2d" title="Dessine du texte à une position spécifique à l&#39;écran, avec gestion des retours à la ligne." alt="" coords="1545,759,1651,784"/>
+<area shape="poly" title=" " alt="" coords="1463,769,1531,769,1531,774,1463,774"/>
+<area shape="poly" title=" " alt="" coords="1646,855,1658,844,1677,816,1689,788,1696,761,1699,734,1694,681,1682,628,1670,575,1665,520,1668,493,1675,464,1687,435,1706,406,1716,396,1720,400,1710,409,1692,438,1680,466,1673,493,1670,520,1675,574,1687,627,1699,680,1704,734,1701,762,1694,790,1681,819,1662,848,1649,859"/>
+<area shape="poly" title=" " alt="" coords="1644,855,1658,844,1692,798,1718,746,1737,691,1750,636,1764,534,1766,459,1771,460,1769,534,1756,637,1742,693,1723,748,1696,801,1662,848,1647,860"/>
+<area shape="poly" title=" " alt="" coords="871,419,1106,427,1106,432,871,424"/>
+<area shape="rect" href="combat_8c.html#a8c19b3bf83d09e9fb4b596cd4ff45219" title="Calcule et applique les effets d&#39;une attaque lors d&#39;un combat entre deux Mechas." alt="" coords="947,557,1043,583"/>
+<area shape="poly" title=" " alt="" coords="823,431,860,485,888,516,920,543,936,551,933,556,917,547,884,520,856,488,819,434"/>
+<area shape="poly" title=" " alt="" coords="1043,555,1071,542,1133,498,1181,453,1185,457,1136,502,1073,547,1045,560"/>
+<area shape="rect" href="combat_8c.html#ab9469ab4f84b56a27ef05848c4a78cb9" title="Anime visuellement la diminution progressive des PV d&#39;un Mecha durant un combat." alt="" coords="1147,557,1264,583"/>
+<area shape="poly" title=" " alt="" coords="1044,567,1133,567,1133,573,1044,573"/>
+<area shape="poly" title=" " alt="" coords="1265,577,1292,593,1307,613,1315,633,1318,671,1320,709,1327,727,1341,746,1353,755,1349,759,1337,749,1322,730,1315,710,1312,671,1310,634,1303,616,1289,597,1263,582"/>
+<area shape="poly" title=" " alt="" coords="870,374,1072,405,1128,415,1127,420,1072,410,869,379"/>
+<area shape="rect" href="combat_8c.html#a30cb93b663d557e0e81271f956c24379" title="Affiche l&#39;interface de sélection du Mecha du joueur durant un combat." alt="" coords="1343,709,1483,735"/>
+<area shape="poly" title=" " alt="" coords="822,354,868,290,880,261,886,235,895,212,917,191,957,171,993,167,1030,174,1073,190,1116,210,1150,230,1179,251,1203,275,1245,332,1293,406,1322,463,1354,545,1406,695,1401,697,1349,547,1317,466,1288,409,1240,335,1199,279,1175,255,1147,234,1113,215,1071,195,1029,179,993,172,959,176,920,195,900,215,891,237,886,263,873,293,826,357"/>
+<area shape="poly" title=" " alt="" coords="1449,707,1487,688,1510,668,1534,647,1551,637,1553,642,1538,651,1514,672,1489,692,1451,712"/>
+<area shape="poly" title=" " alt="" coords="1461,707,1536,687,1537,692,1462,712"/>
+<area shape="poly" title=" " alt="" coords="1463,732,1489,745,1505,758,1514,770,1523,782,1538,795,1556,805,1553,809,1534,799,1519,786,1510,774,1501,762,1487,750,1461,737"/>
+<area shape="poly" title=" " alt="" coords="1469,733,1490,746,1508,771,1515,796,1521,820,1538,844,1542,848,1539,852,1534,848,1516,822,1510,797,1503,773,1486,749,1467,737"/>
+<area shape="poly" title=" " alt="" coords="1483,719,1536,719,1536,725,1483,725"/>
+<area shape="rect" href="combat_8c.html#ac6fcdad743dc3526b2b89a1630618a07" title="Distribue les points d&#39;expérience (XP) gagnés lors d&#39;un combat à un ensemble de Méchas ayant particip..." alt="" coords="565,255,661,280"/>
+<area shape="poly" title=" " alt="" coords="461,265,551,265,551,270,461,270"/>
+<area shape="rect" href="combat_8c.html#aec838d58a7def8717d7fcd0faab3a107" title="Gère la montée en niveau d&#39;un Mecha joueur après avoir reçu des points d&#39;expérience (XP)." alt="" coords="757,255,867,280"/>
+<area shape="poly" title=" " alt="" coords="662,265,743,265,743,270,662,270"/>
+<area shape="rect" href="combat_8c.html#af35e79d0f311c06fb1fe44ce8bb34ca4" title="Gère l&#39;apprentissage d&#39;une nouvelle attaque par un Mecha lors d&#39;un changement de niveau." alt="" coords="919,205,1072,231"/>
+<area shape="poly" title=" " alt="" coords="859,252,933,232,935,237,861,257"/>
+<area shape="rect" href="combat_8c.html#afe15b54290598e06032e0c418f626461" title="Gère l&#39;évolution d&#39;un Mecha joueur lorsqu&#39;il atteint le niveau requis." alt="" coords="932,255,1059,280"/>
+<area shape="poly" title=" " alt="" coords="868,265,918,265,918,270,868,270"/>
+<area shape="poly" title=" " alt="" coords="1053,228,1074,240,1116,279,1150,325,1177,369,1195,406,1191,408,1172,372,1146,328,1112,283,1070,244,1050,233"/>
+<area shape="poly" title=" " alt="" coords="1036,278,1073,297,1108,324,1139,353,1187,407,1183,411,1135,357,1104,328,1071,302,1033,283"/>
+<area shape="poly" title=" " alt="" coords="615,534,627,482,653,404,694,318,720,277,751,240,789,205,825,178,861,159,898,147,936,141,977,142,1023,149,1073,161,1141,184,1192,210,1238,244,1293,292,1318,322,1341,354,1471,494,1575,597,1571,600,1468,497,1337,357,1314,325,1289,296,1234,248,1189,214,1139,189,1071,166,1022,154,977,147,936,147,899,152,863,164,828,183,792,209,755,244,725,280,698,321,658,406,633,483,620,535"/>
+<area shape="poly" title=" " alt="" coords="658,549,684,556,707,571,720,586,728,602,734,632,738,663,744,678,755,694,793,730,828,752,868,767,919,781,977,793,1036,800,1155,803,1263,794,1350,781,1350,787,1264,800,1155,808,1036,806,976,799,918,786,866,772,825,757,790,734,751,697,740,681,733,664,728,633,723,603,716,589,704,575,681,561,656,554"/>
+<area shape="poly" title=" " alt="" coords="658,547,684,554,707,571,719,589,728,612,737,669,739,735,738,807,736,948,742,1006,756,1049,802,1125,825,1155,850,1180,878,1199,910,1213,949,1222,994,1225,1207,1225,1291,1229,1358,1231,1389,1228,1420,1219,1452,1203,1486,1177,1516,1147,1539,1111,1557,1073,1571,1032,1587,956,1593,896,1599,897,1593,956,1576,1034,1562,1075,1544,1114,1520,1150,1490,1181,1455,1207,1422,1224,1390,1233,1359,1237,1290,1234,1207,1230,994,1230,948,1227,909,1219,876,1204,847,1184,821,1159,798,1128,751,1051,736,1007,731,948,733,807,734,735,732,669,722,614,714,592,703,575,682,559,656,552"/>
+<area shape="poly" title=" " alt="" coords="621,533,672,468,709,428,752,392,762,386,765,390,755,396,713,432,676,471,625,536"/>
+<area shape="rect" href="combat_8c.html#aeabe45f0372840462d595a801345672b" title="Affiche l&#39;interface permettant au joueur de choisir et effectuer une attaque durant un combat." alt="" coords="759,1012,865,1037"/>
+<area shape="poly" title=" " alt="" coords="657,547,684,554,707,571,727,598,741,624,749,651,752,677,749,728,739,778,727,829,722,881,723,908,729,935,739,963,755,991,766,1003,762,1006,751,994,735,965,724,936,718,909,716,881,722,828,733,777,744,727,747,677,744,652,736,626,723,601,703,575,682,559,656,552"/>
+<area shape="rect" href="combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="756,657,868,683"/>
+<area shape="poly" title=" " alt="" coords="658,552,707,570,756,607,793,645,790,649,752,611,704,575,656,557"/>
+<area shape="poly" title=" " alt="" coords="829,1010,905,954,1026,871,1177,779,1257,735,1338,696,1437,659,1529,633,1530,638,1438,664,1340,701,1259,740,1179,784,1029,876,908,959,832,1014"/>
+<area shape="poly" title=" " alt="" coords="866,1026,953,1027,1063,1018,1122,1007,1181,991,1237,969,1289,940,1327,907,1358,868,1382,829,1399,795,1404,798,1387,831,1362,871,1331,911,1292,944,1239,974,1182,996,1123,1013,1064,1023,953,1032,866,1032"/>
+<area shape="poly" title=" " alt="" coords="866,1031,962,1040,1017,1040,1071,1033,1554,836,1556,841,1073,1038,1018,1045,962,1046,865,1037"/>
+<area shape="poly" title=" " alt="" coords="831,1036,870,1064,920,1092,973,1111,1043,1131,1123,1149,1208,1163,1292,1171,1371,1172,1438,1163,1465,1154,1486,1143,1515,1118,1538,1088,1556,1055,1569,1020,1586,951,1593,896,1598,897,1591,952,1574,1021,1560,1057,1542,1091,1519,1122,1490,1147,1467,1159,1439,1168,1371,1177,1292,1176,1207,1168,1122,1154,1041,1136,971,1116,918,1097,867,1068,828,1040"/>
+<area shape="poly" title=" " alt="" coords="812,1012,823,928,845,803,876,678,895,628,917,594,933,581,936,586,921,597,900,630,881,679,850,804,829,929,817,1012"/>
+<area shape="poly" title=" " alt="" coords="868,665,1290,642,1529,624,1529,629,1291,647,868,670"/>
+<area shape="poly" title=" " alt="" coords="815,656,827,623,847,579,877,532,896,511,917,493,961,468,1010,450,1059,439,1106,433,1106,438,1060,444,1011,456,964,473,920,498,900,515,882,536,852,581,832,625,820,658"/>
+<area shape="poly" title=" " alt="" coords="828,681,867,714,892,731,920,744,976,760,1035,772,1154,783,1262,783,1349,777,1350,782,1263,788,1153,788,1034,777,975,765,918,749,890,736,864,719,824,685"/>
+<area shape="poly" title=" " alt="" coords="823,681,860,732,887,760,920,781,1005,814,1095,836,1187,847,1277,851,1362,849,1438,843,1554,827,1554,832,1439,848,1362,854,1277,856,1186,852,1094,841,1003,819,917,786,884,764,856,736,818,684"/>
+<area shape="poly" title=" " alt="" coords="820,682,831,714,852,757,881,800,899,819,920,835,958,855,997,873,1081,897,1167,911,1253,915,1336,912,1413,904,1535,883,1536,888,1414,909,1337,917,1253,920,1167,916,1080,902,995,878,955,860,917,839,896,823,877,803,847,759,826,716,815,684"/>
+<area shape="rect" href="combat_8c.html#a7f2daafca6455a03963db8f32d8a8d10" title="Gère l&#39;utilisation d&#39;un objet &quot;carburant&quot; durant un combat." alt="" coords="926,708,1065,733"/>
+<area shape="poly" title=" " alt="" coords="860,680,936,702,935,707,858,685"/>
+<area shape="rect" href="combat_8c.html#a53bf2250ba00b21dceed166fa59bd150" title="Gère l&#39;utilisation d&#39;une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat." alt="" coords="924,607,1067,632"/>
+<area shape="poly" title=" " alt="" coords="858,655,935,633,936,638,860,660"/>
+<area shape="rect" href="combat_8c.html#afff6b8b516af5c46c938f407788d1b5f" title="Gère l&#39;utilisation d&#39;un objet &quot;rappel&quot; durant un combat." alt="" coords="936,508,1055,533"/>
+<area shape="poly" title=" " alt="" coords="818,656,856,602,884,570,917,543,927,537,930,541,920,547,888,574,860,605,823,659"/>
+<area shape="poly" title=" " alt="" coords="1010,706,1040,679,1070,643,1086,617,1095,595,1103,571,1118,543,1151,495,1182,454,1187,458,1155,498,1122,546,1108,574,1100,596,1090,619,1074,646,1044,682,1014,710"/>
+<area shape="poly" title=" " alt="" coords="1046,731,1177,763,1339,794,1455,808,1554,816,1553,821,1455,814,1338,799,1176,768,1044,736"/>
+<area shape="poly" title=" " alt="" coords="1065,718,1330,719,1330,725,1065,724"/>
+<area shape="poly" title=" " alt="" coords="1049,604,1070,593,1120,537,1184,455,1188,458,1124,540,1074,598,1052,609"/>
+<area shape="rect" href="pointDePassage_8c.html#af6656571e1d9901fcca65ffc7217aabb" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="1152,607,1259,632"/>
+<area shape="poly" title=" " alt="" coords="1067,617,1138,617,1138,622,1067,622"/>
+<area shape="poly" title=" " alt="" coords="1026,506,1161,448,1163,453,1028,510"/>
+<area shape="poly" title=" " alt="" coords="1055,509,1108,505,1169,507,1233,518,1263,529,1292,543,1333,576,1366,617,1390,660,1405,696,1401,698,1385,662,1361,620,1329,579,1289,547,1261,533,1231,523,1169,512,1108,511,1055,514"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="537,584,689,609"/>
+<area shape="poly" title=" " alt="" coords="474,594,524,594,524,599,474,599"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="521,633,705,659"/>
+<area shape="poly" title=" " alt="" coords="463,607,548,628,546,633,462,612"/>
+<area shape="poly" title=" " alt="" coords="286,554,357,577,355,582,284,559"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7ec67454376236ff74521e75806f1f8b" name="a7ec67454376236ff74521e75806f1f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec67454376236ff74521e75806f1f8b">&#9670;&#160;</a></span>retourner_parler_a_vin_gazole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int retourner_parler_a_vin_gazole </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>pnj_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère la seconde interaction du joueur avec le PNJ "Vin Gazole", incluant dialogues, soin du joueur et déblocage de la carte. </p>
+<p>Cette fonction permet au joueur de retourner parler au PNJ "Vin Gazole" après avoir progressé dans l'histoire. <br  />
+ Lors de cette interaction, deux dialogues successifs sont affichés au joueur (début et fin). Ensuite, <br  />
+ le joueur et ses Mechas sont complètement soignés (inventaire et PV), l'état du PNJ est modifié pour indiquer <br  />
+ que l'interaction a eu lieu, une sauvegarde du PNJ est effectuée, et les cases permettant la progression ultérieure <br  />
+ du joueur sont débloquées. De plus, un nouveau point de sauvegarde est défini pour le joueur.</p>
+<p>Si le joueur tente de progresser avant cette interaction obligatoire, un message d'avertissement lui indique <br  />
+ clairement qu'il doit aller se soigner au préalable.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure principale du jeu (état actuel, renderer, cartes). </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (position, inventaire, état des Mechas). </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle définissant la position graphique du sprite joueur. </td></tr>
+    <tr><td class="paramname">pnj_sprite</td><td>Rectangle définissant la position graphique du sprite du PNJ. </td></tr>
+    <tr><td class="paramname">sprite_pnj</td><td>Pointeur vers les textures associées au PNJ. </td></tr>
+    <tr><td class="paramname">sprite_playerH</td><td>Pointeur vers les textures associées au joueur. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) pour gérer l'interaction.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> si la fonction s'exécute correctement.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Toutes les structures du jeu (<code>game</code>, <code>joueur</code>, <code>pnj</code>) et ressources graphiques doivent être initialisées correctement. Les fonctions appelées (<code>afficher_dialogue</code>, <code>soigner</code>, <code>sauvegarde_pnj</code>) doivent être implémentées et valides.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>L'état du PNJ "Vin Gazole" est mis à jour (<code>etat = 1</code>), le joueur est intégralement soigné, une sauvegarde est effectuée, et la carte est modifiée pour permettre au joueur de progresser. Un point de sauvegarde est enregistré.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>L'interaction se déclenche uniquement en pressant la touche <code>P</code>. Un message d'avertissement est affiché en cas de tentative prématurée d'avancer.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifier que toutes les constantes (<code>VIN_GAZOLE_3</code>, <code>OK</code>, <code>TPMAP2</code>) soient correctement définies et initialisées. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a7ec67454376236ff74521e75806f1f8b_cgraph.png" border="0" usemap="#apointDePassage_8c_a7ec67454376236ff74521e75806f1f8b_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a7ec67454376236ff74521e75806f1f8b_cgraph" id="apointDePassage_8c_a7ec67454376236ff74521e75806f1f8b_cgraph">
+<area shape="rect" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="5,183,132,223"/>
+<area shape="rect" href="affichage_8c.html#a265b0bc1ac18afe4fdf6233323561dd1" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="180,135,300,160"/>
+<area shape="poly" title=" " alt="" coords="130,181,186,162,188,167,131,186"/>
+<area shape="rect" href="sauv_8c.html#ab1da7937b8e445add82b83c23950cc74" title="Sauvegarde ou met à jour les données d&#39;un PNJ spécifique pour un joueur dans un fichier CSV personnal..." alt="" coords="183,191,297,216"/>
+<area shape="poly" title=" " alt="" coords="132,201,170,201,170,206,132,206"/>
+<area shape="rect" href="pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="208,252,272,277"/>
+<area shape="poly" title=" " alt="" coords="126,221,196,246,194,251,124,226"/>
+<area shape="rect" href="affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="367,29,478,55"/>
+<area shape="poly" title=" " alt="" coords="253,133,293,99,347,64,361,57,363,62,349,68,296,103,257,137"/>
+<area shape="rect" href="affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="387,79,458,104"/>
+<area shape="poly" title=" " alt="" coords="281,132,374,103,375,108,283,137"/>
+<area shape="rect" href="affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="383,128,462,153"/>
+<area shape="poly" title=" " alt="" coords="300,142,369,140,370,145,300,148"/>
+<area shape="rect" href="affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="361,177,484,203"/>
+<area shape="poly" title=" " alt="" coords="295,157,355,172,354,177,294,163"/>
+<area shape="rect" href="affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="348,227,497,252"/>
+<area shape="poly" title=" " alt="" coords="269,158,301,176,325,195,349,212,366,219,364,224,347,216,322,199,299,180,267,163"/>
+<area shape="rect" href="affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="575,5,699,31"/>
+<area shape="poly" title=" " alt="" coords="457,78,496,64,544,40,567,32,569,37,546,44,498,68,459,83"/>
+<area shape="rect" href="affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="590,55,685,80"/>
+<area shape="poly" title=" " alt="" coords="458,85,576,71,576,77,458,90"/>
+<area shape="rect" href="affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="591,104,683,129"/>
+<area shape="poly" title=" " alt="" coords="458,93,578,107,577,112,458,98"/>
+<area shape="rect" href="affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="600,153,675,179"/>
+<area shape="poly" title=" " alt="" coords="459,99,498,113,546,138,587,152,586,157,544,143,496,118,457,104"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="359,276,487,301"/>
+<area shape="poly" title=" " alt="" coords="273,266,345,276,344,281,272,271"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="561,251,713,276"/>
+<area shape="poly" title=" " alt="" coords="487,278,548,271,548,276,487,284"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="545,300,729,325"/>
+<area shape="poly" title=" " alt="" coords="487,293,532,298,531,303,487,298"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a50a0f93f053f249f00e5d18196a34d8a" name="a50a0f93f053f249f00e5d18196a34d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a0f93f053f249f00e5d18196a34d8a">&#9670;&#160;</a></span>soigner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int soigner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restaure entièrement la santé et les objets du joueur et sauvegarde la partie. </p>
+<p>Cette fonction réinitialise les objets de l'inventaire du joueur (mechaballs, carburant, rappel, repousse) à leur quantité maximale prédéfinie (<code>NB_OBJET</code>). Elle restaure également entièrement les points de vie (PV) et le nombre d'utilisations des attaques des Mechas présents dans l'équipe du joueur.</p>
+<p>Après avoir restauré les statistiques des Mechas et les objets du joueur, elle sauvegarde automatiquement l’état actuel de la partie en appelant <code><a class="el" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV.">sauvegarde_partie()</a></code>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur dont les Mechas et l'inventaire seront restaurés.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>OK</code> : si les opérations de soin et de sauvegarde ont été effectuées avec succès.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur <code>j</code>, ainsi que ses sous-structures (<code>inventaire</code>, <code>mechas_joueur</code>) doivent être initialisés correctement. Les tableaux globaux (notamment <code>attaque[]</code>) doivent également être initialisés et valides.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Tous les objets de l'inventaire du joueur sont restaurés à leur quantité maximale. Les PV et les utilisations des attaques des Mechas du joueur sont entièrement restaurés. L’état de la partie est sauvegardé.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction est typiquement utilisée après un soin complet (comme dans un centre de soin).</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifier la validité des constantes utilisées (<code>NB_OBJET</code>, <code>NB_MECHAS_INVENTAIRE</code>, et <code>OK</code>) et que la fonction <code>sauvegarde_partie</code> soit bien implémentée. </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_cgraph.png" border="0" usemap="#apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_cgraph" alt=""/></div>
+<map name="apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_cgraph" id="apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_cgraph">
+<area shape="rect" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="5,31,69,56"/>
+<area shape="rect" href="sauv_8c.html#a68cba593cfe77461f153f38b2a08a374" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="117,31,245,56"/>
+<area shape="poly" title=" " alt="" coords="69,41,103,41,103,46,69,46"/>
+<area shape="rect" href="sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="309,5,461,31"/>
+<area shape="poly" title=" " alt="" coords="245,33,295,26,296,32,246,38"/>
+<area shape="rect" href="sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="293,55,477,80"/>
+<area shape="poly" title=" " alt="" coords="246,48,280,52,279,58,246,54"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="pointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_icgraph.png" border="0" usemap="#apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_icgraph" alt=""/></div>
+<map name="apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_icgraph" id="apointDePassage_8c_a50a0f93f053f249f00e5d18196a34d8a_icgraph">
+<area shape="rect" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="208,80,272,105"/>
+<area shape="rect" href="pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,5,131,31"/>
+<area shape="poly" title=" " alt="" coords="209,74,159,44,130,33,132,28,161,40,211,69"/>
+<area shape="rect" href="pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="47,55,118,80"/>
+<area shape="poly" title=" " alt="" coords="194,88,118,76,119,70,195,83"/>
+<area shape="rect" href="pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,104,160,129"/>
+<area shape="poly" title=" " alt="" coords="195,102,161,107,160,102,194,97"/>
+<area shape="rect" href="pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="19,154,146,194"/>
+<area shape="poly" title=" " alt="" coords="209,115,161,143,133,156,131,152,159,138,206,111"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="pointDePassage_8c.html">pointDePassage.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

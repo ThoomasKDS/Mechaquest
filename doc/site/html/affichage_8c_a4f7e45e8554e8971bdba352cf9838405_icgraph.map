@@ -1,0 +1,113 @@
+<map id="draw_all_rect" name="draw_all_rect">
+<area shape="rect" id="Node000001" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="1505,1123,1604,1148"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#a30cb93b663d557e0e81271f956c24379" title="Affiche l&#39;interface de sélection du Mecha du joueur durant un combat." alt="" coords="1091,188,1231,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1547,1110,1516,953,1489,848,1455,744,1419,660,1379,575,1294,418,1217,291,1168,215,1173,212,1222,288,1298,415,1384,573,1424,658,1460,742,1494,847,1521,951,1552,1109"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#af70cd65063ba7719d712c57fcce296a3" title="Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés." alt="" coords="898,89,994,115"/>
+<area shape="poly" id="edge21_Node000001_Node000003" title=" " alt="" coords="1549,1109,1542,1018,1526,883,1497,726,1478,646,1455,568,1418,445,1386,348,1365,305,1338,263,1300,221,1249,178,1219,158,1187,142,1117,120,1050,109,994,105,994,99,1051,103,1119,115,1189,137,1222,153,1252,173,1303,217,1342,260,1370,302,1391,346,1423,444,1460,567,1483,644,1503,725,1531,882,1547,1018,1555,1109"/>
+<area shape="rect" id="Node000009" href="$combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="533,793,619,819"/>
+<area shape="poly" id="edge73_Node000001_Node000009" title=" " alt="" coords="1541,1111,1509,1054,1485,1025,1456,1002,1416,980,1381,966,1349,959,1317,956,1248,957,1162,961,945,961,864,957,802,943,743,919,671,883,624,852,589,821,592,817,627,848,673,878,745,915,804,938,865,951,945,955,1162,955,1248,952,1317,950,1350,953,1383,961,1419,975,1459,997,1489,1021,1513,1051,1545,1109"/>
+<area shape="rect" id="Node000011" href="$combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="691,188,803,213"/>
+<area shape="poly" id="edge74_Node000001_Node000011" title=" " alt="" coords="1549,1109,1540,964,1522,750,1493,532,1476,442,1455,376,1415,293,1375,233,1323,183,1249,127,1152,61,1108,36,1064,19,1021,10,975,10,925,21,871,43,848,57,828,74,794,116,770,157,755,189,750,187,765,155,790,113,824,71,845,53,868,38,924,15,974,5,1021,4,1066,14,1110,31,1155,56,1252,123,1326,178,1379,230,1420,291,1460,374,1481,441,1499,531,1527,749,1545,964,1555,1109"/>
+<area shape="rect" id="Node000013" href="$menu_8c.html#af33efca11c59a833339ea201bd4fb9d4" title="Affiche l&#39;écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour." alt="" coords="1109,1249,1212,1275"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="1552,1162,1543,1203,1526,1252,1499,1300,1480,1321,1459,1338,1421,1354,1381,1358,1340,1353,1300,1342,1228,1309,1178,1277,1181,1272,1231,1304,1302,1337,1341,1348,1381,1353,1420,1348,1456,1333,1477,1317,1494,1297,1521,1250,1538,1201,1547,1161"/>
+<area shape="rect" id="Node000014" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="695,1148,799,1173"/>
+<area shape="poly" id="edge29_Node000001_Node000014" title=" " alt="" coords="1491,1140,799,1162,799,1156,1491,1135"/>
+<area shape="rect" id="Node000015" href="$menu_8c.html#a98de4f1f9f962af528305e0d3e88d9da" title="Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil." alt="" coords="873,1199,1019,1224"/>
+<area shape="poly" id="edge30_Node000001_Node000015" title=" " alt="" coords="1521,1157,1491,1171,1458,1182,1339,1204,1219,1215,1109,1219,1020,1218,1020,1212,1109,1214,1219,1210,1338,1199,1457,1177,1489,1166,1518,1152"/>
+<area shape="rect" id="Node000016" href="$menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="883,1072,1009,1097"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="1492,1133,1009,1093,1010,1087,1492,1128"/>
+<area shape="rect" id="Node000017" href="$menu_8c.html#aa1f62d5ef2922f420fba49063416f5ab" title="Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin)." alt="" coords="1309,1047,1447,1072"/>
+<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="1513,1119,1456,1094,1410,1075,1412,1070,1458,1089,1515,1114"/>
+<area shape="rect" id="Node000018" href="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="1071,996,1251,1021"/>
+<area shape="poly" id="edge26_Node000001_Node000018" title=" " alt="" coords="1536,1113,1503,1072,1481,1052,1456,1036,1406,1018,1353,1007,1300,1003,1251,1003,1251,998,1300,998,1353,1002,1407,1013,1459,1032,1484,1048,1507,1068,1540,1110"/>
+<area shape="rect" id="Node000019" href="$menu_8c.html#adb80c9d7e446e21dacf40b55cc973deb" title="Affiche un écran d&#39;informations sur les contrôles du jeu." alt="" coords="1307,1249,1449,1275"/>
+<area shape="poly" id="edge27_Node000001_Node000019" title=" " alt="" coords="1536,1161,1502,1197,1459,1232,1420,1252,1418,1247,1456,1228,1498,1193,1532,1157"/>
+<area shape="rect" id="Node000020" href="$menu_8c.html#a6ef0addf6407c785be3cf605618b938e" title="Affiche un menu permettant de régler le volume sonore du jeu (Pour l&#39;instant)." alt="" coords="1321,1299,1435,1324"/>
+<area shape="poly" id="edge31_Node000001_Node000020" title=" " alt="" coords="1546,1162,1513,1225,1489,1259,1459,1288,1436,1301,1434,1296,1456,1284,1485,1255,1509,1222,1541,1160"/>
+<area shape="rect" id="Node000021" href="$affichage_8c.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5" title="Affiche l&#39;écran d&#39;information détaillée d&#39;un Mécha du joueur." alt="" coords="1311,1501,1445,1527"/>
+<area shape="poly" id="edge33_Node000001_Node000021" title=" " alt="" coords="1556,1162,1553,1226,1539,1311,1527,1357,1510,1402,1488,1445,1459,1484,1446,1495,1431,1504,1428,1499,1443,1491,1455,1480,1483,1442,1505,1400,1522,1355,1534,1310,1547,1225,1551,1162"/>
+<area shape="rect" id="Node000022" href="$affichage_8c.html#aff36844a9bc0417b311b691e2957adae" title="Affiche le Mechadex du joueur, listant tous ses Méchas capturés." alt="" coords="1098,1501,1223,1527"/>
+<area shape="poly" id="edge37_Node000001_Node000022" title=" " alt="" coords="1554,1162,1545,1249,1527,1364,1514,1421,1499,1473,1481,1514,1459,1541,1426,1561,1390,1570,1352,1573,1313,1569,1241,1551,1187,1529,1189,1524,1243,1546,1314,1564,1352,1567,1389,1565,1424,1556,1456,1537,1476,1512,1494,1471,1509,1420,1522,1363,1539,1249,1549,1162"/>
+<area shape="rect" id="Node000023" href="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="885,1451,1007,1476"/>
+<area shape="poly" id="edge36_Node000001_Node000023" title=" " alt="" coords="1557,1162,1554,1221,1541,1298,1529,1337,1512,1375,1489,1410,1459,1439,1424,1456,1375,1468,1316,1475,1251,1478,1118,1477,1007,1471,1008,1466,1118,1472,1251,1473,1316,1470,1374,1463,1422,1451,1456,1435,1484,1406,1507,1373,1524,1335,1536,1296,1549,1221,1551,1162"/>
+<area shape="rect" id="Node000024" href="$affichage_8c.html#a9519a3474a5b9ff0162efbc07d652b0c" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="1299,1400,1457,1425"/>
+<area shape="poly" id="edge38_Node000001_Node000024" title=" " alt="" coords="1553,1162,1543,1209,1526,1267,1499,1328,1481,1357,1459,1383,1429,1402,1426,1398,1456,1379,1477,1354,1494,1326,1521,1265,1538,1207,1547,1161"/>
+<area shape="rect" id="Node000025" href="$combat_8c.html#aeabe45f0372840462d595a801345672b" title="Affiche l&#39;interface permettant au joueur de choisir et effectuer une attaque durant un combat." alt="" coords="693,844,800,869"/>
+<area shape="poly" id="edge40_Node000001_Node000025" title=" " alt="" coords="1546,1110,1536,1071,1519,1025,1493,979,1476,959,1456,942,1427,934,1365,924,1178,901,800,864,800,859,1179,896,1366,919,1428,929,1459,937,1479,955,1497,976,1524,1022,1541,1069,1551,1109"/>
+<area shape="rect" id="Node000026" href="$combat_8c.html#a159b2a6408c605d1fc9432689f92e3cb" title="Affiche à l&#39;écran tous les éléments graphiques d&#39;un combat entre deux Mechas." alt="" coords="1328,756,1428,781"/>
+<area shape="poly" id="edge42_Node000001_Node000026" title=" " alt="" coords="1543,1111,1508,1012,1483,951,1455,890,1419,829,1387,783,1391,780,1423,826,1460,887,1488,948,1513,1010,1548,1109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1126,183,1077,156,1022,129,991,117,993,112,1024,124,1080,151,1128,179"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a16e4593cbfaef36a7cc088aa6bef48c0" title="Permet au joueur de changer le Mecha actif pendant un combat." alt="" coords="689,591,804,616"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1133,224,1080,266,1011,327,938,400,872,480,857,506,851,531,842,554,823,579,800,593,798,588,820,575,838,552,846,529,852,505,867,477,934,396,1008,323,1077,262,1130,220"/>
+<area shape="rect" id="Node000010" href="$combat_8c.html#a7f2daafca6455a03963db8f32d8a8d10" title="Gère l&#39;utilisation d&#39;un objet &quot;carburant&quot; durant un combat." alt="" coords="877,139,1015,164"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="1091,188,1002,167,1003,162,1092,182"/>
+<area shape="rect" id="Node000012" href="$combat_8c.html#afff6b8b516af5c46c938f407788d1b5f" title="Gère l&#39;utilisation d&#39;un objet &quot;rappel&quot; durant un combat." alt="" coords="887,188,1005,213"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="1077,203,1006,203,1006,198,1077,198"/>
+<area shape="rect" id="Node000005" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,489,313,515"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="694,588,671,579,647,566,623,555,539,534,453,520,313,506,314,501,454,514,540,529,625,550,650,561,673,574,696,583"/>
+<area shape="rect" id="Node000008" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,692,329,717"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="676,621,330,695,329,689,675,616"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="724,628,674,681,625,744,588,795,584,792,620,741,670,678,720,624"/>
+<area shape="rect" id="Node000006" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,465,131,491"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="210,497,131,487,131,482,211,492"/>
+<area shape="rect" id="Node000007" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,515,160,540"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="211,513,160,520,160,514,210,507"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="568,780,559,737,542,684,516,628,498,603,478,580,440,552,396,532,352,518,313,510,314,505,353,513,398,527,442,547,482,576,503,599,520,625,547,682,564,736,573,779"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="519,806,450,796,376,777,324,749,284,720,287,715,327,744,378,772,451,791,519,800"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="882,170,799,191,798,185,880,165"/>
+<area shape="poly" id="edge13_Node000011_Node000009" title=" " alt="" coords="739,227,675,428,618,646,583,793,578,792,612,644,669,427,734,225"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="872,203,803,203,803,198,872,198"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="1096,1267,988,1262,927,1253,868,1238,837,1225,807,1208,762,1176,765,1171,810,1203,839,1220,870,1233,928,1248,988,1257,1096,1262"/>
+<area shape="poly" id="edge18_Node000013_Node000015" title=" " alt="" coords="1095,1250,1000,1227,1001,1222,1097,1244"/>
+<area shape="poly" id="edge20_Node000016_Node000014" title=" " alt="" coords="900,1105,782,1150,780,1145,898,1100"/>
+<area shape="poly" id="edge23_Node000017_Node000016" title=" " alt="" coords="1295,1067,1010,1084,1009,1078,1295,1062"/>
+<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="1309,1046,1215,1024,1216,1019,1310,1041"/>
+<area shape="poly" id="edge25_Node000018_Node000016" title=" " alt="" coords="1112,1028,984,1074,982,1069,1110,1023"/>
+<area shape="poly" id="edge28_Node000019_Node000013" title=" " alt="" coords="1293,1265,1212,1265,1212,1259,1293,1259"/>
+<area shape="poly" id="edge32_Node000020_Node000013" title=" " alt="" coords="1308,1298,1212,1276,1213,1271,1309,1293"/>
+<area shape="poly" id="edge34_Node000021_Node000022" title=" " alt="" coords="1298,1517,1224,1517,1224,1511,1298,1511"/>
+<area shape="poly" id="edge35_Node000022_Node000023" title=" " alt="" coords="1092,1501,1000,1479,1001,1473,1093,1496"/>
+<area shape="poly" id="edge39_Node000024_Node000023" title=" " alt="" coords="1285,1424,1071,1447,1008,1456,1007,1451,1070,1442,1285,1419"/>
+<area shape="poly" id="edge41_Node000025_Node000009" title=" " alt="" coords="689,843,619,821,620,816,691,837"/>
+<area shape="poly" id="edge71_Node000026_Node000009" title=" " alt="" coords="1315,774,620,807,619,801,1314,769"/>
+<area shape="poly" id="edge72_Node000026_Node000011" title=" " alt="" coords="1372,743,1358,623,1334,454,1317,368,1297,288,1274,222,1249,177,1207,131,1165,95,1123,69,1078,52,1032,45,982,47,928,58,870,79,832,102,800,133,775,164,758,189,753,186,771,161,796,129,829,98,868,74,927,53,981,42,1032,40,1080,47,1125,64,1169,91,1211,128,1253,174,1279,220,1302,287,1322,367,1339,453,1364,623,1377,742"/>
+<area shape="poly" id="edge70_Node000026_Node000025" title=" " alt="" coords="1344,790,1300,811,1251,827,1126,850,1000,861,887,864,800,862,800,857,887,858,1000,855,1125,845,1250,822,1298,806,1341,786"/>
+<area shape="rect" id="Node000027" href="$affichage_8c.html#a1091893e7df87a967b878919b232b0d5" title="Affiche un dialogue interactif durant un combat entre deux Méchas." alt="" coords="1075,491,1246,516"/>
+<area shape="poly" id="edge43_Node000026_Node000027" title=" " alt="" coords="1356,747,1170,518,1174,514,1360,744"/>
+<area shape="rect" id="Node000037" href="$combat_8c.html#ab9469ab4f84b56a27ef05848c4a78cb9" title="Anime visuellement la diminution progressive des PV d&#39;un Mecha durant un combat." alt="" coords="1102,717,1219,743"/>
+<area shape="poly" id="edge68_Node000026_Node000037" title=" " alt="" coords="1314,760,1219,743,1220,738,1315,755"/>
+<area shape="poly" id="edge58_Node000027_Node000004" title=" " alt="" coords="1132,526,1082,554,1023,579,966,593,908,601,805,607,804,602,907,596,965,588,1022,574,1080,550,1129,521"/>
+<area shape="poly" id="edge59_Node000027_Node000005" title=" " alt="" coords="1118,488,1073,470,1022,454,926,432,843,417,769,408,700,406,631,411,557,422,378,462,335,476,297,492,295,487,333,471,377,457,556,417,630,406,700,401,770,403,844,411,927,427,1023,449,1074,465,1120,483"/>
+<area shape="poly" id="edge60_Node000027_Node000008" title=" " alt="" coords="1154,531,1138,576,1112,631,1074,686,1051,711,1024,731,987,751,954,763,923,768,892,769,828,763,748,758,575,758,504,754,433,745,317,720,318,715,434,739,504,749,575,753,748,753,828,758,892,764,922,763,953,758,985,746,1021,726,1047,707,1070,683,1107,629,1133,574,1149,529"/>
+<area shape="poly" id="edge63_Node000027_Node000010" title=" " alt="" coords="1153,478,1142,417,1118,336,1100,293,1079,251,1052,212,1021,177,1004,166,1007,162,1024,173,1057,208,1083,248,1105,291,1123,334,1147,415,1159,477"/>
+<area shape="poly" id="edge66_Node000027_Node000011" title=" " alt="" coords="1134,483,1083,437,1021,386,878,285,768,216,771,211,881,281,1024,381,1087,433,1138,479"/>
+<area shape="poly" id="edge67_Node000027_Node000012" title=" " alt="" coords="1151,478,1137,426,1111,358,1073,287,1049,255,1021,227,1003,216,1006,211,1024,223,1053,252,1078,284,1116,356,1142,424,1156,477"/>
+<area shape="rect" id="Node000028" href="$combat_8c.html#a8c19b3bf83d09e9fb4b596cd4ff45219" title="Calcule et applique les effets d&#39;une attaque lors d&#39;un combat entre deux Mechas." alt="" coords="898,692,994,717"/>
+<area shape="poly" id="edge44_Node000027_Node000028" title=" " alt="" coords="1147,530,1098,600,1064,640,1024,675,989,694,986,690,1021,671,1060,636,1094,597,1143,526"/>
+<area shape="rect" id="Node000029" href="$combat_8c.html#a5491a6cd3adeb619da6eb84e6d888e7a" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="688,440,805,465"/>
+<area shape="poly" id="edge56_Node000027_Node000029" title=" " alt="" coords="1084,491,1022,481,907,468,805,459,806,454,907,462,1023,475,1085,486"/>
+<area shape="rect" id="Node000030" href="$combat_8c.html#ac6ceced0c9217ccb31c1400649cfd67c" title="Gère l&#39;attaque aléatoire d&#39;un Mecha sauvage durant un combat contre le joueur." alt="" coords="672,692,821,717"/>
+<area shape="poly" id="edge57_Node000027_Node000030" title=" " alt="" coords="1137,527,1087,568,1024,610,965,638,905,661,799,695,797,689,903,656,963,633,1021,605,1084,564,1134,523"/>
+<area shape="rect" id="Node000031" href="$combat_8c.html#af35e79d0f311c06fb1fe44ce8bb34ca4" title="Gère l&#39;apprentissage d&#39;une nouvelle attaque par un Mecha lors d&#39;un changement de niveau." alt="" coords="869,540,1023,565"/>
+<area shape="poly" id="edge50_Node000027_Node000031" title=" " alt="" coords="1092,522,1003,543,1002,537,1091,517"/>
+<area shape="rect" id="Node000035" href="$combat_8c.html#afe15b54290598e06032e0c418f626461" title="Gère l&#39;évolution d&#39;un Mecha joueur lorsqu&#39;il atteint le niveau requis." alt="" coords="883,491,1009,516"/>
+<area shape="poly" id="edge61_Node000027_Node000035" title=" " alt="" coords="1062,506,1010,506,1010,501,1062,501"/>
+<area shape="rect" id="Node000036" href="$combat_8c.html#a53bf2250ba00b21dceed166fa59bd150" title="Gère l&#39;utilisation d&#39;une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat." alt="" coords="875,237,1017,263"/>
+<area shape="poly" id="edge64_Node000027_Node000036" title=" " alt="" coords="1147,479,1129,437,1101,385,1065,331,1021,284,988,265,991,260,1024,280,1069,328,1106,382,1134,435,1152,477"/>
+<area shape="poly" id="edge45_Node000028_Node000025" title=" " alt="" coords="919,728,766,846,763,842,916,724"/>
+<area shape="poly" id="edge46_Node000028_Node000029" title=" " alt="" coords="927,682,881,612,819,529,760,468,764,464,823,526,885,609,932,679"/>
+<area shape="poly" id="edge48_Node000028_Node000030" title=" " alt="" coords="884,707,822,707,822,702,884,702"/>
+<area shape="poly" id="edge47_Node000029_Node000005" title=" " alt="" coords="675,459,537,470,378,486,314,496,313,491,377,481,536,464,674,454"/>
+<area shape="poly" id="edge49_Node000030_Node000008" title=" " alt="" coords="658,707,330,707,330,702,658,702"/>
+<area shape="rect" id="Node000032" href="$combat_8c.html#aec838d58a7def8717d7fcd0faab3a107" title="Gère la montée en niveau d&#39;un Mecha joueur après avoir reçu des points d&#39;expérience (XP)." alt="" coords="691,540,802,565"/>
+<area shape="poly" id="edge51_Node000031_Node000032" title=" " alt="" coords="855,555,802,555,802,550,855,550"/>
+<area shape="rect" id="Node000033" href="$combat_8c.html#ac6fcdad743dc3526b2b89a1630618a07" title="Distribue les points d&#39;expérience (XP) gagnés lors d&#39;un combat à un ensemble de Méchas ayant particip..." alt="" coords="528,565,624,591"/>
+<area shape="poly" id="edge52_Node000032_Node000033" title=" " alt="" coords="678,566,625,574,624,568,677,560"/>
+<area shape="rect" id="Node000034" href="$combat_8c.html#a2de6c3e2a52edcf450da90005d5fad1d" title="Calcule et distribue les points d&#39;expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha ad..." alt="" coords="377,591,480,616"/>
+<area shape="poly" id="edge53_Node000033_Node000034" title=" " alt="" coords="515,591,481,597,480,592,514,586"/>
+<area shape="poly" id="edge54_Node000034_Node000005" title=" " alt="" coords="395,586,376,574,288,517,291,513,379,569,397,581"/>
+<area shape="poly" id="edge55_Node000034_Node000008" title=" " alt="" coords="397,626,379,638,291,694,288,690,376,633,395,621"/>
+<area shape="poly" id="edge62_Node000035_Node000032" title=" " alt="" coords="882,522,799,543,798,537,880,517"/>
+<area shape="poly" id="edge65_Node000036_Node000011" title=" " alt="" coords="880,237,798,216,799,211,882,231"/>
+<area shape="poly" id="edge69_Node000037_Node000028" title=" " alt="" coords="1088,724,994,713,994,708,1089,719"/>
+</map>

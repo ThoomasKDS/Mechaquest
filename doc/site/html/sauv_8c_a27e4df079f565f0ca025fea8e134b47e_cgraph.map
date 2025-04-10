@@ -1,0 +1,7 @@
+<map id="recuperation_joueur" name="recuperation_joueur">
+<area shape="rect" id="Node000001" title="Récupère les données d&#39;une partie sauvegardée pour un joueur donné depuis un fichier CSV." alt="" coords="5,35,140,60"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#a5df71d1ff822e93d595691020a67fcac" title="Récupère les données de l&#39;inventaire d&#39;un joueur ou d&#39;un PNJ depuis un fichier CSV." alt="" coords="188,5,344,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,35,174,29,175,35,141,40"/>
+<area shape="rect" id="Node000003" href="$sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552" title="Récupère l&#39;équipe de Mechas d&#39;un joueur à partir d&#39;un fichier CSV." alt="" coords="193,55,339,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,54,179,60,178,65,140,60"/>
+</map>

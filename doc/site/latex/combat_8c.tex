@@ -1,0 +1,1484 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/src/combat.c}
+\hypertarget{combat_8c}{}\label{combat_8c}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/combat.c@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/combat.c}}
+
+
+fichier contenant la fonctions de combat  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}../lib/combat.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/sauv.\+h"{}}\newline
+Graphe des dépendances par inclusion de combat.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{combat_8c_a0240ac851181b84ac374872dc5434ee4}\label{combat_8c_a0240ac851181b84ac374872dc5434ee4} 
+\#define {\bfseries N}~2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{combat_8c_a159b2a6408c605d1fc9432689f92e3cb}{draw\+\_\+combat}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi)
+\begin{DoxyCompactList}\small\item\em Affiche à l\textquotesingle{}écran tous les éléments graphiques d\textquotesingle{}un combat entre deux Mechas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9}{animation\+\_\+degat}} (int mecha\+\_\+att, int pv\+\_\+old, int pv\+\_\+new, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi)
+\begin{DoxyCompactList}\small\item\em Anime visuellement la diminution progressive des PV d\textquotesingle{}un Mecha durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a30cb93b663d557e0e81271f956c24379}{aff\+\_\+mechas\+\_\+combat}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface de sélection du Mecha du joueur durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_ae82c6dcf76c1412964511d71b75c637e}{utilisation\+\_\+objet}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}ordi, int \texorpdfstring{$\ast$}{*}actif, int type\+\_\+combat)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface d\textquotesingle{}utilisation d\textquotesingle{}objets pendant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a7f2daafca6455a03963db8f32d8a8d10}{utilisation\+\_\+carburant}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}ordi, int \texorpdfstring{$\ast$}{*}actif)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}utilisation d\textquotesingle{}un objet "{}carburant"{} durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_afff6b8b516af5c46c938f407788d1b5f}{utilisation\+\_\+rappel}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}ordi, int \texorpdfstring{$\ast$}{*}actif)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}utilisation d\textquotesingle{}un objet "{}rappel"{} durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a53bf2250ba00b21dceed166fa59bd150}{utilisation\+\_\+mechaball}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}ordi, int \texorpdfstring{$\ast$}{*}actif)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}utilisation d\textquotesingle{}une "{}mechaball"{} pour capturer un Mecha adverse durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque}} (int choix, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+att, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+def, int mecha\+\_\+choix)
+\begin{DoxyCompactList}\small\item\em Calcule et applique les effets d\textquotesingle{}une attaque lors d\textquotesingle{}un combat entre deux Mechas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_aeabe45f0372840462d595a801345672b}{attaque\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi, int \texorpdfstring{$\ast$}{*}actif)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface permettant au joueur de choisir et effectuer une attaque durant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_ac6ceced0c9217ccb31c1400649cfd67c}{attaque\+\_\+ordi\+\_\+sauvage}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}attaque aléatoire d\textquotesingle{}un Mecha sauvage durant un combat contre le joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a5491a6cd3adeb619da6eb84e6d888e7a}{attaque\+\_\+ordi\+\_\+pnj}} (\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, int \texorpdfstring{$\ast$}{*}actif)
+\begin{DoxyCompactList}\small\item\em Gère les actions automatiques d\textquotesingle{}un PNJ (personnage non-\/joueur) lors d\textquotesingle{}un combat contre le joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a16e4593cbfaef36a7cc088aa6bef48c0}{changer\+\_\+mecha}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, int \texorpdfstring{$\ast$}{*}actif, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}ordi)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de changer le Mecha actif pendant un combat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_af35e79d0f311c06fb1fe44ce8bb34ca4}{apprentissage\+\_\+attaque}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}apprentissage d\textquotesingle{}une nouvelle attaque par un Mecha lors d\textquotesingle{}un changement de niveau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_afe15b54290598e06032e0c418f626461}{evolution\+\_\+mechas}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}évolution d\textquotesingle{}un Mecha joueur lorsqu\textquotesingle{}il atteint le niveau requis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_aec838d58a7def8717d7fcd0faab3a107}{montee\+\_\+niveau}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi, int xp\+\_\+partage, int lvlup)
+\begin{DoxyCompactList}\small\item\em Gère la montée en niveau d\textquotesingle{}un Mecha joueur après avoir reçu des points d\textquotesingle{}expérience (XP). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_ac6fcdad743dc3526b2b89a1630618a07}{distribuer\+\_\+xp}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+presents, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi, int xp\+\_\+gagne)
+\begin{DoxyCompactList}\small\item\em Distribue les points d\textquotesingle{}expérience (XP) gagnés lors d\textquotesingle{}un combat à un ensemble de Méchas ayant participé. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a2de6c3e2a52edcf450da90005d5fad1d}{level\+\_\+mechas}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+presents, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+ordi)
+\begin{DoxyCompactList}\small\item\em Calcule et distribue les points d\textquotesingle{}expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha adverse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a3c18ce2957ca72f56737d0082766ad63}{tour\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+sauvage, int \texorpdfstring{$\ast$}{*}actif, int type\+\_\+combat)
+\begin{DoxyCompactList}\small\item\em Gère le tour du joueur lors d\textquotesingle{}un combat contre un Mécha sauvage ou un PNJ. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a03ca199547656caabf8e81d769b770e4}{combat\+\_\+pnj}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj)
+\begin{DoxyCompactList}\small\item\em Gère un combat complet entre le joueur et un PNJ. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_ae03e9f733803425a6c1dcb7b81c8234e}{combat\+\_\+sauvage}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+sauvage)
+\begin{DoxyCompactList}\small\item\em Gère un combat entre le joueur et un Mécha sauvage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{combat_8c_a9b3cab142b64c13ed0243bd2b16489f6}\label{combat_8c_a9b3cab142b64c13ed0243bd2b16489f6} 
+const int {\bfseries FPS\+\_\+\+LIMITS} = 60
+\item 
+\Hypertarget{combat_8c_a16e96a2b24ccc73979be80515c871f1b}\label{combat_8c_a16e96a2b24ccc73979be80515c871f1b} 
+const int {\bfseries FRAME\+\_\+\+DELAYS} = 1000 / FPS\+\_\+\+LIMITS
+\item 
+\Hypertarget{combat_8c_aee34926ea76003bbcc975fe153d8f236}\label{combat_8c_aee34926ea76003bbcc975fe153d8f236} 
+char {\bfseries nom} \mbox{[}50\mbox{]} = "{}player1"{}
+\item 
+\Hypertarget{combat_8c_aee2427237ab0322406ded88c2bbecb1e}\label{combat_8c_aee2427237ab0322406ded88c2bbecb1e} 
+\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} {\bfseries ordi}
+\item 
+\Hypertarget{combat_8c_a64ffde23209d41bbc397ce8c91d8df25}\label{combat_8c_a64ffde23209d41bbc397ce8c91d8df25} 
+\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} {\bfseries joueur}
+\item 
+\Hypertarget{combat_8c_aa301a2878413a106624735a437bae46a}\label{combat_8c_aa301a2878413a106624735a437bae46a} 
+\mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}} {\bfseries rect\+\_\+bas}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier contenant la fonctions de combat 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{combat_8c_a30cb93b663d557e0e81271f956c24379}\label{combat_8c_a30cb93b663d557e0e81271f956c24379} 
+\index{combat.c@{combat.c}!aff\_mechas\_combat@{aff\_mechas\_combat}}
+\index{aff\_mechas\_combat@{aff\_mechas\_combat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{aff\_mechas\_combat()}{aff\_mechas\_combat()}}
+{\footnotesize\ttfamily int aff\+\_\+mechas\+\_\+combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}interface de sélection du Mecha du joueur durant un combat. 
+
+Cette fonction permet au joueur de sélectionner visuellement un Mecha parmi les quatre disponibles dans son équipe, ou bien de revenir au menu précédent (option "{}\+Retour"{}). Elle affiche les Mechas disponibles avec leurs informations clés (nom, niveau, PV) sous forme de rectangles interactifs, ainsi qu\textquotesingle{}un bouton retour.
+
+La sélection est réalisée via les touches directionnelles (gauche/droite), et validée avec la touche {\ttfamily A}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur contenant l\textquotesingle{}équipe de Mechas à afficher.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item L\textquotesingle{}indice du Mecha sélectionné (0 à 3) si la sélection est validée.
+\item {\ttfamily KO} si le joueur choisit l\textquotesingle{}option "{}\+Retour"{}.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer SDL ({\ttfamily game.\+renderer}), les textures des Mechas, ainsi que les structures du joueur doivent être initialisés.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha sélectionné est prêt à être utilisé dans le combat, ou la fonction retourne au menu précédent.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction bloque l\textquotesingle{}exécution en attendant que l\textquotesingle{}utilisateur effectue une sélection.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Les informations des Mechas doivent être valides pour éviter les erreurs d\textquotesingle{}affichage. Assure-\/toi également que les constantes globales comme {\ttfamily FRAME\+\_\+\+DELAYS} sont correctement définies. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a30cb93b663d557e0e81271f956c24379_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a30cb93b663d557e0e81271f956c24379_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}\label{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219} 
+\index{combat.c@{combat.c}!algo\_attaque@{algo\_attaque}}
+\index{algo\_attaque@{algo\_attaque}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{algo\_attaque()}{algo\_attaque()}}
+{\footnotesize\ttfamily int algo\+\_\+attaque (\begin{DoxyParamCaption}\item[{int}]{choix,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+att,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+def,  }\item[{int}]{mecha\+\_\+choix }\end{DoxyParamCaption})}
+
+
+
+Calcule et applique les effets d\textquotesingle{}une attaque lors d\textquotesingle{}un combat entre deux Mechas. 
+
+Cette fonction gère le calcul des dégâts infligés par un Mecha attaquant à un Mecha défenseur en tenant compte \+:
+\begin{DoxyItemize}
+\item De l\textquotesingle{}attaque choisie (attaque\+\_\+1 ou attaque\+\_\+2).
+\item De la précision de l\textquotesingle{}attaque.
+\item Des affinités de types entre l\textquotesingle{}attaque et le Mecha défenseur.
+\item Des statistiques (attaque et défense) des deux Mechas impliqués.
+\end{DoxyItemize}
+
+En cas de succès, les dégâts sont calculés, et une animation de perte de PV est jouée. La fonction affiche également des dialogues informatifs sur les actions réalisées et leur résultat (échec ou succès de l\textquotesingle{}attaque).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em choix} & Indice de l\textquotesingle{}attaque choisie par le joueur (0 pour attaque\+\_\+1, 1 pour attaque\+\_\+2, 2 pour passer le tour). \\
+\hline
+{\em mecha\+\_\+att} & Pointeur vers la structure du Mecha attaquant. \\
+\hline
+{\em mecha\+\_\+def} & Pointeur vers la structure du Mecha défenseur. \\
+\hline
+{\em mecha\+\_\+choix} & Indicateur du Mecha attaquant (1 si joueur attaque, 0 si adversaire attaque).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Attaque exécutée avec succès.
+\item {\ttfamily KO} \+: Impossible d\textquotesingle{}exécuter l\textquotesingle{}attaque (plus d\textquotesingle{}utilisations disponibles).
+\item {\ttfamily 0} \+: Action spéciale "{}passer son tour"{}, aucune action réalisée.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures des Mechas et les tableaux globaux des attaques doivent être initialisés correctement.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La fonction modifie les PV du Mecha défenseur et réduit le compteur d\textquotesingle{}utilisation de l\textquotesingle{}attaque effectuée.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}efficacité des attaques dépend des types \+:
+\begin{DoxyItemize}
+\item "{}\+Carburant"{} efficace contre "{}Électrique"{}
+\item "{}Électrique"{} efficace contre "{}\+Renouvelable"{}
+\item "{}\+Renouvelable"{} efficace contre "{}\+Carburant"{}
+\item "{}\+Uranium"{} inflige des dégâts légèrement supérieurs contre tous les types sauf lui-\/même.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+La fonction ne vérifie pas si les Mechas sont déjà KO avant de calculer les dégâts ; cela doit être géré en amont.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9}{animation\+\_\+degat()} pour l\textquotesingle{}affichage animé de la perte de PV. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9}\label{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9} 
+\index{combat.c@{combat.c}!animation\_degat@{animation\_degat}}
+\index{animation\_degat@{animation\_degat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{animation\_degat()}{animation\_degat()}}
+{\footnotesize\ttfamily void animation\+\_\+degat (\begin{DoxyParamCaption}\item[{int}]{mecha\+\_\+att,  }\item[{int}]{pv\+\_\+old,  }\item[{int}]{pv\+\_\+new,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi }\end{DoxyParamCaption})}
+
+
+
+Anime visuellement la diminution progressive des PV d\textquotesingle{}un Mecha durant un combat. 
+
+Cette fonction génère une animation fluide montrant la baisse progressive des points de vie (PV) après une attaque réussie. Elle ajuste dynamiquement la vitesse de l\textquotesingle{}animation en fonction des dégâts subis et limite sa durée maximale à 2 secondes pour maintenir le rythme du combat.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+att} & Indique quel Mecha reçoit les dégâts \+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} pour le Mecha du joueur.
+\item {\ttfamily 1} pour le Mecha adverse contrôlé par l\textquotesingle{}ordinateur. 
+\end{DoxyItemize}\\
+\hline
+{\em pv\+\_\+old} & Valeur initiale des PV avant les dégâts. \\
+\hline
+{\em pv\+\_\+new} & Valeur finale des PV après les dégâts. \\
+\hline
+{\em mecha\+\_\+joueur} & Pointeur vers le Mecha du joueur en combat. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mecha adverse contrôlé par l\textquotesingle{}ordinateur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Les ressources graphiques ({\ttfamily game.\+renderer}, {\ttfamily mecha\mbox{[}\mbox{]}}, textures, etc.) doivent être chargées et initialisées avant l\textquotesingle{}appel.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha concerné affiche la nouvelle valeur de PV, avec une animation fluide entre les deux états.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La durée maximale de l\textquotesingle{}animation est limitée à 2 secondes pour éviter une attente excessive.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+La fonction est bloquante pendant la durée de l\textquotesingle{}animation (utilise {\ttfamily SDL\+\_\+\+Delay}). Elle doit donc être utilisée à bon escient pour préserver la fluidité générale du jeu. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ab9469ab4f84b56a27ef05848c4a78cb9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_af35e79d0f311c06fb1fe44ce8bb34ca4}\label{combat_8c_af35e79d0f311c06fb1fe44ce8bb34ca4} 
+\index{combat.c@{combat.c}!apprentissage\_attaque@{apprentissage\_attaque}}
+\index{apprentissage\_attaque@{apprentissage\_attaque}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{apprentissage\_attaque()}{apprentissage\_attaque()}}
+{\footnotesize\ttfamily int apprentissage\+\_\+attaque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}apprentissage d\textquotesingle{}une nouvelle attaque par un Mecha lors d\textquotesingle{}un changement de niveau. 
+
+Cette fonction vérifie si le Mecha joueur acquiert une nouvelle attaque lorsqu\textquotesingle{}il atteint un niveau précis. Si une nouvelle attaque est disponible au niveau actuel du Mecha, la fonction propose au joueur de remplacer une de ses deux attaques actuelles, ou bien de ne pas changer ses attaques.
+
+Des messages informatifs sur l\textquotesingle{}attaque actuelle et les attaques disponibles sont affichés au joueur pour guider son choix.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+joueur} & Pointeur vers le Mecha du joueur concerné par l\textquotesingle{}apprentissage. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mecha adverse, utilisé uniquement pour l\textquotesingle{}affichage de dialogues.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: L\textquotesingle{}apprentissage a été géré correctement (même si le joueur décide de ne pas changer d\textquotesingle{}attaque ou qu\textquotesingle{}aucune attaque n\textquotesingle{}est disponible).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le Mecha joueur doit avoir un niveau valide et cohérent avec les attaques définies dans le tableau {\ttfamily attaque} associé au type du Mecha.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}attaque du Mecha joueur peut être modifiée en fonction du choix du joueur. Si une attaque est remplacée, son nombre d\textquotesingle{}utilisations est réinitialisé à la valeur par défaut de la nouvelle attaque.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction utilise {\ttfamily afficher\+\_\+dialogue\+\_\+combat} pour interagir avec le joueur. La fonction est sans effet si aucune attaque ne correspond au niveau actuel du Mecha.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction suppose que les attaques associées au Mecha sont correctement définies et triées par niveau d\textquotesingle{}apprentissage.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour l\textquotesingle{}affichage interactif des dialogues avec le joueur. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_af35e79d0f311c06fb1fe44ce8bb34ca4_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_af35e79d0f311c06fb1fe44ce8bb34ca4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_aeabe45f0372840462d595a801345672b}\label{combat_8c_aeabe45f0372840462d595a801345672b} 
+\index{combat.c@{combat.c}!attaque\_joueur@{attaque\_joueur}}
+\index{attaque\_joueur@{attaque\_joueur}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{attaque\_joueur()}{attaque\_joueur()}}
+{\footnotesize\ttfamily int attaque\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}interface permettant au joueur de choisir et effectuer une attaque durant un combat. 
+
+Cette fonction permet au joueur de sélectionner l\textquotesingle{}une des deux attaques disponibles pour son Mecha actif ou de revenir en arrière. Elle affiche les informations sur chaque attaque (nom, dégâts, type, utilisations restantes) et gère les interactions utilisateur via le clavier.
+
+L\textquotesingle{}utilisateur navigue entre les choix avec les touches gauche/droite et valide avec la touche \textquotesingle{}a\textquotesingle{}. Une fois validée, l\textquotesingle{}attaque est traitée via la fonction {\ttfamily \doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()}}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant l\textquotesingle{}état actuel du joueur. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers la structure du Mecha adverse (cible de l\textquotesingle{}attaque). \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actuellement actif du joueur dans son équipe.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: L\textquotesingle{}attaque a été effectuée avec succès.
+\item {\ttfamily KO} \+: Impossible d\textquotesingle{}exécuter l\textquotesingle{}attaque (plus d\textquotesingle{}utilisations disponibles).
+\item {\ttfamily RETOUR} \+: Le joueur a choisi l\textquotesingle{}option "{}\+Retour"{} pour annuler l\textquotesingle{}action d\textquotesingle{}attaque.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures globales {\ttfamily game}, {\ttfamily attaque} et {\ttfamily mecha} doivent être initialisées correctement.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item La fonction met à jour les utilisations restantes de l\textquotesingle{}attaque choisie.
+\item Applique les dégâts au Mecha adverse via {\ttfamily \doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()}}.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}interface utilise un système de couleur pour distinguer clairement les attaques selon leur type.
+\item Les boutons affichés sont dynamiquement adaptés à la taille de l\textquotesingle{}écran.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction suppose que les structures globales ({\ttfamily game}, {\ttfamily attaque}, {\ttfamily mecha}) sont déjà initialisées, sinon le comportement est indéfini.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()} pour le traitement des attaques et le calcul des dégâts. 
+
+\doxylink{combat_8c_a159b2a6408c605d1fc9432689f92e3cb}{draw\+\_\+combat()} pour l\textquotesingle{}affichage graphique de l\textquotesingle{}état actuel du combat. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_aeabe45f0372840462d595a801345672b_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_aeabe45f0372840462d595a801345672b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a5491a6cd3adeb619da6eb84e6d888e7a}\label{combat_8c_a5491a6cd3adeb619da6eb84e6d888e7a} 
+\index{combat.c@{combat.c}!attaque\_ordi\_pnj@{attaque\_ordi\_pnj}}
+\index{attaque\_ordi\_pnj@{attaque\_ordi\_pnj}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{attaque\_ordi\_pnj()}{attaque\_ordi\_pnj()}}
+{\footnotesize\ttfamily int attaque\+\_\+ordi\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif }\end{DoxyParamCaption})}
+
+
+
+Gère les actions automatiques d\textquotesingle{}un PNJ (personnage non-\/joueur) lors d\textquotesingle{}un combat contre le joueur. 
+
+Cette fonction décide automatiquement des actions du PNJ selon l\textquotesingle{}état actuel du Mecha actif \+:
+\begin{DoxyItemize}
+\item Si les PV du Mecha actif sont inférieurs à 25\% des PV maximum, le PNJ a 1 chance sur 4 de changer de Mecha.
+\item Si les PV du Mecha actif sont inférieurs ou égaux à 50\% des PV maximum, le PNJ a une chance sur deux d\textquotesingle{}utiliser un carburant pour récupérer 20 PV.
+\item Sinon, le PNJ effectue une attaque aléatoire parmi celles disponibles. Si aucune attaque n\textquotesingle{}est disponible, un message indique que le Mecha ne peut plus attaquer.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pnj} & Pointeur vers la structure du PNJ effectuant l\textquotesingle{}action. \\
+\hline
+{\em mecha\+\_\+joueur} & Pointeur vers le Mecha du joueur cible de l\textquotesingle{}action du PNJ. \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actuellement actif chez le PNJ. Peut être modifié si un changement de Mecha est effectué.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Une action a été effectuée avec succès (attaque, utilisation de carburant, ou changement de Mecha).
+\item {\ttfamily KO} \+: Aucune attaque disponible pour le Mecha actif du PNJ (toutes les utilisations sont épuisées).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures globales ({\ttfamily attaque}, {\ttfamily mecha}) et l\textquotesingle{}inventaire du PNJ doivent être initialisés.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Les PV du Mecha actif du PNJ peuvent augmenter si un carburant est utilisé.
+\item Les utilisations restantes des attaques du Mecha actif peuvent être décrémentées.
+\item L\textquotesingle{}indice du Mecha actif peut changer si le PNJ décide de changer de Mecha.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Des dialogues informatifs sont affichés à l\textquotesingle{}utilisateur en fonction des actions du PNJ.
+\item Le comportement est semi-\/aléatoire, dépendant des PV actuels du Mecha actif pour simuler une stratégie plus réaliste.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction suppose que les Mechas et leurs attaques correspondantes sont correctement initialisés, et que le PNJ dispose d\textquotesingle{}un inventaire valide. Un comportement indéterminé pourrait se produire sinon.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()} pour le traitement des attaques et des dégâts. 
+
+\doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour afficher les messages durant le combat. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a5491a6cd3adeb619da6eb84e6d888e7a_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a5491a6cd3adeb619da6eb84e6d888e7a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_ac6ceced0c9217ccb31c1400649cfd67c}\label{combat_8c_ac6ceced0c9217ccb31c1400649cfd67c} 
+\index{combat.c@{combat.c}!attaque\_ordi\_sauvage@{attaque\_ordi\_sauvage}}
+\index{attaque\_ordi\_sauvage@{attaque\_ordi\_sauvage}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{attaque\_ordi\_sauvage()}{attaque\_ordi\_sauvage()}}
+{\footnotesize\ttfamily int attaque\+\_\+ordi\+\_\+sauvage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}attaque aléatoire d\textquotesingle{}un Mecha sauvage durant un combat contre le joueur. 
+
+Cette fonction sélectionne aléatoirement une attaque parmi les deux disponibles pour le Mecha sauvage. Si l\textquotesingle{}attaque sélectionnée ne possède plus d\textquotesingle{}utilisations, elle tente automatiquement l\textquotesingle{}autre attaque. Si aucune attaque n\textquotesingle{}est disponible, un message indiquant que le Mecha sauvage ne peut plus attaquer est affiché.
+
+L\textquotesingle{}attaque choisie est exécutée via la fonction {\ttfamily \doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()}}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+ordi} & Pointeur vers la structure du Mecha sauvage effectuant l\textquotesingle{}attaque. \\
+\hline
+{\em mecha\+\_\+joueur} & Pointeur vers la structure du Mecha du joueur ciblé par l\textquotesingle{}attaque.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: L\textquotesingle{}attaque a été exécutée avec succès.
+\item {\ttfamily 0} \+: Aucune attaque disponible pour le Mecha sauvage (toutes les utilisations sont épuisées).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures globales {\ttfamily attaque} et {\ttfamily mecha} doivent être initialisées correctement.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item La fonction décrémente les utilisations restantes de l\textquotesingle{}attaque choisie du Mecha sauvage.
+\item Applique les dégâts au Mecha du joueur via {\ttfamily \doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()}}.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Un message informatif est affiché à l\textquotesingle{}utilisateur si aucune attaque ne peut être effectuée.
+\item L\textquotesingle{}attaque est sélectionnée aléatoirement afin de varier les stratégies du Mecha sauvage.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction suppose que les Mechas et attaques correspondantes sont correctement initialisées. Un comportement imprévisible pourrait se produire en cas d\textquotesingle{}erreur d\textquotesingle{}initialisation.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_a8c19b3bf83d09e9fb4b596cd4ff45219}{algo\+\_\+attaque()} pour le traitement concret des attaques et le calcul des dégâts infligés. 
+
+\doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour afficher des messages à l\textquotesingle{}utilisateur. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ac6ceced0c9217ccb31c1400649cfd67c_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{combat_8c_ac6ceced0c9217ccb31c1400649cfd67c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a16e4593cbfaef36a7cc088aa6bef48c0}\label{combat_8c_a16e4593cbfaef36a7cc088aa6bef48c0} 
+\index{combat.c@{combat.c}!changer\_mecha@{changer\_mecha}}
+\index{changer\_mecha@{changer\_mecha}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{changer\_mecha()}{changer\_mecha()}}
+{\footnotesize\ttfamily int changer\+\_\+mecha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ordi }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de changer le Mecha actif pendant un combat. 
+
+Cette fonction affiche un menu pour permettre au joueur de sélectionner un nouveau Mecha actif. Elle vérifie plusieurs conditions avant d\textquotesingle{}autoriser le changement \+:
+\begin{DoxyItemize}
+\item Le Mecha sélectionné ne doit pas être KO (PV != 0).
+\item Le Mecha sélectionné ne doit pas être déjà actif.
+\item Le joueur peut revenir en arrière en choisissant « retour ».
+\end{DoxyItemize}
+
+Des messages de dialogues informatifs sont affichés selon le résultat de l\textquotesingle{}opération.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur. \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actuellement actif du joueur (sera mis à jour si le changement est accepté). \\
+\hline
+{\em ordi} & Pointeur vers le Mecha adverse (utilisé uniquement pour afficher des dialogues informatifs en cas d\textquotesingle{}erreur).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Changement de Mecha effectué avec succès.
+\item {\ttfamily KO} \+: Le changement de Mecha a échoué (Mecha mort ou déjà actif).
+\item {\ttfamily RETOUR} \+: Le joueur a annulé l\textquotesingle{}action.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le joueur doit avoir au moins un Mecha valide dans son équipe (autre que celui actif).
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}indice du Mecha actif ({\ttfamily \texorpdfstring{$\ast$}{*}actif}) est modifié si un changement est validé par le joueur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction fait appel à l\textquotesingle{}interface graphique via {\ttfamily \doxylink{combat_8c_a30cb93b663d557e0e81271f956c24379}{aff\+\_\+mechas\+\_\+combat()}} pour permettre le choix du joueur.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Aucune vérification n\textquotesingle{}est effectuée pour le cas extrême où tous les Mechas seraient KO. Une telle vérification doit être faite en amont si nécessaire.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_a30cb93b663d557e0e81271f956c24379}{aff\+\_\+mechas\+\_\+combat()} pour l\textquotesingle{}interface de sélection graphique. 
+
+\doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour les messages informatifs. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a16e4593cbfaef36a7cc088aa6bef48c0_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a16e4593cbfaef36a7cc088aa6bef48c0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a03ca199547656caabf8e81d769b770e4}\label{combat_8c_a03ca199547656caabf8e81d769b770e4} 
+\index{combat.c@{combat.c}!combat\_pnj@{combat\_pnj}}
+\index{combat\_pnj@{combat\_pnj}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{combat\_pnj()}{combat\_pnj()}}
+{\footnotesize\ttfamily int combat\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj }\end{DoxyParamCaption})}
+
+
+
+Gère un combat complet entre le joueur et un PNJ. 
+
+Cette fonction orchestre l\textquotesingle{}intégralité d\textquotesingle{}un combat contre un PNJ, en gérant \+:
+\begin{DoxyItemize}
+\item La sélection automatique du premier Mécha actif disponible chez le joueur et le PNJ.
+\item Le cycle complet des tours joueur et PNJ jusqu’à la victoire ou la défaite.
+\item Le changement automatique de Méchas lorsque l\textquotesingle{}un d\textquotesingle{}entre eux tombe KO.
+\item La gestion spécifique empêchant le joueur de fuir un combat contre un PNJ.
+\item Le gain d\textquotesingle{}expérience et la montée en niveau des Méchas après avoir vaincu un adversaire.
+\item La sauvegarde automatique de l\textquotesingle{}état du PNJ après le combat (si victoire).
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant le joueur. \\
+\hline
+{\em pnj} & Un pointeur vers la structure {\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}} représentant l\textquotesingle{}adversaire PNJ.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un entier indiquant le résultat du combat \+:
+\begin{DoxyItemize}
+\item {\ttfamily VRAI} si le joueur gagne le combat.
+\item {\ttfamily FAUX} si le joueur perd le combat (tous ses Méchas sont KO).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les pointeurs {\ttfamily joueur} et {\ttfamily pnj} doivent être initialisés.
+\item Les structures associées aux Méchas des deux participants doivent être valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Met à jour les PV des Méchas impliqués dans le combat.
+\item Modifie l\textquotesingle{}état du PNJ à {\ttfamily 1} (déjà combattu) si le joueur gagne.
+\item Sauvegarde automatiquement l\textquotesingle{}état modifié du PNJ après victoire.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Le joueur ne peut pas fuir un combat contre un PNJ (tentative déclenche un message spécifique).
+\item Si le joueur possède le Mécha {\ttfamily Aeroshima} (id\+\_\+mechas = 23), celui-\/ci ne peut pas participer contre les fils d\textquotesingle{}Iron Musk. Un changement forcé est demandé.
+\end{DoxyItemize}
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Cette fonction gère entièrement la boucle de combat, bloquant ainsi jusqu’à son issue finale (victoire ou défaite).
+\item La montée de niveau ({\ttfamily level\+\_\+mechas}) est automatiquement gérée à chaque victoire contre un Mécha adverse.
+\item En cas de défaite, les PV du PNJ sont restaurés à leur maximum initial.
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{ in,out}}  & {\em joueur} & La structure du joueur mise à jour selon l’issue du combat (PV, expérience gagnée). \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em pnj} & La structure du PNJ mise à jour selon l’issue du combat (PV mis à jour ou restaurés, état modifié en cas de victoire du joueur). \\
+\hline
+\end{DoxyParams}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a03ca199547656caabf8e81d769b770e4_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{combat_8c_a03ca199547656caabf8e81d769b770e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_ae03e9f733803425a6c1dcb7b81c8234e}\label{combat_8c_ae03e9f733803425a6c1dcb7b81c8234e} 
+\index{combat.c@{combat.c}!combat\_sauvage@{combat\_sauvage}}
+\index{combat\_sauvage@{combat\_sauvage}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{combat\_sauvage()}{combat\_sauvage()}}
+{\footnotesize\ttfamily int combat\+\_\+sauvage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+sauvage }\end{DoxyParamCaption})}
+
+
+
+Gère un combat entre le joueur et un Mécha sauvage. 
+
+Cette fonction permet au joueur de combattre un Mécha sauvage en gérant \+:
+\begin{DoxyItemize}
+\item L\textquotesingle{}ordre des tours basé sur la vitesse des Méchas.
+\item La possibilité pour le joueur d\textquotesingle{}utiliser des objets, d\textquotesingle{}attaquer ou de changer de Mécha.
+\item La fuite possible du joueur en cours de combat.
+\item Le changement automatique de Mécha si celui-\/ci est KO.
+\item La montée de niveau des Méchas du joueur en cas de victoire.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Un pointeur vers la structure {\ttfamily \doxylink{structjoueur__t}{joueur\+\_\+t}} représentant le joueur. \\
+\hline
+{\em mecha\+\_\+sauvage} & Un pointeur vers la structure {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} représentant le Mécha sauvage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un entier indiquant le résultat du combat \+:
+\begin{DoxyItemize}
+\item {\ttfamily VRAI} si le joueur gagne le combat ou réussit à fuir.
+\item {\ttfamily FAUX} si tous les Méchas du joueur sont KO.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les pointeurs {\ttfamily joueur} et {\ttfamily mecha\+\_\+sauvage} doivent être valides.
+\item Le Mécha sauvage doit être initialisé avec ses PV, attaques, etc.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Met à jour les PV et l\textquotesingle{}expérience ({\ttfamily xp}) des Méchas du joueur.
+\item Permet éventuellement au joueur d\textquotesingle{}augmenter de niveau ou d\textquotesingle{}apprendre de nouvelles attaques après une victoire.
+\item Permet de fuir le combat en conservant l\textquotesingle{}état actuel des Méchas.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Le joueur peut fuir un combat contre un Mécha sauvage (à l\textquotesingle{}inverse des combats contre les PNJ).
+\item L\textquotesingle{}XP gagnée est distribuée uniquement si le Mécha sauvage est vaincu.
+\item L\textquotesingle{}affichage du combat est restauré après la fin du combat (restauration de {\ttfamily game.\+mat\+\_\+active}).
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si tous les Méchas du joueur sont KO, le combat est perdu automatiquement.
+\item Si le joueur choisit de fuir, le combat se termine immédiatement. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ae03e9f733803425a6c1dcb7b81c8234e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_ac6fcdad743dc3526b2b89a1630618a07}\label{combat_8c_ac6fcdad743dc3526b2b89a1630618a07} 
+\index{combat.c@{combat.c}!distribuer\_xp@{distribuer\_xp}}
+\index{distribuer\_xp@{distribuer\_xp}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{distribuer\_xp()}{distribuer\_xp()}}
+{\footnotesize\ttfamily void distribuer\+\_\+xp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+presents,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi,  }\item[{int}]{xp\+\_\+gagne }\end{DoxyParamCaption})}
+
+
+
+Distribue les points d\textquotesingle{}expérience (XP) gagnés lors d\textquotesingle{}un combat à un ensemble de Méchas ayant participé. 
+
+Cette fonction calcule la répartition des points d\textquotesingle{}expérience gagnés à la fin d\textquotesingle{}un combat selon le nombre de Méchas du joueur ayant participé. La répartition suit une logique prédéfinie \+:
+\begin{DoxyItemize}
+\item 1 Mécha reçoit 100\% de l\textquotesingle{}XP,
+\item 2 Méchas reçoivent respectivement 2/3 et 1/3 de l\textquotesingle{}XP,
+\item 3 Méchas reçoivent respectivement 3/5, 1/5, 1/5 de l\textquotesingle{}XP,
+\item 4 Méchas reçoivent respectivement 4/7, 1/7, 1/7, 1/7 de l\textquotesingle{}XP.
+\end{DoxyItemize}
+
+Chaque Mécha reçoit son montant d\textquotesingle{}XP calculé et gère ensuite individuellement sa montée de niveau éventuelle.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+presents} & Pointeur vers la structure du joueur contenant les Méchas ayant participé au combat. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mécha adverse vaincu (pour contexte d\textquotesingle{}évolution ou apprentissage d\textquotesingle{}attaques). \\
+\hline
+{\em xp\+\_\+gagne} & Quantité totale d\textquotesingle{}XP gagnée à répartir entre les Méchas participants.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily mechas\+\_\+presents} doit pointer vers une structure joueur initialisée avec un nombre correct de Méchas ({\ttfamily nb\+\_\+mechas} renseigné).
+\item {\ttfamily xp\+\_\+gagne} doit être une valeur positive représentant l\textquotesingle{}expérience totale à distribuer.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Chaque Mécha ayant participé voit ses XP augmenter selon la répartition définie.
+\item Si un Mécha dépasse le seuil d\textquotesingle{}XP pour monter de niveau, la fonction {\ttfamily montee\+\_\+niveau} est appelée et met à jour ses statistiques en conséquence.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Si plus de 4 Méchas sont présents, seuls les 4 premiers Méchas reçoivent de l\textquotesingle{}XP.
+\item Assurez-\/vous que l\textquotesingle{}ordre des Méchas présents est correct, car il influence la répartition des XP.
+\end{DoxyItemize}
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item Le calcul du seuil d\textquotesingle{}expérience ({\ttfamily lvlup}) requis pour chaque Mécha utilise la formule exponentielle suivante \+: \[ \text{lvlup} = \left\lfloor 15 \times e^{0.05 \times \text{niveau}} \right\rfloor \] 
+\end{DoxyItemize}
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ac6fcdad743dc3526b2b89a1630618a07_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ac6fcdad743dc3526b2b89a1630618a07_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a159b2a6408c605d1fc9432689f92e3cb}\label{combat_8c_a159b2a6408c605d1fc9432689f92e3cb} 
+\index{combat.c@{combat.c}!draw\_combat@{draw\_combat}}
+\index{draw\_combat@{draw\_combat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{draw\_combat()}{draw\_combat()}}
+{\footnotesize\ttfamily void draw\+\_\+combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi }\end{DoxyParamCaption})}
+
+
+
+Affiche à l\textquotesingle{}écran tous les éléments graphiques d\textquotesingle{}un combat entre deux Mechas. 
+
+Cette fonction gère l\textquotesingle{}affichage complet d\textquotesingle{}un combat, incluant \+:
+\begin{DoxyItemize}
+\item Les noms et niveaux des Mechas en combat.
+\item Les points de vie (PV) des deux Mechas sous forme de barres graphiques.
+\item Les textures des Mechas du joueur et de l\textquotesingle{}ordinateur.
+\item Les rectangles décoratifs servant de fond à l\textquotesingle{}affichage des informations.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+joueur} & Pointeur vers la structure représentant le Mecha du joueur. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers la structure représentant le Mecha adverse contrôlé par l\textquotesingle{}ordinateur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Les ressources graphiques ({\ttfamily game.\+renderer}, textures des Mechas, rectangles graphiques) doivent être chargées et initialisées correctement avant l\textquotesingle{}appel de cette fonction.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}écran affiche toutes les informations nécessaires à la compréhension visuelle du combat en cours.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction utilise des variables globales (notamment {\ttfamily game}, {\ttfamily rect\+\_\+bas}, {\ttfamily mecha\mbox{[}\mbox{]}}) définies ailleurs dans le programme.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi que les structures {\ttfamily mecha\+\_\+joueur} et {\ttfamily mecha\+\_\+ordi} contiennent des informations valides afin d\textquotesingle{}éviter tout problème d\textquotesingle{}affichage ou de segmentation. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a159b2a6408c605d1fc9432689f92e3cb_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a159b2a6408c605d1fc9432689f92e3cb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_afe15b54290598e06032e0c418f626461}\label{combat_8c_afe15b54290598e06032e0c418f626461} 
+\index{combat.c@{combat.c}!evolution\_mechas@{evolution\_mechas}}
+\index{evolution\_mechas@{evolution\_mechas}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{evolution\_mechas()}{evolution\_mechas()}}
+{\footnotesize\ttfamily int evolution\+\_\+mechas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}évolution d\textquotesingle{}un Mecha joueur lorsqu\textquotesingle{}il atteint le niveau requis. 
+
+Cette fonction vérifie si le Mecha joueur répond aux conditions nécessaires pour évoluer. Si le niveau actuel du Mecha est supérieur ou égal au niveau requis pour l\textquotesingle{}évolution et qu\textquotesingle{}une évolution est définie, alors l\textquotesingle{}ID du Mecha est mis à jour pour refléter cette évolution. Un message informant le joueur de l\textquotesingle{}évolution effectuée est affiché à l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha\+\_\+joueur} & Pointeur vers le Mecha joueur susceptible d\textquotesingle{}évoluer. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mecha adverse, utilisé uniquement pour l\textquotesingle{}affichage de dialogues contextuels.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: L\textquotesingle{}évolution a été vérifiée et traitée correctement.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les attributs {\ttfamily niveau\+\_\+evolution} et {\ttfamily evolution} du Mecha doivent être correctement initialisés.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Si une évolution a eu lieu, {\ttfamily mecha\+\_\+joueur-\/\texorpdfstring{$>$}{>}id\+\_\+mechas} est incrémenté pour pointer vers le Mecha évolué.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction utilise {\ttfamily afficher\+\_\+dialogue\+\_\+combat} pour notifier le joueur de l\textquotesingle{}évolution.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+La fonction suppose que le Mecha suivant immédiatement dans le tableau {\ttfamily mecha} correspond à l\textquotesingle{}évolution logique du Mecha actuel. Assurez-\/vous que le tableau {\ttfamily mecha} respecte strictement cet ordre d\textquotesingle{}évolution.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{affichage_8c_a1091893e7df87a967b878919b232b0d5}{afficher\+\_\+dialogue\+\_\+combat()} pour l\textquotesingle{}affichage interactif des dialogues avec le joueur. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_afe15b54290598e06032e0c418f626461_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_afe15b54290598e06032e0c418f626461_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a2de6c3e2a52edcf450da90005d5fad1d}\label{combat_8c_a2de6c3e2a52edcf450da90005d5fad1d} 
+\index{combat.c@{combat.c}!level\_mechas@{level\_mechas}}
+\index{level\_mechas@{level\_mechas}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{level\_mechas()}{level\_mechas()}}
+{\footnotesize\ttfamily void level\+\_\+mechas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+presents,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi }\end{DoxyParamCaption})}
+
+
+
+Calcule et distribue les points d\textquotesingle{}expérience (XP) aux Méchas du joueur après avoir vaincu un Mécha adverse. 
+
+Cette fonction est appelée après la défaite d\textquotesingle{}un Mécha adverse. Elle effectue les opérations suivantes \+:
+\begin{DoxyItemize}
+\item Calcule la quantité totale d\textquotesingle{}expérience gagnée en fonction du niveau du Mécha adverse, selon la formule \+:  \[
+     \text{xp\_gagne} = \left\lfloor 20 \times e^{0.02 \times \text{niveau adversaire}} \right\rfloor
+  \]
+\item Répartit cette expérience aux Méchas du joueur qui ont participé au combat (maximum 4 Méchas).
+\item Affiche dans la console les niveaux mis à jour des Méchas participants après la distribution d\textquotesingle{}expérience.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+presents} & Pointeur vers la structure du joueur, contenant les Méchas participants au combat. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mécha adverse vaincu, utilisé pour déterminer la quantité d\textquotesingle{}expérience à distribuer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les structures pointées par {\ttfamily mechas\+\_\+presents} et {\ttfamily mecha\+\_\+ordi} doivent être initialisées et valides.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Les Méchas du joueur ayant participé voient leur expérience et potentiellement leurs niveaux augmentés en fonction de l\textquotesingle{}expérience gagnée.
+\item Les informations mises à jour des Méchas sont affichées à l\textquotesingle{}écran via {\ttfamily printf}.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Cette fonction limite explicitement la distribution d\textquotesingle{}expérience aux quatre premiers Méchas du joueur ({\ttfamily nb\+\_\+mechas}). Les Méchas au-\/delà du quatrième ne reçoivent pas d\textquotesingle{}expérience.
+\end{DoxyItemize}
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La distribution réelle d\textquotesingle{}expérience aux Méchas est gérée par la fonction {\ttfamily distribuer\+\_\+xp}.
+\item L\textquotesingle{}affichage des niveaux après distribution sert à fournir un retour visuel rapide sur les résultats de l\textquotesingle{}attribution d\textquotesingle{}expérience.
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{ in}}  & {\em \doxylink{structjoueur__t}{joueur\+\_\+t}} & Structure contenant les informations des Méchas du joueur. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} & Structure du Mécha adverse vaincu, pour calcul d\textquotesingle{}expérience.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{Voir également}
+\doxylink{combat_8c_ac6fcdad743dc3526b2b89a1630618a07}{distribuer\+\_\+xp()} Pour la répartition détaillée de l\textquotesingle{}expérience aux Méchas. 
+\end{DoxySeeAlso}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a2de6c3e2a52edcf450da90005d5fad1d_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a2de6c3e2a52edcf450da90005d5fad1d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_aec838d58a7def8717d7fcd0faab3a107}\label{combat_8c_aec838d58a7def8717d7fcd0faab3a107} 
+\index{combat.c@{combat.c}!montee\_niveau@{montee\_niveau}}
+\index{montee\_niveau@{montee\_niveau}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{montee\_niveau()}{montee\_niveau()}}
+{\footnotesize\ttfamily void montee\+\_\+niveau (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+ordi,  }\item[{int}]{xp\+\_\+partage,  }\item[{int}]{lvlup }\end{DoxyParamCaption})}
+
+
+
+Gère la montée en niveau d\textquotesingle{}un Mecha joueur après avoir reçu des points d\textquotesingle{}expérience (XP). 
+
+Cette fonction ajoute un nombre spécifié d\textquotesingle{}XP au Mecha joueur. Si le seuil d\textquotesingle{}XP pour le niveau suivant est atteint ou dépassé, le Mecha monte en niveau, réinitialise son compteur d\textquotesingle{}XP en excès pour le prochain niveau et met à jour ses statistiques (PV, attaque, défense). Elle vérifie également les possibilités d\textquotesingle{}évolution et d\textquotesingle{}apprentissage d\textquotesingle{}une nouvelle attaque à chaque montée en niveau.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mecha} & Pointeur vers le Mecha joueur recevant l\textquotesingle{}expérience. \\
+\hline
+{\em mecha\+\_\+ordi} & Pointeur vers le Mecha adverse (pour l\textquotesingle{}affichage des dialogues contextuels). \\
+\hline
+{\em xp\+\_\+partage} & Nombre de points d\textquotesingle{}expérience à ajouter au Mecha. \\
+\hline
+{\em lvlup} & Seuil d\textquotesingle{}expérience nécessaire pour atteindre le niveau supérieur actuel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item {\ttfamily mecha} doit pointer vers un Mecha joueur correctement initialisé.
+\item {\ttfamily lvlup} doit correspondre au nombre d\textquotesingle{}XP nécessaires à l\textquotesingle{}atteinte du prochain niveau avant appel de la fonction.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Les attributs du Mecha (niveau, XP, PV, attaque, défense) sont mis à jour en conséquence.
+\item Si le Mecha atteint un niveau où il peut évoluer ou apprendre une attaque, ces changements sont appliqués immédiatement.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item La fonction utilise un calcul exponentiel pour déterminer l\textquotesingle{}XP nécessaire pour chaque nouveau niveau \+: \[ \text{lvlup} = \left\lfloor 15 \times e^{0.05 \times \text{niveau}} \right\rfloor \]
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Cette fonction suppose que les fonctions {\ttfamily evolution\+\_\+mechas} et {\ttfamily apprentissage\+\_\+attaque} ne provoquent pas d\textquotesingle{}erreurs d\textquotesingle{}accès mémoire ou d\textquotesingle{}index hors limites.
+\item Assurez-\/vous que les modifications de statistiques ne dépassent pas les limites prévues par le jeu. 
+\end{DoxyItemize}
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_aec838d58a7def8717d7fcd0faab3a107_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_aec838d58a7def8717d7fcd0faab3a107_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a3c18ce2957ca72f56737d0082766ad63}\label{combat_8c_a3c18ce2957ca72f56737d0082766ad63} 
+\index{combat.c@{combat.c}!tour\_joueur@{tour\_joueur}}
+\index{tour\_joueur@{tour\_joueur}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{tour\_joueur()}{tour\_joueur()}}
+{\footnotesize\ttfamily int tour\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+sauvage,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif,  }\item[{int}]{type\+\_\+combat }\end{DoxyParamCaption})}
+
+
+
+Gère le tour du joueur lors d\textquotesingle{}un combat contre un Mécha sauvage ou un PNJ. 
+
+Cette fonction permet au joueur de réaliser une action pendant son tour. Le joueur peut \+:
+\begin{DoxyItemize}
+\item Utiliser un objet (carburant, rappel, mechaball).
+\item Attaquer avec son Mécha actif.
+\item Changer de Mécha actif.
+\end{DoxyItemize}
+
+L\textquotesingle{}interface graphique affiche les choix possibles (Attaquer, Objet, Mechas, Fuite) et permet au joueur de naviguer entre eux avec les touches directionnelles. L\textquotesingle{}action sélectionnée est validée avec la touche {\ttfamily A}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure contenant les informations du joueur (inventaire, Méchas disponibles). \\
+\hline
+{\em mecha\+\_\+sauvage} & Pointeur vers le Mécha adverse (sauvage ou PNJ). \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}entier représentant l\textquotesingle{}indice du Mécha actuellement actif du joueur. \\
+\hline
+{\em type\+\_\+combat} & Type du combat \+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} pour combat contre un Mécha sauvage.
+\item {\ttfamily 1} pour combat contre un PNJ.
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un entier indiquant l\textquotesingle{}action effectuée ou le résultat du tour \+:
+\begin{DoxyItemize}
+\item {\ttfamily OK} (action réussie, tour terminé normalement).
+\item {\ttfamily CAPTURE} (capture réussie du Mécha sauvage).
+\item {\ttfamily FUITE} (le joueur quitte le combat en fermant la fenêtre ou via la touche Escape).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+
+\begin{DoxyItemize}
+\item Les pointeurs {\ttfamily joueur}, {\ttfamily mecha\+\_\+sauvage} et {\ttfamily actif} doivent être valides et initialisés.
+\item La fenêtre SDL et le renderer doivent être initialisés.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Met à jour les PV, l\textquotesingle{}inventaire et/ou les Méchas actifs en fonction des actions effectuées.
+\item Affiche l\textquotesingle{}état actualisé du combat après chaque action.
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}action "{}\+Fuite"{} est affichée à l\textquotesingle{}écran mais n\textquotesingle{}est pas sélectionnable par le joueur (implémentation visuelle uniquement).
+\item Les choix d\textquotesingle{}action se font uniquement entre les options "{}\+Attaquer"{}, "{}\+Objet"{} et "{}\+Mechas"{}.
+\item L\textquotesingle{}utilisation d\textquotesingle{}un objet (notamment Mechaball) peut mener à la fin du combat via capture.
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+
+\begin{DoxyItemize}
+\item Cette fonction gère son propre cycle d\textquotesingle{}affichage et d\textquotesingle{}événements SDL, bloquant ainsi jusqu\textquotesingle{}à ce qu\textquotesingle{}une action valide soit choisie par le joueur.
+\item Elle ne vérifie pas si tous les Méchas du joueur sont hors combat (cette vérification doit être faite à l\textquotesingle{}extérieur).
+\end{DoxyItemize}
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{ in,out}}  & {\em joueur} & Structure du joueur mise à jour selon les actions effectuées. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em actif} & Indice du Mécha actif pouvant être modifié si le joueur change de Mécha.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bogue}
+\item[\mbox{\hyperlink{bug__bug000001}{Bogue}}]
+\begin{DoxyItemize}
+\item L\textquotesingle{}option "{}\+Fuite"{} n\textquotesingle{}est pas fonctionnelle via le menu visuel (prévue en cas de fermeture directe du jeu).
+\end{DoxyItemize}\end{DoxyRefDesc}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a3c18ce2957ca72f56737d0082766ad63_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a3c18ce2957ca72f56737d0082766ad63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a7f2daafca6455a03963db8f32d8a8d10}\label{combat_8c_a7f2daafca6455a03963db8f32d8a8d10} 
+\index{combat.c@{combat.c}!utilisation\_carburant@{utilisation\_carburant}}
+\index{utilisation\_carburant@{utilisation\_carburant}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{utilisation\_carburant()}{utilisation\_carburant()}}
+{\footnotesize\ttfamily int utilisation\+\_\+carburant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ordi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}utilisation d\textquotesingle{}un objet "{}carburant"{} durant un combat. 
+
+Cette fonction permet au joueur d\textquotesingle{}utiliser un objet carburant pour restaurer les points de vie (PV) d\textquotesingle{}un Mecha spécifique de son équipe durant un combat. Elle effectue plusieurs vérifications avant utilisation \+:
+\begin{DoxyItemize}
+\item Vérifie si le joueur possède au moins un carburant dans son inventaire.
+\item Vérifie que le Mecha choisi n\textquotesingle{}est pas déjà à ses PV max ou KO.
+\item Permet au joueur de choisir le Mecha cible de l\textquotesingle{}utilisation via {\ttfamily aff\+\_\+mechas\+\_\+combat}.
+\end{DoxyItemize}
+
+En cas de succès, 50 PV sont restaurés au Mecha sélectionné, sans dépasser les PV max, et l\textquotesingle{}objet est retiré de l\textquotesingle{}inventaire.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur actuellement en combat. \\
+\hline
+{\em ordi} & Pointeur vers le Mecha adverse (utilisé pour l\textquotesingle{}affichage du combat). \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actif du joueur actuellement utilisé en combat.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Le carburant a été utilisé avec succès.
+\item {\ttfamily KO} \+: Échec de l\textquotesingle{}utilisation (pas de carburant disponible).
+\item {\ttfamily RETOUR} \+: L\textquotesingle{}action a été annulée ou impossible (Mecha sélectionné KO, PV déjà au max ou aucun choix effectué).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures joueur, inventaire et Mechas doivent être correctement initialisées.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha sélectionné a reçu des PV supplémentaires, et l\textquotesingle{}inventaire est mis à jour.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Des dialogues informatifs sont affichés à l\textquotesingle{}écran pour expliquer chaque situation rencontrée par le joueur.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie toujours que le joueur dispose de l\textquotesingle{}objet avant son utilisation pour éviter des résultats incorrects. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a7f2daafca6455a03963db8f32d8a8d10_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a7f2daafca6455a03963db8f32d8a8d10_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_a53bf2250ba00b21dceed166fa59bd150}\label{combat_8c_a53bf2250ba00b21dceed166fa59bd150} 
+\index{combat.c@{combat.c}!utilisation\_mechaball@{utilisation\_mechaball}}
+\index{utilisation\_mechaball@{utilisation\_mechaball}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{utilisation\_mechaball()}{utilisation\_mechaball()}}
+{\footnotesize\ttfamily int utilisation\+\_\+mechaball (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ordi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}utilisation d\textquotesingle{}une "{}mechaball"{} pour capturer un Mecha adverse durant un combat. 
+
+Cette fonction permet au joueur d\textquotesingle{}utiliser une mechaball afin d\textquotesingle{}essayer de capturer un Mecha sauvage en combat. Elle réalise plusieurs étapes clés \+:
+\begin{DoxyItemize}
+\item Vérifie que le joueur dispose d\textquotesingle{}au moins une mechaball dans son inventaire.
+\item Calcule le taux de capture en fonction du type du Mecha adverse \+:
+\begin{DoxyItemize}
+\item Type "{}\+Nucléaire"{} \+: taux de base faible (10\% max).
+\item Autres types \+: taux de base plus élevé (50\% max).
+\end{DoxyItemize}
+\item Le taux effectif de capture dépend des PV restants du Mecha adverse \+: plus les PV sont bas, plus le taux est élevé.
+\item Un tirage aléatoire détermine si la capture est réussie ou non.
+\end{DoxyItemize}
+
+En cas de succès, le Mecha sauvage est ajouté à l\textquotesingle{}équipe du joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur en combat. \\
+\hline
+{\em ordi} & Pointeur vers le Mecha adverse que le joueur tente de capturer. \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actif du joueur utilisé actuellement en combat.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily CAPTURE} \+: La capture a réussi, le Mecha adverse rejoint l\textquotesingle{}équipe.
+\item {\ttfamily FAUX} \+: La capture a échoué, la mechaball est consommée.
+\item {\ttfamily KO} \+: Échec d\textquotesingle{}utilisation (aucune mechaball disponible).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures joueur, inventaire et Mechas doivent être initialisées et valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La mechaball est retirée de l\textquotesingle{}inventaire, et le Mecha sauvage est ajouté à l\textquotesingle{}équipe en cas de succès.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Des dialogues informatifs sont affichés pour expliquer le résultat de l\textquotesingle{}action au joueur.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction ne devrait être utilisée que durant des combats contre des Mechas sauvages. Pour les combats spéciaux ou scénarisés, la capture pourrait être désactivée. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a53bf2250ba00b21dceed166fa59bd150_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_a53bf2250ba00b21dceed166fa59bd150_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_ae82c6dcf76c1412964511d71b75c637e}\label{combat_8c_ae82c6dcf76c1412964511d71b75c637e} 
+\index{combat.c@{combat.c}!utilisation\_objet@{utilisation\_objet}}
+\index{utilisation\_objet@{utilisation\_objet}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{utilisation\_objet()}{utilisation\_objet()}}
+{\footnotesize\ttfamily int utilisation\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ordi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif,  }\item[{int}]{type\+\_\+combat }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}interface d\textquotesingle{}utilisation d\textquotesingle{}objets pendant un combat. 
+
+Cette fonction permet au joueur de choisir et d\textquotesingle{}utiliser des objets spécifiques lors d\textquotesingle{}un combat entre son Mecha et un adversaire (Mecha sauvage ou combat scénarisé). Les objets disponibles sont \+:
+\begin{DoxyItemize}
+\item {\bfseries{Carburant}} \+: Restaure les PV d\textquotesingle{}un Mecha.
+\item {\bfseries{Rappel}} \+: Réanime un Mecha KO.
+\item {\bfseries{Mechaball}} \+: Permet de capturer un Mecha sauvage (uniquement dans certains types de combat).
+\item {\bfseries{Retour}} \+: Revenir au menu précédent.
+\end{DoxyItemize}
+
+Le joueur navigue entre ces choix à l\textquotesingle{}aide des touches directionnelles gauche/droite et valide sa sélection avec la touche {\ttfamily A}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur en combat. \\
+\hline
+{\em ordi} & Pointeur vers le Mecha adverse en combat. \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actif du joueur actuellement utilisé en combat. \\
+\hline
+{\em type\+\_\+combat} & Type du combat en cours \+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} \+: Combat contre un Mecha sauvage (capture possible).
+\item {\ttfamily 1} \+: Combat scénarisé (capture impossible).
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Objet utilisé avec succès ou retour effectué.
+\item {\ttfamily CAPTURE} \+: Capture réussie du Mecha sauvage avec une Mechaball.
+\item {\ttfamily FAUX} \+: La capture a échoué, le combat continue.
+\item {\ttfamily RETOUR} \+: L\textquotesingle{}utilisateur a choisi de revenir en arrière sans utiliser d\textquotesingle{}objet.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les ressources graphiques ({\ttfamily game.\+renderer}, rectangles graphiques, Mechas, etc.) doivent être correctement initialisées.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le combat est mis à jour selon l\textquotesingle{}effet de l\textquotesingle{}objet choisi.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction bloque l\textquotesingle{}exécution jusqu\textquotesingle{}à ce que l\textquotesingle{}utilisateur fasse une sélection valide ou annule l\textquotesingle{}action.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Veille à ce que le joueur dispose bien des objets dans son inventaire avant leur utilisation pour éviter des résultats inattendus. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ae82c6dcf76c1412964511d71b75c637e_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_ae82c6dcf76c1412964511d71b75c637e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{combat_8c_afff6b8b516af5c46c938f407788d1b5f}\label{combat_8c_afff6b8b516af5c46c938f407788d1b5f} 
+\index{combat.c@{combat.c}!utilisation\_rappel@{utilisation\_rappel}}
+\index{utilisation\_rappel@{utilisation\_rappel}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{utilisation\_rappel()}{utilisation\_rappel()}}
+{\footnotesize\ttfamily int utilisation\+\_\+rappel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ordi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{actif }\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}utilisation d\textquotesingle{}un objet "{}rappel"{} durant un combat. 
+
+Cette fonction permet au joueur d\textquotesingle{}utiliser un rappel afin de ranimer un Mecha mis K.\+O. (dont les PV sont à zéro) durant un combat. Elle effectue plusieurs vérifications avant l\textquotesingle{}utilisation \+:
+\begin{DoxyItemize}
+\item Vérifie si le joueur possède au moins un rappel dans son inventaire.
+\item Vérifie que le Mecha sélectionné est bien mis K.\+O. (PV à zéro).
+\item Permet au joueur de choisir le Mecha cible via l\textquotesingle{}interface {\ttfamily aff\+\_\+mechas\+\_\+combat}.
+\end{DoxyItemize}
+
+En cas de succès, le Mecha choisi revient au combat avec la moitié de ses PV max et l\textquotesingle{}objet est retiré de l\textquotesingle{}inventaire.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur actuellement en combat. \\
+\hline
+{\em ordi} & Pointeur vers le Mecha adverse (utilisé pour l\textquotesingle{}affichage du combat). \\
+\hline
+{\em actif} & Pointeur vers l\textquotesingle{}indice du Mecha actif actuellement utilisé par le joueur en combat.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} \+: Le rappel a été utilisé avec succès.
+\item {\ttfamily KO} \+: Échec de l\textquotesingle{}utilisation (aucun rappel disponible).
+\item {\ttfamily RETOUR} \+: L\textquotesingle{}action a été annulée ou impossible (Mecha sélectionné encore en vie ou aucun choix effectué).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les structures joueur, inventaire et Mechas doivent être correctement initialisées.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le Mecha sélectionné a été ranimé, ses PV ont été restaurés à la moitié de leur maximum, et l\textquotesingle{}inventaire du joueur est mis à jour.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Des dialogues informatifs s\textquotesingle{}affichent pour expliquer clairement chaque résultat à l\textquotesingle{}utilisateur.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie toujours que le joueur possède l\textquotesingle{}objet avant son utilisation pour éviter des erreurs inattendues. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_afff6b8b516af5c46c938f407788d1b5f_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c_afff6b8b516af5c46c938f407788d1b5f_icgraph}
+\end{center}
+\end{figure}

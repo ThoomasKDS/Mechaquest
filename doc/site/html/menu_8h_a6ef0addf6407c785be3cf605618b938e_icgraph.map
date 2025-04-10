@@ -1,0 +1,9 @@
+<map id="afficher_reglage" name="afficher_reglage">
+<area shape="rect" id="Node000001" title="Affiche un menu permettant de régler le volume sonore du jeu (Pour l&#39;instant)." alt="" coords="351,31,465,56"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#af33efca11c59a833339ea201bd4fb9d4" title="Affiche l&#39;écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour." alt="" coords="200,31,303,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,46,303,46,303,41,337,41"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="27,5,131,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="186,36,131,28,131,23,187,31"/>
+<area shape="rect" id="Node000004" href="$menu_8c.html#a98de4f1f9f962af528305e0d3e88d9da" title="Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil." alt="" coords="5,55,152,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="187,55,153,60,152,54,186,50"/>
+</map>

@@ -1,0 +1,94 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/src/init\+Game.c}
+\hypertarget{initGame_8c}{}\label{initGame_8c}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/initGame.c@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/initGame.c}}
+
+
+fichier contenant la fonctions d\textquotesingle{}initialisation du Jeux  
+
+
+{\ttfamily \#include "{}../lib/init\+Game.\+h"{}}\newline
+Graphe des dépendances par inclusion de init\+Game.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{initGame_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{initGame_8c_a98396a1f6335b374d8b9bd3cd5376a6a}{init\+\_\+game}} ()
+\begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}environnement du jeu en préparant SDL et ses modules associés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initGame_8c_ae900b054a1598c54acaa67902f87185d}{clean\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Libère proprement toutes les ressources utilisées par le jeu avant de quitter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier contenant la fonctions d\textquotesingle{}initialisation du Jeux 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{initGame_8c_ae900b054a1598c54acaa67902f87185d}\label{initGame_8c_ae900b054a1598c54acaa67902f87185d} 
+\index{initGame.c@{initGame.c}!cleanUp@{cleanUp}}
+\index{cleanUp@{cleanUp}!initGame.c@{initGame.c}}
+\doxysubsubsection{\texorpdfstring{cleanUp()}{cleanUp()}}
+{\footnotesize\ttfamily void clean\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Libère proprement toutes les ressources utilisées par le jeu avant de quitter. 
+
+Cette fonction détruit les textures des arrière-\/plans, le renderer, la fenêtre, la police chargée, et quitte correctement les modules SDL (SDL\+\_\+ttf, SDL\+\_\+image, SDL).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers une structure {\ttfamily \doxylink{structgame__t}{game\+\_\+t}} contenant toutes les ressources à libérer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily game} doit être valide et initialisé, ainsi que toutes les ressources associées (textures, renderer, fenêtre, police). 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Toutes les ressources allouées dynamiquement par SDL sont libérées, et SDL est correctement quitté.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction doit être appelée systématiquement avant la fermeture de l\textquotesingle{}application pour éviter les fuites mémoire. 
+\end{DoxyNote}
+\Hypertarget{initGame_8c_a98396a1f6335b374d8b9bd3cd5376a6a}\label{initGame_8c_a98396a1f6335b374d8b9bd3cd5376a6a} 
+\index{initGame.c@{initGame.c}!init\_game@{init\_game}}
+\index{init\_game@{init\_game}!initGame.c@{initGame.c}}
+\doxysubsubsection{\texorpdfstring{init\_game()}{init\_game()}}
+{\footnotesize\ttfamily int init\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise l\textquotesingle{}environnement du jeu en préparant SDL et ses modules associés. 
+
+Cette fonction initialise SDL, SDL\+\_\+ttf, SDL\+\_\+image et SDL\+\_\+mixer pour gérer l\textquotesingle{}affichage graphique, les polices, les images et le son. Elle crée une fenêtre principale en mode plein écran ainsi qu\textquotesingle{}un renderer pour gérer l\textquotesingle{}affichage. Une police spécifique est également chargée pour le rendu des textes dans le jeu.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers une structure {\ttfamily \doxylink{structgame__t}{game\+\_\+t}} où seront stockées les ressources créées (fenêtre, renderer, police).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily 1} si l\textquotesingle{}initialisation complète réussit.
+\item {\ttfamily 0} en cas d\textquotesingle{}erreur dans l\textquotesingle{}initialisation de SDL, SDL\+\_\+image, SDL\+\_\+mixer, ou à la création de la fenêtre/renderer.
+\item {\ttfamily 1} si l\textquotesingle{}erreur provient de SDL\+\_\+ttf (ce cas particulier peut être une incohérence et devrait être vérifié dans l\textquotesingle{}implémentation).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily game} doit être valide et non NULL. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La structure {\ttfamily game} est remplie avec les ressources initialisées. En cas d\textquotesingle{}erreur, toutes les ressources allouées précédemment sont libérées.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction initialise également la génération aléatoire ({\ttfamily rand()}).
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Le chemin vers le fichier de police {\ttfamily "{}img/police\+\_\+temporaire.\+ttf"{}} doit être valide, sinon l\textquotesingle{}initialisation échoue. 
+\end{DoxyWarning}

@@ -1,0 +1,21 @@
+<map id="afficher_dialogue" name="afficher_dialogue">
+<area shape="rect" id="Node000001" title="Affiche un dialogue interactif à l&#39;écran, lettre par lettre, avec gestion des choix utilisateur." alt="" coords="5,128,125,153"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="193,29,303,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,126,121,95,172,64,187,57,189,62,175,68,124,100,84,130"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="213,79,283,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,125,199,102,200,107,114,131"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="209,128,287,153"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="126,138,195,138,195,143,126,143"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="187,177,309,203"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="114,151,188,171,186,176,112,156"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#ab54c358911a2ed823f20797846583531" title="Dessine un texte centré verticalement et aligné à gauche dans un rectangle." alt="" coords="173,227,323,252"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="84,151,124,182,175,213,189,219,187,224,172,218,121,186,80,156"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="371,5,495,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="283,78,322,64,370,40,384,33,386,38,372,44,324,68,285,83"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="385,55,480,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="283,84,371,73,372,78,284,89"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="387,104,479,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="284,93,373,106,373,111,283,99"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="395,153,470,179"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="284,99,324,113,372,138,388,145,385,150,369,143,322,118,282,104"/>
+</map>

@@ -1,0 +1,91 @@
+\doxysection{Référence de la structure zone\+\_\+t}
+\hypertarget{structzone__t}{}\label{structzone__t}\index{zone\_t@{zone\_t}}
+
+
+Représente une zone de spawn pour les mechas sauvages dans le jeu.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structzone__t_a5dff5b08fea58dc82770daaeaee6e90e}{id\+\_\+zone}}
+\item 
+int \mbox{\hyperlink{structzone__t_afad641fd48b1090945aa6e4ab242b974}{Niveau\+Moyen\+Apparition}}
+\item 
+int \mbox{\hyperlink{structzone__t_aa40859a9b36a42abb1ef17a19e0d7cab}{Pv\+Moyen}}
+\item 
+int \mbox{\hyperlink{structzone__t_aa66086a1f0705bd2e3d0b5116b0b96ab}{Vitesse\+Moyenne}}
+\item 
+int \mbox{\hyperlink{structzone__t_a10d5007c77303b7812c412676ea22769}{Attaque}}
+\item 
+int \mbox{\hyperlink{structzone__t_af8f7d299444386175221e806f6dfa4bf}{Defense}}
+\item 
+int \mbox{\hyperlink{structzone__t_a08b1cfd70fd3f1f2380d091375c68b95}{liste\+Mechas\+Zone}} \mbox{[}10\mbox{]}
+\item 
+int \mbox{\hyperlink{structzone__t_a00c0ffc13e69d1f0c9931d4fc00d8363}{nb\+\_\+mechas}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente une zone de spawn pour les mechas sauvages dans le jeu. 
+
+Cette structure contient les caractéristiques des zones où apparaissent des mechas sauvages, ainsi que la liste des mechas pouvant y être rencontrés. Elle est utilisée pour déterminer quels types de mechas peuvent apparaître aléatoirement et avec quelles statistiques moyennes. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structzone__t_a10d5007c77303b7812c412676ea22769}\label{structzone__t_a10d5007c77303b7812c412676ea22769} 
+\index{zone\_t@{zone\_t}!Attaque@{Attaque}}
+\index{Attaque@{Attaque}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{Attaque}{Attaque}}
+{\footnotesize\ttfamily zone\+\_\+t\+::\+Attaque}
+
+Attaque moyenne des mechas dans la zone. \Hypertarget{structzone__t_af8f7d299444386175221e806f6dfa4bf}\label{structzone__t_af8f7d299444386175221e806f6dfa4bf} 
+\index{zone\_t@{zone\_t}!Defense@{Defense}}
+\index{Defense@{Defense}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{Defense}{Defense}}
+{\footnotesize\ttfamily zone\+\_\+t\+::\+Defense}
+
+Défense moyenne des mechas dans la zone. \Hypertarget{structzone__t_a5dff5b08fea58dc82770daaeaee6e90e}\label{structzone__t_a5dff5b08fea58dc82770daaeaee6e90e} 
+\index{zone\_t@{zone\_t}!id\_zone@{id\_zone}}
+\index{id\_zone@{id\_zone}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{id\_zone}{id\_zone}}
+{\footnotesize\ttfamily zone\+\_\+t\+::id\+\_\+zone}
+
+Identifiant unique de la zone. \Hypertarget{structzone__t_a08b1cfd70fd3f1f2380d091375c68b95}\label{structzone__t_a08b1cfd70fd3f1f2380d091375c68b95} 
+\index{zone\_t@{zone\_t}!listeMechasZone@{listeMechasZone}}
+\index{listeMechasZone@{listeMechasZone}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{listeMechasZone}{listeMechasZone}}
+{\footnotesize\ttfamily zone\+\_\+t\+::liste\+Mechas\+Zone}
+
+Tableau contenant les identifiants (ID) des mechas pouvant apparaître dans cette zone (maximum 10). \Hypertarget{structzone__t_a00c0ffc13e69d1f0c9931d4fc00d8363}\label{structzone__t_a00c0ffc13e69d1f0c9931d4fc00d8363} 
+\index{zone\_t@{zone\_t}!nb\_mechas@{nb\_mechas}}
+\index{nb\_mechas@{nb\_mechas}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{nb\_mechas}{nb\_mechas}}
+{\footnotesize\ttfamily zone\+\_\+t\+::nb\+\_\+mechas}
+
+Nombre total de mechas définis pour cette zone (doit être ≤ 10). \Hypertarget{structzone__t_afad641fd48b1090945aa6e4ab242b974}\label{structzone__t_afad641fd48b1090945aa6e4ab242b974} 
+\index{zone\_t@{zone\_t}!NiveauMoyenApparition@{NiveauMoyenApparition}}
+\index{NiveauMoyenApparition@{NiveauMoyenApparition}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{NiveauMoyenApparition}{NiveauMoyenApparition}}
+{\footnotesize\ttfamily zone\+\_\+t\+::\+Niveau\+Moyen\+Apparition}
+
+Niveau moyen des mechas qui apparaissent dans cette zone. \Hypertarget{structzone__t_aa40859a9b36a42abb1ef17a19e0d7cab}\label{structzone__t_aa40859a9b36a42abb1ef17a19e0d7cab} 
+\index{zone\_t@{zone\_t}!PvMoyen@{PvMoyen}}
+\index{PvMoyen@{PvMoyen}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{PvMoyen}{PvMoyen}}
+{\footnotesize\ttfamily zone\+\_\+t\+::\+Pv\+Moyen}
+
+Points de vie moyens des mechas sauvages dans la zone. \Hypertarget{structzone__t_aa66086a1f0705bd2e3d0b5116b0b96ab}\label{structzone__t_aa66086a1f0705bd2e3d0b5116b0b96ab} 
+\index{zone\_t@{zone\_t}!VitesseMoyenne@{VitesseMoyenne}}
+\index{VitesseMoyenne@{VitesseMoyenne}!zone\_t@{zone\_t}}
+\doxysubsubsection{\texorpdfstring{VitesseMoyenne}{VitesseMoyenne}}
+{\footnotesize\ttfamily zone\+\_\+t\+::\+Vitesse\+Moyenne}
+
+Vitesse moyenne des mechas sauvages. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

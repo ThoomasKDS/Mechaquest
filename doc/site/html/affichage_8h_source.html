@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest:  Fichier source de /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/affichage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('affichage_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">affichage.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="affichage_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef AFF_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define AFF_H                           </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../lib/player.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;../lib/initGame.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../lib/sauv.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;../lib/global.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;../lib/combat.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//FONCTION BACKGROUND</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a9a0c4550fcb73a704a8ecb9059731b40">init_background</a>();     <span class="comment">//initalise la background</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a37762eaaf5ff37b10814afba0e6f0aa5">init_calque</a>() ;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a3d385ca0396c4c2b3001371505a410e4">draw_background</a>();    <span class="comment">//dessine le background</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a78d50882c5d889e15ca86ddba5aa62bd">draw_calque</a>() ;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//FONCTION MAT</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a1e25ed2b94d05cf8dae2fe968589573e">init_mat</a>(<span class="keywordtype">int</span> taille_x, <span class="keywordtype">int</span> taille_y);               <span class="comment">//initialise la matrice</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#ad9d3b44ef81854da019931f0c15b40ca">remplir_mat</a>(<span class="keywordtype">int</span> taille_x, <span class="keywordtype">int</span> taille_y);           <span class="comment">//rempli les matrices avec les txt</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#acccbd26fc4489bcee9baa113b9dac4e1">aff_mat</a>(<span class="keywordtype">int</span> taille_x, <span class="keywordtype">int</span> taille_y, <span class="keywordtype">int</span> n_mat);   <span class="comment">//affiche la matrice dans le terminal</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a0e3013e95f4c920f17b775d33ac0ee82">free_mat</a>(<span class="keywordtype">int</span> taille_x, <span class="keywordtype">int</span> taille_y);              <span class="comment">//libere la matrice</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//FONCTION GESTION OBJETS</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a9de0b29edaa04d0f607cd14d448ff25e">init_player</a>(<span class="keywordtype">char</span> sexe);                                            <span class="comment">//initialise le joueur </span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a065c0902e63f16318150da6add0b96b6">init_pnj</a>() ;             </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#aaf9b1b9fed295b95719d447183c0a7bb">init_mecha</a>();                                            <span class="comment">//initialise un pnj</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>SDL_Rect <a class="code hl_function" href="affichage_8h.html#a0e1fc8eee26e274af453bd4630bd7566">create_obj</a>(<span class="keywordtype">int</span> taille_w, <span class="keywordtype">int</span> taille_h, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> type_obj, <span class="keywordtype">int</span> n_mat);      <span class="comment">//creé un objet</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#abd6001ed54f2062b95bb92ceef20e74a">game_over</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#ab476829218385851d4e69263f07e488b">draw_player</a>(SDL_Rect *obj, <a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> * j);                 <span class="comment">//dessine le joueur</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#ae63215d67a18f635b3a1c2e1464a0a6f">draw_mecha</a>(<a class="code hl_struct" href="structmechas__t.html">mechas_t</a> * m, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> h, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> orientation); <span class="comment">//dessine un mecha</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a81ed48c2407a1c13ac5884e0f162aaa7">draw_pnj</a>(SDL_Rect *obj, <a class="code hl_struct" href="structpnj__t.html">pnj_t</a> *pnj ,<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j);                           <span class="comment">//dessine un pnj</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a26aea5bf98ae3244b38faf08e3ebd667">draw_obj</a>(SDL_Rect *obj, SDL_Texture * img );                                             <span class="comment">//dessine un objet </span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a16a8360b65479c7343b03f418ed56939">draw_all</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j,SDL_Rect *sprite_p,SDL_Rect *pnj_sprite);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">//w : largeur, h, hauteur, x, coord x, y : coord y, &quot;r,g,b&quot; :  systeme de couleur, a : oppacité</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a7290dad76779d8dd7f48366a16812be8">creer_rectangle</a>(<a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a> *rectangle,<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> a, <span class="keyword">const</span> <span class="keywordtype">char</span> *text); <span class="comment">//creer un rectangle avec du texte</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#ab54c358911a2ed823f20797846583531">draw_text_left_middle</a>(<a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a>* rectangle);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a390da1c2cd15fd5355de26bd34b3d3dc">draw_text_center</a>(<a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a>* rectangle);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#ab542b24175a0231f8530346fc8ab790f">draw_rect</a>(<a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a> *rectangle,<span class="keywordtype">void</span> (*draw_func)(<a class="code hl_struct" href="structrectangle__t.html">rectangle_t</a> *));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#ac0e780352c4ab1739b9e31be92740c2d">draw_text_pos</a>(<span class="keywordtype">char</span> *text, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a4f7e45e8554e8971bdba352cf9838405">draw_all_rect</a>(<span class="keywordtype">int</span> n, ...);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a265b0bc1ac18afe4fdf6233323561dd1">afficher_dialogue</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, <span class="keywordtype">char</span> *pseudo, <span class="keywordtype">char</span> *dialogue,<span class="keywordtype">int</span> choix);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a1091893e7df87a967b878919b232b0d5">afficher_dialogue_combat</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_joueur, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mecha_ordi, <span class="keywordtype">char</span> *pseudo, <span class="keywordtype">char</span> *dialogue,<span class="keywordtype">int</span> choix);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#afc970416ff2ee1d9f8351a288625f23a">concat</a>(<span class="keywordtype">char</span> *dest, <span class="keywordtype">int</span> nb);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a76e0589a991f4ad00c5baae522dfeee1">utiliserObjetSurMecha</a>(<span class="keywordtype">int</span> objet_id, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha, <a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, <span class="keywordtype">char</span> *message_buffer);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> afficherTitre(<span class="keyword">const</span> <span class="keywordtype">char</span>* titre, <span class="keywordtype">int</span> fondX, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> afficherTexteCentre(<span class="keyword">const</span> <span class="keywordtype">char</span>* texte, <span class="keywordtype">int</span> fondX, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5">afficherInfosMecha</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, <a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_j, <span class="keywordtype">int</span> *quitter_total);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#aff36844a9bc0417b311b691e2957adae">afficherMechadex</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, <a class="code hl_struct" href="structgame__t.html">game_t</a> *game, <span class="keywordtype">int</span> *quitter_total);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">void</span> <a class="code hl_function" href="affichage_8h.html#a9519a3474a5b9ff0162efbc07d652b0c">afficherSelectionMecha</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, <a class="code hl_struct" href="structgame__t.html">game_t</a> *game, <span class="keywordtype">int</span> objet_id, <span class="keywordtype">int</span> *quitter_total);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#a17c5a7569d3f699b38d5124f198e916a">afficherInventaire</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, <a class="code hl_struct" href="structgame__t.html">game_t</a> *game, <span class="keywordtype">int</span> *repousse);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">int</span> <a class="code hl_function" href="affichage_8h.html#af70cd65063ba7719d712c57fcce296a3">affichage_pc</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aaffichage_8h_html_a065c0902e63f16318150da6add0b96b6"><div class="ttname"><a href="affichage_8h.html#a065c0902e63f16318150da6add0b96b6">init_pnj</a></div><div class="ttdeci">int init_pnj()</div><div class="ttdoc">Initialise les textures des PNJ (personnages non-joueurs) du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:549</div></div>
+<div class="ttc" id="aaffichage_8h_html_a0e1fc8eee26e274af453bd4630bd7566"><div class="ttname"><a href="affichage_8h.html#a0e1fc8eee26e274af453bd4630bd7566">create_obj</a></div><div class="ttdeci">SDL_Rect create_obj(int taille_w, int taille_h, int x, int y, int type_obj, int n_mat)</div><div class="ttdoc">Crée un objet de type SDL_Rect et met à jour la matrice du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:717</div></div>
+<div class="ttc" id="aaffichage_8h_html_a0e3013e95f4c920f17b775d33ac0ee82"><div class="ttname"><a href="affichage_8h.html#a0e3013e95f4c920f17b775d33ac0ee82">free_mat</a></div><div class="ttdeci">void free_mat(int taille_x, int taille_y)</div><div class="ttdoc">Libère la mémoire allouée pour les matrices des calques du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:384</div></div>
+<div class="ttc" id="aaffichage_8h_html_a1091893e7df87a967b878919b232b0d5"><div class="ttname"><a href="affichage_8h.html#a1091893e7df87a967b878919b232b0d5">afficher_dialogue_combat</a></div><div class="ttdeci">int afficher_dialogue_combat(mechas_joueur_t *mecha_joueur, mechas_joueur_t *mecha_ordi, char *pseudo, char *dialogue, int choix)</div><div class="ttdoc">Affiche un dialogue interactif durant un combat entre deux Méchas.</div><div class="ttdef"><b>Definition</b> affichage.c:1493</div></div>
+<div class="ttc" id="aaffichage_8h_html_a16a8360b65479c7343b03f418ed56939"><div class="ttname"><a href="affichage_8h.html#a16a8360b65479c7343b03f418ed56939">draw_all</a></div><div class="ttdeci">void draw_all(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite)</div><div class="ttdoc">Gère et affiche tous les éléments visuels principaux du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:853</div></div>
+<div class="ttc" id="aaffichage_8h_html_a17c5a7569d3f699b38d5124f198e916a"><div class="ttname"><a href="affichage_8h.html#a17c5a7569d3f699b38d5124f198e916a">afficherInventaire</a></div><div class="ttdeci">int afficherInventaire(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int *repousse)</div><div class="ttdoc">Affiche l'inventaire du joueur et permet d'utiliser certains objets.</div><div class="ttdef"><b>Definition</b> affichage.c:2216</div></div>
+<div class="ttc" id="aaffichage_8h_html_a1e25ed2b94d05cf8dae2fe968589573e"><div class="ttname"><a href="affichage_8h.html#a1e25ed2b94d05cf8dae2fe968589573e">init_mat</a></div><div class="ttdeci">int init_mat(int taille_x, int taille_y)</div><div class="ttdoc">Initialise une matrice 3D pour la gestion des calques du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:229</div></div>
+<div class="ttc" id="aaffichage_8h_html_a265b0bc1ac18afe4fdf6233323561dd1"><div class="ttname"><a href="affichage_8h.html#a265b0bc1ac18afe4fdf6233323561dd1">afficher_dialogue</a></div><div class="ttdeci">int afficher_dialogue(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, char *pseudo, char *dialogue, int choix)</div><div class="ttdoc">Affiche un dialogue interactif à l'écran, lettre par lettre, avec gestion des choix utilisateur.</div><div class="ttdef"><b>Definition</b> affichage.c:1381</div></div>
+<div class="ttc" id="aaffichage_8h_html_a26aea5bf98ae3244b38faf08e3ebd667"><div class="ttname"><a href="affichage_8h.html#a26aea5bf98ae3244b38faf08e3ebd667">draw_obj</a></div><div class="ttdeci">void draw_obj(SDL_Rect *obj, SDL_Texture *img)</div><div class="ttdoc">Dessine un objet générique à l'écran.</div><div class="ttdef"><b>Definition</b> affichage.c:987</div></div>
+<div class="ttc" id="aaffichage_8h_html_a37762eaaf5ff37b10814afba0e6f0aa5"><div class="ttname"><a href="affichage_8h.html#a37762eaaf5ff37b10814afba0e6f0aa5">init_calque</a></div><div class="ttdeci">int init_calque()</div><div class="ttdoc">Initialise les textures des calques utilisés pour l'affichage du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:121</div></div>
+<div class="ttc" id="aaffichage_8h_html_a390da1c2cd15fd5355de26bd34b3d3dc"><div class="ttname"><a href="affichage_8h.html#a390da1c2cd15fd5355de26bd34b3d3dc">draw_text_center</a></div><div class="ttdeci">void draw_text_center(rectangle_t *rectangle)</div><div class="ttdoc">Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire.</div><div class="ttdef"><b>Definition</b> affichage.c:1123</div></div>
+<div class="ttc" id="aaffichage_8h_html_a3d385ca0396c4c2b3001371505a410e4"><div class="ttname"><a href="affichage_8h.html#a3d385ca0396c4c2b3001371505a410e4">draw_background</a></div><div class="ttdeci">void draw_background()</div><div class="ttdoc">Affiche l'arrière-plan (background) actuel du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:168</div></div>
+<div class="ttc" id="aaffichage_8h_html_a4bfda0a3d2e621f3521d2bcf1c59a7d5"><div class="ttname"><a href="affichage_8h.html#a4bfda0a3d2e621f3521d2bcf1c59a7d5">afficherInfosMecha</a></div><div class="ttdeci">void afficherInfosMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, mechas_joueur_t *mecha_j, int *quitter_total)</div><div class="ttdoc">Affiche l'écran d'information détaillée d'un Mécha du joueur.</div><div class="ttdef"><b>Definition</b> affichage.c:1812</div></div>
+<div class="ttc" id="aaffichage_8h_html_a4f7e45e8554e8971bdba352cf9838405"><div class="ttname"><a href="affichage_8h.html#a4f7e45e8554e8971bdba352cf9838405">draw_all_rect</a></div><div class="ttdeci">void draw_all_rect(int n,...)</div><div class="ttdoc">Dessine plusieurs rectangles avec leurs textes centrés.</div><div class="ttdef"><b>Definition</b> affichage.c:1332</div></div>
+<div class="ttc" id="aaffichage_8h_html_a7290dad76779d8dd7f48366a16812be8"><div class="ttname"><a href="affichage_8h.html#a7290dad76779d8dd7f48366a16812be8">creer_rectangle</a></div><div class="ttdeci">void creer_rectangle(rectangle_t *rectangle, int w, int h, float x, float y, int r, int g, int b, int a, const char *text)</div><div class="ttdoc">Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel.</div><div class="ttdef"><b>Definition</b> affichage.c:1022</div></div>
+<div class="ttc" id="aaffichage_8h_html_a76e0589a991f4ad00c5baae522dfeee1"><div class="ttname"><a href="affichage_8h.html#a76e0589a991f4ad00c5baae522dfeee1">utiliserObjetSurMecha</a></div><div class="ttdeci">void utiliserObjetSurMecha(int objet_id, mechas_joueur_t *mecha, joueur_t *j, char *message_buffer)</div><div class="ttdoc">Utilise un objet de l'inventaire du joueur sur un Mécha donné.</div><div class="ttdef"><b>Definition</b> affichage.c:1757</div></div>
+<div class="ttc" id="aaffichage_8h_html_a78d50882c5d889e15ca86ddba5aa62bd"><div class="ttname"><a href="affichage_8h.html#a78d50882c5d889e15ca86ddba5aa62bd">draw_calque</a></div><div class="ttdeci">void draw_calque()</div><div class="ttdoc">Affiche le calque (overlay) actuel du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:189</div></div>
+<div class="ttc" id="aaffichage_8h_html_a81ed48c2407a1c13ac5884e0f162aaa7"><div class="ttname"><a href="affichage_8h.html#a81ed48c2407a1c13ac5884e0f162aaa7">draw_pnj</a></div><div class="ttdeci">void draw_pnj(SDL_Rect *obj, pnj_t *pnj, joueur_t *j)</div><div class="ttdoc">Dessine un PNJ à l'écran en fonction de son identité et de son orientation.</div><div class="ttdef"><b>Definition</b> affichage.c:936</div></div>
+<div class="ttc" id="aaffichage_8h_html_a9519a3474a5b9ff0162efbc07d652b0c"><div class="ttname"><a href="affichage_8h.html#a9519a3474a5b9ff0162efbc07d652b0c">afficherSelectionMecha</a></div><div class="ttdeci">void afficherSelectionMecha(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int objet_id, int *quitter_total)</div><div class="ttdoc">Affiche l'écran de sélection d'un Mécha pour utiliser un objet.</div><div class="ttdef"><b>Definition</b> affichage.c:2087</div></div>
+<div class="ttc" id="aaffichage_8h_html_a9a0c4550fcb73a704a8ecb9059731b40"><div class="ttname"><a href="affichage_8h.html#a9a0c4550fcb73a704a8ecb9059731b40">init_background</a></div><div class="ttdeci">int init_background()</div><div class="ttdoc">Initialise les textures de fond et adapte l'affichage à la taille de la fenêtre.</div><div class="ttdef"><b>Definition</b> affichage.c:37</div></div>
+<div class="ttc" id="aaffichage_8h_html_a9de0b29edaa04d0f607cd14d448ff25e"><div class="ttname"><a href="affichage_8h.html#a9de0b29edaa04d0f607cd14d448ff25e">init_player</a></div><div class="ttdeci">int init_player(char sexe)</div><div class="ttdoc">Initialise les textures d'animation du joueur selon son sexe.</div><div class="ttdef"><b>Definition</b> affichage.c:427</div></div>
+<div class="ttc" id="aaffichage_8h_html_aaf9b1b9fed295b95719d447183c0a7bb"><div class="ttname"><a href="affichage_8h.html#aaf9b1b9fed295b95719d447183c0a7bb">init_mecha</a></div><div class="ttdeci">int init_mecha()</div><div class="ttdoc">Initialise les textures des Méchas du jeu.</div><div class="ttdef"><b>Definition</b> affichage.c:651</div></div>
+<div class="ttc" id="aaffichage_8h_html_ab476829218385851d4e69263f07e488b"><div class="ttname"><a href="affichage_8h.html#ab476829218385851d4e69263f07e488b">draw_player</a></div><div class="ttdeci">void draw_player(SDL_Rect *obj, joueur_t *j)</div><div class="ttdoc">Dessine le joueur à l'écran en fonction de sa direction et de son mouvement.</div><div class="ttdef"><b>Definition</b> affichage.c:761</div></div>
+<div class="ttc" id="aaffichage_8h_html_ab542b24175a0231f8530346fc8ab790f"><div class="ttname"><a href="affichage_8h.html#ab542b24175a0231f8530346fc8ab790f">draw_rect</a></div><div class="ttdeci">void draw_rect(rectangle_t *rectangle, void(*draw_func)(rectangle_t *))</div><div class="ttdoc">Dessine un rectangle coloré et son texte associé si présent.</div><div class="ttdef"><b>Definition</b> affichage.c:1298</div></div>
+<div class="ttc" id="aaffichage_8h_html_ab54c358911a2ed823f20797846583531"><div class="ttname"><a href="affichage_8h.html#ab54c358911a2ed823f20797846583531">draw_text_left_middle</a></div><div class="ttdeci">void draw_text_left_middle(rectangle_t *rectangle)</div><div class="ttdoc">Dessine un texte centré verticalement et aligné à gauche dans un rectangle.</div><div class="ttdef"><b>Definition</b> affichage.c:1062</div></div>
+<div class="ttc" id="aaffichage_8h_html_abd6001ed54f2062b95bb92ceef20e74a"><div class="ttname"><a href="affichage_8h.html#abd6001ed54f2062b95bb92ceef20e74a">game_over</a></div><div class="ttdeci">void game_over(joueur_t *j)</div><div class="ttdoc">Gère l'écran de fin de partie et réinitialise le joueur.</div><div class="ttdef"><b>Definition</b> affichage.c:1591</div></div>
+<div class="ttc" id="aaffichage_8h_html_ac0e780352c4ab1739b9e31be92740c2d"><div class="ttname"><a href="affichage_8h.html#ac0e780352c4ab1739b9e31be92740c2d">draw_text_pos</a></div><div class="ttdeci">void draw_text_pos(char *text, int x, int y)</div><div class="ttdoc">Dessine du texte à une position spécifique à l'écran, avec gestion des retours à la ligne.</div><div class="ttdef"><b>Definition</b> affichage.c:1211</div></div>
+<div class="ttc" id="aaffichage_8h_html_acccbd26fc4489bcee9baa113b9dac4e1"><div class="ttname"><a href="affichage_8h.html#acccbd26fc4489bcee9baa113b9dac4e1">aff_mat</a></div><div class="ttdeci">void aff_mat(int taille_x, int taille_y, int n_mat)</div><div class="ttdoc">Affiche le contenu d'une matrice spécifique à l'écran.</div><div class="ttdef"><b>Definition</b> affichage.c:349</div></div>
+<div class="ttc" id="aaffichage_8h_html_ad9d3b44ef81854da019931f0c15b40ca"><div class="ttname"><a href="affichage_8h.html#ad9d3b44ef81854da019931f0c15b40ca">remplir_mat</a></div><div class="ttdeci">int remplir_mat(int taille_x, int taille_y)</div><div class="ttdoc">Remplit les matrices de calques avec les données de fichiers de sauvegarde.</div><div class="ttdef"><b>Definition</b> affichage.c:299</div></div>
+<div class="ttc" id="aaffichage_8h_html_ae63215d67a18f635b3a1c2e1464a0a6f"><div class="ttname"><a href="affichage_8h.html#ae63215d67a18f635b3a1c2e1464a0a6f">draw_mecha</a></div><div class="ttdeci">void draw_mecha(mechas_t *m, int x, int y, int h, int w, int orientation)</div><div class="ttdoc">Dessine un Mécha à l'écran avec la texture correspondant à son orientation.</div><div class="ttdef"><b>Definition</b> affichage.c:823</div></div>
+<div class="ttc" id="aaffichage_8h_html_af70cd65063ba7719d712c57fcce296a3"><div class="ttname"><a href="affichage_8h.html#af70cd65063ba7719d712c57fcce296a3">affichage_pc</a></div><div class="ttdeci">int affichage_pc(joueur_t *joueur)</div><div class="ttdoc">Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés.</div><div class="ttdef"><b>Definition</b> affichage.c:2394</div></div>
+<div class="ttc" id="aaffichage_8h_html_afc970416ff2ee1d9f8351a288625f23a"><div class="ttname"><a href="affichage_8h.html#afc970416ff2ee1d9f8351a288625f23a">concat</a></div><div class="ttdeci">void concat(char *dest, int nb)</div><div class="ttdoc">Concatène un entier à la fin d'une chaîne de caractères.</div><div class="ttdef"><b>Definition</b> affichage.c:2569</div></div>
+<div class="ttc" id="aaffichage_8h_html_aff36844a9bc0417b311b691e2957adae"><div class="ttname"><a href="affichage_8h.html#aff36844a9bc0417b311b691e2957adae">afficherMechadex</a></div><div class="ttdeci">void afficherMechadex(joueur_t *j, SDL_Rect *sprite_p, SDL_Rect *pnj_sprite, game_t *game, int *quitter_total)</div><div class="ttdoc">Affiche le Mechadex du joueur, listant tous ses Méchas capturés.</div><div class="ttdef"><b>Definition</b> affichage.c:1955</div></div>
+<div class="ttc" id="astructgame__t_html"><div class="ttname"><a href="structgame__t.html">game_t</a></div><div class="ttdoc">Structure principale contenant les ressources et paramètres liés à la gestion du jeu.</div><div class="ttdef"><b>Definition</b> global.h:288</div></div>
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.</div><div class="ttdef"><b>Definition</b> global.h:588</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html"><div class="ttname"><a href="structmechas__joueur__t.html">mechas_joueur_t</a></div><div class="ttdoc">Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.</div><div class="ttdef"><b>Definition</b> global.h:516</div></div>
+<div class="ttc" id="astructmechas__t_html"><div class="ttname"><a href="structmechas__t.html">mechas_t</a></div><div class="ttdoc">Représente un mecha disponible dans le jeu avec ses caractéristiques.</div><div class="ttdef"><b>Definition</b> global.h:431</div></div>
+<div class="ttc" id="astructpnj__t_html"><div class="ttname"><a href="structpnj__t.html">pnj_t</a></div><div class="ttdoc">Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.</div><div class="ttdef"><b>Definition</b> global.h:648</div></div>
+<div class="ttc" id="astructrectangle__t_html"><div class="ttname"><a href="structrectangle__t.html">rectangle_t</a></div><div class="ttdoc">Structure représentant un rectangle graphique avec du texte à afficher dans une interface SDL.</div><div class="ttdef"><b>Definition</b> global.h:330</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="affichage_8h.html">affichage.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

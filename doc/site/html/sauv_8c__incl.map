@@ -1,0 +1,21 @@
+<map id="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/sauv.c" name="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/sauv.c">
+<area shape="rect" id="Node000001" title="fichier contenant les fonctions de sauvegarde et récupération" alt="" coords="95,5,238,75"/>
+<area shape="rect" id="Node000002" href="$sauv_8h.html" title="Gestion des sauvegardes et récupération des données du jeu." alt="" coords="123,123,211,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,75,169,109,164,109,164,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,67,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,150,70,192,68,187,144,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="91,196,155,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="162,150,139,186,135,183,157,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="179,196,245,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="176,147,200,183,195,186,172,150"/>
+<area shape="rect" id="Node000006" href="$global_8h.html" title="Définition des constantes, structures et variables globales du jeu." alt="" coords="269,196,365,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="192,146,281,188,279,192,190,150"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="48,269,144,295"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="283,224,145,268,144,263,281,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="169,269,303,295"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="306,223,261,262,258,258,303,219"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="328,269,467,295"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="332,219,376,258,372,262,328,223"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="491,269,605,295"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="355,219,499,263,497,268,354,224"/>
+</map>

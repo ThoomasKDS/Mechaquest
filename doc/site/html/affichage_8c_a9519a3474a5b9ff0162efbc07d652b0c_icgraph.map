@@ -1,0 +1,5 @@
+<map id="afficherSelectionMecha" name="afficherSelectionMecha">
+<area shape="rect" id="Node000001" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="176,5,335,31"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,21,128,21,128,15,162,15"/>
+</map>

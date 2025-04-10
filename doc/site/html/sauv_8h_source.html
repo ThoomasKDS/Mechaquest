@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest:  Fichier source de /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/sauv.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('sauv_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sauv.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sauv_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef SAUV_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define SAUV_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../lib/global.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// FONCTIONS D&#39;INITIALISATION : </span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#aec5928f1d3393d66b9df8e4066b8d8da">nouveau_fichier_pnj</a>(<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a72f7ea1b998d9c8d83135418b440260c">init_partie</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>],<span class="keywordtype">char</span> sexe);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// FONCTIONS DE RECUPERATION : </span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a27e4df079f565f0ca025fea8e134b47e">recuperation_joueur</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a5df71d1ff822e93d595691020a67fcac">recuperation_inventaire</a>(<a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a> *inventaire, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552">recuperation_mechas_joueur</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mechas_joueur,<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a95f85960ed5fca42b0affe9a8a79c2ee">recuperation_attaques</a>(<a class="code hl_struct" href="structattaque__t.html">attaque_t</a> *attaques);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#abb51a9229438e3f3f69f63b4e6cb7067">recuperation_mechas</a>(<a class="code hl_struct" href="structmechas__t.html">mechas_t</a> *mechas_l);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8c.html#a099dce0c2a73af791f6cd412e9b085f2">recuperation_pnj</a>(<a class="code hl_struct" href="structpnj__t.html">pnj_t</a> *pnj,<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a7762d77d095eb75079f0da668e05250f">recuperation_zone</a>(<a class="code hl_struct" href="structzone__t.html">zone_t</a> *zone);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">//FONCTIONS DE SAUVEGARDE :</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a68cba593cfe77461f153f38b2a08a374">sauvegarde_partie</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#ab8195ddd8dbc45661b6c79de94f968e7">sauvegarde_inventaire</a>(<a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a> *inventaire, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a48e80e16d5df5b56d2279ae7c965bb71">sauvegarde_mechas_joueur</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mechas_joueur,<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>],<span class="keywordtype">int</span> nb_mechas);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#ab1da7937b8e445add82b83c23950cc74">sauvegarde_pnj</a>(<a class="code hl_struct" href="structpnj__t.html">pnj_t</a> *pnj, <span class="keywordtype">int</span> id_pnj,<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">//FONCTION DE SUPPRESSION DE SAUVEGARDES</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a3748382cfddb2c574b37de5987534cea">suppression_partie</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a020e784ece3effc4c331f7955d822f1e">suppression_inventaire</a>(<a class="code hl_struct" href="structinventaire__t.html">inventaire_t</a> *inventaire, <span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>]);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#accca901359a4eafa002b577efb20fff1">suppression_mechas_joueur</a>(<a class="code hl_struct" href="structmechas__joueur__t.html">mechas_joueur_t</a> * mechas_joueur,<span class="keywordtype">char</span> pseudo[<a class="code hl_define" href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a>],<span class="keywordtype">int</span> nb_mechas);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//FONCTIONS DE DESTRUCTION ALLOCATION DYNAMIQUE</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#aabb5472f53dbb474524b053b75d3668f">destruction_joueur</a>(<a class="code hl_struct" href="structjoueur__t.html">joueur_t</a> *joueur);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauv_8h.html#a493358ab8bc3b3e8d2b90a9aa3f100bb">destruction_pnj</a>(<a class="code hl_struct" href="structpnj__t.html">pnj_t</a> *pnj);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aglobal_8h_html_ab232c0fbfa74350c11eda67d8dba16a7"><div class="ttname"><a href="global_8h.html#ab232c0fbfa74350c11eda67d8dba16a7">LONGUEUR_MAX_PSEUDO</a></div><div class="ttdeci">#define LONGUEUR_MAX_PSEUDO</div><div class="ttdoc">Longueur maximale autorisée pour un pseudo de joueur.</div><div class="ttdef"><b>Definition</b> global.h:18</div></div>
+<div class="ttc" id="asauv_8c_html_a099dce0c2a73af791f6cd412e9b085f2"><div class="ttname"><a href="sauv_8c.html#a099dce0c2a73af791f6cd412e9b085f2">recuperation_pnj</a></div><div class="ttdeci">int recuperation_pnj(pnj_t *pnj, char pseudo[50])</div><div class="ttdoc">Récupère l'état et les données détaillées des PNJs à partir d'un fichier CSV personnalisé.</div><div class="ttdef"><b>Definition</b> sauv.c:221</div></div>
+<div class="ttc" id="asauv_8c_html_a163544a5ed388ef250c2b5402fd1c552"><div class="ttname"><a href="sauv_8c.html#a163544a5ed388ef250c2b5402fd1c552">recuperation_mechas_joueur</a></div><div class="ttdeci">int recuperation_mechas_joueur(mechas_joueur_t *mechas_joueur, char pseudo[50])</div><div class="ttdoc">Récupère l'équipe de Mechas d'un joueur à partir d'un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:343</div></div>
+<div class="ttc" id="asauv_8h_html_a020e784ece3effc4c331f7955d822f1e"><div class="ttname"><a href="sauv_8h.html#a020e784ece3effc4c331f7955d822f1e">suppression_inventaire</a></div><div class="ttdeci">int suppression_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Supprime l'entrée d'un inventaire associé à un joueur (ou PNJ) d'un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:929</div></div>
+<div class="ttc" id="asauv_8h_html_a27e4df079f565f0ca025fea8e134b47e"><div class="ttname"><a href="sauv_8h.html#a27e4df079f565f0ca025fea8e134b47e">recuperation_joueur</a></div><div class="ttdeci">int recuperation_joueur(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Récupère les données d'une partie sauvegardée pour un joueur donné depuis un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:151</div></div>
+<div class="ttc" id="asauv_8h_html_a3748382cfddb2c574b37de5987534cea"><div class="ttname"><a href="sauv_8h.html#a3748382cfddb2c574b37de5987534cea">suppression_partie</a></div><div class="ttdeci">int suppression_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Supprime définitivement toutes les données d'une partie d'un joueur depuis les fichiers CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:1042</div></div>
+<div class="ttc" id="asauv_8h_html_a48e80e16d5df5b56d2279ae7c965bb71"><div class="ttname"><a href="sauv_8h.html#a48e80e16d5df5b56d2279ae7c965bb71">sauvegarde_mechas_joueur</a></div><div class="ttdeci">int sauvegarde_mechas_joueur(mechas_joueur_t *mechas_joueur, char pseudo[LONGUEUR_MAX_PSEUDO], int nb_mechas)</div><div class="ttdoc">Sauvegarde l'équipe de Mechas d'un joueur dans un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:681</div></div>
+<div class="ttc" id="asauv_8h_html_a493358ab8bc3b3e8d2b90a9aa3f100bb"><div class="ttname"><a href="sauv_8h.html#a493358ab8bc3b3e8d2b90a9aa3f100bb">destruction_pnj</a></div><div class="ttdeci">int destruction_pnj(pnj_t *pnj)</div><div class="ttdoc">Libère la mémoire dynamiquement allouée à un PNJ.</div><div class="ttdef"><b>Definition</b> sauv.c:1131</div></div>
+<div class="ttc" id="asauv_8h_html_a5df71d1ff822e93d595691020a67fcac"><div class="ttname"><a href="sauv_8h.html#a5df71d1ff822e93d595691020a67fcac">recuperation_inventaire</a></div><div class="ttdeci">int recuperation_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Récupère les données de l'inventaire d'un joueur ou d'un PNJ depuis un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:286</div></div>
+<div class="ttc" id="asauv_8h_html_a68cba593cfe77461f153f38b2a08a374"><div class="ttname"><a href="sauv_8h.html#a68cba593cfe77461f153f38b2a08a374">sauvegarde_partie</a></div><div class="ttdeci">int sauvegarde_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Sauvegarde l'état global d'une partie d'un joueur dans plusieurs fichiers CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:770</div></div>
+<div class="ttc" id="asauv_8h_html_a72f7ea1b998d9c8d83135418b440260c"><div class="ttname"><a href="sauv_8h.html#a72f7ea1b998d9c8d83135418b440260c">init_partie</a></div><div class="ttdeci">int init_partie(joueur_t *joueur, char pseudo[LONGUEUR_MAX_PSEUDO], char sexe)</div><div class="ttdoc">Initialise une nouvelle partie avec les paramètres par défaut pour un joueur.</div><div class="ttdef"><b>Definition</b> sauv.c:43</div></div>
+<div class="ttc" id="asauv_8h_html_a7762d77d095eb75079f0da668e05250f"><div class="ttname"><a href="sauv_8h.html#a7762d77d095eb75079f0da668e05250f">recuperation_zone</a></div><div class="ttdeci">int recuperation_zone(zone_t *zone)</div><div class="ttdoc">Récupère les données détaillées des zones de jeu depuis un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:535</div></div>
+<div class="ttc" id="asauv_8h_html_a95f85960ed5fca42b0affe9a8a79c2ee"><div class="ttname"><a href="sauv_8h.html#a95f85960ed5fca42b0affe9a8a79c2ee">recuperation_attaques</a></div><div class="ttdeci">int recuperation_attaques(attaque_t *attaques)</div><div class="ttdoc">Récupère les informations complètes des attaques disponibles depuis un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:402</div></div>
+<div class="ttc" id="asauv_8h_html_aabb5472f53dbb474524b053b75d3668f"><div class="ttname"><a href="sauv_8h.html#aabb5472f53dbb474524b053b75d3668f">destruction_joueur</a></div><div class="ttdeci">int destruction_joueur(joueur_t *joueur)</div><div class="ttdoc">Libère la mémoire dynamiquement allouée à un joueur.</div><div class="ttdef"><b>Definition</b> sauv.c:1102</div></div>
+<div class="ttc" id="asauv_8h_html_ab1da7937b8e445add82b83c23950cc74"><div class="ttname"><a href="sauv_8h.html#ab1da7937b8e445add82b83c23950cc74">sauvegarde_pnj</a></div><div class="ttdeci">int sauvegarde_pnj(pnj_t *pnj, int id_pnj, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Sauvegarde ou met à jour les données d'un PNJ spécifique pour un joueur dans un fichier CSV personnal...</div><div class="ttdef"><b>Definition</b> sauv.c:845</div></div>
+<div class="ttc" id="asauv_8h_html_ab8195ddd8dbc45661b6c79de94f968e7"><div class="ttname"><a href="sauv_8h.html#ab8195ddd8dbc45661b6c79de94f968e7">sauvegarde_inventaire</a></div><div class="ttdeci">int sauvegarde_inventaire(inventaire_t *inventaire, char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Sauvegarde les données de l'inventaire d'un joueur (ou PNJ) dans un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:608</div></div>
+<div class="ttc" id="asauv_8h_html_abb51a9229438e3f3f69f63b4e6cb7067"><div class="ttname"><a href="sauv_8h.html#abb51a9229438e3f3f69f63b4e6cb7067">recuperation_mechas</a></div><div class="ttdeci">int recuperation_mechas(mechas_t *mechas_l)</div><div class="ttdoc">Récupère la liste complète des Mechas disponibles et leurs caractéristiques à partir d'un fichier CSV...</div><div class="ttdef"><b>Definition</b> sauv.c:463</div></div>
+<div class="ttc" id="asauv_8h_html_accca901359a4eafa002b577efb20fff1"><div class="ttname"><a href="sauv_8h.html#accca901359a4eafa002b577efb20fff1">suppression_mechas_joueur</a></div><div class="ttdeci">int suppression_mechas_joueur(mechas_joueur_t *mechas_joueur, char pseudo[LONGUEUR_MAX_PSEUDO], int nb_mechas)</div><div class="ttdoc">Supprime toutes les entrées associées aux Mechas d'un joueur dans un fichier CSV.</div><div class="ttdef"><b>Definition</b> sauv.c:985</div></div>
+<div class="ttc" id="asauv_8h_html_aec5928f1d3393d66b9df8e4066b8d8da"><div class="ttname"><a href="sauv_8h.html#aec5928f1d3393d66b9df8e4066b8d8da">nouveau_fichier_pnj</a></div><div class="ttdeci">int nouveau_fichier_pnj(char pseudo[LONGUEUR_MAX_PSEUDO])</div><div class="ttdoc">Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial.</div><div class="ttdef"><b>Definition</b> sauv.c:91</div></div>
+<div class="ttc" id="astructattaque__t_html"><div class="ttname"><a href="structattaque__t.html">attaque_t</a></div><div class="ttdoc">Structure représentant les caractéristiques d'une attaque d'un Mecha.</div><div class="ttdef"><b>Definition</b> global.h:388</div></div>
+<div class="ttc" id="astructinventaire__t_html"><div class="ttname"><a href="structinventaire__t.html">inventaire_t</a></div><div class="ttdoc">Représente l’inventaire d’un joueur contenant les objets utilisables.</div><div class="ttdef"><b>Definition</b> global.h:462</div></div>
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.</div><div class="ttdef"><b>Definition</b> global.h:588</div></div>
+<div class="ttc" id="astructmechas__joueur__t_html"><div class="ttname"><a href="structmechas__joueur__t.html">mechas_joueur_t</a></div><div class="ttdoc">Représente un mecha appartenant à un joueur, avec ses statistiques et attaques.</div><div class="ttdef"><b>Definition</b> global.h:516</div></div>
+<div class="ttc" id="astructmechas__t_html"><div class="ttname"><a href="structmechas__t.html">mechas_t</a></div><div class="ttdoc">Représente un mecha disponible dans le jeu avec ses caractéristiques.</div><div class="ttdef"><b>Definition</b> global.h:431</div></div>
+<div class="ttc" id="astructpnj__t_html"><div class="ttname"><a href="structpnj__t.html">pnj_t</a></div><div class="ttdoc">Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.</div><div class="ttdef"><b>Definition</b> global.h:648</div></div>
+<div class="ttc" id="astructzone__t_html"><div class="ttname"><a href="structzone__t.html">zone_t</a></div><div class="ttdoc">Représente une zone de spawn pour les mechas sauvages dans le jeu.</div><div class="ttdef"><b>Definition</b> global.h:694</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="sauv_8h.html">sauv.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

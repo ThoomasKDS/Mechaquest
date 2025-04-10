@@ -1,0 +1,9 @@
+<map id="attaque_ordi_pnj" name="attaque_ordi_pnj">
+<area shape="rect" id="Node000001" title="Gère les actions automatiques d&#39;un PNJ (personnage non&#45;joueur) lors d&#39;un combat contre le joueur." alt="" coords="345,31,463,56"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="208,31,297,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="332,46,297,46,297,41,332,41"/>
+<area shape="rect" id="Node000003" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,5,131,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,37,130,28,131,22,195,32"/>
+<area shape="rect" id="Node000004" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,55,160,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="195,54,161,59,160,54,194,49"/>
+</map>

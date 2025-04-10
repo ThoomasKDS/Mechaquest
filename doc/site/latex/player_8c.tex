@@ -1,0 +1,221 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/src/player.c}
+\hypertarget{player_8c}{}\label{player_8c}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/player.c@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/player.c}}
+
+
+fichier contenant les fonctions de déplacement  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}../lib/player.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/affichage.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/son.\+h"{}}\newline
+{\ttfamily \#include $<$point\+De\+Passage.\+h$>$}\newline
+Graphe des dépendances par inclusion de player.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{player_8c_af51d5e095cb4fc41eec0983022449146}{deplacement}} (int taille\+\_\+x, int taille\+\_\+y, const Uint8 \texorpdfstring{$\ast$}{*}keys, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, int \texorpdfstring{$\ast$}{*}last\+\_\+case, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p, int \texorpdfstring{$\ast$}{*}repousse)
+\begin{DoxyCompactList}\small\item\em Gère le déplacement du joueur sur la carte en fonction des touches pressées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_a279408d93f54625f9229df493ae67180}{animation}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}sprite\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}animation du joueur lors de son déplacement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8c_aa063304a19a8497e45220ea85ad96307}{spawn\+\_\+mecha}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, int obj\+\_\+case, \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mecha\+\_\+sauvage, int res)
+\begin{DoxyCompactList}\small\item\em Détermine et génère l\textquotesingle{}apparition aléatoire d\textquotesingle{}un Mecha sauvage dans une zone définie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8c_a09715347a5e61cb5a25e0a2cefc73696}{detection\+\_\+combat\+\_\+pnj}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, int res)
+\begin{DoxyCompactList}\small\item\em Détecte si un PNJ peut déclencher un combat avec le joueur en fonction de sa position et orientation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{player_8c_a660ead63ae8c167737981fec4571c187}\label{player_8c_a660ead63ae8c167737981fec4571c187} 
+const int {\bfseries FRAME} = 15
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier contenant les fonctions de déplacement 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{player_8c_a279408d93f54625f9229df493ae67180}\label{player_8c_a279408d93f54625f9229df493ae67180} 
+\index{player.c@{player.c}!animation@{animation}}
+\index{animation@{animation}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{animation()}{animation()}}
+{\footnotesize\ttfamily void animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}animation du joueur lors de son déplacement. 
+
+Cette fonction actualise progressivement la position graphique du joueur ({\ttfamily sprite\+\_\+p}) sur l\textquotesingle{}écran, selon les incréments définis ({\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dx} et {\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dy}). L\textquotesingle{}animation se déroule sur un nombre prédéfini de frames ({\ttfamily j-\/\texorpdfstring{$>$}{>}moving}), décrémenté à chaque appel de la fonction jusqu’à atteindre zéro (fin de l’animation).
+
+Lorsque l\textquotesingle{}animation se termine ({\ttfamily j-\/\texorpdfstring{$>$}{>}moving == 0}), les valeurs de déplacement ({\ttfamily move\+\_\+dx}, {\ttfamily move\+\_\+dy}) sont remises à zéro pour stopper tout mouvement résiduel.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Pointeur vers la structure du joueur contenant les informations sur l\textquotesingle{}animation en cours. \\
+\hline
+{\em sprite\+\_\+p} & Pointeur vers la structure SDL\+\_\+\+Rect définissant la position du sprite du joueur à l’écran.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Les valeurs de déplacement ({\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dx} et {\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dy}) doivent être définies avant le début de l’animation. Le pointeur {\ttfamily sprite\+\_\+p} doit être valide et initialisé correctement avec la position actuelle du joueur.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La position graphique du joueur ({\ttfamily sprite\+\_\+p-\/\texorpdfstring{$>$}{>}x}, {\ttfamily sprite\+\_\+p-\/\texorpdfstring{$>$}{>}y}) est mise à jour progressivement à chaque appel. Les valeurs de déplacement sont réinitialisées à zéro lorsque l\textquotesingle{}animation se termine.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction doit être appelée régulièrement dans la boucle principale (généralement chaque frame) pour garantir une animation fluide du déplacement du joueur.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Veiller à ce que {\ttfamily j-\/\texorpdfstring{$>$}{>}screen\+\_\+x} et {\ttfamily j-\/\texorpdfstring{$>$}{>}screen\+\_\+y} soient initialisées correctement pour éviter tout décalage du sprite. 
+\end{DoxyWarning}
+\Hypertarget{player_8c_af51d5e095cb4fc41eec0983022449146}\label{player_8c_af51d5e095cb4fc41eec0983022449146} 
+\index{player.c@{player.c}!deplacement@{deplacement}}
+\index{deplacement@{deplacement}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{deplacement()}{deplacement()}}
+{\footnotesize\ttfamily int deplacement (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+x,  }\item[{int}]{taille\+\_\+y,  }\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{keys,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{int \texorpdfstring{$\ast$}{*}}]{last\+\_\+case,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{sprite\+\_\+p,  }\item[{int \texorpdfstring{$\ast$}{*}}]{repousse }\end{DoxyParamCaption})}
+
+
+
+Gère le déplacement du joueur sur la carte en fonction des touches pressées. 
+
+Cette fonction détermine la direction du déplacement en fonction des touches fléchées pressées par l\textquotesingle{}utilisateur (gauche, droite, haut, bas). Elle vérifie si la case cible est valide (libre, accessible ou portail vers une autre carte). Si le déplacement est valide, elle met à jour la position logique et graphique du joueur, et gère éventuellement le changement de carte.
+
+La fonction empêche explicitement le déplacement en diagonale et bloque tout déplacement si le joueur est déjà en animation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure principale du jeu contenant l\textquotesingle{}état actuel du jeu et des cartes. \\
+\hline
+{\em taille\+\_\+x} & Largeur de la carte en nombre de cases. \\
+\hline
+{\em taille\+\_\+y} & Hauteur de la carte en nombre de cases. \\
+\hline
+{\em keys} & Tableau des touches pressées ({\ttfamily Uint8} SDL) pour déterminer le déplacement. \\
+\hline
+{\em j} & Pointeur vers la structure du joueur (position, état d’animation). \\
+\hline
+{\em last\+\_\+case} & Pointeur vers un entier stockant l\textquotesingle{}identifiant de la dernière case occupée avant le déplacement du joueur. \\
+\hline
+{\em sprite\+\_\+p} & Rectangle SDL définissant la position graphique du sprite du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int ~\newline
+
+\begin{DoxyItemize}
+\item La valeur de la case vers laquelle le joueur se déplace ({\ttfamily obj\+\_\+case}), qui peut être \+:
+\begin{DoxyItemize}
+\item {\ttfamily RIEN} si la case est vide ou traversable.
+\item Un identifiant spécial (par exemple \+: changement de carte).
+\end{DoxyItemize}
+\item {\ttfamily 0} si aucun déplacement valide n\textquotesingle{}est effectué (mouvement diagonal ou joueur en déplacement).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les pointeurs ({\ttfamily game}, {\ttfamily j}, {\ttfamily keys}, {\ttfamily last\+\_\+case}, {\ttfamily sprite\+\_\+p}) doivent être valides et correctement initialisés. La carte et ses dimensions doivent être cohérentes avec {\ttfamily taille\+\_\+x} et {\ttfamily taille\+\_\+y}.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La position du joueur ({\ttfamily j-\/\texorpdfstring{$>$}{>}x}, {\ttfamily j-\/\texorpdfstring{$>$}{>}y}) est mise à jour ainsi que la matrice du jeu ({\ttfamily game-\/\texorpdfstring{$>$}{>}mat}) selon le déplacement effectué. La gestion du changement de carte est faite si la case cible est un portail ({\ttfamily TPMAP1}, etc.).
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction gère uniquement la logique du déplacement initial. L\textquotesingle{}animation réelle du joueur est traitée dans la boucle principale en fonction des paramètres {\ttfamily j-\/\texorpdfstring{$>$}{>}moving}, {\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dx} et {\ttfamily j-\/\texorpdfstring{$>$}{>}move\+\_\+dy}.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette fonction ne doit pas être appelée si le joueur est déjà en animation ({\ttfamily j-\/\texorpdfstring{$>$}{>}moving != 0}). Assurez-\/vous que les constantes ({\ttfamily RIEN}, {\ttfamily JOUEUR}, {\ttfamily TPMAP1}, etc.) soient définies avant utilisation. 
+\end{DoxyWarning}
+\Hypertarget{player_8c_a09715347a5e61cb5a25e0a2cefc73696}\label{player_8c_a09715347a5e61cb5a25e0a2cefc73696} 
+\index{player.c@{player.c}!detection\_combat\_pnj@{detection\_combat\_pnj}}
+\index{detection\_combat\_pnj@{detection\_combat\_pnj}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{detection\_combat\_pnj()}{detection\_combat\_pnj()}}
+{\footnotesize\ttfamily int detection\+\_\+combat\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{int}]{res }\end{DoxyParamCaption})}
+
+
+
+Détecte si un PNJ peut déclencher un combat avec le joueur en fonction de sa position et orientation. 
+
+Cette fonction parcourt la liste des PNJ présents sur la carte active, vérifiant leur état, leur position, et leur orientation pour déterminer si l\textquotesingle{}un d\textquotesingle{}entre eux peut voir directement le joueur. Le PNJ peut détecter le joueur jusqu\textquotesingle{}à 3 cases devant lui selon son orientation actuelle (haut, droite, bas, gauche).
+
+Dès qu\textquotesingle{}un PNJ détecte le joueur, la fonction retourne immédiatement l\textquotesingle{}indice correspondant à ce PNJ dans le tableau global {\ttfamily pnj\mbox{[}\mbox{]}}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure contenant l’état du jeu et la carte active. \\
+\hline
+{\em joueur} & Pointeur vers la structure du joueur contenant sa position actuelle sur la carte.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item L\textquotesingle{}indice ({\ttfamily i}) du PNJ dans le tableau {\ttfamily pnj\mbox{[}\mbox{]}} qui a détecté le joueur.
+\item {\ttfamily 0} si aucun PNJ ne détecte le joueur à proximité.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les tableaux {\ttfamily game-\/\texorpdfstring{$>$}{>}mat} et {\ttfamily pnj\mbox{[}\mbox{]}} doivent être initialisés correctement. Les constantes ({\ttfamily JOUEUR}, {\ttfamily PNJ}, {\ttfamily VIN\+\_\+\+GAZOLE\+\_\+1}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Aucune modification d’état du jeu n\textquotesingle{}est réalisée par cette fonction. Elle ne fait que retourner l\textquotesingle{}indice d\textquotesingle{}un PNJ pouvant déclencher un combat.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction s’assure que les coordonnées testées restent toujours à l\textquotesingle{}intérieur des limites de la matrice.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assurez-\/vous que les valeurs des orientations du PNJ sont correctement définies \+:
+\begin{DoxyItemize}
+\item {\ttfamily 1} \+: vers le haut
+\item {\ttfamily 2} \+: vers la droite
+\item {\ttfamily 3} \+: vers le bas
+\item {\ttfamily 4} \+: vers la gauche 
+\end{DoxyItemize}
+\end{DoxyWarning}
+\Hypertarget{player_8c_aa063304a19a8497e45220ea85ad96307}\label{player_8c_aa063304a19a8497e45220ea85ad96307} 
+\index{player.c@{player.c}!spawn\_mecha@{spawn\_mecha}}
+\index{spawn\_mecha@{spawn\_mecha}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{spawn\_mecha()}{spawn\_mecha()}}
+{\footnotesize\ttfamily int spawn\+\_\+mecha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{int}]{obj\+\_\+case,  }\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mecha\+\_\+sauvage,  }\item[{int}]{res }\end{DoxyParamCaption})}
+
+
+
+Détermine et génère l\textquotesingle{}apparition aléatoire d\textquotesingle{}un Mecha sauvage dans une zone définie. 
+
+Cette fonction gère l\textquotesingle{}apparition aléatoire d\textquotesingle{}un Mecha sauvage en fonction d\textquotesingle{}une probabilité cumulative. À chaque déplacement du joueur dans une zone propice (identifiée par {\ttfamily obj\+\_\+case}), la probabilité de rencontrer un Mecha augmente. Lorsqu\textquotesingle{}un Mecha apparaît, ses attributs (niveau, PV, attaque, défense, vitesse, attaques disponibles) sont définis aléatoirement en fonction des valeurs moyennes prédéfinies pour cette zone.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & Pointeur vers la structure du joueur (pour la gestion de la probabilité d\textquotesingle{}apparition). \\
+\hline
+{\em obj\+\_\+case} & Valeur représentant la case où se situe le joueur (détermine la zone de spawn éventuel). \\
+\hline
+{\em mecha\+\_\+sauvage} & Pointeur vers une structure Mecha qui sera remplie avec les attributs du Mecha sauvage généré.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily 1} \+: Un Mecha sauvage est apparu, et ses attributs ont été initialisés.
+\item {\ttfamily 0} \+: Aucun Mecha sauvage n’est apparu (probabilité insuffisante).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+La structure {\ttfamily zone\mbox{[}\mbox{]}}, ainsi que les tableaux globaux ({\ttfamily attaque\mbox{[}\mbox{]}}, {\ttfamily mecha\mbox{[}\mbox{]}}), doivent être initialisés et contenir des données valides. Les constantes telles que {\ttfamily Z1} et {\ttfamily Z10} doivent être correctement définies. Le générateur aléatoire ({\ttfamily rand()}) doit être initialisé préalablement (par exemple via {\ttfamily srand()}).
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Si un Mecha apparaît, ses attributs sont initialisés dans la structure pointée par {\ttfamily mecha\+\_\+sauvage}. La probabilité de rencontre est réinitialisée ({\ttfamily j-\/\texorpdfstring{$>$}{>}proba\+\_\+combat = 0}) en cas de succès. Sinon, la probabilité cumulative ({\ttfamily j-\/\texorpdfstring{$>$}{>}proba\+\_\+combat}) est augmentée.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Des logs détaillés sur les attributs générés sont affichés sur la sortie standard (utile pour le debug).
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifier soigneusement les bornes des tableaux ({\ttfamily zone}, {\ttfamily mecha}, {\ttfamily attaque}) pour éviter tout accès hors limites. 
+\end{DoxyWarning}

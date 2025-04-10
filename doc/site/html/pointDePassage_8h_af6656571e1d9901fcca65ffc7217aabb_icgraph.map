@@ -1,0 +1,22 @@
+<map id="copie_mechas" name="copie_mechas">
+<area shape="rect" id="Node000001" title="Copie intégralement les attributs d&#39;un Mecha vers l&#39;équipe du joueur." alt="" coords="888,56,995,81"/>
+<area shape="rect" id="Node000002" href="$pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="720,5,817,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="883,55,812,33,814,28,885,49"/>
+<area shape="rect" id="Node000004" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,57,131,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="874,71,582,71,419,71,131,72,131,67,419,66,582,66,874,66"/>
+<area shape="rect" id="Node000005" href="$combat_8c.html#a53bf2250ba00b21dceed166fa59bd150" title="Gère l&#39;utilisation d&#39;une &quot;mechaball&quot; pour capturer un Mecha adverse durant un combat." alt="" coords="697,107,840,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="885,88,814,109,812,104,883,83"/>
+<area shape="rect" id="Node000003" href="$pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="512,5,649,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="706,21,649,21,649,15,706,15"/>
+<area shape="rect" id="Node000006" href="$combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="525,107,637,132"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="684,122,637,122,637,117,684,117"/>
+<area shape="rect" id="Node000007" href="$combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="377,107,464,132"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="511,122,464,122,464,117,511,117"/>
+<area shape="rect" id="Node000008" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,107,313,132"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="363,122,314,122,314,117,363,117"/>
+<area shape="rect" id="Node000010" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,156,329,181"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="369,139,310,158,308,153,367,134"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="210,107,130,85,132,80,212,102"/>
+<area shape="rect" id="Node000009" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,107,160,132"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="210,122,160,122,160,117,210,117"/>
+</map>

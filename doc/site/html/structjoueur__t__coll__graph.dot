@@ -1,0 +1,12 @@
+digraph "joueur_t"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="joueur_t",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" inventaire",fontcolor="grey" ];
+  Node2 [id="Node000002",label="inventaire_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structinventaire__t.html",tooltip="Représente l’inventaire d’un joueur contenant les objets utilisables."];
+  Node3 -> Node1 [id="edge2_Node000001_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" mechas_joueur",fontcolor="grey" ];
+  Node3 [id="Node000003",label="mechas_joueur_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structmechas__joueur__t.html",tooltip="Représente un mecha appartenant à un joueur, avec ses statistiques et attaques."];
+}

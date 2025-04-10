@@ -1,0 +1,42 @@
+<map id="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/initGame.h" name="/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/initGame.h">
+<area shape="rect" id="Node000001" title="Initialisation et gestion de la SDL pour le jeu." alt="" coords="258,5,401,75"/>
+<area shape="rect" id="Node000002" href="$affichage_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion de l&#39;affichage dans le jeu." alt="" coords="313,123,455,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,86,370,121,366,124,349,89"/>
+<area shape="rect" id="Node000003" href="$menu_8h.html" title="Gestion des menus et des interfaces utilisateur." alt="" coords="473,240,615,309"/>
+<area shape="poly" id="edge23_Node000001_Node000003" title=" " alt="" coords="414,78,443,98,469,121,491,149,510,180,535,238,530,241,505,183,487,152,465,124,440,102,411,83"/>
+<area shape="rect" id="Node000007" href="$main_8c.html" title="fichier contenant la fonctions principale" alt="" coords="226,592,369,661"/>
+<area shape="poly" id="edge26_Node000001_Node000007" title=" " alt="" coords="246,65,168,94,128,113,91,137,58,164,31,196,14,232,8,274,8,393,10,440,19,476,38,508,70,542,105,569,145,589,187,603,226,613,225,618,185,608,143,594,102,573,66,546,34,511,14,478,5,441,3,393,3,273,9,231,27,193,54,161,87,133,125,109,166,89,244,60"/>
+<area shape="rect" id="Node000011" href="$menu_8c.html" title="Fichier contenant les fonctions liées à l&#39;affichage et la gestion du menu principal et des sous&#45;menus..." alt="" coords="203,357,346,427"/>
+<area shape="poly" id="edge27_Node000001_Node000011" title=" " alt="" coords="313,88,303,123,291,188,284,252,278,357,272,357,278,252,286,187,297,122,308,87"/>
+<area shape="rect" id="Node000012" href="$player_8h.html" title="Gestion du joueur dans le jeu." alt="" coords="43,240,186,309"/>
+<area shape="poly" id="edge24_Node000001_Node000012" title=" " alt="" coords="291,87,148,242,144,238,287,84"/>
+<area shape="rect" id="Node000013" href="$initGame_8c.html" title="fichier contenant la fonctions d&#39;initialisation du Jeux" alt="" coords="531,123,674,192"/>
+<area shape="poly" id="edge25_Node000001_Node000013" title=" " alt="" coords="414,74,532,124,530,128,412,79"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,198,499,237,495,242,440,202"/>
+<area shape="poly" id="edge20_Node000002_Node000007" title=" " alt="" coords="327,202,290,233,253,270,219,312,193,358,173,409,163,452,167,494,186,543,206,569,231,590,228,594,202,573,182,545,162,495,158,451,168,407,188,356,215,309,249,266,287,229,323,198"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html" title="fichier contenant la fonctions d&#39;affichage utilisant la librérie de SDL" alt="" coords="363,475,506,544"/>
+<area shape="poly" id="edge19_Node000002_Node000009" title=" " alt="" coords="398,205,405,240,424,369,434,474,429,475,418,370,400,240,393,206"/>
+<area shape="rect" id="Node000010" href="$player_8c.html" title="fichier contenant les fonctions de déplacement" alt="" coords="197,475,339,544"/>
+<area shape="poly" id="edge22_Node000002_Node000010" title=" " alt="" coords="392,205,393,254,391,311,380,371,360,428,342,454,319,476,316,472,338,451,355,425,375,369,385,310,388,254,386,205"/>
+<area shape="poly" id="edge21_Node000002_Node000011" title=" " alt="" coords="365,206,293,358,288,356,360,204"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="301,194,186,242,184,237,299,189"/>
+<area shape="rect" id="Node000004" href="$pointDePassage_8h.html" title="Gestion des points de passage et événements du jeu." alt="" coords="473,357,615,427"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,323,547,357,541,357,541,323"/>
+<area shape="poly" id="edge13_Node000003_Node000007" title=" " alt="" coords="603,317,619,335,630,356,640,386,643,414,640,439,631,463,617,485,599,506,551,546,508,573,460,593,413,608,370,618,368,613,412,603,459,588,505,568,548,542,595,502,613,481,626,460,635,438,638,414,635,387,626,358,614,338,599,320"/>
+<area shape="poly" id="edge14_Node000003_Node000011" title=" " alt="" coords="461,314,347,363,345,358,459,309"/>
+<area shape="rect" id="Node000005" href="$combat_8h.html" title="Gestion des combats dans le jeu." alt="" coords="633,475,775,544"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="603,433,659,472,655,476,600,437"/>
+<area shape="poly" id="edge10_Node000004_Node000007" title=" " alt="" coords="550,441,544,495,534,522,519,546,487,575,449,596,408,611,369,620,368,615,407,606,447,591,484,571,515,542,530,519,538,493,545,441"/>
+<area shape="rect" id="Node000008" href="$pointDePassage_8c.html" title="Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas,..." alt="" coords="742,592,885,661"/>
+<area shape="poly" id="edge12_Node000004_Node000008" title=" " alt="" coords="630,397,672,406,715,421,756,443,790,473,807,501,816,532,820,564,820,592,814,592,814,564,811,533,802,503,786,476,753,447,713,426,670,411,629,402"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="504,439,469,476,465,473,501,435"/>
+<area shape="poly" id="edge11_Node000004_Node000010" title=" " alt="" coords="461,431,341,481,339,476,459,426"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="701,461,696,410,684,352,661,293,646,266,626,242,599,224,556,206,455,177,456,172,557,201,601,219,630,238,650,263,666,291,689,350,701,410,706,461"/>
+<area shape="rect" id="Node000006" href="$combat_8c.html" title="fichier contenant la fonctions de combat" alt="" coords="575,592,718,661"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="684,558,666,593,661,591,679,555"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="620,545,614,547,485,583,369,612,368,607,483,578,613,541,618,540"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="747,552,783,590,779,594,744,556"/>
+<area shape="poly" id="edge16_Node000012_Node000002" title=" " alt="" coords="198,238,313,190,315,195,200,243"/>
+<area shape="poly" id="edge17_Node000012_Node000007" title=" " alt="" coords="98,323,83,372,74,430,73,459,77,489,85,517,98,542,124,570,156,590,191,605,227,614,225,619,190,610,154,595,120,574,94,546,80,519,71,490,68,460,69,429,78,371,93,321"/>
+<area shape="poly" id="edge18_Node000012_Node000010" title=" " alt="" coords="136,321,161,373,193,425,234,473,230,476,189,428,156,375,131,324"/>
+</map>

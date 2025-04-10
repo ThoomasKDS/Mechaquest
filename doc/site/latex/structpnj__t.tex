@@ -1,0 +1,133 @@
+\doxysection{Référence de la structure pnj\+\_\+t}
+\hypertarget{structpnj__t}{}\label{structpnj__t}\index{pnj\_t@{pnj\_t}}
+
+
+Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+
+
+Graphe de collaboration de pnj\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{structpnj__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_a7f2eed80f5fb31cccc12bc3f93947a2c}{id\+\_\+pnj}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_a3dcd285723b072a83828bc5b3c564e9c}{id\+\_\+map}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{char}} \mbox{\hyperlink{structpnj__t_a8fddef4f03db5d661a88030ab2ffc18f}{pseudo}} \mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_ae53a51fb05f47aac68e1b6c451000d9e}{etat}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{char}} \mbox{\hyperlink{structpnj__t_aa76dc506813b337e884f7658d5c3cfc1}{dialogue\+Debut}} \mbox{[}\mbox{\hyperlink{global_8h_a7042b61ed737eea3286b324ecdf2345d}{LONGUEUR\+\_\+\+DIALOGUE}}\mbox{]}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{char}} \mbox{\hyperlink{structpnj__t_a071721f36e0df9aadc0474e775ad8b92}{dialogue\+Fin}} \mbox{[}\mbox{\hyperlink{global_8h_a7042b61ed737eea3286b324ecdf2345d}{LONGUEUR\+\_\+\+DIALOGUE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{x}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_ad4d94311dfc3dbec632d3bd4163e3580}{y}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_a07dbd89ec660293ff2b87508aa647080}{orientation}}
+\item 
+\mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{int}} \mbox{\hyperlink{structpnj__t_aa158d69de9949e1506ca1ae1fb234f15}{nb\+\_\+mechas}}
+\item 
+\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structpnj__t_aa27103688429f27e4a13241d7d26dd3b}{inventaire}}
+\item 
+\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \mbox{\hyperlink{structpnj__t_a72300f0f479a9d3e717171dafdfa0eb2}{mechas\+\_\+joueur}} \mbox{[}\mbox{\hyperlink{global_8h_ae6f79319e8e437cea4d39afcbc569e34}{NB\+\_\+\+MECHAS\+\_\+\+MAX}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas. 
+
+Cette structure contient toutes les informations nécessaires pour gérer les PNJ dans le jeu, qu’il s’agisse de leur position sur la carte, de leurs dialogues, ou des mechas qu’ils utilisent lors des combats. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structpnj__t_aa76dc506813b337e884f7658d5c3cfc1}\label{structpnj__t_aa76dc506813b337e884f7658d5c3cfc1} 
+\index{pnj\_t@{pnj\_t}!dialogueDebut@{dialogueDebut}}
+\index{dialogueDebut@{dialogueDebut}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{dialogueDebut}{dialogueDebut}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::dialogue\+Debut}
+
+Dialogue affiché avant une interaction ou un combat (début). \Hypertarget{structpnj__t_a071721f36e0df9aadc0474e775ad8b92}\label{structpnj__t_a071721f36e0df9aadc0474e775ad8b92} 
+\index{pnj\_t@{pnj\_t}!dialogueFin@{dialogueFin}}
+\index{dialogueFin@{dialogueFin}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{dialogueFin}{dialogueFin}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::dialogue\+Fin}
+
+Dialogue affiché après une interaction ou un combat (fin). \Hypertarget{structpnj__t_ae53a51fb05f47aac68e1b6c451000d9e}\label{structpnj__t_ae53a51fb05f47aac68e1b6c451000d9e} 
+\index{pnj\_t@{pnj\_t}!etat@{etat}}
+\index{etat@{etat}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{etat}{etat}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::etat}
+
+État du PNJ (utile pour gérer les événements comme l’activation ou la progression dans l’histoire). \Hypertarget{structpnj__t_a3dcd285723b072a83828bc5b3c564e9c}\label{structpnj__t_a3dcd285723b072a83828bc5b3c564e9c} 
+\index{pnj\_t@{pnj\_t}!id\_map@{id\_map}}
+\index{id\_map@{id\_map}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{id\_map}{id\_map}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::id\+\_\+map}
+
+Identifiant de la carte (map) sur laquelle le PNJ est présent. \Hypertarget{structpnj__t_a7f2eed80f5fb31cccc12bc3f93947a2c}\label{structpnj__t_a7f2eed80f5fb31cccc12bc3f93947a2c} 
+\index{pnj\_t@{pnj\_t}!id\_pnj@{id\_pnj}}
+\index{id\_pnj@{id\_pnj}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{id\_pnj}{id\_pnj}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::id\+\_\+pnj}
+
+Identifiant unique du PNJ. \Hypertarget{structpnj__t_aa27103688429f27e4a13241d7d26dd3b}\label{structpnj__t_aa27103688429f27e4a13241d7d26dd3b} 
+\index{pnj\_t@{pnj\_t}!inventaire@{inventaire}}
+\index{inventaire@{inventaire}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{inventaire}{inventaire}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::inventaire}
+
+Pointeur vers la structure {\ttfamily \doxylink{structinventaire__t}{inventaire\+\_\+t}} contenant les objets utilisables par le PNJ. \Hypertarget{structpnj__t_a72300f0f479a9d3e717171dafdfa0eb2}\label{structpnj__t_a72300f0f479a9d3e717171dafdfa0eb2} 
+\index{pnj\_t@{pnj\_t}!mechas\_joueur@{mechas\_joueur}}
+\index{mechas\_joueur@{mechas\_joueur}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{mechas\_joueur}{mechas\_joueur}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::mechas\+\_\+joueur}
+
+Tableau de mechas utilisés par le PNJ durant les combats ({\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}}). \Hypertarget{structpnj__t_aa158d69de9949e1506ca1ae1fb234f15}\label{structpnj__t_aa158d69de9949e1506ca1ae1fb234f15} 
+\index{pnj\_t@{pnj\_t}!nb\_mechas@{nb\_mechas}}
+\index{nb\_mechas@{nb\_mechas}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{nb\_mechas}{nb\_mechas}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::nb\+\_\+mechas}
+
+Nombre de mechas que possède le PNJ pour le combat. \Hypertarget{structpnj__t_a07dbd89ec660293ff2b87508aa647080}\label{structpnj__t_a07dbd89ec660293ff2b87508aa647080} 
+\index{pnj\_t@{pnj\_t}!orientation@{orientation}}
+\index{orientation@{orientation}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{orientation}{orientation}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::orientation}
+
+Orientation actuelle du PNJ (1 = haut, 2 = droite, 3 = bas, 4 = gauche). \Hypertarget{structpnj__t_a8fddef4f03db5d661a88030ab2ffc18f}\label{structpnj__t_a8fddef4f03db5d661a88030ab2ffc18f} 
+\index{pnj\_t@{pnj\_t}!pseudo@{pseudo}}
+\index{pseudo@{pseudo}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{pseudo}{pseudo}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::pseudo}
+
+Nom du PNJ affiché dans le jeu. \Hypertarget{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}\label{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43} 
+\index{pnj\_t@{pnj\_t}!x@{x}}
+\index{x@{x}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::x}
+
+Coordonnée X du PNJ sur la carte. \Hypertarget{structpnj__t_ad4d94311dfc3dbec632d3bd4163e3580}\label{structpnj__t_ad4d94311dfc3dbec632d3bd4163e3580} 
+\index{pnj\_t@{pnj\_t}!y@{y}}
+\index{y@{y}!pnj\_t@{pnj\_t}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily pnj\+\_\+t\+::y}
+
+Coordonnée Y du PNJ sur la carte. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

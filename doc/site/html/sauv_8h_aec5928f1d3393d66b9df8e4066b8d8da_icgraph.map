@@ -1,0 +1,12 @@
+<map id="nouveau_fichier_pnj" name="nouveau_fichier_pnj">
+<area shape="rect" id="Node000001" title="Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial." alt="" coords="687,5,824,31"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="560,5,639,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="673,21,639,21,639,15,673,15"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="547,21,284,21,284,15,547,15"/>
+<area shape="rect" id="Node000005" href="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,31,512,56"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="547,28,511,33,511,28,546,23"/>
+<area shape="rect" id="Node000004" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="318,33,284,29,284,23,319,28"/>
+</map>

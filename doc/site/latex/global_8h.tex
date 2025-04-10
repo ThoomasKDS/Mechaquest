@@ -1,0 +1,295 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/global.h}
+\hypertarget{global_8h}{}\label{global_8h}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/global.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/global.h}}
+
+
+Définition des constantes, structures et variables globales du jeu.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+mixer.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+Graphe des dépendances par inclusion de global.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{global_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{global_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structimg__player__t}{img\+\_\+player\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure contenant les différentes textures du joueur selon les directions de déplacement. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structimg__pnj__t}{img\+\_\+pnj\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure regroupant les textures utilisées pour afficher les PNJs du jeu. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgame__t}{game\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure principale contenant les ressources et paramètres liés à la gestion du jeu. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structrectangle__t}{rectangle\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un rectangle graphique avec du texte à afficher dans une interface SDL. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure contenant les paramètres réglables du jeu. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structattaque__t}{attaque\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure représentant les caractéristiques d\textquotesingle{}une attaque d\textquotesingle{}un Mecha. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente un mecha disponible dans le jeu avec ses caractéristiques. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente l’inventaire d’un joueur contenant les objets utilisables. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente un mecha appartenant à un joueur, avec ses statistiques et attaques. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente un PNJ (Personnage Non Joueur) dans le jeu, avec sa position, ses dialogues et ses mechas. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structzone__t}{zone\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Représente une zone de spawn pour les mechas sauvages dans le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}\label{global_8h_ab232c0fbfa74350c11eda67d8dba16a7} 
+\#define {\bfseries LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}~50
+\begin{DoxyCompactList}\small\item\em Longueur maximale autorisée pour un pseudo de joueur. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_afaa90d2dafe83e0ea356ec20177460f8}\label{global_8h_afaa90d2dafe83e0ea356ec20177460f8} 
+\#define {\bfseries LONGUEUR\+\_\+\+LIGNE}~256
+\begin{DoxyCompactList}\small\item\em Taille maximale d\textquotesingle{}une ligne standard de texte. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a25a08fb2723860a714d91a6ddd824c59}\label{global_8h_a25a08fb2723860a714d91a6ddd824c59} 
+\#define {\bfseries LONGUEUR\+\_\+\+LIGNE\+\_\+\+DESC}~1070
+\begin{DoxyCompactList}\small\item\em Taille maximale pour une ligne de description longue. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a7042b61ed737eea3286b324ecdf2345d}\label{global_8h_a7042b61ed737eea3286b324ecdf2345d} 
+\#define {\bfseries LONGUEUR\+\_\+\+DIALOGUE}~500
+\begin{DoxyCompactList}\small\item\em Taille maximale d\textquotesingle{}une ligne de dialogue. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a32f0560714e1a90c7f9805cb97b85f7e}\label{global_8h_a32f0560714e1a90c7f9805cb97b85f7e} 
+\#define {\bfseries LONGUEUR\+\_\+\+TYPE}~20
+\begin{DoxyCompactList}\small\item\em Taille maximale pour un type de Mécha. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a9b9bf46a80f803a594977e440886be8f}\label{global_8h_a9b9bf46a80f803a594977e440886be8f} 
+\#define {\bfseries LONGUEUR\+\_\+\+DESC}~200
+\begin{DoxyCompactList}\small\item\em Taille maximale pour une description de Mécha. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ae6f79319e8e437cea4d39afcbc569e34}\label{global_8h_ae6f79319e8e437cea4d39afcbc569e34} 
+\#define {\bfseries NB\+\_\+\+MECHAS\+\_\+\+MAX}~54
+\begin{DoxyCompactList}\small\item\em Nombre maximal de Méchas que peut contenir le jeu (y compris ceux capturés). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a0afb952f6a516ad02412229d57dbafe7}\label{global_8h_a0afb952f6a516ad02412229d57dbafe7} 
+\#define {\bfseries NB\+\_\+\+MECHAS}~24
+\begin{DoxyCompactList}\small\item\em Nombre de Méchas différents disponibles dans le jeu. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_abf306b216bc9e75c1271c8f80a688a3f}\label{global_8h_abf306b216bc9e75c1271c8f80a688a3f} 
+\#define {\bfseries NB\+\_\+\+ATTAQUES}~64
+\begin{DoxyCompactList}\small\item\em Nombre total d\textquotesingle{}attaques disponibles. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a94439adf310c755550b3efe018fc5b26}\label{global_8h_a94439adf310c755550b3efe018fc5b26} 
+\#define {\bfseries NB\+\_\+\+ZONES}~10
+\begin{DoxyCompactList}\small\item\em Nombre total de zones différentes explorables. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_acd19773d24e0450b01a69dbe5d47725e}\label{global_8h_acd19773d24e0450b01a69dbe5d47725e} 
+\#define {\bfseries NB\+\_\+\+PNJ}~24
+\begin{DoxyCompactList}\small\item\em Nombre total de PNJ présents dans le jeu. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a4aeb3791139e011fa3473ef77642d643}\label{global_8h_a4aeb3791139e011fa3473ef77642d643} 
+\#define {\bfseries NB\+\_\+\+MECHAS\+\_\+\+INVENTAIRE}~4
+\begin{DoxyCompactList}\small\item\em Nombre de Méchas maximum que le joueur peut avoir simultanément dans son équipe active. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ad58ba2d6c28c6265844e455c07cc6a00}\label{global_8h_ad58ba2d6c28c6265844e455c07cc6a00} 
+\#define {\bfseries NB\+\_\+\+OBJET}~5
+\begin{DoxyCompactList}\small\item\em Nombre total d\textquotesingle{}objets différents disponibles dans l\textquotesingle{}inventaire. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a8a70bbe101837ea5ba300fc9e5f11cf3}\label{global_8h_a8a70bbe101837ea5ba300fc9e5f11cf3} 
+\#define {\bfseries VIN\+\_\+\+GAZOLE\+\_\+1}~17
+\begin{DoxyCompactList}\small\item\em Identifiant du premier Mécha de Vin Gazole. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a270ff812c807ff1377880e151e50ebee}\label{global_8h_a270ff812c807ff1377880e151e50ebee} 
+\#define {\bfseries VIN\+\_\+\+GAZOLE\+\_\+2}~18
+\begin{DoxyCompactList}\small\item\em Identifiant du deuxième Mécha de Vin Gazole. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ab9af89677c6b5ad3d38278a4890ec345}\label{global_8h_ab9af89677c6b5ad3d38278a4890ec345} 
+\#define {\bfseries VIN\+\_\+\+GAZOLE\+\_\+3}~20
+\begin{DoxyCompactList}\small\item\em Identifiant du troisième Mécha de Vin Gazole. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a37f2a76bab8b7d9001c3c5fe4f811c34}\label{global_8h_a37f2a76bab8b7d9001c3c5fe4f811c34} 
+\#define {\bfseries VIN\+\_\+\+GAZOLE\+\_\+4}~21
+\begin{DoxyCompactList}\small\item\em Identifiant du quatrième Mécha de Vin Gazole. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a0c47e09c080c2a962ccb17112c43b073}\label{global_8h_a0c47e09c080c2a962ccb17112c43b073} 
+\#define {\bfseries VIN\+\_\+\+GAZOLE\+\_\+5}~23
+\begin{DoxyCompactList}\small\item\em Identifiant du cinquième Mécha de Vin Gazole. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aa495e64003d2d36472de0aa1f610b8b0}\label{global_8h_aa495e64003d2d36472de0aa1f610b8b0} 
+\#define {\bfseries IRON\+\_\+\+MUSK\+\_\+\+DEB}~19
+\begin{DoxyCompactList}\small\item\em Identifiant du début de la séquence de Méchas d\textquotesingle{}Iron Musk. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ab518db7fb19665a2a66af140c850e3c3}\label{global_8h_ab518db7fb19665a2a66af140c850e3c3} 
+\#define {\bfseries IRON\+\_\+\+MUSK\+\_\+\+FIN}~22
+\begin{DoxyCompactList}\small\item\em Identifiant de la fin de la séquence de Méchas d\textquotesingle{}Iron Musk. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a0acb682b8260ab1c60b918599864e2e5}\label{global_8h_a0acb682b8260ab1c60b918599864e2e5} 
+\#define {\bfseries T}~500
+\begin{DoxyCompactList}\small\item\em Constante utilisée pour définir un temps ou une valeur temporelle fixe (500 ms). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a01030fe3204d819a224c4def4c20f19a}\label{global_8h_a01030fe3204d819a224c4def4c20f19a} 
+\#define {\bfseries ERREUR\+\_\+\+OUVERTURE}~-\/1
+\begin{DoxyCompactList}\small\item\em Code d\textquotesingle{}erreur utilisé lors d\textquotesingle{}une erreur d\textquotesingle{}ouverture de fichier. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aba51915c87d64af47fb1cc59348961c9}\label{global_8h_aba51915c87d64af47fb1cc59348961c9} 
+\#define {\bfseries OK}~1
+\begin{DoxyCompactList}\small\item\em Code de succès général (opération réussie). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a735563036dced0b7d6cc98f97ea4978b}\label{global_8h_a735563036dced0b7d6cc98f97ea4978b} 
+\#define {\bfseries ERR}~0
+\begin{DoxyCompactList}\small\item\em Code d\textquotesingle{}erreur générique pour une opération échouée. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_acb00992efca56626cdf0907e5edb5b51}\label{global_8h_acb00992efca56626cdf0907e5edb5b51} 
+\#define {\bfseries KO}~0
+\begin{DoxyCompactList}\small\item\em Code utilisé pour représenter un échec (équivalent à ERR). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aac300d38e82a5b413ade48e8a194a87c}\label{global_8h_aac300d38e82a5b413ade48e8a194a87c} 
+\#define {\bfseries RETOUR}~-\/1
+\begin{DoxyCompactList}\small\item\em Code utilisé pour indiquer un retour ou annulation d\textquotesingle{}une action. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ad27cf51e3cb443ff12b1385821051877}\label{global_8h_ad27cf51e3cb443ff12b1385821051877} 
+\#define {\bfseries VRAI}~1
+\begin{DoxyCompactList}\small\item\em Valeur représentant le booléen VRAI. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ad87b2ac6b56be83aba5eddf673df04c1}\label{global_8h_ad87b2ac6b56be83aba5eddf673df04c1} 
+\#define {\bfseries FAUX}~-\/2
+\begin{DoxyCompactList}\small\item\em Valeur représentant le booléen FAUX. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_abb69d780b56e8a35bfbbb27b21beb0fd}\label{global_8h_abb69d780b56e8a35bfbbb27b21beb0fd} 
+\#define {\bfseries CAPTURE}~-\/3
+\begin{DoxyCompactList}\small\item\em Code spécifique indiquant qu\textquotesingle{}un Mécha a été capturé avec succès. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aef1d57d8b5cac815b694603b7fcc3687}\label{global_8h_aef1d57d8b5cac815b694603b7fcc3687} 
+\#define {\bfseries FUITE}~-\/4
+\begin{DoxyCompactList}\small\item\em Code spécifique indiquant que le joueur a fui le combat. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ac889ac835a92b0db741b1c92a2546533}\label{global_8h_ac889ac835a92b0db741b1c92a2546533} 
+\#define {\bfseries PX}~32
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case (tile) en pixels pour l\textquotesingle{}affichage du jeu. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a2ebb68473716de487c7927f692aaa91d}\label{global_8h_a2ebb68473716de487c7927f692aaa91d} 
+\#define {\bfseries RIEN}~0
+\begin{DoxyCompactList}\small\item\em Aucune collision, case vide. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a7f907d351a198b9a0405ce45155625dc}\label{global_8h_a7f907d351a198b9a0405ce45155625dc} 
+\#define {\bfseries JOUEUR}~1
+\begin{DoxyCompactList}\small\item\em Collision avec le joueur. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a164736e4f8f9b98b0e5547d8c44d7ef9}\label{global_8h_a164736e4f8f9b98b0e5547d8c44d7ef9} 
+\#define {\bfseries BARRIERE}~2
+\begin{DoxyCompactList}\small\item\em Collision avec une barrière (obstacle infranchissable). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a90db5040d96902329ad6a8bae1190740}\label{global_8h_a90db5040d96902329ad6a8bae1190740} 
+\#define {\bfseries BAT}~3
+\begin{DoxyCompactList}\small\item\em Collision avec un bâtiment. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ac90f8d73b7b7c0d4421987a779000196}\label{global_8h_ac90f8d73b7b7c0d4421987a779000196} 
+\#define {\bfseries DECHET}~5
+\begin{DoxyCompactList}\small\item\em Collision avec un déchet. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_addc4937e45d7b283437e5453872cd2e1}\label{global_8h_addc4937e45d7b283437e5453872cd2e1} 
+\#define {\bfseries PNJ}~6
+\begin{DoxyCompactList}\small\item\em Collision ou interaction avec un PNJ (personnage non joueur). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a600721f0222b857dc8a3ae59e5077347}\label{global_8h_a600721f0222b857dc8a3ae59e5077347} 
+\#define {\bfseries PC}~7
+\begin{DoxyCompactList}\small\item\em Collision ou interaction avec un PC (gestion des Méchas capturés). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a7e2386d3b1084b5b875ae3696f550ba9}\label{global_8h_a7e2386d3b1084b5b875ae3696f550ba9} 
+\#define {\bfseries PORTE}~4
+\begin{DoxyCompactList}\small\item\em Collision ou interaction avec une porte (changement de zone). \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a876def4d1021d1a82380f7065111e9e1}\label{global_8h_a876def4d1021d1a82380f7065111e9e1} 
+\#define {\bfseries TPMAP1}~-\/11
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 1. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_abd9e1d2f89cf10284028326a4a821a1c}\label{global_8h_abd9e1d2f89cf10284028326a4a821a1c} 
+\#define {\bfseries TPMAP2}~-\/12
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 2. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a52723074a697a545171ba9711e863588}\label{global_8h_a52723074a697a545171ba9711e863588} 
+\#define {\bfseries TPMAP3}~-\/13
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 3. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_afd2bdaa1d0b34160519766ac74812c89}\label{global_8h_afd2bdaa1d0b34160519766ac74812c89} 
+\#define {\bfseries TPMAP4}~-\/14
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 4. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aa33d59672306ac3e247cc892260e2024}\label{global_8h_aa33d59672306ac3e247cc892260e2024} 
+\#define {\bfseries TPMAP5}~-\/15
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 5. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a76bf5353788c2b47c619e2291d77d628}\label{global_8h_a76bf5353788c2b47c619e2291d77d628} 
+\#define {\bfseries TPMAP6}~-\/16
+\begin{DoxyCompactList}\small\item\em Téléportation ou changement vers la Map 6. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a497883135e16147a29670e304793bef4}\label{global_8h_a497883135e16147a29670e304793bef4} 
+\#define {\bfseries Z1}~-\/1
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°1. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a3550f7bd3eb3a1d5d589bcd8482a1e28}\label{global_8h_a3550f7bd3eb3a1d5d589bcd8482a1e28} 
+\#define {\bfseries Z2}~-\/2
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°2. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a4d1e80d51fbd0faa8283d1fffdd8869b}\label{global_8h_a4d1e80d51fbd0faa8283d1fffdd8869b} 
+\#define {\bfseries Z3}~-\/3
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°3. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ae981b991a807ba0f1f0dd307d5a1cd64}\label{global_8h_ae981b991a807ba0f1f0dd307d5a1cd64} 
+\#define {\bfseries Z4}~-\/4
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°4. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a1887db70b541773b00f8e33933ae57bf}\label{global_8h_a1887db70b541773b00f8e33933ae57bf} 
+\#define {\bfseries Z5}~-\/5
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°5. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a381feca27f9218de3cd1e0bf50f1c061}\label{global_8h_a381feca27f9218de3cd1e0bf50f1c061} 
+\#define {\bfseries Z6}~-\/6
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°6. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a7ec92a8e15ce948a1cd6d8a780643050}\label{global_8h_a7ec92a8e15ce948a1cd6d8a780643050} 
+\#define {\bfseries Z7}~-\/7
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°7. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a552f57269c7cc3b257d45210076bc733}\label{global_8h_a552f57269c7cc3b257d45210076bc733} 
+\#define {\bfseries Z8}~-\/8
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°8. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_ae4f4f19a26e3e18917f1bf74750110dc}\label{global_8h_ae4f4f19a26e3e18917f1bf74750110dc} 
+\#define {\bfseries Z9}~-\/9
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°9. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a52c662ce66959fe7106e72c4da83ce9e}\label{global_8h_a52c662ce66959fe7106e72c4da83ce9e} 
+\#define {\bfseries Z10}~-\/10
+\begin{DoxyCompactList}\small\item\em Zone de spawn Mécha n°10. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_abec92cc72a096640b821b8cd56a02495}\label{global_8h_abec92cc72a096640b821b8cd56a02495} 
+\#define {\bfseries H}~768
+\begin{DoxyCompactList}\small\item\em Hauteur de la fenêtre de jeu en pixels. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_aa73214aa5f2f94f63d90bb4e3d99fe53}\label{global_8h_aa73214aa5f2f94f63d90bb4e3d99fe53} 
+\#define {\bfseries L}~1280
+\begin{DoxyCompactList}\small\item\em Largeur de la fenêtre de jeu en pixels. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a16f32899c832224c23fcf3820d61c0a8}\label{global_8h_a16f32899c832224c23fcf3820d61c0a8} 
+\#define {\bfseries LARGEUR\+\_\+\+BOUTON}~200
+\begin{DoxyCompactList}\small\item\em Largeur standard d\textquotesingle{}un bouton en pixels. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a4facaf5b60b1297288b4327b7fde730f}\label{global_8h_a4facaf5b60b1297288b4327b7fde730f} 
+\#define {\bfseries HAUTEUR\+\_\+\+BOUTON}~50
+\begin{DoxyCompactList}\small\item\em Hauteur standard d\textquotesingle{}un bouton en pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1}{pnj\+\_\+pos\+\_\+t}} \{ \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6}{PNJ\+\_\+\+NORMAL}}
+, \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a}{PNJ\+\_\+\+DEVANT}}
+, \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39}{PNJ\+\_\+\+DERRIERE}}
+ \}
+\begin{DoxyCompactList}\small\item\em États possibles de la position d\textquotesingle{}un PNJ par rapport au joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{global_8h_a1fbff4d3d715a8db61583721e1806c44}\label{global_8h_a1fbff4d3d715a8db61583721e1806c44} 
+const int {\bfseries FRAME\+\_\+\+DELAY}
+\begin{DoxyCompactList}\small\item\em Délai entre chaque frame en millisecondes pour contrôler le framerate global du jeu. \end{DoxyCompactList}\item 
+\Hypertarget{global_8h_a1be1b8fa21aaabec01d4a18f8895b8b3}\label{global_8h_a1be1b8fa21aaabec01d4a18f8895b8b3} 
+\mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}} {\bfseries mecha} \mbox{[}\mbox{\hyperlink{global_8h_a0afb952f6a516ad02412229d57dbafe7}{NB\+\_\+\+MECHAS}}\mbox{]}
+\item 
+\Hypertarget{global_8h_aa6c42b43f3c864345f07b7f1e36665e7}\label{global_8h_aa6c42b43f3c864345f07b7f1e36665e7} 
+\mbox{\hyperlink{structattaque__t}{attaque\+\_\+t}} {\bfseries attaque} \mbox{[}\mbox{\hyperlink{global_8h_abf306b216bc9e75c1271c8f80a688a3f}{NB\+\_\+\+ATTAQUES}}\mbox{]}
+\item 
+\Hypertarget{global_8h_af4c9b460a880bec52be58e01c4f66d16}\label{global_8h_af4c9b460a880bec52be58e01c4f66d16} 
+\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} {\bfseries zone} \mbox{[}\mbox{\hyperlink{global_8h_a94439adf310c755550b3efe018fc5b26}{NB\+\_\+\+ZONES}}\mbox{]}
+\item 
+\Hypertarget{global_8h_a477f825f75cccf48a896281c28dafa71}\label{global_8h_a477f825f75cccf48a896281c28dafa71} 
+\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} {\bfseries pnj} \mbox{[}\mbox{\hyperlink{global_8h_acd19773d24e0450b01a69dbe5d47725e}{NB\+\_\+\+PNJ}}\mbox{]}
+\item 
+\Hypertarget{global_8h_ab9861179db5ccc7b679d8f37ea514c74}\label{global_8h_ab9861179db5ccc7b679d8f37ea514c74} 
+\mbox{\hyperlink{structgame__t}{game\+\_\+t}} {\bfseries game}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Définition des constantes, structures et variables globales du jeu. 
+
+Ce fichier contient les constantes, structures et variables nécessaires au fonctionnement du jeu, notamment celles utilisées pour la gestion de l\textquotesingle{}affichage, des combats et des interactions. 
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1}\label{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1} 
+\index{global.h@{global.h}!pnj\_pos\_t@{pnj\_pos\_t}}
+\index{pnj\_pos\_t@{pnj\_pos\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{pnj\_pos\_t}{pnj\_pos\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1}{pnj\+\_\+pos\+\_\+t}}}
+
+
+
+États possibles de la position d\textquotesingle{}un PNJ par rapport au joueur. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PNJ\_NORMAL@{PNJ\_NORMAL}!global.h@{global.h}}\index{global.h@{global.h}!PNJ\_NORMAL@{PNJ\_NORMAL}}}\Hypertarget{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6}\label{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6} 
+PNJ\+\_\+\+NORMAL&Le PNJ est affiché normalement (aucun obstacle devant ou derrière). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PNJ\_DEVANT@{PNJ\_DEVANT}!global.h@{global.h}}\index{global.h@{global.h}!PNJ\_DEVANT@{PNJ\_DEVANT}}}\Hypertarget{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a}\label{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a} 
+PNJ\+\_\+\+DEVANT&Le PNJ est devant un obstacle ou le joueur. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PNJ\_DERRIERE@{PNJ\_DERRIERE}!global.h@{global.h}}\index{global.h@{global.h}!PNJ\_DERRIERE@{PNJ\_DERRIERE}}}\Hypertarget{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39}\label{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39} 
+PNJ\+\_\+\+DERRIERE&Le PNJ est derrière un obstacle ou le joueur. \\
+\hline
+
+\end{DoxyEnumFields}

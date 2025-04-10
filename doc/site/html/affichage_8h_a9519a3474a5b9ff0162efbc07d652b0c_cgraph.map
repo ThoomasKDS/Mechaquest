@@ -1,0 +1,27 @@
+<map id="afficherSelectionMecha" name="afficherSelectionMecha">
+<area shape="rect" id="Node000001" title="Affiche l&#39;écran de sélection d&#39;un Mécha pour utiliser un objet." alt="" coords="5,153,164,179"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#a8d356fb4eb14df4797e1c82c54fb986a" title="Affiche un texte multiligne à l&#39;écran en gérant les sauts de ligne." alt="" coords="239,29,336,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,151,145,109,177,85,211,64,225,57,227,62,213,68,180,89,148,113,101,155"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="232,79,343,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="115,151,211,113,231,106,233,111,213,118,117,156"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a16a8360b65479c7343b03f418ed56939" title="Gère et affiche tous les éléments visuels principaux du jeu." alt="" coords="252,128,323,153"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="164,153,238,144,238,149,165,159"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="238,177,337,203"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="165,173,225,180,224,185,164,178"/>
+<area shape="rect" id="Node000012" href="$affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="239,227,335,252"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="119,176,213,211,236,220,234,225,211,217,118,181"/>
+<area shape="rect" id="Node000013" href="$affichage_8c.html#a76e0589a991f4ad00c5baae522dfeee1" title="Utilise un objet de l&#39;inventaire du joueur sur un Mécha donné." alt="" coords="212,276,363,301"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="101,177,149,217,213,261,230,269,227,274,211,266,145,222,98,181"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="411,5,535,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="322,131,342,124,361,113,377,96,384,78,392,59,409,40,416,35,419,39,412,44,397,62,389,80,381,99,364,117,345,129,324,136"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a78d50882c5d889e15ca86ddba5aa62bd" title="Affiche le calque (overlay) actuel du jeu." alt="" coords="425,55,520,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="322,128,362,113,410,89,424,83,426,88,412,94,364,118,324,133"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#ab476829218385851d4e69263f07e488b" title="Dessine le joueur à l&#39;écran en fonction de sa direction et de son mouvement." alt="" coords="427,104,519,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="323,134,412,122,413,127,323,139"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a81ed48c2407a1c13ac5884e0f162aaa7" title="Dessine un PNJ à l&#39;écran en fonction de son identité et de son orientation." alt="" coords="435,153,510,179"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="323,143,422,157,422,162,323,148"/>
+<area shape="rect" id="Node000010" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="433,203,512,228"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="338,194,420,206,419,211,337,199"/>
+<area shape="rect" id="Node000011" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="411,252,534,277"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="333,200,364,212,412,237,428,244,425,249,409,242,362,216,331,205"/>
+</map>

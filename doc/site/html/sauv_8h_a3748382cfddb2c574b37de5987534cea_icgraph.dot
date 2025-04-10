@@ -1,0 +1,15 @@
+digraph "suppression_partie"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="suppression_partie",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Supprime définitivement toutes les données d'une partie d'un joueur depuis les fichiers CSV."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="afficher_choix_suppression",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137",tooltip="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="aff_saisie_pseudo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$menu_8c.html#a514079e39465e028b08558ac3458d85a",tooltip="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="afficher_menu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229",tooltip="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter."];
+}

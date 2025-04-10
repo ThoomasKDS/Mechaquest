@@ -1,0 +1,14 @@
+<map id="charger_texture" name="charger_texture">
+<area shape="rect" id="Node000001" title="Charge une image depuis un fichier et la convertit en texture SDL." alt="" coords="747,31,859,56"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#aa1f62d5ef2922f420fba49063416f5ab" title="Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin)." alt="" coords="560,5,699,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="733,36,699,31,700,26,733,31"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#a17c5a7569d3f699b38d5124f198e916a" title="Affiche l&#39;inventaire du joueur et permet d&#39;utiliser certains objets." alt="" coords="568,55,691,80"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="733,56,691,62,690,56,732,50"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,5,284,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="546,21,284,21,284,15,546,15"/>
+<area shape="rect" id="Node000005" href="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,31,512,56"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="547,31,513,35,512,30,546,25"/>
+<area shape="rect" id="Node000004" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,5,109,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="318,33,284,29,284,23,319,28"/>
+</map>

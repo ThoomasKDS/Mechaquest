@@ -1,0 +1,7 @@
+<map id="joueur_t" name="joueur_t">
+<area shape="rect" id="Node000001" title="Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire." alt="" coords="80,93,148,119"/>
+<area shape="rect" id="Node000002" href="$structinventaire__t.html" title="Représente l’inventaire d’un joueur contenant les objets utilisables." alt="" coords="5,5,95,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,40,107,91,103,94,65,43"/>
+<area shape="rect" id="Node000003" href="$structmechas__joueur__t.html" title="Représente un mecha appartenant à un joueur, avec ses statistiques et attaques." alt="" coords="119,5,240,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,45,152,71,129,95,125,91,148,68,165,42"/>
+</map>

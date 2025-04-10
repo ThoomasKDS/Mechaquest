@@ -1,0 +1,69 @@
+\doxysection{Référence de la structure rectangle\+\_\+t}
+\hypertarget{structrectangle__t}{}\label{structrectangle__t}\index{rectangle\_t@{rectangle\_t}}
+
+
+Structure représentant un rectangle graphique avec du texte à afficher dans une interface SDL.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{structrectangle__t_ab15e80a326c96b49e89f645bed7ec08f}{rect}}
+\item 
+SDL\+\_\+\+Color \mbox{\hyperlink{structrectangle__t_aa2a20dd961b6cf514fe455b4b04aeb70}{couleur}}
+\item 
+char \mbox{\hyperlink{structrectangle__t_a61636a0f26b67d2e01e5fcf6ff802720}{text}} \mbox{[}500\mbox{]}
+\item 
+SDL\+\_\+\+Color \mbox{\hyperlink{structrectangle__t_a1bd91845ad4a0da8a6a6d7d54484c293}{couleur\+\_\+text}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant un rectangle graphique avec du texte à afficher dans une interface SDL. 
+
+Cette structure permet de définir facilement un élément graphique composé d\textquotesingle{}un rectangle coloré, accompagné éventuellement d\textquotesingle{}un texte centré ou positionné à l\textquotesingle{}intérieur. Elle est principalement utilisée pour les boutons, les menus ou les dialogues dans une interface graphique. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structrectangle__t_aa2a20dd961b6cf514fe455b4b04aeb70}\label{structrectangle__t_aa2a20dd961b6cf514fe455b4b04aeb70} 
+\index{rectangle\_t@{rectangle\_t}!couleur@{couleur}}
+\index{couleur@{couleur}!rectangle\_t@{rectangle\_t}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily rectangle\+\_\+t\+::couleur}
+
+Structure {\ttfamily SDL\+\_\+\+Color} définissant la couleur de fond du rectangle (RGBA). \Hypertarget{structrectangle__t_a1bd91845ad4a0da8a6a6d7d54484c293}\label{structrectangle__t_a1bd91845ad4a0da8a6a6d7d54484c293} 
+\index{rectangle\_t@{rectangle\_t}!couleur\_text@{couleur\_text}}
+\index{couleur\_text@{couleur\_text}!rectangle\_t@{rectangle\_t}}
+\doxysubsubsection{\texorpdfstring{couleur\_text}{couleur\_text}}
+{\footnotesize\ttfamily rectangle\+\_\+t\+::couleur\+\_\+text}
+
+Structure {\ttfamily SDL\+\_\+\+Color} définissant la couleur du texte à afficher (RGBA).
+
+\begin{DoxyNote}{Note}
+La longueur maximale du texte est limitée à 500 caractères (modifiable selon besoin). 
+
+Le rendu du texte nécessite une police ({\ttfamily TTF\+\_\+\+Font}) préalablement chargée via SDL\+\_\+ttf.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi que la police ({\ttfamily TTF\+\_\+\+Font}) utilisée pour afficher le texte est correctement chargée et accessible. 
+\end{DoxyWarning}
+\Hypertarget{structrectangle__t_ab15e80a326c96b49e89f645bed7ec08f}\label{structrectangle__t_ab15e80a326c96b49e89f645bed7ec08f} 
+\index{rectangle\_t@{rectangle\_t}!rect@{rect}}
+\index{rect@{rect}!rectangle\_t@{rectangle\_t}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily rectangle\+\_\+t\+::rect}
+
+Structure {\ttfamily SDL\+\_\+\+Rect} définissant la position (coordonnées x, y) et les dimensions (largeur, hauteur) du rectangle à afficher. \Hypertarget{structrectangle__t_a61636a0f26b67d2e01e5fcf6ff802720}\label{structrectangle__t_a61636a0f26b67d2e01e5fcf6ff802720} 
+\index{rectangle\_t@{rectangle\_t}!text@{text}}
+\index{text@{text}!rectangle\_t@{rectangle\_t}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily rectangle\+\_\+t\+::text}
+
+Tableau de caractères (jusqu\textquotesingle{}à 500 caractères) contenant le texte affiché à l\textquotesingle{}intérieur du rectangle. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

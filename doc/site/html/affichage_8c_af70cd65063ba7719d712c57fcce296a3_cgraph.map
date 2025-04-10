@@ -1,0 +1,26 @@
+<map id="affichage_pc" name="affichage_pc">
+<area shape="rect" id="Node000001" title="Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés." alt="" coords="5,143,101,168"/>
+<area shape="rect" id="Node000002" href="$combat_8c.html#a30cb93b663d557e0e81271f956c24379" title="Affiche l&#39;interface de sélection du Mecha du joueur durant un combat." alt="" coords="149,168,289,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,160,136,165,136,170,101,165"/>
+<area shape="rect" id="Node000003" href="$affichage_8c.html#afc970416ff2ee1d9f8351a288625f23a" title="Concatène un entier à la fin d&#39;une chaîne de caractères." alt="" coords="369,29,430,55"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="76,140,148,106,259,71,355,48,356,53,261,76,150,111,79,145"/>
+<area shape="rect" id="Node000004" href="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8" title="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel." alt="" coords="344,92,455,117"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="101,143,149,134,330,109,330,115,150,139,102,148"/>
+<area shape="rect" id="Node000005" href="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405" title="Dessine plusieurs rectangles avec leurs textes centrés." alt="" coords="350,155,449,180"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="101,151,189,150,289,153,336,157,336,162,289,158,189,155,101,156"/>
+<area shape="rect" id="Node000006" href="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f" title="Dessine un rectangle coloré et son texte associé si présent." alt="" coords="531,105,610,131"/>
+<area shape="poly" id="edge14_Node000001_Node000006" title=" " alt="" coords="64,140,99,104,122,85,148,68,198,43,239,29,337,14,400,3,428,4,462,14,491,30,517,50,555,92,551,96,513,54,488,34,460,19,428,10,401,9,338,19,240,35,200,48,151,72,125,89,102,108,67,144"/>
+<area shape="rect" id="Node000007" href="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc" title="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire." alt="" coords="509,205,632,231"/>
+<area shape="poly" id="edge15_Node000001_Node000007" title=" " alt="" coords="63,167,96,218,121,246,151,269,199,290,239,296,283,295,338,297,401,305,427,305,460,297,485,286,509,271,547,238,550,243,512,275,488,290,462,302,428,310,400,310,337,302,283,301,239,301,197,295,148,274,117,250,91,221,59,169"/>
+<area shape="rect" id="Node000008" href="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4" title="Affiche l&#39;arrière&#45;plan (background) actuel du jeu." alt="" coords="337,212,461,237"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="75,166,109,185,150,202,194,212,239,219,323,224,323,229,239,224,193,217,149,207,107,190,72,170"/>
+<area shape="rect" id="Node000009" href="$affichage_8c.html#ae63215d67a18f635b3a1c2e1464a0a6f" title="Dessine un Mécha à l&#39;écran avec la texture correspondant à son orientation." alt="" coords="351,261,447,287"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="69,166,103,199,126,215,150,229,198,246,247,258,338,269,337,275,246,263,196,251,148,234,123,220,100,203,65,170"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,166,277,125,336,77,362,60,365,64,339,81,281,129,236,170"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,165,355,120,357,125,251,170"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="290,173,336,169,336,175,290,178"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="273,191,334,206,333,211,271,196"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="241,191,285,218,339,248,352,254,349,258,336,252,282,223,239,196"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="443,152,517,130,519,136,445,157"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="444,177,514,199,513,204,442,183"/>
+</map>

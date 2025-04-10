@@ -1,0 +1,7 @@
+<map id="sauvegarde_partie" name="sauvegarde_partie">
+<area shape="rect" id="Node000001" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="5,31,133,56"/>
+<area shape="rect" id="Node000002" href="$sauv_8c.html#ab8195ddd8dbc45661b6c79de94f968e7" title="Sauvegarde les données de l&#39;inventaire d&#39;un joueur (ou PNJ) dans un fichier CSV." alt="" coords="197,5,349,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,33,183,26,184,32,134,38"/>
+<area shape="rect" id="Node000003" href="$sauv_8c.html#a48e80e16d5df5b56d2279ae7c965bb71" title="Sauvegarde l&#39;équipe de Mechas d&#39;un joueur dans un fichier CSV." alt="" coords="181,55,365,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,48,168,52,167,58,134,54"/>
+</map>

@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mechaquest: Référence du fichier /mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/player.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mechaquest
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('player_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier player.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion du joueur dans le jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="initGame_8h_source.html">../lib/initGame.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="affichage_8h_source.html">../lib/affichage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sauv_8h_source.html">../lib/sauv.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="global_8h_source.html">../lib/global.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de player.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="player_8h__incl.png" border="0" usemap="#a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8h" alt=""/></div>
+<map name="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8h" id="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8h">
+<area shape="rect" title="Gestion du joueur dans le jeu." alt="" coords="594,5,737,75"/>
+<area shape="rect" title=" " alt="" coords="851,563,947,588"/>
+<area shape="poly" title=" " alt="" coords="737,44,885,59,972,72,1058,89,1136,110,1201,136,1226,152,1245,168,1257,187,1261,207,1261,430,1259,443,1252,455,1228,477,1192,497,1149,515,1051,545,961,565,960,560,1049,539,1147,510,1190,492,1225,472,1248,451,1254,441,1256,430,1256,208,1252,189,1241,172,1222,156,1198,141,1134,115,1056,94,971,77,885,64,737,49"/>
+<area shape="rect" title=" " alt="" coords="181,563,320,588"/>
+<area shape="poly" title=" " alt="" coords="594,47,430,59,333,71,236,87,147,108,74,135,46,151,26,168,13,187,8,208,8,430,12,456,23,479,40,499,61,516,113,541,169,558,167,563,112,546,59,520,36,503,18,482,7,458,3,430,3,207,8,185,22,164,43,146,72,130,146,103,235,81,332,65,429,54,593,42"/>
+<area shape="rect" title=" " alt="" coords="559,123,627,148"/>
+<area shape="poly" title=" " alt="" coords="641,76,613,113,609,110,637,73"/>
+<area shape="rect" title=" " alt="" coords="971,489,1035,515"/>
+<area shape="poly" title=" " alt="" coords="737,45,873,63,951,77,1028,95,1099,116,1156,141,1179,156,1196,171,1207,189,1211,207,1211,357,1206,385,1194,410,1175,431,1152,449,1099,476,1049,493,1047,488,1097,471,1149,444,1171,427,1189,407,1201,383,1205,356,1205,208,1202,191,1192,175,1176,160,1154,146,1097,121,1027,100,950,82,872,69,736,51"/>
+<area shape="rect" href="initGame_8h.html" title="Initialisation et gestion de la SDL pour le jeu." alt="" coords="539,416,653,441"/>
+<area shape="poly" title=" " alt="" coords="666,75,655,205,642,287,624,369,610,405,605,403,619,367,637,286,649,204,661,75"/>
+<area shape="rect" href="global_8h.html" title="Définition des constantes, structures et variables globales du jeu." alt="" coords="851,489,947,515"/>
+<area shape="poly" title=" " alt="" coords="737,48,861,68,999,101,1061,122,1112,146,1147,174,1157,190,1160,207,1160,357,1154,376,1137,395,1081,431,1012,463,947,487,945,482,1010,458,1079,427,1133,391,1149,373,1155,356,1155,208,1152,192,1143,178,1109,151,1059,127,998,106,860,73,736,53"/>
+<area shape="rect" href="affichage_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion de l&#39;affichage dans le jeu." alt="" coords="420,123,535,148"/>
+<area shape="poly" title=" " alt="" coords="595,75,507,119,505,114,592,70"/>
+<area shape="rect" href="sauv_8h.html" title="Gestion des sauvegardes et récupération des données du jeu." alt="" coords="880,416,968,441"/>
+<area shape="poly" title=" " alt="" coords="736,73,820,124,862,157,901,194,932,235,949,274,954,317,948,369,937,404,932,403,943,367,949,317,944,276,928,238,897,198,859,161,817,128,733,77"/>
+<area shape="poly" title=" " alt="" coords="609,440,649,475,704,512,772,540,838,559,837,564,770,546,701,517,646,479,606,444"/>
+<area shape="poly" title=" " alt="" coords="572,444,469,492,417,517,300,561,298,556,415,512,467,487,570,439"/>
+<area shape="poly" title=" " alt="" coords="654,435,789,456,958,487,957,492,788,461,653,440"/>
+<area shape="rect" title=" " alt="" coords="715,489,776,515"/>
+<area shape="poly" title=" " alt="" coords="621,439,710,481,707,486,619,444"/>
+<area shape="rect" title=" " alt="" coords="339,489,405,515"/>
+<area shape="poly" title=" " alt="" coords="561,444,419,489,417,484,559,439"/>
+<area shape="rect" title=" " alt="" coords="480,489,539,515"/>
+<area shape="poly" title=" " alt="" coords="584,443,536,483,532,478,580,439"/>
+<area shape="rect" title=" " alt="" coords="675,563,810,588"/>
+<area shape="poly" title=" " alt="" coords="605,440,628,475,661,513,713,553,710,558,657,517,624,478,601,443"/>
+<area shape="rect" title=" " alt="" coords="432,563,547,588"/>
+<area shape="poly" title=" " alt="" coords="594,443,577,477,553,516,516,555,512,552,549,513,573,474,589,440"/>
+<area shape="poly" title=" " alt="" coords="645,439,838,484,837,489,644,444"/>
+<area shape="poly" title=" " alt="" coords="901,515,901,549,896,549,896,515"/>
+<area shape="poly" title=" " alt="" coords="851,511,334,568,334,562,850,506"/>
+<area shape="poly" title=" " alt="" coords="875,517,782,559,780,554,873,512"/>
+<area shape="poly" title=" " alt="" coords="851,514,561,564,560,559,850,509"/>
+<area shape="poly" title=" " alt="" coords="506,120,593,79,595,83,508,125"/>
+<area shape="poly" title=" " alt="" coords="535,144,547,145,606,152,657,153,745,151,787,153,831,159,879,172,934,194,1001,222,1057,250,1079,268,1095,290,1106,318,1109,354,1109,430,1105,456,1095,479,1078,500,1058,517,1010,544,961,562,959,557,1008,539,1055,513,1075,496,1090,477,1100,455,1104,430,1104,354,1101,320,1091,293,1075,272,1054,254,999,227,932,198,878,177,830,164,787,158,745,157,657,158,606,157,546,151,534,149"/>
+<area shape="poly" title=" " alt="" coords="420,140,338,147,294,156,250,169,212,187,180,211,160,242,154,260,152,281,152,430,159,467,178,500,202,529,226,552,222,556,198,533,173,503,154,469,147,430,147,281,149,259,155,240,176,208,209,183,248,164,292,151,337,142,420,134"/>
+<area shape="poly" title=" " alt="" coords="478,149,474,188,473,244,481,307,491,338,505,366,527,390,554,408,551,412,523,394,500,370,486,340,476,309,467,245,468,187,473,148"/>
+<area shape="poly" title=" " alt="" coords="442,151,399,169,353,197,334,214,318,234,308,256,304,281,304,356,309,391,322,424,356,477,351,480,317,427,304,393,299,357,299,280,303,254,314,231,330,210,350,192,396,164,440,146"/>
+<area shape="poly" title=" " alt="" coords="420,144,352,156,315,166,281,180,250,198,225,221,209,248,203,281,203,430,208,463,224,490,248,512,278,530,313,544,349,554,419,566,418,572,348,559,311,549,276,535,245,516,220,493,203,464,197,430,197,280,204,246,221,217,247,194,278,175,314,161,351,151,419,139"/>
+<area shape="poly" title=" " alt="" coords="535,144,547,145,626,151,728,157,828,168,869,179,900,194,965,247,991,275,1010,305,1022,336,1025,370,1019,405,1002,443,979,468,950,486,948,481,976,464,998,440,1014,403,1020,369,1016,337,1005,307,986,278,961,251,897,198,867,184,827,173,728,162,625,157,546,151,534,149"/>
+<area shape="rect" title=" " alt="" coords="43,196,112,221"/>
+<area shape="poly" title=" " alt="" coords="420,148,131,199,126,200,125,194,130,193,419,143"/>
+<area shape="poly" title=" " alt="" coords="535,143,547,145,620,151,716,155,808,167,845,178,872,194,892,217,907,243,924,301,930,357,929,402,924,402,925,357,919,302,902,245,888,220,869,198,843,183,807,172,715,160,620,156,546,151,534,149"/>
+<area shape="rect" href="combat_8h.html" title="Gestion des combats dans le jeu." alt="" coords="753,196,858,221"/>
+<area shape="poly" title=" " alt="" coords="531,145,740,190,739,196,529,151"/>
+<area shape="poly" title=" " alt="" coords="938,439,982,478,978,482,935,443"/>
+<area shape="poly" title=" " alt="" coords="896,444,788,487,786,482,894,439"/>
+<area shape="poly" title=" " alt="" coords="880,438,419,497,418,492,879,433"/>
+<area shape="poly" title=" " alt="" coords="922,443,910,477,905,476,917,441"/>
+<area shape="poly" title=" " alt="" coords="823,220,859,250,904,294,949,351,968,382,983,415,986,429,982,443,963,467,939,485,936,480,960,463,978,440,981,429,977,417,963,384,944,354,900,298,855,254,819,224"/>
+<area shape="poly" title=" " alt="" coords="813,221,844,284,888,367,911,403,906,406,883,369,839,286,808,223"/>
+<area shape="rect" href="pointDePassage_8h.html" title="Gestion des points de passage et événements du jeu." alt="" coords="686,269,815,295"/>
+<area shape="poly" title=" " alt="" coords="798,223,770,260,766,257,794,220"/>
+<area shape="poly" title=" " alt="" coords="759,294,804,367,883,477,879,480,799,369,755,296"/>
+<area shape="poly" title=" " alt="" coords="763,293,795,327,836,366,894,407,891,411,833,370,791,331,759,297"/>
+<area shape="rect" href="menu_8h.html" title="Gestion des menus et des interfaces utilisateur." alt="" coords="515,343,610,368"/>
+<area shape="poly" title=" " alt="" coords="721,297,607,340,605,335,720,292"/>
+<area shape="poly" title=" " alt="" coords="595,366,644,386,697,414,750,449,801,486,878,552,875,556,797,491,747,453,695,418,642,391,593,371"/>
+<area shape="poly" title=" " alt="" coords="516,364,441,382,401,397,364,418,330,449,302,485,264,551,259,549,298,482,326,445,361,414,399,392,439,377,515,359"/>
+<area shape="poly" title=" " alt="" coords="571,367,587,403,582,405,566,369"/>
+<area shape="poly" title=" " alt="" coords="588,366,626,386,667,414,701,446,730,477,726,480,698,449,664,418,623,391,585,370"/>
+<area shape="poly" title=" " alt="" coords="516,360,480,365,443,375,408,392,379,418,372,431,369,445,369,476,364,476,364,445,367,429,375,414,405,388,441,370,479,360,515,355"/>
+<area shape="poly" title=" " alt="" coords="556,370,524,406,502,426,477,444,455,454,434,459,395,460,360,466,344,475,329,491,323,504,323,515,330,525,342,534,377,550,419,561,418,566,375,555,339,539,326,529,318,517,317,503,324,488,341,470,358,461,394,455,433,453,453,449,475,439,498,422,520,402,552,366"/>
+<area shape="poly" title=" " alt="" coords="611,365,683,385,761,414,822,446,873,479,870,483,820,451,759,418,681,390,609,370"/>
+<area shape="poly" title=" " alt="" coords="556,343,484,162,489,160,561,341"/>
+<area shape="poly" title=" " alt="" coords="611,363,867,413,866,419,610,369"/>
+<area shape="rect" title=" " alt="" coords="389,416,464,441"/>
+<area shape="poly" title=" " alt="" coords="542,370,462,412,460,407,540,366"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="player_8h__dep__incl.png" border="0" usemap="#a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8hdep" alt=""/></div>
+<map name="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8hdep" id="a_2mnt_2c_2Users_2mokha_2Documents_2travaille_01L2_2projet_2github_2lib_2player_8hdep">
+<area shape="rect" title="Gestion du joueur dans le jeu." alt="" coords="199,5,342,75"/>
+<area shape="rect" href="affichage_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion de l&#39;affichage dans le jeu." alt="" coords="199,123,342,192"/>
+<area shape="poly" title=" " alt="" coords="264,89,265,122,260,123,259,89"/>
+<area shape="rect" href="main_8c.html" title="fichier contenant la fonctions principale" alt="" coords="58,592,201,661"/>
+<area shape="poly" title=" " alt="" coords="188,76,127,108,69,152,44,178,25,207,13,239,8,274,8,393,10,422,17,451,40,505,70,552,100,590,96,593,66,555,35,507,12,452,5,423,3,393,3,273,7,237,20,205,40,175,65,148,124,104,186,71"/>
+<area shape="rect" href="player_8c.html" title="fichier contenant les fonctions de déplacement" alt="" coords="639,475,782,544"/>
+<area shape="poly" title=" " alt="" coords="339,80,409,129,491,193,572,269,610,312,644,356,678,417,702,474,697,476,673,419,639,359,606,315,569,273,487,197,406,133,335,84"/>
+<area shape="poly" title=" " alt="" coords="277,109,276,75,282,75,282,109"/>
+<area shape="rect" href="menu_8h.html" title="Gestion des menus et des interfaces utilisateur." alt="" coords="254,240,397,309"/>
+<area shape="poly" title=" " alt="" coords="295,204,312,239,307,241,290,206"/>
+<area shape="poly" title=" " alt="" coords="188,193,157,214,132,242,109,285,96,332,90,381,90,430,102,521,120,591,115,592,97,523,85,430,84,380,90,331,104,283,127,238,153,210,185,189"/>
+<area shape="rect" href="affichage_8c.html" title="fichier contenant la fonctions d&#39;affichage utilisant la librérie de SDL" alt="" coords="473,475,615,544"/>
+<area shape="poly" title=" " alt="" coords="352,196,398,226,444,262,487,306,520,356,532,386,539,418,546,474,541,475,534,419,526,388,515,359,482,309,441,266,394,230,349,201"/>
+<area shape="poly" title=" " alt="" coords="356,182,414,206,470,238,539,295,601,360,653,422,690,473,686,476,648,425,597,363,535,299,466,242,411,210,354,186"/>
+<area shape="rect" href="menu_8c.html" title="Fichier contenant les fonctions liées à l&#39;affichage et la gestion du menu principal et des sous&#45;menus..." alt="" coords="145,357,287,427"/>
+<area shape="poly" title=" " alt="" coords="255,206,244,241,231,302,223,357,217,356,226,301,239,239,250,204"/>
+<area shape="rect" href="pointDePassage_8h.html" title="Gestion des points de passage et événements du jeu." alt="" coords="363,357,506,427"/>
+<area shape="poly" title=" " alt="" coords="369,318,405,355,401,359,365,321"/>
+<area shape="poly" title=" " alt="" coords="331,324,324,377,315,404,301,428,287,442,272,449,243,454,214,459,200,465,186,477,166,503,152,534,136,593,131,591,147,532,162,501,182,473,197,461,212,454,242,449,271,444,284,437,297,425,311,402,319,376,326,323"/>
+<area shape="poly" title=" " alt="" coords="286,321,250,359,246,355,282,318"/>
+<area shape="rect" href="combat_8h.html" title="Gestion des combats dans le jeu." alt="" coords="254,475,397,544"/>
+<area shape="poly" title=" " alt="" coords="395,439,359,476,355,473,391,435"/>
+<area shape="poly" title=" " alt="" coords="351,429,283,457,243,477,224,496,200,527,153,593,149,590,196,524,220,493,240,473,280,452,349,424"/>
+<area shape="rect" href="pointDePassage_8c.html" title="Fichier contenant les fonctions de gestion des points de passage, de soin des Mechas,..." alt="" coords="391,592,534,661"/>
+<area shape="poly" title=" " alt="" coords="443,441,461,592,456,592,438,441"/>
+<area shape="poly" title=" " alt="" coords="478,435,514,473,510,476,474,439"/>
+<area shape="poly" title=" " alt="" coords="520,426,640,476,638,481,518,431"/>
+<area shape="poly" title=" " alt="" coords="240,497,209,487,179,472,152,453,130,428,116,396,114,363,122,330,137,298,158,267,181,238,228,190,232,194,185,241,162,270,142,300,127,332,120,364,121,395,134,425,155,449,182,468,211,482,241,492"/>
+<area shape="rect" href="combat_8c.html" title="fichier contenant la fonctions de combat" alt="" coords="225,592,367,661"/>
+<area shape="poly" title=" " alt="" coords="316,558,307,592,302,591,311,557"/>
+<area shape="poly" title=" " alt="" coords="258,553,188,594,185,590,255,549"/>
+<area shape="poly" title=" " alt="" coords="377,551,424,590,421,594,374,555"/>
+</map>
+</div>
+</div>
+<p><a href="player_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:af51d5e095cb4fc41eec0983022449146" id="r_af51d5e095cb4fc41eec0983022449146"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8h.html#af51d5e095cb4fc41eec0983022449146">deplacement</a> (int taille_x, int taille_y, const Uint8 *keys, <a class="el" href="structjoueur__t.html">joueur_t</a> *j, int *last_case, SDL_Rect *sprite_p, int *repousse)</td></tr>
+<tr class="memdesc:af51d5e095cb4fc41eec0983022449146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère le déplacement du joueur sur la carte en fonction des touches pressées.  <br /></td></tr>
+<tr class="separator:af51d5e095cb4fc41eec0983022449146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a279408d93f54625f9229df493ae67180" id="r_a279408d93f54625f9229df493ae67180"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8h.html#a279408d93f54625f9229df493ae67180">animation</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, SDL_Rect *sprite_p)</td></tr>
+<tr class="memdesc:a279408d93f54625f9229df493ae67180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'animation du joueur lors de son déplacement.  <br /></td></tr>
+<tr class="separator:a279408d93f54625f9229df493ae67180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa063304a19a8497e45220ea85ad96307" id="r_aa063304a19a8497e45220ea85ad96307"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8h.html#aa063304a19a8497e45220ea85ad96307">spawn_mecha</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *j, int obj_case, <a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *mecha_sauvage, int res)</td></tr>
+<tr class="memdesc:aa063304a19a8497e45220ea85ad96307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détermine et génère l'apparition aléatoire d'un Mecha sauvage dans une zone définie.  <br /></td></tr>
+<tr class="separator:aa063304a19a8497e45220ea85ad96307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09715347a5e61cb5a25e0a2cefc73696" id="r_a09715347a5e61cb5a25e0a2cefc73696"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8h.html#a09715347a5e61cb5a25e0a2cefc73696">detection_combat_pnj</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, int res)</td></tr>
+<tr class="memdesc:a09715347a5e61cb5a25e0a2cefc73696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détecte si un PNJ peut déclencher un combat avec le joueur en fonction de sa position et orientation.  <br /></td></tr>
+<tr class="separator:a09715347a5e61cb5a25e0a2cefc73696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion du joueur dans le jeu. </p>
+<p>Ce fichier contient les déclarations des fonctions permettant de gérer les déplacements, les animations et l'apparition des mechas ainsi que les interactions avec les PNJ. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a279408d93f54625f9229df493ae67180" name="a279408d93f54625f9229df493ae67180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279408d93f54625f9229df493ae67180">&#9670;&#160;</a></span>animation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void animation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour l'animation du joueur lors de son déplacement. </p>
+<p>Cette fonction actualise progressivement la position graphique du joueur (<code>sprite_p</code>) sur l'écran, selon les incréments définis (<code>j-&gt;move_dx</code> et <code>j-&gt;move_dy</code>). L'animation se déroule sur un nombre prédéfini de frames (<code>j-&gt;moving</code>), décrémenté à chaque appel de la fonction jusqu’à atteindre zéro (fin de l’animation).</p>
+<p>Lorsque l'animation se termine (<code>j-&gt;moving == 0</code>), les valeurs de déplacement (<code>move_dx</code>, <code>move_dy</code>) sont remises à zéro pour stopper tout mouvement résiduel.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur contenant les informations sur l'animation en cours. </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Pointeur vers la structure SDL_Rect définissant la position du sprite du joueur à l’écran.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les valeurs de déplacement (<code>j-&gt;move_dx</code> et <code>j-&gt;move_dy</code>) doivent être définies avant le début de l’animation. Le pointeur <code>sprite_p</code> doit être valide et initialisé correctement avec la position actuelle du joueur.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>La position graphique du joueur (<code>sprite_p-&gt;x</code>, <code>sprite_p-&gt;y</code>) est mise à jour progressivement à chaque appel. Les valeurs de déplacement sont réinitialisées à zéro lorsque l'animation se termine.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction doit être appelée régulièrement dans la boucle principale (généralement chaque frame) pour garantir une animation fluide du déplacement du joueur.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Veiller à ce que <code>j-&gt;screen_x</code> et <code>j-&gt;screen_y</code> soient initialisées correctement pour éviter tout décalage du sprite. </dd></dl>
+
+</div>
+</div>
+<a id="af51d5e095cb4fc41eec0983022449146" name="af51d5e095cb4fc41eec0983022449146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51d5e095cb4fc41eec0983022449146">&#9670;&#160;</a></span>deplacement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>keys</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>last_case</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>sprite_p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>repousse</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère le déplacement du joueur sur la carte en fonction des touches pressées. </p>
+<p>Cette fonction détermine la direction du déplacement en fonction des touches fléchées pressées par l'utilisateur (gauche, droite, haut, bas). Elle vérifie si la case cible est valide (libre, accessible ou portail vers une autre carte). Si le déplacement est valide, elle met à jour la position logique et graphique du joueur, et gère éventuellement le changement de carte.</p>
+<p>La fonction empêche explicitement le déplacement en diagonale et bloque tout déplacement si le joueur est déjà en animation.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure principale du jeu contenant l'état actuel du jeu et des cartes. </td></tr>
+    <tr><td class="paramname">taille_x</td><td>Largeur de la carte en nombre de cases. </td></tr>
+    <tr><td class="paramname">taille_y</td><td>Hauteur de la carte en nombre de cases. </td></tr>
+    <tr><td class="paramname">keys</td><td>Tableau des touches pressées (<code>Uint8</code> SDL) pour déterminer le déplacement. </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (position, état d’animation). </td></tr>
+    <tr><td class="paramname">last_case</td><td>Pointeur vers un entier stockant l'identifiant de la dernière case occupée avant le déplacement du joueur. </td></tr>
+    <tr><td class="paramname">sprite_p</td><td>Rectangle SDL définissant la position graphique du sprite du joueur.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int <br  />
+<ul>
+<li>La valeur de la case vers laquelle le joueur se déplace (<code>obj_case</code>), qui peut être :<ul>
+<li><code>RIEN</code> si la case est vide ou traversable.</li>
+<li>Un identifiant spécial (par exemple : changement de carte).</li>
+</ul>
+</li>
+<li><code>0</code> si aucun déplacement valide n'est effectué (mouvement diagonal ou joueur en déplacement).</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les pointeurs (<code>game</code>, <code>j</code>, <code>keys</code>, <code>last_case</code>, <code>sprite_p</code>) doivent être valides et correctement initialisés. La carte et ses dimensions doivent être cohérentes avec <code>taille_x</code> et <code>taille_y</code>.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>La position du joueur (<code>j-&gt;x</code>, <code>j-&gt;y</code>) est mise à jour ainsi que la matrice du jeu (<code>game-&gt;mat</code>) selon le déplacement effectué. La gestion du changement de carte est faite si la case cible est un portail (<code>TPMAP1</code>, etc.).</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La fonction gère uniquement la logique du déplacement initial. L'animation réelle du joueur est traitée dans la boucle principale en fonction des paramètres <code>j-&gt;moving</code>, <code>j-&gt;move_dx</code> et <code>j-&gt;move_dy</code>.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction ne doit pas être appelée si le joueur est déjà en animation (<code>j-&gt;moving != 0</code>). Assurez-vous que les constantes (<code>RIEN</code>, <code>JOUEUR</code>, <code>TPMAP1</code>, etc.) soient définies avant utilisation. </dd></dl>
+
+</div>
+</div>
+<a id="a09715347a5e61cb5a25e0a2cefc73696" name="a09715347a5e61cb5a25e0a2cefc73696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09715347a5e61cb5a25e0a2cefc73696">&#9670;&#160;</a></span>detection_combat_pnj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int detection_combat_pnj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détecte si un PNJ peut déclencher un combat avec le joueur en fonction de sa position et orientation. </p>
+<p>Cette fonction parcourt la liste des PNJ présents sur la carte active, vérifiant leur état, leur position, et leur orientation pour déterminer si l'un d'entre eux peut voir directement le joueur. Le PNJ peut détecter le joueur jusqu'à 3 cases devant lui selon son orientation actuelle (haut, droite, bas, gauche).</p>
+<p>Dès qu'un PNJ détecte le joueur, la fonction retourne immédiatement l'indice correspondant à ce PNJ dans le tableau global <code>pnj[]</code>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointeur vers la structure contenant l’état du jeu et la carte active. </td></tr>
+    <tr><td class="paramname">joueur</td><td>Pointeur vers la structure du joueur contenant sa position actuelle sur la carte.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li>L'indice (<code>i</code>) du PNJ dans le tableau <code>pnj[]</code> qui a détecté le joueur.</li>
+<li><code>0</code> si aucun PNJ ne détecte le joueur à proximité.</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Les tableaux <code>game-&gt;mat</code> et <code>pnj[]</code> doivent être initialisés correctement. Les constantes (<code>JOUEUR</code>, <code>PNJ</code>, <code>VIN_GAZOLE_1</code>) doivent être définies.</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Aucune modification d’état du jeu n'est réalisée par cette fonction. Elle ne fait que retourner l'indice d'un PNJ pouvant déclencher un combat.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La fonction s’assure que les coordonnées testées restent toujours à l'intérieur des limites de la matrice.</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Assurez-vous que les valeurs des orientations du PNJ sont correctement définies :<ul>
+<li><code>1</code> : vers le haut</li>
+<li><code>2</code> : vers la droite</li>
+<li><code>3</code> : vers le bas</li>
+<li><code>4</code> : vers la gauche </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="aa063304a19a8497e45220ea85ad96307" name="aa063304a19a8497e45220ea85ad96307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa063304a19a8497e45220ea85ad96307">&#9670;&#160;</a></span>spawn_mecha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int spawn_mecha </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>obj_case</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmechas__joueur__t.html">mechas_joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>mecha_sauvage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détermine et génère l'apparition aléatoire d'un Mecha sauvage dans une zone définie. </p>
+<p>Cette fonction gère l'apparition aléatoire d'un Mecha sauvage en fonction d'une probabilité cumulative. À chaque déplacement du joueur dans une zone propice (identifiée par <code>obj_case</code>), la probabilité de rencontrer un Mecha augmente. Lorsqu'un Mecha apparaît, ses attributs (niveau, PV, attaque, défense, vitesse, attaques disponibles) sont définis aléatoirement en fonction des valeurs moyennes prédéfinies pour cette zone.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td>Pointeur vers la structure du joueur (pour la gestion de la probabilité d'apparition). </td></tr>
+    <tr><td class="paramname">obj_case</td><td>Valeur représentant la case où se situe le joueur (détermine la zone de spawn éventuel). </td></tr>
+    <tr><td class="paramname">mecha_sauvage</td><td>Pointeur vers une structure Mecha qui sera remplie avec les attributs du Mecha sauvage généré.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int<ul>
+<li><code>1</code> : Un Mecha sauvage est apparu, et ses attributs ont été initialisés.</li>
+<li><code>0</code> : Aucun Mecha sauvage n’est apparu (probabilité insuffisante).</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>La structure <code>zone[]</code>, ainsi que les tableaux globaux (<code>attaque[]</code>, <code>mecha[]</code>), doivent être initialisés et contenir des données valides. Les constantes telles que <code>Z1</code> et <code>Z10</code> doivent être correctement définies. Le générateur aléatoire (<code>rand()</code>) doit être initialisé préalablement (par exemple via <code>srand()</code>).</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Si un Mecha apparaît, ses attributs sont initialisés dans la structure pointée par <code>mecha_sauvage</code>. La probabilité de rencontre est réinitialisée (<code>j-&gt;proba_combat = 0</code>) en cas de succès. Sinon, la probabilité cumulative (<code>j-&gt;proba_combat</code>) est augmentée.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Des logs détaillés sur les attributs générés sont affichés sur la sortie standard (utile pour le debug).</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Vérifier soigneusement les bornes des tableaux (<code>zone</code>, <code>mecha</code>, <code>attaque</code>) pour éviter tout accès hors limites. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="player_8h.html">player.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

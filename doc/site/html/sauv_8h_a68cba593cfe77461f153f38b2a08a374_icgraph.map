@@ -1,0 +1,28 @@
+<map id="sauvegarde_partie" name="sauvegarde_partie">
+<area shape="rect" id="Node000001" title="Sauvegarde l&#39;état global d&#39;une partie d&#39;un joueur dans plusieurs fichiers CSV." alt="" coords="705,107,833,132"/>
+<area shape="rect" id="Node000002" href="$pointDePassage_8c.html#a72d11e9c5addb8d80f32ac417e0e5566" title="Permet au joueur de choisir son Mecha de départ parmi trois options disponibles." alt="" coords="560,5,657,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="735,102,628,33,631,28,738,97"/>
+<area shape="rect" id="Node000004" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="374,56,470,81"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="691,109,657,103,470,77,470,72,658,98,692,103"/>
+<area shape="rect" id="Node000005" href="$sauv_8c.html#a72f7ea1b998d9c8d83135418b440260c" title="Initialise une nouvelle partie avec les paramètres par défaut pour un joueur." alt="" coords="569,271,648,296"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="748,144,624,272,620,269,744,140"/>
+<area shape="rect" id="Node000009" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="345,105,499,131"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="691,122,500,121,500,116,692,116"/>
+<area shape="rect" id="Node000010" href="$pointDePassage_8c.html#a50a0f93f053f249f00e5d18196a34d8a" title="Restaure entièrement la santé et les objets du joueur et sauvegarde la partie." alt="" coords="577,157,641,183"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="716,139,642,163,640,158,714,134"/>
+<area shape="rect" id="Node000003" href="$pointDePassage_8c.html#a87430bbcb167664534cc9b6221b3c77d" title="Gère l&#39;interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues, choix du starter et modifi..." alt="" coords="353,5,491,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="546,21,491,21,491,15,546,15"/>
+<area shape="rect" id="Node000006" href="$menu_8c.html#a514079e39465e028b08558ac3458d85a" title="Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie." alt="" coords="157,296,284,321"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,289,284,307,284,302,555,284"/>
+<area shape="rect" id="Node000008" href="$menu_8c.html#a72fbd3d776a9a4447c7448b1a8308137" title="Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière..." alt="" coords="332,321,512,347"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="557,300,470,324,469,319,555,295"/>
+<area shape="rect" id="Node000007" href="$menu_8c.html#a0225d24e9d0ffd7af10183134ff4f229" title="Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter." alt="" coords="5,296,109,321"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="144,311,110,311,110,306,144,306"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="318,324,284,319,284,314,319,318"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="584,150,551,121,511,95,469,80,471,75,513,90,554,117,587,146"/>
+<area shape="poly" id="edge13_Node000010_Node000009" title=" " alt="" coords="563,160,468,133,469,128,564,155"/>
+<area shape="rect" id="Node000011" href="$pointDePassage_8c.html#a8b046624f60128f2fcf2978bf527e40d" title="Gère l&#39;interaction avec le PNJ &quot;Vin Gazole&quot; en mode jeu libre, permettant soins et dialogues répétés." alt="" coords="387,220,457,245"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="566,190,513,210,458,226,457,221,511,205,564,185"/>
+<area shape="rect" id="Node000012" href="$pointDePassage_8c.html#a7ec67454376236ff74521e75806f1f8b" title="Gère la seconde interaction du joueur avec le PNJ &quot;Vin Gazole&quot;, incluant dialogues,..." alt="" coords="359,155,485,195"/>
+<area shape="poly" id="edge14_Node000010_Node000012" title=" " alt="" coords="563,174,486,176,485,171,563,169"/>
+</map>

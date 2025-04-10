@@ -1,0 +1,260 @@
+\doxysection{global.\+h}
+\hypertarget{global_8h_source}{}\label{global_8h_source}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/global.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/global.h}}
+\mbox{\hyperlink{global_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ GLOBAL\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ GLOBAL\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//*********DEFINE********//}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ LONGUEUR\_MAX\_PSEUDO\ 50}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ LONGUEUR\_LIGNE\ 256}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ LONGUEUR\_LIGNE\_DESC\ 1070}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LONGUEUR\_DIALOGUE\ 500}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LONGUEUR\_TYPE\ 20}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LONGUEUR\_DESC\ 200}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//TAILLE\ TAB}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ NB\_MECHAS\_MAX\ 54}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ NB\_MECHAS\ 24}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ NB\_ATTAQUES\ 64}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ NB\_ZONES\ 10}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ NB\_PNJ\ 24}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//INVENTAIRE}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ NB\_MECHAS\_INVENTAIRE\ 4}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ NB\_OBJET\ 5}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//PNJ\ IMPORTANT\ }}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ VIN\_GAZOLE\_1\ 17}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ VIN\_GAZOLE\_2\ 18}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ VIN\_GAZOLE\_3\ 20}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ VIN\_GAZOLE\_4\ 21}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ VIN\_GAZOLE\_5\ 23}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ IRON\_MUSK\_DEB\ 19}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ IRON\_MUSK\_FIN\ 22}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{//TEMPS}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ T\ 500}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{//RETURN\ }}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ ERREUR\_OUVERTURE\ -\/1}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ OK\ 1}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ ERR\ 0}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ KO\ 0}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ RETOUR\ -\/1}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ VRAI\ 1}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ FAUX\ -\/2}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ CAPTURE\ -\/3}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ FUITE\ -\/4}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{//TAILLE\ D'UNE\ CASE}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ PX\ 32}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//COLLISION}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ RIEN\ 0}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ JOUEUR\ 1}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ BARRIERE\ 2}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ BAT\ 3}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ DECHET\ 5}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{//INTERACTION}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ PNJ\ 6}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ PC\ 7}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ PORTE\ 4}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{comment}{//CHANGEMENT\ MAP}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ TPMAP1\ -\/11}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ TPMAP2\ -\/12}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ TPMAP3\ -\/13}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ TPMAP4\ -\/14}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ TPMAP5\ -\/15}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ TPMAP6\ -\/16}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{//ZONE\ SPAWN\ MECHA}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ Z1\ -\/1}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ Z2\ -\/2}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ Z3\ -\/3}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ Z4\ -\/4}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ Z5\ -\/5}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ Z6\ -\/6}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ Z7\ -\/7}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ Z8\ -\/8}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ Z9\ -\/9}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ Z10\ -\/10}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{comment}{//DIMENSIONS}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ H\ 768}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ L\ 1280}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{comment}{//DIMENSIONS\ BOUTON}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ LARGEUR\_BOUTON\ 200}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ HAUTEUR\_BOUTON\ 50}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{comment}{//*********CONSTANTES********//}}
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{global_8h_a1fbff4d3d715a8db61583721e1806c44}{FRAME\_DELAY}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{comment}{//*********STRUCTURES********//}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ Structure\ qui\ contient\ les\ initialisation\ de\ rendu\ du\ jeu\ }}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{comment}{//Structure\ qui\ contient\ les\ images\ animés\ du\ joueur}}
+\DoxyCodeLine{00195\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00196\ \ \ \ \ SDL\_Texture\ *\ gauche[4];}
+\DoxyCodeLine{00197\ \ \ \ \ SDL\_Texture\ *\ droite[4];}
+\DoxyCodeLine{00198\ \ \ \ \ SDL\_Texture\ *\ haut[4];}
+\DoxyCodeLine{00199\ \ \ \ \ SDL\_Texture\ *\ bas[4];}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \}\mbox{\hyperlink{structimg__player__t}{img\_player\_t}};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00234\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00235\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_a41b0a6e8da253af70c4a0348d5a6d33d}{gauche}};}
+\DoxyCodeLine{00236\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_a21cb780b19185ea925265e43032586be}{droite}};}
+\DoxyCodeLine{00237\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_ada2b36d9aebcc8211471d7a7f31627ec}{haut}};}
+\DoxyCodeLine{00238\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_a60da74b129012bdea91023cd5a8ea681}{bas}};}
+\DoxyCodeLine{00239\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_a30bb24d34028da28782f010629b2ad0c}{vin\_gazole}};}
+\DoxyCodeLine{00240\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_ad07a6da4dd1767465df72c9009743065}{iron\_musk\_bas}};}
+\DoxyCodeLine{00241\ \ \ \ \ SDL\_Texture\ *\ \mbox{\hyperlink{structimg__pnj__t_a62056680da79a50e922de954f38b906e}{iron\_musk\_droite}};}
+\DoxyCodeLine{00242\ \}\mbox{\hyperlink{structimg__pnj__t}{img\_pnj\_t}};}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00288\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00289\ \ \ \ \ SDL\_Window*\ \mbox{\hyperlink{structgame__t_abe304079dac0127cffcbad18af510445}{window}};}
+\DoxyCodeLine{00290\ \ \ \ \ SDL\_Renderer*\ \mbox{\hyperlink{structgame__t_abaf3718ff829691abf04102a4aac292f}{renderer}};}
+\DoxyCodeLine{00291\ \ \ \ \ SDL\_Texture*\ backgroundTexture[11];}
+\DoxyCodeLine{00292\ \ \ \ \ SDL\_Texture*\ calqueTexture[6];}
+\DoxyCodeLine{00293\ \ \ \ \ TTF\_Font*\ \mbox{\hyperlink{structgame__t_af0729baa0912b7a7fab1f52b4ce250cf}{police}};}
+\DoxyCodeLine{00294\ \ \ \ \ \mbox{\hyperlink{structimg__player__t}{img\_player\_t}}\ sprite\_joueur;}
+\DoxyCodeLine{00295\ \ \ \ \ \mbox{\hyperlink{structimg__pnj__t}{img\_pnj\_t}}\ sprite\_pnj;}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordtype}{int}\ ***\ \mbox{\hyperlink{structgame__t_a27542d00cbd006b3d8db6bd5fc9130e6}{mat}}\ ;}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structgame__t_a75299999dcaa4bb3a5d4849b5ce4f2b0}{scale}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//echelle\ qui\ adapte\ l'affichage\ à\ l'ecran\ et\ à\ la\ taille\ de\ l'image}}
+\DoxyCodeLine{00298\ \ \ \ \ SDL\_Rect\ \mbox{\hyperlink{structgame__t_ab249fbaf09e300ec97c40aa8e4cc5731}{dms\_win}};}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame__t_a8d3f8c5aca4cd2b3e6e26315787e4b36}{img\_w}};}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame__t_acbe5097326f11e212ed89a62a10cb443}{img\_h}};}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame__t_a172925c4060081a8648e19bb8f0f0170}{mat\_active}};}
+\DoxyCodeLine{00302\ \}\ \mbox{\hyperlink{structgame__t}{game\_t}};}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \textcolor{comment}{//STRUCTURES\ D'AFFICHAGE}}
+\DoxyCodeLine{00330\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00331\ \ \ \ \ SDL\_Rect\ \mbox{\hyperlink{structrectangle__t_ab15e80a326c96b49e89f645bed7ec08f}{rect}};}
+\DoxyCodeLine{00332\ \ \ \ \ SDL\_Color\ \mbox{\hyperlink{structrectangle__t_aa2a20dd961b6cf514fe455b4b04aeb70}{couleur}};}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordtype}{char}\ text[500];}
+\DoxyCodeLine{00334\ \ \ \ \ SDL\_Color\ \mbox{\hyperlink{structrectangle__t_a1bd91845ad4a0da8a6a6d7d54484c293}{couleur\_text}};}
+\DoxyCodeLine{00335\ \}\ \mbox{\hyperlink{structrectangle__t}{rectangle\_t}};}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00351\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structparametre__t_a2c152a00a13d9f4177f835a1c060c994}{volume}};}
+\DoxyCodeLine{00353\ \}\ \mbox{\hyperlink{structparametre__t}{parametre\_t}};}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{comment}{//STRUCTURES\ DE\ DONNEES}}
+\DoxyCodeLine{00388\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structattaque__t_a856784b5a8e10b10c6eb7bbe6c7e8752}{id\_attaques}};}
+\DoxyCodeLine{00390\ \ \ \ \ \textcolor{keywordtype}{char}\ nom[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}];}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{char}\ type[\mbox{\hyperlink{global_8h_a32f0560714e1a90c7f9805cb97b85f7e}{LONGUEUR\_TYPE}}];}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structattaque__t_a3f140bdc600ea563ddc31a9465c83549}{niveau}};}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structattaque__t_a64b27f18b27a84cde9201e0ac95ad21f}{degats}};}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structattaque__t_a50ad34e031c8a44f49bfd95d53e4df2f}{precision}};}
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structattaque__t_a2e3d3fa51fde3cdc0ea6406ed372c3dd}{utilisations}};}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordtype}{char}\ description[\mbox{\hyperlink{global_8h_a9b9bf46a80f803a594977e440886be8f}{LONGUEUR\_DESC}}];}
+\DoxyCodeLine{00397\ \}\ \mbox{\hyperlink{structattaque__t}{attaque\_t}};}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00431\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00432\ \ \ \ \ SDL\_Texture\ *\ texture[2];}
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__t_a16042cbceeedcf759410f525a8427a83}{id\_mechas}};}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keywordtype}{char}\ nom[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}];}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordtype}{char}\ type[\mbox{\hyperlink{global_8h_a32f0560714e1a90c7f9805cb97b85f7e}{LONGUEUR\_TYPE}}];}
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__t_a154c4d35227c90950e2cfd46d9423de7}{evolution}};}
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__t_ac9c243d610b6029a40145219f85522c4}{niveau\_evolution}};}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordtype}{char}\ description[\mbox{\hyperlink{global_8h_a9b9bf46a80f803a594977e440886be8f}{LONGUEUR\_DESC}}];}
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordtype}{int}\ liste\_attaque[5];}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__t_a6b96d26e83bbd9d73c5e893db23c7d5a}{nb\_attaques}};}
+\DoxyCodeLine{00441\ \}\ \mbox{\hyperlink{structmechas__t}{mechas\_t}};}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00462\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinventaire__t_a36a44c78e1677df7b717d82073c9af58}{mechaball}};}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinventaire__t_ab29e3cd7553f814add25c21ac2d6206f}{carburant}};}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinventaire__t_a8638e9d7597f4ca011f5ed4aa9dac848}{repousse}};}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinventaire__t_a8c7dde9ff610b85ca8f0aeae192f200a}{rappel}};}
+\DoxyCodeLine{00467\ \}\ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}};}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00516\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_ac842f9787d114784075b5130519c5817}{numero}};}
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a03321f8114557e405f5609858b125076}{id\_mechas}};}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a5d053ec22a2d40262c398ea493e766cc}{niveau}};}
+\DoxyCodeLine{00520\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a9033fc398b742ea8189b24d3c1d1a656}{xp}};}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a9c102ff6546c1b4a52f4bdd496cdb28a}{pv}};}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_afab1b4461029c5b33a91e5b5aef6cb2d}{pv\_max}};}
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_ae46e9897c4c1c42cb709c62283efc876}{attaque}};}
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_af949cf21db359b52cfa766f57f06e0df}{defense}};}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a12fcc84a50c5a1dfb9a2af47026a5a7b}{vitesse}};}
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_aec148a9678835be43f681e77c9d12150}{attaque\_1}};}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a7dc76caaea354024dd09aecda187fe12}{attaque\_2}};}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_a17bc19142934c4440111a3b16e79d9bf}{utilisation\_1}};}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmechas__joueur__t_acf94d5aba63f733f0b174beba9950609}{utilisation\_2}};}
+\DoxyCodeLine{00530\ \}\ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}};}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00588\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}];}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structjoueur__t_a2c250fabd0d908836b17be1f335ece40}{sexe}};}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_a27f513abcb65fd9455ad365587ddf86c}{numMap}};}
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{x}},\ y;}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structjoueur__t_a4b11f60563ba51f12f3991987e429c09}{screen\_x}},\ screen\_y;\ \ \ \ \ \ \ \textcolor{comment}{//\ Position\ réelle\ à\ l'écran\ }}
+\DoxyCodeLine{00594\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_a2284ad01ef9ba13f4a3e5d7608cf24af}{moving}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ un\ déplacement\ est\ en\ cours}}
+\DoxyCodeLine{00595\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structjoueur__t_aa08369b848b865ca2c431941c53c62f6}{move\_dx}},\ move\_dy;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Direction\ du\ mouvement\ en\ pixels}}
+\DoxyCodeLine{00596\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_aa061e55e80b158de92742a39c44d0b18}{derniere\_touche}};}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_adb0ce6bf9365fd360e93bc946409a34f}{pointSauvegarde}};}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_aa5dc0aa8753a5a2af2a50833934d18f9}{nb\_mechas}};}
+\DoxyCodeLine{00599\ \ \ \ \ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *\mbox{\hyperlink{structjoueur__t_a90b739f76249f09c090ed3c8cbf36fa1}{inventaire}};}
+\DoxyCodeLine{00600\ \ \ \ \ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ mechas\_joueur\ [\mbox{\hyperlink{global_8h_ae6f79319e8e437cea4d39afcbc569e34}{NB\_MECHAS\_MAX}}];}
+\DoxyCodeLine{00601\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjoueur__t_a93593ead951e5c6b16c950d10bb4c5f6}{proba\_combat}};}
+\DoxyCodeLine{00602\ \}\ \mbox{\hyperlink{structjoueur__t}{joueur\_t}};}
+\DoxyCodeLine{00603\ }
+\DoxyCodeLine{00648\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00649\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_a7f2eed80f5fb31cccc12bc3f93947a2c}{id\_pnj}};}
+\DoxyCodeLine{00650\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_a3dcd285723b072a83828bc5b3c564e9c}{id\_map}};}
+\DoxyCodeLine{00651\ \ \ \ \ \textcolor{keywordtype}{char}\ pseudo[\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\_MAX\_PSEUDO}}];}
+\DoxyCodeLine{00652\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_ae53a51fb05f47aac68e1b6c451000d9e}{etat}};}
+\DoxyCodeLine{00653\ \ \ \ \ \textcolor{keywordtype}{char}\ dialogueDebut[\mbox{\hyperlink{global_8h_a7042b61ed737eea3286b324ecdf2345d}{LONGUEUR\_DIALOGUE}}];}
+\DoxyCodeLine{00654\ \ \ \ \ \textcolor{keywordtype}{char}\ dialogueFin[\mbox{\hyperlink{global_8h_a7042b61ed737eea3286b324ecdf2345d}{LONGUEUR\_DIALOGUE}}];}
+\DoxyCodeLine{00655\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_a6ad111d7e2c16bbec3033c2da3442c43}{x}},\ y;}
+\DoxyCodeLine{00656\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_a07dbd89ec660293ff2b87508aa647080}{orientation}};}
+\DoxyCodeLine{00657\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpnj__t_aa158d69de9949e1506ca1ae1fb234f15}{nb\_mechas}};}
+\DoxyCodeLine{00658\ \ \ \ \ \mbox{\hyperlink{structinventaire__t}{inventaire\_t}}\ *\mbox{\hyperlink{structpnj__t_aa27103688429f27e4a13241d7d26dd3b}{inventaire}};}
+\DoxyCodeLine{00659\ \ \ \ \ \mbox{\hyperlink{structmechas__joueur__t}{mechas\_joueur\_t}}\ mechas\_joueur\ [\mbox{\hyperlink{global_8h_ae6f79319e8e437cea4d39afcbc569e34}{NB\_MECHAS\_MAX}}];}
+\DoxyCodeLine{00660\ \}\ \mbox{\hyperlink{structpnj__t}{pnj\_t}};}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00694\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00695\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_a5dff5b08fea58dc82770daaeaee6e90e}{id\_zone}};}
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_afad641fd48b1090945aa6e4ab242b974}{NiveauMoyenApparition}};}
+\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_aa40859a9b36a42abb1ef17a19e0d7cab}{PvMoyen}};}
+\DoxyCodeLine{00698\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_aa66086a1f0705bd2e3d0b5116b0b96ab}{VitesseMoyenne}};}
+\DoxyCodeLine{00699\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_a10d5007c77303b7812c412676ea22769}{Attaque}};}
+\DoxyCodeLine{00700\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_af8f7d299444386175221e806f6dfa4bf}{Defense}};}
+\DoxyCodeLine{00701\ \ \ \ \ \textcolor{keywordtype}{int}\ listeMechasZone[10];}
+\DoxyCodeLine{00702\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structzone__t_a00c0ffc13e69d1f0c9931d4fc00d8363}{nb\_mechas}};}
+\DoxyCodeLine{00703\ \}\mbox{\hyperlink{structzone__t}{zone\_t}};}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00708\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00709\ \ \ \ \ \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a1a733d1843addaf0cd793bec5a9921c6}{PNJ\_NORMAL}},\ \ \ \ }
+\DoxyCodeLine{00710\ \ \ \ \ \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1add88731ea1f5f67bc613b12213b29e2a}{PNJ\_DEVANT}},\ \ \ \ }
+\DoxyCodeLine{00711\ \ \ \ \ \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1a7b919ac529b2531975f8611e1a39fc39}{PNJ\_DERRIERE}}\ \ \ }
+\DoxyCodeLine{00712\ \}\ \mbox{\hyperlink{global_8h_a6647ff08db8dea35a4d7a3ab22ce34e1}{pnj\_pos\_t}};}
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00714\ \textcolor{comment}{//VARIABLES\ GLOBALE}}
+\DoxyCodeLine{00715\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structmechas__t}{mechas\_t}}\ mecha[\mbox{\hyperlink{global_8h_a0afb952f6a516ad02412229d57dbafe7}{NB\_MECHAS}}];}
+\DoxyCodeLine{00716\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structattaque__t}{attaque\_t}}\ attaque[\mbox{\hyperlink{global_8h_abf306b216bc9e75c1271c8f80a688a3f}{NB\_ATTAQUES}}];}
+\DoxyCodeLine{00717\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structzone__t}{zone\_t}}\ zone[\mbox{\hyperlink{global_8h_a94439adf310c755550b3efe018fc5b26}{NB\_ZONES}}];}
+\DoxyCodeLine{00718\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structpnj__t}{pnj\_t}}\ pnj[\mbox{\hyperlink{global_8h_acd19773d24e0450b01a69dbe5d47725e}{NB\_PNJ}}];}
+\DoxyCodeLine{00719\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgame__t}{game\_t}}\ game;}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

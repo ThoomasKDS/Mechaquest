@@ -1,0 +1,1036 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/src/sauv.c}
+\hypertarget{sauv_8c}{}\label{sauv_8c}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/sauv.c@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/src/sauv.c}}
+
+
+fichier contenant les fonctions de sauvegarde et récupération  
+
+
+{\ttfamily \#include "{}../lib/sauv.\+h"{}}\newline
+Graphe des dépendances par inclusion de sauv.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sauv_8c_a72f7ea1b998d9c8d83135418b440260c}{init\+\_\+partie}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}, char sexe)
+\begin{DoxyCompactList}\small\item\em Initialise une nouvelle partie avec les paramètres par défaut pour un joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_aec5928f1d3393d66b9df8e4066b8d8da}{nouveau\+\_\+fichier\+\_\+pnj}} (char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a27e4df079f565f0ca025fea8e134b47e}{recuperation\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère les données d\textquotesingle{}une partie sauvegardée pour un joueur donné depuis un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a099dce0c2a73af791f6cd412e9b085f2}{recuperation\+\_\+pnj}} (\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj, char pseudo\mbox{[}50\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère l\textquotesingle{}état et les données détaillées des PNJs à partir d\textquotesingle{}un fichier CSV personnalisé. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a5df71d1ff822e93d595691020a67fcac}{recuperation\+\_\+inventaire}} (\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}inventaire, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère les données de l\textquotesingle{}inventaire d\textquotesingle{}un joueur ou d\textquotesingle{}un PNJ depuis un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a163544a5ed388ef250c2b5402fd1c552}{recuperation\+\_\+mechas\+\_\+joueur}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+joueur, char pseudo\mbox{[}50\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère l\textquotesingle{}équipe de Mechas d\textquotesingle{}un joueur à partir d\textquotesingle{}un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a95f85960ed5fca42b0affe9a8a79c2ee}{recuperation\+\_\+attaques}} (\mbox{\hyperlink{structattaque__t}{attaque\+\_\+t}} \texorpdfstring{$\ast$}{*}attaques)
+\begin{DoxyCompactList}\small\item\em Récupère les informations complètes des attaques disponibles depuis un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_abb51a9229438e3f3f69f63b4e6cb7067}{recuperation\+\_\+mechas}} (\mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+l)
+\begin{DoxyCompactList}\small\item\em Récupère la liste complète des Mechas disponibles et leurs caractéristiques à partir d\textquotesingle{}un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a8cf14c59c90205a0072f327412240c2d}{recuperation\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} \texorpdfstring{$\ast$}{*}zone\+\_\+l)
+\begin{DoxyCompactList}\small\item\em Récupère les données détaillées des zones de jeu depuis un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_ab8195ddd8dbc45661b6c79de94f968e7}{sauvegarde\+\_\+inventaire}} (\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}inventaire, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sauvegarde les données de l\textquotesingle{}inventaire d\textquotesingle{}un joueur (ou PNJ) dans un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a48e80e16d5df5b56d2279ae7c965bb71}{sauvegarde\+\_\+mechas\+\_\+joueur}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}, int nb\+\_\+mechas)
+\begin{DoxyCompactList}\small\item\em Sauvegarde l\textquotesingle{}équipe de Mechas d\textquotesingle{}un joueur dans un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a68cba593cfe77461f153f38b2a08a374}{sauvegarde\+\_\+partie}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sauvegarde l\textquotesingle{}état global d\textquotesingle{}une partie d\textquotesingle{}un joueur dans plusieurs fichiers CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_ab1da7937b8e445add82b83c23950cc74}{sauvegarde\+\_\+pnj}} (\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj, int id\+\_\+pnj, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sauvegarde ou met à jour les données d\textquotesingle{}un PNJ spécifique pour un joueur dans un fichier CSV personnalisé. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a020e784ece3effc4c331f7955d822f1e}{suppression\+\_\+inventaire}} (\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}inventaire, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Supprime l\textquotesingle{}entrée d\textquotesingle{}un inventaire associé à un joueur (ou PNJ) d\textquotesingle{}un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_accca901359a4eafa002b577efb20fff1}{suppression\+\_\+mechas\+\_\+joueur}} (\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}mechas\+\_\+joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}, int nb\+\_\+mechas)
+\begin{DoxyCompactList}\small\item\em Supprime toutes les entrées associées aux Mechas d\textquotesingle{}un joueur dans un fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a3748382cfddb2c574b37de5987534cea}{suppression\+\_\+partie}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, char pseudo\mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Supprime définitivement toutes les données d\textquotesingle{}une partie d\textquotesingle{}un joueur depuis les fichiers CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_aabb5472f53dbb474524b053b75d3668f}{destruction\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Libère la mémoire dynamiquement allouée à un joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sauv_8c_a493358ab8bc3b3e8d2b90a9aa3f100bb}{destruction\+\_\+pnj}} (\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}pnj)
+\begin{DoxyCompactList}\small\item\em Libère la mémoire dynamiquement allouée à un PNJ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier contenant les fonctions de sauvegarde et récupération 
+
+fichier contenant les fonctions pour gérer les sons du jeux
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{sauv_8c_aabb5472f53dbb474524b053b75d3668f}\label{sauv_8c_aabb5472f53dbb474524b053b75d3668f} 
+\index{sauv.c@{sauv.c}!destruction\_joueur@{destruction\_joueur}}
+\index{destruction\_joueur@{destruction\_joueur}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{destruction\_joueur()}{destruction\_joueur()}}
+{\footnotesize\ttfamily int destruction\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Libère la mémoire dynamiquement allouée à un joueur. 
+
+Cette fonction libère explicitement la mémoire allouée à l\textquotesingle{}inventaire d\textquotesingle{}un joueur en appelant {\ttfamily free()}. Elle s\textquotesingle{}assure également de mettre le pointeur d\textquotesingle{}inventaire à {\ttfamily NULL} pour éviter les références invalides (dangling pointers).
+
+À appeler impérativement avant de supprimer ou de réinitialiser définitivement une structure joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure \doxylink{structjoueur__t}{joueur\+\_\+t} dont l\textquotesingle{}inventaire sera libéré.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} après la libération réussie de l\textquotesingle{}inventaire.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily joueur} doit être valide et l\textquotesingle{}inventaire doit avoir été alloué dynamiquement au préalable.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le pointeur {\ttfamily inventaire} de la structure joueur sera mis à {\ttfamily NULL}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Après appel de cette fonction, toute tentative d\textquotesingle{}accès à l\textquotesingle{}inventaire libéré doit être évitée.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Ne pas appeler cette fonction sur une structure joueur dont l\textquotesingle{}inventaire n\textquotesingle{}est pas alloué dynamiquement (risque d\textquotesingle{}erreur de segmentation). 
+\end{DoxyWarning}
+\Hypertarget{sauv_8c_a493358ab8bc3b3e8d2b90a9aa3f100bb}\label{sauv_8c_a493358ab8bc3b3e8d2b90a9aa3f100bb} 
+\index{sauv.c@{sauv.c}!destruction\_pnj@{destruction\_pnj}}
+\index{destruction\_pnj@{destruction\_pnj}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{destruction\_pnj()}{destruction\_pnj()}}
+{\footnotesize\ttfamily int destruction\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj }\end{DoxyParamCaption})}
+
+
+
+Libère la mémoire dynamiquement allouée à un PNJ. 
+
+Cette fonction libère explicitement la mémoire allouée à l\textquotesingle{}inventaire d\textquotesingle{}un PNJ en appelant la fonction {\ttfamily free()}. Le pointeur vers l\textquotesingle{}inventaire du PNJ est ensuite mis à {\ttfamily NULL} afin d’éviter les références invalides (dangling pointers).
+
+Cette opération est à réaliser avant la suppression définitive ou la réinitialisation complète d\textquotesingle{}une structure PNJ.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pnj} & Pointeur vers la structure {\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}} dont l\textquotesingle{}inventaire sera libéré.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} après la libération réussie de l\textquotesingle{}inventaire.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily pnj} doit être valide et son inventaire doit avoir été alloué dynamiquement auparavant.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le pointeur {\ttfamily inventaire} de la structure {\ttfamily pnj} sera mis à {\ttfamily NULL}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Après l\textquotesingle{}appel à cette fonction, toute tentative d\textquotesingle{}accès à l\textquotesingle{}inventaire libéré doit être évitée.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Ne pas appeler cette fonction si l\textquotesingle{}inventaire du PNJ n\textquotesingle{}a pas été dynamiquement alloué, car cela provoquerait une erreur de segmentation. 
+\end{DoxyWarning}
+\Hypertarget{sauv_8c_a72f7ea1b998d9c8d83135418b440260c}\label{sauv_8c_a72f7ea1b998d9c8d83135418b440260c} 
+\index{sauv.c@{sauv.c}!init\_partie@{init\_partie}}
+\index{init\_partie@{init\_partie}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{init\_partie()}{init\_partie()}}
+{\footnotesize\ttfamily int init\+\_\+partie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]},  }\item[{char}]{sexe }\end{DoxyParamCaption})}
+
+
+
+Initialise une nouvelle partie avec les paramètres par défaut pour un joueur. 
+
+Cette fonction configure une nouvelle partie en initialisant la structure du joueur \+:
+\begin{DoxyItemize}
+\item Définition du pseudo.
+\item Position initiale ({\ttfamily x}, {\ttfamily y}) sur la carte de départ.
+\item Sexe du personnage (utilisé pour l\textquotesingle{}apparence graphique).
+\item Numéro de la carte initiale ({\ttfamily num\+Map}).
+\item Point de sauvegarde initialisé à 0.
+\item Initialisation à zéro du nombre de Mechas possédés.
+\item Allocation dynamique de l\textquotesingle{}inventaire et initialisation des objets à zéro.
+\end{DoxyItemize}
+
+La fonction crée également un nouveau fichier de sauvegarde spécifique aux PNJs liés au pseudo du joueur, puis sauvegarde automatiquement l\textquotesingle{}état initial de la partie.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure du joueur à initialiser. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur (longueur maximale définie par {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}). \\
+\hline
+{\em sexe} & Caractère représentant le sexe du personnage (\textquotesingle{}M\textquotesingle{} ou \textquotesingle{}F\textquotesingle{}), utilisé pour l\textquotesingle{}apparence du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si l\textquotesingle{}initialisation s\textquotesingle{}est correctement déroulée.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}échec lors de l\textquotesingle{}allocation dynamique de l\textquotesingle{}inventaire.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily joueur} doit être valide et non-\/null. Les constantes {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily OK}, et {\ttfamily ERREUR\+\_\+\+OUVERTURE} doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Une nouvelle partie est initialisée, les ressources sont allouées dynamiquement, et l\textquotesingle{}état du jeu est sauvegardé.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Assure-\/toi que les fonctions appelées ({\ttfamily nouveau\+\_\+fichier\+\_\+pnj}, {\ttfamily sauvegarde\+\_\+partie}) soient implémentées correctement.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+L\textquotesingle{}appel à cette fonction entraîne une allocation dynamique ({\ttfamily malloc}) pour l\textquotesingle{}inventaire. La mémoire ainsi allouée devra être libérée ({\ttfamily free}) en fin d\textquotesingle{}utilisation pour éviter toute fuite mémoire. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a72f7ea1b998d9c8d83135418b440260c_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a72f7ea1b998d9c8d83135418b440260c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_aec5928f1d3393d66b9df8e4066b8d8da}\label{sauv_8c_aec5928f1d3393d66b9df8e4066b8d8da} 
+\index{sauv.c@{sauv.c}!nouveau\_fichier\_pnj@{nouveau\_fichier\_pnj}}
+\index{nouveau\_fichier\_pnj@{nouveau\_fichier\_pnj}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{nouveau\_fichier\_pnj()}{nouveau\_fichier\_pnj()}}
+{\footnotesize\ttfamily int nouveau\+\_\+fichier\+\_\+pnj (\begin{DoxyParamCaption}\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Crée un nouveau fichier personnalisé des PNJs basé sur un modèle initial. 
+
+Cette fonction génère un nouveau fichier de sauvegarde personnalisé pour les PNJs en copiant intégralement le contenu du fichier modèle ({\ttfamily save/pnj.\+csv}). Le nouveau fichier créé est spécifique au joueur et nommé selon le format suivant \+: {\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv}.
+
+Ce mécanisme permet à chaque joueur de disposer de sa propre sauvegarde des interactions et des états des PNJs, indépendamment des autres parties ou profils existants.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur (longueur maximale définie par {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la création et la copie du fichier se sont déroulées avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas de problème d\textquotesingle{}ouverture des fichiers (lecture ou écriture).
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le dossier {\ttfamily save} doit exister et être accessible en écriture. Le fichier source {\ttfamily save/pnj.\+csv} doit exister et être lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE\+\_\+\+DESC}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Un nouveau fichier personnalisé pour le joueur est créé dans le dossier {\ttfamily save}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Assure-\/toi de vérifier que le pseudo ne contient pas de caractères spéciaux pouvant perturber le nom du fichier.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Pense à gérer correctement les droits d\textquotesingle{}accès au dossier de sauvegarde et aux fichiers, ainsi qu\textquotesingle{}à gérer les erreurs éventuelles. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_aec5928f1d3393d66b9df8e4066b8d8da_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a95f85960ed5fca42b0affe9a8a79c2ee}\label{sauv_8c_a95f85960ed5fca42b0affe9a8a79c2ee} 
+\index{sauv.c@{sauv.c}!recuperation\_attaques@{recuperation\_attaques}}
+\index{recuperation\_attaques@{recuperation\_attaques}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_attaques()}{recuperation\_attaques()}}
+{\footnotesize\ttfamily int recuperation\+\_\+attaques (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattaque__t}{attaque\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{attaques }\end{DoxyParamCaption})}
+
+
+
+Récupère les informations complètes des attaques disponibles depuis un fichier CSV. 
+
+Cette fonction lit le fichier {\ttfamily save/attaques.\+csv} contenant la liste des attaques disponibles dans le jeu. Chaque attaque récupérée comprend les données suivantes \+:
+\begin{DoxyItemize}
+\item Identifiant unique de l\textquotesingle{}attaque ({\ttfamily id\+\_\+attaques}).
+\item Nom de l\textquotesingle{}attaque.
+\item Type de l\textquotesingle{}attaque (par exemple \+: feu, eau, etc.).
+\item Niveau requis pour apprendre/utiliser l\textquotesingle{}attaque.
+\item Dégâts infligés par l\textquotesingle{}attaque.
+\item Pourcentage de précision de l\textquotesingle{}attaque.
+\item Nombre d\textquotesingle{}utilisations disponibles pour l\textquotesingle{}attaque (PP).
+\end{DoxyItemize}
+
+Les attaques sont stockées directement dans le tableau passé en paramètre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em attaques} & Tableau de structures {\ttfamily \doxylink{structattaque__t}{attaque\+\_\+t}} à remplir avec les données récupérées.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item Nombre total d\textquotesingle{}attaques récupérées avec succès (≥ 0).
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}échec lors de l\textquotesingle{}ouverture du fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/attaques.\+csv} doit exister, être correctement formaté, et être lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau {\ttfamily attaques} est initialisé avec toutes les données récupérées.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Vérifie la capacité maximale du tableau {\ttfamily attaques} afin d’éviter un débordement en cas d\textquotesingle{}un grand nombre d\textquotesingle{}attaques.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi de gérer explicitement les erreurs liées à la lecture du fichier (format incorrect, dépassement du tableau, etc.). 
+\end{DoxyWarning}
+\Hypertarget{sauv_8c_a5df71d1ff822e93d595691020a67fcac}\label{sauv_8c_a5df71d1ff822e93d595691020a67fcac} 
+\index{sauv.c@{sauv.c}!recuperation\_inventaire@{recuperation\_inventaire}}
+\index{recuperation\_inventaire@{recuperation\_inventaire}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_inventaire()}{recuperation\_inventaire()}}
+{\footnotesize\ttfamily int recuperation\+\_\+inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{inventaire,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Récupère les données de l\textquotesingle{}inventaire d\textquotesingle{}un joueur ou d\textquotesingle{}un PNJ depuis un fichier CSV. 
+
+Cette fonction lit le fichier {\ttfamily save/inventaire.\+csv} à la recherche de l\textquotesingle{}entrée correspondant au pseudo spécifié. Si l\textquotesingle{}entrée est trouvée, elle charge dans la structure d\textquotesingle{}inventaire \+:
+\begin{DoxyItemize}
+\item Le nombre de mechaballs disponibles.
+\item La quantité de carburant.
+\item Le nombre d\textquotesingle{}objets repousse disponibles.
+\item Le nombre d\textquotesingle{}objets rappel disponibles.
+\end{DoxyItemize}
+
+Les données récupérées sont stockées directement dans la structure inventaire passée en paramètre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & Pointeur vers la structure {\ttfamily \doxylink{structinventaire__t}{inventaire\+\_\+t}} qui sera remplie avec les données récupérées. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur ou du PNJ concerné par la récupération.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si l\textquotesingle{}inventaire a été récupéré avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} si une erreur d\textquotesingle{}ouverture du fichier survient.
+\item {\ttfamily ERR} si le pseudo recherché n\textquotesingle{}est pas trouvé dans le fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/inventaire.\+csv} doit exister, être correctement formaté, et être lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERR}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La structure inventaire est initialisée avec les quantités des objets récupérées en cas de succès.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction peut être utilisée aussi bien pour le joueur que pour les PNJs.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie la cohérence des données stockées dans le fichier CSV pour éviter les erreurs d’initialisation. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a5df71d1ff822e93d595691020a67fcac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a27e4df079f565f0ca025fea8e134b47e}\label{sauv_8c_a27e4df079f565f0ca025fea8e134b47e} 
+\index{sauv.c@{sauv.c}!recuperation\_joueur@{recuperation\_joueur}}
+\index{recuperation\_joueur@{recuperation\_joueur}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_joueur()}{recuperation\_joueur()}}
+{\footnotesize\ttfamily int recuperation\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Récupère les données d\textquotesingle{}une partie sauvegardée pour un joueur donné depuis un fichier CSV. 
+
+Cette fonction recherche dans le fichier de sauvegarde {\ttfamily save/joueur.\+csv} les données associées au pseudo spécifié. Si le pseudo est trouvé, la fonction charge automatiquement \+:
+\begin{DoxyItemize}
+\item Les informations principales du joueur (pseudo, sexe, carte actuelle, position, point de sauvegarde).
+\item L\textquotesingle{}inventaire du joueur (objets possédés).
+\item Les Mechas du joueur (équipe actuelle).
+\end{DoxyItemize}
+
+L\textquotesingle{}inventaire est alloué dynamiquement lors de la récupération. Les fonctions {\ttfamily recuperation\+\_\+inventaire} et {\ttfamily recuperation\+\_\+mechas\+\_\+joueur} sont appelées pour charger les données détaillées correspondantes.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure \doxylink{structjoueur__t}{joueur\+\_\+t} qui sera remplie avec les données récupérées. \\
+\hline
+{\em pseudo} & Chaîne de caractères indiquant le pseudo du joueur dont les données doivent être récupérées.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si les données ont été récupérées avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} si une erreur d\textquotesingle{}ouverture du fichier ou d\textquotesingle{}allocation mémoire survient.
+\item {\ttfamily ERR} si le pseudo n\textquotesingle{}est pas trouvé dans le fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/joueur.\+csv} doit exister et être lisible. Les fonctions {\ttfamily recuperation\+\_\+inventaire} et {\ttfamily recuperation\+\_\+mechas\+\_\+joueur} doivent être implémentées et fonctionnelles. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERR}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La structure {\ttfamily joueur} est initialisée avec les données récupérées en cas de succès.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La mémoire allouée dynamiquement pour l\textquotesingle{}inventaire devra être libérée explicitement à la fin de son utilisation pour éviter les fuites mémoire.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie les fichiers CSV et les fonctions annexes pour éviter les incohérences de données. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{sauv_8c_a27e4df079f565f0ca025fea8e134b47e_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a27e4df079f565f0ca025fea8e134b47e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_abb51a9229438e3f3f69f63b4e6cb7067}\label{sauv_8c_abb51a9229438e3f3f69f63b4e6cb7067} 
+\index{sauv.c@{sauv.c}!recuperation\_mechas@{recuperation\_mechas}}
+\index{recuperation\_mechas@{recuperation\_mechas}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_mechas()}{recuperation\_mechas()}}
+{\footnotesize\ttfamily int recuperation\+\_\+mechas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__t}{mechas\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+l }\end{DoxyParamCaption})}
+
+
+
+Récupère la liste complète des Mechas disponibles et leurs caractéristiques à partir d\textquotesingle{}un fichier CSV. 
+
+Cette fonction lit le fichier {\ttfamily save/liste\+Mechas.\+csv} qui contient toutes les informations relatives aux Mechas existants dans le jeu. Pour chaque Mecha, les données suivantes sont récupérées et stockées \+:
+\begin{DoxyItemize}
+\item Identifiant unique ({\ttfamily id\+\_\+mechas}).
+\item Nom du Mecha.
+\item Type du Mecha.
+\item État d\textquotesingle{}évolution (identifiant du Mecha évolué, ou 0 si aucune évolution).
+\item Niveau requis pour évoluer (si applicable).
+\item Description textuelle du Mecha.
+\item Liste des identifiants d\textquotesingle{}attaques apprises par le Mecha, récupérés sous forme de chaîne puis convertis en entiers.
+\item Nombre total d\textquotesingle{}attaques disponibles pour ce Mecha.
+\end{DoxyItemize}
+
+Chaque attaque est stockée dans un tableau spécifique à chaque Mecha.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+l} & Tableau de structures {\ttfamily \doxylink{structmechas__t}{mechas\+\_\+t}} à remplir avec les données récupérées.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item Nombre total de Mechas récupérés avec succès (≥ 0).
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}échec lors de l\textquotesingle{}ouverture du fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/liste\+Mechas.\+csv} doit exister, être correctement formaté et lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau {\ttfamily mechas\+\_\+l} est initialisé avec les données de chaque Mecha récupéré.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Assure-\/toi que le tableau {\ttfamily liste\+\_\+attaque} de chaque Mecha est suffisamment grand pour accueillir toutes les attaques listées.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie le format des attaques (séparées par des points-\/virgules) dans le CSV afin d\textquotesingle{}éviter toute erreur de conversion ou dépassement. 
+\end{DoxyWarning}
+\Hypertarget{sauv_8c_a163544a5ed388ef250c2b5402fd1c552}\label{sauv_8c_a163544a5ed388ef250c2b5402fd1c552} 
+\index{sauv.c@{sauv.c}!recuperation\_mechas\_joueur@{recuperation\_mechas\_joueur}}
+\index{recuperation\_mechas\_joueur@{recuperation\_mechas\_joueur}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_mechas\_joueur()}{recuperation\_mechas\_joueur()}}
+{\footnotesize\ttfamily int recuperation\+\_\+mechas\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+joueur,  }\item[{char}]{pseudo\mbox{[}50\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Récupère l\textquotesingle{}équipe de Mechas d\textquotesingle{}un joueur à partir d\textquotesingle{}un fichier CSV. 
+
+Cette fonction lit le fichier {\ttfamily save/infomechas.\+csv} et récupère tous les Mechas appartenant au joueur spécifié. Chaque ligne correspondant au pseudo recherché est analysée et les données des Mechas suivants sont chargées \+:
+\begin{DoxyItemize}
+\item Numéro du Mecha dans l\textquotesingle{}équipe du joueur.
+\item Identifiant du Mecha.
+\item Niveau actuel.
+\item Points de vie actuels et maximum.
+\item Expérience actuelle.
+\item Statistiques d\textquotesingle{}attaque, de défense et de vitesse.
+\item Identifiants des attaques disponibles (attaque 1 et attaque 2).
+\item Nombre d\textquotesingle{}utilisations restantes pour chaque attaque.
+\end{DoxyItemize}
+
+Les Mechas récupérés sont placés directement dans le tableau fourni en paramètre, à leur position spécifique selon leur numéro d\textquotesingle{}équipe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+joueur} & Tableau de structures {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} à remplir avec les données récupérées. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur concerné par la récupération.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item Nombre de Mechas récupérés avec succès (≥ 0).
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}échec lors de l\textquotesingle{}ouverture du fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/infomechas.\+csv} doit exister, être correctement formaté, et lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau {\ttfamily mechas\+\_\+joueur} est initialisé avec les Mechas du joueur. La fonction retourne leur nombre.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Vérifie que les indices ({\ttfamily num}) utilisés dans le fichier CSV respectent bien les limites du tableau {\ttfamily mechas\+\_\+joueur}.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi de gérer les éventuelles incohérences des données (par exemple, index hors tableau). 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a163544a5ed388ef250c2b5402fd1c552_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a099dce0c2a73af791f6cd412e9b085f2}\label{sauv_8c_a099dce0c2a73af791f6cd412e9b085f2} 
+\index{sauv.c@{sauv.c}!recuperation\_pnj@{recuperation\_pnj}}
+\index{recuperation\_pnj@{recuperation\_pnj}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_pnj()}{recuperation\_pnj()}}
+{\footnotesize\ttfamily int recuperation\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj,  }\item[{char}]{pseudo\mbox{[}50\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Récupère l\textquotesingle{}état et les données détaillées des PNJs à partir d\textquotesingle{}un fichier CSV personnalisé. 
+
+Cette fonction lit un fichier CSV spécifique aux PNJs, généré précédemment pour un joueur particulier, dont le nom est formaté ainsi \+: {\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv}. Elle charge dans un tableau de structures {\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}} \+:
+\begin{DoxyItemize}
+\item L\textquotesingle{}identifiant unique ({\ttfamily id\+\_\+pnj}).
+\item La carte sur laquelle se situe le PNJ ({\ttfamily id\+\_\+map}).
+\item Le pseudo ou nom affiché du PNJ.
+\item L\textquotesingle{}état actuel du PNJ (interaction réalisée ou non).
+\item Les dialogues de début et de fin d\textquotesingle{}interaction.
+\item La position ({\ttfamily x}, {\ttfamily y}) et l\textquotesingle{}orientation sur la carte.
+\item L\textquotesingle{}inventaire du PNJ.
+\item L\textquotesingle{}équipe de Mechas du PNJ.
+\end{DoxyItemize}
+
+L\textquotesingle{}inventaire de chaque PNJ est alloué dynamiquement, et les Mechas ainsi que les objets sont chargés à l\textquotesingle{}aide des fonctions {\ttfamily recuperation\+\_\+inventaire} et {\ttfamily recuperation\+\_\+mechas\+\_\+joueur}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pnj} & Tableau de structures PNJ ({\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}}) dans lequel les données seront chargées. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur utilisé pour charger son fichier personnalisé.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la récupération s\textquotesingle{}effectue correctement.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} si une erreur d\textquotesingle{}ouverture du fichier ou une erreur d\textquotesingle{}allocation mémoire survient.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier personnalisé ({\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv}) doit exister et être lisible. Les fonctions annexes ({\ttfamily recuperation\+\_\+inventaire}, {\ttfamily recuperation\+\_\+mechas\+\_\+joueur}) doivent être valides et fonctionnelles. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE\+\_\+\+DESC}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau {\ttfamily pnj} est rempli avec toutes les informations récupérées.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La mémoire dynamiquement allouée pour l\textquotesingle{}inventaire de chaque PNJ devra être libérée explicitement en fin d\textquotesingle{}utilisation pour éviter les fuites mémoire.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie la validité des fichiers CSV et des fonctions associées pour éviter les incohérences et problèmes de chargement. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{sauv_8c_a099dce0c2a73af791f6cd412e9b085f2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a8cf14c59c90205a0072f327412240c2d}\label{sauv_8c_a8cf14c59c90205a0072f327412240c2d} 
+\index{sauv.c@{sauv.c}!recuperation\_zone@{recuperation\_zone}}
+\index{recuperation\_zone@{recuperation\_zone}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{recuperation\_zone()}{recuperation\_zone()}}
+{\footnotesize\ttfamily int recuperation\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{zone\+\_\+l }\end{DoxyParamCaption})}
+
+
+
+Récupère les données détaillées des zones de jeu depuis un fichier CSV. 
+
+Cette fonction lit le fichier {\ttfamily save/zone.\+csv} contenant les informations sur les différentes zones du jeu. ~\newline
+ Pour chaque zone, les données suivantes sont chargées \+:
+\begin{DoxyItemize}
+\item Identifiant unique de la zone ({\ttfamily id\+\_\+zone}).
+\item Niveau moyen d\textquotesingle{}apparition des Mechas sauvages.
+\item Points de vie (PV) moyens des Mechas sauvages.
+\item Vitesse moyenne des Mechas sauvages.
+\item Attaque moyenne des Mechas sauvages.
+\item Défense moyenne des Mechas sauvages.
+\item Liste des identifiants des Mechas pouvant apparaître dans cette zone, récupérée sous forme de chaîne puis convertie en entiers.
+\item Nombre total de Mechas différents pouvant apparaître dans cette zone.
+\end{DoxyItemize}
+
+Chaque identifiant de Mecha est stocké dans un tableau spécifique à chaque zone.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em zone\+\_\+l} & Tableau de structures {\ttfamily \doxylink{structzone__t}{zone\+\_\+t}} à remplir avec les données récupérées.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item Nombre total de zones récupérées avec succès (≥ 0).
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}échec lors de l\textquotesingle{}ouverture du fichier.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le fichier {\ttfamily save/zone.\+csv} doit exister, être correctement formaté et lisible. Les constantes ({\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau {\ttfamily zone\+\_\+l} est initialisé avec les données de chaque zone récupérée.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Vérifie que le tableau {\ttfamily liste\+Mechas\+Zone} est suffisamment grand pour accueillir tous les identifiants des Mechas listés.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie le format des identifiants de Mechas (séparés par des points-\/virgules) dans le CSV afin d\textquotesingle{}éviter des erreurs de conversion ou débordement. 
+\end{DoxyWarning}
+\Hypertarget{sauv_8c_ab8195ddd8dbc45661b6c79de94f968e7}\label{sauv_8c_ab8195ddd8dbc45661b6c79de94f968e7} 
+\index{sauv.c@{sauv.c}!sauvegarde\_inventaire@{sauvegarde\_inventaire}}
+\index{sauvegarde\_inventaire@{sauvegarde\_inventaire}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarde\_inventaire()}{sauvegarde\_inventaire()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{inventaire,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les données de l\textquotesingle{}inventaire d\textquotesingle{}un joueur (ou PNJ) dans un fichier CSV. 
+
+Cette fonction met à jour ou ajoute les informations d\textquotesingle{}un inventaire spécifique (quantités d\textquotesingle{}objets) dans le fichier {\ttfamily save/inventaire.\+csv}. Si une entrée correspondante au pseudo spécifié existe déjà, elle est mise à jour avec les nouvelles valeurs fournies. Si aucune entrée n\textquotesingle{}existe, elle sera ajoutée à la fin du fichier.
+
+Les objets sauvegardés incluent \+:
+\begin{DoxyItemize}
+\item Mechaballs.
+\item Carburant.
+\item Repousses.
+\item Rappels.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & Pointeur vers la structure d\textquotesingle{}inventaire ({\ttfamily \doxylink{structinventaire__t}{inventaire\+\_\+t}}) à sauvegarder. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur ou du PNJ associé à cet inventaire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si l\textquotesingle{}inventaire est sauvegardé avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur d\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers doivent être accessibles en lecture/écriture dans le dossier {\ttfamily save}. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le fichier CSV est mis à jour avec les données actuelles de l\textquotesingle{}inventaire fourni.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction utilise un fichier temporaire pour éviter la corruption des données en cas de problème pendant la sauvegarde.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi que le dossier {\ttfamily save} existe et que les fichiers sont accessibles en lecture et écriture. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_ab8195ddd8dbc45661b6c79de94f968e7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a48e80e16d5df5b56d2279ae7c965bb71}\label{sauv_8c_a48e80e16d5df5b56d2279ae7c965bb71} 
+\index{sauv.c@{sauv.c}!sauvegarde\_mechas\_joueur@{sauvegarde\_mechas\_joueur}}
+\index{sauvegarde\_mechas\_joueur@{sauvegarde\_mechas\_joueur}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarde\_mechas\_joueur()}{sauvegarde\_mechas\_joueur()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+mechas\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]},  }\item[{int}]{nb\+\_\+mechas }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde l\textquotesingle{}équipe de Mechas d\textquotesingle{}un joueur dans un fichier CSV. 
+
+Cette fonction met à jour ou ajoute les informations détaillées des Mechas appartenant à un joueur dans le fichier {\ttfamily save/infomechas.\+csv}. Pour chaque Mecha, les informations sauvegardées incluent \+:
+\begin{DoxyItemize}
+\item Numéro du Mecha dans l\textquotesingle{}équipe.
+\item Identifiant du Mecha.
+\item Niveau actuel.
+\item Points de vie actuels et maximum.
+\item Expérience accumulée.
+\item Statistiques \+: attaque, défense et vitesse.
+\item Identifiants des deux attaques disponibles.
+\item Nombre d\textquotesingle{}utilisations restantes pour chaque attaque.
+\end{DoxyItemize}
+
+Si une entrée correspondante à un Mecha précis existe déjà, elle est mise à jour avec les nouvelles valeurs. Sinon, une nouvelle entrée sera créée pour chaque Mecha manquant.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+joueur} & Tableau de structures {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} contenant les données des Mechas à sauvegarder. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur concerné par cette sauvegarde. \\
+\hline
+{\em nb\+\_\+mechas} & Nombre de Mechas actuellement dans l\textquotesingle{}équipe du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si les Mechas ont été sauvegardés avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur d\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers doivent être accessibles en lecture et écriture dans le dossier {\ttfamily save}. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le fichier CSV est mis à jour avec les données actuelles de chaque Mecha de l\textquotesingle{}équipe du joueur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction crée un fichier temporaire pour garantir l\textquotesingle{}intégrité des données lors de la sauvegarde.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie que le dossier {\ttfamily save} existe et que les fichiers nécessaires sont accessibles. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a48e80e16d5df5b56d2279ae7c965bb71_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a68cba593cfe77461f153f38b2a08a374}\label{sauv_8c_a68cba593cfe77461f153f38b2a08a374} 
+\index{sauv.c@{sauv.c}!sauvegarde\_partie@{sauvegarde\_partie}}
+\index{sauvegarde\_partie@{sauvegarde\_partie}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarde\_partie()}{sauvegarde\_partie()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+partie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde l\textquotesingle{}état global d\textquotesingle{}une partie d\textquotesingle{}un joueur dans plusieurs fichiers CSV. 
+
+Cette fonction sauvegarde les informations principales du joueur, telles que \+:
+\begin{DoxyItemize}
+\item Pseudo du joueur.
+\item Sexe du personnage.
+\item Carte actuelle ({\ttfamily num\+Map}).
+\item Position ({\ttfamily x}, {\ttfamily y}) actuelle du joueur sur la carte.
+\item Dernier point de sauvegarde atteint.
+\end{DoxyItemize}
+
+Les informations sont sauvegardées dans le fichier {\ttfamily save/joueur.\+csv}. ~\newline
+ Si une sauvegarde correspondant au pseudo du joueur existe déjà, elle est mise à jour ; ~\newline
+ sinon, une nouvelle entrée est créée.
+
+La fonction sauvegarde également automatiquement \+:
+\begin{DoxyItemize}
+\item L\textquotesingle{}inventaire du joueur (objets possédés) via la fonction {\ttfamily sauvegarde\+\_\+inventaire}.
+\item L\textquotesingle{}équipe actuelle de Mechas du joueur via la fonction {\ttfamily sauvegarde\+\_\+mechas\+\_\+joueur}.
+\end{DoxyItemize}
+
+Ces informations sont respectivement enregistrées dans les fichiers \+:
+\begin{DoxyItemize}
+\item {\ttfamily save/inventaire.\+csv}
+\item {\ttfamily save/infomechas.\+csv}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure \doxylink{structjoueur__t}{joueur\+\_\+t} contenant toutes les données à sauvegarder. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur concerné par cette sauvegarde.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la sauvegarde complète s\textquotesingle{}est déroulée correctement.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur lors de l\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier {\ttfamily save}. Les fonctions {\ttfamily sauvegarde\+\_\+inventaire} et {\ttfamily sauvegarde\+\_\+mechas\+\_\+joueur} doivent être valides. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Tous les fichiers CSV concernés sont mis à jour avec les informations actuelles du joueur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Un fichier temporaire est utilisé pour garantir l\textquotesingle{}intégrité des données pendant la sauvegarde.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie la disponibilité des fichiers CSV nécessaires et le bon fonctionnement des fonctions annexes pour éviter toute perte de données. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a68cba593cfe77461f153f38b2a08a374_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a68cba593cfe77461f153f38b2a08a374_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_ab1da7937b8e445add82b83c23950cc74}\label{sauv_8c_ab1da7937b8e445add82b83c23950cc74} 
+\index{sauv.c@{sauv.c}!sauvegarde\_pnj@{sauvegarde\_pnj}}
+\index{sauvegarde\_pnj@{sauvegarde\_pnj}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarde\_pnj()}{sauvegarde\_pnj()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpnj__t}{pnj\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pnj,  }\item[{int}]{id\+\_\+pnj,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde ou met à jour les données d\textquotesingle{}un PNJ spécifique pour un joueur dans un fichier CSV personnalisé. 
+
+Cette fonction sauvegarde les données associées à un PNJ particulier (identifié par son ID) dans un fichier CSV dédié au joueur concerné ({\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv}). Si l\textquotesingle{}entrée correspondant à l\textquotesingle{}ID du PNJ existe déjà, les informations suivantes seront mises à jour \+:
+\begin{DoxyItemize}
+\item ID du PNJ.
+\item Identifiant de la carte où se trouve le PNJ.
+\item Pseudo du PNJ.
+\item État d\textquotesingle{}interaction (non rencontré, rencontré, combat terminé, etc.).
+\item Dialogues de début et de fin d\textquotesingle{}interaction.
+\item Position ({\ttfamily x}, {\ttfamily y}) et orientation du PNJ sur la carte.
+\end{DoxyItemize}
+
+Si l\textquotesingle{}entrée du PNJ n\textquotesingle{}existe pas, elle sera ajoutée au fichier.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pnj} & Pointeur vers la structure {\ttfamily \doxylink{structpnj__t}{pnj\+\_\+t}} contenant les données actuelles du PNJ à sauvegarder. \\
+\hline
+{\em id\+\_\+pnj} & Identifiant unique du PNJ à sauvegarder ou à mettre à jour. \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur associé à cette sauvegarde.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si la sauvegarde ou la mise à jour a été réalisée avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} si une erreur survient lors de l\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le dossier {\ttfamily save} doit exister et être accessible en lecture/écriture. Le fichier CSV personnalisé ({\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv}) doit être accessible (ou sera créé si inexistant). Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE\+\_\+\+DESC}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le fichier CSV spécifique au joueur est mis à jour ou créé avec les informations actuelles du PNJ.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Utilise un fichier temporaire pour assurer l\textquotesingle{}intégrité des données lors de la sauvegarde.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Vérifie que le pseudo du joueur ne comporte aucun caractère spécial incompatible avec le système de fichiers. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_ab1da7937b8e445add82b83c23950cc74_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a020e784ece3effc4c331f7955d822f1e}\label{sauv_8c_a020e784ece3effc4c331f7955d822f1e} 
+\index{sauv.c@{sauv.c}!suppression\_inventaire@{suppression\_inventaire}}
+\index{suppression\_inventaire@{suppression\_inventaire}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{suppression\_inventaire()}{suppression\_inventaire()}}
+{\footnotesize\ttfamily int suppression\+\_\+inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{inventaire,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Supprime l\textquotesingle{}entrée d\textquotesingle{}un inventaire associé à un joueur (ou PNJ) d\textquotesingle{}un fichier CSV. 
+
+Cette fonction supprime définitivement les données d\textquotesingle{}inventaire correspondant au pseudo spécifié du fichier {\ttfamily save/inventaire.\+csv}. Elle crée un fichier temporaire, recopie toutes les entrées sauf celle associée au pseudo fourni, puis remplace l\textquotesingle{}ancien fichier par ce fichier temporaire.
+
+Cette opération est utile pour nettoyer les données associées à un joueur supprimé ou réinitialisé.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & Pointeur vers une structure d\textquotesingle{}inventaire (non utilisée ici, conservée pour compatibilité). \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur ou du PNJ à supprimer de l\textquotesingle{}inventaire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si l\textquotesingle{}entrée de l\textquotesingle{}inventaire a été supprimée avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur lors de l\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier {\ttfamily save}. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}entrée correspondant au pseudo spécifié est supprimée du fichier {\ttfamily inventaire.\+csv}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La structure {\ttfamily inventaire} en paramètre est conservée pour compatibilité mais n\textquotesingle{}est pas utilisée par cette fonction.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette opération est irréversible. Assure-\/toi que les données ne seront plus nécessaires avant d\textquotesingle{}appeler cette fonction. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a020e784ece3effc4c331f7955d822f1e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_accca901359a4eafa002b577efb20fff1}\label{sauv_8c_accca901359a4eafa002b577efb20fff1} 
+\index{sauv.c@{sauv.c}!suppression\_mechas\_joueur@{suppression\_mechas\_joueur}}
+\index{suppression\_mechas\_joueur@{suppression\_mechas\_joueur}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{suppression\_mechas\_joueur()}{suppression\_mechas\_joueur()}}
+{\footnotesize\ttfamily int suppression\+\_\+mechas\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mechas\+\_\+joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]},  }\item[{int}]{nb\+\_\+mechas }\end{DoxyParamCaption})}
+
+
+
+Supprime toutes les entrées associées aux Mechas d\textquotesingle{}un joueur dans un fichier CSV. 
+
+Cette fonction supprime définitivement les informations des Mechas appartenant à un joueur spécifique depuis le fichier {\ttfamily save/infomechas.\+csv}. Un fichier temporaire est créé, puis toutes les entrées sont recopiées sauf celles associées au pseudo spécifié. Finalement, l\textquotesingle{}ancien fichier est remplacé par le fichier temporaire.
+
+Cette fonction est utile lorsqu\textquotesingle{}une partie est supprimée ou réinitialisée afin d\textquotesingle{}assurer qu\textquotesingle{}il ne reste aucune donnée associée aux Mechas du joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mechas\+\_\+joueur} & Tableau de structures {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} (non utilisé dans cette fonction, conservé pour compatibilité). \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur dont les données Mechas doivent être supprimées. \\
+\hline
+{\em nb\+\_\+mechas} & Nombre de Mechas dans l\textquotesingle{}équipe (paramètre non utilisé ici, conservé pour compatibilité).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si les entrées ont été supprimées avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur lors de l\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier {\ttfamily save}. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Toutes les entrées correspondant aux Mechas du joueur sont supprimées du fichier {\ttfamily infomechas.\+csv}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Les paramètres {\ttfamily mechas\+\_\+joueur} et {\ttfamily nb\+\_\+mechas} ne sont pas utilisés directement ici, mais sont conservés pour compatibilité avec d\textquotesingle{}autres fonctions.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette opération est irréversible. Assure-\/toi que les données supprimées ne seront plus nécessaires. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_accca901359a4eafa002b577efb20fff1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sauv_8c_a3748382cfddb2c574b37de5987534cea}\label{sauv_8c_a3748382cfddb2c574b37de5987534cea} 
+\index{sauv.c@{sauv.c}!suppression\_partie@{suppression\_partie}}
+\index{suppression\_partie@{suppression\_partie}!sauv.c@{sauv.c}}
+\doxysubsubsection{\texorpdfstring{suppression\_partie()}{suppression\_partie()}}
+{\footnotesize\ttfamily int suppression\+\_\+partie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{char}]{pseudo\mbox{[}\+LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Supprime définitivement toutes les données d\textquotesingle{}une partie d\textquotesingle{}un joueur depuis les fichiers CSV. 
+
+Cette fonction supprime intégralement les informations associées à un joueur spécifique des fichiers suivants \+:
+\begin{DoxyItemize}
+\item {\ttfamily save/joueur.\+csv} \+: informations globales du joueur (position, carte, etc.).
+\item {\ttfamily save/inventaire.\+csv} \+: inventaire du joueur (objets possédés).
+\item {\ttfamily save/infomechas.\+csv} \+: Mechas possédés par le joueur.
+\item {\ttfamily save/pnj\+\_\+\mbox{[}pseudo\mbox{]}.csv} \+: informations des interactions avec les PNJs propres à ce joueur.
+\end{DoxyItemize}
+
+La fonction procède par recopie des données dans des fichiers temporaires, en omettant les entrées correspondant au pseudo spécifié, puis remplace les fichiers originaux par les temporaires pour garantir la sécurité des données.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur vers la structure \doxylink{structjoueur__t}{joueur\+\_\+t} contenant les informations du joueur (utilisé uniquement pour l\textquotesingle{}accès aux autres fonctions). \\
+\hline
+{\em pseudo} & Chaîne de caractères représentant le pseudo du joueur à supprimer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily OK} si toutes les données associées au joueur ont été supprimées avec succès.
+\item {\ttfamily ERREUR\+\_\+\+OUVERTURE} en cas d\textquotesingle{}erreur lors de l\textquotesingle{}ouverture des fichiers.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Les fichiers CSV doivent être accessibles en lecture et écriture dans le dossier {\ttfamily save}. Les fonctions {\ttfamily suppression\+\_\+inventaire} et {\ttfamily suppression\+\_\+mechas\+\_\+joueur} doivent être définies et valides. Les constantes ({\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}, {\ttfamily LONGUEUR\+\_\+\+LIGNE}, {\ttfamily OK}, {\ttfamily ERREUR\+\_\+\+OUVERTURE}) doivent être définies.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Toutes les entrées correspondant au joueur sont supprimées définitivement des fichiers concernés.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Utilise des fichiers temporaires pour garantir l\textquotesingle{}intégrité des données durant la suppression.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Cette opération est irréversible. Assure-\/toi que les données du joueur ne seront plus nécessaires avant de lancer cette opération. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{sauv_8c_a3748382cfddb2c574b37de5987534cea_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sauv_8c_a3748382cfddb2c574b37de5987534cea_icgraph}
+\end{center}
+\end{figure}

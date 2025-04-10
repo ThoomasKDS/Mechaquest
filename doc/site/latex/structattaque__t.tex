@@ -1,0 +1,94 @@
+\doxysection{Référence de la structure attaque\+\_\+t}
+\hypertarget{structattaque__t}{}\label{structattaque__t}\index{attaque\_t@{attaque\_t}}
+
+
+Structure représentant les caractéristiques d\textquotesingle{}une attaque d\textquotesingle{}un Mecha.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structattaque__t_a856784b5a8e10b10c6eb7bbe6c7e8752}{id\+\_\+attaques}}
+\item 
+char \mbox{\hyperlink{structattaque__t_a51616e8e75c907ad38b9ec2663792611}{nom}} \mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}
+\item 
+char \mbox{\hyperlink{structattaque__t_a30b258fd6a401df200d76081fcbaf7aa}{type}} \mbox{[}\mbox{\hyperlink{global_8h_a32f0560714e1a90c7f9805cb97b85f7e}{LONGUEUR\+\_\+\+TYPE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structattaque__t_a3f140bdc600ea563ddc31a9465c83549}{niveau}}
+\item 
+int \mbox{\hyperlink{structattaque__t_a64b27f18b27a84cde9201e0ac95ad21f}{degats}}
+\item 
+int \mbox{\hyperlink{structattaque__t_a50ad34e031c8a44f49bfd95d53e4df2f}{precision}}
+\item 
+int \mbox{\hyperlink{structattaque__t_a2e3d3fa51fde3cdc0ea6406ed372c3dd}{utilisations}}
+\item 
+\Hypertarget{structattaque__t_aceabcbfd97e9d4970203f6985501b0ea}\label{structattaque__t_aceabcbfd97e9d4970203f6985501b0ea} 
+char {\bfseries description} \mbox{[}\mbox{\hyperlink{global_8h_a9b9bf46a80f803a594977e440886be8f}{LONGUEUR\+\_\+\+DESC}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant les caractéristiques d\textquotesingle{}une attaque d\textquotesingle{}un Mecha. 
+
+Cette structure décrit toutes les caractéristiques d\textquotesingle{}une attaque disponible pour les Mechas du jeu. Chaque attaque est identifiée par un ID unique et possède plusieurs attributs déterminant son efficacité et son utilisation. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structattaque__t_a64b27f18b27a84cde9201e0ac95ad21f}\label{structattaque__t_a64b27f18b27a84cde9201e0ac95ad21f} 
+\index{attaque\_t@{attaque\_t}!degats@{degats}}
+\index{degats@{degats}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{degats}{degats}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::degats}
+
+Valeur représentant les dégâts potentiels infligés à l\textquotesingle{}adversaire. \Hypertarget{structattaque__t_a856784b5a8e10b10c6eb7bbe6c7e8752}\label{structattaque__t_a856784b5a8e10b10c6eb7bbe6c7e8752} 
+\index{attaque\_t@{attaque\_t}!id\_attaques@{id\_attaques}}
+\index{id\_attaques@{id\_attaques}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{id\_attaques}{id\_attaques}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::id\+\_\+attaques}
+
+Entier représentant l\textquotesingle{}identifiant unique de l\textquotesingle{}attaque. \Hypertarget{structattaque__t_a3f140bdc600ea563ddc31a9465c83549}\label{structattaque__t_a3f140bdc600ea563ddc31a9465c83549} 
+\index{attaque\_t@{attaque\_t}!niveau@{niveau}}
+\index{niveau@{niveau}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{niveau}{niveau}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::niveau}
+
+Niveau minimal requis pour que le Mecha puisse apprendre/utiliser cette attaque. \Hypertarget{structattaque__t_a51616e8e75c907ad38b9ec2663792611}\label{structattaque__t_a51616e8e75c907ad38b9ec2663792611} 
+\index{attaque\_t@{attaque\_t}!nom@{nom}}
+\index{nom@{nom}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{nom}{nom}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::nom}
+
+Chaîne de caractères (longueur {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}) contenant le nom de l\textquotesingle{}attaque. \Hypertarget{structattaque__t_a50ad34e031c8a44f49bfd95d53e4df2f}\label{structattaque__t_a50ad34e031c8a44f49bfd95d53e4df2f} 
+\index{attaque\_t@{attaque\_t}!precision@{precision}}
+\index{precision@{precision}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{precision}{precision}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::precision}
+
+Valeur (en pourcentage) indiquant la probabilité de réussite de l\textquotesingle{}attaque. \Hypertarget{structattaque__t_a30b258fd6a401df200d76081fcbaf7aa}\label{structattaque__t_a30b258fd6a401df200d76081fcbaf7aa} 
+\index{attaque\_t@{attaque\_t}!type@{type}}
+\index{type@{type}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::type}
+
+Chaîne de caractères (longueur {\ttfamily LONGUEUR\+\_\+\+TYPE}) indiquant le type de l\textquotesingle{}attaque (ex \+: feu, eau, électrique). \Hypertarget{structattaque__t_a2e3d3fa51fde3cdc0ea6406ed372c3dd}\label{structattaque__t_a2e3d3fa51fde3cdc0ea6406ed372c3dd} 
+\index{attaque\_t@{attaque\_t}!utilisations@{utilisations}}
+\index{utilisations@{utilisations}!attaque\_t@{attaque\_t}}
+\doxysubsubsection{\texorpdfstring{utilisations}{utilisations}}
+{\footnotesize\ttfamily attaque\+\_\+t\+::utilisations}
+
+Nombre maximal d\textquotesingle{}utilisations possibles de cette attaque avant épuisement (points de pouvoir ou PP).
+
+\begin{DoxyNote}{Note}
+Les constantes {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO} et {\ttfamily LONGUEUR\+\_\+\+TYPE} doivent être définies dans les fichiers d\textquotesingle{}en-\/tête.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assure-\/toi que les valeurs (dégâts, précision, utilisations) sont correctement validées afin de maintenir l\textquotesingle{}équilibre du jeu. 
+\end{DoxyWarning}
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,19 @@
+digraph "afficher_informations"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="afficher_informations",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Affiche un écran d'informations sur les contrôles du jeu."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="creer_rectangle",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a7290dad76779d8dd7f48366a16812be8",tooltip="Initialise un rectangle avec ses dimensions, sa couleur et un texte optionnel."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="draw_all_rect",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a4f7e45e8554e8971bdba352cf9838405",tooltip="Dessine plusieurs rectangles avec leurs textes centrés."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="draw_rect",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#ab542b24175a0231f8530346fc8ab790f",tooltip="Dessine un rectangle coloré et son texte associé si présent."];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="draw_text_center",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a390da1c2cd15fd5355de26bd34b3d3dc",tooltip="Dessine du texte centré dans un rectangle, ligne par ligne si nécessaire."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="draw_background",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$affichage_8c.html#a3d385ca0396c4c2b3001371505a410e4",tooltip="Affiche l'arrière-plan (background) actuel du jeu."];
+}

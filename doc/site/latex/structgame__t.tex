@@ -1,0 +1,139 @@
+\doxysection{Référence de la structure game\+\_\+t}
+\hypertarget{structgame__t}{}\label{structgame__t}\index{game\_t@{game\_t}}
+
+
+Structure principale contenant les ressources et paramètres liés à la gestion du jeu.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+
+
+Graphe de collaboration de game\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{structgame__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_abe304079dac0127cffcbad18af510445}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_abaf3718ff829691abf04102a4aac292f}{renderer}}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_a899dfdd15fa43e59102180b3f2cc2fd0}{background\+Texture}} \mbox{[}11\mbox{]}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_aa7e5ff17f522bd358d4ec63d4059335b}{calque\+Texture}} \mbox{[}6\mbox{]}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_af0729baa0912b7a7fab1f52b4ce250cf}{police}}
+\item 
+\Hypertarget{structgame__t_a5d86f15287e547a59aee9864a9fffcf5}\label{structgame__t_a5d86f15287e547a59aee9864a9fffcf5} 
+\mbox{\hyperlink{structimg__player__t}{img\+\_\+player\+\_\+t}} {\bfseries sprite\+\_\+joueur}
+\item 
+\Hypertarget{structgame__t_a689058b684f0b33095859285861aa02c}\label{structgame__t_a689058b684f0b33095859285861aa02c} 
+\mbox{\hyperlink{structimg__pnj__t}{img\+\_\+pnj\+\_\+t}} {\bfseries sprite\+\_\+pnj}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame__t_a27542d00cbd006b3d8db6bd5fc9130e6}{mat}}
+\item 
+float \mbox{\hyperlink{structgame__t_a75299999dcaa4bb3a5d4849b5ce4f2b0}{scale}}
+\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{structgame__t_ab249fbaf09e300ec97c40aa8e4cc5731}{dms\+\_\+win}}
+\item 
+int \mbox{\hyperlink{structgame__t_a8d3f8c5aca4cd2b3e6e26315787e4b36}{img\+\_\+w}}
+\item 
+int \mbox{\hyperlink{structgame__t_acbe5097326f11e212ed89a62a10cb443}{img\+\_\+h}}
+\item 
+int \mbox{\hyperlink{structgame__t_a172925c4060081a8648e19bb8f0f0170}{mat\+\_\+active}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure principale contenant les ressources et paramètres liés à la gestion du jeu. 
+
+Cette structure regroupe l\textquotesingle{}ensemble des éléments nécessaires à l\textquotesingle{}affichage graphique et à la gestion des cartes et ressources \+: 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structgame__t_a899dfdd15fa43e59102180b3f2cc2fd0}\label{structgame__t_a899dfdd15fa43e59102180b3f2cc2fd0} 
+\index{game\_t@{game\_t}!backgroundTexture@{backgroundTexture}}
+\index{backgroundTexture@{backgroundTexture}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{backgroundTexture}{backgroundTexture}}
+{\footnotesize\ttfamily game\+\_\+t\+::background\+Texture}
+
+Tableau de textures SDL pour les arrière-\/plans des différentes cartes ou menus (8 textures). \Hypertarget{structgame__t_aa7e5ff17f522bd358d4ec63d4059335b}\label{structgame__t_aa7e5ff17f522bd358d4ec63d4059335b} 
+\index{game\_t@{game\_t}!calqueTexture@{calqueTexture}}
+\index{calqueTexture@{calqueTexture}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{calqueTexture}{calqueTexture}}
+{\footnotesize\ttfamily game\+\_\+t\+::calque\+Texture}
+
+Tableau de textures SDL pour gérer différents calques visuels sur les cartes (6 textures). \Hypertarget{structgame__t_ab249fbaf09e300ec97c40aa8e4cc5731}\label{structgame__t_ab249fbaf09e300ec97c40aa8e4cc5731} 
+\index{game\_t@{game\_t}!dms\_win@{dms\_win}}
+\index{dms\_win@{dms\_win}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{dms\_win}{dms\_win}}
+{\footnotesize\ttfamily game\+\_\+t\+::dms\+\_\+win}
+
+Rectangle SDL ({\ttfamily SDL\+\_\+\+Rect}) décrivant les dimensions et la position de la fenêtre d\textquotesingle{}affichage active. \Hypertarget{structgame__t_acbe5097326f11e212ed89a62a10cb443}\label{structgame__t_acbe5097326f11e212ed89a62a10cb443} 
+\index{game\_t@{game\_t}!img\_h@{img\_h}}
+\index{img\_h@{img\_h}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{img\_h}{img\_h}}
+{\footnotesize\ttfamily game\+\_\+t\+::img\+\_\+h}
+
+Hauteur originale (en pixels) des images représentant les cartes du jeu. \Hypertarget{structgame__t_a8d3f8c5aca4cd2b3e6e26315787e4b36}\label{structgame__t_a8d3f8c5aca4cd2b3e6e26315787e4b36} 
+\index{game\_t@{game\_t}!img\_w@{img\_w}}
+\index{img\_w@{img\_w}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{img\_w}{img\_w}}
+{\footnotesize\ttfamily game\+\_\+t\+::img\+\_\+w}
+
+Largeur originale (en pixels) des images représentant les cartes du jeu. \Hypertarget{structgame__t_a27542d00cbd006b3d8db6bd5fc9130e6}\label{structgame__t_a27542d00cbd006b3d8db6bd5fc9130e6} 
+\index{game\_t@{game\_t}!mat@{mat}}
+\index{mat@{mat}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{mat}{mat}}
+{\footnotesize\ttfamily game\+\_\+t\+::mat}
+
+Matrice à trois dimensions représentant les données logiques des cartes du jeu (id objets, collisions, états, etc.). \Hypertarget{structgame__t_a172925c4060081a8648e19bb8f0f0170}\label{structgame__t_a172925c4060081a8648e19bb8f0f0170} 
+\index{game\_t@{game\_t}!mat\_active@{mat\_active}}
+\index{mat\_active@{mat\_active}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{mat\_active}{mat\_active}}
+{\footnotesize\ttfamily game\+\_\+t\+::mat\+\_\+active}
+
+Indice de la matrice active actuellement utilisée pour afficher et gérer les interactions avec la carte en cours.
+
+\begin{DoxyNote}{Note}
+Cette structure centralise les ressources clés utilisées par la plupart des fonctions du jeu. Elle permet d\textquotesingle{}éviter les accès multiples ou inutiles à des ressources partagées.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Les ressources SDL associées (textures, renderer, fenêtre, polices) doivent impérativement être libérées via SDL\+\_\+\+Destroy\texorpdfstring{$\ast$}{*} et TTF\+\_\+\+Close\+Font lorsque le jeu se termine, afin d’éviter toute fuite mémoire. 
+\end{DoxyWarning}
+\Hypertarget{structgame__t_af0729baa0912b7a7fab1f52b4ce250cf}\label{structgame__t_af0729baa0912b7a7fab1f52b4ce250cf} 
+\index{game\_t@{game\_t}!police@{police}}
+\index{police@{police}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{police}{police}}
+{\footnotesize\ttfamily game\+\_\+t\+::police}
+
+Pointeur vers une police TTF utilisée pour afficher du texte à l\textquotesingle{}écran. \Hypertarget{structgame__t_abaf3718ff829691abf04102a4aac292f}\label{structgame__t_abaf3718ff829691abf04102a4aac292f} 
+\index{game\_t@{game\_t}!renderer@{renderer}}
+\index{renderer@{renderer}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily game\+\_\+t\+::renderer}
+
+Pointeur vers le renderer SDL utilisé pour dessiner les éléments à l\textquotesingle{}écran. \Hypertarget{structgame__t_a75299999dcaa4bb3a5d4849b5ce4f2b0}\label{structgame__t_a75299999dcaa4bb3a5d4849b5ce4f2b0} 
+\index{game\_t@{game\_t}!scale@{scale}}
+\index{scale@{scale}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily game\+\_\+t\+::scale}
+
+Facteur d\textquotesingle{}échelle utilisé pour adapter dynamiquement les éléments graphiques à la taille de la fenêtre. \Hypertarget{structgame__t_abe304079dac0127cffcbad18af510445}\label{structgame__t_abe304079dac0127cffcbad18af510445} 
+\index{game\_t@{game\_t}!window@{window}}
+\index{window@{window}!game\_t@{game\_t}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily game\+\_\+t\+::window}
+
+Pointeur vers la fenêtre SDL principale du jeu. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}

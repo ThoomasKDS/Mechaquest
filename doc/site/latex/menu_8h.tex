@@ -1,0 +1,539 @@
+\doxysection{Référence du fichier /mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/menu.h}
+\hypertarget{menu_8h}{}\label{menu_8h}\index{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/menu.h@{/mnt/c/Users/mokha/Documents/travaille L2/projet/github/lib/menu.h}}
+
+
+Gestion des menus et des interfaces utilisateur.  
+
+
+{\ttfamily \#include "{}sauv.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/init\+Game.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/affichage.\+h"{}}\newline
+{\ttfamily \#include "{}../lib/global.\+h"{}}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Graphe des dépendances par inclusion de menu.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8h_a18a2045c75cbd09addc1567af7adc09d}{charger\+\_\+texture}} (const char \texorpdfstring{$\ast$}{*}chemin)
+\begin{DoxyCompactList}\small\item\em Charge une image depuis un fichier et la convertit en texture SDL. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_aa1f62d5ef2922f420fba49063416f5ab}{afficher\+\_\+choix\+\_\+sexe}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, char \texorpdfstring{$\ast$}{*}pseudo)
+\begin{DoxyCompactList}\small\item\em Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a72fbd3d776a9a4447c7448b1a8308137}{afficher\+\_\+choix\+\_\+suppression}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, char \texorpdfstring{$\ast$}{*}pseudo)
+\begin{DoxyCompactList}\small\item\em Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière avant une suppression de sauvegarde. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a514079e39465e028b08558ac3458d85a}{aff\+\_\+saisie\+\_\+pseudo}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, char \texorpdfstring{$\ast$}{*}pseudo)
+\begin{DoxyCompactList}\small\item\em Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a6ef0addf6407c785be3cf605618b938e}{afficher\+\_\+reglage}} (\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}parametres)
+\begin{DoxyCompactList}\small\item\em Affiche un menu permettant de régler le volume sonore du jeu (Pour l\textquotesingle{}instant). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a0225d24e9d0ffd7af10183134ff4f229}{afficher\+\_\+menu}} (\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}parametres, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}j, char \texorpdfstring{$\ast$}{*}pseudo)
+\begin{DoxyCompactList}\small\item\em Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a98de4f1f9f962af528305e0d3e88d9da}{afficher\+\_\+menu\+\_\+pause}} (\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}parametres)
+\begin{DoxyCompactList}\small\item\em Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_adb80c9d7e446e21dacf40b55cc973deb}{afficher\+\_\+informations}} ()
+\begin{DoxyCompactList}\small\item\em Affiche un écran d\textquotesingle{}informations sur les contrôles du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_af33efca11c59a833339ea201bd4fb9d4}{aff\+\_\+parametre}} (\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}parametres)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des menus et des interfaces utilisateur. 
+
+Ce fichier contient les déclarations des fonctions permettant d\textquotesingle{}afficher et de gérer les différents menus du jeu, notamment la sélection du sexe, la suppression de données, les paramètres et les dialogues. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{menu_8h_af33efca11c59a833339ea201bd4fb9d4}\label{menu_8h_af33efca11c59a833339ea201bd4fb9d4} 
+\index{menu.h@{menu.h}!aff\_parametre@{aff\_parametre}}
+\index{aff\_parametre@{aff\_parametre}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aff\_parametre()}{aff\_parametre()}}
+{\footnotesize\ttfamily void aff\+\_\+parametre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parametres }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran des paramètres généraux du jeu avec les options Informations, Réglage et Retour. 
+
+Cette fonction présente trois boutons interactifs \+:
+\begin{DoxyItemize}
+\item "{}\+Informations"{} \+: affiche l\textquotesingle{}écran expliquant les contrôles du jeu.
+\item "{}\+Réglage"{} \+: affiche l\textquotesingle{}écran permettant d\textquotesingle{}ajuster des paramètres (comme le volume sonore).
+\item "{}\+Retour"{} \+: permet de quitter l\textquotesingle{}écran des paramètres et revenir au menu précédent.
+\end{DoxyItemize}
+
+L\textquotesingle{}utilisateur interagit avec ces boutons via la souris. Chaque clic entraîne l\textquotesingle{}affichage de l\textquotesingle{}écran correspondant, sauf "{}\+Retour"{} qui termine immédiatement la fonction en cours.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em parametres} & Pointeur vers une structure contenant les paramètres modifiables du jeu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) et la police ({\ttfamily game-\/\texorpdfstring{$>$}{>}police}) doivent être initialisés avant l\textquotesingle{}appel. Les pointeurs {\ttfamily game} et {\ttfamily parametres} doivent être valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Aucun paramètre n’est directement modifié par cette fonction, mais les sous-\/menus appelés peuvent changer les valeurs de la structure {\ttfamily parametres}.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction gère une boucle d\textquotesingle{}événements SDL et effectue le rendu graphique en continu tant que l\textquotesingle{}écran des paramètres est actif. Le framerate est régulé afin d’assurer un affichage fluide. 
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_af33efca11c59a833339ea201bd4fb9d4_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{menu_8h_af33efca11c59a833339ea201bd4fb9d4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a514079e39465e028b08558ac3458d85a}\label{menu_8h_a514079e39465e028b08558ac3458d85a} 
+\index{menu.h@{menu.h}!aff\_saisie\_pseudo@{aff\_saisie\_pseudo}}
+\index{aff\_saisie\_pseudo@{aff\_saisie\_pseudo}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aff\_saisie\_pseudo()}{aff\_saisie\_pseudo()}}
+{\footnotesize\ttfamily int aff\+\_\+saisie\+\_\+pseudo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo }\end{DoxyParamCaption})}
+
+
+
+Affiche un écran permettant au joueur de saisir son pseudo et de démarrer une partie. 
+
+Cette fonction présente une interface de saisie de texte où le joueur peut entrer son pseudo. Deux boutons sont affichés à l\textquotesingle{}écran \+:
+\begin{DoxyItemize}
+\item "{}\+Commencer"{} \+: vérifie si une sauvegarde existe sous le pseudo saisi et propose de continuer ou recommencer.
+\item "{}\+Retour"{} \+: permet au joueur d\textquotesingle{}annuler la saisie et revenir en arrière (réinitialisant le pseudo).
+\end{DoxyItemize}
+
+Elle gère l\textquotesingle{}entrée utilisateur via le clavier (y compris la gestion de la suppression avec BACKSPACE) et les interactions par clic souris sur les boutons.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer et les ressources nécessaires à l\textquotesingle{}affichage. \\
+\hline
+{\em j} & Pointeur vers la structure du joueur où les données chargées ou initialisées seront stockées. \\
+\hline
+{\em pseudo} & Chaîne de caractères où sera stocké le pseudo saisi par le joueur. Réinitialisé en cas de retour.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily 1} \+: si le joueur a terminé la saisie et validé en appuyant sur "{}\+Commencer"{} après avoir choisi son sexe ou confirmé une sauvegarde existante.
+\item {\ttfamily 0} \+: si le joueur quitte ou utilise le bouton "{}\+Retour"{}.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) et la police de caractères ({\ttfamily game-\/\texorpdfstring{$>$}{>}police}) doivent être initialisés. Les pointeurs {\ttfamily game}, {\ttfamily j} et {\ttfamily pseudo} doivent être valides. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le pseudo du joueur est stocké ou réinitialisé selon l\textquotesingle{}action choisie. La partie peut être initialisée si le joueur valide.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La saisie du texte utilise SDL pour gérer les événements clavier. La fonction inclut une régulation de framerate pour un affichage fluide.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+La longueur maximale du pseudo est définie par la constante {\ttfamily LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}. Veiller à ce que cette constante soit cohérente avec la taille réelle du tableau {\ttfamily pseudo}. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a514079e39465e028b08558ac3458d85a_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{menu_8h_a514079e39465e028b08558ac3458d85a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_aa1f62d5ef2922f420fba49063416f5ab}\label{menu_8h_aa1f62d5ef2922f420fba49063416f5ab} 
+\index{menu.h@{menu.h}!afficher\_choix\_sexe@{afficher\_choix\_sexe}}
+\index{afficher\_choix\_sexe@{afficher\_choix\_sexe}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_choix\_sexe()}{afficher\_choix\_sexe()}}
+{\footnotesize\ttfamily int afficher\+\_\+choix\+\_\+sexe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo }\end{DoxyParamCaption})}
+
+
+
+Affiche un écran permettant au joueur de choisir son sexe (Masculin ou Féminin). 
+
+Cette fonction affiche deux rectangles interactifs représentant respectivement les sexes masculin et féminin, chacun associé à une image. Le joueur peut cliquer sur l\textquotesingle{}un des rectangles pour sélectionner son sexe, ou utiliser un bouton de retour pour annuler son choix.
+
+Le choix effectué est stocké dans la structure joueur ({\ttfamily j-\/\texorpdfstring{$>$}{>}sexe}). Si le joueur choisit le bouton retour, le pseudo sera remis à zéro (`pseudo\mbox{[}0\mbox{]} = '\textbackslash{}0\textquotesingle{}\`{}).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer et les informations d\textquotesingle{}affichage. \\
+\hline
+{\em j} & Pointeur vers la structure du joueur, où le sexe choisi sera enregistré. \\
+\hline
+{\em pseudo} & Chaîne de caractères du pseudo du joueur, réinitialisée à vide si le joueur revient en arrière.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+{\ttfamily 1} si le joueur a sélectionné son sexe (Masculin ou Féminin), {\ttfamily 0} si le joueur choisit de retourner en arrière (bouton retour).
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) doit être initialisé avant l\textquotesingle{}appel. Les pointeurs {\ttfamily game}, {\ttfamily j} et {\ttfamily pseudo} doivent être valides. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La valeur du sexe du joueur est enregistrée (\textquotesingle{}M\textquotesingle{} ou \textquotesingle{}F\textquotesingle{}), et le pseudo est éventuellement modifié.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction gère sa propre boucle d\textquotesingle{}événements et assure le rendu continu de l\textquotesingle{}écran jusqu\textquotesingle{}à la sélection du joueur. Elle libère automatiquement les textures créées avant de quitter. 
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_aa1f62d5ef2922f420fba49063416f5ab_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_aa1f62d5ef2922f420fba49063416f5ab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a72fbd3d776a9a4447c7448b1a8308137}\label{menu_8h_a72fbd3d776a9a4447c7448b1a8308137} 
+\index{menu.h@{menu.h}!afficher\_choix\_suppression@{afficher\_choix\_suppression}}
+\index{afficher\_choix\_suppression@{afficher\_choix\_suppression}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_choix\_suppression()}{afficher\_choix\_suppression()}}
+{\footnotesize\ttfamily int afficher\+\_\+choix\+\_\+suppression (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo }\end{DoxyParamCaption})}
+
+
+
+Affiche un écran permettant au joueur de choisir entre reprendre, recommencer ou retourner en arrière avant une suppression de sauvegarde. 
+
+Cette fonction affiche trois boutons distincts à l\textquotesingle{}écran \+:
+\begin{DoxyItemize}
+\item "{}\+Reprendre"{} pour continuer avec la sauvegarde existante.
+\item "{}\+Recommencer"{} pour supprimer la sauvegarde actuelle et démarrer une nouvelle partie (le joueur devra choisir son sexe à nouveau).
+\item "{}\+Retour"{} pour annuler l’action en cours et revenir à l\textquotesingle{}écran précédent.
+\end{DoxyItemize}
+
+La fonction attend la réponse du joueur via un clic souris sur un des trois boutons affichés et exécute les actions associées \+: mise à jour ou suppression des données du joueur selon la sélection.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu (renderer, fenêtre, etc.). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur dont la sauvegarde est concernée. \\
+\hline
+{\em pseudo} & Pointeur vers le tableau de caractères contenant le pseudo du joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un entier indiquant le résultat de l’action du joueur \+:
+\begin{DoxyItemize}
+\item {\ttfamily 1} \+: Le joueur choisit "{}\+Reprendre"{} ou "{}\+Recommencer"{} (dans ce cas, la sauvegarde est supprimée puis réinitialisée).
+\item {\ttfamily 0} \+: Le joueur choisit "{}\+Retour"{} ou ferme la fenêtre, aucune action effectuée.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) doit être initialisé. Les pointeurs {\ttfamily game}, {\ttfamily j}, et {\ttfamily pseudo} doivent être valides. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Selon l’action choisie, la sauvegarde du joueur peut être supprimée et réinitialisée. Le pseudo peut être vidé (`pseudo\mbox{[}0\mbox{]} = '\textbackslash{}0\textquotesingle{}\`{}) si l\textquotesingle{}utilisateur annule son choix.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction gère elle-\/même les événements SDL et le rendu graphique associé aux boutons. Elle contrôle aussi le framerate (temps d\textquotesingle{}attente entre chaque affichage) pour fluidifier l\textquotesingle{}affichage. 
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a72fbd3d776a9a4447c7448b1a8308137_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a72fbd3d776a9a4447c7448b1a8308137_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_adb80c9d7e446e21dacf40b55cc973deb}\label{menu_8h_adb80c9d7e446e21dacf40b55cc973deb} 
+\index{menu.h@{menu.h}!afficher\_informations@{afficher\_informations}}
+\index{afficher\_informations@{afficher\_informations}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_informations()}{afficher\_informations()}}
+{\footnotesize\ttfamily void afficher\+\_\+informations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche un écran d\textquotesingle{}informations sur les contrôles du jeu. 
+
+Cette fonction présente un écran listant les touches de contrôle disponibles pour le joueur. Chaque contrôle est affiché dans un rectangle spécifique avec son explication correspondante. Un bouton « Retour » permet au joueur de quitter l\textquotesingle{}écran d\textquotesingle{}informations et revenir à l\textquotesingle{}écran précédent.
+
+Les informations affichées comprennent \+:
+\begin{DoxyItemize}
+\item Déplacement vers le haut, bas, gauche, droite.
+\item Pause du jeu.
+\item Interaction avec des éléments du jeu.
+\end{DoxyItemize}
+
+L’écran reste affiché jusqu’à ce que le joueur clique sur "{}\+Retour"{} ou ferme la fenêtre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL utilisé pour l’affichage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) et la police ({\ttfamily game-\/\texorpdfstring{$>$}{>}police}) doivent être initialisés. Le pointeur {\ttfamily game} doit être valide.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Aucun changement d’état du jeu n’est effectué en dehors de l’affichage des informations.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction gère elle-\/même la boucle d\textquotesingle{}événements et l’affichage continu de l’écran d’information. 
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_adb80c9d7e446e21dacf40b55cc973deb_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_adb80c9d7e446e21dacf40b55cc973deb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a0225d24e9d0ffd7af10183134ff4f229}\label{menu_8h_a0225d24e9d0ffd7af10183134ff4f229} 
+\index{menu.h@{menu.h}!afficher\_menu@{afficher\_menu}}
+\index{afficher\_menu@{afficher\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_menu()}{afficher\_menu()}}
+{\footnotesize\ttfamily void afficher\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parametres,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{j,  }\item[{char \texorpdfstring{$\ast$}{*}}]{pseudo }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu principal du jeu, permettant au joueur de démarrer, régler les paramètres ou quitter. 
+
+Cette fonction affiche le menu principal du jeu avec trois boutons interactifs \+:
+\begin{DoxyItemize}
+\item "{}\+Jouer"{} \+: pour saisir ou choisir un pseudo et démarrer une partie.
+\item "{}\+Parametres"{} \+: pour accéder aux réglages du jeu tels que le volume sonore et les contrôles.
+\item "{}\+Quitter"{} \+: pour fermer immédiatement l\textquotesingle{}application.
+\end{DoxyItemize}
+
+La fonction gère la boucle principale des événements (clics souris) jusqu\textquotesingle{}à ce que le joueur choisisse de quitter, démarre une partie valide ou ferme la fenêtre du jeu.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure principale du jeu (renderer, textures, état actuel du jeu). \\
+\hline
+{\em parametres} & Pointeur vers la structure contenant les paramètres ajustables du jeu (par exemple, le volume). \\
+\hline
+{\em j} & Pointeur vers la structure du joueur pour sauvegarder ou charger les données de la partie. \\
+\hline
+{\em pseudo} & Chaîne de caractères utilisée pour stocker le pseudo saisi par le joueur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Toutes les ressources graphiques (renderer, police, textures) doivent être initialisées. Les pointeurs passés ({\ttfamily game}, {\ttfamily parametres}, {\ttfamily j}, {\ttfamily pseudo}) doivent être valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}état du jeu peut changer en fonction de l\textquotesingle{}action sélectionnée par l\textquotesingle{}utilisateur. Le pseudo peut être saisi ou réinitialisé, les paramètres ajustés, ou le jeu fermé.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction gère intégralement sa propre boucle d\textquotesingle{}événements SDL et les rendus graphiques associés. Elle régule également le framerate pour un affichage fluide de l\textquotesingle{}interface. 
+\end{DoxyNote}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a0225d24e9d0ffd7af10183134ff4f229_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a98de4f1f9f962af528305e0d3e88d9da}\label{menu_8h_a98de4f1f9f962af528305e0d3e88d9da} 
+\index{menu.h@{menu.h}!afficher\_menu\_pause@{afficher\_menu\_pause}}
+\index{afficher\_menu\_pause@{afficher\_menu\_pause}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_menu\_pause()}{afficher\_menu\_pause()}}
+{\footnotesize\ttfamily int afficher\+\_\+menu\+\_\+pause (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parametres }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu pause du jeu avec les options Reprendre, Paramètres et Accueil. 
+
+Cette fonction affiche un menu de pause permettant au joueur de choisir entre \+:
+\begin{DoxyItemize}
+\item {\bfseries{Reprendre}} \+: pour retourner directement à la partie en cours.
+\item {\bfseries{Parametres}} \+: accéder aux réglages du jeu (volume, contrôles, etc.).
+\item "{}\+Accueil"{} \+: quitter la partie en cours pour revenir au menu principal.
+\end{DoxyItemize}
+
+L\textquotesingle{}utilisateur interagit avec le menu en cliquant sur l\textquotesingle{}un des boutons affichés. L\textquotesingle{}action associée est immédiatement déclenchée \+:
+\begin{DoxyItemize}
+\item Reprendre la partie.
+\item Accéder aux paramètres.
+\item Revenir au menu principal (Accueil).
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant les ressources nécessaires à l\textquotesingle{}affichage. \\
+\hline
+{\em parametres} & Pointeur vers la structure contenant les paramètres ajustables du jeu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int
+\begin{DoxyItemize}
+\item {\ttfamily 1} \+: Si l\textquotesingle{}utilisateur choisit "{}\+Reprendre"{}, la partie continue.
+\item {\ttfamily 0} \+: Si l\textquotesingle{}utilisateur clique sur "{}\+Accueil"{} ou ferme la fenêtre.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) et les ressources graphiques doivent être initialisés avant l\textquotesingle{}appel. Les pointeurs {\ttfamily game} et {\ttfamily parametres} doivent être valides.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le jeu reprend son cours ou revient au menu d\textquotesingle{}accueil en fonction de l\textquotesingle{}option sélectionnée par l\textquotesingle{}utilisateur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+La fonction gère entièrement l\textquotesingle{}affichage graphique et la boucle d\textquotesingle{}événements SDL associée à l\textquotesingle{}écran de pause. Elle maintient un framerate constant grâce à un contrôle du temps d\textquotesingle{}affichage par frame.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Veillez à bien définir les constantes telles que {\ttfamily LARGEUR\+\_\+\+BOUTON}, {\ttfamily HAUTEUR\+\_\+\+BOUTON}, et {\ttfamily FRAME\+\_\+\+DELAY}. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a98de4f1f9f962af528305e0d3e88d9da_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a6ef0addf6407c785be3cf605618b938e}\label{menu_8h_a6ef0addf6407c785be3cf605618b938e} 
+\index{menu.h@{menu.h}!afficher\_reglage@{afficher\_reglage}}
+\index{afficher\_reglage@{afficher\_reglage}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_reglage()}{afficher\_reglage()}}
+{\footnotesize\ttfamily void afficher\+\_\+reglage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparametre__t}{parametre\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parametres }\end{DoxyParamCaption})}
+
+
+
+Affiche un menu permettant de régler le volume sonore du jeu (Pour l\textquotesingle{}instant). 
+
+Cette fonction présente une interface graphique avec les éléments suivants \+:
+\begin{DoxyItemize}
+\item Un bouton pour diminuer le volume ("{}+"{}).
+\item Un bouton pour augmenter le volume ("{}+"{}).
+\item Un bouton "{}\+Retour"{} permettant de quitter le menu des réglages.
+\end{DoxyItemize}
+
+L\textquotesingle{}utilisateur peut cliquer sur ces boutons pour augmenter ou diminuer le volume par palier de 10 unités, dans une plage comprise entre 0 et 100. Le volume modifié est directement enregistré dans la structure {\ttfamily parametres}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em game} & Pointeur vers la structure du jeu contenant le renderer SDL. \\
+\hline
+{\em parametres} & Pointeur vers une structure contenant les paramètres du jeu, notamment le volume.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le renderer ({\ttfamily game-\/\texorpdfstring{$>$}{>}renderer}) et la police ({\ttfamily game-\/\texorpdfstring{$>$}{>}police}) doivent être initialisés avant l\textquotesingle{}appel. Les pointeurs {\ttfamily game} et {\ttfamily parametres} doivent être valides. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le volume sonore du jeu est mis à jour selon l\textquotesingle{}interaction utilisateur.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Cette fonction gère intégralement sa propre boucle d\textquotesingle{}événements et réalise l\textquotesingle{}affichage en continu. Le bouton "{}\+Retour"{} permet de quitter le menu et revenir à l\textquotesingle{}écran précédent.
+\end{DoxyNote}
+\begin{DoxyWarning}{Avertissement}
+Assurez-\/vous que les textures générées durant l\textquotesingle{}affichage ({\ttfamily SDL\+\_\+\+Surface} et {\ttfamily SDL\+\_\+\+Texture}) soient correctement libérées après utilisation pour éviter les fuites mémoire. 
+\end{DoxyWarning}
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a6ef0addf6407c785be3cf605618b938e_cgraph}
+\end{center}
+\end{figure}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a6ef0addf6407c785be3cf605618b938e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8h_a18a2045c75cbd09addc1567af7adc09d}\label{menu_8h_a18a2045c75cbd09addc1567af7adc09d} 
+\index{menu.h@{menu.h}!charger\_texture@{charger\_texture}}
+\index{charger\_texture@{charger\_texture}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{charger\_texture()}{charger\_texture()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} charger\+\_\+texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Charge une image depuis un fichier et la convertit en texture SDL. 
+
+Cette fonction prend en charge le chargement d\textquotesingle{}une image depuis un chemin spécifié, en utilisant SDL\+\_\+image. L\textquotesingle{}image chargée est convertie en une texture compatible avec le renderer SDL spécifié dans {\ttfamily game}. Si une erreur survient pendant le chargement ou la création de la texture, la fonction renvoie {\ttfamily NULL}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chemin} & Chemin relatif ou absolu vers le fichier image à charger. \\
+\hline
+{\em game} & Pointeur vers la structure {\ttfamily \doxylink{structgame__t}{game\+\_\+t}} contenant le renderer SDL initialisé.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item La texture SDL créée à partir de l\textquotesingle{}image chargée en cas de succès.
+\item {\ttfamily NULL} si le chargement ou la création de texture échoue. Un message d\textquotesingle{}erreur est affiché sur la sortie standard.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Précondition}
+Le renderer de {\ttfamily game} doit être initialisé et valide avant l\textquotesingle{}appel à cette fonction. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}image chargée est libérée après conversion en texture ; seule la texture persiste en mémoire.
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Avertissement}
+La texture retournée doit être libérée avec {\ttfamily SDL\+\_\+\+Destroy\+Texture()} après utilisation pour éviter les fuites mémoire. 
+\end{DoxyWarning}
+Voici le graphe des appelants de cette fonction \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a18a2045c75cbd09addc1567af7adc09d_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,27 @@
+<map id="aff_mechas_combat" name="aff_mechas_combat">
+<area shape="rect" id="Node000001" title="Affiche l&#39;interface de sélection du Mecha du joueur durant un combat." alt="" coords="861,81,1001,107"/>
+<area shape="rect" id="Node000002" href="$affichage_8c.html#af70cd65063ba7719d712c57fcce296a3" title="Affiche le PC du joueur permettant de gérer et échanger les Méchas capturés." alt="" coords="696,5,792,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="885,78,775,33,777,28,887,74"/>
+<area shape="rect" id="Node000003" href="$combat_8c.html#a16e4593cbfaef36a7cc088aa6bef48c0" title="Permet au joueur de changer le Mecha actif pendant un combat." alt="" coords="512,56,627,81"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="847,91,627,75,627,70,848,86"/>
+<area shape="rect" id="Node000009" href="$combat_8c.html#a7f2daafca6455a03963db8f32d8a8d10" title="Gère l&#39;utilisation d&#39;un objet &quot;carburant&quot; durant un combat." alt="" coords="675,107,813,132"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="848,108,814,113,813,107,848,103"/>
+<area shape="rect" id="Node000011" href="$combat_8c.html#afff6b8b516af5c46c938f407788d1b5f" title="Gère l&#39;utilisation d&#39;un objet &quot;rappel&quot; durant un combat." alt="" coords="685,156,803,181"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="891,115,814,147,784,158,782,153,812,142,889,110"/>
+<area shape="rect" id="Node000004" href="$combat_8c.html#a03ca199547656caabf8e81d769b770e4" title="Gère un combat complet entre le joueur et un PNJ." alt="" coords="224,81,313,107"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="499,77,314,93,313,88,498,72"/>
+<area shape="rect" id="Node000007" href="$combat_8c.html#ae03e9f733803425a6c1dcb7b81c8234e" title="Gère un combat entre le joueur et un Mécha sauvage." alt="" coords="208,19,329,44"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="498,63,329,41,330,36,499,57"/>
+<area shape="rect" id="Node000008" href="$combat_8c.html#a3c18ce2957ca72f56737d0082766ad63" title="Gère le tour du joueur lors d&#39;un combat contre un Mécha sauvage ou un PNJ." alt="" coords="377,107,464,132"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="519,88,460,109,458,104,517,83"/>
+<area shape="rect" id="Node000005" href="$pointDePassage_8c.html#ade398b595e60d698c8c259edf2f8252a" title="Gère les interactions finales avec les PNJs &quot;Vin Gazole&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="35,56,131,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,89,131,78,131,73,211,84"/>
+<area shape="rect" id="Node000006" href="$pointDePassage_8c.html#a9ed15a581ba87d71ad2d85b8649075da" title="Gère l&#39;interaction du joueur avec les PNJs &quot;Vin Gazole 2&quot; et &quot;Iron Musk&quot;, incluant dialogues,..." alt="" coords="5,105,160,131"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="211,104,160,111,160,105,210,99"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="363,112,313,104,314,99,364,107"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="384,102,290,46,293,42,387,97"/>
+<area shape="rect" id="Node000010" href="$combat_8c.html#ae82c6dcf76c1412964511d71b75c637e" title="Affiche l&#39;interface d&#39;utilisation d&#39;objets pendant un combat." alt="" coords="513,107,625,132"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="661,122,626,122,626,117,661,117"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="500,122,464,122,464,117,500,117"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="685,155,615,135,616,130,686,150"/>
+</map>

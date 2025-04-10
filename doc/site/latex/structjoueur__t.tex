@@ -1,0 +1,165 @@
+\doxysection{Référence de la structure joueur\+\_\+t}
+\hypertarget{structjoueur__t}{}\label{structjoueur__t}\index{joueur\_t@{joueur\_t}}
+
+
+Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire.  
+
+
+
+
+{\ttfamily \#include $<$global.\+h$>$}
+
+
+
+Graphe de collaboration de joueur\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{structjoueur__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{char}} \mbox{\hyperlink{structjoueur__t_ada2196375014da0f1bfffa29bba75c41}{pseudo}} \mbox{[}\mbox{\hyperlink{global_8h_ab232c0fbfa74350c11eda67d8dba16a7}{LONGUEUR\+\_\+\+MAX\+\_\+\+PSEUDO}}\mbox{]}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{char}} \mbox{\hyperlink{structjoueur__t_a2c250fabd0d908836b17be1f335ece40}{sexe}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_a27f513abcb65fd9455ad365587ddf86c}{num\+Map}}
+\item 
+int \mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{x}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_a2bcb82cec7924125a6e793f294ea10ca}{y}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{float}} \mbox{\hyperlink{structjoueur__t_a4b11f60563ba51f12f3991987e429c09}{screen\+\_\+x}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{float}} \mbox{\hyperlink{structjoueur__t_a696b7e7dd640bef1ac376fe242721d2f}{screen\+\_\+y}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_a2284ad01ef9ba13f4a3e5d7608cf24af}{moving}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{float}} \mbox{\hyperlink{structjoueur__t_aa08369b848b865ca2c431941c53c62f6}{move\+\_\+dx}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{float}} \mbox{\hyperlink{structjoueur__t_a8acaed7413623a5a9814887e6043e568}{move\+\_\+dy}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_aa061e55e80b158de92742a39c44d0b18}{derniere\+\_\+touche}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_adb0ce6bf9365fd360e93bc946409a34f}{point\+Sauvegarde}}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_aa5dc0aa8753a5a2af2a50833934d18f9}{nb\+\_\+mechas}}
+\item 
+\mbox{\hyperlink{structinventaire__t}{inventaire\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structjoueur__t_a90b739f76249f09c090ed3c8cbf36fa1}{inventaire}}
+\item 
+\mbox{\hyperlink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}} \mbox{\hyperlink{structjoueur__t_acc525ec1e757eb493459444d5e5fd3ea}{mechas\+\_\+joueur}} \mbox{[}\mbox{\hyperlink{global_8h_ae6f79319e8e437cea4d39afcbc569e34}{NB\+\_\+\+MECHAS\+\_\+\+MAX}}\mbox{]}
+\item 
+\mbox{\hyperlink{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}{int}} \mbox{\hyperlink{structjoueur__t_a93593ead951e5c6b16c950d10bb4c5f6}{proba\+\_\+combat}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente le joueur dans le jeu, avec sa position, son équipe de mechas et son inventaire. 
+
+Cette structure regroupe toutes les informations relatives au joueur, que ce soit pour la gestion de la position sur la carte, les déplacements, l’état de l’équipe de mechas, ou encore l’inventaire d’objets. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structjoueur__t_aa061e55e80b158de92742a39c44d0b18}\label{structjoueur__t_aa061e55e80b158de92742a39c44d0b18} 
+\index{joueur\_t@{joueur\_t}!derniere\_touche@{derniere\_touche}}
+\index{derniere\_touche@{derniere\_touche}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{derniere\_touche}{derniere\_touche}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::derniere\+\_\+touche}
+
+Dernière touche directionnelle pressée (utile pour l’animation du sprite). \Hypertarget{structjoueur__t_a90b739f76249f09c090ed3c8cbf36fa1}\label{structjoueur__t_a90b739f76249f09c090ed3c8cbf36fa1} 
+\index{joueur\_t@{joueur\_t}!inventaire@{inventaire}}
+\index{inventaire@{inventaire}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{inventaire}{inventaire}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::inventaire}
+
+Pointeur vers la structure {\ttfamily \doxylink{structinventaire__t}{inventaire\+\_\+t}} contenant les objets du joueur. \Hypertarget{structjoueur__t_acc525ec1e757eb493459444d5e5fd3ea}\label{structjoueur__t_acc525ec1e757eb493459444d5e5fd3ea} 
+\index{joueur\_t@{joueur\_t}!mechas\_joueur@{mechas\_joueur}}
+\index{mechas\_joueur@{mechas\_joueur}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{mechas\_joueur}{mechas\_joueur}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::mechas\+\_\+joueur}
+
+Tableau de {\ttfamily NB\+\_\+\+MECHAS\+\_\+\+MAX} mechas possédés par le joueur (type {\ttfamily \doxylink{structmechas__joueur__t}{mechas\+\_\+joueur\+\_\+t}}). \Hypertarget{structjoueur__t_aa08369b848b865ca2c431941c53c62f6}\label{structjoueur__t_aa08369b848b865ca2c431941c53c62f6} 
+\index{joueur\_t@{joueur\_t}!move\_dx@{move\_dx}}
+\index{move\_dx@{move\_dx}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{move\_dx}{move\_dx}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::move\+\_\+dx}
+
+Direction de déplacement sur l’axe X (valeur flottante pour animation fluide). \Hypertarget{structjoueur__t_a8acaed7413623a5a9814887e6043e568}\label{structjoueur__t_a8acaed7413623a5a9814887e6043e568} 
+\index{joueur\_t@{joueur\_t}!move\_dy@{move\_dy}}
+\index{move\_dy@{move\_dy}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{move\_dy}{move\_dy}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::move\+\_\+dy}
+
+Direction de déplacement sur l’axe Y. \Hypertarget{structjoueur__t_a2284ad01ef9ba13f4a3e5d7608cf24af}\label{structjoueur__t_a2284ad01ef9ba13f4a3e5d7608cf24af} 
+\index{joueur\_t@{joueur\_t}!moving@{moving}}
+\index{moving@{moving}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{moving}{moving}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::moving}
+
+Indicateur booléen (0/1) indiquant si un déplacement est en cours. \Hypertarget{structjoueur__t_aa5dc0aa8753a5a2af2a50833934d18f9}\label{structjoueur__t_aa5dc0aa8753a5a2af2a50833934d18f9} 
+\index{joueur\_t@{joueur\_t}!nb\_mechas@{nb\_mechas}}
+\index{nb\_mechas@{nb\_mechas}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{nb\_mechas}{nb\_mechas}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::nb\+\_\+mechas}
+
+Nombre de mechas que possède actuellement le joueur. \Hypertarget{structjoueur__t_a27f513abcb65fd9455ad365587ddf86c}\label{structjoueur__t_a27f513abcb65fd9455ad365587ddf86c} 
+\index{joueur\_t@{joueur\_t}!numMap@{numMap}}
+\index{numMap@{numMap}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{numMap}{numMap}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::num\+Map}
+
+Numéro de la carte (map) actuelle sur laquelle se trouve le joueur. \Hypertarget{structjoueur__t_adb0ce6bf9365fd360e93bc946409a34f}\label{structjoueur__t_adb0ce6bf9365fd360e93bc946409a34f} 
+\index{joueur\_t@{joueur\_t}!pointSauvegarde@{pointSauvegarde}}
+\index{pointSauvegarde@{pointSauvegarde}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{pointSauvegarde}{pointSauvegarde}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::point\+Sauvegarde}
+
+Numéro du dernier point de sauvegarde atteint. \Hypertarget{structjoueur__t_a93593ead951e5c6b16c950d10bb4c5f6}\label{structjoueur__t_a93593ead951e5c6b16c950d10bb4c5f6} 
+\index{joueur\_t@{joueur\_t}!proba\_combat@{proba\_combat}}
+\index{proba\_combat@{proba\_combat}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{proba\_combat}{proba\_combat}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::proba\+\_\+combat}
+
+Probabilité (en \%) qu’un combat sauvage se déclenche lors des déplacements. \Hypertarget{structjoueur__t_ada2196375014da0f1bfffa29bba75c41}\label{structjoueur__t_ada2196375014da0f1bfffa29bba75c41} 
+\index{joueur\_t@{joueur\_t}!pseudo@{pseudo}}
+\index{pseudo@{pseudo}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{pseudo}{pseudo}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::pseudo}
+
+Pseudonyme du joueur (nom personnalisé). \Hypertarget{structjoueur__t_a4b11f60563ba51f12f3991987e429c09}\label{structjoueur__t_a4b11f60563ba51f12f3991987e429c09} 
+\index{joueur\_t@{joueur\_t}!screen\_x@{screen\_x}}
+\index{screen\_x@{screen\_x}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{screen\_x}{screen\_x}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::screen\+\_\+x}
+
+Position X réelle à l’écran (en pixels, pour l’affichage lisse/animé). \Hypertarget{structjoueur__t_a696b7e7dd640bef1ac376fe242721d2f}\label{structjoueur__t_a696b7e7dd640bef1ac376fe242721d2f} 
+\index{joueur\_t@{joueur\_t}!screen\_y@{screen\_y}}
+\index{screen\_y@{screen\_y}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{screen\_y}{screen\_y}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::screen\+\_\+y}
+
+Position Y réelle à l’écran (en pixels). \Hypertarget{structjoueur__t_a2c250fabd0d908836b17be1f335ece40}\label{structjoueur__t_a2c250fabd0d908836b17be1f335ece40} 
+\index{joueur\_t@{joueur\_t}!sexe@{sexe}}
+\index{sexe@{sexe}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{sexe}{sexe}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::sexe}
+
+Sexe du joueur (ex \+: \textquotesingle{}M\textquotesingle{} pour masculin, \textquotesingle{}F\textquotesingle{} pour féminin). \Hypertarget{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259}\label{structjoueur__t_a3d7ac6098b96df4163b9fedc913f8259} 
+\index{joueur\_t@{joueur\_t}!x@{x}}
+\index{x@{x}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::x}
+
+Coordonnée X du joueur sur la carte (en cases). \Hypertarget{structjoueur__t_a2bcb82cec7924125a6e793f294ea10ca}\label{structjoueur__t_a2bcb82cec7924125a6e793f294ea10ca} 
+\index{joueur\_t@{joueur\_t}!y@{y}}
+\index{y@{y}!joueur\_t@{joueur\_t}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily joueur\+\_\+t\+::y}
+
+Coordonnée Y du joueur sur la carte (en cases). 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mokha/\+Documents/travaille L2/projet/github/lib/\mbox{\hyperlink{global_8h}{global.\+h}}\end{DoxyCompactItemize}
